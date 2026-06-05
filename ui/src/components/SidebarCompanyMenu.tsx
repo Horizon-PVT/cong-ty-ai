@@ -83,6 +83,13 @@ export function SidebarCompanyMenu() {
             <span>Company settings</span>
           </Link>
         </DropdownMenuItem>
+
+        <DropdownMenuItem asChild>
+          <Link to="/instance/settings/superadmin" onClick={closeNavigationChrome}>
+            <Settings className="size-4 text-destructive" />
+            <span className="text-destructive font-bold">Quản Trị Hệ Thống (Sếp)</span>
+          </Link>
+        </DropdownMenuItem>
         {session?.session ? (
           <>
             <DropdownMenuSeparator />

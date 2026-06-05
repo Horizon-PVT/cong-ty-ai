@@ -1,4 +1,5 @@
 import * as React from "react";
+import "./lib/i18n"; // Import i18n initialization
 import { StrictMode } from "react";
 import * as ReactDOM from "react-dom";
 import { createRoot } from "react-dom/client";

@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: paperclip_postgres_commercial
+    environment:
+      POSTGRES_USER: paperclip
+      POSTGRES_PASSWORD: kodaflow_secret_password_2026
+      POSTGRES_DB: paperclip_prod
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data_kodaflow:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  postgres_data_kodaflow:

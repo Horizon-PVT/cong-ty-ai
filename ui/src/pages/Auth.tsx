@@ -21,7 +21,7 @@ export function AuthPage() {
   const [error, setError] = useState<string | null>(null);
 
   const nextPath = useMemo(
-    () => searchParams.get("next") || getRememberedInvitePath() || "/",
+    () => searchParams.get("next") || getRememberedInvitePath() || "/app",
     [searchParams],
   );
   const { data: session, isLoading: isSessionLoading } = useQuery({

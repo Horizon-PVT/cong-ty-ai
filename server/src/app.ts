@@ -1,4 +1,5 @@
 import express, { Router, type Request as ExpressRequest } from "express";
+import rateLimit from "express-rate-limit";
 import path from "node:path";
 import fs from "node:fs";
 import { fileURLToPath } from "node:url";
@@ -34,6 +35,8 @@ import { accessRoutes } from "./routes/access.js";
 import { pluginRoutes } from "./routes/plugins.js";
 import { adapterRoutes } from "./routes/adapters.js";
 import { pluginUiStaticRoutes } from "./routes/plugin-ui-static.js";
+import { superadminRoutes } from "./routes/superadmin.js";
+import { paymentsRoutes } from "./routes/payments.js";
 import { applyUiBranding } from "./ui-branding.js";
 import { logger } from "./middleware/logger.js";
 import { DEFAULT_LOCAL_PLUGIN_DIR, pluginLoader } from "./services/plugin-loader.js";
@@ -162,6 +165,16 @@ export async function createApp(
   }
   app.use(llmRoutes(db));
 
+  // Gắn màng chắn chống Spam/DDoS
+  const apiLimiter = rateLimit({
+    windowMs: 10 * 60 * 1000, // 10 phút
+    max: 100, // Giới hạn 100 request
+    standardHeaders: true,
+    legacyHeaders: false,
+    message: { error: "Quá nhiều yêu cầu. Hệ thống an ninh đã khóa IP. Vui lòng thử lại sau 10 phút." }
+  });
+  app.use("/api", apiLimiter);
+
   // Mount API routes
   const api = Router();
   api.use(boardMutationGuard());
@@ -194,6 +207,8 @@ export async function createApp(
   api.use(sidebarPreferenceRoutes(db));
   api.use(inboxDismissalRoutes(db));
   api.use(instanceSettingsRoutes(db));
+  api.use("/superadmin", superadminRoutes(db));
+  api.use("/payments", paymentsRoutes(db));
   const hostServicesDisposers = new Map<string, () => void>();
   const workerManager = createPluginWorkerManager();
   const pluginRegistry = pluginRegistryService(db);

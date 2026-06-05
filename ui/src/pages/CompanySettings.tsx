@@ -1,4 +1,5 @@
 import { ChangeEvent, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "@/lib/router";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { DEFAULT_FEEDBACK_DATA_SHARING_TERMS_VERSION } from "@paperclipai/shared";
@@ -8,6 +9,7 @@ import { useToastActions } from "../context/ToastContext";
 import { companiesApi } from "../api/companies";
 import { accessApi } from "../api/access";
 import { assetsApi } from "../api/assets";
+import { api } from "../api/client";
 import { queryKeys } from "../lib/queryKeys";
 import { Button } from "@/components/ui/button";
 import { Settings, Check, Download, Upload } from "lucide-react";
@@ -27,6 +29,7 @@ type AgentSnippetInput = {
 const FEEDBACK_TERMS_URL = import.meta.env.VITE_FEEDBACK_TERMS_URL?.trim() || "https://paperclip.ing/tos";
 
 export function CompanySettings() {
+  const { t } = useTranslation();
   const {
     companies,
     selectedCompany,
@@ -42,6 +45,7 @@ export function CompanySettings() {
   const [brandColor, setBrandColor] = useState("");
   const [logoUrl, setLogoUrl] = useState("");
   const [logoUploadError, setLogoUploadError] = useState<string | null>(null);
+  const [depositAmount, setDepositAmount] = useState<number>(50000);
 
   // Sync local state from selected company
   useEffect(() => {
@@ -222,6 +226,24 @@ export function CompanySettings() {
     }
   });
 
+  const paymentMutation = useMutation({
+    mutationFn: (amount: number) =>
+      api.post<{ checkoutUrl: string }>("/payments/create", {
+        companyId: selectedCompanyId,
+        amount,
+      }),
+    onSuccess: (res) => {
+      window.location.href = res.checkoutUrl;
+    },
+    onError: (err) => {
+      pushToast({
+        title: "Lỗi tạo thanh toán",
+        body: err instanceof Error ? err.message : "Chưa xác định",
+        tone: "error",
+      });
+    }
+  });
+
   useEffect(() => {
     setBreadcrumbs([
       { label: selectedCompany?.name ?? "Company", href: "/dashboard" },
@@ -249,16 +271,16 @@ export function CompanySettings() {
     <div className="max-w-2xl space-y-6">
       <div className="flex items-center gap-2">
         <Settings className="h-5 w-5 text-muted-foreground" />
-        <h1 className="text-lg font-semibold">Company Settings</h1>
+        <h1 className="text-lg font-semibold">{t("nav.settings")}</h1>
       </div>
 
       {/* General */}
       <div className="space-y-4">
         <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-          General
+          Chung
         </div>
         <div className="space-y-3 rounded-md border border-border px-4 py-4">
-          <Field label="Company name" hint="The display name for your company.">
+          <Field label={t("settings.title")} hint="The display name for your company.">
             <input
               className="w-full rounded-md border border-border bg-transparent px-2.5 py-1.5 text-sm outline-none"
               type="text"
@@ -267,7 +289,7 @@ export function CompanySettings() {
             />
           </Field>
           <Field
-            label="Description"
+            label="Mô tả công ty"
             hint="Optional description shown in the company profile."
           >
             <input
@@ -284,7 +306,7 @@ export function CompanySettings() {
       {/* Appearance */}
       <div className="space-y-4">
         <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-          Appearance
+          {t("settings.appearance")}
         </div>
         <div className="space-y-3 rounded-md border border-border px-4 py-4">
           <div className="flex items-start gap-4">
@@ -339,7 +361,7 @@ export function CompanySettings() {
                 </div>
               </Field>
               <Field
-                label="Brand color"
+                label={t("settings.brandColor")}
                 hint="Sets the hue for the company icon. Leave empty for auto-generated color."
               >
                 <div className="flex items-center gap-2">
@@ -358,7 +380,7 @@ export function CompanySettings() {
                         setBrandColor(v);
                       }
                     }}
-                    placeholder="Auto"
+                    placeholder={t("settings.auto")}
                     className="w-28 rounded-md border border-border bg-transparent px-2.5 py-1.5 text-sm font-mono outline-none"
                   />
                   {brandColor && (
@@ -404,11 +426,11 @@ export function CompanySettings() {
       {/* Hiring */}
       <div className="space-y-4" data-testid="company-settings-team-section">
         <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-          Hiring
+          {t("settings.recruitment")}
         </div>
         <div className="rounded-md border border-border px-4 py-3">
           <ToggleField
-            label="Require board approval for new hires"
+            label={t("settings.boardApproval")}
             hint="New agent hires stay pending until approved by board."
             checked={!!selectedCompany.requireBoardApprovalForNewAgents}
             onChange={(v) => settingsMutation.mutate(v)}
@@ -462,12 +484,12 @@ export function CompanySettings() {
       {/* Invites */}
       <div className="space-y-4" data-testid="company-settings-invites-section">
         <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-          Invites
+          {t("settings.invitation")}
         </div>
         <div className="space-y-3 rounded-md border border-border px-4 py-4">
           <div className="flex items-center gap-1.5">
             <span className="text-xs text-muted-foreground">
-              Generate an OpenClaw agent invite snippet.
+              {t("settings.generateToken")}
             </span>
             <HintIcon text="Creates a short-lived OpenClaw agent invite and renders a copy-ready prompt." />
           </div>
@@ -480,7 +502,7 @@ export function CompanySettings() {
             >
               {inviteMutation.isPending
                 ? "Generating..."
-                : "Generate OpenClaw Invite Prompt"}
+                : t("settings.btnGenerate")}
             </Button>
           </div>
           {inviteError && (
@@ -537,6 +559,40 @@ export function CompanySettings() {
         </div>
       </div>
 
+      {/* PayOS Nạp tiền */}
+      <div className="space-y-4">
+        <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
+          Ngân sách hoạt động (Thanh toán PayOS)
+        </div>
+        <div className="space-y-3 rounded-md border border-border px-4 py-4">
+          <div className="flex items-center gap-1.5">
+            <span className="text-sm font-semibold text-green-500">
+              Số điểm ngân sách nội bộ: {(selectedCompany.budgetMonthlyCents || 0)} điểm
+            </span>
+          </div>
+          <div className="flex flex-wrap items-center gap-2">
+            <input
+              type="number"
+              min={2000}
+              className="w-40 rounded-md border border-border bg-transparent px-2.5 py-1.5 text-sm outline-none"
+              value={depositAmount}
+              onChange={(e) => setDepositAmount(Number(e.target.value))}
+            />
+            <span className="text-sm font-medium mr-2">VNĐ</span>
+            <Button
+              size="sm"
+              onClick={() => paymentMutation.mutate(depositAmount)}
+              disabled={paymentMutation.isPending || depositAmount < 2000}
+            >
+              {paymentMutation.isPending ? "Đang xử lý..." : "Nạp bằng mã VietQR"}
+            </Button>
+          </div>
+          <p className="text-xs text-muted-foreground">
+            Mã QR thanh toán tự động kiểm duỵêt thông qua cổng thanh toán quốc gia PayOS. (Hệ thống test có thể chặn IP Local, nên API webhook sẽ thực thi khi Publish).
+          </p>
+        </div>
+      </div>
+
       {/* Import / Export */}
       <div className="space-y-4">
         <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
@@ -567,12 +623,11 @@ export function CompanySettings() {
       {/* Danger Zone */}
       <div className="space-y-4">
         <div className="text-xs font-medium text-destructive uppercase tracking-wide">
-          Danger Zone
+          {t("settings.dangerZone")}
         </div>
         <div className="space-y-3 rounded-md border border-destructive/40 bg-destructive/5 px-4 py-4">
           <p className="text-sm text-muted-foreground">
-            Archive this company to hide it from the sidebar. This persists in
-            the database.
+            {t("settings.archiveWarning")}
           </p>
           <div className="flex items-center gap-2">
             <Button
@@ -604,7 +659,7 @@ export function CompanySettings() {
                 ? "Archiving..."
                 : selectedCompany.status === "archived"
                 ? "Already archived"
-                : "Archive company"}
+                : t("settings.btnArchive")}
             </Button>
             {archiveMutation.isError && (
               <span className="text-xs text-destructive">

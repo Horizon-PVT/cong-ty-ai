@@ -33,6 +33,7 @@ import { InstanceGeneralSettings } from "./pages/InstanceGeneralSettings";
 import { InstanceAccess } from "./pages/InstanceAccess";
 import { InstanceSettings } from "./pages/InstanceSettings";
 import { InstanceExperimentalSettings } from "./pages/InstanceExperimentalSettings";
+import { SuperAdmin } from "./pages/SuperAdmin";
 import { ProfileSettings } from "./pages/ProfileSettings";
 import { PluginManager } from "./pages/PluginManager";
 import { PluginSettings } from "./pages/PluginSettings";
@@ -49,6 +50,7 @@ import { CliAuthPage } from "./pages/CliAuth";
 import { InviteLandingPage } from "./pages/InviteLanding";
 import { JoinRequestQueue } from "./pages/JoinRequestQueue";
 import { NotFoundPage } from "./pages/NotFound";
+import { LandingPage } from "./pages/LandingPage";
 import { useCompany } from "./context/CompanyContext";
 import { useDialog } from "./context/DialogContext";
 import { loadLastInboxTab } from "./lib/inbox";
@@ -252,13 +254,14 @@ export function App() {
   return (
     <>
       <Routes>
+        <Route path="/" element={<LandingPage />} />
         <Route path="auth" element={<AuthPage />} />
         <Route path="board-claim/:token" element={<BoardClaimPage />} />
         <Route path="cli-auth/:id" element={<CliAuthPage />} />
         <Route path="invite/:token" element={<InviteLandingPage />} />
 
         <Route element={<CloudAccessGate />}>
-          <Route index element={<CompanyRootRedirect />} />
+          <Route path="app" element={<CompanyRootRedirect />} />
           <Route path="onboarding" element={<OnboardingRoutePage />} />
           <Route path="instance" element={<Navigate to="/instance/settings/general" replace />} />
           <Route path="instance/settings" element={<Layout />}>
@@ -266,6 +269,7 @@ export function App() {
             <Route path="profile" element={<ProfileSettings />} />
             <Route path="general" element={<InstanceGeneralSettings />} />
             <Route path="access" element={<InstanceAccess />} />
+            <Route path="superadmin" element={<SuperAdmin />} />
             <Route path="heartbeats" element={<InstanceSettings />} />
             <Route path="experimental" element={<InstanceExperimentalSettings />} />
             <Route path="plugins" element={<PluginManager />} />
