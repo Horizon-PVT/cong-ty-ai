@@ -13,7 +13,7 @@ export function superadminRoutes(db: Db) {
       res.status(401).json({ error: "Unauthorized" });
       return;
     }
-    const roles = await db.select().from(instanceUserRoles).where(eq(instanceUserRoles.userId, actor.principalId!));
+    const roles = await db.select().from(instanceUserRoles).where(eq(instanceUserRoles.userId, actor.userId!));
     const isAdmin = roles.some(r => r.role === "instance_admin");
     if (!isAdmin) {
       res.status(403).json({ error: "Forbidden: Đòi hỏi quyền Super Admin" });
