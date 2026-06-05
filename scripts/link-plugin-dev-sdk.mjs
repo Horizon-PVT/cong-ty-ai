@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { existsSync, mkdirSync, lstatSync, rmSync, symlinkSync } from "node:fs";
+import { existsSync, mkdirSync, lstatSync, symlinkSync } from "node:fs";
 import { dirname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -17,19 +17,37 @@ if (!existsSync(join(packageDir, "package.json"))) {
 
 mkdirSync(scopeDir, { recursive: true });
 
+let exists = false;
 try {
-  const stat = lstatSync(linkTarget);
-  if (stat.isSymbolicLink()) {
-    rmSync(linkTarget, { force: true });
-  } else {
-    console.log("  i Keeping existing installed @paperclipai/plugin-sdk directory in place");
-    process.exit(0);
-  }
-} catch {
-  // target does not exist yet
+  lstatSync(linkTarget);
+  exists = true;
+} catch (e) {
+  // doesn't exist
+}
+
+if (exists) {
+  console.log(`  i @paperclipai/plugin-sdk already exists for ${packageDir}`);
+  process.exit(0);
 }
 
 const relativeSdkDir = relative(scopeDir, sdkDir);
-symlinkSync(relativeSdkDir, linkTarget, "dir");
 
-console.log(`  ✓ Linked local @paperclipai/plugin-sdk for ${packageDir}`);
+try {
+  symlinkSync(relativeSdkDir, linkTarget, "junction");
+  console.log(`  ✓ Linked local @paperclipai/plugin-sdk (junction) for ${packageDir}`);
+} catch (err) {
+  try {
+    symlinkSync(relativeSdkDir, linkTarget, "dir");
+    console.log(`  ✓ Linked local @paperclipai/plugin-sdk (symlink) for ${packageDir}`);
+  } catch (err2) {
+    // Check if it was created by a parallel process
+    try {
+      lstatSync(linkTarget);
+      console.log(`  i @paperclipai/plugin-sdk exists after link attempt for ${packageDir}`);
+      process.exit(0);
+    } catch (e) {
+      // ignore
+    }
+    console.warn(`  ! Symlink failed, but continuing install: ${err2.message}`);
+  }
+}
