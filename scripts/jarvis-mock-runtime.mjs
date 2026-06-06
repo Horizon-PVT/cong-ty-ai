@@ -58,7 +58,7 @@ function buildAdvisorReport(issue, agents, codexAgent, claudeAgent, qaAgent) {
   return `### 🧠 JARVIS Strategy Advisor Analysis
 
 #### Executive Summary
-We have reviewed the request for the task: "${issue.title}". Based on the current company goal, project configuration, and available agent roles, we have generated a strategic alignment report and proposed specific agent subtasks.
+We have reviewed the request for the task: "${issue.title}". Based on the current company goal, project configuration, and available agent roles, we have generated a strategic alignment report and proposed specific agent subtasks under the JARVIS Executive Autonomy Policy.
 
 #### Owner Goal Interpretation
 - **Goal Statement**: The goal is to address: "${issue.title}".
@@ -70,6 +70,28 @@ We have reviewed the request for the task: "${issue.title}". Based on the curren
 - **Priority Level**: \`${issue.priority}\`
 - **Project ID**: \`${issue.projectId || "Not provided"}\`
 - **Goal ID**: \`${issue.goalId || "Not provided"}\`
+
+#### 🛡️ JARVIS Executive Autonomy Policy
+- **JARVIS Authority Level**: Level 2 (Executive Autonomy / Internal Execution)
+- **Internal Autonomy Allowed**: Planning, task decomposition, and local branch execution orchestration for Codex Developer, Claude Reviewer, and Antigravity QA.
+- **What JARVIS May Decide Automatically**:
+  - Directing, unpausing, and waking internal agents for local or branch work.
+  - Creating temporary coding branches and running local verification scripts.
+  - Generating issue thread comment summaries and posting report analyses.
+- **What JARVIS Must Escalate to Owner (Critical Approval Gates)**:
+  - Merging code changes to the master branch.
+  - Deploying to production environments.
+  - Destructive database schema changes or data deletion.
+  - Adding/modifying environment secrets or API keys.
+  - External messaging (emails/Slack/Discord comments) to customers or leads.
+  - Financial spend or ads commitments exceeding configured budgets.
+- **Budget / Spend Policy (Placeholder for future Phase, not an active billing/ads control system yet)**:
+  - Daily limit: $50 (Placeholder)
+  - Monthly limit: $1,000 (Placeholder)
+  - Per-task limit: $10 (Placeholder)
+  - Hard stop enforcement: Policy placeholder, enforcement not active yet.
+- **Next Autonomous Action**: Resuming Codex Developer to begin local work on the child task.
+- **Escalation Rules**: If any internal process fails three consecutive times or encounters budget exhaustion, JARVIS will immediately pause execution and alert the owner.
 
 #### Recommended Plan
 1. **Phase 1: Implementation**: Codex Developer performs the core coding changes and sets up the execution loop environment.
@@ -98,7 +120,7 @@ The strategic plan allocates directives across the following roles:
 - Click **"Accept Tasks"** on the proposed interaction below to assign and queue tasks for Codex Developer, Claude Reviewer, and Antigravity QA.
 
 ---
-*Report generated dynamically by JARVIS Strategy Advisor v0.2 Mock Runtime.*`;
+*Report generated dynamically by JARVIS Strategy Advisor v0.3 (Autonomy Policy Enabled).*`;
 }
 
 function buildSuggestedTasks(issue, codexAgent, claudeAgent, qaAgent) {
@@ -116,7 +138,7 @@ function buildSuggestedTasks(issue, codexAgent, claudeAgent, qaAgent) {
         {
           clientKey: clientKey("codex-task"),
           title: `[Codex] Implement solution for: ${issue.title}`,
-          description: `Develop and verify the code changes requested in "${issue.title}".\n\nAcceptance Criteria:\n- Code changes address the core requirements\n- No syntax or type errors in the worktree\n- Passes local unit tests`,
+          description: `Develop and verify the code changes requested in "${issue.title}".\n\nAcceptance Criteria:\n- Code changes address the core requirements\n- No syntax or type errors in the worktree\n- Passes local unit tests\n\n---\n**Autonomous Execution Metadata:**\n- **Execution Mode**: JARVIS internal autonomy\n- **Autonomy Level**: Level 2 (Internal Execution Allowed)\n- **Status**: Pending human confirmation (downstream agents will not auto-run until accepted)\n- **Safety Boundary**: Merge, deploy, external comms, and spend-over-budget remain strictly blocked and require owner approval.`,
           priority: "medium",
           workMode: "standard",
           assigneeAgentId: codexAgent ? codexAgent.id : null,
@@ -126,7 +148,7 @@ function buildSuggestedTasks(issue, codexAgent, claudeAgent, qaAgent) {
         {
           clientKey: clientKey("claude-task"),
           title: `[Claude Review] Code audit and review for: ${issue.title}`,
-          description: `Audit the code changes implemented for "${issue.title}".\n\nSafety/Code Quality Checklist:\n- No hardcoded secrets or sensitive credentials\n- Code cleanliness and correct package dependencies\n- Error handling is robust and standard patterns are followed`,
+          description: `Audit the code changes implemented for "${issue.title}".\n\nSafety/Code Quality Checklist:\n- No hardcoded secrets or sensitive credentials\n- Code cleanliness and correct package dependencies\n- Error handling is robust and standard patterns are followed\n\n---\n**Autonomous Execution Metadata:**\n- **Execution Mode**: JARVIS internal autonomy\n- **Autonomy Level**: Level 2 (Internal Execution Allowed)\n- **Status**: Pending human confirmation (downstream agents will not auto-run until accepted)\n- **Safety Boundary**: Merge, deploy, external comms, and spend-over-budget remain strictly blocked and require owner approval.`,
           priority: "medium",
           workMode: "standard",
           assigneeAgentId: claudeAgent ? claudeAgent.id : null,
@@ -136,7 +158,7 @@ function buildSuggestedTasks(issue, codexAgent, claudeAgent, qaAgent) {
         {
           clientKey: clientKey("qa-task"),
           title: `[QA] Integration and visual verification for: ${issue.title}`,
-          description: `Verify functionality and interface rendering for "${issue.title}".\n\nVerification Checklist:\n- Verification check passes on local dev server\n- Interactive components work correctly in dashboard\n- Logs and run indicators update correctly without looping`,
+          description: `Verify functionality and interface rendering for "${issue.title}".\n\nVerification Checklist:\n- Verification check passes on local dev server\n- Interactive components work correctly in dashboard\n- Logs and run indicators update correctly without looping\n\n---\n**Autonomous Execution Metadata:**\n- **Execution Mode**: JARVIS internal autonomy\n- **Autonomy Level**: Level 2 (Internal Execution Allowed)\n- **Status**: Pending human confirmation (downstream agents will not auto-run until accepted)\n- **Safety Boundary**: Merge, deploy, external comms, and spend-over-budget remain strictly blocked and require owner approval.`,
           priority: "medium",
           workMode: "standard",
           assigneeAgentId: qaAgent ? qaAgent.id : null,
