@@ -2,189 +2,225 @@
 
 import { createHash } from 'node:crypto';
 
-const {
-  PAPERCLIP_API_URL,
-  PAPERCLIP_AGENT_ID,
-  PAPERCLIP_COMPANY_ID,
-  PAPERCLIP_TASK_ID,
-  PAPERCLIP_RUN_ID
-} = process.env;
-
-console.log("[JARVIS Mock Runtime] Starting execution...");
-console.log(`- PAPERCLIP_API_URL: ${PAPERCLIP_API_URL}`);
-console.log(`- PAPERCLIP_AGENT_ID: ${PAPERCLIP_AGENT_ID}`);
-console.log(`- PAPERCLIP_COMPANY_ID: ${PAPERCLIP_COMPANY_ID}`);
-console.log(`- PAPERCLIP_TASK_ID: ${PAPERCLIP_TASK_ID}`);
-console.log(`- PAPERCLIP_RUN_ID: ${PAPERCLIP_RUN_ID}`);
-
-if (!PAPERCLIP_API_URL || !PAPERCLIP_AGENT_ID || !PAPERCLIP_COMPANY_ID || !PAPERCLIP_TASK_ID) {
-  console.error("[JARVIS Mock Runtime] Error: Missing required environment variables.");
-  process.exit(1);
+// 1. Helper functions
+function requireEnv(name) {
+  const value = process.env[name];
+  if (!value) {
+    console.error(`[JARVIS Mock Runtime] Error: Missing required environment variable: ${name}`);
+    process.exit(1);
+  }
+  return value;
 }
 
-async function run() {
-  try {
-    // 1. Fetch the triggering issue/task context
-    console.log(`[JARVIS Mock Runtime] Fetching issue details for: ${PAPERCLIP_TASK_ID}`);
-    const issueResponse = await fetch(`${PAPERCLIP_API_URL}/api/issues/${PAPERCLIP_TASK_ID}`);
-    if (!issueResponse.ok) {
-      throw new Error(`Failed to fetch issue details. Status: ${issueResponse.status}`);
-    }
-    const issue = await issueResponse.json();
-    console.log(`[JARVIS Mock Runtime] Fetched issue: "${issue.title}" (Status: ${issue.status})`);
+async function fetchJson(url) {
+  const res = await fetch(url);
+  if (!res.ok) {
+    throw new Error(`Fetch failed for ${url} with status ${res.status}`);
+  }
+  return res.json();
+}
 
-    // 2. Fetch company agents
-    console.log(`[JARVIS Mock Runtime] Fetching company agents for company: ${PAPERCLIP_COMPANY_ID}`);
-    const agentsResponse = await fetch(`${PAPERCLIP_API_URL}/api/companies/${PAPERCLIP_COMPANY_ID}/agents`);
-    if (!agentsResponse.ok) {
-      throw new Error(`Failed to fetch company agents. Status: ${agentsResponse.status}`);
-    }
-    const companyAgents = await agentsResponse.json();
-    console.log(`[JARVIS Mock Runtime] Fetched ${companyAgents.length} agents.`);
+async function postJson(url, payload, extraHeaders = {}) {
+  const res = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      ...extraHeaders
+    },
+    body: JSON.stringify(payload)
+  });
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(`POST failed for ${url} with status ${res.status}: ${text}`);
+  }
+  return res.json();
+}
 
-    // 3. Find specific agents to assign tasks to
-    const codexAgent = companyAgents.find(a => a.name === "Codex Developer") || companyAgents.find(a => a.role === "engineer" && a.title.toLowerCase().includes("developer"));
-    const claudeAgent = companyAgents.find(a => a.name === "Claude Reviewer") || companyAgents.find(a => a.role === "engineer" && a.title.toLowerCase().includes("reviewer"));
-    const qaAgent = companyAgents.find(a => a.name === "Antigravity QA") || companyAgents.find(a => a.role === "engineer" && a.title.toLowerCase().includes("qa"));
+function formatMaybe(value) {
+  if (value === undefined || value === null || value === "") {
+    return "Not provided";
+  }
+  return value;
+}
 
-    console.log(`- Codex Agent: ${codexAgent ? codexAgent.name + " (" + codexAgent.id + ")" : "Not found"}`);
-    console.log(`- Claude Agent: ${claudeAgent ? claudeAgent.name + " (" + claudeAgent.id + ")" : "Not found"}`);
-    console.log(`- QA Agent: ${qaAgent ? qaAgent.name + " (" + qaAgent.id + ")" : "Not found"}`);
+function findAgentByNameOrRole(agents, name, roleHint) {
+  const foundByName = agents.find(a => a.name === name);
+  if (foundByName) return foundByName;
+  const foundByRole = agents.find(a => a.role === roleHint || (a.title && a.title.toLowerCase().includes(roleHint)));
+  return foundByRole || null;
+}
 
-    // 4. Generate deterministic report/plan
-    const reportTitle = "JARVIS Strategic Advice & Alignment Report";
-    const reportBody = `### 🧠 JARVIS Strategy Advisor Analysis
+function buildAdvisorReport(issue, agents, codexAgent, claudeAgent, qaAgent) {
+  const codexName = codexAgent ? `${codexAgent.name} (${codexAgent.title})` : "Not provided";
+  const claudeName = claudeAgent ? `${claudeAgent.name} (${claudeAgent.title})` : "Not provided";
+  const qaName = qaAgent ? `${qaAgent.name} (${qaAgent.title})` : "Not provided";
 
-**Goal Description**: ${issue.title}
-**Parent Task ID**: \`${issue.id}\`
-**Assigned Company**: \`AI Dev Factory\`
+  return `### 🧠 JARVIS Strategy Advisor Analysis
 
 #### Executive Summary
-The system has completed verification of the master branch post-merge. All package checks, TypeScript typechecking, Vitest dry-run, and migrations are passing. We are now preparing to run a mock execution cycle for the local runtime adapters.
+We have reviewed the request for the task: "${issue.title}". Based on the current company goal, project configuration, and available agent roles, we have generated a strategic alignment report and proposed specific agent subtasks.
 
-#### Strategic Plan & Roadmap
-1. **Milestone 1**: Verify local execution logs and child process spawns under Node.js runtime.
-2. **Milestone 2**: Perform visual validations of the dashboard layout to ensure agent cards do not duplicate.
-3. **Milestone 3**: Decompose subsequent verification steps into specific agent directives.
+#### Owner Goal Interpretation
+- **Goal Statement**: The goal is to address: "${issue.title}".
+- **Goal Context / Details**: ${formatMaybe(issue.description)}
 
-#### Target Directives & Checklists
-- **Codex Developer (Engineer)**:
-  - Verify that the process adapter logs console stdout and stderr correctly.
-  - Assert that all environment variables are populated.
-- **Claude Reviewer (Reviewer)**:
-  - Audit script imports to ensure no third-party package dependencies are introduced.
-  - Review that code changes adhere to the "no-code/no-secret" policy.
-- **Antigravity QA (QA)**:
-  - Perform validation of issue comment presentation types.
-  - Verify that \`suggest_tasks\` interactions render correctly on the issue details page.
+#### Current Context
+- **Task ID**: \`${issue.id}\`
+- **Current Status**: \`${issue.status}\`
+- **Priority Level**: \`${issue.priority}\`
+- **Project ID**: \`${issue.projectId || "Not provided"}\`
+- **Goal ID**: \`${issue.goalId || "Not provided"}\`
+
+#### Recommended Plan
+1. **Phase 1: Implementation**: Codex Developer performs the core coding changes and sets up the execution loop environment.
+2. **Phase 2: Code Review**: Claude Reviewer conducts safety, dependency containment, and code quality validation.
+3. **Phase 3: QA Verification**: Antigravity QA performs manual and automated interface/run-level checks on the UI.
+
+#### Agent Task Breakdown
+The strategic plan allocates directives across the following roles:
+- **Codex Developer**: ${codexName}
+- **Claude Reviewer**: ${claudeName}
+- **Antigravity QA**: ${qaName}
 
 #### Acceptance Criteria
-- [x] Process adapter execution finishes with exit code 0.
-- [x] Advisor comment is created on parent task.
-- [ ] Task decomposition list is accepted and child issues are created.
+- [ ] Codex Developer completes the implementation task.
+- [ ] Claude Reviewer approves the code review.
+- [ ] Antigravity QA verifies the final build and logs.
 
-#### Known Risks & Mitigations
-- **Risk**: Stale database records causing run event inconsistencies.
-- **Mitigation**: Run \`seed-ai-factory\` to clean run records before starting a fresh run.
+#### Risks / Blockers
+- **Complexity Risk**: Tight coordination required between Codex and Claude tasks.
+- **Verification Risk**: Local process execution requires correct environment variables (\`PAPERCLIP_TASK_ID\`, etc.) without keys.
+
+#### Owner Approval Needed
+- **Action**: Please review the pending task suggestions in the dashboard and approve them to create the child tasks.
+
+#### Next Recommended Action
+- Click **"Accept Tasks"** on the proposed interaction below to assign and queue tasks for Codex Developer, Claude Reviewer, and Antigravity QA.
 
 ---
-*Report generated deterministically by JARVIS Strategy Advisor v0.1 Mock Runtime.*`;
+*Report generated dynamically by JARVIS Strategy Advisor v0.2 Mock Runtime.*`;
+}
 
-    // 5. Post comment back to the issue
-    console.log(`[JARVIS Mock Runtime] Posting strategic report as a comment...`);
+function buildSuggestedTasks(issue, codexAgent, claudeAgent, qaAgent) {
+  const clientKey = (prefix) => `${prefix}-${createHash('sha256').update(issue.id).digest('hex').slice(0, 8)}`;
+
+  return {
+    kind: "suggest_tasks",
+    title: `Task Breakdown for: ${issue.title}`,
+    summary: `Decompose strategic steps for the implementation, review, and verification of "${issue.title}".`,
+    continuationPolicy: "wake_assignee",
+    payload: {
+      version: 1,
+      defaultParentId: issue.id,
+      tasks: [
+        {
+          clientKey: clientKey("codex-task"),
+          title: `[Codex] Implement solution for: ${issue.title}`,
+          description: `Develop and verify the code changes requested in "${issue.title}".\n\nAcceptance Criteria:\n- Code changes address the core requirements\n- No syntax or type errors in the worktree\n- Passes local unit tests`,
+          priority: "medium",
+          workMode: "standard",
+          assigneeAgentId: codexAgent ? codexAgent.id : null,
+          projectId: issue.projectId,
+          goalId: issue.goalId
+        },
+        {
+          clientKey: clientKey("claude-task"),
+          title: `[Claude Review] Code audit and review for: ${issue.title}`,
+          description: `Audit the code changes implemented for "${issue.title}".\n\nSafety/Code Quality Checklist:\n- No hardcoded secrets or sensitive credentials\n- Code cleanliness and correct package dependencies\n- Error handling is robust and standard patterns are followed`,
+          priority: "medium",
+          workMode: "standard",
+          assigneeAgentId: claudeAgent ? claudeAgent.id : null,
+          projectId: issue.projectId,
+          goalId: issue.goalId
+        },
+        {
+          clientKey: clientKey("qa-task"),
+          title: `[QA] Integration and visual verification for: ${issue.title}`,
+          description: `Verify functionality and interface rendering for "${issue.title}".\n\nVerification Checklist:\n- Verification check passes on local dev server\n- Interactive components work correctly in dashboard\n- Logs and run indicators update correctly without looping`,
+          priority: "medium",
+          workMode: "standard",
+          assigneeAgentId: qaAgent ? qaAgent.id : null,
+          projectId: issue.projectId,
+          goalId: issue.goalId
+        }
+      ]
+    }
+  };
+}
+
+// 2. Main execution function
+async function run() {
+  console.log("[JARVIS Mock Runtime] Starting execution...");
+
+  // Validate required env variables
+  const apiUrl = requireEnv("PAPERCLIP_API_URL");
+  const agentId = requireEnv("PAPERCLIP_AGENT_ID");
+  const companyId = requireEnv("PAPERCLIP_COMPANY_ID");
+  const taskId = requireEnv("PAPERCLIP_TASK_ID");
+  const runId = process.env.PAPERCLIP_RUN_ID;
+
+  console.log("[JARVIS Mock Runtime] Required environment variables validated.");
+
+  try {
+    // Fetch issue details
+    console.log(`[JARVIS Mock Runtime] Fetching issue details for: ${taskId}`);
+    const issue = await fetchJson(`${apiUrl}/api/issues/${taskId}`);
+    console.log(`[JARVIS Mock Runtime] Fetched issue: "${issue.title}" (Status: ${issue.status})`);
+
+    // Fetch company agents
+    console.log(`[JARVIS Mock Runtime] Fetching company agents for company: ${companyId}`);
+    const agents = await fetchJson(`${apiUrl}/api/companies/${companyId}/agents`);
+    console.log(`[JARVIS Mock Runtime] Fetched ${agents.length} company agents.`);
+
+    // Find specific agents
+    const codexAgent = findAgentByNameOrRole(agents, "Codex Developer", "developer") || findAgentByNameOrRole(agents, "Codex Developer", "engineer");
+    const claudeAgent = findAgentByNameOrRole(agents, "Claude Reviewer", "reviewer") || findAgentByNameOrRole(agents, "Claude Reviewer", "engineer");
+    const qaAgent = findAgentByNameOrRole(agents, "Antigravity QA", "qa") || findAgentByNameOrRole(agents, "Antigravity QA", "engineer");
+
+    console.log(`- Codex Agent: ${codexAgent ? codexAgent.name : "Not found"}`);
+    console.log(`- Claude Agent: ${claudeAgent ? claudeAgent.name : "Not found"}`);
+    console.log(`- QA Agent: ${qaAgent ? qaAgent.name : "Not found"}`);
+
+    // Build report and post comment
+    console.log("[JARVIS Mock Runtime] Posting strategic advisor report comment...");
+    const reportBody = buildAdvisorReport(issue, agents, codexAgent, claudeAgent, qaAgent);
     const commentPayload = {
       body: reportBody,
       presentation: {
         kind: "message",
         tone: "neutral",
-        title: reportTitle,
+        title: "JARVIS Strategic Advice & Alignment Report",
         detailsDefaultOpen: true
       }
     };
 
-    const commentResponse = await fetch(`${PAPERCLIP_API_URL}/api/issues/${PAPERCLIP_TASK_ID}/comments`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        ...(PAPERCLIP_RUN_ID ? { "X-Paperclip-Run-Id": PAPERCLIP_RUN_ID } : {})
-      },
-      body: JSON.stringify(commentPayload)
-    });
-
-    if (!commentResponse.ok) {
-      console.warn(`[JARVIS Mock Runtime] Warning: Failed to post comment. Status: ${commentResponse.status}`);
-    } else {
-      const comment = await commentResponse.json();
-      console.log(`[JARVIS Mock Runtime] Comment posted successfully: ${comment.id}`);
+    try {
+      const comment = await postJson(
+        `${apiUrl}/api/issues/${taskId}/comments`,
+        commentPayload,
+        runId ? { "X-Paperclip-Run-Id": runId } : {}
+      );
+      console.log(`[JARVIS Mock Runtime] Report comment posted successfully: ${comment.id}`);
+    } catch (commentErr) {
+      console.warn(`[JARVIS Mock Runtime] Warning: Failed to post comment. Error: ${commentErr.message}`);
     }
 
-    // 6. Propose a suggest_tasks interaction
-    console.log(`[JARVIS Mock Runtime] Proposing task suggestions...`);
-    
-    // Generate deterministic client keys based on task ID
-    const clientKey = (prefix) => `${prefix}-${createHash('sha256').update(PAPERCLIP_TASK_ID).digest('hex').slice(0, 8)}`;
+    // Build and post task suggestions interaction
+    console.log("[JARVIS Mock Runtime] Proposing task suggestions interaction...");
+    const tasksPayload = buildSuggestedTasks(issue, codexAgent, claudeAgent, qaAgent);
 
-    const tasksPayload = {
-      kind: "suggest_tasks",
-      title: "Task Breakdown for AI Dev Factory Verification",
-      summary: "Decompose verification steps for Codex, Claude, and QA agents.",
-      continuationPolicy: "wake_assignee",
-      payload: {
-        version: 1,
-        defaultParentId: PAPERCLIP_TASK_ID,
-        tasks: [
-          {
-            clientKey: clientKey("codex-task"),
-            title: "[Codex] Local adapter stdout and environment validation",
-            description: "Verify that the process adapter logs child process outputs and environment variables accurately.",
-            priority: "medium",
-            workMode: "standard",
-            assigneeAgentId: codexAgent ? codexAgent.id : null,
-            projectId: issue.projectId,
-            goalId: issue.goalId
-          },
-          {
-            clientKey: clientKey("claude-task"),
-            title: "[Claude] Code audit for dependency containment",
-            description: "Review imports in local scripts to confirm they use only built-in Node.js modules without external dependencies.",
-            priority: "medium",
-            workMode: "standard",
-            assigneeAgentId: claudeAgent ? claudeAgent.id : null,
-            projectId: issue.projectId,
-            goalId: issue.goalId
-          },
-          {
-            clientKey: clientKey("qa-task"),
-            title: "[QA] Interaction and layout verification",
-            description: "Verify that interaction blocks render correctly in the dashboard UI and do not create duplicate card loops.",
-            priority: "medium",
-            workMode: "standard",
-            assigneeAgentId: qaAgent ? qaAgent.id : null,
-            projectId: issue.projectId,
-            goalId: issue.goalId
-          }
-        ]
-      }
-    };
-
-    const interactionResponse = await fetch(`${PAPERCLIP_API_URL}/api/issues/${PAPERCLIP_TASK_ID}/interactions`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        ...(PAPERCLIP_RUN_ID ? { "X-Paperclip-Run-Id": PAPERCLIP_RUN_ID } : {})
-      },
-      body: JSON.stringify(tasksPayload)
-    });
-
-    if (!interactionResponse.ok) {
-      const errText = await interactionResponse.text();
-      console.warn(`[JARVIS Mock Runtime] Warning: Failed to create suggest_tasks interaction. Status: ${interactionResponse.status}, Error: ${errText}`);
-    } else {
-      const interaction = await interactionResponse.json();
+    try {
+      const interaction = await postJson(
+        `${apiUrl}/api/issues/${taskId}/interactions`,
+        tasksPayload,
+        runId ? { "X-Paperclip-Run-Id": runId } : {}
+      );
       console.log(`[JARVIS Mock Runtime] Suggest_tasks interaction proposed successfully: ${interaction.id}`);
+    } catch (interactionErr) {
+      console.warn(`[JARVIS Mock Runtime] Warning: Failed to create suggest_tasks interaction. Error: ${interactionErr.message}`);
     }
 
-    console.log("[JARVIS Mock Runtime] Finished execution successfully.");
+    console.log("[JARVIS Mock Runtime] Runtime execution completed successfully.");
   } catch (error) {
     console.error("[JARVIS Mock Runtime] Error during execution:", error);
     process.exit(1);
