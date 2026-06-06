@@ -12,7 +12,7 @@ import {
 } from "../utils.js";
 
 export async function execute(ctx: AdapterExecutionContext): Promise<AdapterExecutionResult> {
-  const { runId, agent, config, onLog, onMeta } = ctx;
+  const { runId, agent, config, context, onLog, onMeta } = ctx;
   const command = asString(config.command, "");
   if (!command) throw new Error("Process adapter missing command");
 
@@ -20,6 +20,20 @@ export async function execute(ctx: AdapterExecutionContext): Promise<AdapterExec
   const cwd = asString(config.cwd, process.cwd());
   const envConfig = parseObject(config.env);
   const env: Record<string, string> = { ...buildPaperclipEnv(agent) };
+
+  const wakeTaskId =
+    context && typeof context.issueId === "string" && context.issueId.trim().length > 0
+      ? context.issueId
+      : context && typeof context.taskId === "string" && context.taskId.trim().length > 0
+        ? context.taskId
+        : null;
+  if (wakeTaskId) {
+    env.PAPERCLIP_TASK_ID = wakeTaskId;
+  }
+  if (runId) {
+    env.PAPERCLIP_RUN_ID = runId;
+  }
+
   for (const [k, v] of Object.entries(envConfig)) {
     if (typeof v === "string") env[k] = v;
   }
