@@ -15,6 +15,23 @@ const mockInstanceSettingsApi = vi.hoisted(() => ({
   getExperimental: vi.fn(),
 }));
 
+vi.mock("react-i18next", () => ({
+  useTranslation: () => ({
+    t: (key: string) => {
+      const translations: Record<string, string> = {
+        "nav.work": "Work",
+        "nav.issues": "Issues",
+        "nav.goals": "Goals",
+        "nav.inbox": "Inbox",
+        "nav.newIssue": "New Issue",
+        "nav.dashboard": "Dashboard",
+        "nav.routines": "Routines",
+      };
+      return translations[key] || key;
+    },
+  }),
+}));
+
 vi.mock("@/lib/router", () => ({
   NavLink: ({ to, children, className, ...props }: {
     to: string;
