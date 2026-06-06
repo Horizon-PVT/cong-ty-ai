@@ -201,7 +201,13 @@ export async function createApp(
     max: 100, // Giới hạn 100 request
     standardHeaders: true,
     legacyHeaders: false,
-    message: { error: "Quá nhiều yêu cầu. Hệ thống an ninh đã khóa IP. Vui lòng thử lại sau 10 phút." }
+    message: { error: "Quá nhiều yêu cầu. Hệ thống an ninh đã khóa IP. Vui lòng thử lại sau 10 phút." },
+    skip: () => {
+      const isLocalTrustedPrivate =
+        opts.deploymentMode === "local_trusted" && opts.deploymentExposure === "private";
+      const isTestEnv = process.env.NODE_ENV === "test" || !!process.env.PLAYWRIGHT;
+      return isLocalTrustedPrivate || isTestEnv;
+    },
   });
   app.use("/api", apiLimiter);
 
