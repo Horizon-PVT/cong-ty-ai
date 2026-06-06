@@ -121,7 +121,7 @@ const [jarvis] = await db
     adapterType: "process",
     adapterConfig: {
       command: "node",
-      args: ["-e", "console.log('JARVIS Strategy Advisor is paused. Connect a real runtime adapter in agent settings.')"],
+      args: ["./scripts/jarvis-mock-runtime.mjs"],
     },
     budgetMonthlyCents: 2000000,
   })
