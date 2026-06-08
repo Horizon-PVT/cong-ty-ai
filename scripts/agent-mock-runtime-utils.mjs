@@ -102,12 +102,13 @@ export async function postIssueComment(apiUrl, issueId, runId, markdown, title) 
 export function buildSafetyFooter() {
   return `---
 *🛡️ Safety & Policy Compliance Summary*
-- **Mock Mode**: Active (no actual code changes or local workspace modifications performed)
-- **External LLM/API Calls**: Blocked (no Claude/OpenAI/Anthropic/Gemini external API calls, no API keys used)
-- **Local API Calls**: Allowed (local Paperclip task/comment/status writes are allowed as part of internal mock reporting)
-- **Production Deployment**: Blocked (manual human owner approval required)
-- **Merge to Master**: Blocked (manual human owner approval required)
-- **Database Mutation**: Blocked (no destructive database/schema changes)
-- **Secrets & Credentials**: Blocked (no API keys, tokens, or environment secrets read)
-- **Paid Ads/Billing Spend**: Blocked ($0 spent, policy placeholder active)`;
+- No Claude/OpenAI/Anthropic/Gemini external API calls
+- No API keys
+- No billing/spend
+- No deploy
+- No merge to master
+- No destructive database/schema changes
+- Local Paperclip task/comment/status writes are allowed as part of internal mock reporting
+- No external API / LLM provider calls.
+- Local Paperclip API calls are allowed for internal task/comment reporting.`;
 }
