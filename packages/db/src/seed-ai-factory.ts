@@ -48,11 +48,23 @@ if (existingCompany.length > 0) {
     .where(eq(agents.companyId, companyId));
   const agentIds = companyAgents.map((a) => a.id);
 
+  // Get company issues to clean up issue-related tables by issueId
+  const companyIssues = await db
+    .select({ id: issues.id })
+    .from(issues)
+    .where(eq(issues.companyId, companyId));
+  const issueIds = companyIssues.map((i) => i.id);
+
   // 1.2. Delete activity logs and run events first (they are leaf nodes in constraints)
   await db.delete(activityLog).where(eq(activityLog.companyId, companyId));
   await db.delete(heartbeatRunEvents).where(eq(heartbeatRunEvents.companyId, companyId));
 
   // 1.3. Delete comments, decisions, interactions (which reference runs or issues)
+  if (issueIds.length > 0) {
+    await db.delete(issueComments).where(inArray(issueComments.issueId, issueIds));
+    await db.delete(issueExecutionDecisions).where(inArray(issueExecutionDecisions.issueId, issueIds));
+    await db.delete(issueThreadInteractions).where(inArray(issueThreadInteractions.issueId, issueIds));
+  }
   await db.delete(issueComments).where(eq(issueComments.companyId, companyId));
   await db.delete(issueExecutionDecisions).where(eq(issueExecutionDecisions.companyId, companyId));
   await db.delete(issueThreadInteractions).where(eq(issueThreadInteractions.companyId, companyId));
@@ -61,6 +73,7 @@ if (existingCompany.length > 0) {
   await db.delete(heartbeatRuns).where(eq(heartbeatRuns.companyId, companyId));
 
   // 1.5. Delete agent-specific sub-records (which reference agents)
+  await db.delete(agentWakeupRequests).where(eq(agentWakeupRequests.companyId, companyId));
   if (agentIds.length > 0) {
     await db.delete(agentApiKeys).where(inArray(agentApiKeys.agentId, agentIds));
     await db.delete(agentRuntimeState).where(inArray(agentRuntimeState.agentId, agentIds));
@@ -142,7 +155,7 @@ const [codex] = await db
     adapterType: "process",
     adapterConfig: {
       command: "node",
-      args: ["-e", "console.log('Codex Developer is paused. Connect a real runtime adapter in agent settings.')"],
+      args: ["./scripts/codex-mock-runtime.mjs"],
     },
     budgetMonthlyCents: 1500000,
   })
@@ -163,7 +176,7 @@ const [claude] = await db
     adapterType: "process",
     adapterConfig: {
       command: "node",
-      args: ["-e", "console.log('Claude Reviewer is paused. Connect a real runtime adapter in agent settings.')"],
+      args: ["./scripts/claude-reviewer-mock-runtime.mjs"],
     },
     budgetMonthlyCents: 1500000,
   })
@@ -184,7 +197,7 @@ const [antigravity] = await db
     adapterType: "process",
     adapterConfig: {
       command: "node",
-      args: ["-e", "console.log('Antigravity QA is paused. Connect a real runtime adapter in agent settings.')"],
+      args: ["./scripts/antigravity-qa-mock-runtime.mjs"],
     },
     budgetMonthlyCents: 1000000,
   })
@@ -205,7 +218,7 @@ const [reportBot] = await db
     adapterType: "process",
     adapterConfig: {
       command: "node",
-      args: ["-e", "console.log('Report Bot is paused. Connect a real runtime adapter in agent settings.')"],
+      args: ["./scripts/report-bot-mock-runtime.mjs"],
     },
     budgetMonthlyCents: 500000,
   })
