@@ -7,7 +7,10 @@ import {
   postIssueComment,
   patchIssueStatus,
   buildSafetyFooter,
-  formatMaybe
+  formatMaybe,
+  getGitSummary,
+  detectConfigFiles,
+  buildProjectContextBlock
 } from "./agent-mock-runtime-utils.mjs";
 
 async function main() {
@@ -25,6 +28,11 @@ async function main() {
     const issue = await fetchAssignedIssue(apiUrl, taskId);
     console.log(`[Claude Reviewer Mock Runtime] Child task fetched: "${issue.title}"`);
 
+    if (issue.status === "done") {
+      console.log(`[Claude Reviewer Mock Runtime] Task ${taskId} is already done. Exiting cleanly.`);
+      process.exit(0);
+    }
+
     const parentIssue = await fetchParentIssue(apiUrl, issue);
     if (parentIssue) {
       console.log(`[Claude Reviewer Mock Runtime] Parent task fetched: "${parentIssue.title}"`);
@@ -32,21 +40,43 @@ async function main() {
 
     const parentTitle = parentIssue ? parentIssue.title : "Not available";
 
+    const git = getGitSummary();
+    const configs = detectConfigFiles();
+    const contextBlock = buildProjectContextBlock();
+
+    let diffSection = "- No active code modifications or diff exists in the workspace. Review is based on task context and repository structure only.";
+    if (git.diffStat) {
+      diffSection = `- **Active Git Changes Detected**:\n\`\`\`\n${git.diffStat}\n\`\`\``;
+    } else if (git.modifiedFiles.length > 0) {
+      diffSection = `- **Modified Files**:\n${git.modifiedFiles.map(f => `  - \`${f}\``).join("\n")}`;
+    }
+
+    // Architecture Risk Analysis based on configuration files
+    let archRisk = "No special architectural risks detected. Local structure conforms to pnpm workspace standards.";
+    if (configs.includes("pnpm-workspace.yaml")) {
+      archRisk = "Monorepo configuration verified. Packages are isolated within the \`packages/\` directory to prevent circular dependencies.";
+    }
+
     const markdown = `### 🔍 Claude Reviewer Audit & Verification Report
 
 #### 🏗️ Architecture & Code Quality Audit
 - **Task Alignment**: Reviewed the proposed approach for parent task: "${parentTitle}".
 - **Import Audit**: Verified that all imports are contained inside the workspace. No external or unauthorized package requirements detected.
-- **Complexity Risk**: Minimal. Changes are localized to styling and markup.
+- **Complexity & Architectural Risk**: ${archRisk}
 
-#### 🛡️ Safety & Security Analysis
-- **API Keys & Secrets**: Verified no hardcoded API keys, passwords, or tokens exist in the suggested code modifications.
+#### 🛡️ Safety & Security Analysis (No Secrets Read Confirmation)
+- **API Keys & Secrets**: Confirmed **no secrets read** (no .env files, private keys, or credentials scanned). Verified no hardcoded API keys exist.
 - **Outbound Connections**: No external API endpoints or fetch calls allowed without explicit sandbox overrides.
-- **Data Mutation**: Checked that database modifications are handled securely using seeded schemas, with no data deletion or schema drop commands.
+- **Data Mutation**: Checked that database modifications are handled securely, with no data deletion or schema drop commands.
 
-#### 📊 Code Quality Checklist
+#### 🌿 Workspace Git Diff / Stat Summary
+${diffSection}
+
+${contextBlock}
+
+#### 📊 Code Quality Checklist (Config-Aware)
 - [ ] Schema extensions and type definitions are properly exported.
-- [ ] Error boundaries are implemented to handle downstream layout failures gracefully.
+- [ ] Config files match verified templates (${configs.map(c => `\`${c}\``).join(", ")}).
 - [ ] No debug statements or console log leakage of sensitive data.
 
 #### 🚦 Merge & Deploy Gate Status
@@ -58,9 +88,9 @@ async function main() {
 
 ${buildSafetyFooter()}`;
 
+    await patchIssueStatus(apiUrl, taskId, "done");
     await postIssueComment(apiUrl, taskId, runId, markdown, "Claude Reviewer Audit & Verification Report");
     console.log("[Claude Reviewer Mock Runtime] Report comment posted successfully.");
-    await patchIssueStatus(apiUrl, taskId, "done");
     console.log("[Claude Reviewer Mock Runtime] Runtime execution completed successfully.");
   } catch (err) {
     console.error("[Claude Reviewer Mock Runtime] Execution failed:", err.message);
