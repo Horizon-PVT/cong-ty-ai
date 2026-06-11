@@ -106,7 +106,7 @@ async function pauseAgent(apiUrl, agentId) {
   return postJson(`${apiUrl}/api/agents/${agentId}/pause`, {});
 }
 
-async function pollRunCompletion(apiUrl, runId, maxSeconds = 15) {
+async function pollRunCompletion(apiUrl, runId, maxSeconds = 45) {
   console.log(`[JARVIS Orchestrator] Polling run ${runId} completion...`);
   const start = Date.now();
   while (Date.now() - start < maxSeconds * 1000) {
@@ -114,7 +114,7 @@ async function pollRunCompletion(apiUrl, runId, maxSeconds = 15) {
       const run = await fetchJson(`${apiUrl}/api/heartbeat-runs/${runId}`);
       if (
         run.finishedAt ||
-        ["completed", "failed", "skipped", "cancelled"].includes(run.status)
+        ["completed", "failed", "skipped", "cancelled", "succeeded"].includes(run.status)
       ) {
         console.log(`[JARVIS Orchestrator] Run ${runId} finished with status: ${run.status}`);
         return run;
@@ -151,7 +151,9 @@ async function createOrConfirmChildTasks(apiUrl, companyId, parentIssue, agents,
       continue;
     }
 
-    const existingTask = existingIssues.find(i => i.assigneeAgentId === target.agent.id);
+    // Match by title prefix — more robust than assigneeAgentId because the watchdog may
+    // re-assign blocked tasks to the recovery owner (e.g., JARVIS), causing false "not found".
+    const existingTask = existingIssues.find(i => i.title && i.title.startsWith(target.titlePrefix));
     if (existingTask) {
       console.log(`[JARVIS Orchestrator] Task already exists for ${target.role}: ${existingTask.title}`);
       results.push({
@@ -384,6 +386,20 @@ async function run() {
     console.log(`[JARVIS Mock Runtime] Fetching issue details for: ${taskId}`);
     const issue = await fetchJson(`${apiUrl}/api/issues/${taskId}`);
     console.log(`[JARVIS Mock Runtime] Fetched issue: "${issue.title}" (Status: ${issue.status})`);
+
+    // Prevent infinite recursion by checking if the task is already coordinated
+    const isCoordinated =
+      issue.parentId ||
+      (issue.description && issue.description.includes("coordinated")) ||
+      issue.title.startsWith("[Codex]") ||
+      issue.title.startsWith("[Claude Review]") ||
+      issue.title.startsWith("[QA]") ||
+      issue.title.startsWith("[Report Bot]");
+
+    if (isCoordinated) {
+      console.log(`[JARVIS Mock Runtime] Task ${taskId} is a coordinated child task. Skipping orchestration to prevent recursion.`);
+      process.exit(0);
+    }
 
     // Fetch company agents
     console.log(`[JARVIS Mock Runtime] Fetching company agents for company: ${companyId}`);

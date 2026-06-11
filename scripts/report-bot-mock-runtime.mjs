@@ -8,7 +8,10 @@ import {
   patchIssueStatus,
   buildSafetyFooter,
   fetchJson,
-  formatMaybe
+  formatMaybe,
+  getWorkspaceSummary,
+  getGitSummary,
+  buildProjectContextBlock
 } from "./agent-mock-runtime-utils.mjs";
 
 async function main() {
@@ -26,6 +29,11 @@ async function main() {
     const issue = await fetchAssignedIssue(apiUrl, taskId);
     console.log(`[Report Bot Mock Runtime] Child task fetched: "${issue.title}"`);
 
+    if (issue.status === "done") {
+      console.log(`[Report Bot Mock Runtime] Task ${taskId} is already done. Exiting cleanly.`);
+      process.exit(0);
+    }
+
     const parentIssue = await fetchParentIssue(apiUrl, issue);
     let siblingIssues = [];
     if (parentIssue) {
@@ -42,21 +50,31 @@ async function main() {
     const parentTitle = parentIssue ? parentIssue.title : "Not available";
     const parentDesc = parentIssue ? parentIssue.description : "Not available";
 
+    const ws = getWorkspaceSummary();
+    const git = getGitSummary();
+    const contextBlock = buildProjectContextBlock();
+
     let childTaskStatusSection = "";
     if (siblingIssues.length > 0) {
       childTaskStatusSection = "#### 📋 Coordinated Child Task Statuses\n";
       for (const sibling of siblingIssues) {
-        childTaskStatusSection += `- **${sibling.title}** (Assignee ID: \`${sibling.assigneeAgentId || "None"}\`): \`${sibling.status}\`\n`;
+        let statusExplain = `\`${sibling.status}\``;
+        if (sibling.id === taskId) {
+          statusExplain = `\`${sibling.status}\` *(generating this report)*`;
+        }
+        childTaskStatusSection += `- **${sibling.title}** (Assignee ID: \`${sibling.assigneeAgentId || "None"}\`): ${statusExplain}\n`;
       }
+      childTaskStatusSection += `\n*Note: Report Bot's own task is shown as \`in_progress\` because it fetches statuses during execution and transitions to \`done\` immediately after posting this summary.*\n`;
     } else {
       childTaskStatusSection = "#### 📋 Coordinated Child Task Statuses\n- Sibling task statuses not available.\n";
     }
 
     const markdown = `### 📊 AI Dev Factory Operator Summary
 
-#### 🎯 Parent Goal
+#### 🎯 Parent Goal & Workspace Context
 - **Parent Task**: "${parentTitle}"
 - **Goal Description**: ${formatMaybe(parentDesc)}
+- **Workspace Name**: \`${ws.name}\` (Monorepo: \`${ws.isMonorepo ? "Yes" : "No"}\`)
 
 ${childTaskStatusSection}
 #### 🤖 Coordinated Agents Executed / Assigned
@@ -65,6 +83,12 @@ ${childTaskStatusSection}
 - **Claude Reviewer** (Audit & review phase)
 - **Antigravity QA** (Verification phase)
 - **Report Bot** (Summary and operations logging)
+
+#### 🌿 Git Status & Branch Summary
+- **Active Branch**: \`${git.branch}\`
+- **Working Tree Clean**: \`${git.isClean ? "Yes" : "No"}\`
+
+${contextBlock}
 
 #### 🛑 Blockers / Issues
 - None detected. Downstream mock dry-runs executed successfully.
@@ -81,9 +105,9 @@ ${childTaskStatusSection}
 
 ${buildSafetyFooter()}`;
 
+    await patchIssueStatus(apiUrl, taskId, "done");
     await postIssueComment(apiUrl, taskId, runId, markdown, "AI Dev Factory Operator Summary");
     console.log("[Report Bot Mock Runtime] Report comment posted successfully.");
-    await patchIssueStatus(apiUrl, taskId, "done");
     console.log("[Report Bot Mock Runtime] Runtime execution completed successfully.");
   } catch (err) {
     console.error("[Report Bot Mock Runtime] Execution failed:", err.message);
