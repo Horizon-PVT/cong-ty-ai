@@ -59,32 +59,64 @@ async function main() {
 
     const markdown = `### 🔍 Claude Reviewer Audit & Verification Report
 
-#### 🏗️ Architecture & Code Quality Audit
+## Action-Aware Planning Packet
+
+### 🏗️ Review Risk Map
 - **Task Alignment**: Reviewed the proposed approach for parent task: "${parentTitle}".
 - **Import Audit**: Verified that all imports are contained inside the workspace. No external or unauthorized package requirements detected.
 - **Complexity & Architectural Risk**: ${archRisk}
 
-#### 🛡️ Safety & Security Analysis (No Secrets Read Confirmation)
-- **API Keys & Secrets**: Confirmed **no secrets read** (no .env files, private keys, or credentials scanned). Verified no hardcoded API keys exist.
-- **Outbound Connections**: No external API endpoints or fetch calls allowed without explicit sandbox overrides.
-- **Data Mutation**: Checked that database modifications are handled securely, with no data deletion or schema drop commands.
-
-#### 🌿 Workspace Git Diff / Stat Summary
+### 📈 Diff/File Risk Ranking
+- **Risk Assessment**: Low. Local structure conforms to pnpm workspace standards.
 ${diffSection}
+
+### 🔐 Security/Secrets/Data Checklist
+- [ ] No hardcoded API keys or secrets detected in working tree.
+- [ ] Confirmed **no secrets read** (no .env files, private keys, or credentials scanned).
+- [ ] No database schema drops, truncates, or destructive actions.
+
+### 🚀 Merge Readiness Checklist
+- [ ] Typechecks pass successfully across the monorepo workspace.
+- [ ] Code builds without errors on the active feature branch.
+- [ ] Tests execute successfully in dry-run mode.
+
+### 🌿 Safe Branch Review Policy
+- **Policy**: Claude Reviewer is authorized to review branch diffs and request changes automatically on non-master feature branches.
+- **Merge Gate**: It cannot approve merge to master without owner gate if policy requires owner approval.
+
+### 🚧 Critical Gates Blocked
+- Merging to master, production deployment, database schema modifications, paid budget spend, and external communications remain strictly blocked. Owner manual approval is required for these critical gates.
+
+### 🚦 Explicit Mock Verdict
+- **Verdict**: \`APPROVED (Mock mode evaluation only)\`
 
 ${contextBlock}
 
-#### 📊 Code Quality Checklist (Config-Aware)
-- [ ] Schema extensions and type definitions are properly exported.
-- [ ] Config files match verified templates (${configs.map(c => `\`${c}\``).join(", ")}).
-- [ ] No debug statements or console log leakage of sensitive data.
-
-#### 🚦 Merge & Deploy Gate Status
-- **Merge Status**: Mock validation passed. Merge to master remains BLOCKED pending human owner approval.
-- **Deploy Status**: Mock validation passed. Deployment to production remains BLOCKED pending human owner approval.
-
-#### 📢 Review Verdict
-- **Verdict**: \`APPROVED (Mock mode evaluation only)\`
+\`\`\`json
+{
+  "mode": "mock",
+  "packetType": "review_plan",
+  "packetGenerated": true,
+  "internalExecutionMode": "safe_branch",
+  "ownerApprovalRequiredForPacketGeneration": false,
+  "ownerApprovalRequiredForInternalTaskDecomposition": false,
+  "ownerApprovalRequiredForSafeBranchCodeChanges": false,
+  "ownerApprovalRequiredForLocalCommit": false,
+  "ownerApprovalRequiredForDraftPr": false,
+  "ownerApprovalRequiredForCriticalGates": true,
+  "safeBranchCodeChangesAllowed": true,
+  "localVerificationAllowed": true,
+  "draftPrAllowed": true,
+  "mergeToMasterAllowed": false,
+  "deployAllowed": false,
+  "externalApiCalls": false,
+  "localPaperclipApiCallsOnly": true,
+  "apiKeysUsed": false,
+  "secretsRead": false,
+  "spendPerformed": false,
+  "destructiveChangesPerformed": false
+}
+\`\`\`
 
 ${buildSafetyFooter()}`;
 

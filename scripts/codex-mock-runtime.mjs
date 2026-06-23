@@ -63,30 +63,79 @@ async function main() {
 
     const markdown = `### 💻 Codex Developer Implementation Report
 
-#### 🎯 Task Objective (Project-Aware Interpretation)
+## Action-Aware Planning Packet
+
+### 🎯 Task Objective
 - **Child Task**: "${issue.title}"
 - **Objective**: Implement code adjustments to resolve child task under parent goal: "${parentTitle}".
 - **Parent Details**: ${formatMaybe(parentDesc)}
 
-#### 🛠️ Proposed Implementation Approach & Suggested Steps
-- Inspect likely relevant files listed below to locate target components/routes.
-- Initialize local branch edits matching task context if safety permits.
-- Verify building with \`pnpm build\` and typechecks using script: \`pnpm -r typecheck\`.
-- Available package scripts for build/run: ${scriptsSummary}.
-
-#### 📂 Files Likely to Inspect / Change (Task-Aware Match)
+### 📂 Relevant Files
 ${relevantFiles.length > 0 ? relevantFiles.map(f => `- \`${f}\``).join("\n") : "- None detected matching keywords."}
 
-${contextBlock}
+### 📝 Proposed File-by-File Implementation Plan
+- Inspect likely relevant files listed above to locate target components/routes.
+- Initialize local branch edits matching task context if safety permits.
 
-#### 🌿 Branch & Worktree Safety Reminder
-- **Local Branching**: Current active git branch: \`${git.branch}\`. Developers must always run edits on a temporary branch.
-- **Safety Mode**: Mock runtime (No actual code changes or repository writes performed in this mock run).
+### 🌿 Safe Branch Execution Permission
+- **Policy**: This mock runtime did not perform code changes. Safe branch code changes are allowed for the real Codex execution adapter under the internal execution policy.
+- **Active Git Branch**: \`${git.branch}\`
+- **Owner Approval**: Owner approval is NOT required for safe branch edits, commits, or draft PRs.
 
-#### 🔍 Acceptance Criteria
+### 🛠️ Ordered Implementation Steps
+1. Create a local temporary feature branch if not already on one.
+2. Edit target files to address "${issue.title}".
+3. Build the project using \`pnpm build\`.
+4. Validate changes using \`pnpm -r typecheck\`.
+
+### 💻 Local Run Commands
+- Build workspace: \`pnpm build\`
+- Typecheck: \`pnpm -r typecheck\`
+- Run tests: \`pnpm test:run\`
+
+### 📊 Expected Outputs
+- Successful build and zero typecheck errors.
+- Working tree contains only modified files matching the implementation scope.
+
+### 🔄 Rollback Notes
+- Rollback local changes: \`git restore .\`
+- Switch back to master: \`git checkout master\`
+
+### 🚧 Critical Gates Blocked
+- Merging to master, production deployment, database schema modifications, paid budget spend, and external communications remain strictly blocked. Owner manual approval is required for these critical gates.
+
+### 🔍 Acceptance Criteria
 - [ ] Code builds cleanly with zero compile errors.
 - [ ] Target functionality verified on active route/pages.
 - [ ] Git working tree remains clean and typechecks pass.
+
+${contextBlock}
+
+\`\`\`json
+{
+  "mode": "mock",
+  "packetType": "implementation_plan",
+  "packetGenerated": true,
+  "internalExecutionMode": "safe_branch",
+  "ownerApprovalRequiredForPacketGeneration": false,
+  "ownerApprovalRequiredForInternalTaskDecomposition": false,
+  "ownerApprovalRequiredForSafeBranchCodeChanges": false,
+  "ownerApprovalRequiredForLocalCommit": false,
+  "ownerApprovalRequiredForDraftPr": false,
+  "ownerApprovalRequiredForCriticalGates": true,
+  "safeBranchCodeChangesAllowed": true,
+  "localVerificationAllowed": true,
+  "draftPrAllowed": true,
+  "mergeToMasterAllowed": false,
+  "deployAllowed": false,
+  "externalApiCalls": false,
+  "localPaperclipApiCallsOnly": true,
+  "apiKeysUsed": false,
+  "secretsRead": false,
+  "spendPerformed": false,
+  "destructiveChangesPerformed": false
+}
+\`\`\`
 
 ${buildSafetyFooter()}`;
 

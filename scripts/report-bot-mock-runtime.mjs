@@ -71,37 +71,66 @@ async function main() {
 
     const markdown = `### 📊 AI Dev Factory Operator Summary
 
-#### 🎯 Parent Goal & Workspace Context
+## Action-Aware Planning Packet
+
+### 🎯 Parent Goal
 - **Parent Task**: "${parentTitle}"
 - **Goal Description**: ${formatMaybe(parentDesc)}
 - **Workspace Name**: \`${ws.name}\` (Monorepo: \`${ws.isMonorepo ? "Yes" : "No"}\`)
 
+### 📋 Child Task Statuses
 ${childTaskStatusSection}
-#### 🤖 Coordinated Agents Executed / Assigned
-- **JARVIS Strategy Advisor** (Orchestrated task creation, unpausing, and coordination)
-- **Codex Developer** (Implementation phase)
-- **Claude Reviewer** (Audit & review phase)
-- **Antigravity QA** (Verification phase)
-- **Report Bot** (Summary and operations logging)
 
-#### 🌿 Git Status & Branch Summary
+### 🤖 Agent Outputs Summary
+- **JARVIS Strategy Advisor**: Orchestrated task creation, unpausing, and coordination.
+- **Codex Developer**: Implementation plan generated.
+- **Claude Reviewer**: Audit & review plan generated.
+- **Antigravity QA**: QA & verification plan generated.
+- **Report Bot**: Summary and operations logging generated.
+
+### 🌿 Safe Branch Progress
 - **Active Branch**: \`${git.branch}\`
 - **Working Tree Clean**: \`${git.isClean ? "Yes" : "No"}\`
 
-${contextBlock}
+### 💻 Recommended Next Safe Command
+- **Command**: \`pnpm test:run --dry-run\` (or generate a draft pull request: \`git push origin ${git.branch}\` and open Draft PR).
 
-#### 🛑 Blockers / Issues
-- None detected. Downstream mock dry-runs executed successfully.
+### 🚦 Next Owner Checkpoint
+- **Status**: No critical gate reached yet. Sibling reports (Implementation, Review, QA) have been successfully compiled in the issue threads. Owner checkpoint is required only when authorizing the final merge to master or production deploy.
 
-#### 🛡️ Critical Gates Status
+### 🚧 Critical Gates Status
 - **Merge to Master**: \`BLOCKED\` (Owner manual approval required)
 - **Production Deploy**: \`BLOCKED\` (Owner manual approval required)
 - **Database Schema Changes**: \`BLOCKED\` (No mutations allowed in mock mode)
 - **Billing / Spend**: \`BLOCKED\` (Total budget spend: $0.00)
 
-#### 🚦 Next Owner-Facing Checkpoint
-- Verify that the downstream reports (Implementation, Review, QA) have been successfully compiled in the issue threads.
-- In the next Phase, the human owner can proceed with the manual merge/deployment.
+${contextBlock}
+
+\`\`\`json
+{
+  "mode": "mock",
+  "packetType": "operator_summary",
+  "packetGenerated": true,
+  "internalExecutionMode": "safe_branch",
+  "ownerApprovalRequiredForPacketGeneration": false,
+  "ownerApprovalRequiredForInternalTaskDecomposition": false,
+  "ownerApprovalRequiredForSafeBranchCodeChanges": false,
+  "ownerApprovalRequiredForLocalCommit": false,
+  "ownerApprovalRequiredForDraftPr": false,
+  "ownerApprovalRequiredForCriticalGates": true,
+  "safeBranchCodeChangesAllowed": true,
+  "localVerificationAllowed": true,
+  "draftPrAllowed": true,
+  "mergeToMasterAllowed": false,
+  "deployAllowed": false,
+  "externalApiCalls": false,
+  "localPaperclipApiCallsOnly": true,
+  "apiKeysUsed": false,
+  "secretsRead": false,
+  "spendPerformed": false,
+  "destructiveChangesPerformed": false
+}
+\`\`\`
 
 ${buildSafetyFooter()}`;
 
