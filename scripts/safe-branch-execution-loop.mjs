@@ -54,6 +54,13 @@ export function checkFileScope(files) {
   return { safe: true };
 }
 
+export function isValidBranchName(branch) {
+  if (branch === "master" || branch === "main") {
+    return false;
+  }
+  return branch.startsWith("chore/") || branch.startsWith("feat/");
+}
+
 async function main() {
   const args = process.argv.slice(2);
   const isApply = args.includes("--apply");
@@ -71,8 +78,8 @@ async function main() {
     process.exit(1);
   }
 
-  if (currentBranch === "master" || currentBranch === "main") {
-    console.error(`[Safe Branch Loop] Error: Cannot run on master/main branch.`);
+  if (!isValidBranchName(currentBranch)) {
+    console.error(`[Safe Branch Loop] Error: Safe Branch Loop can only run on chore/* or feat/* feature branches.`);
     process.exit(1);
   }
   console.log(`[Safe Branch Loop] Active Git feature branch: \`${currentBranch}\``);

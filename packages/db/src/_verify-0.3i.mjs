@@ -5,7 +5,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import postgres from "postgres";
-import { checkCommandGuardrails, checkFileScope } from "../../../scripts/safe-branch-execution-loop.mjs";
+import { checkCommandGuardrails, checkFileScope, isValidBranchName } from "../../../scripts/safe-branch-execution-loop.mjs";
 
 const API = "http://127.0.0.1:3100";
 const DB_URL = "postgresql://paperclip@127.0.0.1:54329/paperclip";
@@ -30,6 +30,28 @@ async function main() {
     throw new Error("scripts/safe-branch-execution-loop.mjs does not exist");
   }
   console.log("✅ verified: scripts/safe-branch-execution-loop.mjs exists");
+
+  // 2b. Verify branch policy is enforced (must start with chore/ or feat/, cannot be master/main)
+  const validBranches = ["chore/safe-branch-execution-loop", "feat/my-cool-feature", "chore/cleanup", "feat/something"];
+  const invalidBranches = ["master", "main", "patch-1", "release/v1.0", "hotfix/urgent", "dev", "staging"];
+
+  for (const branch of validBranches) {
+    if (!isValidBranchName(branch)) {
+      throw new Error(`Branch policy failed: valid branch "${branch}" was flagged as invalid`);
+    }
+  }
+
+  for (const branch of invalidBranches) {
+    if (isValidBranchName(branch)) {
+      throw new Error(`Branch policy failed: invalid branch "${branch}" was flagged as valid`);
+    }
+  }
+
+  const runnerSource = fs.readFileSync(runnerPath, "utf8");
+  if (!runnerSource.includes("chore/") || !runnerSource.includes("feat/")) {
+    throw new Error("Runner source does not contain explicit branch prefix policy rules for chore/ and feat/");
+  }
+  console.log("✅ verified: branch prefix policy (chore/* or feat/* only) is enforced");
 
   // 3. Verify blocked critical gate commands are detected
   const blockedCommands = [
