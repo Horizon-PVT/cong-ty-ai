@@ -54,32 +54,68 @@ async function main() {
 
     const markdown = `### 🧪 Antigravity QA Verification Report
 
-#### 🌐 Local UI Verification Checklist
-- [ ] Components render without overlapping boundaries in frontend folders.
-- [ ] Vibrant color combinations conform to HSL dark mode standard.
-- [ ] Hover transitions and micro-animations execute in under 150ms.
-- [ ] Form validations show informative error popups instead of defaulting.
+## Action-Aware Planning Packet
 
-#### 🚶 Browser Flow to Test (Route-Aware)
+### 🧪 Route/Page/Component-Aware Test Plan
+- **Scope**: Validate UI/UX stability and execution correctness for parent issue: "${parentTitle}".
+- **Target Pages/Components**: ${routes.length > 0 ? routes.map(r => `\`${r}\``).join(", ") : "No specific route files mapped."}
+
+### 🚶 Browser Flows to Verify
 ${suggestedFlows}
 
-#### 📈 Expected Visible Behavior
-- ${routes.length > 0 ? `Seamless routing across navigation items: ${routes.map(r => `\`${r}\``).join(", ")}.` : "No frontend route files detected from safe scan."}
-- Smooth gradients and cohesive typography (Outfit/Inter).
-- Fully responsive styling under multiple viewports (Mobile, Tablet, Desktop).
+### 🔄 Regression Checklist
+- [ ] Vibrant color combinations conform to dark mode standard.
+- [ ] Hover transitions and micro-animations execute smoothly.
+- [ ] Forms validate without hydration warnings.
 
-#### 🔍 Regression Checks (Test-Suite Aware)
-- Existing sidebar items, dashboards, and settings operate correctly.
-- No hydration warning messages in browser dev console.
-- ${testFiles.length > 0 ? `Run local test coverage suites:\n${testFiles.map(tf => `  - \`pnpm test ${tf}\``).join("\n")}` : "No local test coverage suites detected from safe scan."}
+### 💻 Local Verification Commands
+- Run test suites:
+${testFiles.length > 0 ? testFiles.map(tf => `  - \`pnpm test ${tf}\``).join("\n") : "  - No local test coverage suites detected."}
+
+### 📈 Expected Pass/Fail Signals
+- **Pass**: Zero failed assertions, compilation success.
+- **Fail**: Active exceptions, broken layout, compile errors.
+
+### 📸 Screenshot/Manual QA Placeholder
+- *[Mock Mode: Browser screenshot not captured automatically]*
+
+### 🌿 Safe Branch QA Policy
+- **Policy**: Antigravity QA is authorized to run local QA and test suite verification automatically on non-master feature branches.
+- **Deploy Gate**: It cannot deploy to production or stage without owner approval.
+
+### 🚧 Critical Gates Blocked
+- Merging to master, production deployment, database schema modifications, paid budget spend, and external communications remain strictly blocked. Owner manual approval is required for these critical gates.
+
+### 🚦 Dry-Run QA Verdict
+- **Verdict**: \`PASSED (Mock mode verification only)\`
 
 ${contextBlock}
 
-#### 📸 Screenshot / Recording Placeholder
-- *[Mock Mode: Browser screenshot not captured]*
-
-#### 📢 QA Verdict
-- **Verdict**: \`PASSED (Mock mode verification only)\`
+\`\`\`json
+{
+  "mode": "mock",
+  "packetType": "qa_plan",
+  "packetGenerated": true,
+  "internalExecutionMode": "safe_branch",
+  "ownerApprovalRequiredForPacketGeneration": false,
+  "ownerApprovalRequiredForInternalTaskDecomposition": false,
+  "ownerApprovalRequiredForSafeBranchCodeChanges": false,
+  "ownerApprovalRequiredForLocalCommit": false,
+  "ownerApprovalRequiredForDraftPr": false,
+  "ownerApprovalRequiredForCriticalGates": true,
+  "safeBranchCodeChangesAllowed": true,
+  "localVerificationAllowed": true,
+  "draftPrAllowed": true,
+  "mergeToMasterAllowed": false,
+  "deployAllowed": false,
+  "externalApiCalls": false,
+  "localPaperclipApiCallsOnly": true,
+  "apiKeysUsed": false,
+  "secretsRead": false,
+  "spendPerformed": false,
+  "destructiveChangesPerformed": false
+}
+\`\`\`
 
 ${buildSafetyFooter()}`;
 
