@@ -12,7 +12,8 @@ const COMMANDS_BASELINE = [
   { name: "pnpm test:run --dry-run", cmd: "pnpm test:run --dry-run", phase: "0.3j" },
   { name: "verify-0.3i", cmd: "node packages/db/src/_verify-0.3i.mjs", phase: "0.3j" },
   { name: "verify-0.3j", cmd: "node packages/db/src/_verify-0.3j.mjs", phase: "0.3j", optional: true },
-  { name: "verify-0.3k", cmd: "node packages/db/src/_verify-0.3k.mjs", phase: "0.3k" }
+  { name: "verify-0.3k", cmd: "node packages/db/src/_verify-0.3k.mjs", phase: "0.3k" },
+  { name: "verify-0.3l", cmd: "node packages/db/src/_verify-0.3l.mjs", phase: "0.3l", optional: true }
 ];
 
 async function main() {
@@ -24,7 +25,7 @@ async function main() {
   const isWriteReport = args.includes("--write-report");
   const isAll = args.includes("--all");
   
-  let selectedPhase = "0.3k";
+  let selectedPhase = "0.3l";
   const phaseIndex = args.indexOf("--phase");
   if (phaseIndex !== -1 && phaseIndex + 1 < args.length) {
     selectedPhase = args[phaseIndex + 1];
@@ -55,6 +56,10 @@ async function main() {
   if (!isAll) {
     if (selectedPhase === "0.3j") {
       filteredCommands = COMMANDS_BASELINE.filter(c => c.phase === "0.3j");
+    } else if (selectedPhase === "0.3k") {
+      filteredCommands = COMMANDS_BASELINE.filter(c => c.phase === "0.3j" || c.phase === "0.3k");
+    } else if (selectedPhase === "0.3l") {
+      filteredCommands = COMMANDS_BASELINE.filter(c => c.phase === "0.3j" || c.phase === "0.3k" || c.phase === "0.3l");
     }
   }
 
