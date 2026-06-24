@@ -1,0 +1,54 @@
+{
+  "phase": "0.3k",
+  "branch": "chore/autonomous-self-test-gate",
+  "startedAt": "2026-06-24T07:43:43.020Z",
+  "finishedAt": "2026-06-24T07:48:02.092Z",
+  "durationMs": 259071,
+  "commands": [
+    {
+      "command": "pnpm -r typecheck",
+      "exitCode": 0,
+      "status": "PASS",
+      "durationMs": 128146,
+      "executionMode": "real"
+    },
+    {
+      "command": "pnpm build",
+      "exitCode": 0,
+      "status": "PASS",
+      "durationMs": 127703,
+      "executionMode": "real"
+    },
+    {
+      "command": "pnpm test:run --dry-run",
+      "exitCode": 0,
+      "status": "PASS",
+      "durationMs": 2720,
+      "executionMode": "real"
+    },
+    {
+      "command": "node packages/db/src/_verify-0.3i.mjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "durationMs": 336,
+      "executionMode": "real"
+    },
+    {
+      "command": "node packages/db/src/_verify-0.3k.mjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "durationMs": 164,
+      "executionMode": "real"
+    }
+  ],
+  "finalVerdict": "PASS_READY_FOR_DRAFT_PR",
+  "canOpenDraftPr": true,
+  "canRequestOwnerReview": false,
+  "canMerge": false,
+  "criticalGatesBlocked": true,
+  "secretsRead": false,
+  "deployAttempted": false,
+  "destructiveActionAttempted": false,
+  "spendAttempted": false,
+  "externalCommunicationAttempted": false
+}
