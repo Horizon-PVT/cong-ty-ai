@@ -1,50 +1,50 @@
 {
   "phase": "0.3l",
   "branch": "chore/auto-push-draft-pr-gate",
-  "startedAt": "2026-06-24T08:12:59.232Z",
-  "finishedAt": "2026-06-24T08:17:16.340Z",
-  "durationMs": 257107,
+  "startedAt": "2026-06-24T08:35:05.032Z",
+  "finishedAt": "2026-06-24T08:39:22.917Z",
+  "durationMs": 257884,
   "commands": [
     {
       "command": "pnpm -r typecheck",
       "exitCode": 0,
       "status": "PASS",
-      "durationMs": 130315,
+      "durationMs": 122580,
       "executionMode": "real"
     },
     {
       "command": "pnpm build",
       "exitCode": 0,
       "status": "PASS",
-      "durationMs": 123512,
+      "durationMs": 131629,
       "executionMode": "real"
     },
     {
       "command": "pnpm test:run --dry-run",
       "exitCode": 0,
       "status": "PASS",
-      "durationMs": 2766,
+      "durationMs": 2992,
       "executionMode": "real"
     },
     {
       "command": "node packages/db/src/_verify-0.3i.mjs",
       "exitCode": 0,
       "status": "PASS",
-      "durationMs": 237,
+      "durationMs": 273,
       "executionMode": "real"
     },
     {
       "command": "node packages/db/src/_verify-0.3k.mjs",
       "exitCode": 0,
       "status": "PASS",
-      "durationMs": 185,
+      "durationMs": 291,
       "executionMode": "real"
     },
     {
       "command": "node packages/db/src/_verify-0.3l.mjs",
       "exitCode": 0,
       "status": "PASS",
-      "durationMs": 91,
+      "durationMs": 116,
       "executionMode": "real"
     }
   ],

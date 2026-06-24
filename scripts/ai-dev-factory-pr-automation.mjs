@@ -4,6 +4,9 @@ import fs from "node:fs";
 import path from "node:path";
 import { execSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
+import { isValidBranchName } from "./safe-branch-execution-loop.mjs";
+
+export { isValidBranchName };
 
 const GATES_CHECKLIST = [
   "canMerge",
@@ -42,8 +45,13 @@ function getRepoIdentifier() {
 }
 
 export function validateSelfTestReport(report) {
-  if (!report.finalVerdict || !report.finalVerdict.startsWith("PASS")) {
+  const allowedVerdicts = ["PASS_READY_FOR_DRAFT_PR", "PASS_READY_FOR_OWNER_REVIEW"];
+  if (!report.finalVerdict || !allowedVerdicts.includes(report.finalVerdict)) {
     return { valid: false, error: `Invalid finalVerdict: ${report.finalVerdict}` };
+  }
+
+  if (report.finalVerdict === "PASS_READY_FOR_DRAFT_PR" && report.canOpenDraftPr !== true) {
+    return { valid: false, error: "Validation failed: canOpenDraftPr must be true when verdict is PASS_READY_FOR_DRAFT_PR" };
   }
 
   if (report.canMerge !== false) {
@@ -54,7 +62,13 @@ export function validateSelfTestReport(report) {
     return { valid: false, error: "Validation failed: criticalGatesBlocked must be true" };
   }
 
-  if (report.secretsRead !== false || report.deployAttempted !== false || report.destructiveActionAttempted !== false || report.spendAttempted !== false || report.externalCommunicationAttempted !== false) {
+  if (
+    report.secretsRead !== false ||
+    report.deployAttempted !== false ||
+    report.destructiveActionAttempted !== false ||
+    report.spendAttempted !== false ||
+    report.externalCommunicationAttempted !== false
+  ) {
     return { valid: false, error: "Validation failed: Blocked critical owner gates violated in report" };
   }
 
@@ -66,8 +80,11 @@ export function validateSelfTestReport(report) {
     if (cmd.executionMode !== "real") {
       return { valid: false, error: `Validation failed: command "${cmd.command}" was run in simulated mode` };
     }
-    if (cmd.status !== "PASS" || cmd.exitCode !== 0) {
-      return { valid: false, error: `Validation failed: command "${cmd.command}" failed status or exit code` };
+    if (cmd.status !== "PASS") {
+      return { valid: false, error: `Validation failed: command "${cmd.command}" status is not PASS` };
+    }
+    if (cmd.exitCode !== 0) {
+      return { valid: false, error: `Validation failed: command "${cmd.command}" exit code is non-zero` };
     }
   }
 
@@ -91,8 +108,8 @@ async function main() {
     process.exit(1);
   }
 
-  if (currentBranch === "master" || currentBranch === "main") {
-    console.error(`[PR Automation] Error: Cannot run on master/main branch.`);
+  if (!isValidBranchName(currentBranch)) {
+    console.error(`[PR Automation] Error: Auto PR Gate can only run on chore/* or feat/* feature branches.`);
     process.exit(1);
   }
   console.log(`[PR Automation] Active Git feature branch: \`${currentBranch}\``);
@@ -155,15 +172,28 @@ async function main() {
   // 5. Dry-run vs Apply Execution
   if (isDryRun) {
     console.log(`\n=== DRY-RUN PR AUTOMATION SUMMARY ===`);
-    console.log(`- Planned Action: git push -u origin ${currentBranch}`);
-    console.log(`- Planned Action: gh pr create --draft --title "feat: auto PR for ${currentBranch}" --body-file reports/self-test/pr-body.md`);
-    console.log(`- Status: Simulated successful Draft PR creation`);
-    console.log(`- Actions Performed: None (Dry-run mode active)`);
+    console.log(`- Status: Simulation only for GitHub side effects`);
+    console.log(`- Push Status: No push performed`);
+    console.log(`- PR Status: No PR created`);
     console.log(`======================================\n`);
     process.exit(0);
   }
 
   // APPLY MODE
+  // Check working tree status
+  let gitStatus = "";
+  try {
+    gitStatus = execSync("git status --porcelain", { encoding: "utf8" }).trim();
+  } catch (err) {
+    console.error(`[PR Automation] Error: Failed to check Git working tree status.`);
+    process.exit(1);
+  }
+
+  if (gitStatus !== "") {
+    console.error(`[PR Automation] Error: Auto PR Gate requires a clean working tree before push.`);
+    process.exit(1);
+  }
+
   // A. Push branch
   console.log(`[PR Automation] Pushing current branch \`${currentBranch}\` to remote origin...`);
   try {
