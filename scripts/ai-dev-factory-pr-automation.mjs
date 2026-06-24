@@ -30,6 +30,17 @@ function getGhPath() {
   return null;
 }
 
+function getRepoIdentifier() {
+  try {
+    const remoteUrl = execSync("git remote get-url origin", { encoding: "utf8" }).trim();
+    const match = remoteUrl.match(/github\.com[/:]([^/]+\/[^.]+)/);
+    if (match) {
+      return match[1];
+    }
+  } catch {}
+  return null;
+}
+
 export function validateSelfTestReport(report) {
   if (!report.finalVerdict || !report.finalVerdict.startsWith("PASS")) {
     return { valid: false, error: `Invalid finalVerdict: ${report.finalVerdict}` };
@@ -171,9 +182,13 @@ async function main() {
   }
   console.log(`[PR Automation] Using gh CLI located at: ${ghPath}`);
 
+  const repoId = getRepoIdentifier();
+  const repoFlag = repoId ? `--repo ${repoId} ` : "";
+  console.log(`[PR Automation] Target repository: ${repoId || "Default (GitHub CLI configuration)"}`);
+
   console.log(`[PR Automation] Creating Draft PR on GitHub...`);
   try {
-    const prCmd = `"${ghPath}" pr create --draft --title "feat: add auto push & draft pr gate" --body-file "${prBodyPath}"`;
+    const prCmd = `"${ghPath}" pr create ${repoFlag}--draft --title "feat: add auto push & draft pr gate" --body-file "${prBodyPath}"`;
     const prUrl = execSync(prCmd, { encoding: "utf8" }).trim();
     console.log(`\n=============================================`);
     console.log(`[PR Automation] DRAFT PR CREATED SUCCESSFULLY!`);
