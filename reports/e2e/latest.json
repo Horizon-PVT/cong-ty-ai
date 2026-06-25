@@ -3,9 +3,9 @@
   "taskId": "phase-0.3n-proof",
   "ownerGoal": "Record an end-to-end autonomous dev run proof",
   "branch": "chore/end-to-end-autonomous-dev-run",
-  "startedAt": "2026-06-25T07:12:01.070Z",
-  "finishedAt": "2026-06-25T07:12:01.276Z",
-  "durationMs": 204,
+  "startedAt": "2026-06-25T07:38:54.784Z",
+  "finishedAt": "2026-06-25T07:38:55.196Z",
+  "durationMs": 410,
   "controlledFilesChanged": [
     "docs/ai-dev-factory-e2e-proof.md"
   ],

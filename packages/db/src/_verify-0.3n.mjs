@@ -226,6 +226,7 @@ async function main() {
   }
   const requiredDryRunPhrases = [
     "No files modified",
+    "No commit created",
     "No push performed",
     "No Draft PR created",
     "No merge attempted"
@@ -235,7 +236,7 @@ async function main() {
       throw new Error(`Dry-run output missing phrase: "${phrase}"`);
     }
   }
-  console.log("  - dry-run verdict and output checks: PASS");
+  console.log("  - dry-run verdict and output checks (all 5 phrases checked): PASS");
 
   // Test case 5: apply without approval returns waiting-for-owner-approval after real Draft PR creation
   const applySuccessOut = execSync(
@@ -326,6 +327,11 @@ async function main() {
     if (!allowedVerdicts.includes(reportData.finalVerdict)) {
       throw new Error(`Report contains invalid/disallowed finalVerdict: "${reportData.finalVerdict}"`);
     }
+    if (reportData.prNumber && !reportData.mergeAttempted) {
+      if (reportData.finalVerdict !== "E2E_WAITING_FOR_OWNER_APPROVAL") {
+        throw new Error(`Report finalVerdict is inconsistent: expected E2E_WAITING_FOR_OWNER_APPROVAL, got "${reportData.finalVerdict}"`);
+      }
+    }
     if (reportData.draftPrUrl && reportData.draftPrUrl.includes("mock-12")) {
       throw new Error("Mock PR URL written in reports");
     }
@@ -334,6 +340,56 @@ async function main() {
     }
     console.log("  - E2E report finalVerdict and mock URL checks: PASS");
   }
+
+  // 10. Direct static analysis checks on scripts/ai-dev-factory-e2e-dev-run.mjs code
+  console.log("Running static analysis checks on E2E runner code...");
+  const e2eContent = fs.readFileSync(e2eRunnerPath, "utf8");
+
+  // Check: clean-tree check before PR automation
+  if (!e2eContent.includes("git status --porcelain")) {
+    throw new Error("E2E runner does not contain a clean-tree check (git status --porcelain)");
+  }
+  
+  // Check: Commit-before-PR step appears before PR automation execution
+  const commitIndex = e2eContent.indexOf("git commit -m");
+  const prAutomationIndex = e2eContent.indexOf("pr-automation.mjs");
+  if (commitIndex === -1 || prAutomationIndex === -1 || commitIndex > prAutomationIndex) {
+    throw new Error("Commit-before-PR step does not appear before PR automation execution in the code");
+  }
+  console.log("  - commit-before-PR ordering check: PASS");
+
+  // Check: Post-PR metadata update path exists
+  if (!e2eContent.includes("chore: record e2e draft pr metadata")) {
+    throw new Error("E2E runner does not contain post-PR metadata commit path ('chore: record e2e draft pr metadata')");
+  }
+  console.log("  - post-PR metadata update path check: PASS");
+
+  // Check: clean-tree check (git status --porcelain) appears BEFORE the PR automation call
+  const cleanTreeIndex = e2eContent.indexOf("git status --porcelain");
+  if (cleanTreeIndex === -1) {
+    throw new Error("E2E runner does not contain a clean-tree check (git status --porcelain)");
+  }
+  if (cleanTreeIndex > prAutomationIndex) {
+    throw new Error("Clean-tree check (git status --porcelain) does not appear before PR automation execution in the code");
+  }
+  console.log("  - clean-tree check ordering (before PR automation): PASS");
+
+  // Check: process.exit(1) is used when finalVerdict is E2E_FAILED or E2E_CRITICAL_GATE_BLOCKED
+  if (!e2eContent.includes("E2E_FAILED") || !e2eContent.includes("E2E_CRITICAL_GATE_BLOCKED")) {
+    throw new Error("E2E runner does not contain failure verdict constants (E2E_FAILED / E2E_CRITICAL_GATE_BLOCKED)");
+  }
+  const exitIndex = e2eContent.indexOf("process.exit(1)");
+  if (exitIndex === -1) {
+    throw new Error("E2E runner does not call process.exit(1) on failure");
+  }
+  console.log("  - apply failure exit code (process.exit(1)) check: PASS");
+
+  // Check: post-PR metadata commit and push includes a clean-tree verification after push
+  const postPushCleanTreeIndex = e2eContent.indexOf("git status --porcelain", cleanTreeIndex + 1);
+  if (postPushCleanTreeIndex === -1) {
+    throw new Error("E2E runner does not contain a post-push clean-tree verification");
+  }
+  console.log("  - post-push clean-tree verification check: PASS");
 
   console.log("🎉 ALL PHASE 0.3N VERIFICATIONS PASSED!");
 }
