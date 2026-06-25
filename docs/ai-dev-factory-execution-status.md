@@ -16,10 +16,11 @@
 - Execute compilation (`pnpm build`), typechecks (`pnpm -r typecheck`), and unit tests dry-run (`pnpm test:run --dry-run`)
 - Commit changes locally
 - Push branch and prepare Draft PR (when authentication is available)
+- Auto-merge approved feature branch and clean up local workspace branches (when owner token is provided)
 
 ## Blocked Critical Gates
 
-- Do not merge to `master`/`main`
+- Do not merge to `master`/`main` without explicit owner approval token (`OWNER_APPROVED_MERGE_PR=<number>`)
 - Do not deploy to production
 - Do not read, write, or print secrets/API keys/.env files
 - Do not perform destructive database actions (DROP, TRUNCATE, etc.)
@@ -35,6 +36,8 @@
 5. Run the checklist (`typecheck` -> `build` -> `test dry-run`) with a max of 3 retry cycles.
 6. Commit changes locally if checks pass.
 7. Push branch and open a Draft PR (or output instructions if auth is blocked).
+8. Merge the PR automatically using owner-approved merge gate (if explicit token matches).
+9. Switch to master, pull, and delete the local feature branch via post-merge cleanup.
 
 ## Phase Capability Evolution
 
@@ -45,8 +48,10 @@
 - **Phase 0.3I**: Safe branch execution loop scaffold
 - **Phase 0.3J**: Real safe task execution adapter proof
 - **Phase 0.3K**: Autonomous self-test gate
+- **Phase 0.3L**: Auto Push & Draft PR Gate
+- **Phase 0.3M**: Owner-approved merge & post-merge cleanup gate
 
-## Phase 0.3K Proof Status
+## Phase 0.3M Proof Status
 
 Status: Verified
 Proof execution records:
