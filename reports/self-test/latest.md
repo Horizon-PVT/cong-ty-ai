@@ -12,14 +12,14 @@
 
 | Command | Exit Code | Status | Duration | Execution Mode |
 | ------- | --------- | ------ | -------- | -------------- |
-| `pnpm -r typecheck` | 0 | **PASS** | 128.71s | real |
-| `pnpm build` | 0 | **PASS** | 132.31s | real |
-| `pnpm test:run --dry-run` | 0 | **PASS** | 2.66s | real |
+| `pnpm -r typecheck` | 0 | **PASS** | 131.91s | real |
+| `pnpm build` | 0 | **PASS** | 132.59s | real |
+| `pnpm test:run --dry-run` | 0 | **PASS** | 2.74s | real |
 | `node packages/db/src/_verify-0.3i.mjs` | 0 | **PASS** | 0.25s | real |
-| `node packages/db/src/_verify-0.3k.mjs` | 0 | **PASS** | 0.19s | real |
-| `node packages/db/src/_verify-0.3l.mjs` | 0 | **PASS** | 0.09s | real |
-| `node packages/db/src/_verify-0.3m.mjs` | 0 | **PASS** | 8.49s | real |
-| `node packages/db/src/_verify-0.3n.mjs` | 0 | **PASS** | 0.48s | real |
+| `node packages/db/src/_verify-0.3k.mjs` | 0 | **PASS** | 0.20s | real |
+| `node packages/db/src/_verify-0.3l.mjs` | 0 | **PASS** | 0.10s | real |
+| `node packages/db/src/_verify-0.3m.mjs` | 0 | **PASS** | 8.48s | real |
+| `node packages/db/src/_verify-0.3n.mjs` | 0 | **PASS** | 0.46s | real |
 
 ## Recommended Next Action
 
