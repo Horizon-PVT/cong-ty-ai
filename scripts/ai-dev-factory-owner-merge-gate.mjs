@@ -91,23 +91,33 @@ async function main() {
 
   // 5. Fetch PR status using gh CLI (or mock data if environment variable is set)
   let prData = null;
-  if (process.env.MOCK_PR_DATA) {
-    console.log(`[Merge Gate] Using mock PR data from environment...`);
-    try {
-      prData = JSON.parse(process.env.MOCK_PR_DATA);
-    } catch (err) {
-      console.error(`[Merge Gate] Error: Failed to parse MOCK_PR_DATA env var: ${err.message}`);
-      process.exit(1);
+  const maxRetries = 3;
+  for (let attempt = 1; attempt <= maxRetries + 1; attempt++) {
+    if (process.env.MOCK_PR_DATA) {
+      console.log(`[Merge Gate] Using mock PR data from environment...`);
+      try {
+        prData = JSON.parse(process.env.MOCK_PR_DATA);
+      } catch (err) {
+        console.error(`[Merge Gate] Error: Failed to parse MOCK_PR_DATA env var: ${err.message}`);
+        process.exit(1);
+      }
+    } else {
+      try {
+        const viewCmd = `"${ghPath}" pr view ${prNumber} ${repoFlag}--json state,mergeable,statusCheckRollup,isDraft`;
+        const viewOut = execSync(viewCmd, { encoding: "utf8" }).trim();
+        prData = JSON.parse(viewOut);
+      } catch (err) {
+        console.error(`[Merge Gate] Error: Failed to fetch PR data via gh CLI: ${err.message}`);
+        process.exit(1);
+      }
     }
-  } else {
-    try {
-      const viewCmd = `"${ghPath}" pr view ${prNumber} ${repoFlag}--json state,mergeable,statusCheckRollup,isDraft`;
-      const viewOut = execSync(viewCmd, { encoding: "utf8" }).trim();
-      prData = JSON.parse(viewOut);
-    } catch (err) {
-      console.error(`[Merge Gate] Error: Failed to fetch PR data via gh CLI: ${err.message}`);
-      process.exit(1);
+
+    if (prData.mergeable !== "UNKNOWN" || attempt > maxRetries) {
+      break;
     }
+
+    console.log(`[Merge Gate] PR mergeability status is UNKNOWN (attempt ${attempt}/${maxRetries}). Retrying in 2 seconds...`);
+    await new Promise((resolve) => setTimeout(resolve, 2000));
   }
 
   // 6. Refuse if PR is not open
@@ -121,22 +131,50 @@ async function main() {
     console.error(`[Merge Gate] Error: PR has merge conflicts.`);
     process.exit(1);
   }
-  if (prData.mergeable !== "MERGEABLE" && prData.mergeable !== "UNKNOWN") {
+  
+  if (prData.mergeable === "UNKNOWN") {
+    if (isDryRun) {
+      console.log(`[Merge Gate] WARNING: PR mergeability status is UNKNOWN.`);
+    } else {
+      console.error(`[Merge Gate] Error: PR mergeability status is UNKNOWN (must be MERGEABLE).`);
+      process.exit(1);
+    }
+  } else if (prData.mergeable !== "MERGEABLE") {
     console.error(`[Merge Gate] Error: PR is not mergeable (mergeable: ${prData.mergeable}).`);
     process.exit(1);
   }
 
   // 8. Refuse if PR checks are not passing
   const statusCheckRollup = prData.statusCheckRollup || [];
+  const totalChecks = statusCheckRollup.length;
+  let successChecks = 0;
+  let failedOrPendingChecks = 0;
+
   for (const check of statusCheckRollup) {
-    if (check.status !== "COMPLETED") {
-      console.error(`[Merge Gate] Error: Check "${check.name}" is not completed (status: ${check.status}).`);
+    if (check.status === "COMPLETED" && (check.conclusion === "SUCCESS" || check.conclusion === "NEUTRAL")) {
+      successChecks++;
+    } else {
+      failedOrPendingChecks++;
+    }
+  }
+
+  console.log(`[Merge Gate] Status Checks Summary:`);
+  console.log(`- Total checks found: ${totalChecks}`);
+  console.log(`- SUCCESS/NEUTRAL checks: ${successChecks}`);
+  console.log(`- Failed/Pending checks: ${failedOrPendingChecks}`);
+
+  if (totalChecks === 0) {
+    if (isDryRun) {
+      console.log(`[Merge Gate] WARNING: No status checks found in rollup.`);
+    } else {
+      console.error(`[Merge Gate] Error: Merge Gate requires explicit passing status checks before merge.`);
       process.exit(1);
     }
-    if (check.conclusion !== "SUCCESS" && check.conclusion !== "NEUTRAL") {
-      console.error(`[Merge Gate] Error: Check "${check.name}" is not passing (conclusion: ${check.conclusion}).`);
-      process.exit(1);
-    }
+  }
+
+  if (failedOrPendingChecks > 0) {
+    console.error(`[Merge Gate] Error: There are ${failedOrPendingChecks} failing or pending status checks.`);
+    process.exit(1);
   }
 
   console.log(`[Merge Gate] All safety and approval checks passed for PR #${prNumber}.`);

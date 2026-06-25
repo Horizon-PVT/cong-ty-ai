@@ -60,4 +60,4 @@ tests/release-smoke/playwright-report/
 .herenow
 
 # AI Dev Factory reports
-reports/self-test/pr-body.md
+reports/self-test/pr-body*.md

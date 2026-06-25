@@ -142,11 +142,32 @@ async function main() {
   fs.mkdirSync(prBodyDir, { recursive: true });
   const prBodyPath = path.join(prBodyDir, "pr-body.md");
 
-  let prBodyContent = `### Phase 0.3L Auto-Generated PR Summary\n\n`;
-  prBodyContent += `- **Branch**: \`${currentBranch}\`\n`;
-  prBodyContent += `- **Self-Test Verdict**: \`${report.finalVerdict}\`\n`;
-  prBodyContent += `- **Execution Mode**: \`REAL\`\n`;
-  prBodyContent += `- **Timestamp**: \`${new Date().toISOString()}\`\n\n`;
+  let prTitle = "feat: add auto push & draft pr gate";
+  let prBodyContent = "";
+
+  if (currentBranch.includes("owner-approved-merge-cleanup-gate") || currentBranch.includes("0.3m")) {
+    prTitle = "feat: add owner-approved merge cleanup gate";
+    prBodyContent = `### Phase 0.3M Owner-Approved Merge & Post-Merge Cleanup Gate\n\n`;
+    prBodyContent += `This PR implements Phase 0.3M, introducing an owner-approved merge gate and local post-merge workspace cleanup.\n\n`;
+    prBodyContent += `- **Branch**: \`${currentBranch}\`\n`;
+    prBodyContent += `- **Self-Test Verdict**: \`${report.finalVerdict}\`\n`;
+    prBodyContent += `- **Execution Mode**: \`REAL\`\n`;
+    prBodyContent += `- **Timestamp**: \`${new Date().toISOString()}\`\n\n`;
+    prBodyContent += `#### Capabilities Added:\n`;
+    prBodyContent += `* owner-approved merge gate\n`;
+    prBodyContent += `* approval token format\n`;
+    prBodyContent += `* post-merge cleanup\n`;
+    prBodyContent += `* post-merge reports\n`;
+    prBodyContent += `* explicit owner approval required before merge\n`;
+    prBodyContent += `* verify-0.3M PASS\n`;
+    prBodyContent += `* critical gates still blocked\n\n`;
+  } else {
+    prBodyContent = `### Phase 0.3L Auto-Generated PR Summary\n\n`;
+    prBodyContent += `- **Branch**: \`${currentBranch}\`\n`;
+    prBodyContent += `- **Self-Test Verdict**: \`${report.finalVerdict}\`\n`;
+    prBodyContent += `- **Execution Mode**: \`REAL\`\n`;
+    prBodyContent += `- **Timestamp**: \`${new Date().toISOString()}\`\n\n`;
+  }
 
   prBodyContent += `#### Verified Checks Checklist\n\n`;
   prBodyContent += `| Command | Status | Duration | Execution Mode |\n`;
@@ -164,7 +185,11 @@ async function main() {
   prBodyContent += `- **Infra/Ad Budget Spending Blocked**: \`YES\`\n`;
   prBodyContent += `- **External Customer Communications Blocked**: \`YES\`\n\n`;
   prBodyContent += `> [!IMPORTANT]\n`;
-  prBodyContent += `> All automated verification checks passed successfully in real execution mode. The branch is safe and ready for manual review.\n`;
+  if (currentBranch.includes("owner-approved-merge-cleanup-gate") || currentBranch.includes("0.3m")) {
+    prBodyContent += `> All automated verification checks passed successfully in real execution mode (verify-0.3M PASS). The branch is safe and ready for owner review.\n`;
+  } else {
+    prBodyContent += `> All automated verification checks passed successfully in real execution mode. The branch is safe and ready for manual review.\n`;
+  }
 
   fs.writeFileSync(prBodyPath, prBodyContent, "utf8");
   console.log(`[PR Automation] Wrote PR description body to reports/self-test/pr-body.md`);
@@ -218,7 +243,7 @@ async function main() {
 
   console.log(`[PR Automation] Creating Draft PR on GitHub...`);
   try {
-    const prCmd = `"${ghPath}" pr create ${repoFlag}--draft --title "feat: add auto push & draft pr gate" --body-file "${prBodyPath}"`;
+    const prCmd = `"${ghPath}" pr create ${repoFlag}--draft --title "${prTitle}" --body-file "${prBodyPath}"`;
     const prUrl = execSync(prCmd, { encoding: "utf8" }).trim();
     console.log(`\n=============================================`);
     console.log(`[PR Automation] DRAFT PR CREATED SUCCESSFULLY!`);

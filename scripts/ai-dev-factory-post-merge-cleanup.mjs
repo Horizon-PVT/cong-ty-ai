@@ -43,6 +43,16 @@ async function main() {
     prNumber = args[prIndex + 1];
   }
 
+  // Parse --branch
+  let branchOption = null;
+  const branchIndex = args.indexOf("--branch");
+  if (branchIndex !== -1 && branchIndex + 1 < args.length) {
+    branchOption = args[branchIndex + 1];
+  }
+
+  // Parse --force-delete
+  const forceDelete = args.includes("--force-delete");
+
   console.log(`[Post-Merge Cleanup] Initializing Post-Merge Local Cleanup...`);
   console.log(`[Post-Merge Cleanup] Mode: ${isDryRun ? "DRY-RUN (Simulated)" : "APPLY (Execution)"}`);
 
@@ -64,6 +74,8 @@ async function main() {
   let branchName = "";
   if (process.env.MOCK_PR_BRANCH) {
     branchName = process.env.MOCK_PR_BRANCH;
+  } else if (isDryRun && branchOption) {
+    branchName = branchOption;
   } else if (ghPath) {
     try {
       const viewCmd = `"${ghPath}" pr view ${prNumber} ${repoFlag}--json headRefName`;
@@ -75,9 +87,15 @@ async function main() {
     }
   }
 
-  // Fallback branch name if not found
+  // Branch validation
   if (!branchName) {
-    branchName = `chore/auto-push-draft-pr-gate`; // default fallback
+    if (isDryRun) {
+      console.error(`[Post-Merge Cleanup] Error: Dry-run branch fallback requires explicit --branch <name>.`);
+      process.exit(1);
+    } else {
+      console.error(`[Post-Merge Cleanup] Error: Failed to retrieve PR branch name in apply mode.`);
+      process.exit(1);
+    }
   }
   console.log(`[Post-Merge Cleanup] Feature branch to clean up: \`${branchName}\``);
 
@@ -86,8 +104,9 @@ async function main() {
     console.log(`- Status: Simulation only for git cleanup side effects`);
     console.log(`- Planned Action: git checkout master`);
     console.log(`- Planned Action: git pull origin master`);
-    console.log(`- Planned Action: git branch -D ${branchName} (if exists locally)`);
+    console.log(`- Planned Action: git branch ${forceDelete ? "-D" : "-d"} ${branchName} (if exists locally)`);
     console.log(`- Planned Action: git fetch --prune`);
+    console.log(`- Planned Action: Verify remote branch deletion of origin/${branchName}`);
     console.log(`- Planned Action: Write reports/post-merge/latest.json and reports/post-merge/latest.md`);
     console.log(`- Output Info: No cleanup performed (Dry-run mode active)`);
     console.log(`==========================================\n`);
@@ -95,6 +114,20 @@ async function main() {
   }
 
   // APPLY MODE
+  // Check working tree status
+  let gitStatusClean = "";
+  try {
+    gitStatusClean = execSync("git status --porcelain", { encoding: "utf8" }).trim();
+  } catch (err) {
+    console.error(`[Post-Merge Cleanup] Error: Failed to check Git working tree status.`);
+    process.exit(1);
+  }
+
+  if (gitStatusClean !== "") {
+    console.error(`[Post-Merge Cleanup] Error: Post-merge cleanup requires a clean working tree.`);
+    process.exit(1);
+  }
+
   // A. Checkout master
   console.log(`[Post-Merge Cleanup] Switching to master branch...`);
   try {
@@ -120,14 +153,15 @@ async function main() {
   try {
     const localBranches = execSync("git branch", { encoding: "utf8" });
     if (localBranches.includes(branchName)) {
-      console.log(`[Post-Merge Cleanup] Deleting local branch \`${branchName}\`...`);
-      execSync(`git branch -D ${branchName}`, { stdio: "inherit" });
-      localBranchCleanupStatus = "DELETED";
+      const deleteFlag = forceDelete ? "-D" : "-d";
+      console.log(`[Post-Merge Cleanup] Deleting local branch \`${branchName}\` using git branch ${deleteFlag}...`);
+      execSync(`git branch ${deleteFlag} ${branchName}`, { stdio: "inherit" });
+      localBranchCleanupStatus = forceDelete ? "FORCE_DELETED" : "DELETED";
     } else {
       console.log(`[Post-Merge Cleanup] Local branch \`${branchName}\` does not exist (already cleaned up).`);
     }
   } catch (err) {
-    console.error(`[Post-Merge Cleanup] Warning: Failed to delete local branch: ${err.message}`);
+    console.error(`[Post-Merge Cleanup] Warning: Failed to delete local branch safely: ${err.message}`);
     localBranchCleanupStatus = "FAILED";
   }
 
@@ -139,7 +173,23 @@ async function main() {
     console.error(`[Post-Merge Cleanup] Warning: git fetch --prune failed: ${err.message}`);
   }
 
-  // E. Get final git status and logs
+  // E. Verify remote branch deletion
+  console.log(`[Post-Merge Cleanup] Verifying remote branch deletion for origin/${branchName}...`);
+  let deletedRemoteBranchStatus = "UNKNOWN";
+  try {
+    const lsRemoteOut = execSync(`git ls-remote --heads origin ${branchName}`, { encoding: "utf8" }).trim();
+    if (lsRemoteOut === "") {
+      deletedRemoteBranchStatus = "DELETED";
+    } else {
+      deletedRemoteBranchStatus = "NOT_DELETED";
+    }
+  } catch (err) {
+    console.error(`[Post-Merge Cleanup] Warning: Failed to verify remote branch deletion: ${err.message}`);
+    deletedRemoteBranchStatus = "UNKNOWN";
+  }
+  console.log(`[Post-Merge Cleanup] Remote branch deletion status: ${deletedRemoteBranchStatus}`);
+
+  // F. Get final git status and logs
   let finalGitStatus = "";
   try {
     finalGitStatus = execSync("git status", { encoding: "utf8" }).trim();
@@ -152,14 +202,14 @@ async function main() {
     mergeCommit = execSync("git rev-parse HEAD", { encoding: "utf8" }).trim();
   } catch {}
 
-  // F. Write reports
+  // G. Write reports
   const reportDir = path.resolve("reports/post-merge");
   fs.mkdirSync(reportDir, { recursive: true });
 
   const jsonReport = {
     mergedPR: parseInt(prNumber, 10),
     mergeCommit,
-    deletedRemoteBranchStatus: "DELETED", // assumed deleted via gh pr merge --delete-branch
+    deletedRemoteBranchStatus,
     localBranchCleanupStatus,
     masterSyncStatus,
     finalGitStatus,
@@ -177,7 +227,7 @@ async function main() {
   let mdContent = `# Post-Merge Cleanup Report\n\n`;
   mdContent += `- **Merged PR**: #${prNumber}\n`;
   mdContent += `- **Merge Commit**: \`${mergeCommit}\`\n`;
-  mdContent += `- **Remote Branch Status**: \`DELETED\`\n`;
+  mdContent += `- **Remote Branch Status**: \`${deletedRemoteBranchStatus}\`\n`;
   mdContent += `- **Local Branch Status**: \`${localBranchCleanupStatus}\`\n`;
   mdContent += `- **Master Sync Status**: \`${masterSyncStatus}\`\n`;
   mdContent += `- **Final Verdict**: \`POST_MERGE_CLEAN\`\n\n`;

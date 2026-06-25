@@ -15,7 +15,7 @@ To permit a merge, the owner must provide an explicit, machine-checkable token:
 `OWNER_APPROVED_MERGE_PR=<number>`
 
 For example:
-`OWNER_APPROVED_MERGE_PR=11`
+`OWNER_APPROVED_MERGE_PR=12`
 
 The merge gate runner enforces that:
 1. The token format matches exactly.
@@ -24,19 +24,50 @@ The merge gate runner enforces that:
 
 ---
 
+## Safety Safeguards & Policies
+
+### 1. Mergeability Check (Handling UNKNOWN)
+- In `--apply` mode, the PR mergeability status must be exactly `"MERGEABLE"`.
+- If the mergeability is returned as `"UNKNOWN"`, the script will automatically retry status fetching up to 3 times with a 2-second delay. If it remains `"UNKNOWN"`, the script terminates with an error.
+- In `--dry-run` mode, `"UNKNOWN"` is allowed and displayed as a warning, but the final execution is blocked.
+- `"CONFLICTING"` mergeable status always fails immediately.
+
+### 2. Explicit Status Checks Enforcement
+- A status checks summary is printed showing the total number of checks found, passing, and pending/failed checks.
+- At least one passing status check (conclusion `"SUCCESS"` or `"NEUTRAL"`) is required to merge in `--apply` mode. Empty check rollups will fail with: `“Merge Gate requires explicit passing status checks before merge.”`.
+
+### 3. Branch Fallback Restriction
+- In `--apply` mode, the PR head branch name must be retrieved dynamically via the GitHub CLI. If the branch name cannot be fetched, execution stops with a clear error; no branch fallback is allowed.
+- In `--dry-run` mode, a fallback is only permitted if explicitly provided via the `--branch <name>` CLI option.
+
+### 4. Working Tree Cleanliness
+- Before checking out `master`, pulling, or deleting the local branch, the cleanup script runs `git status --porcelain`.
+- If the working tree is dirty, cleanup terminates with: `“Post-merge cleanup requires a clean working tree.”`.
+
+### 5. Verified Remote Branch Deletion
+- After merging, the runner verifies that the remote branch has been deleted on GitHub by running `git ls-remote --heads origin <branch>`.
+- If deletion is confirmed, `deletedRemoteBranchStatus` is logged as `"DELETED"`.
+- If verification fails or cannot be completed, it is recorded as `"UNKNOWN"`.
+
+### 6. Safe Local Branch Deletion
+- Deleting the local branch defaults to the safe `git branch -d` command.
+- The force delete flag `git branch -D` is only used when the explicit `--force-delete` flag is passed.
+
+---
+
 ## Automation Scope
 
 ### 1. Owner-Approved Merge Gate (`scripts/ai-dev-factory-owner-merge-gate.mjs`)
 - Validates the owner approval token.
 - Connects to GitHub via the authenticated GitHub CLI (`gh`).
-- Ensures the PR is open, has no merge conflicts (`mergeable: "MERGEABLE"`), and all required status checks are completed and passing.
+- Ensures the PR is open, has no merge conflicts, and all status checks are passing.
 - Marks Draft PRs as Ready for review if they are currently drafts.
 - Performs the merge using the safe standard merge method (`--merge`) and requests remote branch deletion.
 
 ### 2. Post-Merge Cleanup Runner (`scripts/ai-dev-factory-post-merge-cleanup.mjs`)
 - Switches the local workspace to `master` branch.
 - Pulls the latest commits from the remote repository.
-- Deletes the local feature branch if it exists.
+- Deletes the local feature branch safely.
 - Prunes obsolete remote tracking branches (`git fetch --prune`).
 - Records the status in JSON and Markdown reports.
 
