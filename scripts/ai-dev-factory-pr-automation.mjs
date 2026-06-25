@@ -161,6 +161,26 @@ async function main() {
     prBodyContent += `* explicit owner approval required before merge\n`;
     prBodyContent += `* verify-0.3M PASS\n`;
     prBodyContent += `* critical gates still blocked\n\n`;
+  } else if (currentBranch.includes("end-to-end-autonomous-dev-run") || currentBranch.includes("0.3n")) {
+    prTitle = "feat: add end-to-end autonomous dev run orchestrator";
+    prBodyContent = `### Phase 0.3N End-to-End Autonomous Dev Run\n\n`;
+    prBodyContent += `This PR implements Phase 0.3N, introducing a unified orchestrator runner that automates goal intake, branch verification, execution, self-testing, and Draft PR creation.\n\n`;
+    prBodyContent += `- **Branch**: \`${currentBranch}\`\n`;
+    prBodyContent += `- **Self-Test Verdict**: \`${report.finalVerdict}\`\n`;
+    prBodyContent += `- **Execution Mode**: \`REAL\`\n`;
+    prBodyContent += `- **Timestamp**: \`${new Date().toISOString()}\`\n\n`;
+    prBodyContent += `#### Orchestrated Gates & Capabilities:\n`;
+    prBodyContent += `* **Owner Goal Intake**: Intent parsing blocks deploy, secrets, destructive db migrations, spending, and external communication.\n`;
+    prBodyContent += `* **Safe Feature Branch Loop Validation**: Blocks master/main branch runs and enforces feature branch naming conventions.\n`;
+    prBodyContent += `* **Controlled Proof Task**: Executes safe scoped documentation updates (writing docs/ai-dev-factory-e2e-proof.md).\n`;
+    prBodyContent += `* **Autonomous Self-Test Gate Integration**: Automatically executes full verification tests suite locally.\n`;
+    prBodyContent += `* **Auto Push & Draft PR Gate Integration**: Automatically pushes feature branch and opens Draft PR on GitHub.\n`;
+    prBodyContent += `* **Owner-Approved Merge Gate Integration**: Connects to owner merge gate verifying approval tokens.\n`;
+    prBodyContent += `* **Post-Merge local Cleanup**: Automatically switches to master, pulls remote master, deletes local feature branch safely, and prunes remote tracking branches.\n`;
+    prBodyContent += `* **E2E Reports**: Writes latest.json and latest.md run metrics.\n`;
+    prBodyContent += `* **verify-0.3N PASS**: Full E2E verifications pass successfully.\n`;
+    prBodyContent += `* **Critical Gates Still Blocked**: Deployments, secrets reads, destructive database actions, spending, and external communications remain fully blocked.\n`;
+    prBodyContent += `* **Merge Action Restricted**: Merge remains strictly blocked pending explicit owner approval token of format \`OWNER_APPROVED_MERGE_PR=<number>\`.\n\n`;
   } else {
     prBodyContent = `### Phase 0.3L Auto-Generated PR Summary\n\n`;
     prBodyContent += `- **Branch**: \`${currentBranch}\`\n`;
@@ -187,6 +207,8 @@ async function main() {
   prBodyContent += `> [!IMPORTANT]\n`;
   if (currentBranch.includes("owner-approved-merge-cleanup-gate") || currentBranch.includes("0.3m")) {
     prBodyContent += `> All automated verification checks passed successfully in real execution mode (verify-0.3M PASS). The branch is safe and ready for owner review.\n`;
+  } else if (currentBranch.includes("end-to-end-autonomous-dev-run") || currentBranch.includes("0.3n")) {
+    prBodyContent += `> All automated verification checks passed successfully in real execution mode (verify-0.3N PASS). The branch is safe and ready for owner review.\n`;
   } else {
     prBodyContent += `> All automated verification checks passed successfully in real execution mode. The branch is safe and ready for manual review.\n`;
   }

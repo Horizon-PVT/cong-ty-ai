@@ -50,10 +50,14 @@
 - **Phase 0.3K**: Autonomous self-test gate
 - **Phase 0.3L**: Auto Push & Draft PR Gate
 - **Phase 0.3M**: Owner-approved merge & post-merge cleanup gate
+- **Phase 0.3N**: End-to-End Autonomous Dev Run
 
-## Phase 0.3M Proof Status
+## Phase 0.3N Proof Status
 
-Status: Verified
+Status: Pending E2E execution
 Proof execution records:
+- End-to-End Autonomous Dev Run orchestrates goal intake, branch checks, task execution, self-testing, and Draft PR creation.
+- Optional owner-approved merge and local cleanup.
+- Final missing automation gap before more realistic product tasks.
 <!-- execution_records_start -->
 <!-- execution_records_end -->

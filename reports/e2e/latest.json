@@ -1,0 +1,26 @@
+{
+  "phase": "0.3n",
+  "taskId": "phase-0.3n-proof",
+  "ownerGoal": "Record an end-to-end autonomous dev run proof",
+  "branch": "chore/end-to-end-autonomous-dev-run",
+  "startedAt": "2026-06-25T07:38:54.784Z",
+  "finishedAt": "2026-06-25T07:38:55.196Z",
+  "durationMs": 410,
+  "controlledFilesChanged": [
+    "docs/ai-dev-factory-e2e-proof.md"
+  ],
+  "selfTestVerdict": "PASS_READY_FOR_DRAFT_PR",
+  "draftPrUrl": "https://github.com/Horizon-PVT/cong-ty-ai/pull/13",
+  "prNumber": 13,
+  "mergeAttempted": false,
+  "mergeApproved": false,
+  "mergeResult": "SKIPPED",
+  "postMergeCleanupResult": "SKIPPED",
+  "criticalGatesBlocked": true,
+  "deployAttempted": false,
+  "secretsRead": false,
+  "destructiveActionAttempted": false,
+  "spendAttempted": false,
+  "externalCommunicationAttempted": false,
+  "finalVerdict": "E2E_WAITING_FOR_OWNER_APPROVAL"
+}
