@@ -1,0 +1,61 @@
+{
+  "phase": "0.3l",
+  "branch": "chore/auto-push-draft-pr-gate",
+  "startedAt": "2026-06-24T08:35:05.032Z",
+  "finishedAt": "2026-06-24T08:39:22.917Z",
+  "durationMs": 257884,
+  "commands": [
+    {
+      "command": "pnpm -r typecheck",
+      "exitCode": 0,
+      "status": "PASS",
+      "durationMs": 122580,
+      "executionMode": "real"
+    },
+    {
+      "command": "pnpm build",
+      "exitCode": 0,
+      "status": "PASS",
+      "durationMs": 131629,
+      "executionMode": "real"
+    },
+    {
+      "command": "pnpm test:run --dry-run",
+      "exitCode": 0,
+      "status": "PASS",
+      "durationMs": 2992,
+      "executionMode": "real"
+    },
+    {
+      "command": "node packages/db/src/_verify-0.3i.mjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "durationMs": 273,
+      "executionMode": "real"
+    },
+    {
+      "command": "node packages/db/src/_verify-0.3k.mjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "durationMs": 291,
+      "executionMode": "real"
+    },
+    {
+      "command": "node packages/db/src/_verify-0.3l.mjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "durationMs": 116,
+      "executionMode": "real"
+    }
+  ],
+  "finalVerdict": "PASS_READY_FOR_DRAFT_PR",
+  "canOpenDraftPr": true,
+  "canRequestOwnerReview": false,
+  "canMerge": false,
+  "criticalGatesBlocked": true,
+  "secretsRead": false,
+  "deployAttempted": false,
+  "destructiveActionAttempted": false,
+  "spendAttempted": false,
+  "externalCommunicationAttempted": false
+}

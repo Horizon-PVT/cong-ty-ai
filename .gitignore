@@ -58,3 +58,6 @@ tests/release-smoke/playwright-report/
 .superpowers/
 .claude/worktrees/
 .herenow
+
+# AI Dev Factory reports
+reports/self-test/pr-body.md
