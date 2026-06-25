@@ -161,6 +161,23 @@ async function main() {
     prBodyContent += `* explicit owner approval required before merge\n`;
     prBodyContent += `* verify-0.3M PASS\n`;
     prBodyContent += `* critical gates still blocked\n\n`;
+  } else if (currentBranch.includes("end-to-end-autonomous-dev-run") || currentBranch.includes("0.3n")) {
+    prTitle = "feat: add end-to-end autonomous dev run orchestrator";
+    prBodyContent = `### Phase 0.3N End-to-End Autonomous Dev Run\n\n`;
+    prBodyContent += `This PR implements Phase 0.3N, introducing a unified orchestrator runner that automates goal intake, branch verification, execution, self-testing, and Draft PR creation.\n\n`;
+    prBodyContent += `- **Branch**: \`${currentBranch}\`\n`;
+    prBodyContent += `- **Self-Test Verdict**: \`${report.finalVerdict}\`\n`;
+    prBodyContent += `- **Execution Mode**: \`REAL\`\n`;
+    prBodyContent += `- **Timestamp**: \`${new Date().toISOString()}\`\n\n`;
+    prBodyContent += `#### Orchestrated Gates & Capabilities:\n`;
+    prBodyContent += `* Safe Goal Intake intent parsing\n`;
+    prBodyContent += `* Safe Feature Branch Loop verification\n`;
+    prBodyContent += `* Autonomous Self-Test Gate execution\n`;
+    prBodyContent += `* Auto PR & Push Gate integration\n`;
+    prBodyContent += `* Owner-Approved Merge & Post-Merge Cleanup Gate integration\n`;
+    prBodyContent += `* E2E JSON and Markdown run reports\n`;
+    prBodyContent += `* verify-0.3N PASS\n`;
+    prBodyContent += `* Critical safety gates remain blocked\n\n`;
   } else {
     prBodyContent = `### Phase 0.3L Auto-Generated PR Summary\n\n`;
     prBodyContent += `- **Branch**: \`${currentBranch}\`\n`;
@@ -187,6 +204,8 @@ async function main() {
   prBodyContent += `> [!IMPORTANT]\n`;
   if (currentBranch.includes("owner-approved-merge-cleanup-gate") || currentBranch.includes("0.3m")) {
     prBodyContent += `> All automated verification checks passed successfully in real execution mode (verify-0.3M PASS). The branch is safe and ready for owner review.\n`;
+  } else if (currentBranch.includes("end-to-end-autonomous-dev-run") || currentBranch.includes("0.3n")) {
+    prBodyContent += `> All automated verification checks passed successfully in real execution mode (verify-0.3N PASS). The branch is safe and ready for owner review.\n`;
   } else {
     prBodyContent += `> All automated verification checks passed successfully in real execution mode. The branch is safe and ready for manual review.\n`;
   }
