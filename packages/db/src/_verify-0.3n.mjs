@@ -141,6 +141,200 @@ async function main() {
   if (!fs.existsSync(verify0_3m)) throw new Error("_verify-0.3m.mjs does not exist");
   console.log("✅ verified: previous phase verification scripts remain callable");
 
+  // 9. Run orchestrator test cases to verify the new behaviors
+  console.log("Running orchestrator safety & verdict test cases...");
+  
+  // Test case 1: apply-mode PR creation failure does not fallback to mock PR
+  try {
+    execSync(
+      `node scripts/ai-dev-factory-e2e-dev-run.mjs --goal "test goal" --task-id "verify-0.3n-test" --apply --auto-pr`,
+      {
+        env: {
+          ...process.env,
+          MOCK_PR_CREATION_FAIL: "true",
+          MOCK_SELF_TEST_VERDICT: "PASS_READY_FOR_DRAFT_PR",
+          MOCK_GIT_OPERATIONS: "true",
+          MOCK_REPORT_WRITE_BYPASS: "true"
+        },
+        encoding: "utf8",
+        stdio: "pipe"
+      }
+    );
+    throw new Error("Expected process to exit with code 1, but it succeeded.");
+  } catch (err) {
+    if (err.message && err.message.includes("Expected process to exit with code 1")) {
+      throw err;
+    }
+    const stdout = err.stdout || "";
+    const stderr = err.stderr || "";
+    if (stdout.includes("pull/12") || stderr.includes("pull/12") || stdout.includes("pull/mock-12")) {
+      throw new Error("PR creation failure fell back to mock PR #12 in apply mode");
+    }
+    if (!stdout.includes("E2E_FAILED") && !stderr.includes("E2E_FAILED")) {
+      throw new Error("PR creation failure did not result in finalVerdict E2E_FAILED");
+    }
+  }
+  console.log("  - apply-mode PR creation failure does not fallback to mock PR: PASS");
+
+  try {
+    execSync(
+      `node scripts/ai-dev-factory-e2e-dev-run.mjs --goal "test goal" --task-id "verify-0.3n-test" --apply --auto-pr`,
+      {
+        env: {
+          ...process.env,
+          MOCK_GH_PATH_MISSING: "true",
+          MOCK_SELF_TEST_VERDICT: "PASS_READY_FOR_DRAFT_PR",
+          MOCK_GIT_OPERATIONS: "true",
+          MOCK_REPORT_WRITE_BYPASS: "true",
+          MOCK_PR_AUTOMATION_BYPASS: "true"
+        },
+        encoding: "utf8",
+        stdio: "pipe"
+      }
+    );
+    throw new Error("Expected missing gh CLI in apply mode to exit with error, but it succeeded.");
+  } catch (err) {
+    if (err.message && err.message.includes("Expected missing gh CLI in apply mode to exit with error")) {
+      throw err;
+    }
+    const stdout = err.stdout || "";
+    const stderr = err.stderr || "";
+    if (stdout.includes("pull/12") || stderr.includes("pull/12") || stdout.includes("pull/mock-12")) {
+      throw new Error("Missing gh CLI fabricated mock PR #12 in apply mode");
+    }
+    if (!stdout.includes("E2E_FAILED") && !stderr.includes("E2E_FAILED")) {
+      throw new Error("Missing gh CLI did not set E2E_FAILED in apply mode");
+    }
+  }
+  console.log("  - apply-mode missing gh CLI does not fabricate PR URL: PASS");
+
+  // Test case 3: dry-run does not return E2E_DRAFT_PR_CREATED
+  // Test case 4: dry-run clearly reports no push/no PR/no merge
+  const dryRunOut = execSync(
+    `node scripts/ai-dev-factory-e2e-dev-run.mjs --goal "test goal" --task-id "verify-0.3n-test" --dry-run --auto-pr`,
+    {
+      env: {
+        ...process.env,
+        MOCK_SELF_TEST_VERDICT: "PASS_READY_FOR_DRAFT_PR"
+      },
+      encoding: "utf8",
+      stdio: "pipe"
+    }
+  );
+  if (dryRunOut.includes("E2E_DRAFT_PR_CREATED")) {
+    throw new Error("Dry-run returned E2E_DRAFT_PR_CREATED");
+  }
+  const requiredDryRunPhrases = [
+    "No files modified",
+    "No push performed",
+    "No Draft PR created",
+    "No merge attempted"
+  ];
+  for (const phrase of requiredDryRunPhrases) {
+    if (!dryRunOut.includes(phrase)) {
+      throw new Error(`Dry-run output missing phrase: "${phrase}"`);
+    }
+  }
+  console.log("  - dry-run verdict and output checks: PASS");
+
+  // Test case 5: apply without approval returns waiting-for-owner-approval after real Draft PR creation
+  const applySuccessOut = execSync(
+    `node scripts/ai-dev-factory-e2e-dev-run.mjs --goal "test goal" --task-id "verify-0.3n-test" --apply --auto-pr`,
+    {
+      env: {
+        ...process.env,
+        MOCK_SELF_TEST_VERDICT: "PASS_READY_FOR_DRAFT_PR",
+        MOCK_GIT_OPERATIONS: "true",
+        MOCK_REPORT_WRITE_BYPASS: "true",
+        MOCK_PR_AUTOMATION_BYPASS: "true",
+        MOCK_REAL_PR_DETAILS: JSON.stringify({ number: 13, url: "https://github.com/Horizon-PVT/cong-ty-ai/pull/13" })
+      },
+      encoding: "utf8",
+      stdio: "pipe"
+    }
+  );
+  if (!applySuccessOut.includes("E2E_WAITING_FOR_OWNER_APPROVAL")) {
+    throw new Error("Successful apply mode without approval did not return E2E_WAITING_FOR_OWNER_APPROVAL");
+  }
+  if (applySuccessOut.includes("E2E_DRAFT_PR_CREATED")) {
+    throw new Error("Successful apply mode returned E2E_DRAFT_PR_CREATED");
+  }
+  console.log("  - apply without approval returns waiting-for-owner-approval: PASS");
+
+  // Test case 6: wrong owner approval token is rejected
+  try {
+    execSync(
+      `node scripts/ai-dev-factory-e2e-dev-run.mjs --pr 13 --approval OWNER_APPROVED_MERGE_PR=99 --apply`,
+      {
+        env: {
+          ...process.env,
+          MOCK_REPORT_WRITE_BYPASS: "true"
+        },
+        encoding: "utf8",
+        stdio: "pipe"
+      }
+    );
+    throw new Error("Expected wrong owner approval token to fail, but it succeeded.");
+  } catch (err) {
+    if (err.message && err.message.includes("Expected wrong owner approval token to fail")) {
+      throw err;
+    }
+    const stdout = err.stdout || "";
+    const stderr = err.stderr || "";
+    const combined = stdout + "\n" + stderr;
+    if (!combined.includes("E2E_CRITICAL_GATE_BLOCKED") || !combined.includes("Mismatched or invalid approval token")) {
+      throw new Error("Wrong owner approval token did not return E2E_CRITICAL_GATE_BLOCKED or print mismatch message");
+    }
+  }
+  console.log("  - wrong owner approval token is rejected: PASS");
+
+  // Test case 7: missing owner approval token cannot merge
+  try {
+    execSync(
+      `node scripts/ai-dev-factory-e2e-dev-run.mjs --pr 13 --apply`,
+      {
+        env: {
+          ...process.env,
+          MOCK_REPORT_WRITE_BYPASS: "true"
+        },
+        encoding: "utf8",
+        stdio: "pipe"
+      }
+    );
+    throw new Error("Expected missing owner approval token to fail, but it succeeded.");
+  } catch (err) {
+    if (err.message && err.message.includes("Expected missing owner approval token to fail")) {
+      throw err;
+    }
+    const stderr = err.stderr || "";
+    if (!stderr.includes("Missing owner approval token")) {
+      throw new Error("Missing owner approval token did not print error message");
+    }
+  }
+  console.log("  - missing owner approval token cannot merge: PASS");
+
+  // Test case 8: E2E report finalVerdict must be one of the allowed values
+  // Test case 9: mock PR URL is never written in apply-mode reports
+  if (fs.existsSync(reportPath)) {
+    const reportData = JSON.parse(fs.readFileSync(reportPath, "utf8"));
+    const allowedVerdicts = [
+      "E2E_WAITING_FOR_OWNER_APPROVAL",
+      "E2E_MERGED_AND_CLEANED",
+      "E2E_FAILED",
+      "E2E_CRITICAL_GATE_BLOCKED"
+    ];
+    if (!allowedVerdicts.includes(reportData.finalVerdict)) {
+      throw new Error(`Report contains invalid/disallowed finalVerdict: "${reportData.finalVerdict}"`);
+    }
+    if (reportData.draftPrUrl && reportData.draftPrUrl.includes("mock-12")) {
+      throw new Error("Mock PR URL written in reports");
+    }
+    if (reportData.prNumber === 12 && reportData.draftPrUrl && reportData.draftPrUrl.includes("/12")) {
+      throw new Error("Mock PR URL (PR 12) written in reports");
+    }
+    console.log("  - E2E report finalVerdict and mock URL checks: PASS");
+  }
+
   console.log("🎉 ALL PHASE 0.3N VERIFICATIONS PASSED!");
 }
 

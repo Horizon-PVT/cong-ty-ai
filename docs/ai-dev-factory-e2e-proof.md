@@ -9,4 +9,4 @@
 - **Self-Test Status**: PASS_READY_FOR_DRAFT_PR
 - **PR Status**: Draft PR Requested
 - **Merge Gate Status**: Waiting for Owner Approval
-- **Final Verdict**: E2E_DRAFT_PR_CREATED
+- **Final Verdict**: E2E_WAITING_FOR_OWNER_APPROVAL

@@ -170,14 +170,17 @@ async function main() {
     prBodyContent += `- **Execution Mode**: \`REAL\`\n`;
     prBodyContent += `- **Timestamp**: \`${new Date().toISOString()}\`\n\n`;
     prBodyContent += `#### Orchestrated Gates & Capabilities:\n`;
-    prBodyContent += `* Safe Goal Intake intent parsing\n`;
-    prBodyContent += `* Safe Feature Branch Loop verification\n`;
-    prBodyContent += `* Autonomous Self-Test Gate execution\n`;
-    prBodyContent += `* Auto PR & Push Gate integration\n`;
-    prBodyContent += `* Owner-Approved Merge & Post-Merge Cleanup Gate integration\n`;
-    prBodyContent += `* E2E JSON and Markdown run reports\n`;
-    prBodyContent += `* verify-0.3N PASS\n`;
-    prBodyContent += `* Critical safety gates remain blocked\n\n`;
+    prBodyContent += `* **Owner Goal Intake**: Intent parsing blocks deploy, secrets, destructive db migrations, spending, and external communication.\n`;
+    prBodyContent += `* **Safe Feature Branch Loop Validation**: Blocks master/main branch runs and enforces feature branch naming conventions.\n`;
+    prBodyContent += `* **Controlled Proof Task**: Executes safe scoped documentation updates (writing docs/ai-dev-factory-e2e-proof.md).\n`;
+    prBodyContent += `* **Autonomous Self-Test Gate Integration**: Automatically executes full verification tests suite locally.\n`;
+    prBodyContent += `* **Auto Push & Draft PR Gate Integration**: Automatically pushes feature branch and opens Draft PR on GitHub.\n`;
+    prBodyContent += `* **Owner-Approved Merge Gate Integration**: Connects to owner merge gate verifying approval tokens.\n`;
+    prBodyContent += `* **Post-Merge local Cleanup**: Automatically switches to master, pulls remote master, deletes local feature branch safely, and prunes remote tracking branches.\n`;
+    prBodyContent += `* **E2E Reports**: Writes latest.json and latest.md run metrics.\n`;
+    prBodyContent += `* **verify-0.3N PASS**: Full E2E verifications pass successfully.\n`;
+    prBodyContent += `* **Critical Gates Still Blocked**: Deployments, secrets reads, destructive database actions, spending, and external communications remain fully blocked.\n`;
+    prBodyContent += `* **Merge Action Restricted**: Merge remains strictly blocked pending explicit owner approval token of format \`OWNER_APPROVED_MERGE_PR=<number>\`.\n\n`;
   } else {
     prBodyContent = `### Phase 0.3L Auto-Generated PR Summary\n\n`;
     prBodyContent += `- **Branch**: \`${currentBranch}\`\n`;

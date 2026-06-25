@@ -9,6 +9,9 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, "../");
 
 function getGhPath() {
+  if (process.env.MOCK_GH_PATH_MISSING === "true") {
+    return null;
+  }
   const commonPaths = [
     "C:\\Program Files\\GitHub CLI\\gh.exe",
     "C:\\Program Files (x86)\\GitHub CLI\\gh.exe",
@@ -88,6 +91,8 @@ async function main() {
     approvalOption = args[approvalIndex + 1];
   }
 
+  const isMergeMode = !!prOption;
+
   console.log(`[E2E Runner] Initializing End-to-End Autonomous Dev Run...`);
   console.log(`[E2E Runner] Mode: ${isDryRun ? "DRY-RUN (Simulated)" : "APPLY (Execution)"}`);
 
@@ -95,12 +100,14 @@ async function main() {
   const startTime = Date.now();
 
   // A. Goal Intake Validation
-  const goalVal = validateGoalIntent(goal);
-  if (!goalVal.valid) {
-    console.error(`[E2E Runner] Error: ${goalVal.reason}.`);
-    process.exit(1);
+  if (!isMergeMode) {
+    const goalVal = validateGoalIntent(goal);
+    if (!goalVal.valid) {
+      console.error(`[E2E Runner] Error: ${goalVal.reason}.`);
+      process.exit(1);
+    }
+    console.log(`[E2E Runner] Goal validated: "${goal}"`);
   }
-  console.log(`[E2E Runner] Goal validated: "${goal}"`);
 
   // B. Branch Validation
   let currentBranch = "";
@@ -111,8 +118,12 @@ async function main() {
     process.exit(1);
   }
 
+  if (prOption && !approvalOption) {
+    console.error(`[E2E Runner] Error: Missing owner approval token. Merging requires --approval OWNER_APPROVED_MERGE_PR=<number>`);
+    process.exit(1);
+  }
+
   // If in execution mode, refuse master/main
-  const isMergeMode = prOption && approvalOption;
   if (!isMergeMode && !isValidBranchName(currentBranch)) {
     console.error(`[E2E Runner] Error: E2E Runner cannot run execution on master/main. Require chore/* or feat/* branch.`);
     process.exit(1);
@@ -135,10 +146,10 @@ async function main() {
       console.log(`[E2E Runner] [Dry-Run] Would write docs/ai-dev-factory-e2e-proof.md`);
       selfTestVerdict = "PASS_READY_FOR_DRAFT_PR";
       if (autoPr) {
-        draftPrUrl = "https://github.com/Horizon-PVT/cong-ty-ai/pull/mock-12";
-        prNumber = 12;
-        finalVerdict = "E2E_DRAFT_PR_CREATED";
+        draftPrUrl = "https://github.com/Horizon-PVT/cong-ty-ai/pull/simulated-pr-13";
+        prNumber = 13;
       }
+      finalVerdict = "E2E_WAITING_FOR_OWNER_APPROVAL";
     } else {
       console.log(`[E2E Runner] Executing controlled task: writing docs/ai-dev-factory-e2e-proof.md...`);
       let proofContent = `# Phase 0.3N E2E Dev Run Proof\n\n`;
@@ -152,17 +163,27 @@ async function main() {
       proofContent += `- **PR Status**: PENDING\n`;
       proofContent += `- **Merge Gate Status**: PENDING\n`;
       proofContent += `- **Final Verdict**: E2E_WAITING_FOR_OWNER_APPROVAL\n`;
-      fs.writeFileSync(proofPath, proofContent, "utf8");
-      console.log(`[E2E Runner] Wrote proof document.`);
+      
+      if (process.env.MOCK_REPORT_WRITE_BYPASS === "true") {
+        console.log(`[E2E Runner] (Mocked Report Write) Bypassed writing docs/ai-dev-factory-e2e-proof.md`);
+      } else {
+        fs.writeFileSync(proofPath, proofContent, "utf8");
+        console.log(`[E2E Runner] Wrote proof document.`);
+      }
 
       // D. Self-Test Integration
       console.log(`[E2E Runner] Running self-test gate...`);
       try {
-        execSync(`node scripts/ai-dev-factory-self-test-gate.mjs --phase ${phase} --dry-run --write-report`, { stdio: "inherit" });
-        const selfTestReportPath = path.join(repoRoot, "reports/self-test/latest.json");
-        if (fs.existsSync(selfTestReportPath)) {
-          const selfTestReport = JSON.parse(fs.readFileSync(selfTestReportPath, "utf8"));
-          selfTestVerdict = selfTestReport.finalVerdict;
+        if (process.env.MOCK_SELF_TEST_VERDICT) {
+          selfTestVerdict = process.env.MOCK_SELF_TEST_VERDICT;
+          console.log(`[E2E Runner] (Mocked Self-Test) Verdict: ${selfTestVerdict}`);
+        } else {
+          execSync(`node scripts/ai-dev-factory-self-test-gate.mjs --phase ${phase} --dry-run --write-report`, { stdio: "inherit" });
+          const selfTestReportPath = path.join(repoRoot, "reports/self-test/latest.json");
+          if (fs.existsSync(selfTestReportPath)) {
+            const selfTestReport = JSON.parse(fs.readFileSync(selfTestReportPath, "utf8"));
+            selfTestVerdict = selfTestReport.finalVerdict;
+          }
         }
       } catch (err) {
         console.error(`[E2E Runner] Error: Self-test gate failed: ${err.message}`);
@@ -175,56 +196,99 @@ async function main() {
       }
       console.log(`[E2E Runner] Self-test passed: ${selfTestVerdict}`);
 
-      if (autoPr) {
-        finalVerdict = "E2E_DRAFT_PR_CREATED";
-      }
-
-      // Write final proof document
-      let proofContentUpdated = `# Phase 0.3N E2E Dev Run Proof\n\n`;
-      proofContentUpdated += `- **Goal**: ${goal}\n`;
-      proofContentUpdated += `- **Task ID**: ${taskId}\n`;
-      proofContentUpdated += `- **Branch**: ${currentBranch}\n`;
-      proofContentUpdated += `- **Phase**: ${phase}\n`;
-      proofContentUpdated += `- **Safe Actions Performed**: Scoped proof documentation update and E2E self-testing\n`;
-      proofContentUpdated += `- **Blocked Critical Gates**: Checked (Deploy, Secrets, Destructive DB, Spending, External Communications are blocked)\n`;
-      proofContentUpdated += `- **Self-Test Status**: ${selfTestVerdict}\n`;
-      proofContentUpdated += `- **PR Status**: ${autoPr ? "Draft PR Requested" : "Bypassed / Not Requested"}\n`;
-      proofContentUpdated += `- **Merge Gate Status**: Waiting for Owner Approval\n`;
-      proofContentUpdated += `- **Final Verdict**: ${finalVerdict}\n`;
-      fs.writeFileSync(proofPath, proofContentUpdated, "utf8");
-
-      // Commit changes locally to ensure clean working tree before PR automation
-      console.log(`[E2E Runner] Committing changes before PR automation...`);
-      try {
-        execSync("git add docs/ai-dev-factory-e2e-proof.md docs/ai-dev-factory-execution-status.md reports/self-test/latest.json reports/self-test/latest.md", { stdio: "inherit" });
-        execSync('git commit -m "chore: commit latest self-test gate reports and proof for 0.3n"', { stdio: "inherit" });
-        console.log(`[E2E Runner] Committed successfully.`);
-      } catch (err) {
-        console.log(`[E2E Runner] Warning: Nothing to commit or git commit failed: ${err.message}`);
-      }
-
       // E. Auto PR Integration
       if (autoPr) {
         console.log(`[E2E Runner] Auto PR enabled. Running PR automation...`);
         try {
-          execSync(`node scripts/ai-dev-factory-pr-automation.mjs --apply`, { stdio: "inherit" });
+          if (process.env.MOCK_PR_CREATION_FAIL === "true") {
+            throw new Error("Simulated PR creation failure");
+          }
+          if (process.env.MOCK_PR_AUTOMATION_BYPASS === "true") {
+            console.log(`[E2E Runner] (Mocked PR Automation) Bypassed running pr-automation script.`);
+          } else {
+            execSync(`node scripts/ai-dev-factory-pr-automation.mjs --apply`, { stdio: "inherit" });
+          }
           const ghPath = getGhPath();
           if (ghPath) {
-            const prViewCmd = `"${ghPath}" pr view --json number,url`;
-            const prViewOut = execSync(prViewCmd, { encoding: "utf8" }).trim();
-            const prViewData = JSON.parse(prViewOut);
-            prNumber = prViewData.number;
-            draftPrUrl = prViewData.url;
+            if (process.env.MOCK_GH_PR_VIEW_FAIL === "true") {
+              throw new Error("Simulated gh pr view failure");
+            }
+            if (process.env.MOCK_REAL_PR_DETAILS) {
+              const data = JSON.parse(process.env.MOCK_REAL_PR_DETAILS);
+              prNumber = data.number;
+              draftPrUrl = data.url;
+            } else {
+              const prViewCmd = `"${ghPath}" pr view --json number,url`;
+              const prViewOut = execSync(prViewCmd, { encoding: "utf8" }).trim();
+              const prViewData = JSON.parse(prViewOut);
+              prNumber = prViewData.number;
+              draftPrUrl = prViewData.url;
+            }
             console.log(`[E2E Runner] PR #${prNumber} created successfully at: ${draftPrUrl}`);
           } else {
-            console.log(`[E2E Runner] Warning: gh CLI not found, using mock PR details.`);
-            prNumber = 12;
-            draftPrUrl = "https://github.com/Horizon-PVT/cong-ty-ai/pull/12";
+            console.error(`[E2E Runner] Error: gh CLI not found. Cannot retrieve real PR details in apply mode.`);
+            finalVerdict = "E2E_FAILED";
+            prNumber = null;
+            draftPrUrl = "";
           }
         } catch (err) {
-          console.error(`[E2E Runner] Warning: PR creation failed or bypassed (offline/no CLI): ${err.message}`);
-          prNumber = 12;
-          draftPrUrl = "https://github.com/Horizon-PVT/cong-ty-ai/pull/12";
+          console.error(`[E2E Runner] Error: PR automation or PR retrieval failed in apply mode: ${err.message}`);
+          finalVerdict = "E2E_FAILED";
+          prNumber = null;
+          draftPrUrl = "";
+        }
+      }
+
+      // Write final proof document
+      if (finalVerdict !== "E2E_FAILED") {
+        let proofContentUpdated = `# Phase 0.3N E2E Dev Run Proof\n\n`;
+        proofContentUpdated += `- **Goal**: ${goal}\n`;
+        proofContentUpdated += `- **Task ID**: ${taskId}\n`;
+        proofContentUpdated += `- **Branch**: ${currentBranch}\n`;
+        proofContentUpdated += `- **Phase**: ${phase}\n`;
+        proofContentUpdated += `- **Safe Actions Performed**: Scoped proof documentation update and E2E self-testing\n`;
+        proofContentUpdated += `- **Blocked Critical Gates**: Checked (Deploy, Secrets, Destructive DB, Spending, External Communications are blocked)\n`;
+        proofContentUpdated += `- **Self-Test Status**: ${selfTestVerdict}\n`;
+        proofContentUpdated += `- **PR Status**: ${autoPr ? "Draft PR Requested" : "Bypassed / Not Requested"}\n`;
+        proofContentUpdated += `- **Merge Gate Status**: Waiting for Owner Approval\n`;
+        proofContentUpdated += `- **Final Verdict**: ${finalVerdict}\n`;
+        
+        if (process.env.MOCK_REPORT_WRITE_BYPASS === "true") {
+          console.log(`[E2E Runner] (Mocked Report Write) Bypassed updating docs/ai-dev-factory-e2e-proof.md`);
+        } else {
+          fs.writeFileSync(proofPath, proofContentUpdated, "utf8");
+        }
+
+        // Commit changes locally to ensure clean working tree before PR automation
+        if (process.env.MOCK_GIT_OPERATIONS === "true") {
+          console.log(`[E2E Runner] (Mocked Git operations) Staging and committing proof files bypassed.`);
+        } else {
+          console.log(`[E2E Runner] Committing changes before PR automation...`);
+          try {
+            execSync("git add docs/ai-dev-factory-e2e-proof.md docs/ai-dev-factory-execution-status.md reports/self-test/latest.json reports/self-test/latest.md", { stdio: "inherit" });
+            execSync('git commit -m "chore: commit latest self-test gate reports and proof for 0.3n"', { stdio: "inherit" });
+            console.log(`[E2E Runner] Committed successfully.`);
+          } catch (err) {
+            console.log(`[E2E Runner] Warning: Nothing to commit or git commit failed: ${err.message}`);
+          }
+        }
+      } else {
+        let proofContentFailed = `# Phase 0.3N E2E Dev Run Proof\n\n`;
+        proofContentFailed += `- **Goal**: ${goal}\n`;
+        proofContentFailed += `- **Task ID**: ${taskId}\n`;
+        proofContentFailed += `- **Branch**: ${currentBranch}\n`;
+        proofContentFailed += `- **Phase**: ${phase}\n`;
+        proofContentFailed += `- **Safe Actions Performed**: Scoped proof documentation update and E2E self-testing\n`;
+        proofContentFailed += `- **Blocked Critical Gates**: Checked (Deploy, Secrets, Destructive DB, Spending, External Communications are blocked)\n`;
+        proofContentFailed += `- **Self-Test Status**: ${selfTestVerdict}\n`;
+        proofContentFailed += `- **PR Status**: Failed to create real PR\n`;
+        proofContentFailed += `- **Merge Gate Status**: Blocked\n`;
+        proofContentFailed += `- **Final Verdict**: E2E_FAILED\n`;
+        
+        if (process.env.MOCK_REPORT_WRITE_BYPASS === "true") {
+          console.log(`[E2E Runner] (Mocked Report Write) Bypassed writing docs/ai-dev-factory-e2e-proof.md on failure`);
+        } else {
+          fs.writeFileSync(proofPath, proofContentFailed, "utf8");
         }
       }
     }
@@ -305,51 +369,62 @@ async function main() {
   };
 
   if (!isDryRun) {
-    fs.writeFileSync(
-      path.join(reportDir, "latest.json"),
-      JSON.stringify(jsonReport, null, 2),
-      "utf8"
-    );
-    console.log(`[E2E Runner] Wrote reports/e2e/latest.json`);
+    if (process.env.MOCK_REPORT_WRITE_BYPASS === "true") {
+      console.log(`[E2E Runner] (Mocked Report Write) Bypassed writing report files.`);
+    } else {
+      fs.writeFileSync(
+        path.join(reportDir, "latest.json"),
+        JSON.stringify(jsonReport, null, 2),
+        "utf8"
+      );
+      console.log(`[E2E Runner] Wrote reports/e2e/latest.json`);
 
-    let mdContent = `# E2E Dev Run Report\n\n`;
-    mdContent += `- **Phase**: \`${phase}\`\n`;
-    mdContent += `- **Task ID**: \`${taskId}\`\n`;
-    mdContent += `- **Owner Goal**: "${goal}"\n`;
-    mdContent += `- **Branch**: \`${currentBranch}\`\n`;
-    mdContent += `- **Started At**: \`${startedAt}\`\n`;
-    mdContent += `- **Finished At**: \`${finishedAt}\`\n`;
-    mdContent += `- **Duration**: \`${(durationMs / 1000).toFixed(2)}s\`\n`;
-    mdContent += `- **Self-Test Verdict**: \`${selfTestVerdict}\`\n`;
-    mdContent += `- **PR Number**: \`${prNumber || "N/A"}\`\n`;
-    mdContent += `- **PR URL**: [${draftPrUrl || "N/A"}](${draftPrUrl || "#"})\n`;
-    mdContent += `- **Merge Attempted**: \`${mergeAttempted}\`\n`;
-    mdContent += `- **Merge Approved**: \`${mergeApproved}\`\n`;
-    mdContent += `- **Merge Result**: \`${mergeResult}\`\n`;
-    mdContent += `- **Cleanup Result**: \`${postMergeCleanupResult}\`\n`;
-    mdContent += `- **Final Verdict**: \`${finalVerdict}\`\n\n`;
-    mdContent += `### Safety Gate Rollup\n\n`;
-    mdContent += `| Gate | Status | Blocked |\n`;
-    mdContent += `| --- | --- | --- |\n`;
-    mdContent += `| Deploy | **OK** | YES |\n`;
-    mdContent += `| Secrets Read | **OK** | YES |\n`;
-    mdContent += `| Destructive DB | **OK** | YES |\n`;
-    mdContent += `| Spending | **OK** | YES |\n`;
-    mdContent += `| External Comm | **OK** | YES |\n`;
+      let mdContent = `# E2E Dev Run Report\n\n`;
+      mdContent += `- **Phase**: \`${phase}\`\n`;
+      mdContent += `- **Task ID**: \`${taskId}\`\n`;
+      mdContent += `- **Owner Goal**: "${goal}"\n`;
+      mdContent += `- **Branch**: \`${currentBranch}\`\n`;
+      mdContent += `- **Started At**: \`${startedAt}\`\n`;
+      mdContent += `- **Finished At**: \`${finishedAt}\`\n`;
+      mdContent += `- **Duration**: \`${(durationMs / 1000).toFixed(2)}s\`\n`;
+      mdContent += `- **Self-Test Verdict**: \`${selfTestVerdict}\`\n`;
+      mdContent += `- **PR Number**: \`${prNumber || "N/A"}\`\n`;
+      mdContent += `- **PR URL**: [${draftPrUrl || "N/A"}](${draftPrUrl || "#"})\n`;
+      mdContent += `- **Merge Attempted**: \`${mergeAttempted}\`\n`;
+      mdContent += `- **Merge Approved**: \`${mergeApproved}\`\n`;
+      mdContent += `- **Merge Result**: \`${mergeResult}\`\n`;
+      mdContent += `- **Cleanup Result**: \`${postMergeCleanupResult}\`\n`;
+      mdContent += `- **Final Verdict**: \`${finalVerdict}\`\n\n`;
+      mdContent += `### Safety Gate Rollup\n\n`;
+      mdContent += `| Gate | Status | Blocked |\n`;
+      mdContent += `| --- | --- | --- |\n`;
+      mdContent += `| Deploy | **OK** | YES |\n`;
+      mdContent += `| Secrets Read | **OK** | YES |\n`;
+      mdContent += `| Destructive DB | **OK** | YES |\n`;
+      mdContent += `| Spending | **OK** | YES |\n`;
+      mdContent += `| External Comm | **OK** | YES |\n`;
 
-    fs.writeFileSync(
-      path.join(reportDir, "latest.md"),
-      mdContent,
-      "utf8"
-    );
-    console.log(`[E2E Runner] Wrote reports/e2e/latest.md`);
+      fs.writeFileSync(
+        path.join(reportDir, "latest.md"),
+        mdContent,
+        "utf8"
+      );
+      console.log(`[E2E Runner] Wrote reports/e2e/latest.md`);
+    }
   } else {
     console.log(`\n=== DRY-RUN E2E RUNNER SUMMARY ===`);
     console.log(JSON.stringify(jsonReport, null, 2));
     console.log(`==================================\n`);
+    console.log(`No files modified`);
+    console.log(`No push performed`);
+    console.log(`No Draft PR created`);
+    console.log(`No merge attempted`);
   }
 
+  console.log(`[E2E Runner] Dev run complete. Final verdict: ${finalVerdict}`);
+
   if (finalVerdict === "E2E_FAILED" || finalVerdict === "E2E_CRITICAL_GATE_BLOCKED") {
+    console.error(`[E2E Runner] Terminating with final verdict: ${finalVerdict}`);
     process.exit(1);
   }
 }
