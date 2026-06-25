@@ -1,6 +1,6 @@
 # AI Dev Factory Self-Test Gate Report
 
-- **Branch**: `chore/auto-push-draft-pr-gate`
+- **Branch**: `chore/owner-approved-merge-cleanup-gate`
 - **Phase**: `0.3l`
 - **Final Verdict**: `PASS_READY_FOR_DRAFT_PR`
 - **Can Open Draft PR**: `YES`
@@ -12,12 +12,12 @@
 
 | Command | Exit Code | Status | Duration | Execution Mode |
 | ------- | --------- | ------ | -------- | -------------- |
-| `pnpm -r typecheck` | 0 | **PASS** | 122.58s | real |
-| `pnpm build` | 0 | **PASS** | 131.63s | real |
-| `pnpm test:run --dry-run` | 0 | **PASS** | 2.99s | real |
-| `node packages/db/src/_verify-0.3i.mjs` | 0 | **PASS** | 0.27s | real |
-| `node packages/db/src/_verify-0.3k.mjs` | 0 | **PASS** | 0.29s | real |
-| `node packages/db/src/_verify-0.3l.mjs` | 0 | **PASS** | 0.12s | real |
+| `pnpm -r typecheck` | 0 | **PASS** | 131.69s | real |
+| `pnpm build` | 0 | **PASS** | 136.52s | real |
+| `pnpm test:run --dry-run` | 0 | **PASS** | 2.76s | real |
+| `node packages/db/src/_verify-0.3i.mjs` | 0 | **PASS** | 0.25s | real |
+| `node packages/db/src/_verify-0.3k.mjs` | 0 | **PASS** | 0.18s | real |
+| `node packages/db/src/_verify-0.3l.mjs` | 0 | **PASS** | 0.10s | real |
 
 ## Recommended Next Action
 
