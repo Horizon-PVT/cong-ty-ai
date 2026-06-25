@@ -1,57 +1,64 @@
 {
-  "phase": "0.3m",
-  "branch": "chore/owner-approved-merge-cleanup-gate",
-  "startedAt": "2026-06-25T05:49:10.648Z",
-  "finishedAt": "2026-06-25T05:53:21.624Z",
-  "durationMs": 250975,
+  "phase": "0.3n",
+  "branch": "chore/end-to-end-autonomous-dev-run",
+  "startedAt": "2026-06-25T06:27:06.561Z",
+  "finishedAt": "2026-06-25T06:31:39.750Z",
+  "durationMs": 273188,
   "commands": [
     {
       "command": "pnpm -r typecheck",
       "exitCode": 0,
       "status": "PASS",
-      "durationMs": 118796,
+      "durationMs": 128710,
       "executionMode": "real"
     },
     {
       "command": "pnpm build",
       "exitCode": 0,
       "status": "PASS",
-      "durationMs": 120287,
+      "durationMs": 132315,
       "executionMode": "real"
     },
     {
       "command": "pnpm test:run --dry-run",
       "exitCode": 0,
       "status": "PASS",
-      "durationMs": 2568,
+      "durationMs": 2659,
       "executionMode": "real"
     },
     {
       "command": "node packages/db/src/_verify-0.3i.mjs",
       "exitCode": 0,
       "status": "PASS",
-      "durationMs": 219,
+      "durationMs": 248,
       "executionMode": "real"
     },
     {
       "command": "node packages/db/src/_verify-0.3k.mjs",
       "exitCode": 0,
       "status": "PASS",
-      "durationMs": 178,
+      "durationMs": 190,
       "executionMode": "real"
     },
     {
       "command": "node packages/db/src/_verify-0.3l.mjs",
       "exitCode": 0,
       "status": "PASS",
-      "durationMs": 92,
+      "durationMs": 93,
       "executionMode": "real"
     },
     {
       "command": "node packages/db/src/_verify-0.3m.mjs",
       "exitCode": 0,
       "status": "PASS",
-      "durationMs": 8832,
+      "durationMs": 8490,
+      "executionMode": "real"
+    },
+    {
+      "command": "node packages/db/src/_verify-0.3n.mjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "durationMs": 480,
       "executionMode": "real"
     }
   ],
