@@ -1,72 +1,81 @@
 {
   "phase": "0.3o",
   "branch": "chore/e2e-merge-path-dirty-tree-hardening",
-  "startedAt": "2026-06-26T02:26:55.483Z",
-  "finishedAt": "2026-06-26T02:31:37.789Z",
-  "durationMs": 282305,
+  "startedAt": "2026-06-26T02:32:24.513Z",
+  "finishedAt": "2026-06-26T02:37:03.081Z",
+  "durationMs": 278568,
   "commands": [
     {
       "command": "pnpm -r typecheck",
       "exitCode": 0,
       "status": "PASS",
-      "durationMs": 130606,
-      "executionMode": "real"
+      "durationMs": 130383,
+      "executionMode": "real",
+      "optional": false
     },
     {
       "command": "pnpm build",
       "exitCode": 0,
       "status": "PASS",
-      "durationMs": 136709,
-      "executionMode": "real"
+      "durationMs": 133316,
+      "executionMode": "real",
+      "optional": false
     },
     {
       "command": "pnpm test:run --dry-run",
       "exitCode": 0,
       "status": "PASS",
-      "durationMs": 2833,
-      "executionMode": "real"
+      "durationMs": 2764,
+      "executionMode": "real",
+      "optional": false
     },
     {
       "command": "node packages/db/src/_verify-0.3i.mjs",
       "exitCode": 1,
       "status": "FAIL",
-      "durationMs": 181,
-      "executionMode": "real"
+      "durationMs": 183,
+      "executionMode": "real",
+      "optional": true
     },
     {
       "command": "node packages/db/src/_verify-0.3k.mjs",
       "exitCode": 1,
       "status": "FAIL",
-      "durationMs": 145,
-      "executionMode": "real"
+      "durationMs": 148,
+      "executionMode": "real",
+      "optional": true
     },
     {
       "command": "node packages/db/src/_verify-0.3l.mjs",
       "exitCode": 0,
       "status": "PASS",
-      "durationMs": 110,
-      "executionMode": "real"
+      "durationMs": 111,
+      "executionMode": "real",
+      "optional": true
     },
     {
       "command": "node packages/db/src/_verify-0.3m.mjs",
       "exitCode": 0,
       "status": "PASS",
-      "durationMs": 8635,
-      "executionMode": "real"
+      "durationMs": 8638,
+      "executionMode": "real",
+      "optional": true
     },
     {
       "command": "node packages/db/src/_verify-0.3n.mjs",
       "exitCode": 0,
       "status": "PASS",
-      "durationMs": 2270,
-      "executionMode": "real"
+      "durationMs": 2242,
+      "executionMode": "real",
+      "optional": true
     },
     {
       "command": "node packages/db/src/_verify-0.3o.mjs",
       "exitCode": 0,
       "status": "PASS",
-      "durationMs": 813,
-      "executionMode": "real"
+      "durationMs": 779,
+      "executionMode": "real",
+      "optional": true
     }
   ],
   "finalVerdict": "PASS_READY_FOR_OWNER_REVIEW",

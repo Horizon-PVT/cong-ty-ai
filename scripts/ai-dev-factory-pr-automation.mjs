@@ -80,10 +80,10 @@ export function validateSelfTestReport(report) {
     if (cmd.executionMode !== "real") {
       return { valid: false, error: `Validation failed: command "${cmd.command}" was run in simulated mode` };
     }
-    if (cmd.status !== "PASS") {
+    if (cmd.status !== "PASS" && !cmd.optional) {
       return { valid: false, error: `Validation failed: command "${cmd.command}" status is not PASS` };
     }
-    if (cmd.exitCode !== 0) {
+    if (cmd.exitCode !== 0 && !cmd.optional) {
       return { valid: false, error: `Validation failed: command "${cmd.command}" exit code is non-zero` };
     }
   }

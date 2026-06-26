@@ -134,7 +134,8 @@ async function main() {
       exitCode,
       status,
       durationMs: itemDurationMs,
-      executionMode: isSimulate ? "simulated" : "real"
+      executionMode: isSimulate ? "simulated" : "real",
+      optional: !!item.optional
     });
 
     if (status !== "PASS" && !item.optional) {
