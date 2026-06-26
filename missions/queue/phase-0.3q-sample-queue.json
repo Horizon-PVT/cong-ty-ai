@@ -1,0 +1,243 @@
+{
+  "missions": [
+    {
+      "mission_id": "mission-0.3q-001",
+      "phase": "0.3Q",
+      "title": "Phase 0.3Q: Mission Queue & Resume/Idempotency",
+      "branch": "chore/mission-queue-resume-idempotency",
+      "status": "DRAFT_PR_OPENED",
+      "run_id": "run-a8b9c10d-2e3f-4a5b-6c7d-8e9f0a1b2c3d",
+      "pr_number": 16,
+      "head_sha": "575ea78fad703f9f5b7a8f1be19f06f7c4cc48b2",
+      "created_at": "2026-06-26T07:26:00.000Z",
+      "updated_at": "2026-06-26T07:28:00.000Z",
+      "allowed_files": [
+        "docs/ai-dev-factory-mission-queue.md",
+        "docs/ai-dev-factory-resume-policy.md",
+        "docs/ai-dev-factory-execution-status.md",
+        "missions/queue/phase-0.3q-sample-queue.json",
+        "packages/db/src/_verify-0.3q.mjs",
+        "packages/db/src/_verify-0.3p.mjs",
+        "scripts/ai-dev-factory-self-test-gate.mjs",
+        "scripts/ai-dev-factory-pr-automation.mjs"
+      ],
+      "blocked_files": [
+        ".env",
+        ".env.*",
+        "Dockerfile",
+        "docker-compose.yml"
+      ],
+      "verification_commands": [
+        "pnpm -r typecheck",
+        "pnpm build",
+        "pnpm test:run --dry-run",
+        "node packages/db/src/_verify-0.3q.mjs",
+        "node scripts/ai-dev-factory-self-test-gate.mjs --phase 0.3q --dry-run"
+      ],
+      "safety_rules": [
+        "Do not deploy to production",
+        "Do not read, write, print, or modify secrets or API keys",
+        "Do not touch .env files",
+        "Do not perform destructive database actions",
+        "Do not spend money or trigger paid infra/ads",
+        "Do not transmit outgoing email/SMS/customer/external communications",
+        "Do not auto-publish production content"
+      ],
+      "resume_policy": "REUSE_BRANCH_AND_PR",
+      "idempotency_key": "idemp-phase0.3q-missionqueue-resume-123456",
+      "final_verdict": "PASS_READY_FOR_DRAFT_PR"
+    },
+    {
+      "mission_id": "mission-0.3q-002",
+      "phase": "0.3Q",
+      "title": "Phase 0.3Q: Sample Pending Goal",
+      "branch": "chore/sample-pending-branch",
+      "status": "PENDING",
+      "run_id": "",
+      "pr_number": null,
+      "head_sha": "",
+      "created_at": "2026-06-26T07:29:00.000Z",
+      "updated_at": "2026-06-26T07:29:00.000Z",
+      "allowed_files": [
+        "docs/sample.md"
+      ],
+      "blocked_files": [
+        ".env"
+      ],
+      "verification_commands": [
+        "pnpm build"
+      ],
+      "safety_rules": [
+        "Do not deploy to production",
+        "Do not read, write, print, or modify secrets or API keys",
+        "Do not touch .env files",
+        "Do not perform destructive database actions",
+        "Do not spend money or trigger paid infra/ads",
+        "Do not send email/SMS/customer/external communications"
+      ],
+      "resume_policy": "REUSE_BRANCH_AND_PR",
+      "idempotency_key": "idemp-sample-pending-123",
+      "final_verdict": "UNKNOWN"
+    },
+    {
+      "mission_id": "mission-0.3q-003",
+      "phase": "0.3Q",
+      "title": "Phase 0.3Q: Sample Running Goal",
+      "branch": "chore/sample-running-branch",
+      "status": "RUNNING",
+      "run_id": "run-f1g2h3i4-5j6k-7l8m-9n0o-p1q2r3s4t5u6",
+      "pr_number": null,
+      "head_sha": "575ea78fad703f9f5b7a8f1be19f06f7c4cc48b2",
+      "created_at": "2026-06-26T07:30:00.000Z",
+      "updated_at": "2026-06-26T07:31:00.000Z",
+      "allowed_files": [
+        "docs/sample-running.md"
+      ],
+      "blocked_files": [
+        ".env"
+      ],
+      "verification_commands": [
+        "pnpm build"
+      ],
+      "safety_rules": [
+        "Do not deploy to production",
+        "Do not read, write, print, or modify secrets or API keys",
+        "Do not touch .env files",
+        "Do not perform destructive database actions",
+        "Do not spend money or trigger paid infra/ads",
+        "Do not send email/SMS/customer/external communications"
+      ],
+      "resume_policy": "REUSE_BRANCH_AND_PR",
+      "idempotency_key": "idemp-sample-running-123",
+      "final_verdict": "UNKNOWN"
+    },
+    {
+      "mission_id": "mission-0.3q-004",
+      "phase": "0.3Q",
+      "title": "Phase 0.3Q: Sample Waiting Approval Goal",
+      "branch": "chore/sample-waiting-approval-branch",
+      "status": "WAITING_OWNER_APPROVAL",
+      "run_id": "run-w1x2y3z4-5a6b-7c8d-9e0f-1g2h3i4j5k6l",
+      "pr_number": 17,
+      "head_sha": "575ea78fad703f9f5b7a8f1be19f06f7c4cc48b2",
+      "created_at": "2026-06-26T07:32:00.000Z",
+      "updated_at": "2026-06-26T07:33:00.000Z",
+      "allowed_files": [
+        "docs/sample-waiting.md"
+      ],
+      "blocked_files": [
+        ".env"
+      ],
+      "verification_commands": [
+        "pnpm build"
+      ],
+      "safety_rules": [
+        "Do not deploy to production",
+        "Do not read, write, print, or modify secrets or API keys",
+        "Do not touch .env files",
+        "Do not perform destructive database actions",
+        "Do not spend money or trigger paid infra/ads",
+        "Do not send email/SMS/customer/external communications"
+      ],
+      "resume_policy": "REUSE_BRANCH_AND_PR",
+      "idempotency_key": "idemp-sample-waiting-123",
+      "final_verdict": "PASS_READY_FOR_OWNER_REVIEW"
+    },
+    {
+      "mission_id": "mission-0.3q-005",
+      "phase": "0.3Q",
+      "title": "Phase 0.3Q: Sample Merged Goal",
+      "branch": "chore/sample-merged-branch",
+      "status": "MERGED",
+      "run_id": "run-m1n2o3p4-5q6r-7s8t-9u0v-1w2x3y4z5a6b",
+      "pr_number": 18,
+      "head_sha": "575ea78fad703f9f5b7a8f1be19f06f7c4cc48b2",
+      "created_at": "2026-06-26T07:34:00.000Z",
+      "updated_at": "2026-06-26T07:35:00.000Z",
+      "allowed_files": [
+        "docs/sample-merged.md"
+      ],
+      "blocked_files": [
+        ".env"
+      ],
+      "verification_commands": [
+        "pnpm build"
+      ],
+      "safety_rules": [
+        "Do not deploy to production",
+        "Do not read, write, print, or modify secrets or API keys",
+        "Do not touch .env files",
+        "Do not perform destructive database actions",
+        "Do not spend money or trigger paid infra/ads",
+        "Do not send email/SMS/customer/external communications"
+      ],
+      "resume_policy": "REUSE_BRANCH_AND_PR",
+      "idempotency_key": "idemp-sample-merged-123",
+      "final_verdict": "E2E_MERGED"
+    },
+    {
+      "mission_id": "mission-0.3q-006",
+      "phase": "0.3Q",
+      "title": "Phase 0.3Q: Sample Cleaned Goal",
+      "branch": "chore/sample-cleaned-branch",
+      "status": "CLEANED",
+      "run_id": "run-c1l2e3a4-5n6e-7d8b-9u0g-1h2i3j4k5l6m",
+      "pr_number": 19,
+      "head_sha": "575ea78fad703f9f5b7a8f1be19f06f7c4cc48b2",
+      "created_at": "2026-06-26T07:36:00.000Z",
+      "updated_at": "2026-06-26T07:37:00.000Z",
+      "allowed_files": [
+        "docs/sample-cleaned.md"
+      ],
+      "blocked_files": [
+        ".env"
+      ],
+      "verification_commands": [
+        "pnpm build"
+      ],
+      "safety_rules": [
+        "Do not deploy to production",
+        "Do not read, write, print, or modify secrets or API keys",
+        "Do not touch .env files",
+        "Do not perform destructive database actions",
+        "Do not spend money or trigger paid infra/ads",
+        "Do not send email/SMS/customer/external communications"
+      ],
+      "resume_policy": "REUSE_BRANCH_AND_PR",
+      "idempotency_key": "idemp-sample-cleaned-123",
+      "final_verdict": "E2E_MERGED_AND_CLEANED"
+    },
+    {
+      "mission_id": "mission-0.3q-007",
+      "phase": "0.3Q",
+      "title": "Phase 0.3Q: Sample Failed Blocked Goal",
+      "branch": "chore/sample-failed-blocked-branch",
+      "status": "FAILED_BLOCKED",
+      "run_id": "run-f1a2i3l4-5b6l-7o8c-9k0e-1d2g3h4i5j6k",
+      "pr_number": null,
+      "head_sha": "575ea78fad703f9f5b7a8f1be19f06f7c4cc48b2",
+      "created_at": "2026-06-26T07:38:00.000Z",
+      "updated_at": "2026-06-26T07:39:00.000Z",
+      "allowed_files": [
+        "docs/sample-failed.md"
+      ],
+      "blocked_files": [
+        ".env"
+      ],
+      "verification_commands": [
+        "pnpm build"
+      ],
+      "safety_rules": [
+        "Do not deploy to production",
+        "Do not read, write, print, or modify secrets or API keys",
+        "Do not touch .env files",
+        "Do not perform destructive database actions",
+        "Do not spend money or trigger paid infra/ads",
+        "Do not send email/SMS/customer/external communications"
+      ],
+      "resume_policy": "REUSE_BRANCH_AND_PR",
+      "idempotency_key": "idemp-sample-failed-123",
+      "final_verdict": "FAILED_SAFETY_VIOLATION"
+    }
+  ]
+}
