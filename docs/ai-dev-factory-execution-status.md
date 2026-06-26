@@ -53,13 +53,21 @@
 - **Phase 0.3N**: End-to-End Autonomous Dev Run
 - **Phase 0.3O**: E2E merge-path dirty tree hardening
 - **Phase 0.3P**: First Real Product Task Through E2E Loop
+- **Phase 0.3Q**: Mission Queue & Resume/Idempotency
 
 ## Phase 0.3P Proof Status
 
-Status: Draft PR opened; pending owner review and explicit merge approval token.
+Status: Merged and Cleaned
 Proof execution records:
 - Phase 0.3P implements the first real product capability document and mission control configuration.
 - Validates that E2E dev runner can execute scoped product tasks successfully.
 - Enforces safety boundaries (blocking deploys, secrets, spend, database alterations).
+
+## Phase 0.3Q Proof Status
+
+Status: Draft PR opened; pending owner review and explicit merge approval token.
+Proof execution records:
+- Phase 0.3Q implements the mission queue design and resume/idempotency policy specifications.
+- Validates queue tracking, branch reuse, duplicate PR prevention, and lock policies.
 <!-- execution_records_start -->
 <!-- execution_records_end -->

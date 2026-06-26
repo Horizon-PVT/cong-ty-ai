@@ -226,6 +226,39 @@ async function main() {
     prBodyContent += `* **Self-Test Support**: Self-test gate supports \`--phase 0.3p\` filters.\n`;
     prBodyContent += `* **Safety gates remain blocked**: Deployments, secrets reads, destructive database actions, spending, and external communications remain fully blocked.\n`;
     prBodyContent += `* **Merge Action Restricted**: Merge requires OWNER_APPROVED_MERGE_PR=<PR_NUMBER> token.\n\n`;
+  } else if (currentBranch.includes("mission-queue-resume-idempotency") || currentBranch.includes("0.3q")) {
+    prTitle = "feat: add mission queue resume idempotency";
+    prBodyContent = `### Phase 0.3Q Mission Queue & Resume/Idempotency\n\n`;
+    prBodyContent += `This PR implements Phase 0.3Q, defining the design and static verification scripts for the safe mission queue and resume/idempotency behaviors.\n\n`;
+    prBodyContent += `- **Phase**: 0.3Q\n`;
+    prBodyContent += `- **Branch**: \`${currentBranch}\`\n`;
+    prBodyContent += `- **Mission queue capability**: Safe state tracking (Pending -> Claimed -> Running -> Testing -> PR -> Approved -> Merged -> Cleaned), locking, and idempotency.\n`;
+    prBodyContent += `- **Self-test verdict**: \`${report.finalVerdict}\`\n`;
+    prBodyContent += `- **Execution Mode**: \`REAL\`\n`;
+    prBodyContent += `- **Timestamp**: \`${new Date().toISOString()}\`\n\n`;
+    prBodyContent += `#### Files changed:\n`;
+    prBodyContent += `* \`docs/ai-dev-factory-mission-queue.md\`\n`;
+    prBodyContent += `* \`docs/ai-dev-factory-resume-policy.md\`\n`;
+    prBodyContent += `* \`docs/ai-dev-factory-execution-status.md\`\n`;
+    prBodyContent += `* \`missions/queue/phase-0.3q-sample-queue.json\`\n`;
+    prBodyContent += `* \`packages/db/src/_verify-0.3p.mjs\`\n`;
+    prBodyContent += `* \`packages/db/src/_verify-0.3q.mjs\`\n`;
+    prBodyContent += `* \`scripts/ai-dev-factory-self-test-gate.mjs\`\n`;
+    prBodyContent += `* \`scripts/ai-dev-factory-pr-automation.mjs\`\n\n`;
+    prBodyContent += `#### Why this is a safe real product task:\n`;
+    prBodyContent += `* Only creates design documents, static sample JSON configs, and verification scripts.\n`;
+    prBodyContent += `* Does not modify server routes, database logic, or system actions.\n`;
+    prBodyContent += `* Enforces all standard safety boundaries (no deploy, no secrets, no destructive DB actions, no external/customer comms, no spend).\n\n`;
+    prBodyContent += `#### Resume/Idempotency & Duplicate PR Prevention Behavior:\n`;
+    prBodyContent += `* **Branch Reuse**: Switches to and reuses the existing branch if it exists.\n`;
+    prBodyContent += `* **Duplicate PR Prevention**: If a draft PR already exists, the runner edits/updates it using \`gh pr edit\` instead of spawning a new one.\n`;
+    prBodyContent += `* **Skipping Completed Tasks**: Skips rerun entirely if the mission status is already \`MERGED\` or \`CLEANED\`.\n`;
+    prBodyContent += `* **Self-Test Validation**: Only trusts local self-test reports if the report's commit \`head_sha\` matches the active branch's current commit.\n`;
+    prBodyContent += `* **Lock Control**: Prevents concurrent runs by writing and checking lock files.\n`;
+    prBodyContent += `* **verify-0.3p branch-compatibility fix**: Keeps 0.3P static scope checks active on 0.3P branches, while avoiding false failures when earlier phase verifiers are called from later phase branches such as 0.3Q.\n\n`;
+    prBodyContent += `#### Owner Safety Gate Controls\n`;
+    prBodyContent += `- **Safety gates remain blocked**: Deployments, secrets reads, destructive database actions, spending, and external communications remain fully blocked.\n`;
+    prBodyContent += `- **Merge Action Restricted**: Merge requires OWNER_APPROVED_MERGE_PR=<PR_NUMBER> token.\n\n`;
   } else {
     prBodyContent = `### Phase 0.3L Auto-Generated PR Summary\n\n`;
     prBodyContent += `- **Branch**: \`${currentBranch}\`\n`;
@@ -274,6 +307,12 @@ async function main() {
       prBodyContent += `> All critical automated verification checks passed successfully in real execution mode (optional checks had offline warnings/failures). The branch is safe and ready for owner review.\n`;
     } else {
       prBodyContent += `> All automated verification checks passed successfully in real execution mode (verify-0.3P PASS). The branch is safe and ready for owner review.\n`;
+    }
+  } else if (currentBranch.includes("mission-queue-resume-idempotency") || currentBranch.includes("0.3q")) {
+    if (hasFailures) {
+      prBodyContent += `> All critical automated verification checks passed successfully in real execution mode (optional checks had offline warnings/failures). The branch is safe and ready for owner review.\n`;
+    } else {
+      prBodyContent += `> All automated verification checks passed successfully in real execution mode (verify-0.3Q PASS). The branch is safe and ready for owner review.\n`;
     }
   } else {
     if (hasFailures) {

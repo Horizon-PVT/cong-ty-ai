@@ -57,49 +57,60 @@ async function main() {
   }
 
   // Dynamically check git diff against master using execSync
-  let changedFiles = [];
+  let currentBranch = "";
   try {
-    const diffOut = execSync("git diff master --name-only", { encoding: "utf8" });
-    changedFiles = diffOut.split("\n").map(f => f.trim()).filter(Boolean);
+    currentBranch = execSync("git branch --show-current", { encoding: "utf8" }).trim();
   } catch (err) {
-    console.warn("⚠️ Warning: Failed to run git diff (expected in environment without git). Checking presence only.");
+    console.warn("⚠️ Warning: Failed to check current Git branch.");
   }
 
-  if (changedFiles.length > 0) {
-    // If pr-automation.mjs is changed, it must be listed
-    const isPrAutomationChanged = changedFiles.some(f => f.includes("ai-dev-factory-pr-automation.mjs"));
-    if (isPrAutomationChanged) {
-      if (!allowed.includes("scripts/ai-dev-factory-pr-automation.mjs")) {
-        throw new Error("scripts/ai-dev-factory-pr-automation.mjs is modified but not listed in allowed_files");
-      }
+  if (currentBranch === "chore/first-real-product-task-e2e" || currentBranch.includes("0.3p")) {
+    let changedFiles = [];
+    try {
+      const diffOut = execSync("git diff master --name-only", { encoding: "utf8" });
+      changedFiles = diffOut.split("\n").map(f => f.trim()).filter(Boolean);
+    } catch (err) {
+      console.warn("⚠️ Warning: Failed to run git diff (expected in environment without git). Checking presence only.");
     }
 
-    // Verify _verify-0.3n.mjs is listed ONLY if it remains changed and has compatibility_notes
-    const isVerify03nChanged = changedFiles.some(f => f.includes("_verify-0.3n.mjs"));
-    if (isVerify03nChanged) {
-      if (!allowed.includes("packages/db/src/_verify-0.3n.mjs")) {
-        throw new Error("packages/db/src/_verify-0.3n.mjs is modified but not listed in allowed_files");
+    if (changedFiles.length > 0) {
+      // If pr-automation.mjs is changed, it must be listed
+      const isPrAutomationChanged = changedFiles.some(f => f.includes("ai-dev-factory-pr-automation.mjs"));
+      if (isPrAutomationChanged) {
+        if (!allowed.includes("scripts/ai-dev-factory-pr-automation.mjs")) {
+          throw new Error("scripts/ai-dev-factory-pr-automation.mjs is modified but not listed in allowed_files");
+        }
       }
-      if (!mission.compatibility_notes) {
-        throw new Error("packages/db/src/_verify-0.3n.mjs is modified but compatibility_notes are missing in mission JSON");
-      }
-    } else {
-      if (allowed.includes("packages/db/src/_verify-0.3n.mjs")) {
-        throw new Error("packages/db/src/_verify-0.3n.mjs is NOT modified but is listed in allowed_files");
-      }
-    }
 
-    // Double check that no files are modified other than allowed files, and no forbidden reports are modified
-    for (const changedFile of changedFiles) {
-      if (changedFile.includes("reports/self-test/latest") || changedFile.includes("reports/e2e/latest")) {
-        throw new Error(`Forbidden runtime report file "${changedFile}" is modified in git!`);
+      // Verify _verify-0.3n.mjs is listed ONLY if it remains changed and has compatibility_notes
+      const isVerify03nChanged = changedFiles.some(f => f.includes("_verify-0.3n.mjs"));
+      if (isVerify03nChanged) {
+        if (!allowed.includes("packages/db/src/_verify-0.3n.mjs")) {
+          throw new Error("packages/db/src/_verify-0.3n.mjs is modified but not listed in allowed_files");
+        }
+        if (!mission.compatibility_notes) {
+          throw new Error("packages/db/src/_verify-0.3n.mjs is modified but compatibility_notes are missing in mission JSON");
+        }
+      } else {
+        if (allowed.includes("packages/db/src/_verify-0.3n.mjs")) {
+          throw new Error("packages/db/src/_verify-0.3n.mjs is NOT modified but is listed in allowed_files");
+        }
       }
-      if (!allowed.includes(changedFile)) {
-        throw new Error(`Out of scope file modification detected: "${changedFile}". Not in mission.allowed_files`);
+
+      // Double check that no files are modified other than allowed files, and no forbidden reports are modified
+      for (const changedFile of changedFiles) {
+        if (changedFile.includes("reports/self-test/latest") || changedFile.includes("reports/e2e/latest")) {
+          throw new Error(`Forbidden runtime report file "${changedFile}" is modified in git!`);
+        }
+        if (!allowed.includes(changedFile)) {
+          throw new Error(`Out of scope file modification detected: "${changedFile}". Not in mission.allowed_files`);
+        }
       }
     }
+    console.log("✅ verified: static scope integrity checks passed successfully");
+  } else {
+    console.log("⚠️ Skipped: static scope integrity checks because current active branch is not Phase 0.3P branch.");
   }
-  console.log("✅ verified: static scope integrity checks passed successfully");
 
   // 2. Check mission content
   if (mission.phase !== "0.3P") {
