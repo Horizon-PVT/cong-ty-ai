@@ -1,0 +1,50 @@
+{
+  "phase": "0.3P",
+  "title": "Phase 0.3P: First Real Product Task Through E2E Loop",
+  "owner_goal": "Prove that AI Dev Factory can complete one small, real, product-facing task through the existing E2E dev pipeline.",
+  "selected_product_task": "Create a read-only product capability page/document describing how AI Dev Factory can accept a small product task and route it through safe E2E execution.",
+  "branch": "chore/first-real-product-task-e2e",
+  "allowed_files": [
+    "missions/phase-0.3p-first-product-task.json",
+    "docs/ai-dev-factory-first-product-task.md",
+    "docs/ai-dev-factory-execution-status.md",
+    "packages/db/src/_verify-0.3p.mjs",
+    "scripts/ai-dev-factory-self-test-gate.mjs",
+    "scripts/ai-dev-factory-pr-automation.mjs"
+  ],
+  "blocked_files": [
+    ".env",
+    ".env.*",
+    "pnpm-lock.yaml",
+    "package-lock.json",
+    "yarn.lock",
+    "docker-compose.yml",
+    "Dockerfile"
+  ],
+  "safety_rules": [
+    "Do not deploy to production",
+    "Do not read, write, print, or modify secrets or API keys",
+    "Do not touch .env files",
+    "Do not perform destructive database actions",
+    "Do not spend money or trigger paid infra/ads",
+    "Do not send email/SMS/customer/external communications",
+    "Do not auto-publish production content"
+  ],
+  "verification_commands": [
+    "pnpm -r typecheck",
+    "pnpm build",
+    "pnpm test:run --dry-run",
+    "node packages/db/src/_verify-0.3p.mjs",
+    "node scripts/ai-dev-factory-self-test-gate.mjs --phase 0.3p --dry-run"
+  ],
+  "definition_of_done": [
+    "Mission configuration file is created and valid JSON",
+    "Product capability document is created and populated with useful operator guidelines",
+    "verify-0.3p verifier script passes successfully",
+    "Self-test gate supports 0.3p phase and executes successfully",
+    "Execution status doc is updated",
+    "Draft PR opens successfully on GitHub fork"
+  ],
+  "merge_policy": "Explicit owner approval required. Merge is blocked without OWNER_APPROVED_MERGE_PR approval token matching the target PR.",
+  "explanation": "scripts/ai-dev-factory-pr-automation.mjs is modified solely to add PR automation metadata and description templates for Phase 0.3P."
+}
