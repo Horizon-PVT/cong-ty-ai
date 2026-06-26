@@ -1,65 +1,81 @@
 {
-  "phase": "0.3n",
-  "branch": "chore/end-to-end-autonomous-dev-run",
-  "startedAt": "2026-06-25T07:21:54.642Z",
-  "finishedAt": "2026-06-25T07:27:28.872Z",
-  "durationMs": 334229,
+  "phase": "0.3o",
+  "branch": "chore/e2e-merge-path-dirty-tree-hardening",
+  "startedAt": "2026-06-26T02:52:00.344Z",
+  "finishedAt": "2026-06-26T02:56:17.182Z",
+  "durationMs": 256837,
   "commands": [
     {
       "command": "pnpm -r typecheck",
       "exitCode": 0,
       "status": "PASS",
-      "durationMs": 179941,
-      "executionMode": "real"
+      "durationMs": 115764,
+      "executionMode": "real",
+      "optional": false
     },
     {
       "command": "pnpm build",
       "exitCode": 0,
       "status": "PASS",
-      "durationMs": 140635,
-      "executionMode": "real"
+      "durationMs": 126320,
+      "executionMode": "real",
+      "optional": false
     },
     {
       "command": "pnpm test:run --dry-run",
       "exitCode": 0,
       "status": "PASS",
-      "durationMs": 2851,
-      "executionMode": "real"
+      "durationMs": 2673,
+      "executionMode": "real",
+      "optional": false
     },
     {
       "command": "node packages/db/src/_verify-0.3i.mjs",
       "exitCode": 0,
       "status": "PASS",
-      "durationMs": 252,
-      "executionMode": "real"
+      "durationMs": 173,
+      "executionMode": "real",
+      "optional": true
     },
     {
       "command": "node packages/db/src/_verify-0.3k.mjs",
       "exitCode": 0,
       "status": "PASS",
-      "durationMs": 198,
-      "executionMode": "real"
+      "durationMs": 132,
+      "executionMode": "real",
+      "optional": true
     },
     {
       "command": "node packages/db/src/_verify-0.3l.mjs",
       "exitCode": 0,
       "status": "PASS",
-      "durationMs": 109,
-      "executionMode": "real"
+      "durationMs": 100,
+      "executionMode": "real",
+      "optional": true
     },
     {
       "command": "node packages/db/src/_verify-0.3m.mjs",
       "exitCode": 0,
       "status": "PASS",
-      "durationMs": 8571,
-      "executionMode": "real"
+      "durationMs": 8566,
+      "executionMode": "real",
+      "optional": true
     },
     {
       "command": "node packages/db/src/_verify-0.3n.mjs",
       "exitCode": 0,
       "status": "PASS",
-      "durationMs": 1669,
-      "executionMode": "real"
+      "durationMs": 2267,
+      "executionMode": "real",
+      "optional": true
+    },
+    {
+      "command": "node packages/db/src/_verify-0.3o.mjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "durationMs": 840,
+      "executionMode": "real",
+      "optional": true
     }
   ],
   "finalVerdict": "PASS_READY_FOR_DRAFT_PR",

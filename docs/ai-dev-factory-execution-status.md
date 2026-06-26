@@ -51,6 +51,7 @@
 - **Phase 0.3L**: Auto Push & Draft PR Gate
 - **Phase 0.3M**: Owner-approved merge & post-merge cleanup gate
 - **Phase 0.3N**: End-to-End Autonomous Dev Run
+- **Phase 0.3O**: E2E merge-path dirty tree hardening
 
 ## Phase 0.3N Proof Status
 

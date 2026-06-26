@@ -565,26 +565,79 @@ async function main() {
     } else {
       mergeApproved = true;
       if (isDryRun) {
+        console.log(`[E2E Runner] [Dry-Run] Would check clean tree before merge`);
         console.log(`[E2E Runner] [Dry-Run] Would run owner merge gate & post-merge cleanup for PR #${prOption}`);
+        console.log(`[E2E Runner] [Dry-Run] Would confirm master branch and clean tree after cleanup`);
+        console.log(`[E2E Runner] [Dry-Run] Would write E2E final reports after cleanup`);
         mergeResult = "SUCCESS";
         postMergeCleanupResult = "SUCCESS";
         finalVerdict = "E2E_MERGED_AND_CLEANED";
       } else {
+        // Step 1: Check clean working tree BEFORE merge
+        let preMergeGitStatus = "";
         try {
-          console.log(`[E2E Runner] Executing Owner-Approved Merge Gate...`);
-          execSync(`node scripts/ai-dev-factory-owner-merge-gate.mjs --pr ${prOption} --approval ${approvalOption} --apply`, { stdio: "inherit" });
-          mergeResult = "SUCCESS";
-
-          console.log(`[E2E Runner] Executing Post-Merge Cleanup...`);
-          execSync(`node scripts/ai-dev-factory-post-merge-cleanup.mjs --pr ${prOption} --apply`, { stdio: "inherit" });
-          postMergeCleanupResult = "SUCCESS";
-
-          finalVerdict = "E2E_MERGED_AND_CLEANED";
+          preMergeGitStatus = execSync("git status --porcelain", { encoding: "utf8" }).trim();
         } catch (err) {
-          console.error(`[E2E Runner] Error during merge/cleanup: ${err.message}`);
-          mergeResult = mergeResult === "SUCCESS" ? "SUCCESS" : "FAILED";
-          postMergeCleanupResult = mergeResult === "SUCCESS" ? "FAILED" : "SKIPPED";
+          console.error(`[E2E Runner] Error: Failed to check Git working tree status before merge.`);
           finalVerdict = "E2E_FAILED";
+        }
+
+        if (finalVerdict !== "E2E_FAILED" && preMergeGitStatus !== "") {
+          console.error(`[E2E Runner] Error: E2E merge path requires a clean working tree before owner-approved merge.`);
+          finalVerdict = "E2E_FAILED";
+        }
+
+        if (finalVerdict !== "E2E_FAILED") {
+          try {
+            // Step 2: Run owner merge gate
+            console.log(`[E2E Runner] Executing Owner-Approved Merge Gate...`);
+            execSync(`node scripts/ai-dev-factory-owner-merge-gate.mjs --pr ${prOption} --approval ${approvalOption} --apply`, { stdio: "inherit" });
+            mergeResult = "SUCCESS";
+
+            // Step 3: Run post-merge cleanup IMMEDIATELY (no report writes yet)
+            console.log(`[E2E Runner] Executing Post-Merge Cleanup...`);
+            execSync(`node scripts/ai-dev-factory-post-merge-cleanup.mjs --pr ${prOption} --apply`, { stdio: "inherit" });
+            postMergeCleanupResult = "SUCCESS";
+
+            // Step 4: Confirm current branch is master
+            let postCleanupBranch = "";
+            try {
+              postCleanupBranch = execSync("git branch --show-current", { encoding: "utf8" }).trim();
+            } catch (err) {
+              console.error(`[E2E Runner] Error: Failed to check branch after cleanup.`);
+              finalVerdict = "E2E_FAILED";
+            }
+
+            if (finalVerdict !== "E2E_FAILED" && postCleanupBranch !== "master") {
+              console.error(`[E2E Runner] Error: Expected to be on master after cleanup, but on '${postCleanupBranch}'.`);
+              finalVerdict = "E2E_FAILED";
+            }
+
+            // Step 5: Confirm clean tree after cleanup
+            if (finalVerdict !== "E2E_FAILED") {
+              let postCleanupGitStatus = "";
+              try {
+                postCleanupGitStatus = execSync("git status --porcelain", { encoding: "utf8" }).trim();
+              } catch (err) {
+                console.error(`[E2E Runner] Error: Failed to check Git working tree status after cleanup.`);
+                finalVerdict = "E2E_FAILED";
+              }
+
+              if (finalVerdict !== "E2E_FAILED" && postCleanupGitStatus !== "") {
+                console.error(`[E2E Runner] Error: E2E merge path expected clean tree after post-merge cleanup.`);
+                finalVerdict = "E2E_FAILED";
+              }
+            }
+
+            if (finalVerdict !== "E2E_FAILED") {
+              finalVerdict = "E2E_MERGED_AND_CLEANED";
+            }
+          } catch (err) {
+            console.error(`[E2E Runner] Error during merge/cleanup: ${err.message}`);
+            mergeResult = mergeResult === "SUCCESS" ? "SUCCESS" : "FAILED";
+            postMergeCleanupResult = mergeResult === "SUCCESS" ? "FAILED" : "SKIPPED";
+            finalVerdict = "E2E_FAILED";
+          }
         }
       }
     }
@@ -593,13 +646,38 @@ async function main() {
   const finishedAt = new Date().toISOString();
   const durationMs = Date.now() - startTime;
 
-  // G. Reports
+  // G. Reports — merge-mode reports are written ONLY AFTER cleanup
   const reportDir = path.join(repoRoot, "reports/e2e");
   if (!isDryRun) {
     fs.mkdirSync(reportDir, { recursive: true });
   }
 
-  const jsonReport = {
+  // Build the merge-mode JSON report with enhanced fields
+  const jsonReport = isMergeMode ? {
+    phase,
+    prNumber,
+    approvalTokenAccepted: mergeApproved,
+    ownerGoal: goal,
+    branch: currentBranch,
+    startedAt,
+    finishedAt,
+    durationMs,
+    selfTestVerdict,
+    mergeAttempted,
+    mergeApproved,
+    mergeResult,
+    postMergeCleanupResult,
+    postMergeReportFound: fs.existsSync(path.join(repoRoot, "reports/post-merge/latest.json")),
+    masterBranchConfirmed: finalVerdict === "E2E_MERGED_AND_CLEANED",
+    finalGitStatus: (() => { try { return execSync("git status --porcelain", { encoding: "utf8" }).trim() || "clean"; } catch { return "unknown"; } })(),
+    criticalGatesBlocked: true,
+    deployAttempted: false,
+    secretsRead: false,
+    destructiveActionAttempted: false,
+    spendAttempted: false,
+    externalCommunicationAttempted: false,
+    finalVerdict
+  } : {
     phase,
     taskId,
     ownerGoal: goal,
@@ -626,6 +704,7 @@ async function main() {
 
   if (!isDryRun) {
     if (isMergeMode) {
+      // In merge mode, reports are written AFTER cleanup has completed
       if (process.env.MOCK_REPORT_WRITE_BYPASS === "true") {
         console.log(`[E2E Runner] (Mocked Report Write) Bypassed writing report files.`);
       } else {
@@ -634,23 +713,21 @@ async function main() {
           JSON.stringify(jsonReport, null, 2),
           "utf8"
         );
-        console.log(`[E2E Runner] Wrote reports/e2e/latest.json`);
+        console.log(`[E2E Runner] Wrote reports/e2e/latest.json (post-cleanup)`);
 
         let mdContent = `# E2E Dev Run Report\n\n`;
         mdContent += `- **Phase**: \`${phase}\`\n`;
-        mdContent += `- **Task ID**: \`${taskId}\`\n`;
+        mdContent += `- **PR Number**: \`${prNumber || "N/A"}\`\n`;
         mdContent += `- **Owner Goal**: "${goal}"\n`;
         mdContent += `- **Branch**: \`${currentBranch}\`\n`;
         mdContent += `- **Started At**: \`${startedAt}\`\n`;
         mdContent += `- **Finished At**: \`${finishedAt}\`\n`;
         mdContent += `- **Duration**: \`${(durationMs / 1000).toFixed(2)}s\`\n`;
-        mdContent += `- **Self-Test Verdict**: \`${selfTestVerdict}\`\n`;
-        mdContent += `- **PR Number**: \`${prNumber || "N/A"}\`\n`;
-        mdContent += `- **PR URL**: [${draftPrUrl || "N/A"}](${draftPrUrl || "#"})\n`;
         mdContent += `- **Merge Attempted**: \`${mergeAttempted}\`\n`;
         mdContent += `- **Merge Approved**: \`${mergeApproved}\`\n`;
         mdContent += `- **Merge Result**: \`${mergeResult}\`\n`;
         mdContent += `- **Cleanup Result**: \`${postMergeCleanupResult}\`\n`;
+        mdContent += `- **Master Confirmed**: \`${jsonReport.masterBranchConfirmed}\`\n`;
         mdContent += `- **Final Verdict**: \`${finalVerdict}\`\n\n`;
         mdContent += `### Safety Gate Rollup\n\n`;
         mdContent += `| Gate | Status | Blocked |\n`;
@@ -666,7 +743,7 @@ async function main() {
           mdContent,
           "utf8"
         );
-        console.log(`[E2E Runner] Wrote reports/e2e/latest.md`);
+        console.log(`[E2E Runner] Wrote reports/e2e/latest.md (post-cleanup)`);
       }
     }
   } else {

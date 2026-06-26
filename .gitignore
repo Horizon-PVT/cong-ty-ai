@@ -61,3 +61,9 @@ tests/release-smoke/playwright-report/
 
 # AI Dev Factory reports
 reports/self-test/pr-body*.md
+
+# AI Dev Factory runtime reports (local-only, written after merge/cleanup)
+reports/e2e/latest.json
+reports/e2e/latest.md
+reports/post-merge/latest.json
+reports/post-merge/latest.md
