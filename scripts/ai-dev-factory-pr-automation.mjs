@@ -198,6 +198,34 @@ async function main() {
     prBodyContent += `* **Self-Test Resiliency**: Makes DB and API connection checks optional/non-fatal so offline states do not fail E2E run validations.\n`;
     prBodyContent += `* **Critical Gates Still Blocked**: Deployments, secrets reads, destructive database actions, spending, and external communications remain fully blocked.\n`;
     prBodyContent += `* **Merge Action Restricted**: Merge remains strictly blocked pending explicit owner approval token of format \`OWNER_APPROVED_MERGE_PR=<number>\`.\n\n`;
+  } else if (currentBranch.includes("first-real-product-task-e2e") || currentBranch.includes("0.3p")) {
+    prTitle = "feat: add first real product task e2e mission";
+    prBodyContent = `### Phase 0.3P First Real Product Task Through E2E Loop\n\n`;
+    prBodyContent += `This PR implements Phase 0.3P, executing the first real product-facing task under the automated E2E dev pipeline.\n\n`;
+    prBodyContent += `- **Phase**: 0.3P\n`;
+    prBodyContent += `- **Branch**: \`${currentBranch}\`\n`;
+    prBodyContent += `- **Product task selected**: "Create a read-only product capability page/document describing how AI Dev Factory can accept a small product task and route it through safe E2E execution."\n`;
+    prBodyContent += `- **Self-test verdict**: \`${report.finalVerdict}\`\n`;
+    prBodyContent += `- **Execution Mode**: \`REAL\`\n`;
+    prBodyContent += `- **Timestamp**: \`${new Date().toISOString()}\`\n\n`;
+    prBodyContent += `#### Files changed:\n`;
+    prBodyContent += `* \`missions/phase-0.3p-first-product-task.json\`\n`;
+    prBodyContent += `* \`docs/ai-dev-factory-first-product-task.md\`\n`;
+    prBodyContent += `* \`docs/ai-dev-factory-execution-status.md\`\n`;
+    prBodyContent += `* \`packages/db/src/_verify-0.3p.mjs\`\n`;
+    prBodyContent += `* \`scripts/ai-dev-factory-self-test-gate.mjs\`\n`;
+    prBodyContent += `* \`scripts/ai-dev-factory-pr-automation.mjs\`\n\n`;
+    prBodyContent += `#### Why this is a safe real product task:\n`;
+    prBodyContent += `* Only writes read-only document files (\`docs/ai-dev-factory-first-product-task.md\`) and configuration/validation code.\n`;
+    prBodyContent += `* Does not modify server routes, database logic, or system actions.\n`;
+    prBodyContent += `* Enforces all standard safety boundaries (no deploy, no secrets, no destructive DB actions, no external/customer comms, no spend).\n\n`;
+    prBodyContent += `#### Changes Made & Capabilities:\n`;
+    prBodyContent += `* **Mission File Control**: Declares the task parameters in \`missions/phase-0.3p-first-product-task.json\`.\n`;
+    prBodyContent += `* **Product Capability Page**: Documents Safe E2E Task Execution for operators.\n`;
+    prBodyContent += `* **verify-0.3P PASS**: The new verification script validates the mission definition and product document.\n`;
+    prBodyContent += `* **Self-Test Support**: Self-test gate supports \`--phase 0.3p\` filters.\n`;
+    prBodyContent += `* **Safety gates remain blocked**: Deployments, secrets reads, destructive database actions, spending, and external communications remain fully blocked.\n`;
+    prBodyContent += `* **Merge Action Restricted**: Merge requires OWNER_APPROVED_MERGE_PR=<PR_NUMBER> token.\n\n`;
   } else {
     prBodyContent = `### Phase 0.3L Auto-Generated PR Summary\n\n`;
     prBodyContent += `- **Branch**: \`${currentBranch}\`\n`;
@@ -240,6 +268,12 @@ async function main() {
       prBodyContent += `> All critical automated verification checks passed successfully in real execution mode (optional checks had offline warnings/failures). The branch is safe and ready for owner review.\n`;
     } else {
       prBodyContent += `> All automated verification checks passed successfully in real execution mode (verify-0.3O PASS). The branch is safe and ready for owner review.\n`;
+    }
+  } else if (currentBranch.includes("first-real-product-task-e2e") || currentBranch.includes("0.3p")) {
+    if (hasFailures) {
+      prBodyContent += `> All critical automated verification checks passed successfully in real execution mode (optional checks had offline warnings/failures). The branch is safe and ready for owner review.\n`;
+    } else {
+      prBodyContent += `> All automated verification checks passed successfully in real execution mode (verify-0.3P PASS). The branch is safe and ready for owner review.\n`;
     }
   } else {
     if (hasFailures) {
