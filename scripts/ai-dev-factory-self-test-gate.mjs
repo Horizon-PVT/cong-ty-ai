@@ -15,7 +15,8 @@ const COMMANDS_BASELINE = [
   { name: "verify-0.3k", cmd: "node packages/db/src/_verify-0.3k.mjs", phase: "0.3k" },
   { name: "verify-0.3l", cmd: "node packages/db/src/_verify-0.3l.mjs", phase: "0.3l", optional: true },
   { name: "verify-0.3m", cmd: "node packages/db/src/_verify-0.3m.mjs", phase: "0.3m", optional: true },
-  { name: "verify-0.3n", cmd: "node packages/db/src/_verify-0.3n.mjs", phase: "0.3n", optional: true }
+  { name: "verify-0.3n", cmd: "node packages/db/src/_verify-0.3n.mjs", phase: "0.3n", optional: true },
+  { name: "verify-0.3o", cmd: "node packages/db/src/_verify-0.3o.mjs", phase: "0.3o", optional: true }
 ];
 
 async function main() {
@@ -66,6 +67,8 @@ async function main() {
       filteredCommands = COMMANDS_BASELINE.filter(c => c.phase === "0.3j" || c.phase === "0.3k" || c.phase === "0.3l" || c.phase === "0.3m");
     } else if (selectedPhase === "0.3n") {
       filteredCommands = COMMANDS_BASELINE.filter(c => c.phase === "0.3j" || c.phase === "0.3k" || c.phase === "0.3l" || c.phase === "0.3m" || c.phase === "0.3n");
+    } else if (selectedPhase === "0.3o") {
+      filteredCommands = COMMANDS_BASELINE.filter(c => c.phase === "0.3j" || c.phase === "0.3k" || c.phase === "0.3l" || c.phase === "0.3m" || c.phase === "0.3n" || c.phase === "0.3o");
     }
   }
 
