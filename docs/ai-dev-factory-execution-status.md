@@ -57,6 +57,7 @@
 - **Phase 0.3R**: Queue Runtime (Minimal Execution Engine)
 - **Phase 0.3S**: Multi-Worker & Reliability Hardening
 - **Milestone 1.0A**: AI Company OS Organization Model
+- **Milestone 1.0B**: AI Company OS Capability Registry
 
 ## Phase 0.3P Proof Status
 
@@ -91,9 +92,16 @@ Proof execution records:
 
 ## Milestone 1.0A Proof Status
 
-Status: Draft PR opened; pending owner review and explicit merge approval token.
+Status: Merged and Cleaned
 Proof execution records:
 - Milestone 1.0A creates the organizational overview, executive role models, roadmap, and JSON schemas for the AI Company OS.
 - Positions the AI Dev Factory as one of multiple specialized capabilities within the company.
+
+## Milestone 1.0B Proof Status
+
+Status: Draft PR opened; pending owner review and explicit merge approval token.
+Proof execution records:
+- Milestone 1.0B establishes the Capability Registry design documentation, standardized capability contracts, and capability schema validations.
+- Configures 32 separate capabilities across 7 active and planned factories.
 <!-- execution_records_start -->
 <!-- execution_records_end -->
