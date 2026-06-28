@@ -381,6 +381,7 @@ async function main() {
     const allowed = [
       "scripts/ai-dev-factory-queue-runner.mjs",
       "packages/db/src/_verify-0.3s.mjs",
+      "packages/db/src/_verify-0.3q.mjs",
       "missions/queue/phase-0.3s-queue.json",
       "scripts/ai-dev-factory-self-test-gate.mjs",
       "docs/ai-dev-factory-execution-status.md",
