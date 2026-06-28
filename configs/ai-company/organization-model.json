@@ -1,0 +1,197 @@
+{
+  "company_name": "Paperclip AI OS",
+  "milestone": "1.0A",
+  "owner_role": {
+    "role_id": "human_owner",
+    "name": "Human Owner",
+    "purpose": "Ultimate authority, merge approvals, and manual review."
+  },
+  "executive_agents": [
+    {
+      "agent_id": "ceo_agent",
+      "name": "CEO Agent",
+      "purpose": "Strategic routing and orchestration."
+    },
+    {
+      "agent_id": "coo_agent",
+      "name": "COO Agent",
+      "purpose": "Operations and task tracking."
+    },
+    {
+      "agent_id": "cto_agent",
+      "name": "CTO Agent",
+      "purpose": "Technical architecture and safety gates verification."
+    },
+    {
+      "agent_id": "cmo_agent",
+      "name": "CMO Agent",
+      "purpose": "Marketing and public communication drafts."
+    },
+    {
+      "agent_id": "cfo_agent",
+      "name": "CFO Agent",
+      "purpose": "Budgeting and cost optimization."
+    },
+    {
+      "agent_id": "product_agent",
+      "name": "Product Agent",
+      "purpose": "Intake specs and requirements."
+    },
+    {
+      "agent_id": "research_agent",
+      "name": "Research Agent",
+      "purpose": "Codebase indexing and market search."
+    },
+    {
+      "agent_id": "legal_risk_agent",
+      "name": "Legal/Risk Agent",
+      "purpose": "Safety compliance auditing."
+    }
+  ],
+  "factories": [
+    {
+      "factory_id": "ai_dev_factory",
+      "name": "AI Dev Factory",
+      "purpose": "Autonomous software engineering and test verifications.",
+      "owner_agent": "cto_agent",
+      "input_mission_types": [
+        "CODE_MODIFICATION",
+        "VERIFIER_UPGRADE",
+        "BUG_FIX"
+      ],
+      "output_artifacts": [
+        "source_code",
+        "test_report",
+        "pr_url"
+      ],
+      "safety_boundary": "No deployments, no secrets read, no destructive DB actions.",
+      "current_status": "OPERATIONAL"
+    },
+    {
+      "factory_id": "media_factory",
+      "name": "Media & Marketing Factory",
+      "purpose": "Content generation and branding.",
+      "owner_agent": "cmo_agent",
+      "input_mission_types": [
+        "BLOG_DRAFT",
+        "SOCIAL_MEDIA_DRAFT",
+        "IMAGE_ASSET"
+      ],
+      "output_artifacts": [
+        "marketing_assets",
+        "blog_posts"
+      ],
+      "safety_boundary": "No direct external publication without Owner review.",
+      "current_status": "PLANNED"
+    },
+    {
+      "factory_id": "sales_factory",
+      "name": "Sales Factory",
+      "purpose": "Lead generation and client relations.",
+      "owner_agent": "ceo_agent",
+      "input_mission_types": [
+        "LEAD_SCORING",
+        "OUTREACH_DRAFT"
+      ],
+      "output_artifacts": [
+        "sales_pipeline_logs"
+      ],
+      "safety_boundary": "No external outbound cold emails without Owner approval.",
+      "current_status": "PLANNED"
+    },
+    {
+      "factory_id": "research_factory",
+      "name": "Research Factory",
+      "purpose": "Market research and technical analysis.",
+      "owner_agent": "research_agent",
+      "input_mission_types": [
+        "MARKET_ANALYSIS",
+        "COMPETITOR_AUDIT"
+      ],
+      "output_artifacts": [
+        "research_reports"
+      ],
+      "safety_boundary": "No external web scraping violations.",
+      "current_status": "PLANNED"
+    },
+    {
+      "factory_id": "finance_factory",
+      "name": "Finance Factory",
+      "purpose": "Token cost audits and billing calculations.",
+      "owner_agent": "cfo_agent",
+      "input_mission_types": [
+        "COST_AUDIT",
+        "BUDGET_RECONCILIATION"
+      ],
+      "output_artifacts": [
+        "financial_reports"
+      ],
+      "safety_boundary": "No actual money transfer execution.",
+      "current_status": "PLANNED"
+    },
+    {
+      "factory_id": "customer_success_factory",
+      "name": "Customer Success Factory",
+      "purpose": "Support tickets categorization and reply drafting.",
+      "owner_agent": "coo_agent",
+      "input_mission_types": [
+        "TICKET_CATEGORIZATION",
+        "REPLY_DRAFT"
+      ],
+      "output_artifacts": [
+        "draft_replies"
+      ],
+      "safety_boundary": "No direct client communication sending.",
+      "current_status": "PLANNED"
+    },
+    {
+      "factory_id": "knowledge_factory",
+      "name": "Knowledge & RAG Factory",
+      "purpose": "Maintaining company database and memory indexes.",
+      "owner_agent": "coo_agent",
+      "input_mission_types": [
+        "INDEX_UPDATES",
+        "SEARCH_QUERIES"
+      ],
+      "output_artifacts": [
+        "memory_indexes"
+      ],
+      "safety_boundary": "No public exposure of internal company documents.",
+      "current_status": "PLANNED"
+    }
+  ],
+  "capabilities": [
+    "CODE_WRITING",
+    "TYPECHECK_VERIFICATION",
+    "LOCKING_COORDINATION",
+    "CONTENT_GENERATION",
+    "SPEND_AUDITING"
+  ],
+  "routing_principles": [
+    "Missions are routed by the CEO Agent based on capability match.",
+    "Critical actions require OWNER_APPROVEDMerge or OWNER_APPROVEDAction approval."
+  ],
+  "safety_rules": [
+    "Do not deploy to production without Owner approval.",
+    "Do not read secrets or touch .env files.",
+    "Do not perform destructive database operations.",
+    "Do not spend actual company funds.",
+    "Do not send external client communications directly."
+  ],
+  "blocked_actions": [
+    "deploy_production",
+    "read_secrets",
+    "drop_database",
+    "spend_ad_budget",
+    "send_external_email"
+  ],
+  "approval_required_actions": [
+    "code_merge_master",
+    "change_safety_limits",
+    "increase_factory_budgets"
+  ],
+  "current_foundation": {
+    "queue_system": "Phase 0.3S multi-runner reliability hardened",
+    "developer_factory": "Phase 0.3S engineering capability ready"
+  }
+}
