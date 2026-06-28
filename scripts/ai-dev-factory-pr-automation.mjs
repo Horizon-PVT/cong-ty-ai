@@ -276,6 +276,7 @@ async function main() {
     prBodyContent += `* \`docs/ai-company-os/milestone-0.3-closeout.md\`\n`;
     prBodyContent += `* \`configs/ai-company/organization-model.json\`\n`;
     prBodyContent += `* \`packages/db/src/_verify-1.0a.mjs\`\n`;
+    prBodyContent += `* \`packages/db/src/_verify-0.3n.mjs\` (updated to support schema skip for merge-mode reports)\n`;
     prBodyContent += `* \`scripts/ai-dev-factory-self-test-gate.mjs\`\n`;
     prBodyContent += `* \`docs/ai-dev-factory-execution-status.md\`\n`;
     prBodyContent += "* `scripts/ai-dev-factory-pr-automation.mjs` (updated to support 1.0A template generation)\n\n";
@@ -387,50 +388,19 @@ async function main() {
   prBodyContent += `- **Infra/Ad Budget Spending Blocked**: \`YES\`\n`;
   prBodyContent += `- **External Customer Communications Blocked**: \`YES\`\n\n`;
   prBodyContent += `> [!IMPORTANT]\n`;
-  const hasFailures = report.commands.some(cmd => cmd.status !== "PASS");
-  if (currentBranch.includes("owner-approved-merge-cleanup-gate") || currentBranch.includes("0.3m")) {
-    if (hasFailures) {
-      prBodyContent += `> All critical automated verification checks passed successfully in real execution mode (optional checks had offline warnings/failures). The branch is safe and ready for owner review.\n`;
-    } else {
-      prBodyContent += `> All automated verification checks passed successfully in real execution mode (verify-0.3M PASS). The branch is safe and ready for owner review.\n`;
-    }
-  } else if (currentBranch.includes("end-to-end-autonomous-dev-run") || currentBranch.includes("0.3n")) {
-    if (hasFailures) {
-      prBodyContent += `> All critical automated verification checks passed successfully in real execution mode (optional checks had offline warnings/failures). The branch is safe and ready for owner review.\n`;
-    } else {
-      prBodyContent += `> All automated verification checks passed successfully in real execution mode (verify-0.3N PASS). The branch is safe and ready for owner review.\n`;
-    }
-  } else if (currentBranch.includes("e2e-merge-path-dirty-tree-hardening") || currentBranch.includes("0.3o")) {
-    if (hasFailures) {
-      prBodyContent += `> All critical automated verification checks passed successfully in real execution mode (optional checks had offline warnings/failures). The branch is safe and ready for owner review.\n`;
-    } else {
-      prBodyContent += `> All automated verification checks passed successfully in real execution mode (verify-0.3O PASS). The branch is safe and ready for owner review.\n`;
-    }
-  } else if (currentBranch.includes("first-real-product-task-e2e") || currentBranch.includes("0.3p")) {
-    if (hasFailures) {
-      prBodyContent += `> All critical automated verification checks passed successfully in real execution mode (optional checks had offline warnings/failures). The branch is safe and ready for owner review.\n`;
-    } else {
-      prBodyContent += `> All automated verification checks passed successfully in real execution mode (verify-0.3P PASS). The branch is safe and ready for owner review.\n`;
-    }
-  } else if (currentBranch.includes("mission-queue-resume-idempotency") || currentBranch.includes("0.3q")) {
-    if (hasFailures) {
-      prBodyContent += `> All critical automated verification checks passed successfully in real execution mode (optional checks had offline warnings/failures). The branch is safe and ready for owner review.\n`;
-    } else {
-      prBodyContent += `> All automated verification checks passed successfully in real execution mode (verify-0.3Q PASS). The branch is safe and ready for owner review.\n`;
-    }
-  } else if (currentBranch.includes("queue-runtime-engine") || currentBranch.includes("0.3r") || currentBranch.includes("0.3s")) {
-    if (hasFailures) {
-      prBodyContent += `> All critical automated verification checks passed successfully in real execution mode (optional checks had offline warnings/failures). The branch is safe and ready for owner review.\n`;
-    } else {
-      prBodyContent += `> All automated verification checks passed successfully in real execution mode (verify-0.3S PASS). The branch is safe and ready for owner review.\n`;
+  const optionalFailures = report.optional_failures || [];
+  const optionalFailureReasons = report.optional_failure_reasons || [];
+
+  if (optionalFailures.length > 0) {
+    prBodyContent += `> **Blocking checks passed successfully.**\n`;
+    prBodyContent += `> The following non-blocking optional verification checks failed/skipped:\n`;
+    for (const reason of optionalFailureReasons) {
+      prBodyContent += `> - ${reason}\n`;
     }
   } else {
-    if (hasFailures) {
-      prBodyContent += `> All critical automated verification checks passed successfully in real execution mode (optional checks had offline warnings/failures). The branch is safe and ready for manual review.\n`;
-    } else {
-      prBodyContent += `> All automated verification checks passed successfully in real execution mode. The branch is safe and ready for manual review.\n`;
-    }
+    prBodyContent += `> **All automated verification checks passed successfully in real execution mode.**\n`;
   }
+  prBodyContent += `> The branch is safe and ready for owner review.\n\n`;
 
   fs.writeFileSync(prBodyPath, prBodyContent, "utf8");
   console.log(`[PR Automation] Wrote PR description body to reports/self-test/pr-body.md`);

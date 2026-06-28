@@ -131,7 +131,13 @@ async function main() {
   if (!selfTestContent.includes("verify-1.0a") || !selfTestContent.includes("1.0a")) {
     throw new Error("self-test-gate.mjs does not include verify-1.0a or 1.0a filter");
   }
-  console.log("✅ verified: self-test gate includes verify-1.0a");
+  const selfTestRequiredFields = ["blocking_passed", "optional_failures", "optional_failure_reasons", "final_verdict_reason"];
+  for (const field of selfTestRequiredFields) {
+    if (!selfTestContent.includes(field)) {
+      throw new Error(`self-test-gate.mjs does not include reporting field: ${field}`);
+    }
+  }
+  console.log("✅ verified: self-test gate includes verify-1.0a and strict optional checks reporting fields");
 
   // 6. Verify execution status mentions Milestone 1.0A
   const execStatusPath = path.join(repoRoot, "docs/ai-dev-factory-execution-status.md");
@@ -166,6 +172,7 @@ async function main() {
       "docs/ai-company-os/milestone-0.3-closeout.md",
       "configs/ai-company/organization-model.json",
       "packages/db/src/_verify-1.0a.mjs",
+      "packages/db/src/_verify-0.3n.mjs",
       "scripts/ai-dev-factory-self-test-gate.mjs",
       "docs/ai-dev-factory-execution-status.md",
       "scripts/ai-dev-factory-pr-automation.mjs"
