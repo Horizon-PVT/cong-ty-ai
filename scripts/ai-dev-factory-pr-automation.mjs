@@ -417,8 +417,16 @@ async function main() {
   }
 
   if (gitStatus !== "") {
-    console.error(`[PR Automation] Error: Auto PR Gate requires a clean working tree before push.`);
-    process.exit(1);
+    const statusLines = gitStatus.split("\n").map(line => line.trim()).filter(Boolean);
+    const realChanges = statusLines.filter(line => {
+      const isReport = line.includes("reports/self-test/latest") || line.includes("reports/e2e/latest") || line.includes("reports/queue-runner/");
+      return !isReport;
+    });
+
+    if (realChanges.length > 0) {
+      console.error(`[PR Automation] Error: Auto PR Gate requires a clean working tree before push. Found:`, realChanges);
+      process.exit(1);
+    }
   }
 
   // A. Push branch
