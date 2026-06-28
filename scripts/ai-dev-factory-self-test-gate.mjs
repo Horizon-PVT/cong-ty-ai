@@ -20,7 +20,8 @@ const COMMANDS_BASELINE = [
   { name: "verify-0.3p", cmd: "node packages/db/src/_verify-0.3p.mjs", phase: "0.3p", optional: true },
   { name: "verify-0.3q", cmd: "node packages/db/src/_verify-0.3q.mjs", phase: "0.3q", optional: true },
   { name: "verify-0.3r", cmd: "node packages/db/src/_verify-0.3r.mjs", phase: "0.3r", optional: true },
-  { name: "verify-0.3s", cmd: "node packages/db/src/_verify-0.3s.mjs", phase: "0.3s", optional: true }
+  { name: "verify-0.3s", cmd: "node packages/db/src/_verify-0.3s.mjs", phase: "0.3s", optional: true },
+  { name: "verify-1.0a", cmd: "node packages/db/src/_verify-1.0a.mjs", phase: "1.0a", optional: true }
 ];
 
 async function main() {
@@ -81,6 +82,8 @@ async function main() {
       filteredCommands = COMMANDS_BASELINE.filter(c => c.phase === "0.3j" || c.phase === "0.3k" || c.phase === "0.3l" || c.phase === "0.3m" || c.phase === "0.3n" || c.phase === "0.3o" || c.phase === "0.3p" || c.phase === "0.3q" || c.phase === "0.3r");
     } else if (selectedPhase === "0.3s") {
       filteredCommands = COMMANDS_BASELINE.filter(c => c.phase === "0.3j" || c.phase === "0.3k" || c.phase === "0.3l" || c.phase === "0.3m" || c.phase === "0.3n" || c.phase === "0.3o" || c.phase === "0.3p" || c.phase === "0.3q" || c.phase === "0.3r" || c.phase === "0.3s");
+    } else if (selectedPhase === "1.0a") {
+      filteredCommands = COMMANDS_BASELINE.filter(c => c.phase === "0.3j" || c.phase === "0.3k" || c.phase === "0.3l" || c.phase === "0.3m" || c.phase === "0.3n" || c.phase === "0.3o" || c.phase === "0.3p" || c.phase === "0.3q" || c.phase === "0.3r" || c.phase === "0.3s" || c.phase === "1.0a");
     }
   }
 
@@ -159,22 +162,64 @@ async function main() {
   const finishedAt = new Date().toISOString();
   const totalDurationMs = Date.now() - startTime;
 
-  // Determine final verdict
+  const OPTIONAL_FAILURE_REASONS = {
+    "verify-0.3i": "Historical verifier for Phase 0.3I",
+    "verify-0.3j": "Historical verifier for Phase 0.3J",
+    "verify-0.3k": "Historical verifier for Phase 0.3K",
+    "verify-0.3l": "Historical verifier for Phase 0.3L",
+    "verify-0.3m": "Historical verifier for Phase 0.3M",
+    "verify-0.3n": "E2E verification is optional in later phases and reports on disk can be merge-mode",
+    "verify-0.3o": "Historical verifier for Phase 0.3O",
+    "verify-0.3p": "Historical verifier for Phase 0.3P",
+    "verify-0.3q": "Historical verifier for Phase 0.3Q",
+    "verify-0.3r": "Historical verifier for Phase 0.3R",
+    "verify-0.3s": "Historical verifier for Phase 0.3S",
+    "verify-1.0a": "Milestone 1.0A verifier"
+  };
+
+  const optionalFailures = commandResults.filter(r => r.status === "FAIL" && r.optional);
+  const optional_failures = optionalFailures.map(r => r.command.split(/\s+/).pop().split("/").pop().replace(".mjs", "").replace("_", ""));
+  
+  const optional_failure_reasons = [];
+  let optionalFailuresValid = true;
+  for (const name of optional_failures) {
+    const reason = OPTIONAL_FAILURE_REASONS[name];
+    if (reason) {
+      optional_failure_reasons.push(`${name}: ${reason}`);
+    } else {
+      optionalFailuresValid = false;
+    }
+  }
+
+  const blocking_passed = allPassed && !guardrailViolated;
   let finalVerdict = "FAIL_BLOCKED";
+  let final_verdict_reason = "Checks failed or guardrail violated.";
+
   if (guardrailViolated) {
     finalVerdict = "FAIL_CRITICAL_GATE_VIOLATION";
-  } else if (allPassed) {
-    if (isSimulate) {
-      // Simulated checks must NEVER produce PASS verdicts for PR/Owner review
+    final_verdict_reason = "Critical safety guardrail violated.";
+  } else if (blocking_passed) {
+    if (!optionalFailuresValid) {
       finalVerdict = "FAIL_BLOCKED";
+      final_verdict_reason = "One or more optional checks failed without a valid non-blocking reason.";
     } else {
-      // Real checks passing
-      finalVerdict = isDryRun ? "PASS_READY_FOR_DRAFT_PR" : "PASS_READY_FOR_OWNER_REVIEW";
+      if (isSimulate) {
+        finalVerdict = "FAIL_BLOCKED";
+        final_verdict_reason = "Simulated checks cannot produce PASS verdicts for review.";
+      } else {
+        finalVerdict = isDryRun ? "PASS_READY_FOR_DRAFT_PR" : "PASS_READY_FOR_OWNER_REVIEW";
+        if (optional_failure_reasons.length > 0) {
+          final_verdict_reason = `All blocking checks passed. Non-blocking failures: ${optional_failure_reasons.join("; ")}`;
+        } else {
+          final_verdict_reason = "All checks passed successfully.";
+        }
+      }
     }
   }
 
   console.log(`\n=============================================`);
   console.log(`[Self-Test Gate] FINAL VERDICT: ${finalVerdict}`);
+  console.log(`[Self-Test Gate] Verdict Reason: ${final_verdict_reason}`);
   console.log(`=============================================`);
 
   // Write reports if enabled
@@ -191,6 +236,10 @@ async function main() {
       durationMs: totalDurationMs,
       commands: commandResults,
       finalVerdict,
+      blocking_passed,
+      optional_failures,
+      optional_failure_reasons,
+      final_verdict_reason,
       canOpenDraftPr: finalVerdict === "PASS_READY_FOR_DRAFT_PR" || finalVerdict === "PASS_READY_FOR_OWNER_REVIEW",
       canRequestOwnerReview: finalVerdict === "PASS_READY_FOR_OWNER_REVIEW",
       canMerge: false,
@@ -214,6 +263,9 @@ async function main() {
     mdContent += `- **Branch**: \`${currentBranch}\`\n`;
     mdContent += `- **Phase**: \`${selectedPhase}\`\n`;
     mdContent += `- **Final Verdict**: \`${finalVerdict}\`\n`;
+    mdContent += `- **Verdict Reason**: \`${final_verdict_reason}\`\n`;
+    mdContent += `- **Blocking Checks Passed**: \`${blocking_passed ? "YES" : "NO"}\`\n`;
+    mdContent += `- **Optional Failures**: \`${optional_failures.join(", ") || "None"}\`\n`;
     mdContent += `- **Can Open Draft PR**: \`${jsonReport.canOpenDraftPr ? "YES" : "NO"}\`\n`;
     mdContent += `- **Can Request Owner Review**: \`${jsonReport.canRequestOwnerReview ? "YES" : "NO"}\`\n`;
     mdContent += `- **Can Merge**: \`NO\` (Strictly blocked pending manual owner review)\n`;

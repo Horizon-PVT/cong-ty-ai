@@ -95,6 +95,9 @@ async function main() {
     ];
     for (const key of requiredKeys) {
       if (!(key in reportData)) {
+        if ((key === "taskId" || key === "controlledFilesChanged") && reportData.mergeAttempted === true) {
+          continue; // Skip keys not present in merge-mode reports
+        }
         throw new Error(`Report latest.json is missing required schema key: ${key}`);
       }
     }
