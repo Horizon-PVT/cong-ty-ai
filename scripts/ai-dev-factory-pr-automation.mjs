@@ -259,7 +259,7 @@ async function main() {
     prBodyContent += `#### Owner Safety Gate Controls\n`;
     prBodyContent += `- **Safety gates remain blocked**: Deployments, secrets reads, destructive database actions, spending, and external communications remain fully blocked.\n`;
     prBodyContent += `- **Merge Action Restricted**: Merge requires OWNER_APPROVED_MERGE_PR=<PR_NUMBER> token.\n\n`;
-  } else if (fs.existsSync(path.join(repoRoot, "packages/db/src/_verify-0.3s.mjs")) && (currentBranch.includes("queue-runtime-engine") || currentBranch.includes("0.3s"))) {
+  } else if (fs.existsSync(path.resolve("packages/db/src/_verify-0.3s.mjs")) && (currentBranch.includes("queue-runtime-engine") || currentBranch.includes("0.3s"))) {
     prTitle = "feat: harden queue runtime multi-worker reliability";
     prBodyContent = `### Phase 0.3S Multi-Worker & Reliability Hardening\n\n`;
     prBodyContent += `This PR implements Phase 0.3S, upgrading the queue runtime to support safe multi-worker execution, lock heartbeats, crash recovery, retries, and fairness selection.\n\n`;
