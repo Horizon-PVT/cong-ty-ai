@@ -54,6 +54,8 @@
 - **Phase 0.3O**: E2E merge-path dirty tree hardening
 - **Phase 0.3P**: First Real Product Task Through E2E Loop
 - **Phase 0.3Q**: Mission Queue & Resume/Idempotency
+- **Phase 0.3R**: Queue Runtime (Minimal Execution Engine)
+- **Phase 0.3S**: Multi-Worker & Reliability Hardening
 
 ## Phase 0.3P Proof Status
 
@@ -65,9 +67,25 @@ Proof execution records:
 
 ## Phase 0.3Q Proof Status
 
-Status: Draft PR opened; pending owner review and explicit merge approval token.
+Status: Merged and Cleaned
 Proof execution records:
 - Phase 0.3Q implements the mission queue design and resume/idempotency policy specifications.
 - Validates queue tracking, branch reuse, duplicate PR prevention, and lock policies.
+
+## Phase 0.3R Proof Status
+
+Status: Merged and Cleaned
+Proof execution records:
+- Phase 0.3R implements the queue runner execution engine to dynamically pick, lock, execute, and update mission states.
+- Ensures resume support (reusing active branches or claimed tasks) and idempotency (skipping merged or cleaned missions).
+- Logs execution run reports locally to reports/queue-runner/latest.json.
+
+## Phase 0.3S Proof Status
+
+Status: Draft PR opened; pending owner review and explicit merge approval token.
+Proof execution records:
+- Phase 0.3S upgrades the queue runtime to support safe multi-worker architecture with versioned heartbeat locks.
+- Implements exponential backoff retries and crash recovery with requeuing logic.
+- Implements oldest-updated-at selection for queue fairness.
 <!-- execution_records_start -->
 <!-- execution_records_end -->

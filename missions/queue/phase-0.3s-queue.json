@@ -1,0 +1,166 @@
+{
+  "missions": [
+    {
+      "mission_id": "mission-0.3s-001",
+      "phase": "0.3S",
+      "title": "Phase 0.3S: Multi-Worker & Reliability Hardening",
+      "branch": "chore/queue-runtime-engine",
+      "status": "WAITING_OWNER_APPROVAL",
+      "run_id": "test-run-1",
+      "pr_number": null,
+      "head_sha": "",
+      "created_at": "2026-06-26T08:30:00.000Z",
+      "updated_at": "2026-06-26T08:47:10.418Z",
+      "allowed_files": [
+        "scripts/ai-dev-factory-queue-runner.mjs",
+        "packages/db/src/_verify-0.3s.mjs",
+        "missions/queue/phase-0.3s-queue.json",
+        "scripts/ai-dev-factory-self-test-gate.mjs",
+        "docs/ai-dev-factory-execution-status.md",
+        "scripts/ai-dev-factory-pr-automation.mjs"
+      ],
+      "blocked_files": [
+        ".env",
+        ".env.*",
+        "Dockerfile",
+        "docker-compose.yml"
+      ],
+      "verification_commands": [
+        "pnpm -r typecheck",
+        "pnpm build",
+        "node packages/db/src/_verify-0.3s.mjs"
+      ],
+      "safety_rules": [
+        "Do not deploy to production",
+        "Do not read, write, print, or modify secrets or API keys",
+        "Do not touch .env files",
+        "Do not perform destructive database actions",
+        "Do not spend money or trigger paid infra/ads",
+        "Do not transmit outgoing email/SMS/customer/external communications",
+        "Do not auto-publish production content"
+      ],
+      "resume_policy": "REUSE_BRANCH_AND_PR",
+      "idempotency_key": "idemp-phase0.3s-multiworker-reliability-123456",
+      "final_verdict": "UNKNOWN",
+      "retry_count": 0,
+      "max_retries": 3
+    },
+    {
+      "mission_id": "mission-0.3s-002",
+      "phase": "0.3S",
+      "title": "Phase 0.3S Sample Fairness Mission",
+      "branch": "chore/sample-fairness",
+      "status": "WAITING_OWNER_APPROVAL",
+      "run_id": "test-run-2",
+      "pr_number": null,
+      "head_sha": "",
+      "created_at": "2026-06-26T08:35:00.000Z",
+      "updated_at": "2026-06-26T09:07:00.782Z",
+      "allowed_files": [
+        "docs/fairness-sample.md"
+      ],
+      "blocked_files": [
+        ".env"
+      ],
+      "verification_commands": [
+        "pnpm build"
+      ],
+      "safety_rules": [
+        "Do not deploy to production"
+      ],
+      "resume_policy": "REUSE_BRANCH_AND_PR",
+      "idempotency_key": "idemp-0.3s-fairness-key-123",
+      "final_verdict": "UNKNOWN",
+      "retry_count": 0,
+      "max_retries": 3
+    },
+    {
+      "mission_id": "mission-0.3s-003",
+      "phase": "0.3S",
+      "title": "Phase 0.3S Sample Retry & Backoff Mission",
+      "branch": "chore/sample-retry-backoff",
+      "status": "PENDING",
+      "run_id": "run-previous-failed-123",
+      "pr_number": null,
+      "head_sha": "",
+      "created_at": "2026-06-26T08:40:00.000Z",
+      "updated_at": "2026-06-26T08:40:00.000Z",
+      "allowed_files": [
+        "docs/retry-sample.md"
+      ],
+      "blocked_files": [
+        ".env"
+      ],
+      "verification_commands": [
+        "pnpm build"
+      ],
+      "safety_rules": [
+        "Do not deploy to production"
+      ],
+      "resume_policy": "REUSE_BRANCH_AND_PR",
+      "idempotency_key": "idemp-0.3s-retry-backoff-key-456",
+      "final_verdict": "UNKNOWN",
+      "retry_count": 1,
+      "max_retries": 3,
+      "last_failed_at": "2026-06-26T08:40:00.000Z"
+    },
+    {
+      "mission_id": "mission-0.3s-004",
+      "phase": "0.3S",
+      "title": "Phase 0.3S Sample Crash Recovery Mission",
+      "branch": "chore/sample-crash-recovery",
+      "status": "RUNNING",
+      "run_id": "stale-runner-uuid",
+      "pr_number": null,
+      "head_sha": "",
+      "created_at": "2026-06-26T08:45:00.000Z",
+      "updated_at": "2026-06-26T08:45:00.000Z",
+      "allowed_files": [
+        "docs/crash-sample.md"
+      ],
+      "blocked_files": [
+        ".env"
+      ],
+      "verification_commands": [
+        "pnpm build"
+      ],
+      "safety_rules": [
+        "Do not deploy to production"
+      ],
+      "resume_policy": "REUSE_BRANCH_AND_PR",
+      "idempotency_key": "idemp-0.3s-crash-recovery-key-789",
+      "final_verdict": "UNKNOWN",
+      "retry_count": 0,
+      "max_retries": 3
+    },
+    {
+      "mission_id": "mission-0.3s-005",
+      "phase": "0.3P",
+      "title": "Phase 0.3P First Real Product Task Through E2E Loop",
+      "branch": "chore/first-real-product-task-e2e",
+      "status": "CLEANED",
+      "run_id": "run-p1p2p3p4-5p6p-7p8p-9p0p-p1p2p3p4p5p6",
+      "pr_number": 15,
+      "head_sha": "575ea78fad703f9f5b7a8f1be19f06f7c4cc48b2",
+      "created_at": "2026-06-26T07:00:00.000Z",
+      "updated_at": "2026-06-26T07:15:00.000Z",
+      "allowed_files": [
+        "missions/phase-0.3p-first-product-task.json"
+      ],
+      "blocked_files": [
+        ".env"
+      ],
+      "verification_commands": [
+        "pnpm build"
+      ],
+      "safety_rules": [
+        "Do not deploy to production"
+      ],
+      "resume_policy": "REUSE_BRANCH_AND_PR",
+      "idempotency_key": "idemp-0.3p-cleaned-key-789",
+      "final_verdict": "E2E_MERGED_AND_CLEANED",
+      "retry_count": 0,
+      "max_retries": 3
+    }
+  ]
+}
