@@ -268,10 +268,12 @@ async function main() {
     prBodyContent += `#### Files changed:\n`;
     prBodyContent += `* \`scripts/ai-dev-factory-queue-runner.mjs\`\n`;
     prBodyContent += `* \`packages/db/src/_verify-0.3s.mjs\`\n`;
+    prBodyContent += `* \`packages/db/src/_verify-0.3q.mjs\`\n`;
     prBodyContent += `* \`missions/queue/phase-0.3s-queue.json\`\n`;
     prBodyContent += `* \`scripts/ai-dev-factory-self-test-gate.mjs\`\n`;
     prBodyContent += `* \`docs/ai-dev-factory-execution-status.md\`\n`;
     prBodyContent += `* \`scripts/ai-dev-factory-pr-automation.mjs\`\n\n`;
+    prBodyContent += `* **verify-0.3q branch-compatibility fix**: keeps 0.3Q static scope checks active on 0.3Q branches, while avoiding false failures when earlier phase verifiers are called from later phase branches such as 0.3S.\n\n`;
     prBodyContent += `#### Summary of Hardening:\n`;
     prBodyContent += `* **queue write lock synchronization**: Added queue file write locking (\`phase-0.3s-queue.json.lock\`) to eliminate read-modify-write race conditions.\n`;
     prBodyContent += `* **in-process heartbeat**: Implemented in-process asynchronous heartbeat refreshing every 2s.\n`;

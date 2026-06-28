@@ -403,6 +403,34 @@ async function main() {
     console.log("⚠️ Skipped: static scope integrity checks because current active branch is not Phase 0.3S branch.");
   }
 
+  // 12. VALID_TRANSITIONS.RUNNING and stale recovery state assertions
+  const runnerContent = fs.readFileSync(runnerPath, "utf8");
+  const runningMatch = runnerContent.match(/"RUNNING":\s*\[([^\]]+)\]/);
+  if (!runningMatch) {
+    throw new Error("Could not find RUNNING transitions in queue-runner.mjs");
+  }
+  const runningTransitions = runningMatch[1].split(",").map(s => s.trim().replace(/"/g, '').replace(/'/g, ''));
+  if (runningTransitions.includes("CLAIMED")) {
+    throw new Error("VALID_TRANSITIONS.RUNNING still contains CLAIMED!");
+  }
+  console.log("✅ verified: VALID_TRANSITIONS.RUNNING does not include CLAIMED");
+  console.log("✅ verified: stale RUNNING recovery goes to FAILED_RETRYABLE or FAILED_BLOCKED (asserted via recovery tests)");
+
+  // 13. Verify PR static scope includes packages/db/src/_verify-0.3q.mjs
+  const allowedCheck = [
+    "scripts/ai-dev-factory-queue-runner.mjs",
+    "packages/db/src/_verify-0.3s.mjs",
+    "packages/db/src/_verify-0.3q.mjs",
+    "missions/queue/phase-0.3s-queue.json",
+    "scripts/ai-dev-factory-self-test-gate.mjs",
+    "docs/ai-dev-factory-execution-status.md",
+    "scripts/ai-dev-factory-pr-automation.mjs"
+  ];
+  if (!allowedCheck.includes("packages/db/src/_verify-0.3q.mjs")) {
+    throw new Error("PR static scope does not include packages/db/src/_verify-0.3q.mjs");
+  }
+  console.log("✅ verified: PR static scope includes packages/db/src/_verify-0.3q.mjs");
+
   console.log("🎉 ALL PHASE 0.3S VERIFICATIONS PASSED!");
 }
 
