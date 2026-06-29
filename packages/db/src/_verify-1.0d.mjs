@@ -70,6 +70,15 @@ async function main() {
   if (!s1.source_goal.includes("Grow AI Company OS")) {
     throw new Error("Scenario 1 must match the default 1.0C sample plan goal");
   }
+  if (s1.missions.length !== samplePlan.missions.length) {
+    throw new Error(`Scenario 1 has ${s1.missions.length} missions instead of ${samplePlan.missions.length} missions matching the default 1.0C plan`);
+  }
+  const requiredTypes = ["REPO_AUDIT", "PRODUCT_RESEARCH", "MARKET_RESEARCH", "CONTENT_PLANNING", "LEAD_RESEARCH", "PRICING_ANALYSIS", "DOC_SUMMARY", "VERIFY_PHASE"];
+  for (const type of requiredTypes) {
+    if (!s1.missions.some(m => m.mission_type === type)) {
+      throw new Error(`Scenario 1 is missing required mission type: ${type}`);
+    }
+  }
   // Validate scenario 2 covers product_delivery
   if (s2.goal_type !== "product_delivery") {
     throw new Error("Scenario 2 must cover product_delivery");
@@ -78,7 +87,7 @@ async function main() {
   if (s3.goal_type !== "media_growth") {
     throw new Error("Scenario 3 must cover media_growth");
   }
-  console.log("✅ verified: scenarios include 3 required scenarios with correct goals and mappings");
+  console.log("✅ verified: scenarios include 3 required scenarios with correct goals, mappings, and mission types");
 
   // 5. Verify documentation mentions safety gates
   const routerDoc = fs.readFileSync(path.join(repoRoot, "docs/ai-company-os/capability-router.md"), "utf8");
