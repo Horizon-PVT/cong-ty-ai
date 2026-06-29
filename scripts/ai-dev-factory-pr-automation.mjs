@@ -145,7 +145,43 @@ async function main() {
   let prTitle = "feat: add auto push & draft pr gate";
   let prBodyContent = "";
 
-  if (fs.existsSync(path.resolve("packages/db/src/_verify-1.0c.mjs")) && (currentBranch.includes("ai-company-os-mission-planner") || currentBranch.includes("1.0c"))) {
+  if (fs.existsSync(path.resolve("packages/db/src/_verify-1.0d.mjs")) && (currentBranch.includes("ai-company-os-capability-router") || currentBranch.includes("1.0d"))) {
+    prTitle = "feat: add AI Company OS capability router";
+    prBodyContent = `### Milestone 1.0D: AI Company OS Capability Router\n\n`;
+    prBodyContent += `This PR implements Milestone 1.0D, establishing the local Capability Router, in-memory queue, and worker execution simulation for the AI Company OS.\n\n`;
+    prBodyContent += `- **Milestone**: 1.0D\n`;
+    prBodyContent += `- **Branch**: \`${currentBranch}\`\n\n`;
+    prBodyContent += `#### What Capability Router does:\n`;
+    prBodyContent += `Reads the Capability Registry, Mission Types, and Mission Plans, resolves target capabilities, validates factory and owner agent constraints, and places missions in a simulated local queue.\n\n`;
+    prBodyContent += `#### Local Queue and Worker Simulation:\n`;
+    prBodyContent += `Emulates local-safe worker claiming, execution, and artifact writing, with automated retry/backoff simulation. Actions implying real-world side effects are blocked.\n\n`;
+    prBodyContent += `#### Files changed:\n`;
+    prBodyContent += `* \`docs/ai-company-os/capability-router.md\`\n`;
+    prBodyContent += `* \`docs/ai-company-os/local-mission-queue.md\`\n`;
+    prBodyContent += `* \`configs/ai-company/router-policy.json\`\n`;
+    prBodyContent += `* \`configs/ai-company/router-scenarios.1.0d.json\`\n`;
+    prBodyContent += `* \`scripts/ai-company-capability-router-dry-run.mjs\`\n`;
+    prBodyContent += `* \`packages/db/src/_verify-1.0d.mjs\`\n`;
+    prBodyContent += `* \`scripts/ai-dev-factory-self-test-gate.mjs\`\n`;
+    prBodyContent += `* \`docs/ai-dev-factory-execution-status.md\`\n`;
+    prBodyContent += `* \`scripts/ai-dev-factory-pr-automation.mjs\` (updated to support 1.0D template generation)\n\n`;
+    prBodyContent += `#### Scenarios Created:\n`;
+    prBodyContent += `1. **scenario_1_default_sample**: Routing default sample plan from 1.0C.\n`;
+    prBodyContent += `2. **scenario_2_product_delivery**: Routing a product delivery plan with code refactor (safe) and merge (blocked).\n`;
+    prBodyContent += `3. **scenario_3_media_growth**: Routing media campaigns with dry-run publish (safe) and live publish (blocked).\n\n`;
+    prBodyContent += `#### Safety Confirmation:\n`;
+    prBodyContent += `* **no deploy**: Blocked.\n`;
+    prBodyContent += `* **no secrets**: Blocked.\n`;
+    prBodyContent += `* **no .env touch**: Blocked.\n`;
+    prBodyContent += `* **no destructive DB**: Blocked.\n`;
+    prBodyContent += `* **no spend**: Blocked.\n`;
+    prBodyContent += `* **no external communications**: Blocked.\n`;
+    prBodyContent += `* **no auto-publish**: Blocked.\n`;
+    prBodyContent += `* **no live queue dispatch**: Blocked.\n\n`;
+    prBodyContent += `#### Owner Safety Gate Controls\n`;
+    prBodyContent += `- **Safety gates remain blocked**: Deployments, secrets reads, destructive database actions, spending, and external communications remain fully blocked.\n`;
+    prBodyContent += `- **Merge remains blocked until owner approval token**: \`OWNER_APPROVED_MERGE_PR=<PR_NUMBER>\`\n\n`;
+  } else if (fs.existsSync(path.resolve("packages/db/src/_verify-1.0c.mjs")) && (currentBranch.includes("ai-company-os-mission-planner") || currentBranch.includes("1.0c"))) {
     prTitle = "feat: add AI Company OS mission planner";
     prBodyContent = `### Milestone 1.0C: AI Company OS Mission Planner\n\n`;
     prBodyContent += `This PR implements Milestone 1.0C, establishing the static Mission Planner and contract/schema validation layer for the AI Company OS.\n\n`;
@@ -474,6 +510,8 @@ async function main() {
   }
   if (currentBranch.includes("ai-company-os-mission-planner") || currentBranch.includes("1.0c")) {
     prBodyContent += `| \`node scripts/ai-dev-factory-self-test-gate.mjs --phase 1.0c --dry-run --write-report\` | **PASS** | ${(report.durationMs / 1000).toFixed(2)}s | real |\n`;
+  } else if (currentBranch.includes("ai-company-os-capability-router") || currentBranch.includes("1.0d")) {
+    prBodyContent += `| \`node scripts/ai-dev-factory-self-test-gate.mjs --phase 1.0d --dry-run --write-report\` | **PASS** | ${(report.durationMs / 1000).toFixed(2)}s | real |\n`;
   }
   prBodyContent += `\n`;
 
