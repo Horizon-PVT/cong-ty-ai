@@ -1,0 +1,124 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AI Company OS Capability Registry Schema",
+  "description": "JSON Schema validating the structure of capability-registry.json",
+  "type": "object",
+  "required": [
+    "company_name",
+    "milestone",
+    "capabilities"
+  ],
+  "properties": {
+    "company_name": { "type": "string" },
+    "milestone": { "type": "string", "enum": ["1.0B"] },
+    "capabilities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "capability_id",
+          "name",
+          "factory_id",
+          "owner_agent",
+          "status",
+          "maturity_level",
+          "accepted_mission_types",
+          "required_inputs",
+          "output_artifacts",
+          "allowed_actions",
+          "blocked_actions",
+          "approval_required_actions",
+          "safety_boundary",
+          "verifier_requirements",
+          "depends_on",
+          "handoff_target"
+        ],
+        "properties": {
+          "capability_id": { "type": "string" },
+          "name": { "type": "string" },
+          "factory_id": {
+            "type": "string",
+            "enum": [
+              "ai_dev_factory",
+              "media_factory",
+              "sales_factory",
+              "research_factory",
+              "finance_factory",
+              "customer_success_factory",
+              "knowledge_factory"
+            ]
+          },
+          "owner_agent": {
+            "type": "string",
+            "enum": [
+              "ceo_agent",
+              "coo_agent",
+              "cto_agent",
+              "cmo_agent",
+              "cfo_agent",
+              "product_agent",
+              "research_agent",
+              "legal_risk_agent"
+            ]
+          },
+          "status": { "type": "string", "enum": ["active", "draft", "planned"] },
+          "maturity_level": {
+            "type": "string",
+            "enum": ["operational", "draft", "planned"]
+          },
+          "accepted_mission_types": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "required_inputs": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "output_artifacts": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "allowed_actions": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "blocked_actions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "deploy_production",
+                "read_secrets",
+                "drop_database",
+                "spend_ad_budget",
+                "send_external_email",
+                "auto_publish_content"
+              ]
+            }
+          },
+          "approval_required_actions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "code_merge_master",
+                "change_safety_limits",
+                "increase_factory_budgets"
+              ]
+            }
+          },
+          "safety_boundary": { "type": "string" },
+          "verifier_requirements": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "depends_on": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "handoff_target": { "type": "string" }
+        }
+      }
+    }
+  }
+}
