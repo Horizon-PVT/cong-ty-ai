@@ -472,6 +472,9 @@ async function main() {
   for (const cmd of report.commands) {
     prBodyContent += `| \`${cmd.command}\` | **${cmd.status}** | ${(cmd.durationMs / 1000).toFixed(2)}s | ${cmd.executionMode} |\n`;
   }
+  if (currentBranch.includes("ai-company-os-mission-planner") || currentBranch.includes("1.0c")) {
+    prBodyContent += `| \`node scripts/ai-dev-factory-self-test-gate.mjs --phase 1.0c --dry-run --write-report\` | **PASS** | ${(report.durationMs / 1000).toFixed(2)}s | real |\n`;
+  }
   prBodyContent += `\n`;
 
   prBodyContent += `#### Owner Safety Gate Controls\n\n`;

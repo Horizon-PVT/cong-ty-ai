@@ -23,7 +23,8 @@ const COMMANDS_BASELINE = [
   { name: "verify-0.3s", cmd: "node packages/db/src/_verify-0.3s.mjs", phase: "0.3s", optional: true },
   { name: "verify-1.0a", cmd: "node packages/db/src/_verify-1.0a.mjs", phase: "1.0a", optional: true },
   { name: "verify-1.0b", cmd: "node packages/db/src/_verify-1.0b.mjs", phase: "1.0b", optional: true },
-  { name: "verify-1.0c", cmd: "node packages/db/src/_verify-1.0c.mjs", phase: "1.0c", optional: true }
+  { name: "verify-1.0c", cmd: "node packages/db/src/_verify-1.0c.mjs", phase: "1.0c", optional: true },
+  { name: "mission-planner-dry-run", cmd: "node scripts/ai-company-mission-planner-dry-run.mjs --write-report", phase: "1.0c", optional: true }
 ];
 
 async function main() {
