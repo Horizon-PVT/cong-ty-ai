@@ -1,0 +1,187 @@
+{
+  "scenarios": [
+    {
+      "scenario_id": "scenario_1_default_sample",
+      "description": "Route default sample mission plan from 1.0C.",
+      "plan_id": "plan_1.0c_company_ops_static_sample",
+      "goal_type": "company_ops",
+      "source_goal": "Grow AI Company OS from an internal engineering factory into a multi-factory operating system that can plan product, media, sales, research, finance, customer success, and knowledge work.",
+      "missions": [
+        {
+          "mission_id": "m01_audit",
+          "title": "Initial Repository Audit",
+          "mission_type": "REPO_AUDIT",
+          "target_factory": "ai_dev_factory",
+          "target_capability": "dev_repo_audit",
+          "owner_agent": "cto_agent",
+          "required_inputs": ["repo_path"],
+          "expected_outputs": ["audit_report"],
+          "safety_class": "safe_local",
+          "depends_on": []
+        },
+        {
+          "mission_id": "m02_product",
+          "title": "Product Gap Research",
+          "mission_type": "PRODUCT_RESEARCH",
+          "target_factory": "research_factory",
+          "target_capability": "product_research",
+          "owner_agent": "research_agent",
+          "required_inputs": ["feature_area"],
+          "expected_outputs": ["feature_report"],
+          "safety_class": "safe_local",
+          "depends_on": ["m01_audit"]
+        },
+        {
+          "mission_id": "m03_market",
+          "title": "OS Market Sizing Analysis",
+          "mission_type": "MARKET_RESEARCH",
+          "target_factory": "research_factory",
+          "target_capability": "market_research",
+          "owner_agent": "research_agent",
+          "required_inputs": ["sector"],
+          "expected_outputs": ["market_analysis_report"],
+          "safety_class": "safe_local",
+          "depends_on": ["m02_product"]
+        },
+        {
+          "mission_id": "m04_media",
+          "title": "Marketing Launch Campaign Plan",
+          "mission_type": "CONTENT_PLANNING",
+          "target_factory": "media_factory",
+          "target_capability": "media_content_strategy",
+          "owner_agent": "cmo_agent",
+          "required_inputs": ["target_audience", "topic"],
+          "expected_outputs": ["content_calendar"],
+          "safety_class": "safe_local",
+          "depends_on": ["m03_market"]
+        },
+        {
+          "mission_id": "m05_sales",
+          "title": "First Beta Lead Identification",
+          "mission_type": "LEAD_RESEARCH",
+          "target_factory": "sales_factory",
+          "target_capability": "sales_lead_research",
+          "owner_agent": "ceo_agent",
+          "required_inputs": ["target_industry"],
+          "expected_outputs": ["lead_report"],
+          "safety_class": "safe_local",
+          "depends_on": ["m04_media"]
+        },
+        {
+          "mission_id": "m06_finance",
+          "title": "Maturity Cost Estimation",
+          "mission_type": "PRICING_ANALYSIS",
+          "target_factory": "finance_factory",
+          "target_capability": "pricing_analysis",
+          "owner_agent": "cfo_agent",
+          "required_inputs": ["product_costs"],
+          "expected_outputs": ["pricing_report"],
+          "safety_class": "safe_local",
+          "depends_on": ["m05_sales"]
+        },
+        {
+          "mission_id": "m07_knowledge",
+          "title": "Strategic Decision Logging Summary",
+          "mission_type": "DOC_SUMMARY",
+          "target_factory": "knowledge_factory",
+          "target_capability": "internal_docs_summary",
+          "owner_agent": "coo_agent",
+          "required_inputs": ["doc_file"],
+          "expected_outputs": ["doc_summary"],
+          "safety_class": "safe_local",
+          "depends_on": ["m06_finance"]
+        },
+        {
+          "mission_id": "m08_verify",
+          "title": "Milestone 1.0C Validation",
+          "mission_type": "VERIFY_PHASE",
+          "target_factory": "ai_dev_factory",
+          "target_capability": "dev_self_test_verification",
+          "owner_agent": "cto_agent",
+          "required_inputs": ["phase_name"],
+          "expected_outputs": ["self_test_report"],
+          "safety_class": "safe_local",
+          "depends_on": ["m07_knowledge"]
+        }
+      ]
+    },
+    {
+      "scenario_id": "scenario_2_product_delivery",
+      "description": "Route a product_delivery mission plan.",
+      "plan_id": "plan_product_delivery_1.0d",
+      "goal_type": "product_delivery",
+      "source_goal": "Deliver new code refactoring capability to production.",
+      "missions": [
+        {
+          "mission_id": "m01_dev",
+          "title": "Local Refactoring Dev Code",
+          "mission_type": "CODE_MODIFICATION",
+          "target_factory": "ai_dev_factory",
+          "target_capability": "dev_task_implementation",
+          "owner_agent": "cto_agent",
+          "required_inputs": ["target_file"],
+          "expected_outputs": ["refactored_code"],
+          "safety_class": "safe_local",
+          "depends_on": []
+        },
+        {
+          "mission_id": "m02_deploy",
+          "title": "Production Deployment of Refactored Code",
+          "mission_type": "MERGE_PR",
+          "target_factory": "ai_dev_factory",
+          "target_capability": "dev_e2e_merge_gate",
+          "owner_agent": "cto_agent",
+          "required_inputs": ["pr_number", "approval_token"],
+          "expected_outputs": ["merge_report"],
+          "safety_class": "real_world_action",
+          "depends_on": ["m01_dev"]
+        }
+      ]
+    },
+    {
+      "scenario_id": "scenario_3_media_growth",
+      "description": "Route a media_growth mission plan containing a publish dry-run mission, ensuring real publish remains blocked but local dry-run is allowed.",
+      "plan_id": "plan_media_growth_1.0d",
+      "goal_type": "media_growth",
+      "source_goal": "Publish promotional content to launch the OS.",
+      "missions": [
+        {
+          "mission_id": "m01_plan",
+          "title": "Marketing Launch Campaign Plan",
+          "mission_type": "CONTENT_PLANNING",
+          "target_factory": "media_factory",
+          "target_capability": "media_content_strategy",
+          "owner_agent": "cmo_agent",
+          "required_inputs": ["campaign_goals"],
+          "expected_outputs": ["campaign_strategy"],
+          "safety_class": "safe_local",
+          "depends_on": []
+        },
+        {
+          "mission_id": "m02_publish_dry",
+          "title": "Launch Campaign Dry Run Publish",
+          "mission_type": "PUBLISH_DRY_RUN",
+          "target_factory": "media_factory",
+          "target_capability": "media_publish_dry_run",
+          "owner_agent": "cmo_agent",
+          "required_inputs": ["draft_content"],
+          "expected_outputs": ["dry_run_receipt"],
+          "safety_class": "safe_local",
+          "depends_on": ["m01_plan"]
+        },
+        {
+          "mission_id": "m03_publish_real",
+          "title": "Launch Campaign Live Publish",
+          "mission_type": "PUBLISH_DRY_RUN",
+          "target_factory": "media_factory",
+          "target_capability": "media_publish_dry_run",
+          "owner_agent": "cmo_agent",
+          "required_inputs": ["draft_content"],
+          "expected_outputs": ["live_url"],
+          "safety_class": "real_world_action",
+          "depends_on": ["m02_publish_dry"]
+        }
+      ]
+    }
+  ]
+}

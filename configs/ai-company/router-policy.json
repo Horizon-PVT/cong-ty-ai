@@ -1,0 +1,45 @@
+{
+  "router_mode": "local_dry_run",
+  "default_dispatch_allowed": true,
+  "real_world_side_effects_blocked": true,
+  "max_retry_attempts": 3,
+  "allowed_local_actions": [
+    "local_code_analysis",
+    "local_dry_run_checks",
+    "local_mock_compilation",
+    "local_report_generation"
+  ],
+  "blocked_real_actions": [
+    "production_deployment",
+    "destructive_database_actions",
+    "budget_spending",
+    "external_customer_communications",
+    "auto_publishing_content",
+    "master_branch_merge"
+  ],
+  "owner_approval_required_for": [
+    "master_branch_merge",
+    "production_deploy",
+    "real_world_spend",
+    "read_env_secrets"
+  ],
+  "mission_status_flow": [
+    "PLANNED",
+    "ROUTED",
+    "QUEUED",
+    "CLAIMED_LOCAL",
+    "RUNNING_LOCAL",
+    "COMPLETED_LOCAL_SIMULATION",
+    "BLOCKED_REAL_WORLD_SIDE_EFFECT",
+    "FAILED_RETRYABLE",
+    "FAILED_BLOCKED"
+  ],
+  "worker_status_flow": [
+    "IDLE",
+    "CLAIMING",
+    "RUNNING",
+    "REPORTING",
+    "DONE",
+    "FAILED"
+  ]
+}

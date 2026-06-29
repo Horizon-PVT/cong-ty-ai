@@ -106,10 +106,17 @@ Proof execution records:
 
 ## Milestone 1.0C Proof Status
 
-Status: Draft PR opened; pending owner review and explicit merge approval token.
+Status: Merged and Cleaned
 Proof execution records:
 - Milestone 1.0C implements the Mission Planner design documentation, plan contract schema, and standard mission type mappings.
 - Implements a dry-run planner script resolving goals to capability chains.
+
+## Milestone 1.0D Proof Status
+
+Status: Draft PR opened; pending owner review and explicit merge approval token.
+Proof execution records:
+- Milestone 1.0D implements the Capability Router design documentation, local queue specification, and router policy.
+- Implements a local Capability Router dry-run script simulating in-memory queues and worker execution.
 <!-- execution_records_start -->
 <!-- execution_records_end -->
 
