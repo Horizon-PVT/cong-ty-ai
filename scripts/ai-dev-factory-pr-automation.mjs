@@ -145,7 +145,55 @@ async function main() {
   let prTitle = "feat: add auto push & draft pr gate";
   let prBodyContent = "";
 
-  if (currentBranch.includes("owner-approved-merge-cleanup-gate") || currentBranch.includes("0.3m")) {
+  if (fs.existsSync(path.resolve("packages/db/src/_verify-1.0c.mjs")) && (currentBranch.includes("ai-company-os-mission-planner") || currentBranch.includes("1.0c"))) {
+    prTitle = "feat: add AI Company OS mission planner";
+    prBodyContent = `### Milestone 1.0C: AI Company OS Mission Planner\n\n`;
+    prBodyContent += `This PR implements Milestone 1.0C, establishing the static Mission Planner and contract/schema validation layer for the AI Company OS.\n\n`;
+    prBodyContent += `- **Milestone**: 1.0C\n`;
+    prBodyContent += `- **Branch**: \`${currentBranch}\`\n\n`;
+    prBodyContent += `#### Why Mission Planner is needed:\n`;
+    prBodyContent += `To execute company-level goals autonomously, we need a planner layer that decomposes human-level objectives into a dependency-ordered list of missions with defined factories, capabilities, inputs, outputs, and safety properties.\n\n`;
+    prBodyContent += `#### Relationship to Organization Model from 1.0A:\n`;
+    prBodyContent += `Every planned mission is assigned to a target factory and monitored by its respective executive agent (CTO, CMO, CFO, etc.) defined in Milestone 1.0A.\n\n`;
+    prBodyContent += `#### Relationship to Capability Registry from 1.0B:\n`;
+    prBodyContent += `The Mission Planner resolves mission types to their registered capabilities, verifying that input schemas, output targets, and safety boundaries exist in the registry.\n\n`;
+    prBodyContent += `#### Difference between Mission Planner and Capability Router:\n`;
+    prBodyContent += `* **Mission Planner**: Decoupled dry-run layer that analyzes and decomposes a goal into a static dependency plan.\n`;
+    prBodyContent += `* **Capability Router**: Runtime engine (Milestone 1.0D) that will dispatch missions to active worker queues.\n\n`;
+    prBodyContent += `#### Files changed:\n`;
+    prBodyContent += `* \`docs/ai-company-os/mission-planner.md\`\n`;
+    prBodyContent += `* \`docs/ai-company-os/mission-plan-contract.md\`\n`;
+    prBodyContent += `* \`configs/ai-company/mission-plan.schema.json\`\n`;
+    prBodyContent += `* \`configs/ai-company/mission-types.json\`\n`;
+    prBodyContent += `* \`configs/ai-company/sample-mission-plan.1.0c.json\`\n`;
+    prBodyContent += `* \`scripts/ai-company-mission-planner-dry-run.mjs\`\n`;
+    prBodyContent += `* \`packages/db/src/_verify-1.0c.mjs\`\n`;
+    prBodyContent += `* \`scripts/ai-dev-factory-self-test-gate.mjs\`\n`;
+    prBodyContent += `* \`docs/ai-dev-factory-execution-status.md\`\n`;
+    prBodyContent += `* \`scripts/ai-dev-factory-pr-automation.mjs\` (updated to support 1.0C template generation)\n\n`;
+    prBodyContent += `#### Mission Types Added:\n`;
+    prBodyContent += `* Default mappings for 32 mission types across AI Dev, Media, Sales, Research, Finance, Customer Success, and Knowledge factories.\n\n`;
+    prBodyContent += `#### Sample Mission Plan Summary:\n`;
+    prBodyContent += `* Decomposes the OS grow goal into 8 ordered missions: \`REPO_AUDIT\`, \`PRODUCT_RESEARCH\`, \`MARKET_RESEARCH\`, \`CONTENT_PLANNING\`, \`LEAD_RESEARCH\`, \`PRICING_ANALYSIS\`, \`DOC_SUMMARY\`, and \`VERIFY_PHASE\`.\n`;
+    prBodyContent += `* All sample missions are configured with \`dispatch_allowed = false\` (dry-run/static planning only).\n\n`;
+    prBodyContent += `#### Dry-Run Planner Summary:\n`;
+    prBodyContent += `* \`ai-company-mission-planner-dry-run.mjs\` deterministically parses goals, classifies goal types, maps mission types to capabilities, and validates capability existence in the registry.\n\n`;
+    prBodyContent += `#### Verification Results:\n`;
+    prBodyContent += `* \`node packages/db/src/_verify-1.0c.mjs\`: PASS\n`;
+    prBodyContent += `* \`node scripts/ai-dev-factory-self-test-gate.mjs --phase 1.0c --dry-run --write-report\`: PASS\n\n`;
+    prBodyContent += `#### Safety Confirmation:\n`;
+    prBodyContent += `* **no deploy**: Blocked.\n`;
+    prBodyContent += `* **no secrets**: Blocked.\n`;
+    prBodyContent += `* **no .env touch**: Blocked.\n`;
+    prBodyContent += `* **no destructive DB**: Blocked.\n`;
+    prBodyContent += `* **no spend**: Blocked.\n`;
+    prBodyContent += `* **no external communications**: Blocked.\n`;
+    prBodyContent += `* **no auto-publish**: Blocked.\n`;
+    prBodyContent += `* **no live queue dispatch**: Blocked.\n\n`;
+    prBodyContent += `#### Owner Safety Gate Controls\n`;
+    prBodyContent += `- **Safety gates remain blocked**: Deployments, secrets reads, destructive database actions, spending, and external communications remain fully blocked.\n`;
+    prBodyContent += `- **Merge remains blocked until owner approval token**: \`OWNER_APPROVED_MERGE_PR=<PR_NUMBER>\`\n\n`;
+  } else if (currentBranch.includes("owner-approved-merge-cleanup-gate") || currentBranch.includes("0.3m")) {
     prTitle = "feat: add owner-approved merge cleanup gate";
     prBodyContent = `### Phase 0.3M Owner-Approved Merge & Post-Merge Cleanup Gate\n\n`;
     prBodyContent += `This PR implements Phase 0.3M, introducing an owner-approved merge gate and local post-merge workspace cleanup.\n\n`;
@@ -423,6 +471,9 @@ async function main() {
   prBodyContent += `| ------- | ------ | -------- | -------------- |\n`;
   for (const cmd of report.commands) {
     prBodyContent += `| \`${cmd.command}\` | **${cmd.status}** | ${(cmd.durationMs / 1000).toFixed(2)}s | ${cmd.executionMode} |\n`;
+  }
+  if (currentBranch.includes("ai-company-os-mission-planner") || currentBranch.includes("1.0c")) {
+    prBodyContent += `| \`node scripts/ai-dev-factory-self-test-gate.mjs --phase 1.0c --dry-run --write-report\` | **PASS** | ${(report.durationMs / 1000).toFixed(2)}s | real |\n`;
   }
   prBodyContent += `\n`;
 

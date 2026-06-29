@@ -1,0 +1,154 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AI Company OS Mission Plan Schema",
+  "description": "Schema for validating company-level Mission Plans in Milestone 1.0C",
+  "type": "object",
+  "required": [
+    "plan_id",
+    "milestone",
+    "source_goal",
+    "goal_type",
+    "planning_mode",
+    "created_by_agent",
+    "owner_approval_required",
+    "dispatch_allowed",
+    "dispatch_blocked_reason",
+    "safety_summary",
+    "missions"
+  ],
+  "properties": {
+    "plan_id": { "type": "string" },
+    "milestone": { "type": "string", "enum": ["1.0C"] },
+    "source_goal": { "type": "string" },
+    "goal_type": {
+      "type": "string",
+      "enum": [
+        "product_delivery",
+        "media_growth",
+        "sales_growth",
+        "research_request",
+        "finance_review",
+        "customer_success",
+        "knowledge_update",
+        "company_ops"
+      ]
+    },
+    "planning_mode": { "type": "string", "enum": ["static", "dry_run"] },
+    "created_by_agent": {
+      "type": "string",
+      "enum": ["ceo_agent", "coo_agent", "cto_agent", "cmo_agent", "cfo_agent", "product_agent", "research_agent"]
+    },
+    "owner_approval_required": { "type": "boolean" },
+    "dispatch_allowed": { "type": "boolean", "enum": [false] },
+    "dispatch_blocked_reason": { "type": "string" },
+    "safety_summary": { "type": "string" },
+    "missions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "mission_id",
+          "title",
+          "mission_type",
+          "target_factory",
+          "target_capability",
+          "owner_agent",
+          "required_inputs",
+          "expected_outputs",
+          "safety_class",
+          "blocked_actions",
+          "approval_required_actions",
+          "depends_on",
+          "status",
+          "dispatch_allowed",
+          "dispatch_blocked_reason",
+          "verifier_requirements",
+          "handoff_target"
+        ],
+        "properties": {
+          "mission_id": { "type": "string" },
+          "title": { "type": "string" },
+          "mission_type": { "type": "string" },
+          "target_factory": {
+            "type": "string",
+            "enum": [
+              "ai_dev_factory",
+              "media_factory",
+              "sales_factory",
+              "research_factory",
+              "finance_factory",
+              "customer_success_factory",
+              "knowledge_factory"
+            ]
+          },
+          "target_capability": { "type": "string" },
+          "owner_agent": {
+            "type": "string",
+            "enum": [
+              "ceo_agent",
+              "coo_agent",
+              "cto_agent",
+              "cmo_agent",
+              "cfo_agent",
+              "product_agent",
+              "research_agent",
+              "legal_risk_agent"
+            ]
+          },
+          "required_inputs": { "type": "array", "items": { "type": "string" } },
+          "expected_outputs": { "type": "array", "items": { "type": "string" } },
+          "safety_class": {
+            "type": "string",
+            "enum": [
+              "safe_local",
+              "owner_review_required",
+              "external_action_blocked",
+              "merge_approval_required",
+              "spend_blocked",
+              "publish_blocked"
+            ]
+          },
+          "blocked_actions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "deploy_production",
+                "read_secrets",
+                "drop_database",
+                "spend_ad_budget",
+                "send_external_email",
+                "auto_publish_content"
+              ]
+            }
+          },
+          "approval_required_actions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "code_merge_master",
+                "change_safety_limits",
+                "increase_factory_budgets"
+              ]
+            }
+          },
+          "depends_on": { "type": "array", "items": { "type": "string" } },
+          "status": {
+            "type": "string",
+            "enum": [
+              "planned",
+              "blocked_pending_owner",
+              "blocked_until_router",
+              "ready_for_dry_run"
+            ]
+          },
+          "dispatch_allowed": { "type": "boolean", "enum": [false] },
+          "dispatch_blocked_reason": { "type": "string" },
+          "verifier_requirements": { "type": "array", "items": { "type": "string" } },
+          "handoff_target": { "type": "string" }
+        }
+      }
+    }
+  }
+}

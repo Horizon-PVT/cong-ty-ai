@@ -99,9 +99,17 @@ Proof execution records:
 
 ## Milestone 1.0B Proof Status
 
-Status: Draft PR opened; pending owner review and explicit merge approval token.
+Status: Merged and Cleaned
 Proof execution records:
 - Milestone 1.0B establishes the Capability Registry design documentation, standardized capability contracts, and capability schema validations.
 - Configures 32 separate capabilities across 7 active and planned factories.
+
+## Milestone 1.0C Proof Status
+
+Status: Draft PR opened; pending owner review and explicit merge approval token.
+Proof execution records:
+- Milestone 1.0C implements the Mission Planner design documentation, plan contract schema, and standard mission type mappings.
+- Implements a dry-run planner script resolving goals to capability chains.
 <!-- execution_records_start -->
 <!-- execution_records_end -->
+
