@@ -1,11 +1,11 @@
 import fs from "node:fs";
-import path from "node:url";
-import fsp from "node:fs/promises";
+import path from "node:path";
 import { execSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 
-const __dirname = fsp ? path.fileURLToPath(import.meta.url) : "";
-const repoRoot = execSync ? execSync("git rev-parse --show-toplevel", { encoding: "utf8" }).trim() : "";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const repoRoot = execSync("git rev-parse --show-toplevel", { encoding: "utf8" }).trim();
 
 async function main() {
   console.log("Starting Phase 1.0B verification...");
@@ -16,7 +16,7 @@ async function main() {
     "docs/ai-company-os/capability-contracts.md"
   ];
   for (const doc of docs) {
-    const fullPath = execSync ? path.fileURLToPath(`file:///${repoRoot}/${doc}`) : "";
+    const fullPath = path.join(repoRoot, doc);
     if (!fs.existsSync(fullPath)) {
       throw new Error(`Required document "${doc}" does not exist`);
     }
@@ -24,7 +24,7 @@ async function main() {
   console.log("✅ verified: capability-registry.md and capability-contracts.md exist");
 
   // 2. Verify configs exist and parse
-  const registryPath = execSync ? path.fileURLToPath(`file:///${repoRoot}/configs/ai-company/capability-registry.json`) : "";
+  const registryPath = path.join(repoRoot, "configs/ai-company/capability-registry.json");
   if (!fs.existsSync(registryPath)) {
     throw new Error("configs/ai-company/capability-registry.json does not exist");
   }
@@ -36,7 +36,7 @@ async function main() {
   }
   console.log("✅ verified: capability-registry.json exists and parses");
 
-  const schemaPath = execSync ? path.fileURLToPath(`file:///${repoRoot}/configs/ai-company/capability-contract.schema.json`) : "";
+  const schemaPath = path.join(repoRoot, "configs/ai-company/capability-contract.schema.json");
   if (!fs.existsSync(schemaPath)) {
     throw new Error("configs/ai-company/capability-contract.schema.json does not exist");
   }
@@ -118,8 +118,8 @@ async function main() {
   console.log("✅ verified: every capability has required fields, valid factory reference, and correct maturity constraints");
 
   // 4. Verify document content details
-  const registryDocContent = fs.readFileSync(execSync ? path.fileURLToPath(`file:///${repoRoot}/docs/ai-company-os/capability-registry.md`) : "", "utf8");
-  const contractsDocContent = fs.readFileSync(execSync ? path.fileURLToPath(`file:///${repoRoot}/docs/ai-company-os/capability-contracts.md`) : "", "utf8");
+  const registryDocContent = fs.readFileSync(path.join(repoRoot, "docs/ai-company-os/capability-registry.md"), "utf8");
+  const contractsDocContent = fs.readFileSync(path.join(repoRoot, "docs/ai-company-os/capability-contracts.md"), "utf8");
 
   if (!registryDocContent.includes("Capability Registry")) {
     throw new Error("Capability Registry mention missing in overview doc");
@@ -148,7 +148,7 @@ async function main() {
   console.log("✅ verified: safety rules block deploy, secrets, .env, destructive DB, spend, external communications, and auto-publishing");
 
   // 5. Verify self-test gate mentions verify-1.0b
-  const selfTestPath = execSync ? path.fileURLToPath(`file:///${repoRoot}/scripts/ai-dev-factory-self-test-gate.mjs`) : "";
+  const selfTestPath = path.join(repoRoot, "scripts/ai-dev-factory-self-test-gate.mjs");
   const selfTestContent = fs.readFileSync(selfTestPath, "utf8");
   if (!selfTestContent.includes("verify-1.0b") || !selfTestContent.includes("1.0b")) {
     throw new Error("self-test-gate.mjs does not include verify-1.0b or 1.0b filter");
@@ -156,7 +156,7 @@ async function main() {
   console.log("✅ verified: self-test gate includes verify-1.0b");
 
   // 6. Verify execution status mentions Milestone 1.0B
-  const execStatusPath = execSync ? path.fileURLToPath(`file:///${repoRoot}/docs/ai-dev-factory-execution-status.md`) : "";
+  const execStatusPath = path.join(repoRoot, "docs/ai-dev-factory-execution-status.md");
   const execStatusContent = fs.readFileSync(execStatusPath, "utf8");
   if (!execStatusContent.includes("Milestone 1.0B")) {
     throw new Error("execution-status.md does not mention Milestone 1.0B");
@@ -175,7 +175,7 @@ async function main() {
     console.log("Enforcing static scope integrity checks on branch:", currentBranch);
     let changedFiles = [];
     try {
-      const diffOutput = execSync("git diff master --name-only", { encoding: "utf8" }).trim();
+      const diffOutput = execSync("git diff master HEAD --name-only", { encoding: "utf8" }).trim();
       changedFiles = diffOutput.split("\n").map(f => f.trim()).filter(Boolean);
     } catch (err) {
       console.log("⚠️ Git diff against master failed. Skipping strict diff file checks.");

@@ -90,6 +90,13 @@ async function main() {
     }
   }
 
+  // The current active phase verifier must be non-optional (blocking)
+  for (const cmd of filteredCommands) {
+    if (cmd.phase === selectedPhase) {
+      cmd.optional = false;
+    }
+  }
+
   console.log(`[Self-Test Gate] Scheduled ${filteredCommands.length} commands for verification.`);
 
   const startedAt = new Date().toISOString();
