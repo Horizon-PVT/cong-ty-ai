@@ -2,6 +2,7 @@
 
 import fs from "node:fs";
 import path from "node:path";
+import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { execSync } from "node:child_process";
 
@@ -170,9 +171,18 @@ function main() {
     });
   }
 
+  // Create deterministic plan_id
+  let planId = "";
+  if (targetGoal === samplePlan.source_goal) {
+    planId = "plan_1.0c_company_ops_static_sample";
+  } else {
+    const hash = crypto.createHash("sha256").update(targetGoal + targetGoalType).digest("hex").slice(0, 12);
+    planId = `plan_${targetGoalType}_${hash}_dry_run`;
+  }
+
   // Create plan object
   const plan = {
-    plan_id: `plan_${Date.now()}_dry_run`,
+    plan_id: planId,
     milestone: "1.0C",
     source_goal: targetGoal,
     goal_type: targetGoalType,

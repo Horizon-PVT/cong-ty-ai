@@ -126,11 +126,12 @@ async function main() {
   // Validate dry-run script doesn't call external APIs (checking for fetch, axios, post, sendMail, publish)
   const scriptContent = fs.readFileSync(path.join(repoRoot, "scripts/ai-company-mission-planner-dry-run.mjs"), "utf8");
   const forbiddenPatterns = [
-    /fetch\(/, /axios\./, /sendMail/, /publish\(/, /deploy\(/, /\.post\(/
+    /fetch\(/, /axios\./, /sendMail/, /publish\(/, /deploy\(/, /\.post\(/,
+    /Date\.now\(\)/, /Math\.random\(\)/, /new Date\(/
   ];
   for (const pattern of forbiddenPatterns) {
     if (pattern.test(scriptContent)) {
-      throw new Error(`Dry-run planner script contains potential external action API: ${pattern}`);
+      throw new Error(`Dry-run planner script contains potential external action API or non-deterministic ID generator: ${pattern}`);
     }
   }
   
