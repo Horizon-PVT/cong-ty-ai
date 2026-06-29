@@ -22,7 +22,8 @@ const COMMANDS_BASELINE = [
   { name: "verify-0.3r", cmd: "node packages/db/src/_verify-0.3r.mjs", phase: "0.3r", optional: true },
   { name: "verify-0.3s", cmd: "node packages/db/src/_verify-0.3s.mjs", phase: "0.3s", optional: true },
   { name: "verify-1.0a", cmd: "node packages/db/src/_verify-1.0a.mjs", phase: "1.0a", optional: true },
-  { name: "verify-1.0b", cmd: "node packages/db/src/_verify-1.0b.mjs", phase: "1.0b", optional: true }
+  { name: "verify-1.0b", cmd: "node packages/db/src/_verify-1.0b.mjs", phase: "1.0b", optional: true },
+  { name: "verify-1.0c", cmd: "node packages/db/src/_verify-1.0c.mjs", phase: "1.0c", optional: true }
 ];
 
 async function main() {
@@ -87,6 +88,8 @@ async function main() {
       filteredCommands = COMMANDS_BASELINE.filter(c => c.phase === "0.3j" || c.phase === "0.3k" || c.phase === "0.3l" || c.phase === "0.3m" || c.phase === "0.3n" || c.phase === "0.3o" || c.phase === "0.3p" || c.phase === "0.3q" || c.phase === "0.3r" || c.phase === "0.3s" || c.phase === "1.0a");
     } else if (selectedPhase === "1.0b") {
       filteredCommands = COMMANDS_BASELINE.filter(c => c.phase === "0.3j" || c.phase === "0.3k" || c.phase === "0.3l" || c.phase === "0.3m" || c.phase === "0.3n" || c.phase === "0.3o" || c.phase === "0.3p" || c.phase === "0.3q" || c.phase === "0.3r" || c.phase === "0.3s" || c.phase === "1.0a" || c.phase === "1.0b");
+    } else if (selectedPhase === "1.0c") {
+      filteredCommands = COMMANDS_BASELINE.filter(c => c.phase === "0.3j" || c.phase === "0.3k" || c.phase === "0.3l" || c.phase === "0.3m" || c.phase === "0.3n" || c.phase === "0.3o" || c.phase === "0.3p" || c.phase === "0.3q" || c.phase === "0.3r" || c.phase === "0.3s" || c.phase === "1.0a" || c.phase === "1.0b" || c.phase === "1.0c");
     }
   }
 
