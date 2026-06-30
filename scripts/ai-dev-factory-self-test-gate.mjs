@@ -31,7 +31,11 @@ const COMMANDS_BASELINE = [
   { name: "provider-router-dry-run-ceo", cmd: "node scripts/ai-company-provider-router-dry-run.mjs --agent ceo_agent --mission-type PRODUCT_RESEARCH --mode auto --simulate-outcome success --write-report --explain", phase: "1.0e", optional: true },
   { name: "provider-router-dry-run-reviewer", cmd: "node scripts/ai-company-provider-router-dry-run.mjs --agent review_worker --mission-type PR_REVIEW --mode auto --simulate-outcome low_confidence --write-report --explain", phase: "1.0e", optional: true },
   { name: "provider-router-dry-run-tester", cmd: "node scripts/ai-company-provider-router-dry-run.mjs --agent test_worker --mission-type VERIFY_PHASE --mode auto --simulate-outcome success --write-report --explain", phase: "1.0e", optional: true },
-  { name: "learning-loop-dry-run", cmd: "node scripts/ai-company-learning-loop-dry-run.mjs --agent ceo_agent --mission-type PRODUCT_RESEARCH --provider openai --outcome success --quality-score 0.82 --simulate-lesson --write-report", phase: "1.0e", optional: true }
+  { name: "learning-loop-dry-run", cmd: "node scripts/ai-company-learning-loop-dry-run.mjs --agent ceo_agent --mission-type PRODUCT_RESEARCH --provider openai --outcome success --quality-score 0.82 --simulate-lesson --write-report", phase: "1.0e", optional: true },
+  { name: "verify-1.0f", cmd: "node packages/db/src/_verify-1.0f.mjs", phase: "1.0f", optional: true },
+  { name: "dynamic-staffing-dry-run", cmd: "node scripts/ai-company-dynamic-staffing-dry-run.mjs --scenario scenario_media_hook_low_quality --create-temporary-worker --create-candidate-worker --write-report --explain", phase: "1.0f", optional: true },
+  { name: "worker-trial-dry-run", cmd: "node scripts/ai-company-worker-trial-dry-run.mjs --archetype tiktok_hook_worker --mission-type CONTENT_PLANNING --factory media_factory --quality-score 0.84 --cost-score 0.72 --latency-score 0.76 --outcome success --write-report --explain", phase: "1.0f", optional: true },
+  { name: "staffing-sweep", cmd: "node scripts/ai-company-staffing-recommendation-sweep.mjs --write-report --explain", phase: "1.0f", optional: true }
 ];
 
 async function main() {
@@ -102,6 +106,8 @@ async function main() {
       filteredCommands = COMMANDS_BASELINE.filter(c => c.phase === "0.3j" || c.phase === "0.3k" || c.phase === "0.3l" || c.phase === "0.3m" || c.phase === "0.3n" || c.phase === "0.3o" || c.phase === "0.3p" || c.phase === "0.3q" || c.phase === "0.3r" || c.phase === "0.3s" || c.phase === "1.0a" || c.phase === "1.0b" || c.phase === "1.0c" || c.phase === "1.0d");
     } else if (selectedPhase === "1.0e") {
       filteredCommands = COMMANDS_BASELINE.filter(c => c.phase === "0.3j" || c.phase === "0.3k" || c.phase === "0.3l" || c.phase === "0.3m" || c.phase === "0.3n" || c.phase === "0.3o" || c.phase === "0.3p" || c.phase === "0.3q" || c.phase === "0.3r" || c.phase === "0.3s" || c.phase === "1.0a" || c.phase === "1.0b" || c.phase === "1.0c" || c.phase === "1.0d" || c.phase === "1.0e");
+    } else if (selectedPhase === "1.0f") {
+      filteredCommands = COMMANDS_BASELINE.filter(c => c.phase === "0.3j" || c.phase === "0.3k" || c.phase === "0.3l" || c.phase === "0.3m" || c.phase === "0.3n" || c.phase === "0.3o" || c.phase === "0.3p" || c.phase === "0.3q" || c.phase === "0.3r" || c.phase === "0.3s" || c.phase === "1.0a" || c.phase === "1.0b" || c.phase === "1.0c" || c.phase === "1.0d" || c.phase === "1.0e" || c.phase === "1.0f");
     }
   }
 

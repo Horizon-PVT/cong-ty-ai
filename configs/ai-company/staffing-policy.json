@@ -1,0 +1,72 @@
+{
+  "staffing_mode": "local_dry_run",
+  "dynamic_staffing_enabled": true,
+  "temporary_worker_auto_create_allowed": true,
+  "candidate_worker_auto_create_allowed": true,
+  "permanent_worker_auto_create_allowed": false,
+  "permanent_worker_requires_owner_review": true,
+  "max_temporary_workers_per_run": 5,
+  "max_candidate_workers_per_run": 3,
+  "staffing_gap_triggers": [
+    "repeated_low_quality",
+    "repeated_failed_verification",
+    "repeated_high_cost",
+    "missing_specialist_role",
+    "repeated_fallback_usage",
+    "operator_intervention_required"
+  ],
+  "severity_thresholds": {
+    "low": {
+      "failure_count": 1,
+      "fallback_count": 2
+    },
+    "medium": {
+      "failure_count": 2,
+      "fallback_count": 4,
+      "low_quality_count": 2
+    },
+    "high": {
+      "failure_count": 3,
+      "fallback_count": 6,
+      "low_quality_count": 4
+    }
+  },
+  "trial_score_thresholds": {
+    "min_quality": 0.6,
+    "min_readiness": 0.5
+  },
+  "promotion_thresholds": {
+    "to_candidate": 0.6,
+    "to_permanent": 0.8,
+    "min_trials_for_permanent": 3
+  },
+  "archive_thresholds": {
+    "readiness_below": 0.4,
+    "consecutive_failures": 3
+  },
+  "allowed_local_staffing_actions": [
+    "detect_gap",
+    "recommend_archetype",
+    "create_temporary_profile",
+    "create_candidate_profile",
+    "simulate_trial",
+    "generate_scorecard",
+    "append_staffing_memory"
+  ],
+  "blocked_real_world_staffing_actions": [
+    "mutate_capability_registry_json",
+    "auto_create_permanent_worker",
+    "real_provider_api_hiring",
+    "live_token_billing_spending"
+  ],
+  "hard_locks": [
+    "no_secrets",
+    "no_env_touch",
+    "no_destructive_db",
+    "no_spend",
+    "no_production_deploy",
+    "no_external_communications",
+    "no_real_publish",
+    "no_master_merge_without_owner_token"
+  ]
+}

@@ -1,0 +1,256 @@
+{
+  "archetypes": [
+    {
+      "archetype_id": "repo_audit_specialist",
+      "factory_id": "ai_dev_factory",
+      "default_role": "developer",
+      "best_for_mission_types": ["REPO_AUDIT"],
+      "required_inputs": ["repo_path", "branch_name"],
+      "expected_outputs": ["audit_report.json"],
+      "suggested_provider_pool": {
+        "primary_provider": "openai",
+        "fallback_providers": ["anthropic"],
+        "cheap_provider": "local"
+      },
+      "trial_kpis": ["quality >= 0.75", "latency_seconds < 15"],
+      "risk_notes": "Requires file system read access; safe for local execution.",
+      "can_be_temporary": true,
+      "can_be_candidate": true,
+      "permanent_requires_owner_review": true
+    },
+    {
+      "archetype_id": "code_repair_worker",
+      "factory_id": "ai_dev_factory",
+      "default_role": "developer",
+      "best_for_mission_types": ["CODE_MODIFICATION"],
+      "required_inputs": ["target_file", "modification_spec"],
+      "expected_outputs": ["modified_file"],
+      "suggested_provider_pool": {
+        "primary_provider": "openai",
+        "fallback_providers": ["anthropic"],
+        "cheap_provider": "local"
+      },
+      "trial_kpis": ["compilation_pass == true", "quality >= 0.8"],
+      "risk_notes": "Modifies files; local execution check required.",
+      "can_be_temporary": true,
+      "can_be_candidate": true,
+      "permanent_requires_owner_review": true
+    },
+    {
+      "archetype_id": "playwright_e2e_worker",
+      "factory_id": "ai_dev_factory",
+      "default_role": "tester",
+      "best_for_mission_types": ["TEST_EXECUTION", "VERIFY_PHASE"],
+      "required_inputs": ["test_suite", "environment_config"],
+      "expected_outputs": ["test_run_results.json"],
+      "suggested_provider_pool": {
+        "primary_provider": "google",
+        "fallback_providers": ["openai", "anthropic"],
+        "cheap_provider": "local"
+      },
+      "trial_kpis": ["assertion_success_rate >= 0.95", "quality >= 0.85"],
+      "risk_notes": "Runs browser tests; sandbox sandbox limits apply.",
+      "can_be_temporary": true,
+      "can_be_candidate": true,
+      "permanent_requires_owner_review": true
+    },
+    {
+      "archetype_id": "pr_review_assistant",
+      "factory_id": "ai_dev_factory",
+      "default_role": "reviewer",
+      "best_for_mission_types": ["PR_REVIEW"],
+      "required_inputs": ["pr_diff", "review_rules"],
+      "expected_outputs": ["review_comments.json"],
+      "suggested_provider_pool": {
+        "primary_provider": "anthropic",
+        "fallback_providers": ["openai"],
+        "cheap_provider": "local"
+      },
+      "trial_kpis": ["review_coverage >= 0.8", "quality >= 0.8"],
+      "risk_notes": "Reads repository diffs; no modification allowed.",
+      "can_be_temporary": true,
+      "can_be_candidate": true,
+      "permanent_requires_owner_review": true
+    },
+    {
+      "archetype_id": "tiktok_hook_worker",
+      "factory_id": "media_factory",
+      "default_role": "media_operator",
+      "best_for_mission_types": ["CONTENT_PLANNING", "CREATIVE_HOOK_GENERATION"],
+      "required_inputs": ["brand_voice", "topic"],
+      "expected_outputs": ["tiktok_hooks.md"],
+      "suggested_provider_pool": {
+        "primary_provider": "hermes_internal",
+        "fallback_providers": ["openai"],
+        "cheap_provider": "local"
+      },
+      "trial_kpis": ["quality >= 0.75", "hook_engagement_score >= 0.8"],
+      "risk_notes": "Content generation only; no live posting permitted.",
+      "can_be_temporary": true,
+      "can_be_candidate": true,
+      "permanent_requires_owner_review": true
+    },
+    {
+      "archetype_id": "facebook_post_worker",
+      "factory_id": "media_factory",
+      "default_role": "media_operator",
+      "best_for_mission_types": ["CONTENT_PLANNING"],
+      "required_inputs": ["brand_voice", "topic"],
+      "expected_outputs": ["facebook_post.md"],
+      "suggested_provider_pool": {
+        "primary_provider": "hermes_internal",
+        "fallback_providers": ["google"],
+        "cheap_provider": "local"
+      },
+      "trial_kpis": ["quality >= 0.7", "alignment_with_brand >= 0.85"],
+      "risk_notes": "Content generation only; no live posting permitted.",
+      "can_be_temporary": true,
+      "can_be_candidate": true,
+      "permanent_requires_owner_review": true
+    },
+    {
+      "archetype_id": "short_video_script_worker",
+      "factory_id": "media_factory",
+      "default_role": "media_operator",
+      "best_for_mission_types": ["CONTENT_PLANNING"],
+      "required_inputs": ["topic", "duration"],
+      "expected_outputs": ["script.md"],
+      "suggested_provider_pool": {
+        "primary_provider": "openai",
+        "fallback_providers": ["google"],
+        "cheap_provider": "local"
+      },
+      "trial_kpis": ["quality >= 0.75", "visual_cues_included == true"],
+      "risk_notes": "Scriptwriting only; no video editing/rendering.",
+      "can_be_temporary": true,
+      "can_be_candidate": true,
+      "permanent_requires_owner_review": true
+    },
+    {
+      "archetype_id": "brand_voice_reviewer",
+      "factory_id": "media_factory",
+      "default_role": "reviewer",
+      "best_for_mission_types": ["CONTENT_PLANNING"],
+      "required_inputs": ["draft_content", "brand_rules"],
+      "expected_outputs": ["review_report.md"],
+      "suggested_provider_pool": {
+        "primary_provider": "anthropic",
+        "fallback_providers": ["openai"],
+        "cheap_provider": "local"
+      },
+      "trial_kpis": ["quality >= 0.8", "brand_compliance_percentage >= 0.95"],
+      "risk_notes": "Read-only review; no direct publishing permissions.",
+      "can_be_temporary": true,
+      "can_be_candidate": true,
+      "permanent_requires_owner_review": true
+    },
+    {
+      "archetype_id": "lead_qualification_worker",
+      "factory_id": "sales_factory",
+      "default_role": "customer_success",
+      "best_for_mission_types": ["LEAD_RESEARCH"],
+      "required_inputs": ["lead_data", "qualification_criteria"],
+      "expected_outputs": ["qualification_result.json"],
+      "suggested_provider_pool": {
+        "primary_provider": "openai",
+        "fallback_providers": ["google"],
+        "cheap_provider": "local"
+      },
+      "trial_kpis": ["accuracy >= 0.8", "quality >= 0.75"],
+      "risk_notes": "Processes lead lists; local cache only.",
+      "can_be_temporary": true,
+      "can_be_candidate": true,
+      "permanent_requires_owner_review": true
+    },
+    {
+      "archetype_id": "sales_objection_handler",
+      "factory_id": "sales_factory",
+      "default_role": "customer_success",
+      "best_for_mission_types": ["LEAD_RESEARCH"],
+      "required_inputs": ["objection_text", "product_faq"],
+      "expected_outputs": ["response_options.md"],
+      "suggested_provider_pool": {
+        "primary_provider": "openai",
+        "fallback_providers": ["anthropic"],
+        "cheap_provider": "local"
+      },
+      "trial_kpis": ["quality >= 0.8", "response_cohesiveness >= 0.85"],
+      "risk_notes": "Drafts objection responses; no email delivery.",
+      "can_be_temporary": true,
+      "can_be_candidate": true,
+      "permanent_requires_owner_review": true
+    },
+    {
+      "archetype_id": "competitor_research_worker",
+      "factory_id": "research_factory",
+      "default_role": "researcher",
+      "best_for_mission_types": ["PRODUCT_RESEARCH", "MARKET_RESEARCH"],
+      "required_inputs": ["competitor_name", "research_topics"],
+      "expected_outputs": ["competitor_report.md"],
+      "suggested_provider_pool": {
+        "primary_provider": "google",
+        "fallback_providers": ["openai"],
+        "cheap_provider": "local"
+      },
+      "trial_kpis": ["quality >= 0.8", "citation_count >= 3"],
+      "risk_notes": "Safe search-augmented research; local caching allowed.",
+      "can_be_temporary": true,
+      "can_be_candidate": true,
+      "permanent_requires_owner_review": true
+    },
+    {
+      "archetype_id": "api_cost_optimizer",
+      "factory_id": "finance_factory",
+      "default_role": "finance_analyst",
+      "best_for_mission_types": ["PRICING_ANALYSIS"],
+      "required_inputs": ["api_logs", "cost_policy"],
+      "expected_outputs": ["optimization_recommendations.md"],
+      "suggested_provider_pool": {
+        "primary_provider": "openai",
+        "fallback_providers": ["local"],
+        "cheap_provider": "local"
+      },
+      "trial_kpis": ["quality >= 0.8", "savings_identified_accuracy >= 0.9"],
+      "risk_notes": "Analyzes logs only; does not edit API keys/tiers.",
+      "can_be_temporary": true,
+      "can_be_candidate": true,
+      "permanent_requires_owner_review": true
+    },
+    {
+      "archetype_id": "onboarding_worker",
+      "factory_id": "customer_success_factory",
+      "default_role": "customer_success",
+      "best_for_mission_types": ["CUSTOMER_ONBOARDING"],
+      "required_inputs": ["customer_profile", "onboarding_assets"],
+      "expected_outputs": ["onboarding_checklist.md"],
+      "suggested_provider_pool": {
+        "primary_provider": "hermes_internal",
+        "fallback_providers": ["openai"],
+        "cheap_provider": "local"
+      },
+      "trial_kpis": ["quality >= 0.75", "checklist_coverage >= 0.9"],
+      "risk_notes": "Generates onboarding checklist; no email delivery.",
+      "can_be_temporary": true,
+      "can_be_candidate": true,
+      "permanent_requires_owner_review": true
+    },
+    {
+      "archetype_id": "decision_log_worker",
+      "factory_id": "knowledge_factory",
+      "default_role": "knowledge_worker",
+      "best_for_mission_types": ["DOC_SUMMARY"],
+      "required_inputs": ["meeting_transcript", "decision_template"],
+      "expected_outputs": ["decision_entry.json"],
+      "suggested_provider_pool": {
+        "primary_provider": "anthropic",
+        "fallback_providers": ["openai"],
+        "cheap_provider": "local"
+      },
+      "trial_kpis": ["quality >= 0.8", "extraction_accuracy >= 0.9"],
+      "risk_notes": "Generates structured knowledge base entries locally.",
+      "can_be_temporary": true,
+      "can_be_candidate": true,
+      "permanent_requires_owner_review": true
+    }
+  ]
+}

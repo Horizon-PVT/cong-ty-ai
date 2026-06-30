@@ -1,0 +1,1 @@
+{"trial_id":"trial_baseline_init","worker_id":"system_baseline","archetype_id":"repo_audit_specialist","mission_type":"SYSTEM_INIT","quality_score":0.5,"cost_score":0.5,"latency_score":0.5,"readiness_score":0.5,"outcome":"success","recommendation":"keep_temporary","is_sample":true}
