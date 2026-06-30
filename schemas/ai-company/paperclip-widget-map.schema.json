@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PaperclipWidgetMapping",
+  "type": "OBJECT",
+  "properties": {
+    "widget_id": { "type": "STRING" },
+    "display_name": { "type": "STRING" },
+    "source_file": { "type": "STRING" },
+    "source_json_path": { "type": "STRING" },
+    "required_fields": {
+      "type": "ARRAY",
+      "items": { "type": "STRING" }
+    },
+    "refresh_mode": { "type": "STRING", "enum": ["on_demand", "periodic", "realtime"] },
+    "read_only": { "type": "BOOLEAN" },
+    "owner_action_required": { "type": "BOOLEAN" }
+  },
+  "required": [
+    "widget_id",
+    "source_file",
+    "source_json_path",
+    "required_fields",
+    "refresh_mode",
+    "read_only",
+    "owner_action_required"
+  ]
+}

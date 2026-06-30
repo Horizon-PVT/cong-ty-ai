@@ -40,7 +40,10 @@ const COMMANDS_BASELINE = [
   { name: "operator-console-status", cmd: "node scripts/ai-company-operator-console-dry-run.mjs --command STATUS --format text --write-report --explain", phase: "1.0g", optional: true },
   { name: "operator-console-staffing", cmd: "node scripts/ai-company-operator-console-dry-run.mjs --command SHOW_STAFFING --format md --write-report --explain", phase: "1.0g", optional: true },
   { name: "status-snapshot", cmd: "node scripts/ai-company-status-snapshot.mjs --format json --write-report --explain", phase: "1.0g", optional: true },
-  { name: "owner-action-queue", cmd: "node scripts/ai-company-owner-action-queue-dry-run.mjs --action-type permanent_worker --title \"Review candidate TikTok Hook Worker\" --priority medium --write-report --explain", phase: "1.0g", optional: true }
+  { name: "owner-action-queue", cmd: "node scripts/ai-company-owner-action-queue-dry-run.mjs --action-type permanent_worker --title \"Review candidate TikTok Hook Worker\" --priority medium --write-report --explain", phase: "1.0g", optional: true },
+  { name: "verify-1.0h", cmd: "node packages/db/src/_verify-1.0h.mjs", phase: "1.0h", optional: true },
+  { name: "paperclip-contract-validate", cmd: "node scripts/ai-company-paperclip-contract-validate.mjs --contract all --write-report --explain", phase: "1.0h", optional: true },
+  { name: "paperclip-adapter-dry-run", cmd: "node scripts/ai-company-paperclip-adapter-dry-run.mjs --source all --format json --write-report --explain", phase: "1.0h", optional: true }
 ];
 
 async function main() {
@@ -115,6 +118,8 @@ async function main() {
       filteredCommands = COMMANDS_BASELINE.filter(c => c.phase === "0.3j" || c.phase === "0.3k" || c.phase === "0.3l" || c.phase === "0.3m" || c.phase === "0.3n" || c.phase === "0.3o" || c.phase === "0.3p" || c.phase === "0.3q" || c.phase === "0.3r" || c.phase === "0.3s" || c.phase === "1.0a" || c.phase === "1.0b" || c.phase === "1.0c" || c.phase === "1.0d" || c.phase === "1.0e" || c.phase === "1.0f");
     } else if (selectedPhase === "1.0g") {
       filteredCommands = COMMANDS_BASELINE.filter(c => c.phase === "0.3j" || c.phase === "0.3k" || c.phase === "0.3l" || c.phase === "0.3m" || c.phase === "0.3n" || c.phase === "0.3o" || c.phase === "0.3p" || c.phase === "0.3q" || c.phase === "0.3r" || c.phase === "0.3s" || c.phase === "1.0a" || c.phase === "1.0b" || c.phase === "1.0c" || c.phase === "1.0d" || c.phase === "1.0e" || c.phase === "1.0f" || c.phase === "1.0g");
+    } else if (selectedPhase === "1.0h") {
+      filteredCommands = COMMANDS_BASELINE.filter(c => c.phase === "0.3j" || c.phase === "0.3k" || c.phase === "0.3l" || c.phase === "0.3m" || c.phase === "0.3n" || c.phase === "0.3o" || c.phase === "0.3p" || c.phase === "0.3q" || c.phase === "0.3r" || c.phase === "0.3s" || c.phase === "1.0a" || c.phase === "1.0b" || c.phase === "1.0c" || c.phase === "1.0d" || c.phase === "1.0e" || c.phase === "1.0f" || c.phase === "1.0g" || c.phase === "1.0h");
     }
   }
 
