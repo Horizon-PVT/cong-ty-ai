@@ -1,0 +1,1 @@
+{"item_id":"action_baseline_init","action_type":"provider_live_api","title":"Enable live API access for OpenAI","priority":"medium","risk_level":"high","approval_required":true,"suggested_action":"Check API keys in secure env before enabling.","is_sample":true}

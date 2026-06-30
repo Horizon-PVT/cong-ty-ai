@@ -1,0 +1,34 @@
+{
+  "console_mode": "local_dry_run",
+  "read_only_by_default": true,
+  "allow_local_report_generation": true,
+  "allow_owner_action_queue_generation": true,
+  "allow_memory_summary": true,
+  "allow_runtime_report_summary": true,
+  "allow_live_api_calls": false,
+  "allow_deploy": false,
+  "allow_publish": false,
+  "allow_customer_comms": false,
+  "allow_spend": false,
+  "allow_secret_read": false,
+  "owner_approval_required_for": [
+    "merge",
+    "deploy",
+    "publish",
+    "spend",
+    "customer_comms",
+    "permanent_worker_registration",
+    "provider_live_api_enablement",
+    "production_data_mutation"
+  ],
+  "hard_locks": [
+    "no_secrets",
+    "no_env_touch",
+    "no_destructive_db",
+    "no_spend",
+    "no_production_deploy",
+    "no_external_communications",
+    "no_real_publish",
+    "no_master_merge_without_owner_token"
+  ]
+}
