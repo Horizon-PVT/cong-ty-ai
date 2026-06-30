@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "generated_by": "ai-company-status-snapshot",
+  "integration_target": "paperclip",
+  "company_status": "operational_local_dry_run",
+  "milestone_status": "1.0H",
+  "org_summary": {
+    "departments": ["Dev", "Media", "Sales", "Research", "Finance", "CS", "Knowledge"],
+    "factories": ["ai_dev_factory", "media_factory", "sales_factory", "research_factory", "finance_factory", "customer_success_factory", "knowledge_factory"]
+  },
+  "factory_summary": {
+    "active_factories": 7
+  },
+  "worker_summary": {
+    "active_workers": 10
+  },
+  "provider_summary": [
+    {
+      "id": "openai",
+      "name": "OpenAI",
+      "live_enabled": false
+    },
+    {
+      "id": "anthropic",
+      "name": "Anthropic",
+      "live_enabled": false
+    },
+    {
+      "id": "google",
+      "name": "Google (Gemini)",
+      "live_enabled": false
+    },
+    {
+      "id": "local",
+      "name": "Local Models",
+      "live_enabled": false
+    },
+    {
+      "id": "hermes_internal",
+      "name": "Hermes Internal",
+      "live_enabled": false
+    }
+  ],
+  "learning_summary": {
+    "total_lessons": 1,
+    "performance_memory_active": true
+  },
+  "staffing_summary": {
+    "hiring_sweep_active": true,
+    "policy": "local_dry_run"
+  },
+  "owner_action_queue_summary": {
+    "pending_items": 1
+  },
+  "safety_status": {
+    "no_deploy": true,
+    "no_secrets": true,
+    "no_spend": true
+  },
+  "next_recommended_actions": [
+    "Run validation scripts node scripts/ai-company-paperclip-contract-validate.mjs",
+    "Trigger push/sync merge for integration contract PR #25"
+  ]
+}

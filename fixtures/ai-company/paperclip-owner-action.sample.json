@@ -1,0 +1,12 @@
+{
+  "action_id": "act_permanent_worker_trial_001",
+  "action_type": "permanent_worker",
+  "title": "Review candidate TikTok Hook Worker",
+  "priority": "medium",
+  "risk_level": "medium",
+  "approval_required": true,
+  "recommended_owner_decision": "Approve permanent promotion candidate profile.",
+  "blocked_until_owner_approval": true,
+  "source": "worker-trials.jsonl",
+  "safety_notes": "Local trial scored quality 0.84, latency 12s, cost 0.02. Zero live mutations."
+}

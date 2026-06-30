@@ -1,0 +1,136 @@
+{
+  "widgets": [
+    {
+      "widget_id": "company_status",
+      "source_file": "reports/company-status/latest.json",
+      "source_json_path": "$.milestone_status",
+      "required_fields": ["milestone_status"],
+      "optional_fields": [],
+      "refresh_mode": "on_demand",
+      "read_only": true,
+      "owner_action_required": false,
+      "fallback_empty_state": "Status summary unavailable."
+    },
+    {
+      "widget_id": "mission_board",
+      "source_file": "reports/company-status/latest.json",
+      "source_json_path": "$.org_summary",
+      "required_fields": ["departments"],
+      "optional_fields": [],
+      "refresh_mode": "on_demand",
+      "read_only": true,
+      "owner_action_required": false,
+      "fallback_empty_state": "No missions scheduled."
+    },
+    {
+      "widget_id": "factories",
+      "source_file": "reports/company-status/latest.json",
+      "source_json_path": "$.org_summary.factories",
+      "required_fields": ["factories"],
+      "optional_fields": [],
+      "refresh_mode": "on_demand",
+      "read_only": true,
+      "owner_action_required": false,
+      "fallback_empty_state": "No factories configured."
+    },
+    {
+      "widget_id": "ai_staff",
+      "source_file": "reports/company-status/latest.json",
+      "source_json_path": "$.executive_agents",
+      "required_fields": ["executive_agents"],
+      "optional_fields": [],
+      "refresh_mode": "on_demand",
+      "read_only": true,
+      "owner_action_required": false,
+      "fallback_empty_state": "No AI agents mapped."
+    },
+    {
+      "widget_id": "provider_performance",
+      "source_file": "reports/company-status/latest.json",
+      "source_json_path": "$.provider_summary",
+      "required_fields": ["provider_summary"],
+      "optional_fields": [],
+      "refresh_mode": "periodic",
+      "read_only": true,
+      "owner_action_required": false,
+      "fallback_empty_state": "No provider scores logged."
+    },
+    {
+      "widget_id": "learning_feed",
+      "source_file": "reports/company-status/latest.json",
+      "source_json_path": "$.learning_summary",
+      "required_fields": ["total_lessons"],
+      "optional_fields": [],
+      "refresh_mode": "periodic",
+      "read_only": true,
+      "owner_action_required": false,
+      "fallback_empty_state": "No lessons learned yet."
+    },
+    {
+      "widget_id": "staffing_gaps",
+      "source_file": "reports/company-status/latest.json",
+      "source_json_path": "$.staffing_summary",
+      "required_fields": ["policy"],
+      "optional_fields": [],
+      "refresh_mode": "periodic",
+      "read_only": true,
+      "owner_action_required": false,
+      "fallback_empty_state": "No staffing gaps identified."
+    },
+    {
+      "widget_id": "candidate_workers",
+      "source_file": "reports/company-status/latest.json",
+      "source_json_path": "$.staffing_summary",
+      "required_fields": ["hiring_sweep_active"],
+      "optional_fields": [],
+      "refresh_mode": "periodic",
+      "read_only": true,
+      "owner_action_required": false,
+      "fallback_empty_state": "No worker candidates registered."
+    },
+    {
+      "widget_id": "worker_scorecards",
+      "source_file": "reports/company-status/latest.json",
+      "source_json_path": "$.workers",
+      "required_fields": ["workers"],
+      "optional_fields": [],
+      "refresh_mode": "periodic",
+      "read_only": true,
+      "owner_action_required": false,
+      "fallback_empty_state": "No worker scorecards compiled."
+    },
+    {
+      "widget_id": "owner_action_queue",
+      "source_file": "reports/company-status/latest.json",
+      "source_json_path": "$.owner_approval_queue",
+      "required_fields": ["pending_items"],
+      "optional_fields": [],
+      "refresh_mode": "realtime",
+      "read_only": false,
+      "owner_action_required": true,
+      "fallback_empty_state": "Queue empty. No pending owner actions."
+    },
+    {
+      "widget_id": "safety_locks",
+      "source_file": "reports/company-status/latest.json",
+      "source_json_path": "$.risk_safety_locks",
+      "required_fields": ["no_deploy", "no_secrets", "no_spend"],
+      "optional_fields": [],
+      "refresh_mode": "realtime",
+      "read_only": true,
+      "owner_action_required": false,
+      "fallback_empty_state": "Safety locks inactive."
+    },
+    {
+      "widget_id": "next_actions",
+      "source_file": "reports/company-status/latest.json",
+      "source_json_path": "$.next_recommended_actions",
+      "required_fields": ["next_recommended_actions"],
+      "optional_fields": [],
+      "refresh_mode": "on_demand",
+      "read_only": true,
+      "owner_action_required": false,
+      "fallback_empty_state": "No actions recommended."
+    }
+  ]
+}

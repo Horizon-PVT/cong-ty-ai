@@ -1,0 +1,89 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PaperclipCompanyStatusSnapshot",
+  "type": "OBJECT",
+  "properties": {
+    "schema_version": { "type": "STRING" },
+    "generated_by": { "type": "STRING" },
+    "integration_target": { "type": "STRING", "const": "paperclip" },
+    "company_status": { "type": "STRING" },
+    "milestone_status": { "type": "STRING" },
+    "org_summary": {
+      "type": "OBJECT",
+      "properties": {
+        "departments": {
+          "type": "ARRAY",
+          "items": { "type": "STRING" }
+        },
+        "factories": {
+          "type": "ARRAY",
+          "items": { "type": "STRING" }
+        }
+      },
+      "required": ["departments", "factories"]
+    },
+    "factory_summary": { "type": "OBJECT" },
+    "worker_summary": { "type": "OBJECT" },
+    "provider_summary": {
+      "type": "ARRAY",
+      "items": {
+        "type": "OBJECT",
+        "properties": {
+          "id": { "type": "STRING" },
+          "name": { "type": "STRING" },
+          "live_enabled": { "type": "BOOLEAN" }
+        },
+        "required": ["id", "name", "live_enabled"]
+      }
+    },
+    "learning_summary": {
+      "type": "OBJECT",
+      "properties": {
+        "total_lessons": { "type": "INTEGER" },
+        "performance_memory_active": { "type": "BOOLEAN" }
+      },
+      "required": ["total_lessons", "performance_memory_active"]
+    },
+    "staffing_summary": {
+      "type": "OBJECT",
+      "properties": {
+        "hiring_sweep_active": { "type": "BOOLEAN" },
+        "policy": { "type": "STRING" }
+      },
+      "required": ["hiring_sweep_active", "policy"]
+    },
+    "owner_action_queue_summary": {
+      "type": "OBJECT",
+      "properties": {
+        "pending_items": { "type": "INTEGER" }
+      },
+      "required": ["pending_items"]
+    },
+    "safety_status": {
+      "type": "OBJECT",
+      "properties": {
+        "no_deploy": { "type": "BOOLEAN" },
+        "no_secrets": { "type": "BOOLEAN" },
+        "no_spend": { "type": "BOOLEAN" }
+      },
+      "required": ["no_deploy", "no_secrets", "no_spend"]
+    },
+    "next_recommended_actions": {
+      "type": "ARRAY",
+      "items": { "type": "STRING" }
+    }
+  },
+  "required": [
+    "schema_version",
+    "generated_by",
+    "integration_target",
+    "milestone_status",
+    "org_summary",
+    "provider_summary",
+    "learning_summary",
+    "staffing_summary",
+    "owner_action_queue_summary",
+    "safety_status",
+    "next_recommended_actions"
+  ]
+}

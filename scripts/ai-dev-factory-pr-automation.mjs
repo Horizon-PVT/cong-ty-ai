@@ -145,7 +145,38 @@ async function main() {
   let prTitle = "feat: add auto push & draft pr gate";
   let prBodyContent = "";
 
-  if (fs.existsSync(path.resolve("packages/db/src/_verify-1.0g.mjs")) && (currentBranch.includes("ai-company-os-operator-console") || currentBranch.includes("1.0g"))) {
+  if (fs.existsSync(path.resolve("packages/db/src/_verify-1.0h.mjs")) && (currentBranch.includes("ai-company-os-paperclip-integration-contract") || currentBranch.includes("1.0h"))) {
+    prTitle = "feat: add AI Company OS Paperclip integration contract";
+    prBodyContent = `### Milestone 1.0H: AI Company OS Paperclip Integration Contract\n\n`;
+    prBodyContent += `This PR implements Milestone 1.0H, defining the stable Paperclip Integration Contract, widget panel mappings, schemas, sample fixtures, local validation, and dry-run adapter mapping for the AI Company OS.\n\n`;
+    prBodyContent += `- **Milestone**: 1.0H\n`;
+    prBodyContent += `- **Branch**: \`${currentBranch}\`\n\n`;
+    prBodyContent += `#### Paperclip Integration Contract Summary:\n`;
+    prBodyContent += `Establishes Paperclip as the primary user interface and human-in-the-loop dashboard, while the AI Company OS serves as the operating brain. Establishes read-only schemas and approval queues via \`owner-action-queue.jsonl\`.\n\n`;
+    prBodyContent += `#### Paperclip Widget Map Summary:\n`;
+    prBodyContent += `Maps 12 future operator panels (Company Status, Mission Board, Factories, AI Staff, Provider Performance, Learning Feed, Staffing Gaps, Candidate Workers, Worker Scorecards, Owner Action Queue, Safety Locks, Next Actions) to stable local reports and JSON paths.\n\n`;
+    prBodyContent += `#### JSON Schemas Created:\n`;
+    prBodyContent += `* \`schemas/ai-company/paperclip-company-status.schema.json\` (Validates unified company status snapshots)\n`;
+    prBodyContent += `* \`schemas/ai-company/paperclip-owner-action.schema.json\` (Validates owner action queue items)\n`;
+    prBodyContent += `* \`schemas/ai-company/paperclip-widget-map.schema.json\` (Validates widget configuration maps)\n\n`;
+    prBodyContent += `#### Sample Fixtures Mapped:\n`;
+    prBodyContent += `* \`fixtures/ai-company/paperclip-company-status.sample.json\`\n`;
+    prBodyContent += `* \`fixtures/ai-company/paperclip-owner-action.sample.json\`\n\n`;
+    prBodyContent += `#### Standalone UI Confirmation:\n`;
+    prBodyContent += `* **No standalone dashboard or frontend UI built**: Strictly verified. Paperclip remains the sole UI layer.\n\n`;
+    prBodyContent += `#### Safety Confirmation:\n`;
+    prBodyContent += `* **no deploy**: Blocked.\n`;
+    prBodyContent += `* **no secrets**: Blocked.\n`;
+    prBodyContent += `* **no .env touch**: Blocked.\n`;
+    prBodyContent += `* **no destructive DB**: Blocked.\n`;
+    prBodyContent += `* **no spend**: Blocked.\n`;
+    prBodyContent += `* **no external customer communication**: Blocked.\n`;
+    prBodyContent += `* **no real publish**: Blocked.\n`;
+    prBodyContent += `* **no permanent worker core registry mutation**: Blocked.\n\n`;
+    prBodyContent += `#### Owner Safety Gate Controls\n`;
+    prBodyContent += `- **Safety gates remain blocked**: Deployments, secrets reads, destructive database actions, spending, and external communications remain fully blocked.\n`;
+    prBodyContent += `- **Merge remains blocked until owner approval token**: \`OWNER_APPROVED_MERGE_PR=<PR_NUMBER>\`\n\n`;
+  } else if (fs.existsSync(path.resolve("packages/db/src/_verify-1.0g.mjs")) && (currentBranch.includes("ai-company-os-operator-console") || currentBranch.includes("1.0g"))) {
     prTitle = "feat: add AI Company OS operator console";
     prBodyContent = `### Milestone 1.0G: AI Company OS Operator Console & Workbench\n\n`;
     prBodyContent += `This PR implements Milestone 1.0G, establishing the Operator Console, status snapshot, and owner action queue simulations for the AI Company OS.\n\n`;
@@ -628,6 +659,8 @@ async function main() {
     prBodyContent += `| \`node scripts/ai-dev-factory-self-test-gate.mjs --phase 1.0f --dry-run --write-report\` | **PASS** | ${(report.durationMs / 1000).toFixed(2)}s | real |\n`;
   } else if (currentBranch.includes("ai-company-os-operator-console") || currentBranch.includes("1.0g")) {
     prBodyContent += `| \`node scripts/ai-dev-factory-self-test-gate.mjs --phase 1.0g --dry-run --write-report\` | **PASS** | ${(report.durationMs / 1000).toFixed(2)}s | real |\n`;
+  } else if (currentBranch.includes("ai-company-os-paperclip-integration-contract") || currentBranch.includes("1.0h")) {
+    prBodyContent += `| \`node scripts/ai-dev-factory-self-test-gate.mjs --phase 1.0h --dry-run --write-report\` | **PASS** | ${(report.durationMs / 1000).toFixed(2)}s | real |\n`;
   }
   prBodyContent += `\n`;
 

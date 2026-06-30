@@ -1,0 +1,26 @@
+{
+  "integration_mode": "local_contract",
+  "paperclip_is_primary_ui": true,
+  "ai_company_os_is_brain": true,
+  "standalone_dashboard_allowed": false,
+  "frontend_ui_allowed": false,
+  "local_report_adapter_allowed": true,
+  "local_snapshot_adapter_allowed": true,
+  "owner_action_write_allowed": true,
+  "live_api_bridge_allowed": false,
+  "deploy_allowed": false,
+  "publish_allowed": false,
+  "spend_allowed": false,
+  "customer_comms_allowed": false,
+  "secret_read_allowed": false,
+  "production_data_mutation_allowed": false,
+  "required_contracts": [
+    "company_status_snapshot",
+    "operator_console_report",
+    "owner_action_queue",
+    "worker_scorecards",
+    "provider_performance",
+    "staffing_summary",
+    "learning_summary"
+  ]
+}
