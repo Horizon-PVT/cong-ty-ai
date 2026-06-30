@@ -1,0 +1,85 @@
+{
+  "capabilities": [
+    {
+      "capability_id": "dev_repo_audit",
+      "total_runs": 0,
+      "success_rate": 0.5,
+      "average_quality_score": 0.5,
+      "common_failure_reasons": [],
+      "recommended_provider_ids": ["openai"],
+      "last_lesson_ids": []
+    },
+    {
+      "capability_id": "dev_task_implementation",
+      "total_runs": 0,
+      "success_rate": 0.5,
+      "average_quality_score": 0.5,
+      "common_failure_reasons": [],
+      "recommended_provider_ids": ["openai"],
+      "last_lesson_ids": []
+    },
+    {
+      "capability_id": "dev_self_test_verification",
+      "total_runs": 0,
+      "success_rate": 0.5,
+      "average_quality_score": 0.5,
+      "common_failure_reasons": [],
+      "recommended_provider_ids": ["google"],
+      "last_lesson_ids": []
+    },
+    {
+      "capability_id": "product_research",
+      "total_runs": 0,
+      "success_rate": 0.5,
+      "average_quality_score": 0.5,
+      "common_failure_reasons": [],
+      "recommended_provider_ids": ["google", "openai"],
+      "last_lesson_ids": []
+    },
+    {
+      "capability_id": "market_research",
+      "total_runs": 0,
+      "success_rate": 0.5,
+      "average_quality_score": 0.5,
+      "common_failure_reasons": [],
+      "recommended_provider_ids": ["google", "openai"],
+      "last_lesson_ids": []
+    },
+    {
+      "capability_id": "media_content_strategy",
+      "total_runs": 0,
+      "success_rate": 0.5,
+      "average_quality_score": 0.5,
+      "common_failure_reasons": [],
+      "recommended_provider_ids": ["hermes_internal"],
+      "last_lesson_ids": []
+    },
+    {
+      "capability_id": "sales_lead_research",
+      "total_runs": 0,
+      "success_rate": 0.5,
+      "average_quality_score": 0.5,
+      "common_failure_reasons": [],
+      "recommended_provider_ids": ["openai"],
+      "last_lesson_ids": []
+    },
+    {
+      "capability_id": "pricing_analysis",
+      "total_runs": 0,
+      "success_rate": 0.5,
+      "average_quality_score": 0.5,
+      "common_failure_reasons": [],
+      "recommended_provider_ids": ["openai"],
+      "last_lesson_ids": []
+    },
+    {
+      "capability_id": "internal_docs_summary",
+      "total_runs": 0,
+      "success_rate": 0.5,
+      "average_quality_score": 0.5,
+      "common_failure_reasons": [],
+      "recommended_provider_ids": ["anthropic"],
+      "last_lesson_ids": []
+    }
+  ]
+}

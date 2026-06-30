@@ -58,6 +58,9 @@
 - **Phase 0.3S**: Multi-Worker & Reliability Hardening
 - **Milestone 1.0A**: AI Company OS Organization Model
 - **Milestone 1.0B**: AI Company OS Capability Registry
+- **Milestone 1.0C**: AI Company OS Mission Planner
+- **Milestone 1.0D**: AI Company OS Capability Router
+- **Milestone 1.0E**: AI Company OS Multi-Provider Learning Loop
 
 ## Phase 0.3P Proof Status
 
@@ -113,10 +116,20 @@ Proof execution records:
 
 ## Milestone 1.0D Proof Status
 
-Status: Draft PR opened; pending owner review and explicit merge approval token.
+Status: Merged and Cleaned
 Proof execution records:
 - Milestone 1.0D implements the Capability Router design documentation, local queue specification, and router policy.
 - Implements a local Capability Router dry-run script simulating in-memory queues and worker execution.
+
+## Milestone 1.0E Proof Status
+
+Status: Draft PR opened; pending owner review and merge approval token.
+Proof execution records:
+- Milestone 1.0E implements the AI Staff Runtime, Multi-Provider Router, and Self-Learning Loop.
+- Configures registries for providers, models, runtimes, and agent provider pools.
+- Implements a local Provider Router dry-run script with scoring and fallback/cheap/panel modes.
+- Implements a local Self-Learning Loop dry-run script capturing lessons and updating provider/capability memory.
 <!-- execution_records_start -->
 <!-- execution_records_end -->
+
 

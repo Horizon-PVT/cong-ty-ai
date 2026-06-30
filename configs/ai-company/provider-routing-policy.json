@@ -1,0 +1,49 @@
+{
+  "router_mode": "local_dry_run",
+  "selection_modes": ["primary", "fallback", "challenger", "panel", "cheap"],
+  "default_mode_by_mission_priority": {
+    "critical": "primary",
+    "high": "primary",
+    "medium": "primary",
+    "low": "cheap"
+  },
+  "fallback_triggers": [
+    "provider_unavailable",
+    "simulated_rate_limit",
+    "low_confidence",
+    "failed_verification",
+    "high_estimated_cost"
+  ],
+  "panel_mode_triggers": [
+    "strategy_decision",
+    "architecture_review",
+    "legal_or_contract_review",
+    "high_risk_merge",
+    "product_pivot"
+  ],
+  "cheap_mode_triggers": [
+    "log_summary",
+    "classification",
+    "low_risk_batch_task",
+    "metadata_extraction"
+  ],
+  "scoring_weights": {
+    "role_fit": 0.20,
+    "task_fit": 0.20,
+    "historical_quality": 0.15,
+    "historical_success_rate": 0.15,
+    "cost_efficiency": 0.10,
+    "latency": 0.10,
+    "recent_failure_penalty": 0.10
+  },
+  "hard_locks": [
+    "no_secrets",
+    "no_env_touch",
+    "no_real_spend",
+    "no_real_publish",
+    "no_real_customer_comms",
+    "no_prod_deploy",
+    "no_prod_data_mutation",
+    "no_master_merge_without_owner_token"
+  ]
+}

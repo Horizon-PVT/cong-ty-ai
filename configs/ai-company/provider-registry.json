@@ -1,0 +1,79 @@
+{
+  "providers": [
+    {
+      "provider_id": "openai",
+      "display_name": "OpenAI",
+      "provider_type": "cloud_api",
+      "available_runtime_ids": ["chatgpt", "codex"],
+      "supported_roles": ["strategist", "developer", "reviewer", "researcher", "finance_analyst"],
+      "strengths": ["strategy", "coding support", "structured reasoning", "loop contract generation", "general intelligence"],
+      "weaknesses": ["higher cost for simple tasks", "rate limits under heavy load"],
+      "default_cost_tier": "high",
+      "live_api_enabled": false,
+      "requires_secret": true,
+      "secret_env_names": ["OPENAI_API_KEY"],
+      "local_simulation_allowed": true,
+      "notes": "Primary provider for strategy, development, and general-purpose reasoning tasks."
+    },
+    {
+      "provider_id": "anthropic",
+      "display_name": "Anthropic",
+      "provider_type": "cloud_api",
+      "available_runtime_ids": ["claude_api", "claude_code"],
+      "supported_roles": ["reviewer", "strategist", "researcher", "knowledge_worker"],
+      "strengths": ["review", "critique", "long-context analysis", "documentation audit", "safety analysis", "nuanced reasoning"],
+      "weaknesses": ["less coding-focused than Codex", "higher latency for simple tasks"],
+      "default_cost_tier": "high",
+      "live_api_enabled": false,
+      "requires_secret": true,
+      "secret_env_names": ["ANTHROPIC_API_KEY"],
+      "local_simulation_allowed": true,
+      "notes": "Primary provider for code review, critique, and long-context analysis tasks."
+    },
+    {
+      "provider_id": "google",
+      "display_name": "Google (Gemini)",
+      "provider_type": "cloud_api",
+      "available_runtime_ids": ["antigravity", "gemini_api"],
+      "supported_roles": ["tester", "researcher", "media_operator", "knowledge_worker"],
+      "strengths": ["Gemini workflows", "multimodal", "Antigravity testing/runtime", "search ecosystem", "fast inference"],
+      "weaknesses": ["less established for pure code generation"],
+      "default_cost_tier": "medium",
+      "live_api_enabled": false,
+      "requires_secret": true,
+      "secret_env_names": ["GEMINI_API_KEY"],
+      "local_simulation_allowed": true,
+      "notes": "Primary provider for testing, multimodal analysis, and Antigravity runtime."
+    },
+    {
+      "provider_id": "local",
+      "display_name": "Local Models",
+      "provider_type": "local",
+      "available_runtime_ids": ["local_runner"],
+      "supported_roles": ["learner", "knowledge_worker"],
+      "strengths": ["cheap classification", "log summary", "routing hints", "metadata extraction", "zero cost"],
+      "weaknesses": ["lower quality for complex reasoning", "limited context window"],
+      "default_cost_tier": "free",
+      "live_api_enabled": false,
+      "requires_secret": false,
+      "secret_env_names": [],
+      "local_simulation_allowed": true,
+      "notes": "Cheap provider for simple classification, log summaries, and low-risk batch tasks."
+    },
+    {
+      "provider_id": "hermes_internal",
+      "display_name": "Hermes Internal",
+      "provider_type": "internal_operator",
+      "available_runtime_ids": ["hermes"],
+      "supported_roles": ["media_operator", "learner", "customer_success"],
+      "strengths": ["media operation", "memory loop", "daily brand learning", "content scheduling", "self-improving workflows"],
+      "weaknesses": ["requires configured model behind Hermes", "not suitable for pure code tasks"],
+      "default_cost_tier": "medium",
+      "live_api_enabled": false,
+      "requires_secret": false,
+      "secret_env_names": [],
+      "local_simulation_allowed": true,
+      "notes": "Internal operator runtime for media, brand learning, and self-improving workflows. Uses configured model behind Hermes abstraction."
+    }
+  ]
+}
