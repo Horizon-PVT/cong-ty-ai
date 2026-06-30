@@ -1,0 +1,100 @@
+{
+  "commands": [
+    {
+      "command": "STATUS",
+      "description": "High-level snapshot of the OS, version, and verifier check status.",
+      "data_sources": ["staffing-policy.json", "provider-performance.json"],
+      "output_sections": ["system_health", "safety_status", "summary"],
+      "read_only": true,
+      "requires_owner_approval": false
+    },
+    {
+      "command": "SHOW_ORG",
+      "description": "Details the company's departments and executive roles.",
+      "data_sources": ["agent-provider-pools.json"],
+      "output_sections": ["departments", "executives"],
+      "read_only": true,
+      "requires_owner_approval": false
+    },
+    {
+      "command": "SHOW_FACTORIES",
+      "description": "Displays active and planned factories.",
+      "data_sources": ["agent-provider-pools.json"],
+      "output_sections": ["factories"],
+      "read_only": true,
+      "requires_owner_approval": false
+    },
+    {
+      "command": "SHOW_WORKERS",
+      "description": "Lists capability workers mapped to roles and capabilities.",
+      "data_sources": ["agent-provider-pools.json", "worker-scorecards.json"],
+      "output_sections": ["workers", "roles"],
+      "read_only": true,
+      "requires_owner_approval": false
+    },
+    {
+      "command": "SHOW_PROVIDERS",
+      "description": "Displays model providers, runtimes, and active pools.",
+      "data_sources": ["provider-registry.json", "model-registry.json", "runtime-registry.json"],
+      "output_sections": ["providers", "runtimes"],
+      "read_only": true,
+      "requires_owner_approval": false
+    },
+    {
+      "command": "SHOW_LEARNING",
+      "description": "Lists recent lessons and provider performance memories.",
+      "data_sources": ["mission-lessons.jsonl", "provider-performance.json"],
+      "output_sections": ["lessons", "performance"],
+      "read_only": true,
+      "requires_owner_approval": false
+    },
+    {
+      "command": "SHOW_STAFFING",
+      "description": "Summarizes staffing gaps, scorecards, and hiring sweeps.",
+      "data_sources": ["staffing-gaps.jsonl", "worker-candidates.jsonl"],
+      "output_sections": ["gaps", "sweep"],
+      "read_only": true,
+      "requires_owner_approval": false
+    },
+    {
+      "command": "SHOW_CANDIDATES",
+      "description": "Displays active worker candidates waiting for trials.",
+      "data_sources": ["worker-candidates.jsonl"],
+      "output_sections": ["candidates"],
+      "read_only": true,
+      "requires_owner_approval": false
+    },
+    {
+      "command": "SHOW_SCORECARDS",
+      "description": "Lists trial performance scorecards of all workers.",
+      "data_sources": ["worker-scorecards.json"],
+      "output_sections": ["scorecards"],
+      "read_only": true,
+      "requires_owner_approval": false
+    },
+    {
+      "command": "SHOW_OWNER_QUEUE",
+      "description": "Displays actions waiting in the owner approval queue.",
+      "data_sources": ["owner-action-queue.jsonl"],
+      "output_sections": ["queue"],
+      "read_only": true,
+      "requires_owner_approval": false
+    },
+    {
+      "command": "SHOW_NEXT_ACTIONS",
+      "description": "Outlines recommended phase progression and verifications.",
+      "data_sources": ["staffing-policy.json"],
+      "output_sections": ["actions"],
+      "read_only": true,
+      "requires_owner_approval": false
+    },
+    {
+      "command": "EXPORT_SNAPSHOT",
+      "description": "Generates a complete Paperclip-compatible JSON snapshot.",
+      "data_sources": ["*"],
+      "output_sections": ["snapshot"],
+      "read_only": true,
+      "requires_owner_approval": false
+    }
+  ]
+}

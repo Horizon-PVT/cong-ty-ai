@@ -145,7 +145,38 @@ async function main() {
   let prTitle = "feat: add auto push & draft pr gate";
   let prBodyContent = "";
 
-  if (fs.existsSync(path.resolve("packages/db/src/_verify-1.0f.mjs")) && (currentBranch.includes("ai-company-os-dynamic-staffing") || currentBranch.includes("1.0f"))) {
+  if (fs.existsSync(path.resolve("packages/db/src/_verify-1.0g.mjs")) && (currentBranch.includes("ai-company-os-operator-console") || currentBranch.includes("1.0g"))) {
+    prTitle = "feat: add AI Company OS operator console";
+    prBodyContent = `### Milestone 1.0G: AI Company OS Operator Console & Workbench\n\n`;
+    prBodyContent += `This PR implements Milestone 1.0G, establishing the Operator Console, status snapshot, and owner action queue simulations for the AI Company OS.\n\n`;
+    prBodyContent += `- **Milestone**: 1.0G\n`;
+    prBodyContent += `- **Branch**: \`${currentBranch}\`\n\n`;
+    prBodyContent += `#### What AI Staff Workbench does:\n`;
+    prBodyContent += `Acts as the Paperclip-compatible operator data layer of the AI Company OS, gathering and formatting company status, gaps, provider performance, and trial statistics.\n\n`;
+    prBodyContent += `#### What Operator Console does:\n`;
+    prBodyContent += `Provides local query status commands, snapshot exports, and action queue dry-run runs for safe, read-only system inspection.\n\n`;
+    prBodyContent += `#### Supported Commands:\n`;
+    prBodyContent += `* STATUS, SHOW_ORG, SHOW_FACTORIES, SHOW_WORKERS, SHOW_PROVIDERS, SHOW_LEARNING, SHOW_STAFFING, SHOW_CANDIDATES, SHOW_SCORECARDS, SHOW_OWNER_QUEUE, SHOW_NEXT_ACTIONS, EXPORT_SNAPSHOT\n\n`;
+    prBodyContent += `#### Owner Action Queue Summary:\n`;
+    prBodyContent += `* Tracks pending decisions that require owner approvals, such as live API activation, spending, publishing, and candidate worker confirmation.\n\n`;
+    prBodyContent += `#### Status Snapshot Summary:\n`;
+    prBodyContent += `* Exports a stable, unified JSON snapshot designed for seamless ingestion by the Paperclip dashboard UI.\n\n`;
+    prBodyContent += `#### Memory Files Created:\n`;
+    prBodyContent += `* \`memory/ai-company/owner-action-queue.jsonl\`\n`;
+    prBodyContent += `* \`memory/ai-company/operator-notes.jsonl\`\n\n`;
+    prBodyContent += `#### Safety Confirmation:\n`;
+    prBodyContent += `* **no deploy**: Blocked.\n`;
+    prBodyContent += `* **no secrets**: Blocked.\n`;
+    prBodyContent += `* **no .env touch**: Blocked.\n`;
+    prBodyContent += `* **no destructive DB**: Blocked.\n`;
+    prBodyContent += `* **no spend**: Blocked.\n`;
+    prBodyContent += `* **no external customer communication**: Blocked.\n`;
+    prBodyContent += `* **no real publish**: Blocked.\n`;
+    prBodyContent += `* **no permanent worker core registry mutation**: Blocked.\n\n`;
+    prBodyContent += `#### Owner Safety Gate Controls\n`;
+    prBodyContent += `- **Safety gates remain blocked**: Deployments, secrets reads, destructive database actions, spending, and external communications remain fully blocked.\n`;
+    prBodyContent += `- **Merge remains blocked until owner approval token**: \`OWNER_APPROVED_MERGE_PR=<PR_NUMBER>\`\n\n`;
+  } else if (fs.existsSync(path.resolve("packages/db/src/_verify-1.0f.mjs")) && (currentBranch.includes("ai-company-os-dynamic-staffing") || currentBranch.includes("1.0f"))) {
     prTitle = "feat: add AI Company OS dynamic staffing";
     prBodyContent = `### Milestone 1.0F: AI Company OS Dynamic AI Staffing\n\n`;
     prBodyContent += `This PR implements Milestone 1.0F, establishing the Dynamic AI Staffing pipeline and loop simulation for the AI Company OS.\n\n`;
@@ -595,6 +626,8 @@ async function main() {
     prBodyContent += `| \`node scripts/ai-dev-factory-self-test-gate.mjs --phase 1.0e --dry-run --write-report\` | **PASS** | ${(report.durationMs / 1000).toFixed(2)}s | real |\n`;
   } else if (currentBranch.includes("ai-company-os-dynamic-staffing") || currentBranch.includes("1.0f")) {
     prBodyContent += `| \`node scripts/ai-dev-factory-self-test-gate.mjs --phase 1.0f --dry-run --write-report\` | **PASS** | ${(report.durationMs / 1000).toFixed(2)}s | real |\n`;
+  } else if (currentBranch.includes("ai-company-os-operator-console") || currentBranch.includes("1.0g")) {
+    prBodyContent += `| \`node scripts/ai-dev-factory-self-test-gate.mjs --phase 1.0g --dry-run --write-report\` | **PASS** | ${(report.durationMs / 1000).toFixed(2)}s | real |\n`;
   }
   prBodyContent += `\n`;
 

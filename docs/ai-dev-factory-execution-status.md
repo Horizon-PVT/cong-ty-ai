@@ -62,6 +62,8 @@
 - **Milestone 1.0D**: AI Company OS Capability Router
 - **Milestone 1.0E**: AI Company OS Multi-Provider Learning Loop
 - **Milestone 1.0F**: AI Company OS Dynamic AI Staffing
+- **Milestone 1.0G**: AI Company OS Operator Console & Workbench
+
 
 
 ## Phase 0.3P Proof Status
@@ -134,13 +136,23 @@ Proof execution records:
 
 ## Milestone 1.0F Proof Status
 
-Status: Draft PR opened; pending owner review and merge approval token.
+Status: Merged and Cleaned
 Proof execution records:
 - Milestone 1.0F implements the Dynamic AI Staffing hiring pipeline.
 - Configures reusable worker archetypes and a staffing policy with local dry-run allowances.
 - Implements a local Dynamic Staffing dry-run script detecting gaps and generating temporary/candidate worker profiles.
 - Implements a local Worker Trial dry-run script running trials, generating scorecards, and recommending promotion paths.
 - Implements a Staffing Sweeper running gap detection across scenarios.
+
+## Milestone 1.0G Proof Status
+
+Status: Draft PR opened; pending owner review and merge approval token.
+Proof execution records:
+- Milestone 1.0G implements the AI Staff Workbench & Operator Console.
+- Configures an operator console policy and supported commands.
+- Implements a local Operator Console dry-run script executing query status commands.
+- Implements a status snapshot script exporting stable Paperclip-compatible snapshots.
+- Implements an owner action queue script creating approval requests.
 <!-- execution_records_start -->
 <!-- execution_records_end -->
 
