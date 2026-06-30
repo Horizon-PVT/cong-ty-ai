@@ -1,15 +1,15 @@
 {
-  "phase": "1.0e",
-  "branch": "feat/ai-company-os-provider-learning-loop",
-  "startedAt": "2026-06-30T14:57:58.646Z",
-  "finishedAt": "2026-06-30T15:03:28.149Z",
-  "durationMs": 329501,
+  "phase": "0.3o",
+  "branch": "chore/e2e-merge-path-dirty-tree-hardening",
+  "startedAt": "2026-06-26T02:52:00.344Z",
+  "finishedAt": "2026-06-26T02:56:17.182Z",
+  "durationMs": 256837,
   "commands": [
     {
       "command": "pnpm -r typecheck",
       "exitCode": 0,
       "status": "PASS",
-      "durationMs": 142790,
+      "durationMs": 115764,
       "executionMode": "real",
       "optional": false
     },
@@ -17,7 +17,7 @@
       "command": "pnpm build",
       "exitCode": 0,
       "status": "PASS",
-      "durationMs": 147154,
+      "durationMs": 126320,
       "executionMode": "real",
       "optional": false
     },
@@ -25,7 +25,7 @@
       "command": "pnpm test:run --dry-run",
       "exitCode": 0,
       "status": "PASS",
-      "durationMs": 3051,
+      "durationMs": 2673,
       "executionMode": "real",
       "optional": false
     },
@@ -33,7 +33,7 @@
       "command": "node packages/db/src/_verify-0.3i.mjs",
       "exitCode": 0,
       "status": "PASS",
-      "durationMs": 377,
+      "durationMs": 173,
       "executionMode": "real",
       "optional": true
     },
@@ -41,7 +41,7 @@
       "command": "node packages/db/src/_verify-0.3k.mjs",
       "exitCode": 0,
       "status": "PASS",
-      "durationMs": 168,
+      "durationMs": 132,
       "executionMode": "real",
       "optional": true
     },
@@ -49,23 +49,23 @@
       "command": "node packages/db/src/_verify-0.3l.mjs",
       "exitCode": 0,
       "status": "PASS",
-      "durationMs": 135,
+      "durationMs": 100,
       "executionMode": "real",
       "optional": true
     },
     {
       "command": "node packages/db/src/_verify-0.3m.mjs",
-      "exitCode": 1,
-      "status": "FAIL",
-      "durationMs": 9305,
+      "exitCode": 0,
+      "status": "PASS",
+      "durationMs": 8566,
       "executionMode": "real",
       "optional": true
     },
     {
       "command": "node packages/db/src/_verify-0.3n.mjs",
-      "exitCode": 1,
-      "status": "FAIL",
-      "durationMs": 1167,
+      "exitCode": 0,
+      "status": "PASS",
+      "durationMs": 2267,
       "executionMode": "real",
       "optional": true
     },
@@ -73,126 +73,12 @@
       "command": "node packages/db/src/_verify-0.3o.mjs",
       "exitCode": 0,
       "status": "PASS",
-      "durationMs": 1064,
+      "durationMs": 840,
       "executionMode": "real",
       "optional": true
-    },
-    {
-      "command": "node packages/db/src/_verify-0.3p.mjs",
-      "exitCode": 0,
-      "status": "PASS",
-      "durationMs": 235,
-      "executionMode": "real",
-      "optional": true
-    },
-    {
-      "command": "node packages/db/src/_verify-0.3q.mjs",
-      "exitCode": 0,
-      "status": "PASS",
-      "durationMs": 239,
-      "executionMode": "real",
-      "optional": true
-    },
-    {
-      "command": "node packages/db/src/_verify-0.3r.mjs",
-      "exitCode": 0,
-      "status": "PASS",
-      "durationMs": 133,
-      "executionMode": "real",
-      "optional": true
-    },
-    {
-      "command": "node packages/db/src/_verify-0.3s.mjs",
-      "exitCode": 0,
-      "status": "PASS",
-      "durationMs": 21680,
-      "executionMode": "real",
-      "optional": true
-    },
-    {
-      "command": "node packages/db/src/_verify-1.0a.mjs",
-      "exitCode": 0,
-      "status": "PASS",
-      "durationMs": 210,
-      "executionMode": "real",
-      "optional": true
-    },
-    {
-      "command": "node packages/db/src/_verify-1.0b.mjs",
-      "exitCode": 0,
-      "status": "PASS",
-      "durationMs": 288,
-      "executionMode": "real",
-      "optional": true
-    },
-    {
-      "command": "node packages/db/src/_verify-1.0c.mjs",
-      "exitCode": 0,
-      "status": "PASS",
-      "durationMs": 281,
-      "executionMode": "real",
-      "optional": true
-    },
-    {
-      "command": "node packages/db/src/_verify-1.0d.mjs",
-      "exitCode": 0,
-      "status": "PASS",
-      "durationMs": 280,
-      "executionMode": "real",
-      "optional": true
-    },
-    {
-      "command": "node packages/db/src/_verify-1.0e.mjs",
-      "exitCode": 0,
-      "status": "PASS",
-      "durationMs": 383,
-      "executionMode": "real",
-      "optional": false
-    },
-    {
-      "command": "node scripts/ai-company-provider-router-dry-run.mjs --agent ceo_agent --mission-type PRODUCT_RESEARCH --mode auto --simulate-outcome success --write-report --explain",
-      "exitCode": 0,
-      "status": "PASS",
-      "durationMs": 118,
-      "executionMode": "real",
-      "optional": false
-    },
-    {
-      "command": "node scripts/ai-company-provider-router-dry-run.mjs --agent review_worker --mission-type PR_REVIEW --mode auto --simulate-outcome low_confidence --write-report --explain",
-      "exitCode": 0,
-      "status": "PASS",
-      "durationMs": 119,
-      "executionMode": "real",
-      "optional": false
-    },
-    {
-      "command": "node scripts/ai-company-provider-router-dry-run.mjs --agent test_worker --mission-type VERIFY_PHASE --mode auto --simulate-outcome success --write-report --explain",
-      "exitCode": 0,
-      "status": "PASS",
-      "durationMs": 122,
-      "executionMode": "real",
-      "optional": false
-    },
-    {
-      "command": "node scripts/ai-company-learning-loop-dry-run.mjs --agent ceo_agent --mission-type PRODUCT_RESEARCH --provider openai --outcome success --quality-score 0.82 --simulate-lesson --write-report",
-      "exitCode": 0,
-      "status": "PASS",
-      "durationMs": 121,
-      "executionMode": "real",
-      "optional": false
     }
   ],
   "finalVerdict": "PASS_READY_FOR_DRAFT_PR",
-  "blocking_passed": true,
-  "optional_failures": [
-    "verify-0.3m",
-    "verify-0.3n"
-  ],
-  "optional_failure_reasons": [
-    "verify-0.3m: Historical verifier for Phase 0.3M",
-    "verify-0.3n: E2E verification is optional in later phases and reports on disk can be merge-mode"
-  ],
-  "final_verdict_reason": "All blocking checks passed. Non-blocking failures: verify-0.3m: Historical verifier for Phase 0.3M; verify-0.3n: E2E verification is optional in later phases and reports on disk can be merge-mode",
   "canOpenDraftPr": true,
   "canRequestOwnerReview": false,
   "canMerge": false,
