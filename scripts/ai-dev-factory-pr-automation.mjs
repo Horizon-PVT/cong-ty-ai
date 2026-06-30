@@ -145,7 +145,47 @@ async function main() {
   let prTitle = "feat: add auto push & draft pr gate";
   let prBodyContent = "";
 
-  if (fs.existsSync(path.resolve("packages/db/src/_verify-1.0e.mjs")) && (currentBranch.includes("ai-company-os-provider-learning-loop") || currentBranch.includes("1.0e"))) {
+  if (fs.existsSync(path.resolve("packages/db/src/_verify-1.0f.mjs")) && (currentBranch.includes("ai-company-os-dynamic-staffing") || currentBranch.includes("1.0f"))) {
+    prTitle = "feat: add AI Company OS dynamic staffing";
+    prBodyContent = `### Milestone 1.0F: AI Company OS Dynamic AI Staffing\n\n`;
+    prBodyContent += `This PR implements Milestone 1.0F, establishing the Dynamic AI Staffing pipeline and loop simulation for the AI Company OS.\n\n`;
+    prBodyContent += `- **Milestone**: 1.0F\n`;
+    prBodyContent += `- **Branch**: \`${currentBranch}\`\n\n`;
+    prBodyContent += `#### What Dynamic AI Staffing does:\n`;
+    prBodyContent += `Identifies skill and capacity gaps in active factories and resolves them by configuring temporary workers, managing candidate trials, and generating promotional reports for owner review.\n\n`;
+    prBodyContent += `#### Temporary/Candidate/Permanent worker model:\n`;
+    prBodyContent += `* **Temporary Workers**: Local task-specific instances (e.g. \`temporary_worker_tiktok_hook_001\`) created to run immediate trial missions.\n`;
+    prBodyContent += `* **Candidate Workers**: Proposed profiles undergoing structured evaluation runs before permanent promotion.\n`;
+    prBodyContent += `* **Permanent Workers**: Official core profiles requiring manual owner review and code check-in (unmutated automatically).\n\n`;
+    prBodyContent += `#### Staffing Policy Summary:\n`;
+    prBodyContent += `* Configures severity thresholds, KPI targets, and promotion/archival readiness rules.\n`;
+    prBodyContent += `* Enforces local auto-creation blocks for permanent roles.\n\n`;
+    prBodyContent += `#### Worker Archetype Summary:\n`;
+    prBodyContent += `* 14 distinct roles defined across Dev, Media, Sales, Research, CS, Finance, and Knowledge factories.\n\n`;
+    prBodyContent += `#### Staffing Gap Scenario Summary:\n`;
+    prBodyContent += `* 5 preconfigured scenarios covering low quality hooks, test failures, weak followups, high API costs, and panel overuse.\n\n`;
+    prBodyContent += `#### Worker Trial & Scorecard Summary:\n`;
+    prBodyContent += `* Simulation engine evaluates trial results, updates worker scorecards, and calculates readiness scores.\n\n`;
+    prBodyContent += `#### Staffing Sweep Summary:\n`;
+    prBodyContent += `* Sweeper script aggregates gap detections across scenarios and ranks recommended hires.\n\n`;
+    prBodyContent += `#### Memory Files Created:\n`;
+    prBodyContent += `* \`memory/ai-company/staffing-gaps.jsonl\`\n`;
+    prBodyContent += `* \`memory/ai-company/worker-candidates.jsonl\`\n`;
+    prBodyContent += `* \`memory/ai-company/worker-trials.jsonl\`\n`;
+    prBodyContent += `* \`memory/ai-company/worker-scorecards.json\`\n\n`;
+    prBodyContent += `#### Safety Confirmation:\n`;
+    prBodyContent += `* **no deploy**: Blocked.\n`;
+    prBodyContent += `* **no secrets**: Blocked.\n`;
+    prBodyContent += `* **no .env touch**: Blocked.\n`;
+    prBodyContent += `* **no destructive DB**: Blocked.\n`;
+    prBodyContent += `* **no spend**: Blocked.\n`;
+    prBodyContent += `* **no external customer communication**: Blocked.\n`;
+    prBodyContent += `* **no real publish**: Blocked.\n`;
+    prBodyContent += `* **no permanent worker core registry mutation**: Blocked.\n\n`;
+    prBodyContent += `#### Owner Safety Gate Controls\n`;
+    prBodyContent += `- **Safety gates remain blocked**: Deployments, secrets reads, destructive database actions, spending, and external communications remain fully blocked.\n`;
+    prBodyContent += `- **Merge remains blocked until owner approval token**: \`OWNER_APPROVED_MERGE_PR=<PR_NUMBER>\`\n\n`;
+  } else if (fs.existsSync(path.resolve("packages/db/src/_verify-1.0e.mjs")) && (currentBranch.includes("ai-company-os-provider-learning-loop") || currentBranch.includes("1.0e"))) {
     prTitle = "feat: add AI Company OS multi-provider learning loop";
     prBodyContent = `### Milestone 1.0E: AI Company OS Multi-Provider Learning Loop\n\n`;
     prBodyContent += `This PR implements Milestone 1.0E, establishing the AI Staff Runtime, Multi-Provider Router, and Self-Learning Loop for the AI Company OS.\n\n`;
@@ -551,6 +591,10 @@ async function main() {
     prBodyContent += `| \`node scripts/ai-dev-factory-self-test-gate.mjs --phase 1.0c --dry-run --write-report\` | **PASS** | ${(report.durationMs / 1000).toFixed(2)}s | real |\n`;
   } else if (currentBranch.includes("ai-company-os-capability-router") || currentBranch.includes("1.0d")) {
     prBodyContent += `| \`node scripts/ai-dev-factory-self-test-gate.mjs --phase 1.0d --dry-run --write-report\` | **PASS** | ${(report.durationMs / 1000).toFixed(2)}s | real |\n`;
+  } else if (currentBranch.includes("ai-company-os-provider-learning-loop") || currentBranch.includes("1.0e")) {
+    prBodyContent += `| \`node scripts/ai-dev-factory-self-test-gate.mjs --phase 1.0e --dry-run --write-report\` | **PASS** | ${(report.durationMs / 1000).toFixed(2)}s | real |\n`;
+  } else if (currentBranch.includes("ai-company-os-dynamic-staffing") || currentBranch.includes("1.0f")) {
+    prBodyContent += `| \`node scripts/ai-dev-factory-self-test-gate.mjs --phase 1.0f --dry-run --write-report\` | **PASS** | ${(report.durationMs / 1000).toFixed(2)}s | real |\n`;
   }
   prBodyContent += `\n`;
 

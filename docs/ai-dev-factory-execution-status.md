@@ -61,6 +61,8 @@
 - **Milestone 1.0C**: AI Company OS Mission Planner
 - **Milestone 1.0D**: AI Company OS Capability Router
 - **Milestone 1.0E**: AI Company OS Multi-Provider Learning Loop
+- **Milestone 1.0F**: AI Company OS Dynamic AI Staffing
+
 
 ## Phase 0.3P Proof Status
 
@@ -123,12 +125,22 @@ Proof execution records:
 
 ## Milestone 1.0E Proof Status
 
-Status: Draft PR opened; pending owner review and merge approval token.
+Status: Merged and Cleaned
 Proof execution records:
 - Milestone 1.0E implements the AI Staff Runtime, Multi-Provider Router, and Self-Learning Loop.
 - Configures registries for providers, models, runtimes, and agent provider pools.
 - Implements a local Provider Router dry-run script with scoring and fallback/cheap/panel modes.
 - Implements a local Self-Learning Loop dry-run script capturing lessons and updating provider/capability memory.
+
+## Milestone 1.0F Proof Status
+
+Status: Draft PR opened; pending owner review and merge approval token.
+Proof execution records:
+- Milestone 1.0F implements the Dynamic AI Staffing hiring pipeline.
+- Configures reusable worker archetypes and a staffing policy with local dry-run allowances.
+- Implements a local Dynamic Staffing dry-run script detecting gaps and generating temporary/candidate worker profiles.
+- Implements a local Worker Trial dry-run script running trials, generating scorecards, and recommending promotion paths.
+- Implements a Staffing Sweeper running gap detection across scenarios.
 <!-- execution_records_start -->
 <!-- execution_records_end -->
 

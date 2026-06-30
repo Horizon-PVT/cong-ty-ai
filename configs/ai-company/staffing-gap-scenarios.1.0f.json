@@ -1,0 +1,124 @@
+{
+  "scenarios": [
+    {
+      "scenario_id": "scenario_media_hook_low_quality",
+      "source_mission_type": "CREATIVE_HOOK_GENERATION",
+      "factory_id": "media_factory",
+      "observed_failures": [
+        "TikTok hook quality is repeatedly low (quality score average 0.35)",
+        "Hermes model performance drop on social captions"
+      ],
+      "provider_history": {
+        "primary_provider": "hermes_internal",
+        "total_runs": 5,
+        "failed_runs": 3
+      },
+      "quality_history": [0.35, 0.42, 0.38, 0.51, 0.32],
+      "cost_history": [0.02, 0.02, 0.02, 0.02, 0.02],
+      "operator_interventions": 2,
+      "expected_staffing_gap": {
+        "gap_id": "gap_media_hook_quality",
+        "mission_type": "CREATIVE_HOOK_GENERATION",
+        "severity": "high",
+        "reason": "Repeated low quality content hooks (average 0.35) require specialist media operator role"
+      },
+      "expected_recommended_worker_type": "tiktok_hook_worker"
+    },
+    {
+      "scenario_id": "scenario_e2e_verification_failed",
+      "source_mission_type": "VERIFY_PHASE",
+      "factory_id": "ai_dev_factory",
+      "observed_failures": [
+        "E2E test suite fails verification repeatedly",
+        "Antigravity runtime timeout"
+      ],
+      "provider_history": {
+        "primary_provider": "google",
+        "total_runs": 4,
+        "failed_runs": 3
+      },
+      "quality_history": [0.25, 0.3, 0.4, 0.8],
+      "cost_history": [0.05, 0.05, 0.05, 0.05],
+      "operator_interventions": 1,
+      "expected_staffing_gap": {
+        "gap_id": "gap_e2e_verification_failed",
+        "mission_type": "VERIFY_PHASE",
+        "severity": "high",
+        "reason": "E2E verification tests are failing repeatedly due to integration gaps"
+      },
+      "expected_recommended_worker_type": "playwright_e2e_worker"
+    },
+    {
+      "scenario_id": "scenario_sales_followup_weak",
+      "source_mission_type": "LEAD_RESEARCH",
+      "factory_id": "sales_factory",
+      "observed_failures": [
+        "Sales lead follow-up emails qualify weakly",
+        "Objection handling triggers manual intervention"
+      ],
+      "provider_history": {
+        "primary_provider": "openai",
+        "total_runs": 6,
+        "failed_runs": 2
+      },
+      "quality_history": [0.55, 0.6, 0.48, 0.52, 0.61, 0.45],
+      "cost_history": [0.08, 0.08, 0.08, 0.08, 0.08, 0.08],
+      "operator_interventions": 4,
+      "expected_staffing_gap": {
+        "gap_id": "gap_sales_followup_weak",
+        "mission_type": "LEAD_RESEARCH",
+        "severity": "medium",
+        "reason": "Objection handling triggers manual operator interventions repeatedly"
+      },
+      "expected_recommended_worker_type": "sales_objection_handler"
+    },
+    {
+      "scenario_id": "scenario_provider_cost_high",
+      "source_mission_type": "DOC_SUMMARY",
+      "factory_id": "knowledge_factory",
+      "observed_failures": [
+        "Claude API cost exceeds target threshold for simple doc classification",
+        "High model pricing spent on low risk batch parsing"
+      ],
+      "provider_history": {
+        "primary_provider": "anthropic",
+        "total_runs": 10,
+        "failed_runs": 0
+      },
+      "quality_history": [0.9, 0.92, 0.89, 0.91, 0.9, 0.92, 0.91, 0.9, 0.92, 0.91],
+      "cost_history": [0.25, 0.28, 0.24, 0.26, 0.25, 0.27, 0.25, 0.24, 0.26, 0.25],
+      "operator_interventions": 0,
+      "expected_staffing_gap": {
+        "gap_id": "gap_provider_cost_high",
+        "mission_type": "DOC_SUMMARY",
+        "severity": "medium",
+        "reason": "Average cost per document summary (0.25) is too high; requires cheap local classifier"
+      },
+      "expected_recommended_worker_type": "decision_log_worker"
+    },
+    {
+      "scenario_id": "scenario_strategy_panel_mode_overuse",
+      "source_mission_type": "PRICING_ANALYSIS",
+      "factory_id": "finance_factory",
+      "observed_failures": [
+        "Strategy analysis repeatedly falls back to panel mode",
+        "Low quality scores on singular primary provider runs"
+      ],
+      "provider_history": {
+        "primary_provider": "openai",
+        "total_runs": 3,
+        "failed_runs": 1
+      },
+      "quality_history": [0.45, 0.75, 0.38],
+      "cost_history": [0.15, 0.45, 0.15],
+      "operator_interventions": 3,
+      "expected_staffing_gap": {
+        "gap_id": "gap_strategy_panel_mode_overuse",
+        "mission_type": "PRICING_ANALYSIS",
+        "severity": "low",
+        "reason": "Panel mode repeatedly needed to resolve pricing model decisions"
+      },
+      "expected_recommended_worker_type": "api_cost_optimizer"
+    }
+  ]
+}

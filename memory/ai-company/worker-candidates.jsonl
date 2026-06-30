@@ -1,0 +1,1 @@
+{"candidate_id":"candidate_baseline_init","archetype_id":"repo_audit_specialist","factory_id":"system","provider_pool":{"primary_provider":"local","fallback_providers":[],"cheap_provider":"local"},"trial_kpis":["quality >= 0.5"],"status":"proposed","is_sample":true}
