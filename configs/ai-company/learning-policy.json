@@ -1,0 +1,56 @@
+{
+  "learning_mode": "local",
+  "auto_memory_update_allowed": true,
+  "owner_approval_required_for_policy_changes": true,
+  "lesson_capture_enabled": true,
+  "provider_performance_update_enabled": true,
+  "capability_score_update_enabled": true,
+  "decision_log_enabled": true,
+  "staffing_recommendation_enabled": true,
+  "auto_create_permanent_worker": false,
+  "temporary_worker_recommendation_allowed": true,
+  "candidate_worker_recommendation_allowed": true,
+  "permanent_worker_requires_owner_review": true,
+  "memory_files": {
+    "provider_performance": "memory/ai-company/provider-performance.json",
+    "capability_scores": "memory/ai-company/capability-scores.json",
+    "mission_lessons": "memory/ai-company/mission-lessons.jsonl",
+    "decision_log": "memory/ai-company/decision-log.jsonl"
+  },
+  "confidence_thresholds": {
+    "high": 0.8,
+    "medium": 0.5,
+    "low": 0.3
+  },
+  "quality_score_range": {
+    "min": 0.0,
+    "max": 1.0
+  },
+  "when_to_create_lesson": [
+    "after_every_simulated_mission",
+    "after_provider_fallback",
+    "after_panel_mode_decision",
+    "after_verification_failure",
+    "after_cost_threshold_exceeded"
+  ],
+  "when_to_update_provider_score": [
+    "after_mission_with_quality_score",
+    "after_consecutive_failures",
+    "after_challenger_outperforms_primary",
+    "after_cost_or_latency_anomaly"
+  ],
+  "when_to_recommend_provider_change": [
+    "primary_quality_below_0.4",
+    "challenger_wins_3_consecutive",
+    "repeated_fallback_triggers",
+    "cost_efficiency_drops_significantly"
+  ],
+  "when_to_escalate_to_owner": [
+    "policy_change_recommendation",
+    "live_api_enablement",
+    "production_deployment",
+    "spending_change",
+    "publish_or_customer_communication",
+    "master_merge"
+  ]
+}

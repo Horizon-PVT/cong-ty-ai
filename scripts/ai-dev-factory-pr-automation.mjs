@@ -145,7 +145,46 @@ async function main() {
   let prTitle = "feat: add auto push & draft pr gate";
   let prBodyContent = "";
 
-  if (fs.existsSync(path.resolve("packages/db/src/_verify-1.0d.mjs")) && (currentBranch.includes("ai-company-os-capability-router") || currentBranch.includes("1.0d"))) {
+  if (fs.existsSync(path.resolve("packages/db/src/_verify-1.0e.mjs")) && (currentBranch.includes("ai-company-os-provider-learning-loop") || currentBranch.includes("1.0e"))) {
+    prTitle = "feat: add AI Company OS multi-provider learning loop";
+    prBodyContent = `### Milestone 1.0E: AI Company OS Multi-Provider Learning Loop\n\n`;
+    prBodyContent += `This PR implements Milestone 1.0E, establishing the AI Staff Runtime, Multi-Provider Router, and Self-Learning Loop for the AI Company OS.\n\n`;
+    prBodyContent += `- **Milestone**: 1.0E\n`;
+    prBodyContent += `- **Branch**: \`${currentBranch}\`\n\n`;
+    prBodyContent += `#### What AI Staff Runtime does:\n`;
+    prBodyContent += `Manages role/persona mappings to provider pools, fallbacks, challengers, panel, and cheap modes, shielding workers from hard API binds.\n\n`;
+    prBodyContent += `#### What Multi-Provider Router does:\n`;
+    prBodyContent += `Dynamically evaluates candidate providers/models/runtimes for each mission using role_fit, task_fit, quality, cost, latency, and reliability scores.\n\n`;
+    prBodyContent += `#### What Self-Learning Loop does:\n`;
+    prBodyContent += `Records simulated mission outcomes (quality, latency, success) to local memory, extracts lessons, updates provider rankings, and offers preview staffing recommendations.\n\n`;
+    prBodyContent += `#### Provider Registry Summary:\n`;
+    prBodyContent += `* **openai**: strategy, coding support, structured reasoning (chatgpt, codex runtimes)\n`;
+    prBodyContent += `* **anthropic**: review, critique, long-context analysis (claude_api, claude_code runtimes)\n`;
+    prBodyContent += `* **google**: testing, Gemini workflows, Antigravity runtime (antigravity, gemini_api runtimes)\n`;
+    prBodyContent += `* **local**: cheap classification, log summaries (local_runner runtime)\n`;
+    prBodyContent += `* **hermes_internal**: media operations, brand learning (hermes runtime)\n\n`;
+    prBodyContent += `#### Runtime Registry Summary:\n`;
+    prBodyContent += `* Conversational and code-execution interfaces mapped to appropriate permission levels (can_modify_repo, can_open_pr, can_run_tests).\n\n`;
+    prBodyContent += `#### Agent Provider Pool Summary:\n`;
+    prBodyContent += `* Every executive agent and worker mapped to customized primary/fallback/challenger/cheap configurations.\n\n`;
+    prBodyContent += `#### Learning Memory Files:\n`;
+    prBodyContent += `* \`memory/ai-company/provider-performance.json\`: aggregates provider execution stats.\n`;
+    prBodyContent += `* \`memory/ai-company/capability-scores.json\`: tracks capability success rates.\n`;
+    prBodyContent += `* \`memory/ai-company/mission-lessons.jsonl\`: appends individual mission lessons.\n`;
+    prBodyContent += `* \`memory/ai-company/decision-log.jsonl\`: logs provider and policy changes.\n\n`;
+    prBodyContent += `#### Safety Confirmation:\n`;
+    prBodyContent += `* **no deploy**: Blocked.\n`;
+    prBodyContent += `* **no secrets**: Blocked.\n`;
+    prBodyContent += `* **no .env touch**: Blocked.\n`;
+    prBodyContent += `* **no destructive DB**: Blocked.\n`;
+    prBodyContent += `* **no spend**: Blocked.\n`;
+    prBodyContent += `* **no external customer communication**: Blocked.\n`;
+    prBodyContent += `* **no real publish**: Blocked.\n`;
+    prBodyContent += `* **no production data mutation**: Blocked.\n\n`;
+    prBodyContent += `#### Owner Safety Gate Controls\n`;
+    prBodyContent += `- **Safety gates remain blocked**: Deployments, secrets reads, destructive database actions, spending, and external communications remain fully blocked.\n`;
+    prBodyContent += `- **Merge remains blocked until owner approval token**: \`OWNER_APPROVED_MERGE_PR=<PR_NUMBER>\`\n\n`;
+  } else if (fs.existsSync(path.resolve("packages/db/src/_verify-1.0d.mjs")) && (currentBranch.includes("ai-company-os-capability-router") || currentBranch.includes("1.0d"))) {
     prTitle = "feat: add AI Company OS capability router";
     prBodyContent = `### Milestone 1.0D: AI Company OS Capability Router\n\n`;
     prBodyContent += `This PR implements Milestone 1.0D, establishing the local Capability Router, in-memory queue, and worker execution simulation for the AI Company OS.\n\n`;

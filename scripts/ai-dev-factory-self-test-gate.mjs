@@ -26,7 +26,12 @@ const COMMANDS_BASELINE = [
   { name: "verify-1.0c", cmd: "node packages/db/src/_verify-1.0c.mjs", phase: "1.0c", optional: true },
   { name: "mission-planner-dry-run", cmd: "node scripts/ai-company-mission-planner-dry-run.mjs --write-report", phase: "1.0c", optional: true },
   { name: "verify-1.0d", cmd: "node packages/db/src/_verify-1.0d.mjs", phase: "1.0d", optional: true },
-  { name: "capability-router-dry-run", cmd: "node scripts/ai-company-capability-router-dry-run.mjs --simulate-workers --write-report", phase: "1.0d", optional: true }
+  { name: "capability-router-dry-run", cmd: "node scripts/ai-company-capability-router-dry-run.mjs --simulate-workers --write-report", phase: "1.0d", optional: true },
+  { name: "verify-1.0e", cmd: "node packages/db/src/_verify-1.0e.mjs", phase: "1.0e", optional: true },
+  { name: "provider-router-dry-run-ceo", cmd: "node scripts/ai-company-provider-router-dry-run.mjs --agent ceo_agent --mission-type PRODUCT_RESEARCH --mode auto --simulate-outcome success --write-report --explain", phase: "1.0e", optional: true },
+  { name: "provider-router-dry-run-reviewer", cmd: "node scripts/ai-company-provider-router-dry-run.mjs --agent review_worker --mission-type PR_REVIEW --mode auto --simulate-outcome low_confidence --write-report --explain", phase: "1.0e", optional: true },
+  { name: "provider-router-dry-run-tester", cmd: "node scripts/ai-company-provider-router-dry-run.mjs --agent test_worker --mission-type VERIFY_PHASE --mode auto --simulate-outcome success --write-report --explain", phase: "1.0e", optional: true },
+  { name: "learning-loop-dry-run", cmd: "node scripts/ai-company-learning-loop-dry-run.mjs --agent ceo_agent --mission-type PRODUCT_RESEARCH --provider openai --outcome success --quality-score 0.82 --simulate-lesson --write-report", phase: "1.0e", optional: true }
 ];
 
 async function main() {
@@ -95,6 +100,8 @@ async function main() {
       filteredCommands = COMMANDS_BASELINE.filter(c => c.phase === "0.3j" || c.phase === "0.3k" || c.phase === "0.3l" || c.phase === "0.3m" || c.phase === "0.3n" || c.phase === "0.3o" || c.phase === "0.3p" || c.phase === "0.3q" || c.phase === "0.3r" || c.phase === "0.3s" || c.phase === "1.0a" || c.phase === "1.0b" || c.phase === "1.0c");
     } else if (selectedPhase === "1.0d") {
       filteredCommands = COMMANDS_BASELINE.filter(c => c.phase === "0.3j" || c.phase === "0.3k" || c.phase === "0.3l" || c.phase === "0.3m" || c.phase === "0.3n" || c.phase === "0.3o" || c.phase === "0.3p" || c.phase === "0.3q" || c.phase === "0.3r" || c.phase === "0.3s" || c.phase === "1.0a" || c.phase === "1.0b" || c.phase === "1.0c" || c.phase === "1.0d");
+    } else if (selectedPhase === "1.0e") {
+      filteredCommands = COMMANDS_BASELINE.filter(c => c.phase === "0.3j" || c.phase === "0.3k" || c.phase === "0.3l" || c.phase === "0.3m" || c.phase === "0.3n" || c.phase === "0.3o" || c.phase === "0.3p" || c.phase === "0.3q" || c.phase === "0.3r" || c.phase === "0.3s" || c.phase === "1.0a" || c.phase === "1.0b" || c.phase === "1.0c" || c.phase === "1.0d" || c.phase === "1.0e");
     }
   }
 

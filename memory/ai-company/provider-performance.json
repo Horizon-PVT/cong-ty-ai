@@ -1,0 +1,87 @@
+{
+  "providers": [
+    {
+      "provider_id": "openai",
+      "total_missions": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "average_quality_score": 0.5,
+      "average_latency_score": 0.5,
+      "average_cost_score": 0.5,
+      "role_scores": {
+        "strategist": 0.5,
+        "developer": 0.5,
+        "reviewer": 0.5,
+        "researcher": 0.5,
+        "finance_analyst": 0.5
+      },
+      "mission_type_scores": {},
+      "last_updated_run_id": null
+    },
+    {
+      "provider_id": "anthropic",
+      "total_missions": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "average_quality_score": 0.5,
+      "average_latency_score": 0.5,
+      "average_cost_score": 0.5,
+      "role_scores": {
+        "reviewer": 0.5,
+        "strategist": 0.5,
+        "researcher": 0.5,
+        "knowledge_worker": 0.5
+      },
+      "mission_type_scores": {},
+      "last_updated_run_id": null
+    },
+    {
+      "provider_id": "google",
+      "total_missions": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "average_quality_score": 0.5,
+      "average_latency_score": 0.5,
+      "average_cost_score": 0.5,
+      "role_scores": {
+        "tester": 0.5,
+        "researcher": 0.5,
+        "media_operator": 0.5,
+        "knowledge_worker": 0.5
+      },
+      "mission_type_scores": {},
+      "last_updated_run_id": null
+    },
+    {
+      "provider_id": "local",
+      "total_missions": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "average_quality_score": 0.5,
+      "average_latency_score": 0.5,
+      "average_cost_score": 0.5,
+      "role_scores": {
+        "learner": 0.5,
+        "knowledge_worker": 0.5
+      },
+      "mission_type_scores": {},
+      "last_updated_run_id": null
+    },
+    {
+      "provider_id": "hermes_internal",
+      "total_missions": 0,
+      "success_count": 0,
+      "failure_count": 0,
+      "average_quality_score": 0.5,
+      "average_latency_score": 0.5,
+      "average_cost_score": 0.5,
+      "role_scores": {
+        "media_operator": 0.5,
+        "learner": 0.5,
+        "customer_success": 0.5
+      },
+      "mission_type_scores": {},
+      "last_updated_run_id": null
+    }
+  ]
+}
