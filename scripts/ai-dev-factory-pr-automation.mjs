@@ -814,8 +814,27 @@ async function main() {
     console.log(`[PR Automation] URL: ${prUrl}`);
     console.log(`=============================================\n`);
   } catch (err) {
-    console.error(`[PR Automation] Error: Failed to create Draft PR via gh CLI: ${err.message}`);
-    process.exit(1);
+    const errMsg = err.message + " " + (err.stderr || "") + " " + (err.stdout || "");
+    if (errMsg.includes("already exists")) {
+      console.log(`[PR Automation] PR already exists. Updating existing PR...`);
+      try {
+        const editCmd = `"${ghPath}" pr edit ${repoFlag}--title "${prTitle}" --body-file "${prBodyPath}"`;
+        execSync(editCmd, { stdio: "inherit" });
+        console.log(`[PR Automation] PR edited successfully.`);
+        if (!draftFlag) {
+          console.log(`[PR Automation] Marking PR as ready for review (not draft)...`);
+          const readyCmd = `"${ghPath}" pr ready ${repoFlag}`;
+          execSync(readyCmd, { stdio: "inherit" });
+          console.log(`[PR Automation] PR marked as ready.`);
+        }
+      } catch (editErr) {
+        console.error(`[PR Automation] Error updating existing PR: ${editErr.message}`);
+        process.exit(1);
+      }
+    } else {
+      console.error(`[PR Automation] Error: Failed to create PR via gh CLI: ${err.message}`);
+      process.exit(1);
+    }
   }
 }
 
