@@ -43,7 +43,10 @@ const COMMANDS_BASELINE = [
   { name: "owner-action-queue", cmd: "node scripts/ai-company-owner-action-queue-dry-run.mjs --action-type permanent_worker --title \"Review candidate TikTok Hook Worker\" --priority medium --write-report --explain", phase: "1.0g", optional: true },
   { name: "verify-1.0h", cmd: "node packages/db/src/_verify-1.0h.mjs", phase: "1.0h", optional: true },
   { name: "paperclip-contract-validate", cmd: "node scripts/ai-company-paperclip-contract-validate.mjs --contract all --write-report --explain", phase: "1.0h", optional: true },
-  { name: "paperclip-adapter-dry-run", cmd: "node scripts/ai-company-paperclip-adapter-dry-run.mjs --source all --format json --write-report --explain", phase: "1.0h", optional: true }
+  { name: "paperclip-adapter-dry-run", cmd: "node scripts/ai-company-paperclip-adapter-dry-run.mjs --source all --format json --write-report --explain", phase: "1.0h", optional: true },
+  { name: "verify-1.0i", cmd: "node packages/db/src/_verify-1.0i.mjs", phase: "1.0i", optional: true },
+  { name: "paperclip-read-adapter", cmd: "node scripts/ai-company-paperclip-read-adapter.mjs --source all --widget all --format json --validate --write-report --explain", phase: "1.0i", optional: true },
+  { name: "paperclip-read-adapter-validate", cmd: "node scripts/ai-company-paperclip-read-adapter-validate.mjs --target all --write-report --explain", phase: "1.0i", optional: true }
 ];
 
 async function main() {

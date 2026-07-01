@@ -1,0 +1,25 @@
+{
+  "adapter_mode": "local_read_only",
+  "paperclip_is_primary_ui": true,
+  "standalone_dashboard_allowed": false,
+  "frontend_ui_allowed": false,
+  "live_api_calls_allowed": false,
+  "write_memory_allowed": false,
+  "mutate_registry_allowed": false,
+  "mutate_capability_registry_allowed": false,
+  "deploy_allowed": false,
+  "publish_allowed": false,
+  "spend_allowed": false,
+  "customer_comms_allowed": false,
+  "secret_read_allowed": false,
+  "production_data_mutation_allowed": false,
+  "optional_runtime_reports_allowed_missing": true,
+  "warnings_allowed_for_missing_optional_sources": true,
+  "output_contracts": [
+    "paperclip_company_status_payload",
+    "paperclip_widget_payloads",
+    "paperclip_owner_action_payloads",
+    "paperclip_safety_payload",
+    "paperclip_next_actions_payload"
+  ]
+}

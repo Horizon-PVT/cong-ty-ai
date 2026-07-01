@@ -1,0 +1,147 @@
+{
+  "schema_version": "1.0",
+  "generated_by": "ai-company-paperclip-read-adapter",
+  "integration_target": "paperclip",
+  "adapter_mode": "local_read_only",
+  "data_sources_loaded": [
+    "paperclip_integration_policy",
+    "paperclip_widget_map",
+    "paperclip_company_status_schema",
+    "paperclip_owner_action_schema"
+  ],
+  "data_sources_missing": [
+    "company_status_report",
+    "operator_console_report"
+  ],
+  "warnings": [
+    "Optional source company_status_report not found. Using empty state.",
+    "Optional source operator_console_report not found. Using empty state."
+  ],
+  "widget_payloads": [
+    {
+      "widget_id": "company_status",
+      "display_name": "Company Status Summary",
+      "source_status": "partial",
+      "payload": { "milestone_status": "1.0I", "mode": "local_dry_run" },
+      "empty_state": "",
+      "warnings": []
+    },
+    {
+      "widget_id": "mission_board",
+      "display_name": "Mission Board",
+      "source_status": "partial",
+      "payload": { "active_missions": 0 },
+      "empty_state": "No missions scheduled.",
+      "warnings": []
+    },
+    {
+      "widget_id": "factories",
+      "display_name": "Factory Registry",
+      "source_status": "loaded",
+      "payload": { "factory_count": 7, "factories": ["ai_dev_factory", "media_factory", "sales_factory", "research_factory", "finance_factory", "customer_success_factory", "knowledge_factory"] },
+      "empty_state": "",
+      "warnings": []
+    },
+    {
+      "widget_id": "ai_staff",
+      "display_name": "Active AI Staff Mappings",
+      "source_status": "loaded",
+      "payload": { "executive_agents": 2, "workers": 10 },
+      "empty_state": "",
+      "warnings": []
+    },
+    {
+      "widget_id": "provider_performance",
+      "display_name": "Provider Performance Log",
+      "source_status": "partial",
+      "payload": { "providers_tracked": 5 },
+      "empty_state": "",
+      "warnings": ["Provider performance memory loaded with baseline data."]
+    },
+    {
+      "widget_id": "learning_feed",
+      "display_name": "Learning Feed",
+      "source_status": "partial",
+      "payload": { "total_lessons": 1 },
+      "empty_state": "",
+      "warnings": []
+    },
+    {
+      "widget_id": "staffing_gaps",
+      "display_name": "Detected Staffing Gaps",
+      "source_status": "partial",
+      "payload": { "gaps_detected": 1 },
+      "empty_state": "",
+      "warnings": []
+    },
+    {
+      "widget_id": "candidate_workers",
+      "display_name": "Candidate Workers Queue",
+      "source_status": "partial",
+      "payload": { "candidates": 0 },
+      "empty_state": "No worker candidates registered.",
+      "warnings": []
+    },
+    {
+      "widget_id": "worker_scorecards",
+      "display_name": "Worker Scorecards",
+      "source_status": "loaded",
+      "payload": { "scorecards_count": 10 },
+      "empty_state": "",
+      "warnings": []
+    },
+    {
+      "widget_id": "owner_action_queue",
+      "display_name": "Owner Action Queue",
+      "source_status": "loaded",
+      "payload": { "pending_items": 1 },
+      "empty_state": "",
+      "warnings": []
+    },
+    {
+      "widget_id": "safety_locks",
+      "display_name": "Safety Gate Locks Status",
+      "source_status": "loaded",
+      "payload": { "no_deploy": true, "no_secrets": true, "no_spend": true },
+      "empty_state": "",
+      "warnings": []
+    },
+    {
+      "widget_id": "next_actions",
+      "display_name": "Recommended Next Actions",
+      "source_status": "loaded",
+      "payload": { "actions": ["Review and approve PR for Milestone 1.0I"] },
+      "empty_state": "",
+      "warnings": []
+    }
+  ],
+  "owner_action_queue": {
+    "pending_items": 1,
+    "items": [
+      {
+        "action_id": "act_permanent_worker_trial_001",
+        "action_type": "permanent_worker",
+        "title": "Review candidate TikTok Hook Worker",
+        "priority": "medium"
+      }
+    ]
+  },
+  "safety_status": {
+    "no_deploy": true,
+    "no_secrets": true,
+    "no_spend": true,
+    "no_standalone_dashboard": true
+  },
+  "next_recommended_actions": [
+    "Owner reviews and approves PR for Milestone 1.0I read adapter.",
+    "Run full self-test gate with --phase 1.0i."
+  ],
+  "validation_summary": {
+    "valid": true,
+    "errors": [],
+    "warnings": [
+      "Optional source company_status_report not found.",
+      "Optional source operator_console_report not found."
+    ]
+  }
+}

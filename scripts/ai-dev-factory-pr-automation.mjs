@@ -145,7 +145,28 @@ async function main() {
   let prTitle = "feat: add auto push & draft pr gate";
   let prBodyContent = "";
 
-  if (fs.existsSync(path.resolve("packages/db/src/_verify-1.0h.mjs")) && (currentBranch.includes("ai-company-os-paperclip-integration-contract") || currentBranch.includes("1.0h"))) {
+  if (fs.existsSync(path.resolve("packages/db/src/_verify-1.0i.mjs")) && (currentBranch.includes("ai-company-os-paperclip-read-adapter") || currentBranch.includes("1.0i"))) {
+    prTitle = "feat: add AI Company OS Paperclip read adapter";
+    prBodyContent = `### Milestone 1.0I: AI Company OS Paperclip Read Adapter Implementation\n\n`;
+    prBodyContent += `This PR implements Milestone 1.0I, turning the Paperclip Integration Contract into a working local read adapter that aggregates AI Company OS data sources and emits Paperclip-compatible widget payloads.\n\n`;
+    prBodyContent += `- **Milestone**: 1.0I\n`;
+    prBodyContent += `- **Branch**: \`${currentBranch}\`\n\n`;
+    prBodyContent += `#### Read Adapter Summary:\n`;
+    prBodyContent += `Reads configs, memory streams, schemas, and optional runtime reports to build 12 stable widget payloads for Paperclip consumption.\n\n`;
+    prBodyContent += `#### Data Sources:\n`;
+    prBodyContent += `* 4 required sources (integration policy, widget map, company status schema, owner action schema)\n`;
+    prBodyContent += `* 12 optional sources (memory streams, runtime reports)\n\n`;
+    prBodyContent += `#### Widget Payloads (12 panels):\n`;
+    prBodyContent += `Company Status, Mission Board, Factories, AI Staff, Provider Performance, Learning Feed, Staffing Gaps, Candidate Workers, Worker Scorecards, Owner Action Queue, Safety Locks, Next Actions\n\n`;
+    prBodyContent += `#### Schemas & Fixtures Created:\n`;
+    prBodyContent += `* \`schemas/ai-company/paperclip-read-adapter-output.schema.json\`\n`;
+    prBodyContent += `* \`fixtures/ai-company/paperclip-read-adapter-output.sample.json\`\n\n`;
+    prBodyContent += `#### Safety Confirmation:\n`;
+    prBodyContent += `* All safety locks enforced (no deploy/secrets/.env/spend/comms/publish/dashboard/frontend)\n`;
+    prBodyContent += `* Read-only adapter mode confirmed\n\n`;
+    prBodyContent += `#### Owner Safety Gate Controls\n`;
+    prBodyContent += `- **Merge remains blocked until owner approval token**: \`OWNER_APPROVED_MERGE_PR=<PR_NUMBER>\`\n\n`;
+  } else if (fs.existsSync(path.resolve("packages/db/src/_verify-1.0h.mjs")) && (currentBranch.includes("ai-company-os-paperclip-integration-contract") || currentBranch.includes("1.0h"))) {
     prTitle = "feat: add AI Company OS Paperclip integration contract";
     prBodyContent = `### Milestone 1.0H: AI Company OS Paperclip Integration Contract\n\n`;
     prBodyContent += `This PR implements Milestone 1.0H, defining the stable Paperclip Integration Contract, widget panel mappings, schemas, sample fixtures, local validation, and dry-run adapter mapping for the AI Company OS.\n\n`;
@@ -661,6 +682,8 @@ async function main() {
     prBodyContent += `| \`node scripts/ai-dev-factory-self-test-gate.mjs --phase 1.0g --dry-run --write-report\` | **PASS** | ${(report.durationMs / 1000).toFixed(2)}s | real |\n`;
   } else if (currentBranch.includes("ai-company-os-paperclip-integration-contract") || currentBranch.includes("1.0h")) {
     prBodyContent += `| \`node scripts/ai-dev-factory-self-test-gate.mjs --phase 1.0h --dry-run --write-report\` | **PASS** | ${(report.durationMs / 1000).toFixed(2)}s | real |\n`;
+  } else if (currentBranch.includes("ai-company-os-paperclip-read-adapter") || currentBranch.includes("1.0i")) {
+    prBodyContent += `| \`node scripts/ai-dev-factory-self-test-gate.mjs --phase 1.0i --dry-run --write-report\` | **PASS** | ${(report.durationMs / 1000).toFixed(2)}s | real |\n`;
   }
   prBodyContent += `\n`;
 

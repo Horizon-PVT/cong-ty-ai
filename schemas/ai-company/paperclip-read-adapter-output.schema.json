@@ -1,0 +1,84 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PaperclipReadAdapterOutput",
+  "type": "object",
+  "properties": {
+    "schema_version": { "type": "string" },
+    "generated_by": { "type": "string" },
+    "integration_target": { "type": "string", "const": "paperclip" },
+    "adapter_mode": { "type": "string" },
+    "data_sources_loaded": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "data_sources_missing": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "warnings": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "widget_payloads": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "widget_id": { "type": "string" },
+          "display_name": { "type": "string" },
+          "source_status": { "type": "string", "enum": ["loaded", "missing", "partial"] },
+          "payload": { "type": "object" },
+          "empty_state": { "type": "string" },
+          "warnings": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "required": ["widget_id", "display_name", "source_status", "payload"]
+      }
+    },
+    "owner_action_queue": {
+      "type": "object",
+      "properties": {
+        "pending_items": { "type": "integer" },
+        "items": { "type": "array" }
+      }
+    },
+    "safety_status": {
+      "type": "object",
+      "properties": {
+        "no_deploy": { "type": "boolean" },
+        "no_secrets": { "type": "boolean" },
+        "no_spend": { "type": "boolean" },
+        "no_standalone_dashboard": { "type": "boolean" }
+      },
+      "required": ["no_deploy", "no_secrets", "no_spend", "no_standalone_dashboard"]
+    },
+    "next_recommended_actions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "validation_summary": {
+      "type": "object",
+      "properties": {
+        "valid": { "type": "boolean" },
+        "errors": { "type": "array", "items": { "type": "string" } },
+        "warnings": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "generated_by",
+    "integration_target",
+    "adapter_mode",
+    "data_sources_loaded",
+    "data_sources_missing",
+    "warnings",
+    "widget_payloads",
+    "owner_action_queue",
+    "safety_status",
+    "next_recommended_actions",
+    "validation_summary"
+  ]
+}
