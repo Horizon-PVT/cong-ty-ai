@@ -823,7 +823,7 @@ async function main() {
         console.log(`[PR Automation] PR edited successfully.`);
         if (!draftFlag) {
           console.log(`[PR Automation] Marking PR as ready for review (not draft)...`);
-          const readyCmd = `"${ghPath}" pr ready ${repoFlag}`;
+          const readyCmd = `"${ghPath}" pr ready "${currentBranch}" ${repoFlag}`;
           execSync(readyCmd, { stdio: "inherit" });
           console.log(`[PR Automation] PR marked as ready.`);
         }
