@@ -1,0 +1,31 @@
+{
+  "revenue_backlog": [
+    {
+      "backlog_id": "backlog_1_0k_agent_marketplace",
+      "title": "AI Agent Marketplace Integration Contract",
+      "priority": "critical",
+      "milestone": "1.0K",
+      "estimated_effort_days": 5,
+      "estimated_revenue_usd": 15000,
+      "description": "Expose stable schemas and interfaces for buying/selling modular agent capabilities."
+    },
+    {
+      "backlog_id": "backlog_1_0l_trial_scheduler",
+      "title": "Hermes Staffing Sweep Trials Scheduler",
+      "priority": "high",
+      "milestone": "1.0L",
+      "estimated_effort_days": 3,
+      "estimated_revenue_usd": 8000,
+      "description": "Automate scheduling of capability worker candidate hiring trials based on staffing sweeps."
+    },
+    {
+      "backlog_id": "backlog_1_0m_drizzle_queue",
+      "title": "Drizzle Schema Optimization for Queue Metrics",
+      "priority": "medium",
+      "milestone": "1.0M",
+      "estimated_effort_days": 2,
+      "estimated_revenue_usd": 3000,
+      "description": "Harden postgres schema migration structures to support low-latency high-frequency queue updates."
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "ceo_agent": {
+    "mission_success_rate": 1,
+    "planning_accuracy": 0.95,
+    "value_delivery_score": 0.98,
+    "owner_decision_load": 0
+  },
+  "coo_agent": {
+    "routing_accuracy": 1,
+    "cycle_time": 12.5,
+    "blocked_task_rate": 0
+  },
+  "cto_agent": {
+    "implementation_quality": 0.96,
+    "review_pass_rate": 1,
+    "defect_rate": 0
+  },
+  "research_capability": {
+    "source_coverage": 1,
+    "insight_usefulness": 0.95,
+    "citation_accuracy": 1
+  },
+  "dev_capability": {
+    "build_pass_rate": 1,
+    "test_pass_rate": 1,
+    "rework_rate": 0
+  },
+  "review_capability": {
+    "false_positive_rate": 0,
+    "false_negative_rate": 0,
+    "issue_detection_quality": 1
+  },
+  "learning_clo": {
+    "lesson_quality": 0.95,
+    "provider_recommendation_accuracy": 1,
+    "staffing_recommendation_accuracy": 1
+  }
+}

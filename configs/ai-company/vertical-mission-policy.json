@@ -1,0 +1,20 @@
+{
+  "mission_mode": "local_vertical_execution",
+  "capability_first": true,
+  "paperclip_update_required": true,
+  "learning_update_required": true,
+  "artifact_required": true,
+  "auto_verification_required": true,
+  "premerge_simulation_required": true,
+  "owner_manual_qa_required": false,
+  "allow_local_memory_write": true,
+  "allow_local_artifact_write": true,
+  "allow_local_report_write": true,
+  "allow_live_api_calls": false,
+  "allow_deploy": false,
+  "allow_publish": false,
+  "allow_spend": false,
+  "allow_customer_comms": false,
+  "allow_secret_read": false,
+  "allow_production_data_mutation": false
+}
