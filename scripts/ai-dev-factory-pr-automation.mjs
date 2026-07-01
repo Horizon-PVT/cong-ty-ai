@@ -142,15 +142,52 @@ async function main() {
   fs.mkdirSync(prBodyDir, { recursive: true });
   const prBodyPath = path.join(prBodyDir, "pr-body.md");
 
+  let isAutoLoopPass = false;
+  let isPremergeSimulatePass = false;
+
+  try {
+    const loopReportPath = path.resolve("logs/ai-loop-report.json");
+    if (fs.existsSync(loopReportPath)) {
+      const loopReport = JSON.parse(fs.readFileSync(loopReportPath, "utf8"));
+      if (loopReport.convergence_status === "converged") {
+        isAutoLoopPass = true;
+      }
+    }
+  } catch (e) {}
+
+  try {
+    const premergeReportPath = path.resolve("logs/premerge-simulate-report.json");
+    if (fs.existsSync(premergeReportPath)) {
+      const premergeReport = JSON.parse(fs.readFileSync(premergeReportPath, "utf8"));
+      if (premergeReport.premerge_status === "PASS") {
+        isPremergeSimulatePass = true;
+      }
+    }
+  } catch (e) {}
+
   let prTitle = "feat: add auto push & draft pr gate";
   let prBodyContent = "";
 
   if (fs.existsSync(path.resolve("packages/db/src/_verify-1.0i.mjs")) && (currentBranch.includes("ai-company-os-paperclip-read-adapter") || currentBranch.includes("1.0i"))) {
-    prTitle = "feat: add AI Company OS Paperclip read adapter";
+    if (isAutoLoopPass && isPremergeSimulatePass) {
+      prTitle = "feat: add AI Company OS Paperclip read adapter [READY_FOR_AUTO_MERGE]";
+    } else {
+      prTitle = "feat: add AI Company OS Paperclip read adapter";
+    }
     prBodyContent = `### Milestone 1.0I: AI Company OS Paperclip Read Adapter Implementation\n\n`;
     prBodyContent += `This PR implements Milestone 1.0I, turning the Paperclip Integration Contract into a working local read adapter that aggregates AI Company OS data sources and emits Paperclip-compatible widget payloads.\n\n`;
     prBodyContent += `- **Milestone**: 1.0I\n`;
     prBodyContent += `- **Branch**: \`${currentBranch}\`\n\n`;
+    prBodyContent += `#### E2E Auto-Verification Loop & Simulation:\n`;
+    if (isAutoLoopPass && isPremergeSimulatePass) {
+      prBodyContent += `* **Auto-Verification Loop**: **PASS** (Stable convergence achieved)\n`;
+      prBodyContent += `* **Pre-Merge Simulation**: **PASS** (Zero conflicts, zero breakage)\n`;
+      prBodyContent += `* **Status**: **READY_FOR_AUTO_MERGE** (Pre-merge simulation and loop verification passed, pending owner merge trigger)\n\n`;
+    } else {
+      prBodyContent += `* **Auto-Verification Loop**: **PENDING**\n`;
+      prBodyContent += `* **Pre-Merge Simulation**: **PENDING**\n`;
+      prBodyContent += `* **Status**: **DRAFT_PR**\n\n`;
+    }
     prBodyContent += `#### Read Adapter Summary:\n`;
     prBodyContent += `Reads configs, memory streams, schemas, and optional runtime reports to build 12 stable widget payloads for Paperclip consumption.\n\n`;
     prBodyContent += `#### Data Sources:\n`;
@@ -767,12 +804,13 @@ async function main() {
   const repoFlag = repoId ? `--repo ${repoId} ` : "";
   console.log(`[PR Automation] Target repository: ${repoId || "Default (GitHub CLI configuration)"}`);
 
-  console.log(`[PR Automation] Creating Draft PR on GitHub...`);
+  const draftFlag = (isAutoLoopPass && isPremergeSimulatePass) ? "" : "--draft ";
+  console.log(`[PR Automation] Creating ${draftFlag ? "Draft " : "READY_FOR_AUTO_MERGE "}PR on GitHub...`);
   try {
-    const prCmd = `"${ghPath}" pr create ${repoFlag}--draft --title "${prTitle}" --body-file "${prBodyPath}"`;
+    const prCmd = `"${ghPath}" pr create ${repoFlag}${draftFlag}--title "${prTitle}" --body-file "${prBodyPath}"`;
     const prUrl = execSync(prCmd, { encoding: "utf8" }).trim();
     console.log(`\n=============================================`);
-    console.log(`[PR Automation] DRAFT PR CREATED SUCCESSFULLY!`);
+    console.log(`[PR Automation] PR CREATED SUCCESSFULLY!`);
     console.log(`[PR Automation] URL: ${prUrl}`);
     console.log(`=============================================\n`);
   } catch (err) {
