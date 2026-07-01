@@ -121,6 +121,10 @@ async function main() {
   }
 
   // 6. Refuse if PR is not open
+  if (prData.state === "MERGED") {
+    console.log(`[Merge Gate] PR #${prNumber} is already merged. Exiting successfully (idempotent).`);
+    process.exit(0);
+  }
   if (prData.state !== "OPEN") {
     console.error(`[Merge Gate] Error: PR is not open (state: ${prData.state}).`);
     process.exit(1);

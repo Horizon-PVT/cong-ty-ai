@@ -571,7 +571,7 @@ async function main() {
         console.log(`[E2E Runner] [Dry-Run] Would write E2E final reports after cleanup`);
         mergeResult = "SUCCESS";
         postMergeCleanupResult = "SUCCESS";
-        finalVerdict = "E2E_MERGED_AND_CLEANED";
+        finalVerdict = "E2E_AUTO_VERIFIED_MERGED_AND_CLEANED";
       } else {
         // Step 1: Check clean working tree BEFORE merge
         let preMergeGitStatus = "";
@@ -630,7 +630,7 @@ async function main() {
             }
 
             if (finalVerdict !== "E2E_FAILED") {
-              finalVerdict = "E2E_MERGED_AND_CLEANED";
+              finalVerdict = "E2E_AUTO_VERIFIED_MERGED_AND_CLEANED";
             }
           } catch (err) {
             console.error(`[E2E Runner] Error during merge/cleanup: ${err.message}`);
@@ -668,7 +668,7 @@ async function main() {
     mergeResult,
     postMergeCleanupResult,
     postMergeReportFound: fs.existsSync(path.join(repoRoot, "reports/post-merge/latest.json")),
-    masterBranchConfirmed: finalVerdict === "E2E_MERGED_AND_CLEANED",
+    masterBranchConfirmed: finalVerdict === "E2E_AUTO_VERIFIED_MERGED_AND_CLEANED",
     finalGitStatus: (() => { try { return execSync("git status --porcelain", { encoding: "utf8" }).trim() || "clean"; } catch { return "unknown"; } })(),
     criticalGatesBlocked: true,
     deployAttempted: false,
