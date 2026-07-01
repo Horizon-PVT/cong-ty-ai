@@ -1,0 +1,164 @@
+{
+  "sources": [
+    {
+      "source_id": "paperclip_integration_policy",
+      "source_file": "configs/ai-company/paperclip-integration-policy.json",
+      "source_type": "config",
+      "required": true,
+      "parser": "json",
+      "used_by_widgets": ["company_status", "safety_locks"],
+      "missing_behavior": "error",
+      "read_only": true
+    },
+    {
+      "source_id": "paperclip_widget_map",
+      "source_file": "configs/ai-company/paperclip-widget-map.json",
+      "source_type": "config",
+      "required": true,
+      "parser": "json",
+      "used_by_widgets": ["company_status", "mission_board", "factories", "ai_staff", "provider_performance", "learning_feed", "staffing_gaps", "candidate_workers", "worker_scorecards", "owner_action_queue", "safety_locks", "next_actions"],
+      "missing_behavior": "error",
+      "read_only": true
+    },
+    {
+      "source_id": "paperclip_company_status_schema",
+      "source_file": "schemas/ai-company/paperclip-company-status.schema.json",
+      "source_type": "schema",
+      "required": true,
+      "parser": "json",
+      "used_by_widgets": ["company_status"],
+      "missing_behavior": "error",
+      "read_only": true
+    },
+    {
+      "source_id": "paperclip_owner_action_schema",
+      "source_file": "schemas/ai-company/paperclip-owner-action.schema.json",
+      "source_type": "schema",
+      "required": true,
+      "parser": "json",
+      "used_by_widgets": ["owner_action_queue"],
+      "missing_behavior": "error",
+      "read_only": true
+    },
+    {
+      "source_id": "company_status_report",
+      "source_file": "reports/company-status/latest.json",
+      "source_type": "report",
+      "required": false,
+      "parser": "json",
+      "used_by_widgets": ["company_status", "mission_board", "factories", "ai_staff"],
+      "missing_behavior": "warn",
+      "read_only": true
+    },
+    {
+      "source_id": "operator_console_report",
+      "source_file": "reports/operator-console/latest.json",
+      "source_type": "report",
+      "required": false,
+      "parser": "json",
+      "used_by_widgets": ["company_status"],
+      "missing_behavior": "warn",
+      "read_only": true
+    },
+    {
+      "source_id": "provider_performance",
+      "source_file": "memory/ai-company/provider-performance.json",
+      "source_type": "memory",
+      "required": false,
+      "parser": "json",
+      "used_by_widgets": ["provider_performance"],
+      "missing_behavior": "warn",
+      "read_only": true
+    },
+    {
+      "source_id": "capability_scores",
+      "source_file": "memory/ai-company/capability-scores.json",
+      "source_type": "memory",
+      "required": false,
+      "parser": "json",
+      "used_by_widgets": ["provider_performance", "worker_scorecards"],
+      "missing_behavior": "warn",
+      "read_only": true
+    },
+    {
+      "source_id": "mission_lessons",
+      "source_file": "memory/ai-company/mission-lessons.jsonl",
+      "source_type": "memory",
+      "required": false,
+      "parser": "jsonl",
+      "used_by_widgets": ["learning_feed"],
+      "missing_behavior": "warn",
+      "read_only": true
+    },
+    {
+      "source_id": "decision_log",
+      "source_file": "memory/ai-company/decision-log.jsonl",
+      "source_type": "memory",
+      "required": false,
+      "parser": "jsonl",
+      "used_by_widgets": ["learning_feed"],
+      "missing_behavior": "warn",
+      "read_only": true
+    },
+    {
+      "source_id": "staffing_gaps",
+      "source_file": "memory/ai-company/staffing-gaps.jsonl",
+      "source_type": "memory",
+      "required": false,
+      "parser": "jsonl",
+      "used_by_widgets": ["staffing_gaps"],
+      "missing_behavior": "warn",
+      "read_only": true
+    },
+    {
+      "source_id": "worker_candidates",
+      "source_file": "memory/ai-company/worker-candidates.jsonl",
+      "source_type": "memory",
+      "required": false,
+      "parser": "jsonl",
+      "used_by_widgets": ["candidate_workers"],
+      "missing_behavior": "warn",
+      "read_only": true
+    },
+    {
+      "source_id": "worker_trials",
+      "source_file": "memory/ai-company/worker-trials.jsonl",
+      "source_type": "memory",
+      "required": false,
+      "parser": "jsonl",
+      "used_by_widgets": ["candidate_workers", "worker_scorecards"],
+      "missing_behavior": "warn",
+      "read_only": true
+    },
+    {
+      "source_id": "worker_scorecards",
+      "source_file": "memory/ai-company/worker-scorecards.json",
+      "source_type": "memory",
+      "required": false,
+      "parser": "json",
+      "used_by_widgets": ["worker_scorecards"],
+      "missing_behavior": "warn",
+      "read_only": true
+    },
+    {
+      "source_id": "owner_action_queue",
+      "source_file": "memory/ai-company/owner-action-queue.jsonl",
+      "source_type": "memory",
+      "required": false,
+      "parser": "jsonl",
+      "used_by_widgets": ["owner_action_queue"],
+      "missing_behavior": "warn",
+      "read_only": true
+    },
+    {
+      "source_id": "operator_notes",
+      "source_file": "memory/ai-company/operator-notes.jsonl",
+      "source_type": "memory",
+      "required": false,
+      "parser": "jsonl",
+      "used_by_widgets": ["next_actions"],
+      "missing_behavior": "warn",
+      "read_only": true
+    }
+  ]
+}

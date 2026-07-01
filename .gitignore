@@ -67,3 +67,20 @@ reports/e2e/latest.json
 reports/e2e/latest.md
 reports/post-merge/latest.json
 reports/post-merge/latest.md
+logs/
+
+# Local-only dry run reports
+reports/company-status/
+reports/dynamic-staffing/
+reports/learning-loop/
+reports/operator-console/
+reports/owner-action/
+reports/paperclip-adapter/
+reports/paperclip-contract/
+reports/paperclip-read-adapter-validation/
+reports/paperclip-read-adapter/
+reports/paperclip-widget-payload/
+reports/provider-router/
+reports/staffing-sweep/
+reports/worker-trial/
+reports/queue-runner/
