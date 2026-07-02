@@ -210,7 +210,7 @@ Proof execution records:
 
 ## Milestone 1.0M Proof Status
 
-Status: Draft PR opened; pending owner merge token after auto-verification.
+Status: Merged and Cleaned
 Proof execution records:
 - Milestone 1.0M implements the First Autonomous Revenue Mission, proving that the system can autonomously plan, select, and generate tactical sales enablement assets to close 3 local SME clients in Thanh Hóa within 14 days under safety constraints.
 - Configures first autonomous revenue policy, operating model, and structured autonomous mission input.
