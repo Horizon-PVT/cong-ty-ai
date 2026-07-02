@@ -1,0 +1,23 @@
+{
+  "analysis_id": "gap-analysis-1.0l",
+  "mission_id": "mission_1_0l_department_autonomy",
+  "conducted_by": "QA_AI",
+  "total_artifacts_reviewed": 10,
+  "detected_gaps": [
+    {
+      "gap_id": "GAP-001",
+      "description": "No email/Zalo follow-up message templates",
+      "severity": "LOW",
+      "owner_impact": "Sales team must compose follow-up messages manually",
+      "department_responsible": "CMO",
+      "closure_action": "CMO notes this as a next-iteration item; not required for MVP",
+      "status": "ACCEPTED_AS_KNOWN_GAP",
+      "rationale": "Low severity — salesperson can adapt objection guide content for follow-up"
+    }
+  ],
+  "critical_gaps_count": 0,
+  "total_gaps_count": 1,
+  "all_critical_gaps_closed": true,
+  "gap_closure_iterations_used": 1,
+  "conclusion": "One low-severity gap identified. No critical gaps. All artifacts are complete and meet acceptance criteria. The identified gap is documented and accepted as a known limitation for Milestone 1.0L scope."
+}

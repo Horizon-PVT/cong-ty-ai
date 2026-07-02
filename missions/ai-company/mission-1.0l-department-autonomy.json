@@ -1,0 +1,51 @@
+{
+  "mission_id": "mission_1_0l_department_autonomy",
+  "milestone": "1.0L",
+  "mission_type": "AUTONOMOUS_DEPARTMENT_LED_PRODUCT_COMPLETION",
+  "created_at": "2026-07-02",
+  "owner_goal": "Create everything necessary for Alex Minh AI to sell website, chatbot AI, and AI Sales System services to Thanh Hóa SME clients.",
+  "target_market": "Thanh Hóa SME",
+  "seller_brand": "Alex Minh AI",
+  "known_offer_anchors": {
+    "web_uy_tin": {
+      "label": "Web Uy Tín",
+      "price_vnd": 4900000,
+      "description": "Website đẹp, chuẩn SEO, tốc độ cao cho SME"
+    },
+    "web_chatbot_ai": {
+      "label": "Web + Chatbot AI",
+      "price_vnd": 12900000,
+      "description": "Website tích hợp chatbot AI tư vấn tự động 24/7"
+    },
+    "ai_sales_system": {
+      "label": "AI Sales System",
+      "price_vnd": 18000000,
+      "description": "Hệ thống AI bán hàng, chốt đơn, báo cáo tự động"
+    }
+  },
+  "desired_business_outcome": "Alex Minh AI có đầy đủ tài liệu bán hàng, demo sản phẩm, và hệ thống chốt deal để tiếp cận và thuyết phục khách hàng SME Thanh Hóa mua gói dịch vụ AI phù hợp.",
+  "department_autonomy_required": true,
+  "departments_must_select_artifacts": true,
+  "qa_review_required": true,
+  "gap_analysis_required": true,
+  "learning_required": true,
+  "paperclip_update_required": true,
+  "kpi_required": true,
+  "hard_locks": {
+    "no_deploy": true,
+    "no_publish": true,
+    "no_real_customer_messaging": true,
+    "no_real_crm_update": true,
+    "no_spending": true,
+    "no_real_client_private_data": true,
+    "no_secrets": true,
+    "no_env_read": true,
+    "no_production_mutation": true,
+    "local_only": true
+  },
+  "context_sources_allowed": [
+    "artifacts/ai-company/mission-1.0k/",
+    "memory/ai-company/mission-lessons.jsonl"
+  ],
+  "notes": "Departments must independently decide which artifacts are needed. No fixed sales-kit artifact list is provided or required."
+}

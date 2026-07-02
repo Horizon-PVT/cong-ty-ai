@@ -1,0 +1,45 @@
+{
+  "policy_id": "department-autonomy-policy",
+  "version": "1.0L",
+  "mission_mode": "autonomous_department_led_execution",
+  "capability_first": true,
+  "department_led": true,
+  "departments_select_artifacts": true,
+  "fixed_artifact_list_allowed": false,
+  "artifact_manifest_required": true,
+  "department_decision_log_required": true,
+  "qa_review_required": true,
+  "gap_analysis_required": true,
+  "gap_closure_required": true,
+  "paperclip_update_required": true,
+  "learning_update_required": true,
+  "kpi_required": true,
+  "auto_verification_required": true,
+  "premerge_simulation_required": true,
+  "owner_manual_qa_required": false,
+  "allowed": {
+    "allow_local_artifact_write": true,
+    "allow_local_memory_write": true,
+    "allow_local_report_write": true
+  },
+  "blocked": {
+    "allow_live_api_calls": false,
+    "allow_deploy": false,
+    "allow_publish": false,
+    "allow_spend": false,
+    "allow_customer_comms": false,
+    "allow_auto_send_message": false,
+    "allow_auto_crm_update": false,
+    "allow_secret_read": false,
+    "allow_env_read": false,
+    "allow_production_data_mutation": false,
+    "allow_real_client_data": false
+  },
+  "completion_thresholds": {
+    "minimum_departments_involved": 6,
+    "minimum_self_selected_artifacts": 5,
+    "minimum_quality_score": 80,
+    "required_safety_score": 100,
+    "max_gap_closure_iterations": 5
+  }
+}

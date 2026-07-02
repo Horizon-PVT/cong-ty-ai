@@ -54,7 +54,10 @@ const COMMANDS_BASELINE = [
   { name: "vertical-mission-premerge-simulate", cmd: "node scripts/ai-company-vertical-mission-premerge-simulate.mjs --mission mission_1_0j_repo_audit --write-report --explain", phase: "1.0j", optional: true },
   { name: "verify-1.0k", cmd: "node packages/db/src/_verify-1.0k.mjs", phase: "1.0k", optional: true },
   { name: "revenue-website-auto-loop", cmd: "node scripts/ai-company-revenue-website-auto-loop.mjs --mission mission_1_0k_website_delivery --max-iterations 5 --stable-passes 2 --write-report --explain", phase: "1.0k", optional: true },
-  { name: "revenue-website-premerge-simulate", cmd: "node scripts/ai-company-revenue-website-premerge-simulate.mjs --mission mission_1_0k_website_delivery --write-report --explain", phase: "1.0k", optional: true }
+  { name: "revenue-website-premerge-simulate", cmd: "node scripts/ai-company-revenue-website-premerge-simulate.mjs --mission mission_1_0k_website_delivery --write-report --explain", phase: "1.0k", optional: true },
+  { name: "verify-1.0l", cmd: "node packages/db/src/_verify-1.0l.mjs", phase: "1.0l", optional: true },
+  { name: "department-autonomy-auto-loop", cmd: "node scripts/ai-company-department-autonomy-auto-loop.mjs --mission mission_1_0l_department_autonomy --max-iterations 5 --stable-passes 2 --write-report --explain", phase: "1.0l", optional: true },
+  { name: "department-autonomy-premerge-simulate", cmd: "node scripts/ai-company-department-autonomy-premerge-simulate.mjs --mission mission_1_0l_department_autonomy --write-report --explain", phase: "1.0l", optional: true }
 ];
 
 async function main() {
@@ -139,6 +142,8 @@ async function main() {
       filteredCommands = COMMANDS_BASELINE.filter(c => c.phase === "0.3j" || c.phase === "0.3k" || c.phase === "0.3l" || c.phase === "0.3m" || c.phase === "0.3n" || c.phase === "0.3o" || c.phase === "0.3p" || c.phase === "0.3q" || c.phase === "0.3r" || c.phase === "0.3s" || c.phase === "1.0a" || c.phase === "1.0b" || c.phase === "1.0c" || c.phase === "1.0d" || c.phase === "1.0e" || c.phase === "1.0f" || c.phase === "1.0g" || c.phase === "1.0h" || c.phase === "1.0i" || c.phase === "1.0i-loop" || c.phase === "1.0j");
     } else if (selectedPhase === "1.0k") {
       filteredCommands = COMMANDS_BASELINE.filter(c => c.phase === "0.3j" || c.phase === "0.3k" || c.phase === "0.3l" || c.phase === "0.3m" || c.phase === "0.3n" || c.phase === "0.3o" || c.phase === "0.3p" || c.phase === "0.3q" || c.phase === "0.3r" || c.phase === "0.3s" || c.phase === "1.0a" || c.phase === "1.0b" || c.phase === "1.0c" || c.phase === "1.0d" || c.phase === "1.0e" || c.phase === "1.0f" || c.phase === "1.0g" || c.phase === "1.0h" || c.phase === "1.0i" || c.phase === "1.0i-loop" || c.phase === "1.0j" || c.phase === "1.0k");
+    } else if (selectedPhase === "1.0l") {
+      filteredCommands = COMMANDS_BASELINE.filter(c => c.phase === "0.3j" || c.phase === "0.3k" || c.phase === "0.3l" || c.phase === "0.3m" || c.phase === "0.3n" || c.phase === "0.3o" || c.phase === "0.3p" || c.phase === "0.3q" || c.phase === "0.3r" || c.phase === "0.3s" || c.phase === "1.0a" || c.phase === "1.0b" || c.phase === "1.0c" || c.phase === "1.0d" || c.phase === "1.0e" || c.phase === "1.0f" || c.phase === "1.0g" || c.phase === "1.0h" || c.phase === "1.0i" || c.phase === "1.0i-loop" || c.phase === "1.0j" || c.phase === "1.0k" || c.phase === "1.0l");
     }
   }
 
@@ -236,7 +241,18 @@ async function main() {
     "verify-0.3q": "Historical verifier for Phase 0.3Q",
     "verify-0.3r": "Historical verifier for Phase 0.3R",
     "verify-0.3s": "Historical verifier for Phase 0.3S",
-    "verify-1.0a": "Milestone 1.0A verifier"
+    "verify-1.0a": "Milestone 1.0A verifier",
+    "verify-1.0b": "Milestone 1.0B verifier",
+    "verify-1.0c": "Milestone 1.0C verifier",
+    "verify-1.0d": "Milestone 1.0D verifier",
+    "verify-1.0e": "Milestone 1.0E verifier",
+    "verify-1.0f": "Milestone 1.0F verifier",
+    "verify-1.0g": "Milestone 1.0G verifier",
+    "verify-1.0h": "Milestone 1.0H verifier",
+    "verify-1.0i": "Milestone 1.0I verifier",
+    "verify-1.0j": "Milestone 1.0J verifier",
+    "verify-1.0k": "Milestone 1.0K verifier",
+    "verify-1.0l": "Milestone 1.0L verifier"
   };
 
   const optionalFailures = commandResults.filter(r => r.status === "FAIL" && r.optional);

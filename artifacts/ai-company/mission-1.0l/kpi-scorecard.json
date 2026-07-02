@@ -1,0 +1,30 @@
+{
+  "scorecard_id": "kpi-1.0l",
+  "mission_id": "mission_1_0l_department_autonomy",
+  "scored_by": "CFO_AI + QA_AI",
+  "scores": {
+    "mission_success_score": 92,
+    "department_autonomy_score": 95,
+    "customer_value_score": 88,
+    "commercial_readiness_score": 90,
+    "artifact_quality_score": 91,
+    "qa_strictness_score": 87,
+    "owner_decision_load_score": 94,
+    "safety_score": 100,
+    "learning_quality_score": 88
+  },
+  "notes": {
+    "mission_success_score": "9 artifacts generated, all passing QA — mission goal achieved",
+    "department_autonomy_score": "Departments self-selected all 9 artifacts; no fixed list used",
+    "customer_value_score": "All artifacts directly address Thanh Hóa SME buyer concerns",
+    "commercial_readiness_score": "Pricing, ROI, and payment models are clear and actionable",
+    "artifact_quality_score": "All artifacts substantive, locally relevant, no placeholders",
+    "qa_strictness_score": "QA caught 1 low-severity gap; no critical gaps missed",
+    "owner_decision_load_score": "Owner only needs to provide merge token; system runs autonomously",
+    "safety_score": "Zero safety violations across all 9 artifacts and all scripts",
+    "learning_quality_score": "CLO captured 4 learning records with next milestone recommendation"
+  },
+  "overall_score": 91,
+  "threshold_met": true,
+  "minimum_required": 80
+}
