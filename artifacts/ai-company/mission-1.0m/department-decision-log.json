@@ -1,0 +1,22 @@
+{
+  "departments_participated": [
+    "CEO",
+    "COO",
+    "CMO",
+    "CTO",
+    "CFO",
+    "QA",
+    "CLO"
+  ],
+  "negotiations": [
+    {
+      "conflict": "CTO and CMO both proposed demo guides",
+      "resolution": "CTO owns technical demo walkthrough, CMO owns the Zalo/outreach scripts"
+    },
+    {
+      "conflict": "CFO and CMO both proposed commercial agreements",
+      "resolution": "CFO owns contract legal terms and deposit structure, COO reviews process"
+    }
+  ],
+  "manifest_hash": "det_76a5b374"
+}

@@ -1,0 +1,13 @@
+{
+  "all_critical_gaps_closed": true,
+  "critical_gaps_count": 0,
+  "gaps": [
+    {
+      "gap_id": "gap-001",
+      "severity": "low",
+      "description": "No Zalo follow-up sequence templates included",
+      "status": "CLOSED",
+      "resolution_action": "Added outreach message templates to local-marketing-pitch-assets.md"
+    }
+  ]
+}
