@@ -137,6 +137,26 @@ function main() {
   codeCheck(loopScript);
   codeCheck(premergeScript);
 
+  // 7b. Check that no runtime reports are tracked in Git
+  let trackedReports = [];
+  try {
+    const stdout = execSync("git ls-files", { encoding: "utf8" });
+    const files = stdout.split("\n").map(f => f.trim()).filter(Boolean);
+    trackedReports = files.filter(f => 
+      f === "reports/self-test/latest.json" ||
+      f === "reports/self-test/latest.md" ||
+      f === "reports/vertical-mission/latest.json" ||
+      f === "reports/vertical-mission-verify/latest.json" ||
+      f === "reports/e2e/latest.json" ||
+      f === "reports/post-merge/latest.json" ||
+      (f.startsWith("logs/") && f.endsWith(".json"))
+    );
+  } catch (err) {
+    console.error("Warning: Failed to run git ls-files to audit tracked reports.");
+  }
+  assert(trackedReports.length === 0, `No runtime reports must be tracked in Git. Found: ${trackedReports.join(", ")}`);
+
+
   // 8. Self-Test Gate supports 1.0j
   const gateFile = path.join(repoRoot, "scripts/ai-dev-factory-self-test-gate.mjs");
   if (fs.existsSync(gateFile)) {
