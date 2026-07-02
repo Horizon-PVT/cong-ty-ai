@@ -1,0 +1,47 @@
+{
+  "fixed_artifact_list_used": false,
+  "artifacts": [
+    {
+      "artifact_id": "sme-sales-playbook",
+      "filename": "sme-sales-playbook.md",
+      "owning_department": "CMO",
+      "purpose": "14-day sales playbook, prospecting script, phone and Zalo templates for local SME outreach",
+      "rationale": "Outbound lead generation"
+    },
+    {
+      "artifact_id": "web-chatbot-demo-guide",
+      "filename": "web-chatbot-demo-guide.md",
+      "owning_department": "CTO",
+      "purpose": "Viet-localized step-by-step interactive demo script showing a custom chatbot replying in Vietnamese",
+      "rationale": "Technical credibility building"
+    },
+    {
+      "artifact_id": "objection-handling-cheat-sheet",
+      "filename": "objection-handling-cheat-sheet.md",
+      "owning_department": "CMO",
+      "purpose": "Responses to specific Thanh Hóa SME objections: pricing (12.9M), chatbot language capability, and manual staff alternatives",
+      "rationale": "Minimize meeting drop-offs"
+    },
+    {
+      "artifact_id": "commercial-roi-proposal-template",
+      "filename": "commercial-roi-proposal-template.md",
+      "owning_department": "CFO",
+      "purpose": "SME ROI calculation proposal comparing 12.9M package to hiring a staff member costing 5-7M/month in Thanh Hóa",
+      "rationale": "Price justification"
+    },
+    {
+      "artifact_id": "client-agreement-draft",
+      "filename": "client-agreement-draft.md",
+      "owning_department": "CFO",
+      "purpose": "Simplified Vietnamese contract template showing 50% deposit terms and phased delivery stages",
+      "rationale": "Deposit collection and close"
+    },
+    {
+      "artifact_id": "local-marketing-pitch-assets",
+      "filename": "local-marketing-pitch-assets.md",
+      "owning_department": "CMO",
+      "purpose": "Zalo message templates, pitch copy, and Facebook local ad hook templates",
+      "rationale": "Inbound interest generation"
+    }
+  ]
+}

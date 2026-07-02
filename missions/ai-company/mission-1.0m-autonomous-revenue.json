@@ -1,0 +1,48 @@
+{
+  "mission_id": "mission_1_0m_autonomous_revenue",
+  "milestone": "1.0M",
+  "mission_type": "FIRST_AUTONOMOUS_REVENUE_MISSION",
+  "created_at": "2026-07-02",
+  "owner_goal": "Tạo mọi thứ cần thiết để Alex Minh AI chốt được 3 khách SME Thanh Hóa đầu tiên cho gói Web + Chatbot AI trong 14 ngày.",
+  "target_market": "SME Thanh Hóa",
+  "seller_brand": "Alex Minh AI",
+  "main_offer": "Web + Chatbot AI",
+  "price_anchor": "12.9 triệu",
+  "supporting_offers": {
+    "web_uy_tin": {
+      "label": "Web Uy Tín",
+      "price_vnd": 4900000,
+      "description": "Website đẹp, chuẩn SEO, tốc độ cao cho SME"
+    },
+    "ai_sales_system": {
+      "label": "AI Sales System",
+      "price_vnd": 18000000,
+      "description": "Hệ thống AI bán hàng, chốt đơn, báo cáo tự động"
+    }
+  },
+  "desired_business_outcome": "Alex Minh AI chốt được 3 hợp đồng thiết kế Web + Chatbot AI đầu tiên trong vòng 14 ngày từ các doanh nghiệp vừa và nhỏ (SME) tại Thanh Hóa.",
+  "department_autonomy_required": true,
+  "departments_must_select_artifacts": true,
+  "qa_review_required": true,
+  "gap_analysis_required": true,
+  "learning_required": true,
+  "paperclip_update_required": true,
+  "kpi_required": true,
+  "hard_locks": {
+    "no_deploy": true,
+    "no_publish": true,
+    "no_real_customer_messaging": true,
+    "no_real_crm_update": true,
+    "no_spending": true,
+    "no_real_client_private_data": true,
+    "no_secrets": true,
+    "no_env_read": true,
+    "no_production_mutation": true,
+    "local_only": true
+  },
+  "context_sources_allowed": [
+    "artifacts/ai-company/mission-1.0l/",
+    "memory/ai-company/mission-lessons.jsonl"
+  ],
+  "notes": "Departments must autonomously determine the necessary artifacts to close 3 clients in 14 days. No predefined sales kit list allowed."
+}

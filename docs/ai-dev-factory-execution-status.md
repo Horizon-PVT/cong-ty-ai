@@ -201,11 +201,20 @@ Proof execution records:
 
 ## Milestone 1.0L Proof Status
 
-Status: Draft PR opened; pending owner merge token after auto-verification.
+Status: Merged and Cleaned
 Proof execution records:
 - Milestone 1.0L implements the Autonomous Department-Led Product Completion, transitioning from spec-driven execution to autonomous department-led execution.
 - Configures department autonomy policy, operating model (17 stages), and structured autonomous mission input (no fixed artifact list).
 - Implements a run-department-autonomy-mission script where 7 departments (CEO, COO, CMO, CTO, CFO, QA, CLO) negotiate and self-select an artifact manifest (9 deliverables) based on high-level owner goal.
 - Implements verification, auto-loop, and premerge simulation scripts for Milestone 1.0L.
+
+## Milestone 1.0M Proof Status
+
+Status: Draft PR opened; pending owner merge token after auto-verification.
+Proof execution records:
+- Milestone 1.0M implements the First Autonomous Revenue Mission, proving that the system can autonomously plan, select, and generate tactical sales enablement assets to close 3 local SME clients in Thanh Hóa within 14 days under safety constraints.
+- Configures first autonomous revenue policy, operating model, and structured autonomous mission input.
+- Implements a run-first-autonomous-revenue-mission script where 7 departments (CEO, COO, CMO, CTO, CFO, QA, CLO) negotiate and self-select an artifact manifest (6 deliverables) based on high-level owner goal.
+- Implements verification, auto-loop, and premerge simulation scripts for Milestone 1.0M.
 <!-- execution_records_start -->
 <!-- execution_records_end -->

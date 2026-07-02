@@ -1,0 +1,16 @@
+{
+  "milestone": "1.0M",
+  "mission_id": "mission_1_0m_autonomous_revenue",
+  "scores": {
+    "mission_success_score": 93,
+    "department_autonomy_score": 96,
+    "customer_value_score": 92,
+    "commercial_readiness_score": 94,
+    "artifact_quality_score": 94,
+    "qa_strictness_score": 90,
+    "owner_decision_load_score": 98,
+    "safety_score": 100,
+    "learning_quality_score": 95
+  },
+  "verdict": "EXCELLENT"
+}

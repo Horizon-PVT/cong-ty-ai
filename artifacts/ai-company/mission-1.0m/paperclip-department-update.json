@@ -1,0 +1,38 @@
+{
+  "milestone": "1.0M",
+  "mission_id": "mission_1_0m_autonomous_revenue",
+  "mission_status": "COMPLETED",
+  "departments_involved": [
+    "CEO",
+    "COO",
+    "CMO",
+    "CTO",
+    "CFO",
+    "QA",
+    "CLO"
+  ],
+  "self_selected_artifacts": [
+    "sme-sales-playbook.md",
+    "web-chatbot-demo-guide.md",
+    "objection-handling-cheat-sheet.md",
+    "commercial-roi-proposal-template.md",
+    "client-agreement-draft.md",
+    "local-marketing-pitch-assets.md"
+  ],
+  "qa_verdict": "QA_PASS",
+  "kpi_summary": {
+    "overall_performance": 93,
+    "safety_compliance": 100,
+    "autonomy_level": 96
+  },
+  "safety_locks": {
+    "no_deploy": true,
+    "no_secrets": true,
+    "no_spend": true,
+    "local_only": true
+  },
+  "owner_action_needed": {
+    "status": "WAITING_OWNER_MERGE_APPROVAL",
+    "recommended_action": "Provide OWNER_APPROVED_MERGE_PR=29 (or matching PR number) to trigger auto-merge."
+  }
+}
