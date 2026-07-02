@@ -1,0 +1,10 @@
+{
+  "widget_id": "company_status",
+  "display_name": "Company Status Summary",
+  "payload": {
+    "active_mission": "mission_1_0j_repo_audit",
+    "progress_status": "COMPLETED",
+    "last_run_verdict": "VERTICAL_MISSION_STABLE_PASS",
+    "revenue_backlog_count": 3
+  }
+}

@@ -61,6 +61,9 @@ tests/release-smoke/playwright-report/
 
 # AI Dev Factory reports
 reports/self-test/pr-body*.md
+reports/self-test/latest.json
+reports/self-test/latest.md
+
 
 # AI Dev Factory runtime reports (local-only, written after merge/cleanup)
 reports/e2e/latest.json
@@ -84,3 +87,5 @@ reports/provider-router/
 reports/staffing-sweep/
 reports/worker-trial/
 reports/queue-runner/
+reports/vertical-mission/
+reports/vertical-mission-verify/

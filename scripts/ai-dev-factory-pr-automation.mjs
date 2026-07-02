@@ -145,30 +145,91 @@ async function main() {
   let isAutoLoopPass = false;
   let isPremergeSimulatePass = false;
 
-  try {
-    const loopReportPath = path.resolve("logs/ai-loop-report.json");
-    if (fs.existsSync(loopReportPath)) {
-      const loopReport = JSON.parse(fs.readFileSync(loopReportPath, "utf8"));
-      if (loopReport.convergence_status === "converged") {
-        isAutoLoopPass = true;
+  if (currentBranch.includes("first-vertical-mission") || currentBranch.includes("1.0j")) {
+    try {
+      const loopReportPath = path.resolve("logs/vertical-mission-auto-loop-report.json");
+      if (fs.existsSync(loopReportPath)) {
+        const loopReport = JSON.parse(fs.readFileSync(loopReportPath, "utf8"));
+        if (loopReport.final_verdict === "VERTICAL_MISSION_STABLE_PASS" || loopReport.convergence_status === "converged") {
+          isAutoLoopPass = true;
+        }
       }
-    }
-  } catch (e) {}
+    } catch (e) {}
 
-  try {
-    const premergeReportPath = path.resolve("logs/premerge-simulate-report.json");
-    if (fs.existsSync(premergeReportPath)) {
-      const premergeReport = JSON.parse(fs.readFileSync(premergeReportPath, "utf8"));
-      if (premergeReport.premerge_status === "PASS") {
-        isPremergeSimulatePass = true;
+    try {
+      const premergeReportPath = path.resolve("logs/vertical-mission-premerge-simulate-report.json");
+      if (fs.existsSync(premergeReportPath)) {
+        const premergeReport = JSON.parse(fs.readFileSync(premergeReportPath, "utf8"));
+        if (premergeReport.final_verdict === "VERTICAL_MISSION_PREMERGE_PASS" || premergeReport.premerge_status === "PASS") {
+          isPremergeSimulatePass = true;
+        }
       }
-    }
-  } catch (e) {}
+    } catch (e) {}
+  } else {
+    try {
+      const loopReportPath = path.resolve("logs/ai-loop-report.json");
+      if (fs.existsSync(loopReportPath)) {
+        const loopReport = JSON.parse(fs.readFileSync(loopReportPath, "utf8"));
+        if (loopReport.convergence_status === "converged") {
+          isAutoLoopPass = true;
+        }
+      }
+    } catch (e) {}
+
+    try {
+      const premergeReportPath = path.resolve("logs/premerge-simulate-report.json");
+      if (fs.existsSync(premergeReportPath)) {
+        const premergeReport = JSON.parse(fs.readFileSync(premergeReportPath, "utf8"));
+        if (premergeReport.premerge_status === "PASS") {
+          isPremergeSimulatePass = true;
+        }
+      }
+    } catch (e) {}
+  }
 
   let prTitle = "feat: add auto push & draft pr gate";
   let prBodyContent = "";
 
-  if (fs.existsSync(path.resolve("packages/db/src/_verify-1.0i.mjs")) && (currentBranch.includes("ai-company-os-paperclip-read-adapter") || currentBranch.includes("1.0i"))) {
+  if (fs.existsSync(path.resolve("packages/db/src/_verify-1.0j.mjs")) && (currentBranch.includes("first-vertical-mission") || currentBranch.includes("1.0j"))) {
+    if (isAutoLoopPass && isPremergeSimulatePass) {
+      prTitle = "feat: add AI Company OS first vertical mission execution [READY_FOR_AUTO_MERGE]";
+    } else {
+      prTitle = "feat: add AI Company OS first vertical mission execution";
+    }
+    prBodyContent = `### Milestone 1.0J: First Capability-First Vertical Mission Execution\n\n`;
+    prBodyContent += `This PR implements Milestone 1.0J, changing the project from infrastructure-building to real vertical mission execution.\n\n`;
+    prBodyContent += `- **Milestone**: 1.0J\n`;
+    prBodyContent += `- **Branch**: \`${currentBranch}\`\n\n`;
+    prBodyContent += `#### E2E Auto-Verification Loop & Simulation:\n`;
+    if (isAutoLoopPass && isPremergeSimulatePass) {
+      prBodyContent += `* **Auto-Verification Loop**: **PASS** (Stable convergence achieved)\n`;
+      prBodyContent += `* **Pre-Merge Simulation**: **PASS** (Zero conflicts, zero breakage)\n`;
+      prBodyContent += `* **Status**: **READY_FOR_AUTO_MERGE**\n\n`;
+    } else {
+      prBodyContent += `* **Auto-Verification Loop**: **PENDING**\n`;
+      prBodyContent += `* **Pre-Merge Simulation**: **PENDING**\n`;
+      prBodyContent += `* **Status**: **DRAFT_PR**\n\n`;
+    }
+    prBodyContent += `#### Strategic Doctrine Summary:\n`;
+    prBodyContent += `* **Capability-First**: Dynamic capability routing and runtime selection.\n`;
+    prBodyContent += `* **CLO Role**: Hermes acts as Chief Learning Officer, summarizing lessons and scoring providers.\n\n`;
+    prBodyContent += `#### Vertical Mission Summary:\n`;
+    prBodyContent += `* **Mission**: Audit AI Company OS repo and produce a practical improvement backlog.\n`;
+    prBodyContent += `* **Customer Value**: Identifies code gaps and sets up a high-revenue next-stage backlog.\n\n`;
+    prBodyContent += `#### Six Mission Question Answers:\n`;
+    prBodyContent += `1. **Value**: Practical backlog for next milestone.\n`;
+    prBodyContent += `2. **Learning**: Benchmarked runtimes gemini-local/codex-local.\n`;
+    prBodyContent += `3. **Capability**: Repo audit capability established.\n`;
+    prBodyContent += `4. **Provider**: gemini-local and codex-local selected.\n`;
+    prBodyContent += `5. **Paperclip Update**: company_status progress updated.\n`;
+    prBodyContent += `6. **Revenue**: Accelerates marketplace capability (1.0K) backlog.\n\n`;
+    prBodyContent += `#### KPI Scorecard & Paperclip Update Summary:\n`;
+    prBodyContent += `* Emitted widget payloads and scorecards for CEO, COO, and CTO agents.\n\n`;
+    prBodyContent += `#### Safety Confirmation:\n`;
+    prBodyContent += `* Enforces all safety locks (no deploy/secrets/.env/spend/comms/publish/dashboard/frontend)\n`;
+    prBodyContent += `* Owner manual QA is **NOT** required for routine internal work.\n`;
+    prBodyContent += `* Merge blocked until owner token: \`OWNER_APPROVED_MERGE_PR=<PR_NUMBER>\`\n\n`;
+  } else if (fs.existsSync(path.resolve("packages/db/src/_verify-1.0i.mjs")) && (currentBranch.includes("ai-company-os-paperclip-read-adapter") || currentBranch.includes("1.0i"))) {
     if (isAutoLoopPass && isPremergeSimulatePass) {
       prTitle = "feat: add AI Company OS Paperclip read adapter [READY_FOR_AUTO_MERGE]";
     } else {

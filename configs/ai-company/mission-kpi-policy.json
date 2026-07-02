@@ -1,0 +1,40 @@
+{
+  "kpi_groups": {
+    "ceo_agent": [
+      "mission_success_rate",
+      "planning_accuracy",
+      "value_delivery_score",
+      "owner_decision_load"
+    ],
+    "coo_agent": [
+      "routing_accuracy",
+      "cycle_time",
+      "blocked_task_rate"
+    ],
+    "cto_agent": [
+      "implementation_quality",
+      "review_pass_rate",
+      "defect_rate"
+    ],
+    "research_capability": [
+      "source_coverage",
+      "insight_usefulness",
+      "citation_accuracy"
+    ],
+    "dev_capability": [
+      "build_pass_rate",
+      "test_pass_rate",
+      "rework_rate"
+    ],
+    "review_capability": [
+      "false_positive_rate",
+      "false_negative_rate",
+      "issue_detection_quality"
+    ],
+    "learning_clo": [
+      "lesson_quality",
+      "provider_recommendation_accuracy",
+      "staffing_recommendation_accuracy"
+    ]
+  }
+}

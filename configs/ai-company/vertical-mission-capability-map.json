@@ -1,0 +1,134 @@
+{
+  "mission_steps": [
+    {
+      "step_name": "mission_intake",
+      "capability_id": "cap_mission_intake",
+      "purpose": "Load and parse structured owner mission inputs",
+      "candidate_workers": ["ceo_agent"],
+      "candidate_providers": ["gemini-local", "codex-local"],
+      "expected_output": "parsed_mission_input",
+      "kpi_metrics": ["planning_accuracy"],
+      "failure_behavior": "abort"
+    },
+    {
+      "step_name": "ceo_briefing",
+      "capability_id": "cap_ceo_briefing",
+      "purpose": "Produce operational briefs defining goals and safety locks",
+      "candidate_workers": ["ceo_agent"],
+      "candidate_providers": ["gemini-local", "grok-local"],
+      "expected_output": "ceo_brief_document",
+      "kpi_metrics": ["value_delivery_score"],
+      "failure_behavior": "abort"
+    },
+    {
+      "step_name": "capability_decomposition",
+      "capability_id": "cap_capability_decomposition",
+      "purpose": "Decompose high-level mission into atomic capability steps",
+      "candidate_workers": ["ceo_agent", "coo_agent"],
+      "candidate_providers": ["gemini-local", "acpx-local"],
+      "expected_output": "capability_chain",
+      "kpi_metrics": ["planning_accuracy"],
+      "failure_behavior": "abort"
+    },
+    {
+      "step_name": "capability_routing",
+      "capability_id": "cap_capability_routing",
+      "purpose": "Route capability steps to optimal worker candidates",
+      "candidate_workers": ["coo_agent"],
+      "candidate_providers": ["gemini-local", "acpx-local"],
+      "expected_output": "routed_worker_map",
+      "kpi_metrics": ["routing_accuracy"],
+      "failure_behavior": "fail_retry"
+    },
+    {
+      "step_name": "provider_selection",
+      "capability_id": "cap_provider_selection",
+      "purpose": "Select model provider pools and runtimes using benchmarks",
+      "candidate_workers": ["coo_agent"],
+      "candidate_providers": ["gemini-local", "acpx-local"],
+      "expected_output": "provider_routing_table",
+      "kpi_metrics": ["routing_accuracy"],
+      "failure_behavior": "fail_fallback"
+    },
+    {
+      "step_name": "repo_audit",
+      "capability_id": "cap_repo_audit",
+      "purpose": "Execute static analysis, dependency reviews, and backlog checks",
+      "candidate_workers": ["research_worker", "dev_worker"],
+      "candidate_providers": ["gemini-local", "codex-local"],
+      "expected_output": "repo_audit_log",
+      "kpi_metrics": ["source_coverage", "insight_usefulness"],
+      "failure_behavior": "fail_retry"
+    },
+    {
+      "step_name": "improvement_backlog_generation",
+      "capability_id": "cap_improvement_backlog_generation",
+      "purpose": "Generate actionable revenue-generating enhancement backlog items",
+      "candidate_workers": ["research_worker", "dev_worker"],
+      "candidate_providers": ["gemini-local", "codex-local"],
+      "expected_output": "revenue_backlog_json",
+      "kpi_metrics": ["insight_usefulness"],
+      "failure_behavior": "fail_retry"
+    },
+    {
+      "step_name": "artifact_generation",
+      "capability_id": "cap_artifact_generation",
+      "purpose": "Write and format final markdown and JSON deliverables",
+      "candidate_workers": ["dev_worker"],
+      "candidate_providers": ["gemini-local", "codex-local"],
+      "expected_output": "formatted_artifacts",
+      "kpi_metrics": ["implementation_quality"],
+      "failure_behavior": "fail_retry"
+    },
+    {
+      "step_name": "paperclip_update_generation",
+      "capability_id": "cap_paperclip_update_generation",
+      "purpose": "Create dashboard update payload conforming to schema",
+      "candidate_workers": ["dev_worker"],
+      "candidate_providers": ["gemini-local", "grok-local"],
+      "expected_output": "paperclip_payload_json",
+      "kpi_metrics": ["implementation_quality"],
+      "failure_behavior": "fail_retry"
+    },
+    {
+      "step_name": "learning_update",
+      "capability_id": "cap_learning_update",
+      "purpose": "Aggregate outcomes and optimize routing tables",
+      "candidate_workers": ["hermes_clo"],
+      "candidate_providers": ["gemini-local", "grok-local"],
+      "expected_output": "lesson_record_json",
+      "kpi_metrics": ["lesson_quality"],
+      "failure_behavior": "ignore"
+    },
+    {
+      "step_name": "kpi_scoring",
+      "capability_id": "cap_kpi_scoring",
+      "purpose": "Audit cycle times, pass rates, and compute scorecard",
+      "candidate_workers": ["hermes_clo"],
+      "candidate_providers": ["gemini-local", "grok-local"],
+      "expected_output": "kpi_scorecard_json",
+      "kpi_metrics": ["provider_recommendation_accuracy"],
+      "failure_behavior": "abort"
+    },
+    {
+      "step_name": "auto_verification",
+      "capability_id": "cap_auto_verification",
+      "purpose": "Run verification loop until stable pass convergence",
+      "candidate_workers": ["review_worker"],
+      "candidate_providers": ["gemini-local", "codex-local"],
+      "expected_output": "verification_report_json",
+      "kpi_metrics": ["issue_detection_quality"],
+      "failure_behavior": "abort"
+    },
+    {
+      "step_name": "premerge_simulation",
+      "capability_id": "cap_premerge_simulation",
+      "purpose": "Verify compatibility by simulating merge into master branch",
+      "candidate_workers": ["review_worker"],
+      "candidate_providers": ["gemini-local", "codex-local"],
+      "expected_output": "premerge_report_json",
+      "kpi_metrics": ["issue_detection_quality"],
+      "failure_behavior": "abort"
+    }
+  ]
+}

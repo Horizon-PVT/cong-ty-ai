@@ -1,0 +1,38 @@
+{
+  "mission_id": "mission_1_0j_repo_audit",
+  "mission_type": "REPO_AUDIT_TO_REVENUE_BACKLOG",
+  "owner_goal": "Audit the current AI Company OS repo and produce a practical improvement backlog for the next revenue-generating milestone.",
+  "customer_value": "Accelerate product timeline by identifying code gaps, optimizing dependencies, and mapping out a high-revenue next-stage backlog.",
+  "expected_artifacts": [
+    "mission-brief.md",
+    "repo-audit-report.md",
+    "revenue-backlog.json",
+    "paperclip-mission-update.json",
+    "kpi-scorecard.json"
+  ],
+  "required_capabilities": [
+    "cap_mission_intake",
+    "cap_ceo_briefing",
+    "cap_capability_decomposition",
+    "cap_capability_routing",
+    "cap_provider_selection",
+    "cap_repo_audit",
+    "cap_improvement_backlog_generation",
+    "cap_artifact_generation",
+    "cap_paperclip_update_generation",
+    "cap_learning_update",
+    "cap_kpi_scoring",
+    "cap_auto_verification",
+    "cap_premerge_simulation"
+  ],
+  "hard_locks": {
+    "allow_deploy": false,
+    "allow_secrets": false,
+    "allow_spend": false,
+    "allow_customer_comms": false,
+    "allow_publish": false
+  },
+  "paperclip_update_required": true,
+  "learning_required": true,
+  "kpi_required": true
+}
