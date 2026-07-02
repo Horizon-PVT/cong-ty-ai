@@ -1,0 +1,160 @@
+{
+  "model_id": "department-autonomy-operating-model",
+  "version": "1.0L",
+  "description": "Department-led autonomous execution model. Departments self-select artifacts based on owner business goal.",
+  "stages": [
+    {
+      "stage_id": "owner_goal_intake",
+      "stage_index": 1,
+      "purpose": "Parse and validate the owner business goal. Confirm it is high-level and does not pre-define exact artifacts.",
+      "responsible_department": "COO",
+      "expected_decision_or_output": "Validated owner goal object, confirmed no fixed artifact list is present",
+      "failure_behavior": "BLOCK — if owner goal is empty or contains explicit hardcoded artifact list, halt and report",
+      "safety_constraints": ["no_deploy", "no_env_read", "no_real_client_data"]
+    },
+    {
+      "stage_id": "ceo_mission_interpretation",
+      "stage_index": 2,
+      "purpose": "CEO AI interprets the owner goal into a strategic mission framing. Defines desired business outcome, target customer, and success definition.",
+      "responsible_department": "CEO",
+      "expected_decision_or_output": "CEO mission interpretation object: { strategic_framing, success_definition, department_activation_reason }",
+      "failure_behavior": "WARN — if CEO framing is vague, log and continue with partial framing",
+      "safety_constraints": ["no_deploy", "no_spend"]
+    },
+    {
+      "stage_id": "department_briefing",
+      "stage_index": 3,
+      "purpose": "COO distributes the CEO mission interpretation to all active departments. Each department receives the business context.",
+      "responsible_department": "COO",
+      "expected_decision_or_output": "Department briefing log showing which departments received what context",
+      "failure_behavior": "BLOCK — if fewer than minimum_departments_involved departments are active",
+      "safety_constraints": ["no_customer_comms", "no_spend"]
+    },
+    {
+      "stage_id": "department_artifact_proposals",
+      "stage_index": 4,
+      "purpose": "Each department independently proposes which artifacts it believes are needed based on the business goal. Departments must provide rationale for each proposal.",
+      "responsible_department": "ALL_DEPARTMENTS",
+      "expected_decision_or_output": "Per-department artifact proposal list with rationale, customer_value, and business_goal_mapping",
+      "failure_behavior": "WARN — if a department proposes zero artifacts, log why and continue",
+      "safety_constraints": ["no_fixed_artifact_list", "no_deploy", "no_spend"]
+    },
+    {
+      "stage_id": "cross_department_negotiation",
+      "stage_index": 5,
+      "purpose": "Departments compare proposals, resolve overlaps, reject duplicates, and align on a final artifact list. COO facilitates.",
+      "responsible_department": "COO",
+      "expected_decision_or_output": "Negotiation log with accepted/rejected proposals and conflict resolutions",
+      "failure_behavior": "WARN — if conflicts remain unresolved, COO uses tie-break rule",
+      "safety_constraints": ["no_spend", "no_customer_comms"]
+    },
+    {
+      "stage_id": "artifact_manifest_creation",
+      "stage_index": 6,
+      "purpose": "Create the final artifact manifest from negotiated department proposals. Each entry must include owning_department, purpose, customer_value, business_goal_mapping, acceptance_criteria, and safety_review_status.",
+      "responsible_department": "COO",
+      "expected_decision_or_output": "artifact-manifest.json with at least minimum_self_selected_artifacts entries",
+      "failure_behavior": "BLOCK — if manifest has fewer than minimum_self_selected_artifacts entries",
+      "safety_constraints": ["no_fixed_artifact_list"]
+    },
+    {
+      "stage_id": "worker_assignment",
+      "stage_index": 7,
+      "purpose": "Each artifact in the manifest is assigned to a worker (AI department or sub-agent) for execution.",
+      "responsible_department": "COO",
+      "expected_decision_or_output": "Worker assignment map: artifact_id -> responsible_worker",
+      "failure_behavior": "WARN — unassigned artifacts default to the owning department",
+      "safety_constraints": ["no_deploy", "no_spend"]
+    },
+    {
+      "stage_id": "artifact_generation",
+      "stage_index": 8,
+      "purpose": "Workers generate each artifact according to the manifest. All artifacts must be written to artifacts/ai-company/mission-1.0l/generated/.",
+      "responsible_department": "ALL_DEPARTMENTS",
+      "expected_decision_or_output": "Generated artifact files under generated/ directory",
+      "failure_behavior": "BLOCK — if an artifact fails generation after 2 retries, mark as FAILED in manifest",
+      "safety_constraints": ["no_deploy", "no_spend", "no_customer_comms", "no_env_read", "no_real_client_data"]
+    },
+    {
+      "stage_id": "qa_review",
+      "stage_index": 9,
+      "purpose": "QA AI reviews all generated artifacts against acceptance criteria. Scores completeness, customer value, commercial readiness, and safety.",
+      "responsible_department": "QA",
+      "expected_decision_or_output": "qa-review-report.md with scores and list of missing items or failures",
+      "failure_behavior": "BLOCK — if safety score < 100 or completeness < minimum_quality_score",
+      "safety_constraints": ["no_deploy", "no_spend"]
+    },
+    {
+      "stage_id": "gap_analysis",
+      "stage_index": 10,
+      "purpose": "Detect gaps in the product based on QA review output. Classify by severity, identify responsible department, and propose closure action.",
+      "responsible_department": "QA",
+      "expected_decision_or_output": "gap-analysis.json with detected_gaps, severity, closure_action, and status",
+      "failure_behavior": "WARN — if no gaps found, must explicitly confirm why",
+      "safety_constraints": ["no_deploy", "no_spend"]
+    },
+    {
+      "stage_id": "gap_closure",
+      "stage_index": 11,
+      "purpose": "Route critical gaps back to responsible departments for resolution. Repeat until all critical gaps are closed or max_gap_closure_iterations reached.",
+      "responsible_department": "COO",
+      "expected_decision_or_output": "Updated artifacts and gap closure status records",
+      "failure_behavior": "WARN — if max iterations reached with unclosed gaps, mark as PARTIAL_PASS with explanation",
+      "safety_constraints": ["no_deploy", "no_spend", "no_customer_comms"]
+    },
+    {
+      "stage_id": "final_packaging",
+      "stage_index": 12,
+      "purpose": "Assemble all approved artifacts into a coherent deliverable package. Create final-package-index.md.",
+      "responsible_department": "COO",
+      "expected_decision_or_output": "final-package-index.md summarizing what was built, why, and how owner should use it",
+      "failure_behavior": "BLOCK — if fewer than minimum_self_selected_artifacts artifacts are included",
+      "safety_constraints": ["no_deploy", "no_publish"]
+    },
+    {
+      "stage_id": "kpi_scoring",
+      "stage_index": 13,
+      "purpose": "CFO AI and QA AI produce the KPI scorecard assessing mission success, department autonomy quality, customer value, and commercial readiness.",
+      "responsible_department": "CFO",
+      "expected_decision_or_output": "kpi-scorecard.json with all required KPI fields scored 0-100",
+      "failure_behavior": "BLOCK — if required KPI fields are missing",
+      "safety_constraints": ["no_spend"]
+    },
+    {
+      "stage_id": "learning_update",
+      "stage_index": 14,
+      "purpose": "CLO/Hermes extracts learning from the mission: what departments decided correctly, what was missed, and how autonomy can improve.",
+      "responsible_department": "CLO",
+      "expected_decision_or_output": "Appended JSONL records to memory/ai-company/mission-lessons.jsonl",
+      "failure_behavior": "WARN — if memory write fails, log reason and continue",
+      "safety_constraints": ["no_deploy", "no_spend"]
+    },
+    {
+      "stage_id": "paperclip_update",
+      "stage_index": 15,
+      "purpose": "Generate a Paperclip-compatible department mission update payload showing departments involved, selected artifacts, QA verdict, KPI summary, safety locks, and owner action needed.",
+      "responsible_department": "COO",
+      "expected_decision_or_output": "paperclip-department-update.json with all required fields",
+      "failure_behavior": "BLOCK — if required fields are missing",
+      "safety_constraints": ["no_deploy", "no_customer_comms"]
+    },
+    {
+      "stage_id": "auto_verification",
+      "stage_index": 16,
+      "purpose": "Run the department autonomy verifier against all produced outputs. Confirm all control outputs exist, policy checks pass, and safety locks hold.",
+      "responsible_department": "QA",
+      "expected_decision_or_output": "Verifier final verdict: PASS or FAIL with detail report",
+      "failure_behavior": "BLOCK — any FAIL verdict halts the pipeline",
+      "safety_constraints": ["no_deploy", "no_spend", "no_customer_comms", "no_env_read"]
+    },
+    {
+      "stage_id": "premerge_simulation",
+      "stage_index": 17,
+      "purpose": "Simulate merge readiness. Confirm all verifiers pass (1.0a through 1.0l), runtime reports are uncommitted, and no safety lock bypass exists.",
+      "responsible_department": "QA",
+      "expected_decision_or_output": "Premerge verdict: DEPARTMENT_AUTONOMY_PREMERGE_PASS",
+      "failure_behavior": "BLOCK — any safety or verifier failure halts the pipeline",
+      "safety_constraints": ["no_deploy", "no_publish", "no_spend", "no_customer_comms"]
+    }
+  ]
+}
