@@ -1,0 +1,17 @@
+{
+  "widget_id": "company_status",
+  "display_name": "Company Status Summary",
+  "payload": {
+    "active_mission": "mission_1_0k_website_delivery",
+    "progress_status": "COMPLETED",
+    "last_run_verdict": "REVENUE_WEBSITE_MISSION_STABLE_PASS",
+    "expected_artifacts_count": 10,
+    "safety_locks_status": {
+      "no_deploy": true,
+      "no_secrets": true,
+      "no_spend": true,
+      "no_customer_comms": true
+    },
+    "owner_action_needed": "Review pricing anchors in proposal.md and sign off client presentation demo."
+  }
+}
