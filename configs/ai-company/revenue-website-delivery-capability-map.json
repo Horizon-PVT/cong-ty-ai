@@ -1,0 +1,184 @@
+{
+  "mission_steps": [
+    {
+      "step_name": "revenue_mission_intake",
+      "capability_id": "cap_revenue_mission_intake",
+      "purpose": "Load and validate the structured website delivery mission inputs",
+      "candidate_workers": ["ceo_agent"],
+      "candidate_providers": ["gemini-local"],
+      "expected_output": "parsed_mission_input",
+      "kpi_metrics": ["planning_accuracy"],
+      "failure_behavior": "abort"
+    },
+    {
+      "step_name": "customer_profile_builder",
+      "capability_id": "cap_customer_profile_builder",
+      "purpose": "Analyze customer segment and build local SME fictional client persona",
+      "candidate_workers": ["ceo_agent", "marketing_agent"],
+      "candidate_providers": ["gemini-local"],
+      "expected_output": "customer_profile_document",
+      "kpi_metrics": ["value_delivery_score"],
+      "failure_behavior": "fail_retry"
+    },
+    {
+      "step_name": "offer_strategy",
+      "capability_id": "cap_offer_strategy",
+      "purpose": "Define value proposition and pricing alignment for seller brand",
+      "candidate_workers": ["ceo_agent", "sales_agent"],
+      "candidate_providers": ["gemini-local"],
+      "expected_output": "offer_strategy_plan",
+      "kpi_metrics": ["value_delivery_score"],
+      "failure_behavior": "abort"
+    },
+    {
+      "step_name": "landing_page_copywriting",
+      "capability_id": "cap_landing_page_copywriting",
+      "purpose": "Draft localized Vietnamese marketing copy for target spa/clinic niche",
+      "candidate_workers": ["copywriter_worker"],
+      "candidate_providers": ["gemini-local"],
+      "expected_output": "vietnamese_copy_document",
+      "kpi_metrics": ["copy_quality_score"],
+      "failure_behavior": "fail_retry"
+    },
+    {
+      "step_name": "landing_page_structure",
+      "capability_id": "cap_landing_page_structure",
+      "purpose": "Outline layout sections and UX flow for the spa/clinic landing page",
+      "candidate_workers": ["designer_worker"],
+      "candidate_providers": ["gemini-local"],
+      "expected_output": "wireframe_structure",
+      "kpi_metrics": ["conversion_readiness_score"],
+      "failure_behavior": "fail_retry"
+    },
+    {
+      "step_name": "static_site_generation",
+      "capability_id": "cap_static_site_generation",
+      "purpose": "Compile structured copy and design into high-performance static HTML",
+      "candidate_workers": ["dev_worker"],
+      "candidate_providers": ["gemini-local"],
+      "expected_output": "static_html_file",
+      "kpi_metrics": ["delivery_readiness_score"],
+      "failure_behavior": "fail_retry"
+    },
+    {
+      "step_name": "visual_direction",
+      "capability_id": "cap_visual_direction",
+      "purpose": "Specify color palettes, typography, and imagery rules for the niche",
+      "candidate_workers": ["designer_worker"],
+      "candidate_providers": ["gemini-local"],
+      "expected_output": "style_guide_document",
+      "kpi_metrics": ["delivery_readiness_score"],
+      "failure_behavior": "fail_retry"
+    },
+    {
+      "step_name": "cta_strategy",
+      "capability_id": "cap_cta_strategy",
+      "purpose": "Embed conversion triggers and lead capture placeholders locally",
+      "candidate_workers": ["sales_agent"],
+      "candidate_providers": ["gemini-local"],
+      "expected_output": "cta_layout",
+      "kpi_metrics": ["conversion_readiness_score"],
+      "failure_behavior": "fail_retry"
+    },
+    {
+      "step_name": "local_seo_outline",
+      "capability_id": "cap_local_seo_outline",
+      "purpose": "Research local keywords and meta tags for spa/clinic niche in Thanh Hóa",
+      "candidate_workers": ["seo_worker"],
+      "candidate_providers": ["gemini-local"],
+      "expected_output": "seo_optimized_metadata",
+      "kpi_metrics": ["delivery_readiness_score"],
+      "failure_behavior": "fail_retry"
+    },
+    {
+      "step_name": "proposal_generation",
+      "capability_id": "cap_proposal_generation",
+      "purpose": "Create professional proposal with the three Alex Minh AI price anchors",
+      "candidate_workers": ["sales_agent"],
+      "candidate_providers": ["gemini-local"],
+      "expected_output": "proposal_document",
+      "kpi_metrics": ["value_delivery_score"],
+      "failure_behavior": "abort"
+    },
+    {
+      "step_name": "handoff_checklist_generation",
+      "capability_id": "cap_handoff_checklist_generation",
+      "purpose": "Create comprehensive QA checklist for owner and client reviews",
+      "candidate_workers": ["ceo_agent"],
+      "candidate_providers": ["gemini-local"],
+      "expected_output": "handoff_checklist_document",
+      "kpi_metrics": ["delivery_readiness_score"],
+      "failure_behavior": "fail_retry"
+    },
+    {
+      "step_name": "quality_review",
+      "capability_id": "cap_quality_review",
+      "purpose": "Verify visual consistency, responsive grid, and lack of external CDNs",
+      "candidate_workers": ["review_worker"],
+      "candidate_providers": ["gemini-local"],
+      "expected_output": "quality_review_log",
+      "kpi_metrics": ["safety_score"],
+      "failure_behavior": "fail_retry"
+    },
+    {
+      "step_name": "conversion_review",
+      "capability_id": "cap_conversion_review",
+      "purpose": "Verify offer alignment, copy relevance, and CTA positioning",
+      "candidate_workers": ["review_worker"],
+      "candidate_providers": ["gemini-local"],
+      "expected_output": "conversion_review_log",
+      "kpi_metrics": ["conversion_readiness_score"],
+      "failure_behavior": "fail_retry"
+    },
+    {
+      "step_name": "paperclip_update_generation",
+      "capability_id": "cap_paperclip_update_generation",
+      "purpose": "Generate Paperclip-compatible mission update JSON payload",
+      "candidate_workers": ["dev_worker"],
+      "candidate_providers": ["gemini-local"],
+      "expected_output": "paperclip_payload_json",
+      "kpi_metrics": ["delivery_readiness_score"],
+      "failure_behavior": "fail_retry"
+    },
+    {
+      "step_name": "learning_update",
+      "capability_id": "cap_learning_update",
+      "purpose": "Aggregate outcomes and recommendations into memory storage",
+      "candidate_workers": ["hermes_clo"],
+      "candidate_providers": ["gemini-local"],
+      "expected_output": "lesson_record_json",
+      "kpi_metrics": ["learning_quality_score"],
+      "failure_behavior": "ignore"
+    },
+    {
+      "step_name": "kpi_scoring",
+      "capability_id": "cap_kpi_scoring",
+      "purpose": "Audit cycle metrics and compute capability performance scores",
+      "candidate_workers": ["hermes_clo"],
+      "candidate_providers": ["gemini-local"],
+      "expected_output": "kpi_scorecard_json",
+      "kpi_metrics": ["learning_quality_score"],
+      "failure_behavior": "abort"
+    },
+    {
+      "step_name": "auto_verification",
+      "capability_id": "cap_auto_verification",
+      "purpose": "Run verification loop until stable pass convergence",
+      "candidate_workers": ["review_worker"],
+      "candidate_providers": ["gemini-local"],
+      "expected_output": "verification_report_json",
+      "kpi_metrics": ["safety_score"],
+      "failure_behavior": "abort"
+    },
+    {
+      "step_name": "premerge_simulation",
+      "capability_id": "cap_premerge_simulation",
+      "purpose": "Verify merge safety by validating other phase checks and git status",
+      "candidate_workers": ["review_worker"],
+      "candidate_providers": ["gemini-local"],
+      "expected_output": "premerge_report_json",
+      "kpi_metrics": ["safety_score"],
+      "failure_behavior": "abort"
+    }
+  ]
+}
