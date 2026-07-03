@@ -51,6 +51,12 @@
       "type": "object",
       "properties": {
         "total_pending": { "type": "integer" },
+        "demo_badge": { "type": "string" },
+        "safety_note": { "type": "string" },
+        "safety_warning_lines": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
         "items": {
           "type": "array",
           "items": {
@@ -63,13 +69,17 @@
               "priority": { "type": "string" },
               "summary": { "type": "string" },
               "demo_badge": { "type": "string" },
-              "safety_note": { "type": "string" }
+              "safety_note": { "type": "string" },
+              "safety_warning_lines": {
+                "type": "array",
+                "items": { "type": "string" }
+              }
             },
-            "required": ["action_id", "lead_id", "lead_name", "action_type", "priority", "summary", "demo_badge", "safety_note"]
+            "required": ["action_id", "lead_name", "action_type", "demo_badge", "safety_note", "safety_warning_lines"]
           }
         }
       },
-      "required": ["total_pending", "items"]
+      "required": ["total_pending", "items", "demo_badge", "safety_note", "safety_warning_lines"]
     },
     "workbench_details": {
       "type": "object",

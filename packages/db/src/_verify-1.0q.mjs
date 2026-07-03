@@ -153,6 +153,8 @@ async function main() {
   // 7. Schema checks
   if (schema) {
     check(schema.properties?.workbench_overview?.required?.includes('demo_badge'), 'schema requires demo_badge field');
+    check(schema.properties?.workbench_queue?.required?.includes('safety_warning_lines'), 'schema workbench_queue requires safety_warning_lines');
+    check(schema.properties?.workbench_queue?.properties?.items?.items?.required?.includes('safety_warning_lines'), 'schema workbench_queue items require safety_warning_lines');
     check(schema.properties?.workbench_details?.required?.includes('safety_warning_lines'), 'schema requires safety_warning_lines');
     check(schema.properties?.workbench_actions?.required?.includes('local_only_mode'), 'schema requires local_only_mode');
     check(schema.properties?.workbench_audit_trail?.required?.includes('logs'), 'schema requires logs in audit trail');
@@ -229,18 +231,33 @@ async function main() {
     check(warningLines.includes('NO REVENUE CLAIM'), 'details safety card contains: NO REVENUE CLAIM');
 
     // Local demo indicators in sections
-    const sections = ['workbench_overview', 'workbench_details', 'workbench_actions', 'workbench_audit_trail'];
+    const sections = ['workbench_overview', 'workbench_queue', 'workbench_details', 'workbench_actions', 'workbench_audit_trail'];
     for (const sec of sections) {
       check(payload[sec]?.demo_badge === 'DEMO / SIMULATION', `widget section ${sec} has demo_badge`);
       check(payload[sec]?.safety_note === 'No real customers contacted. No real revenue. No real conversion.', `widget section ${sec} has safety_note`);
     }
 
-    const queueItems = payload.workbench_queue?.items || [];
+    const queue = payload.workbench_queue || {};
+    const queueWarningLines = queue.safety_warning_lines || [];
+    check(queueWarningLines.includes('LOCAL APPROVAL ONLY'), 'queue top safety contains: LOCAL APPROVAL ONLY');
+    check(queueWarningLines.includes('NOT SENT'), 'queue top safety contains: NOT SENT');
+    check(queueWarningLines.includes('NO REAL CUSTOMER CONTACT'), 'queue top safety contains: NO REAL CUSTOMER CONTACT');
+    check(queueWarningLines.includes('NO CRM UPDATE'), 'queue top safety contains: NO CRM UPDATE');
+    check(queueWarningLines.includes('NO REVENUE CLAIM'), 'queue top safety contains: NO REVENUE CLAIM');
+
+    const queueItems = queue.items || [];
     check(queueItems.length === 5, 'approval queue contains exactly 5 items');
     for (const item of queueItems) {
       check(item.lead_name.startsWith('[DEMO]'), `lead name '${item.lead_name}' is marked [DEMO]`);
       check(item.demo_badge === 'DEMO / SIMULATION', `queue item ${item.action_id} has demo_badge`);
       check(item.safety_note === 'No real customers contacted. No real revenue. No real conversion.', `queue item ${item.action_id} has safety_note`);
+
+      const itemWarnings = item.safety_warning_lines || [];
+      check(itemWarnings.includes('LOCAL APPROVAL ONLY'), `queue item ${item.action_id} contains: LOCAL APPROVAL ONLY`);
+      check(itemWarnings.includes('NOT SENT'), `queue item ${item.action_id} contains: NOT SENT`);
+      check(itemWarnings.includes('NO REAL CUSTOMER CONTACT'), `queue item ${item.action_id} contains: NO REAL CUSTOMER CONTACT`);
+      check(itemWarnings.includes('NO CRM UPDATE'), `queue item ${item.action_id} contains: NO CRM UPDATE`);
+      check(itemWarnings.includes('NO REVENUE CLAIM'), `queue item ${item.action_id} contains: NO REVENUE CLAIM`);
     }
 
     // Reports existence

@@ -333,6 +333,9 @@ const dailyApprovalWorkbenchPayload = {
   },
   workbench_queue: {
     total_pending: 5,
+    demo_badge: "DEMO / SIMULATION",
+    safety_note: "No real customers contacted. No real revenue. No real conversion.",
+    safety_warning_lines: safetyWarningLines,
     items: [
       {
         action_id: "act_rev_001",
@@ -342,7 +345,8 @@ const dailyApprovalWorkbenchPayload = {
         priority: "high",
         summary: "Send Web+Chatbot proposal draft (Simulated value: 12.9M)",
         demo_badge: "DEMO / SIMULATION",
-        safety_note: "No real customers contacted. No real revenue. No real conversion."
+        safety_note: "No real customers contacted. No real revenue. No real conversion.",
+        safety_warning_lines: safetyWarningLines
       },
       {
         action_id: "act_rev_002",
@@ -352,7 +356,8 @@ const dailyApprovalWorkbenchPayload = {
         priority: "medium",
         summary: "Approve 15% discount for Dental booking chatbot (10.9M)",
         demo_badge: "DEMO / SIMULATION",
-        safety_note: "No real customers contacted. No real revenue. No real conversion."
+        safety_note: "No real customers contacted. No real revenue. No real conversion.",
+        safety_warning_lines: safetyWarningLines
       },
       {
         action_id: "act_rev_003",
@@ -362,7 +367,8 @@ const dailyApprovalWorkbenchPayload = {
         priority: "high",
         summary: "Send follow-up Zalo message draft for seasonal ask",
         demo_badge: "DEMO / SIMULATION",
-        safety_note: "No real customers contacted. No real revenue. No real conversion."
+        safety_note: "No real customers contacted. No real revenue. No real conversion.",
+        safety_warning_lines: safetyWarningLines
       },
       {
         action_id: "act_rev_004",
@@ -372,7 +378,8 @@ const dailyApprovalWorkbenchPayload = {
         priority: "medium",
         summary: "Approve custom consultation proposal package",
         demo_badge: "DEMO / SIMULATION",
-        safety_note: "No real customers contacted. No real revenue. No real conversion."
+        safety_note: "No real customers contacted. No real revenue. No real conversion.",
+        safety_warning_lines: safetyWarningLines
       },
       {
         action_id: "act_rev_005",
@@ -382,7 +389,8 @@ const dailyApprovalWorkbenchPayload = {
         priority: "low",
         summary: "Trigger local CS handoff checklist for appointment bot",
         demo_badge: "DEMO / SIMULATION",
-        safety_note: "No real customers contacted. No real revenue. No real conversion."
+        safety_note: "No real customers contacted. No real revenue. No real conversion.",
+        safety_warning_lines: safetyWarningLines
       }
     ]
   },
