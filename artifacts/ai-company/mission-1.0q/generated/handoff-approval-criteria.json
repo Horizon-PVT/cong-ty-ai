@@ -1,0 +1,30 @@
+{
+  "artifact_id": "handoff_approval_criteria_1_0q",
+  "milestone": "1.0Q",
+  "owning_department": "Customer_Success_AI",
+  "data_label": "DEMO_LOCAL_ONLY",
+  "handoff_stages": [
+    {
+      "stage": "contract_local_review",
+      "required_approvals": [
+        "CFO",
+        "QA"
+      ],
+      "description": "Validate local contract mock draft, ensure no real-ready triggers exist."
+    },
+    {
+      "stage": "deposit_validation",
+      "required_approvals": [
+        "CFO"
+      ],
+      "description": "Verify simulated deposit deposit_validated=true exists in reports."
+    },
+    {
+      "stage": "demo_dataset_provisioning",
+      "required_approvals": [
+        "CTO"
+      ],
+      "description": "Initialize client spa-booking or clinic-reminders dummy dataset."
+    }
+  ]
+}

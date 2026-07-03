@@ -1,0 +1,140 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OwnerApprovalWorkbenchPayload",
+  "type": "object",
+  "properties": {
+    "schema_version": { "type": "string" },
+    "generated_by": { "type": "string" },
+    "integration_target": { "type": "string", "const": "paperclip" },
+    "data_label": { "type": "string", "const": "DEMO_LOCAL_ONLY" },
+    "demo_warning": { "type": "string" },
+    "command_center_answers": {
+      "type": "object",
+      "properties": {
+        "q1_actions_need_approval": { "type": "string" },
+        "q2_what_boss_approves": { "type": "string" },
+        "q3_is_action_safe": { "type": "string" },
+        "q4_what_happens_if_approved": { "type": "string" },
+        "q5_what_is_blocked_automatically": { "type": "string" },
+        "q6_can_boss_request_rewrite": { "type": "string" },
+        "q7_can_boss_reject_or_park": { "type": "string" },
+        "q8_is_lead_action_demo_only": { "type": "string" },
+        "q9_is_there_full_audit_trail": { "type": "string" },
+        "q10_what_is_next_safe_step": { "type": "string" }
+      },
+      "required": [
+        "q1_actions_need_approval",
+        "q2_what_boss_approves",
+        "q3_is_action_safe",
+        "q4_what_happens_if_approved",
+        "q5_what_is_blocked_automatically",
+        "q6_can_boss_request_rewrite",
+        "q7_can_boss_reject_or_park",
+        "q8_is_lead_action_demo_only",
+        "q9_is_there_full_audit_trail",
+        "q10_what_is_next_safe_step"
+      ]
+    },
+    "workbench_overview": {
+      "type": "object",
+      "properties": {
+        "pending_count": { "type": "integer" },
+        "approved_count": { "type": "integer" },
+        "rejected_count": { "type": "integer" },
+        "revision_count": { "type": "integer" },
+        "demo_badge": { "type": "string" },
+        "safety_note": { "type": "string" }
+      },
+      "required": ["pending_count", "approved_count", "rejected_count", "revision_count", "demo_badge", "safety_note"]
+    },
+    "workbench_queue": {
+      "type": "object",
+      "properties": {
+        "total_pending": { "type": "integer" },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "action_id": { "type": "string" },
+              "lead_id": { "type": "string" },
+              "lead_name": { "type": "string" },
+              "action_type": { "type": "string" },
+              "priority": { "type": "string" },
+              "summary": { "type": "string" },
+              "demo_badge": { "type": "string" },
+              "safety_note": { "type": "string" }
+            },
+            "required": ["action_id", "lead_id", "lead_name", "action_type", "priority", "summary", "demo_badge", "safety_note"]
+          }
+        }
+      },
+      "required": ["total_pending", "items"]
+    },
+    "workbench_details": {
+      "type": "object",
+      "properties": {
+        "action_id": { "type": "string" },
+        "what_boss_approves": { "type": "string" },
+        "is_action_safe": { "type": "boolean" },
+        "safety_warning_lines": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "demo_badge": { "type": "string" },
+        "safety_note": { "type": "string" }
+      },
+      "required": ["action_id", "what_boss_approves", "is_action_safe", "safety_warning_lines", "demo_badge", "safety_note"]
+    },
+    "workbench_actions": {
+      "type": "object",
+      "properties": {
+        "supported_actions": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "local_only_mode": { "type": "boolean" },
+        "demo_badge": { "type": "string" },
+        "safety_note": { "type": "string" }
+      },
+      "required": ["supported_actions", "local_only_mode", "demo_badge", "safety_note"]
+    },
+    "workbench_audit_trail": {
+      "type": "object",
+      "properties": {
+        "logs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "timestamp": { "type": "string" },
+              "action_id": { "type": "string" },
+              "actor": { "type": "string" },
+              "event": { "type": "string" },
+              "previous_state": { "type": "string" },
+              "new_state": { "type": "string" },
+              "comments": { "type": "string" }
+            },
+            "required": ["timestamp", "action_id", "actor", "event", "previous_state", "new_state"]
+          }
+        },
+        "demo_badge": { "type": "string" },
+        "safety_note": { "type": "string" }
+      },
+      "required": ["logs", "demo_badge", "safety_note"]
+    }
+  },
+  "required": [
+    "schema_version",
+    "generated_by",
+    "integration_target",
+    "data_label",
+    "demo_warning",
+    "command_center_answers",
+    "workbench_overview",
+    "workbench_queue",
+    "workbench_details",
+    "workbench_actions",
+    "workbench_audit_trail"
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "operating_model_id": "owner_approval_workbench_operating_model_1_0q",
+  "milestone": "1.0Q",
+  "stages": [
+    {
+      "stage": "owner_goal_intake",
+      "actor": "System",
+      "output": "structured owner goal with 10 approval-workbench questions"
+    },
+    {
+      "stage": "ceo_mission_interpretation",
+      "actor": "CEO",
+      "output": "approval strategy brief, local validation mandate"
+    },
+    {
+      "stage": "department_briefing",
+      "actor": "COO",
+      "output": "briefing packet with 1.0P source command center context"
+    },
+    {
+      "stage": "department_artifact_proposals",
+      "actor": "All departments",
+      "output": "each department proposes what workbench artifacts they will create"
+    },
+    {
+      "stage": "cross_department_negotiation",
+      "actor": "COO + CEO",
+      "output": "resolved artifact list with no duplication, no fixed list"
+    },
+    {
+      "stage": "artifact_manifest_creation",
+      "actor": "COO",
+      "output": "artifact-manifest.json with owning dept and rationale"
+    },
+    {
+      "stage": "worker_assignment",
+      "actor": "COO",
+      "output": "worker-to-artifact assignment map"
+    },
+    {
+      "stage": "artifact_generation",
+      "actor": "All departments",
+      "output": "self-selected deliverables: payload, revision comments, rules, handoffs, previews"
+    },
+    {
+      "stage": "qa_review",
+      "actor": "QA",
+      "output": "qa-review-report.md with completion verdict, E2E local safety checks"
+    },
+    {
+      "stage": "gap_analysis",
+      "actor": "QA + Research_AI",
+      "output": "gap-analysis.json identifying missing or weak workbench pieces"
+    },
+    {
+      "stage": "gap_closure",
+      "actor": "Assigned departments",
+      "output": "patched or supplemented artifacts for all critical gaps"
+    },
+    {
+      "stage": "final_packaging",
+      "actor": "COO",
+      "output": "final-package-index.md summarizing workbench deliverables"
+    },
+    {
+      "stage": "kpi_scoring",
+      "actor": "CFO",
+      "output": "kpi-scorecard.json with workbench readiness score"
+    },
+    {
+      "stage": "learning_update",
+      "actor": "CLO_Hermes",
+      "output": "lesson appended to memory/ai-company/mission-lessons.jsonl"
+    },
+    {
+      "stage": "paperclip_update",
+      "actor": "CTO",
+      "output": "paperclip-department-update.json for Paperclip workbench integration"
+    },
+    {
+      "stage": "auto_verification",
+      "actor": "System",
+      "output": "auto-loop PASS: 2 consecutive stable runs"
+    },
+    {
+      "stage": "premerge_simulation",
+      "actor": "System",
+      "output": "premerge simulation PASS: historical + current verifiers all pass"
+    }
+  ]
+}

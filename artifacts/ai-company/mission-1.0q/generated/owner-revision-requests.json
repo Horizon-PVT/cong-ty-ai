@@ -1,0 +1,27 @@
+{
+  "artifact_id": "owner_revision_requests_1_0q",
+  "milestone": "1.0Q",
+  "owning_department": "CMO",
+  "data_label": "DEMO_LOCAL_ONLY",
+  "revision_options": {
+    "rewrite_tone": [
+      "softer",
+      "more_professional",
+      "more_urgent",
+      "casual"
+    ],
+    "change_value_prop": true,
+    "modify_discount_percentage": true,
+    "additional_research_requested": true
+  },
+  "sample_revisions": [
+    {
+      "action_id": "act_rev_002",
+      "request_type": "rewrite_tone",
+      "requested_by": "Boss",
+      "comments": "Nha khoa Thanh Hóa opener needs to be more professional. Emphasize appointment reservation reduction rather than receptionist replacement.",
+      "status": "pending_rewrite",
+      "timestamp": "2026-07-03T10:00:00Z"
+    }
+  ]
+}

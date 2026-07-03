@@ -1,0 +1,53 @@
+{
+  "policy_id": "owner_approval_workbench_policy_1_0q",
+  "milestone": "1.0Q",
+  "department_led": true,
+  "departments_select_artifacts": true,
+  "fixed_artifact_list_allowed": false,
+  "departments": [
+    "CEO", "COO", "Sales_AI", "CMO", "CTO", "CFO",
+    "Customer_Success_AI", "QA", "CLO_Hermes", "Research_AI"
+  ],
+  "hard_locks": {
+    "local_only": true,
+    "no_real_customer_messaging": true,
+    "no_crm_update": true,
+    "no_email_send": true,
+    "no_zalo_send": true,
+    "no_sms_send": true,
+    "no_facebook_meta_message": true,
+    "no_browser_automation": true,
+    "no_scraping_credentials": true,
+    "no_login_session_usage": true,
+    "no_paid_tools": true,
+    "no_spend": true,
+    "no_deploy": true,
+    "no_publish": true,
+    "no_secrets_read": true,
+    "no_env_read": true,
+    "no_production_mutation": true,
+    "no_merge_without_owner_token": true,
+    "no_standalone_dashboard": true,
+    "no_production_frontend_modification": true
+  },
+  "allowed": {
+    "local_approval_queue": true,
+    "local_approval_state_machine": true,
+    "local_audit_trail": true,
+    "local_draft_revision_workflow": true,
+    "paperclip_compatible_approval_payload": true,
+    "owner_action_cards": true,
+    "safe_export_package": true,
+    "approval_token_simulation": true,
+    "rejected_revision_needed_state": true,
+    "demo_simulation_labels": true,
+    "safety_lock_display": true
+  },
+  "demo_data_policy": {
+    "demo_leads_only": true,
+    "must_label_demo_data": true,
+    "no_real_revenue_claims": true,
+    "no_real_conversion_claims": true,
+    "no_real_contact_claims": true
+  }
+}

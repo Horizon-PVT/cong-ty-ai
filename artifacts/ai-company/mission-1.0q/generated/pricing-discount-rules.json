@@ -1,0 +1,26 @@
+{
+  "artifact_id": "pricing_discount_rules_1_0q",
+  "milestone": "1.0Q",
+  "owning_department": "CFO",
+  "data_label": "DEMO_LOCAL_ONLY",
+  "approval_thresholds": {
+    "max_discount_percentage": 15,
+    "price_anchor": 12900000,
+    "minimum_deposit_amount": 2000000,
+    "roi_period_months_limit": 6
+  },
+  "validation_rules": [
+    {
+      "rule_id": "rule_max_discount",
+      "condition": "discount_pct <= max_discount_percentage",
+      "action_on_violation": "escalate_to_cfo",
+      "description": "Discounts over 15% require explicit CFO review before Boss approval."
+    },
+    {
+      "rule_id": "rule_min_deposit",
+      "condition": "deposit_amount >= minimum_deposit_amount",
+      "action_on_violation": "reject_automatically",
+      "description": "Any deposit under 2 million VND is automatically blocked."
+    }
+  ]
+}

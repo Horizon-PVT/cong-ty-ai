@@ -1,0 +1,62 @@
+{
+  "widget_map_id": "owner_approval_workbench_widget_map_1_0q",
+  "milestone": "1.0Q",
+  "description": "Paperclip widget map for Owner Approval Workbench daily view",
+  "widgets": [
+    {
+      "widget_id": "owner_approval_workbench_overview",
+      "source_file": "reports/owner-approval-workbench/daily-approval-workbench-payload.json",
+      "source_json_path": "$.workbench_overview",
+      "required_fields": ["pending_count", "approved_count", "rejected_count", "revision_count", "demo_badge", "safety_note"],
+      "optional_fields": [],
+      "refresh_mode": "on_demand",
+      "read_only": true,
+      "owner_action_required": false,
+      "fallback_empty_state": "Workbench overview unavailable."
+    },
+    {
+      "widget_id": "owner_approval_workbench_queue",
+      "source_file": "reports/owner-approval-workbench/daily-approval-workbench-payload.json",
+      "source_json_path": "$.workbench_queue",
+      "required_fields": ["items", "total_pending"],
+      "optional_fields": [],
+      "refresh_mode": "realtime",
+      "read_only": false,
+      "owner_action_required": true,
+      "fallback_empty_state": "No pending actions in approval queue."
+    },
+    {
+      "widget_id": "owner_approval_workbench_details",
+      "source_file": "reports/owner-approval-workbench/daily-approval-workbench-payload.json",
+      "source_json_path": "$.workbench_details",
+      "required_fields": ["action_id", "what_boss_approves", "is_action_safe", "safety_warning_lines", "demo_badge", "safety_note"],
+      "optional_fields": [],
+      "refresh_mode": "realtime",
+      "read_only": true,
+      "owner_action_required": false,
+      "fallback_empty_state": "Select an action to view details."
+    },
+    {
+      "widget_id": "owner_approval_workbench_actions",
+      "source_file": "reports/owner-approval-workbench/daily-approval-workbench-payload.json",
+      "source_json_path": "$.workbench_actions",
+      "required_fields": ["supported_actions", "local_only_mode", "demo_badge", "safety_note"],
+      "optional_fields": [],
+      "refresh_mode": "realtime",
+      "read_only": false,
+      "owner_action_required": true,
+      "fallback_empty_state": "Actions unavailable."
+    },
+    {
+      "widget_id": "owner_approval_workbench_audit_trail",
+      "source_file": "reports/owner-approval-workbench/daily-approval-workbench-payload.json",
+      "source_json_path": "$.workbench_audit_trail",
+      "required_fields": ["logs", "demo_badge", "safety_note"],
+      "optional_fields": [],
+      "refresh_mode": "on_demand",
+      "read_only": true,
+      "owner_action_required": false,
+      "fallback_empty_state": "Audit trail is empty."
+    }
+  ]
+}

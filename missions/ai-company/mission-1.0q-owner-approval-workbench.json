@@ -1,0 +1,51 @@
+{
+  "mission_id": "mission_1_0q_owner_approval_workbench",
+  "milestone": "1.0Q",
+  "title": "Paperclip Owner Approval Workbench",
+  "owner_goal": "Tạo mọi thứ cần thiết để Paperclip cho phép Boss xem, duyệt, từ chối, hoặc yêu cầu sửa các hành động doanh thu được đề xuất trong Revenue Command Center, nhưng không được gửi tin nhắn thật, không cập nhật CRM thật, không tạo doanh thu thật.",
+  "business_context": {
+    "seller_brand": "Alex Minh AI",
+    "target_market": "SME Thanh Hóa",
+    "main_offer": "Web + Chatbot AI",
+    "price_anchor": "12.9 triệu",
+    "target_close_count": 3,
+    "timeframe_days": 14,
+    "primary_ui": "Paperclip"
+  },
+  "source_milestones": {
+    "1.0M": "sales assets",
+    "1.0N": "lead scoring",
+    "1.0O": "lead-to-sales pipeline",
+    "1.0P": "Paperclip Revenue Command Center"
+  },
+  "approval_workbench_questions": [
+    "Which actions need Boss approval?",
+    "What exactly is Boss approving?",
+    "Is this message/proposal/discount safe?",
+    "What will happen if Boss approves?",
+    "What is blocked from happening automatically?",
+    "Can Boss request a rewrite?",
+    "Can Boss reject or park the action?",
+    "Is the lead/action demo-only or real-ready?",
+    "Is there a full audit trail?",
+    "What is the next safe step after approval?"
+  ],
+  "ui_scope": {
+    "primary_ui": "Paperclip",
+    "standalone_dashboard_allowed": false,
+    "production_frontend_modification_allowed": false,
+    "local_payloads_allowed": true,
+    "read_adapter_extension_allowed": true,
+    "local_preview_artifacts_allowed": true
+  },
+  "department_autonomy_required": true,
+  "departments_must_select_artifacts": true,
+  "fixed_list_allowed": false,
+  "simulation_mode": {
+    "local_only": true,
+    "no_contact_policy": true,
+    "no_crm_integration": true,
+    "demo_data_must_be_labeled": true,
+    "no_real_revenue_claims": true
+  }
+}
