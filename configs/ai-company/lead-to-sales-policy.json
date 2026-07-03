@@ -1,0 +1,38 @@
+{
+  "policy_id": "policy_1_0o_lead_to_sales",
+  "milestone": "1.0O",
+  "department_led": true,
+  "departments_select_artifacts": true,
+  "fixed_artifact_list_allowed": false,
+  "lead_safety_rules": {
+    "demo_leads_only": true,
+    "must_label_demo_data_clearly": true,
+    "no_contact_policy": true,
+    "no_real_messaging": true
+  },
+  "blocked_actions": {
+    "real_customer_messaging": true,
+    "crm_update": true,
+    "browser_automation": true,
+    "scraping_credentials": true,
+    "login_session_use": true,
+    "paid_tools": true,
+    "spend": true,
+    "deploy": true,
+    "publish": true,
+    "secrets_read": true,
+    "env_read": true,
+    "production_mutation": true,
+    "merge_without_owner_token": true
+  },
+  "allowed_actions": {
+    "local_artifact_write": true,
+    "local_memory_write": true,
+    "local_report_write": true,
+    "local_pipeline_board": true,
+    "local_lead_prioritization": true,
+    "local_demo_pipeline_data": true,
+    "manual_sales_angle_mapping": true,
+    "consultation_scripts_drafts": true
+  }
+}

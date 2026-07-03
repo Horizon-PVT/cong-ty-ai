@@ -1,0 +1,38 @@
+{
+  "mission_id": "mission_1_0o_lead_to_sales",
+  "milestone": "1.0O",
+  "title": "Autonomous Lead-to-Sales Pipeline Mission",
+  "owner_goal": "Tạo mọi thứ cần thiết để Alex Minh AI biến 50 lead SME Thanh Hóa đã được tìm và chấm điểm thành pipeline chốt 3 khách đầu tiên cho gói Web + Chatbot AI trong 14 ngày, nhưng không được liên hệ khách thật.",
+  "owner_goal_vi": "Tạo mọi thứ cần thiết để Alex Minh AI biến 50 lead SME Thanh Hóa đã được tìm và chấm điểm thành pipeline chốt 3 khách đầu tiên cho gói Web + Chatbot AI trong 14 ngày, nhưng không được liên hệ khách thật.",
+  "business_context": {
+    "seller_brand": "Alex Minh AI",
+    "target_market": "SME Thanh Hóa",
+    "main_offer": "Web + Chatbot AI",
+    "price_anchor": "12.9 triệu",
+    "target_close_count": 3,
+    "timeframe_days": 14
+  },
+  "source_milestones": {
+    "1.0N": "lead discovery, scoring, qualification, lead board",
+    "1.0M": "sales playbook, demo guide, objection handling, ROI proposal, agreement draft"
+  },
+  "target_lead_types": [
+    "Spa",
+    "Nha khoa",
+    "Thẩm mỹ viện",
+    "Homestay / khách sạn Sầm Sơn",
+    "Nhà hàng / cafe",
+    "Phòng khám",
+    "Giáo dục / trung tâm ngoại ngữ",
+    "Bất động sản / cho thuê"
+  ],
+  "department_autonomy_required": true,
+  "departments_must_select_artifacts": true,
+  "fixed_list_allowed": false,
+  "simulation_mode": {
+    "local_only": true,
+    "no_contact_policy": true,
+    "no_crm_integration": true,
+    "use_demo_data_fallback": true
+  }
+}
