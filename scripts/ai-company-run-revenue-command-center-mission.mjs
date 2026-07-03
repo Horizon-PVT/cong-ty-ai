@@ -607,12 +607,18 @@ const dailyCommandCenterPayload = {
   data_label: "DEMO_LOCAL_ONLY",
   demo_warning: "⚠️ DEMO/SIMULATION DATA — All leads, pipeline figures, and follow-ups shown here are simulation data from Milestones 1.0N and 1.0O. No real customers have been contacted. No real revenue has been earned. Boss must approve before any real action is taken.",
   daily_brief: {
+    data_label: "DEMO_LOCAL_ONLY",
+    demo_badge: "DEMO / SIMULATION",
+    safety_note: "No real customers contacted. No real revenue. No real conversion.",
     date_label: TIMESTAMP,
     top_priority_action: "Follow up with [DEMO] Phòng khám Đức Thịnh — proposal sent Day 7, response due today",
-    pipeline_status: `${wonCount}/${targetCloseCount} clients closed (${progressPct}% to target)`,
+    pipeline_status: `${wonCount}/${targetCloseCount} DEMO clients closed (${progressPct}% to target)`,
     boss_note: "3 approvals waiting in queue. 2 leads at Won stage ready for handoff. Review approval queue before 10 AM."
   },
   lead_priority_queue: {
+    data_label: "DEMO_LOCAL_ONLY",
+    demo_badge: "DEMO / SIMULATION",
+    safety_note: "No real customers contacted. No real revenue. No real conversion.",
     total_active: totalLeads,
     leads: nextBestActionModel.priority_queue.slice(0, 5).map(l => ({
       rank: l.rank,
@@ -626,6 +632,9 @@ const dailyCommandCenterPayload = {
     }))
   },
   next_best_actions: {
+    data_label: "DEMO_LOCAL_ONLY",
+    demo_badge: "DEMO / SIMULATION",
+    safety_note: "No real customers contacted. No real revenue. No real conversion.",
     actions: [
       {
         priority: 1,
@@ -654,6 +663,9 @@ const dailyCommandCenterPayload = {
     ]
   },
   sales_angle_display: {
+    data_label: "DEMO_LOCAL_ONLY",
+    demo_badge: "DEMO / SIMULATION",
+    safety_note: "No real customers contacted. No real revenue. No real conversion.",
     by_vertical: salesAnglePerLeadType.by_vertical.slice(0, 3).map(v => ({
       vertical: v.vertical,
       angle: v.primary_angle,
@@ -662,6 +674,9 @@ const dailyCommandCenterPayload = {
     }))
   },
   demo_asset_selector: {
+    data_label: "DEMO_LOCAL_ONLY",
+    demo_badge: "DEMO / SIMULATION",
+    safety_note: "No real customers contacted. No real revenue. No real conversion.",
     recommended_demo: "clinic-patient-communication-demo",
     demo_label: "⚠️ DEMO — This is a simulation asset only. Present to leads as a capability preview, not a live product.",
     for_lead: "[DEMO] Phòng khám Đức Thịnh",
@@ -677,6 +692,9 @@ const dailyCommandCenterPayload = {
     ]
   },
   follow_up_staging: {
+    data_label: "DEMO_LOCAL_ONLY",
+    demo_badge: "DEMO / SIMULATION",
+    safety_note: "No real customers contacted. No real revenue. No real conversion.",
     do_not_send_warning: "⚠️ DO NOT SEND — These follow-ups are staged drafts for boss review only. No message will be sent without explicit owner approval token.",
     staged_follow_ups: [
       {
@@ -700,6 +718,9 @@ const dailyCommandCenterPayload = {
     ]
   },
   approval_queue: {
+    data_label: "DEMO_LOCAL_ONLY",
+    demo_badge: "DEMO / SIMULATION",
+    safety_note: "No real customers contacted. No real revenue. No real conversion.",
     pending_approvals: approvalQueueModel.pending_approvals.map(a => ({
       id: a.approval_id,
       type: a.item_type,
@@ -709,20 +730,29 @@ const dailyCommandCenterPayload = {
     }))
   },
   pipeline_progress: {
+    data_label: "DEMO_LOCAL_ONLY",
+    demo_badge: "DEMO / SIMULATION",
+    safety_note: "No real customers contacted. No real revenue. No real conversion.",
     total_leads: totalLeads,
-    won_count: wonCount,
+    demo_won_count: wonCount,
     target_close_count: targetCloseCount,
-    progress_pct: progressPct,
+    demo_progress_pct: progressPct,
     pipeline_by_stage: pipelineByStage,
     revenue_confirmed_demo: `${wonCount * 12.9}M VND (DEMO)`,
-    revenue_target: `${targetCloseCount * 12.9}M VND`,
+    demo_revenue_target: `${targetCloseCount * 12.9}M VND (DEMO)`,
     days_remaining: 7
   },
   safety_lock_display: {
+    data_label: "DEMO_LOCAL_ONLY",
+    demo_badge: "DEMO / SIMULATION",
+    safety_note: "No real customers contacted. No real revenue. No real conversion.",
     active_locks: safetyLockDisplay.active_locks.map(l => ({ id: l.lock_id, label: l.label, blocks: l.blocks })),
     attestation: safetyLockDisplay.safety_attestation
   },
   tomorrow_plan: {
+    data_label: "DEMO_LOCAL_ONLY",
+    demo_badge: "DEMO / SIMULATION",
+    safety_note: "No real customers contacted. No real revenue. No real conversion.",
     priority_leads_tomorrow: [
       { rank: 1, lead_name: "[DEMO] Nha khoa Sao Việt", action: "Finalize negotiation — last objection remaining" },
       { rank: 2, lead_name: "[DEMO] Homestay Sầm Sơn Biển Xanh", action: "Send proposal if demo went well today" },
@@ -743,7 +773,7 @@ const dailyCommandCenterPayload = {
     q6_follow_up_ready: "2 staged follow-ups waiting: Homestay (post-demo) and Spa (initial invite). ⚠️ DO NOT SEND without owner approval.",
     q7_needs_approval: "3 items: deposit acceptance (Phòng khám), proposal send (Homestay), discount authorization (Nha khoa). All blocked on OWNER_TOKEN_REQUIRED.",
     q8_blocked_by_safety: "All outreach, CRM updates, deploys, spend, and secrets are hard-locked. 8 safety locks active. No real action taken.",
-    q9_pipeline_progress: `${wonCount}/${targetCloseCount} clients closed (${progressPct}% to goal). 2 at Won, 2 at Negotiating, 8 at Demo Scheduled. 7 days remaining. Revenue confirmed (DEMO): ${wonCount * 12.9}M VND.`,
+    q9_pipeline_progress: `${wonCount}/${targetCloseCount} DEMO clients closed (${progressPct}% to goal). 2 at Won, 2 at Negotiating, 8 at Demo Scheduled. 7 days remaining. Revenue confirmed (DEMO): ${wonCount * 12.9}M VND.`,
     q10_tomorrow: "Check deposit from Phòng khám. Prepare onboarding brief for 2 Won clients. Update pipeline scores after today's calls. Focus on Nha khoa close."
   },
   generated_at: TIMESTAMP
@@ -767,7 +797,7 @@ const commandCenterPreview = `# Revenue Command Center Daily Preview
 Follow up with **[DEMO] Phòng khám Đức Thịnh** (proposal sent Day 7, response expected today).
 
 ## 📊 Pipeline Progress
-**${wonCount} / ${targetCloseCount} clients closed** (${progressPct}% to goal) | 7 days remaining
+**${wonCount} / ${targetCloseCount} DEMO clients closed** (${progressPct}% to goal) | 7 days remaining
 
 | Stage | Count |
 |-------|-------|

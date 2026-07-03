@@ -8,7 +8,7 @@
 Follow up with **[DEMO] Phòng khám Đức Thịnh** (proposal sent Day 7, response expected today).
 
 ## 📊 Pipeline Progress
-**3 / 3 clients closed** (100% to goal) | 7 days remaining
+**3 / 3 DEMO clients closed** (100% to goal) | 7 days remaining
 
 | Stage | Count |
 |-------|-------|

@@ -140,6 +140,25 @@ async function main() {
     check(widgetIds.includes('revenue_safety_lock_display'), 'widget map includes safety_lock_display widget');
     check(widgetIds.includes('revenue_follow_up_staging'), 'widget map includes follow_up_staging widget');
     check(widgetIds.includes('revenue_tomorrow_plan'), 'widget map includes tomorrow_plan widget');
+    
+    // Check specific required fields for safety
+    const briefWidget = (widgetMap.widgets || []).find(w => w.widget_id === 'revenue_command_center_daily_brief');
+    check(
+      briefWidget && (briefWidget.required_fields.includes('demo_badge') || briefWidget.required_fields.includes('safety_note')),
+      'widget map daily_brief requires demo_badge or safety_note'
+    );
+
+    const progressWidget = (widgetMap.widgets || []).find(w => w.widget_id === 'revenue_pipeline_progress');
+    check(
+      progressWidget &&
+      progressWidget.required_fields.includes('demo_won_count') &&
+      progressWidget.required_fields.includes('demo_progress_pct') &&
+      progressWidget.required_fields.includes('revenue_confirmed_demo') &&
+      progressWidget.required_fields.includes('demo_badge') &&
+      progressWidget.required_fields.includes('safety_note'),
+      'widget map pipeline_progress requires demo/revenue safety fields'
+    );
+
     // Check all widgets point to the same payload file
     const payloadSources = (widgetMap.widgets || []).filter(w =>
       w.source_file === 'reports/revenue-command-center/daily-command-center-payload.json'
@@ -157,6 +176,20 @@ async function main() {
     check(required.includes('follow_up_staging'), 'schema requires follow_up_staging field');
     check(required.includes('safety_lock_display'), 'schema requires safety_lock_display field');
     check(required.includes('approval_queue'), 'schema requires approval_queue field');
+
+    const dbReq = schema.properties?.daily_brief?.required || [];
+    check(dbReq.includes('demo_badge') && dbReq.includes('safety_note') && dbReq.includes('data_label'), 'schema daily_brief requires demo safety fields');
+
+    const ppReq = schema.properties?.pipeline_progress?.required || [];
+    check(
+      ppReq.includes('demo_won_count') &&
+      ppReq.includes('demo_progress_pct') &&
+      ppReq.includes('revenue_confirmed_demo') &&
+      ppReq.includes('demo_badge') &&
+      ppReq.includes('safety_note') &&
+      ppReq.includes('data_label'),
+      'schema pipeline_progress requires demo/revenue safety fields'
+    );
   }
 
   // 8. Generated artifact checks
@@ -289,9 +322,43 @@ async function main() {
       'payload pipeline_progress total_leads equals 50'
     );
     check(
-      payload.pipeline_progress?.won_count === 3,
-      'payload pipeline_progress won_count equals 3'
+      payload.pipeline_progress?.demo_won_count === 3,
+      'payload pipeline_progress demo_won_count equals 3'
     );
+    check(
+      payload.pipeline_progress?.won_count === undefined,
+      'payload pipeline_progress won_count is undefined (lacks unqualified label)'
+    );
+    check(
+      payload.pipeline_progress?.progress_pct === undefined,
+      'payload pipeline_progress progress_pct is undefined (lacks unqualified label)'
+    );
+    check(
+      payload.daily_brief?.demo_badge === 'DEMO / SIMULATION',
+      'daily_brief has demo_badge'
+    );
+    check(
+      payload.daily_brief?.safety_note?.includes('No real'),
+      'daily_brief has safety_note'
+    );
+    check(
+      !payload.daily_brief?.pipeline_status?.includes('closed') || payload.daily_brief?.pipeline_status?.includes('DEMO'),
+      'daily_brief pipeline_status has DEMO if it mentions closed'
+    );
+
+    // Ensure all 10 widget sections have demo qualifiers locally
+    const widgetSections = [
+      'daily_brief', 'lead_priority_queue', 'next_best_actions',
+      'sales_angle_display', 'demo_asset_selector', 'follow_up_staging',
+      'approval_queue', 'pipeline_progress', 'safety_lock_display', 'tomorrow_plan'
+    ];
+    for (const sec of widgetSections) {
+      const sObj = payload[sec];
+      check(sObj && sObj.data_label === 'DEMO_LOCAL_ONLY', `widget section ${sec} has data_label DEMO_LOCAL_ONLY`);
+      check(sObj && sObj.demo_badge === 'DEMO / SIMULATION', `widget section ${sec} has demo_badge`);
+      check(sObj && sObj.safety_note?.includes('No real'), `widget section ${sec} has safety_note`);
+    }
+
     const payloadStr = JSON.stringify(payload);
     check(!payloadStr.includes('"real_revenue_confirmed"'), 'payload has no unqualified real revenue claim');
     check(!payloadStr.includes('"real customer contacted"'), 'payload has no real customer contact claim');

@@ -34,12 +34,15 @@
     "demo_warning": { "type": "string" },
     "daily_brief": {
       "type": "object",
-      "required": ["date_label", "top_priority_action", "pipeline_status"],
+      "required": ["date_label", "top_priority_action", "pipeline_status", "demo_badge", "safety_note", "data_label"],
       "properties": {
         "date_label": { "type": "string" },
         "top_priority_action": { "type": "string" },
         "pipeline_status": { "type": "string" },
-        "boss_note": { "type": "string" }
+        "boss_note": { "type": "string" },
+        "demo_badge": { "type": "string" },
+        "safety_note": { "type": "string" },
+        "data_label": { "type": "string" }
       }
     },
     "lead_priority_queue": {
@@ -90,13 +93,18 @@
     },
     "pipeline_progress": {
       "type": "object",
-      "required": ["total_leads", "won_count", "target_close_count", "progress_pct"],
+      "required": ["total_leads", "demo_won_count", "target_close_count", "demo_progress_pct", "revenue_confirmed_demo", "demo_badge", "safety_note", "data_label"],
       "properties": {
         "total_leads": { "type": "integer", "minimum": 1 },
-        "won_count": { "type": "integer", "minimum": 0 },
+        "demo_won_count": { "type": "integer", "minimum": 0 },
         "target_close_count": { "type": "integer" },
-        "progress_pct": { "type": "number", "minimum": 0, "maximum": 100 },
-        "pipeline_by_stage": { "type": "object" }
+        "demo_progress_pct": { "type": "number", "minimum": 0, "maximum": 100 },
+        "revenue_confirmed_demo": { "type": "string" },
+        "demo_revenue_target": { "type": "string" },
+        "pipeline_by_stage": { "type": "object" },
+        "demo_badge": { "type": "string" },
+        "safety_note": { "type": "string" },
+        "data_label": { "type": "string" }
       }
     },
     "safety_lock_display": {
