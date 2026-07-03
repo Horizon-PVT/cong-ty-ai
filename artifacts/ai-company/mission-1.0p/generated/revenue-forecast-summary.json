@@ -1,0 +1,66 @@
+{
+  "artifact_id": "revenue_forecast_summary_1_0p",
+  "milestone": "1.0P",
+  "owning_department": "CFO",
+  "data_label": "DEMO_LOCAL_ONLY",
+  "demo_warning": "⚠️ DEMO DATA — All revenue figures are projections based on simulation pipeline. No real contracts signed.",
+  "currency": "VND",
+  "main_offer_price": 12900000,
+  "pipeline_summary": {
+    "total_leads": 50,
+    "won_count": 3,
+    "target_close_count": 3,
+    "progress_pct": 100,
+    "pipeline_by_stage": {
+      "Prospecting": 18,
+      "Contacted": 12,
+      "Demo Scheduled": 8,
+      "Proposal Sent": 7,
+      "Negotiating": 2,
+      "Won": 3
+    }
+  },
+  "revenue_projections": {
+    "confirmed_revenue_demo": 38700000,
+    "projected_revenue_14_days": 38700000,
+    "revenue_at_risk": "Pipeline active — 47 leads still in funnel",
+    "average_deal_value": 12900000
+  },
+  "deposit_readiness": {
+    "leads_at_negotiating_or_won": 5,
+    "deposit_ready_leads": [
+      {
+        "lead_id": "L_001_DEMO",
+        "lead_name": "[DEMO] Phòng khám Đức Thịnh",
+        "deposit_amount": 3000000,
+        "status": "awaiting owner approval"
+      },
+      {
+        "lead_id": "L_002_DEMO",
+        "lead_name": "[DEMO] Nha khoa Sao Việt",
+        "deposit_amount": 3000000,
+        "status": "proposal accepted verbally"
+      }
+    ],
+    "total_deposit_pipeline": 6000000
+  },
+  "commercial_priority_ranking": [
+    {
+      "rank": 1,
+      "vertical": "Nha khoa",
+      "reason": "Highest conversion rate in 1.0O pipeline"
+    },
+    {
+      "rank": 2,
+      "vertical": "Phòng khám",
+      "reason": "Longest funnel maturity — closest to close"
+    },
+    {
+      "rank": 3,
+      "vertical": "Homestay/Sầm Sơn",
+      "reason": "Seasonal peak urgency drives faster decisions"
+    }
+  ],
+  "financial_note": "All figures are DEMO projections. Actual revenue requires owner-approved outreach and real contract signing.",
+  "generated_at": "2026-07-03"
+}

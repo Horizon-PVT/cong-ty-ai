@@ -1,0 +1,378 @@
+{
+  "schema_version": "1.0.0",
+  "generated_by": "ai-company-run-revenue-command-center-mission.mjs",
+  "milestone": "1.0P",
+  "data_label": "DEMO_LOCAL_ONLY",
+  "demo_warning": "⚠️ DEMO/SIMULATION DATA — All leads, pipeline figures, and follow-ups shown here are simulation data from Milestones 1.0N and 1.0O. No real customers have been contacted. No real revenue has been earned. Boss must approve before any real action is taken.",
+  "daily_brief": {
+    "data_label": "DEMO_LOCAL_ONLY",
+    "demo_badge": "DEMO / SIMULATION",
+    "safety_note": "No real customers contacted. No real revenue. No real conversion.",
+    "date_label": "2026-07-03",
+    "top_priority_action": "Follow up with [DEMO] Phòng khám Đức Thịnh — proposal sent Day 7, response due today",
+    "pipeline_status": "3/3 DEMO clients closed (100% to target)",
+    "boss_note": "3 approvals waiting in queue. 2 leads at Won stage ready for handoff. Review approval queue before 10 AM."
+  },
+  "lead_priority_queue": {
+    "data_label": "DEMO_LOCAL_ONLY",
+    "demo_badge": "DEMO / SIMULATION",
+    "safety_note": "No real customers contacted. No real revenue. No real conversion.",
+    "total_active": 50,
+    "leads": [
+      {
+        "rank": 1,
+        "lead_id": "L_001_DEMO",
+        "lead_name": "[DEMO] Phòng khám Đức Thịnh",
+        "vertical": "Phòng khám",
+        "stage": "Proposal Sent",
+        "score": 9.1,
+        "urgency": "HIGH",
+        "demo_note": "⚠️ DEMO"
+      },
+      {
+        "rank": 2,
+        "lead_id": "L_002_DEMO",
+        "lead_name": "[DEMO] Nha khoa Sao Việt",
+        "vertical": "Nha khoa",
+        "stage": "Negotiating",
+        "score": 8.9,
+        "urgency": "HIGH",
+        "demo_note": "⚠️ DEMO"
+      },
+      {
+        "rank": 3,
+        "lead_id": "L_003_DEMO",
+        "lead_name": "[DEMO] Homestay Sầm Sơn Biển Xanh",
+        "vertical": "Homestay/Khách sạn Sầm Sơn",
+        "stage": "Demo Scheduled",
+        "score": 8.5,
+        "urgency": "MEDIUM",
+        "demo_note": "⚠️ DEMO"
+      },
+      {
+        "rank": 4,
+        "lead_id": "L_004_DEMO",
+        "lead_name": "[DEMO] Spa Ngọc Linh Beauty",
+        "vertical": "Spa",
+        "stage": "Contacted",
+        "score": 8.2,
+        "urgency": "MEDIUM",
+        "demo_note": "⚠️ DEMO"
+      },
+      {
+        "rank": 5,
+        "lead_id": "L_005_DEMO",
+        "lead_name": "[DEMO] Thẩm mỹ viện Kim Ánh",
+        "vertical": "Thẩm mỹ viện",
+        "stage": "Prospecting",
+        "score": 7.9,
+        "urgency": "LOW",
+        "demo_note": "⚠️ DEMO"
+      }
+    ]
+  },
+  "next_best_actions": {
+    "data_label": "DEMO_LOCAL_ONLY",
+    "demo_badge": "DEMO / SIMULATION",
+    "safety_note": "No real customers contacted. No real revenue. No real conversion.",
+    "actions": [
+      {
+        "priority": 1,
+        "action": "consultation_call",
+        "target": "[DEMO] Phòng khám Đức Thịnh — Nguyễn Bá Đức",
+        "reason": "Highest composite score (9.1), in Proposal Sent stage — follow-up due today",
+        "demo_to_use": "clinic-patient-communication-demo",
+        "time_slot": "9:00–11:00 AM (weekday morning — highest answer rate for clinic owners)"
+      },
+      {
+        "priority": 2,
+        "action": "Address pricing objection",
+        "target": "[DEMO] Nha khoa Sao Việt",
+        "reason": "In Negotiating stage — ROI breakdown will close this deal",
+        "demo_to_use": "dental-chatbot-booking-demo",
+        "time_slot": "2:00–4:00 PM"
+      },
+      {
+        "priority": 3,
+        "action": "Review approval queue",
+        "target": "Owner action required — 3 items pending",
+        "reason": "2 deposit authorizations and 1 proposal send blocked on owner token",
+        "demo_to_use": null,
+        "time_slot": "Before 10 AM"
+      }
+    ]
+  },
+  "sales_angle_display": {
+    "data_label": "DEMO_LOCAL_ONLY",
+    "demo_badge": "DEMO / SIMULATION",
+    "safety_note": "No real customers contacted. No real revenue. No real conversion.",
+    "by_vertical": [
+      {
+        "vertical": "Nha khoa",
+        "angle": "Tự động đặt lịch hẹn + nhắc nhở bệnh nhân",
+        "opener": "Phòng khám của anh/chị hiện đang xử lý bao nhiêu cuộc gọi đặt lịch mỗi ngày?",
+        "demo_asset": "dental-chatbot-booking-demo"
+      },
+      {
+        "vertical": "Spa",
+        "angle": "Web đẹp + chatbot tư vấn dịch vụ tự động",
+        "opener": "Spa của anh/chị có bao nhiêu % khách hàng mới đến từ mạng xã hội hoặc Google?",
+        "demo_asset": "spa-web-chatbot-demo"
+      },
+      {
+        "vertical": "Homestay/Khách sạn Sầm Sơn",
+        "angle": "Đặt phòng online + chatbot tư vấn giá mùa du lịch",
+        "opener": "Mùa hè này anh/chị có đủ người trực điện thoại và Zalo cho khách hỏi phòng không?",
+        "demo_asset": "homestay-booking-chatbot-demo"
+      }
+    ]
+  },
+  "demo_asset_selector": {
+    "data_label": "DEMO_LOCAL_ONLY",
+    "demo_badge": "DEMO / SIMULATION",
+    "safety_note": "No real customers contacted. No real revenue. No real conversion.",
+    "recommended_demo": "clinic-patient-communication-demo",
+    "demo_label": "⚠️ DEMO — This is a simulation asset only. Present to leads as a capability preview, not a live product.",
+    "for_lead": "[DEMO] Phòng khám Đức Thịnh",
+    "assets_available": [
+      {
+        "id": "dental-chatbot-booking-demo",
+        "vertical": "Nha khoa",
+        "type": "chatbot"
+      },
+      {
+        "id": "spa-web-chatbot-demo",
+        "vertical": "Spa",
+        "type": "web+chatbot"
+      },
+      {
+        "id": "homestay-booking-chatbot-demo",
+        "vertical": "Homestay",
+        "type": "chatbot"
+      },
+      {
+        "id": "aesthetic-consultation-chatbot-demo",
+        "vertical": "Thẩm mỹ viện",
+        "type": "chatbot"
+      },
+      {
+        "id": "clinic-patient-communication-demo",
+        "vertical": "Phòng khám",
+        "type": "chatbot"
+      },
+      {
+        "id": "restaurant-menu-chatbot-demo",
+        "vertical": "Nhà hàng/Cafe",
+        "type": "chatbot"
+      },
+      {
+        "id": "education-enrollment-chatbot-demo",
+        "vertical": "Giáo dục",
+        "type": "chatbot"
+      },
+      {
+        "id": "realestate-lead-qualifier-chatbot-demo",
+        "vertical": "Bất động sản",
+        "type": "chatbot"
+      }
+    ]
+  },
+  "follow_up_staging": {
+    "data_label": "DEMO_LOCAL_ONLY",
+    "demo_badge": "DEMO / SIMULATION",
+    "safety_note": "No real customers contacted. No real revenue. No real conversion.",
+    "do_not_send_warning": "⚠️ DO NOT SEND — These follow-ups are staged drafts for boss review only. No message will be sent without explicit owner approval token.",
+    "staged_follow_ups": [
+      {
+        "id": "FU_001_DEMO",
+        "target_lead": "[DEMO] Homestay Sầm Sơn Biển Xanh",
+        "channel": "Zalo (STAGED — NOT SENT)",
+        "message_type": "post_demo_follow_up",
+        "draft_summary": "Cảm ơn cuộc trò chuyện hôm nay. Gửi kèm tài liệu Web + Chatbot AI phù hợp cho mùa hè Sầm Sơn.",
+        "status": "STAGED_AWAITING_OWNER_APPROVAL",
+        "demo_note": "⚠️ DEMO DRAFT"
+      },
+      {
+        "id": "FU_002_DEMO",
+        "target_lead": "[DEMO] Spa Ngọc Linh Beauty",
+        "channel": "Email (STAGED — NOT SENT)",
+        "message_type": "initial_consultation_invitation",
+        "draft_summary": "Kính mời anh/chị xem demo miễn phí hệ thống Web + Chatbot AI cho Spa tại Thanh Hóa.",
+        "status": "STAGED_AWAITING_OWNER_APPROVAL",
+        "demo_note": "⚠️ DEMO DRAFT"
+      }
+    ]
+  },
+  "approval_queue": {
+    "data_label": "DEMO_LOCAL_ONLY",
+    "demo_badge": "DEMO / SIMULATION",
+    "safety_note": "No real customers contacted. No real revenue. No real conversion.",
+    "pending_approvals": [
+      {
+        "id": "APQ_001_DEMO",
+        "type": "deposit_acceptance",
+        "description": "Accept 3M VND deposit from [DEMO] Phòng khám Đức Thịnh to confirm project start",
+        "urgency": "HIGH",
+        "blocked_by": "OWNER_TOKEN_REQUIRED"
+      },
+      {
+        "id": "APQ_002_DEMO",
+        "type": "proposal_send",
+        "description": "Send Web + Chatbot AI proposal to [DEMO] Homestay Sầm Sơn Biển Xanh after demo call",
+        "urgency": "MEDIUM",
+        "blocked_by": "OWNER_TOKEN_REQUIRED"
+      },
+      {
+        "id": "APQ_003_DEMO",
+        "type": "discount_authorization",
+        "description": "Authorize 10% early-bird discount for [DEMO] Nha khoa Sao Việt to close negotiation",
+        "urgency": "MEDIUM",
+        "blocked_by": "OWNER_TOKEN_REQUIRED"
+      }
+    ]
+  },
+  "pipeline_progress": {
+    "data_label": "DEMO_LOCAL_ONLY",
+    "demo_badge": "DEMO / SIMULATION",
+    "safety_note": "No real customers contacted. No real revenue. No real conversion.",
+    "total_leads": 50,
+    "demo_won_count": 3,
+    "target_close_count": 3,
+    "demo_progress_pct": 100,
+    "pipeline_by_stage": {
+      "Prospecting": 18,
+      "Contacted": 12,
+      "Demo Scheduled": 8,
+      "Proposal Sent": 7,
+      "Negotiating": 2,
+      "Won": 3
+    },
+    "revenue_confirmed_demo": "38.7M VND (DEMO)",
+    "demo_revenue_target": "38.7M VND (DEMO)",
+    "days_remaining": 7
+  },
+  "safety_lock_display": {
+    "data_label": "DEMO_LOCAL_ONLY",
+    "demo_badge": "DEMO / SIMULATION",
+    "safety_note": "No real customers contacted. No real revenue. No real conversion.",
+    "active_locks": [
+      {
+        "id": "LOCK_NO_REAL_MESSAGING",
+        "label": "🔒 No Real Customer Messaging",
+        "blocks": [
+          "WhatsApp send",
+          "Email send",
+          "Zalo message",
+          "SMS"
+        ]
+      },
+      {
+        "id": "LOCK_NO_CRM_UPDATE",
+        "label": "🔒 No CRM Update",
+        "blocks": [
+          "HubSpot write",
+          "Google Sheets API write",
+          "Airtable update"
+        ]
+      },
+      {
+        "id": "LOCK_NO_BROWSER_AUTOMATION",
+        "label": "🔒 No Browser Automation",
+        "blocks": [
+          "Playwright",
+          "Puppeteer",
+          "web scraping",
+          "form automation"
+        ]
+      },
+      {
+        "id": "LOCK_NO_SPEND",
+        "label": "🔒 No Spending",
+        "blocks": [
+          "Ad spend",
+          "API credits",
+          "subscription charges",
+          "domain purchases"
+        ]
+      },
+      {
+        "id": "LOCK_NO_DEPLOY",
+        "label": "🔒 No Deploy",
+        "blocks": [
+          "Vercel deploy",
+          "GitHub Pages publish",
+          "server push",
+          "CDN update"
+        ]
+      },
+      {
+        "id": "LOCK_NO_SECRETS",
+        "label": "🔒 No Secrets Read",
+        "blocks": [
+          ".env read",
+          "secrets manager access",
+          "API key extraction"
+        ]
+      },
+      {
+        "id": "LOCK_NO_PRODUCTION_MUTATION",
+        "label": "🔒 No Production Mutation",
+        "blocks": [
+          "Database write",
+          "live config change",
+          "production file edit"
+        ]
+      },
+      {
+        "id": "LOCK_DEMO_DATA_ONLY",
+        "label": "🔒 Demo Data Only",
+        "blocks": [
+          "Real contact claims",
+          "Real revenue claims",
+          "Real conversion claims"
+        ]
+      }
+    ],
+    "attestation": "All locks confirmed active. No real action has been taken. This is a local-only simulation."
+  },
+  "tomorrow_plan": {
+    "data_label": "DEMO_LOCAL_ONLY",
+    "demo_badge": "DEMO / SIMULATION",
+    "safety_note": "No real customers contacted. No real revenue. No real conversion.",
+    "priority_leads_tomorrow": [
+      {
+        "rank": 1,
+        "lead_name": "[DEMO] Nha khoa Sao Việt",
+        "action": "Finalize negotiation — last objection remaining"
+      },
+      {
+        "rank": 2,
+        "lead_name": "[DEMO] Homestay Sầm Sơn Biển Xanh",
+        "action": "Send proposal if demo went well today"
+      },
+      {
+        "rank": 3,
+        "lead_name": "[DEMO] Spa Ngọc Linh Beauty",
+        "action": "Book consultation call if initial outreach lands"
+      }
+    ],
+    "recommended_actions_tomorrow": [
+      "Check if deposit from Phòng khám Đức Thịnh is confirmed",
+      "Prepare onboarding brief for 2 Won-stage clients",
+      "Update pipeline scores based on today's call outcomes"
+    ]
+  },
+  "command_center_answers": {
+    "q1_what_to_do_today": "Follow up [DEMO] Phòng khám Đức Thịnh (proposal due), address pricing objection with [DEMO] Nha khoa Sao Việt, review 3 approval queue items before 10 AM.",
+    "q2_highest_priority_leads": "[DEMO] Phòng khám Đức Thịnh (score 9.1, Proposal Sent), [DEMO] Nha khoa Sao Việt (score 8.9, Negotiating), [DEMO] Homestay Sầm Sơn Biển Xanh (score 8.5, Demo Scheduled)",
+    "q3_why_priority": "Phòng khám is closest to close (proposal pending response). Nha khoa is in active negotiation — one objection remaining. Homestay has seasonal urgency (Sầm Sơn summer peak).",
+    "q4_sales_angle": "Phòng khám: nhắc tái khám tự động. Nha khoa: đặt lịch 24/7. Homestay: đặt phòng mùa cao điểm — chatbot xử lý 100 yêu cầu cùng lúc.",
+    "q5_demo_or_asset": "Use 'clinic-patient-communication-demo' for Phòng khám follow-up. Use 'dental-chatbot-booking-demo' for Nha khoa negotiation. All demos labeled ⚠️ DEMO.",
+    "q6_follow_up_ready": "2 staged follow-ups waiting: Homestay (post-demo) and Spa (initial invite). ⚠️ DO NOT SEND without owner approval.",
+    "q7_needs_approval": "3 items: deposit acceptance (Phòng khám), proposal send (Homestay), discount authorization (Nha khoa). All blocked on OWNER_TOKEN_REQUIRED.",
+    "q8_blocked_by_safety": "All outreach, CRM updates, deploys, spend, and secrets are hard-locked. 8 safety locks active. No real action taken.",
+    "q9_pipeline_progress": "3/3 DEMO clients closed (100% to goal). 2 at Won, 2 at Negotiating, 8 at Demo Scheduled. 7 days remaining. Revenue confirmed (DEMO): 38.7M VND.",
+    "q10_tomorrow": "Check deposit from Phòng khám. Prepare onboarding brief for 2 Won clients. Update pipeline scores after today's calls. Focus on Nha khoa close."
+  },
+  "generated_at": "2026-07-03"
+}

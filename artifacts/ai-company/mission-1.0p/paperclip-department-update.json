@@ -1,0 +1,12 @@
+{
+  "milestone": "1.0P",
+  "update_type": "revenue_command_center_widget_extension",
+  "capability": "revenue_command_center_daily_view",
+  "new_widgets_added": 10,
+  "widget_map_file": "configs/ai-company/revenue-command-center-widget-map.json",
+  "primary_payload_file": "reports/revenue-command-center/daily-command-center-payload.json",
+  "schema_file": "schemas/ai-company/revenue-command-center-payload.schema.json",
+  "integration_note": "Paperclip should load revenue-command-center-widget-map.json alongside paperclip-widget-map.json. All source files are local read-only reports.",
+  "safety_attestation": "No real data. No deploy. No secrets. Local only.",
+  "generated_at": "2026-07-03"
+}

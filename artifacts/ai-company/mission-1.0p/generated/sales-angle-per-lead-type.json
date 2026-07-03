@@ -1,0 +1,82 @@
+{
+  "artifact_id": "sales_angle_per_lead_type_1_0p",
+  "milestone": "1.0P",
+  "owning_department": "CMO",
+  "data_label": "DEMO_LOCAL_ONLY",
+  "description": "Recommended sales angle, message tone, and value proposition per lead vertical for Paperclip display",
+  "by_vertical": [
+    {
+      "vertical": "Nha khoa",
+      "priority_rank": 1,
+      "primary_angle": "Tự động đặt lịch hẹn + nhắc nhở bệnh nhân",
+      "value_prop": "Chatbot AI giúp phòng khám giảm 60% cuộc gọi thủ công, bệnh nhân đặt lịch 24/7",
+      "recommended_opener": "Phòng khám của anh/chị hiện đang xử lý bao nhiêu cuộc gọi đặt lịch mỗi ngày?",
+      "demo_asset": "dental-chatbot-booking-demo",
+      "objection_prep": "Chi phí quá cao → ROI 3 tháng rõ ràng, tiết kiệm 2 nhân sự lễ tân"
+    },
+    {
+      "vertical": "Spa",
+      "priority_rank": 2,
+      "primary_angle": "Web đẹp + chatbot tư vấn dịch vụ tự động",
+      "value_prop": "Khách hàng tự tìm hiểu dịch vụ và đặt chỗ mà không cần nhân viên trực 24/7",
+      "recommended_opener": "Spa của anh/chị có bao nhiêu % khách hàng mới đến từ mạng xã hội hoặc Google?",
+      "demo_asset": "spa-web-chatbot-demo",
+      "objection_prep": "Đã có Facebook → Web là nền tảng chuyển đổi, Facebook chỉ là quảng cáo"
+    },
+    {
+      "vertical": "Homestay/Khách sạn Sầm Sơn",
+      "priority_rank": 3,
+      "primary_angle": "Đặt phòng online + chatbot tư vấn giá mùa du lịch",
+      "value_prop": "Mùa hè Sầm Sơn — khách muốn đặt nhanh, chatbot AI xử lý 100 yêu cầu cùng lúc",
+      "recommended_opener": "Mùa hè này anh/chị có đủ người trực điện thoại và Zalo cho khách hỏi phòng không?",
+      "demo_asset": "homestay-booking-chatbot-demo",
+      "objection_prep": "Chỉ kinh doanh theo mùa → càng cần tối ưu mùa cao điểm, ROI rõ ngay tháng đầu"
+    },
+    {
+      "vertical": "Thẩm mỹ viện",
+      "priority_rank": 4,
+      "primary_angle": "Web uy tín + chatbot tư vấn liệu trình riêng tư",
+      "value_prop": "Khách ngại hỏi trực tiếp → chatbot AI tư vấn kín đáo, tăng tỷ lệ chuyển đổi",
+      "recommended_opener": "Khách có hay hỏi về giá và liệu trình qua tin nhắn không?",
+      "demo_asset": "aesthetic-consultation-chatbot-demo",
+      "objection_prep": "Dữ liệu khách hàng nhạy cảm → chatbot chỉ tư vấn, không lưu hồ sơ y tế"
+    },
+    {
+      "vertical": "Phòng khám",
+      "priority_rank": 5,
+      "primary_angle": "Tự động hóa giao tiếp bệnh nhân + nhắc tái khám",
+      "value_prop": "Giảm tải lễ tân, tăng tỷ lệ tái khám với nhắc nhở tự động qua chatbot AI",
+      "recommended_opener": "Phòng khám có bao nhiêu bệnh nhân quên tái khám mỗi tháng?",
+      "demo_asset": "clinic-patient-communication-demo",
+      "objection_prep": "Lo ngại an toàn thông tin → chatbot không lưu bệnh án, chỉ xử lý lịch hẹn"
+    },
+    {
+      "vertical": "Nhà hàng/Cafe",
+      "priority_rank": 6,
+      "primary_angle": "Menu số + chatbot đặt bàn và tư vấn món",
+      "value_prop": "Khách quét QR xem menu, đặt bàn và hỏi món qua chatbot AI — không cần nhân viên phục vụ thêm",
+      "recommended_opener": "Nhà hàng anh/chị có hay nhận đặt bàn qua Zalo/Facebook không?",
+      "demo_asset": "restaurant-menu-chatbot-demo",
+      "objection_prep": "Giá 12.9 triệu cao → chia nhỏ: Web 4.9 trước, chatbot thêm sau khi thấy hiệu quả"
+    },
+    {
+      "vertical": "Giáo dục/Trung tâm ngoại ngữ",
+      "priority_rank": 7,
+      "primary_angle": "Tư vấn tuyển sinh tự động + lịch học online",
+      "value_prop": "Chatbot AI trả lời 100 câu hỏi tuyển sinh cùng lúc, không bỏ lỡ học viên tiềm năng",
+      "recommended_opener": "Mùa tuyển sinh trung tâm có bị quá tải tư vấn không?",
+      "demo_asset": "education-enrollment-chatbot-demo",
+      "objection_prep": "Học viên quen gặp trực tiếp → chatbot chỉ xử lý bước đầu, tư vấn viên chốt sau"
+    },
+    {
+      "vertical": "Bất động sản/Cho thuê",
+      "priority_rank": 8,
+      "primary_angle": "Website dự án + chatbot tư vấn và lọc khách hàng",
+      "value_prop": "Chatbot AI sàng lọc khách hàng nghiêm túc 24/7, sale chỉ tiếp khách đã quan tâm thật sự",
+      "recommended_opener": "Môi giới của anh/chị có bị mất thời gian với khách chưa sẵn sàng mua không?",
+      "demo_asset": "realestate-lead-qualifier-chatbot-demo",
+      "objection_prep": "Chu kỳ bán lâu → chatbot nuôi dưỡng lead trong thời gian chờ quyết định"
+    }
+  ],
+  "generated_at": "2026-07-03"
+}

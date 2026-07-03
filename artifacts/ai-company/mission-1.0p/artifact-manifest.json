@@ -1,0 +1,50 @@
+{
+  "mission_id": "mission_1_0p_revenue_command_center",
+  "milestone": "1.0P",
+  "fixed_artifact_list_used": false,
+  "departments_selected_artifacts": true,
+  "total_artifacts": 8,
+  "artifacts": [
+    {
+      "artifact_file": "artifacts/ai-company/mission-1.0p/generated/command-center-preview.md",
+      "owning_department": "CEO",
+      "rationale": "Human-readable daily summary of what Paperclip will show today — answers all 10 questions in plain language for boss review before approving."
+    },
+    {
+      "artifact_file": "artifacts/ai-company/mission-1.0p/generated/approval-queue-model.json",
+      "owning_department": "COO",
+      "rationale": "Structured model of all items requiring owner decision, prioritized by urgency. Powers the owner_action_required widget in Paperclip."
+    },
+    {
+      "artifact_file": "artifacts/ai-company/mission-1.0p/generated/next-best-action-model.json",
+      "owning_department": "Sales_AI",
+      "rationale": "Algorithm-style model that selects the single best lead to contact today, with reason, sales angle reference, and demo recommendation."
+    },
+    {
+      "artifact_file": "artifacts/ai-company/mission-1.0p/generated/sales-angle-per-lead-type.json",
+      "owning_department": "CMO",
+      "rationale": "Maps each of the 8 lead verticals (Spa, Nha khoa, etc.) to the recommended sales angle, message tone, and value proposition for use in Paperclip display."
+    },
+    {
+      "artifact_file": "artifacts/ai-company/mission-1.0p/generated/daily-command-center-payload.json",
+      "owning_department": "CTO",
+      "rationale": "Full Paperclip-compatible JSON payload answering all 10 command-center questions. This is the primary output consumed by Paperclip widgets."
+    },
+    {
+      "artifact_file": "artifacts/ai-company/mission-1.0p/generated/revenue-forecast-summary.json",
+      "owning_department": "CFO",
+      "rationale": "Pipeline financial model: projected revenue, deposit-ready leads, % progress to 3 closed clients, expected close timeline."
+    },
+    {
+      "artifact_file": "artifacts/ai-company/mission-1.0p/generated/handoff-readiness-signals.json",
+      "owning_department": "Customer_Success_AI",
+      "rationale": "Identifies which leads in Won or Negotiating stage are ready for handoff checklist activation. Prevents premature commitment without safety review."
+    },
+    {
+      "artifact_file": "artifacts/ai-company/mission-1.0p/generated/safety-lock-display.json",
+      "owning_department": "Research_AI",
+      "rationale": "Enumerates all active safety locks, their rationale, and which actions they block. Displayed in Paperclip safety panel so boss understands what AI will never do."
+    }
+  ],
+  "generated_at": "2026-07-03"
+}
