@@ -1,0 +1,58 @@
+{
+  "artifact_id": "handoff_readiness_signals_1_0p",
+  "milestone": "1.0P",
+  "owning_department": "Customer_Success_AI",
+  "data_label": "DEMO_LOCAL_ONLY",
+  "demo_warning": "⚠️ DEMO DATA — These readiness signals are based on simulated pipeline data from 1.0O.",
+  "description": "Leads in Won or Negotiating stage that are ready for handoff checklist activation",
+  "ready_for_handoff": [
+    {
+      "lead_id": "L_WON_001_DEMO",
+      "lead_name": "[DEMO] Phòng khám Sức Khỏe Vàng",
+      "vertical": "Phòng khám",
+      "pipeline_stage": "Won",
+      "handoff_checklist_status": "NOT_STARTED",
+      "readiness_score": 9.5,
+      "signals": [
+        "Verbal commitment confirmed",
+        "ROI proposal reviewed and accepted",
+        "Contact point identified: Dr. Minh Tuấn"
+      ],
+      "recommended_action": "Activate handoff checklist — schedule onboarding kickoff call",
+      "owner_approval_needed": true
+    },
+    {
+      "lead_id": "L_WON_002_DEMO",
+      "lead_name": "[DEMO] Nha khoa Ánh Dương",
+      "vertical": "Nha khoa",
+      "pipeline_stage": "Won",
+      "handoff_checklist_status": "NOT_STARTED",
+      "readiness_score": 9.2,
+      "signals": [
+        "Proposal signed (simulated)",
+        "Chatbot requirements discussed",
+        "Website content ready to collect"
+      ],
+      "recommended_action": "Activate handoff checklist — send domain and content collection form",
+      "owner_approval_needed": true
+    },
+    {
+      "lead_id": "L_NEG_001_DEMO",
+      "lead_name": "[DEMO] Phòng khám Đức Thịnh",
+      "vertical": "Phòng khám",
+      "pipeline_stage": "Negotiating",
+      "handoff_checklist_status": "ON_HOLD",
+      "readiness_score": 7.8,
+      "signals": [
+        "Price negotiation in progress",
+        "Decision maker engaged",
+        "Follow-up scheduled"
+      ],
+      "recommended_action": "Prepare handoff checklist in draft — activate only after close",
+      "owner_approval_needed": false
+    }
+  ],
+  "total_ready": 2,
+  "total_on_hold": 1,
+  "generated_at": "2026-07-03"
+}

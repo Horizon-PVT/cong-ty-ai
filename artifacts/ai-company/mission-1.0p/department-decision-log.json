@@ -1,0 +1,72 @@
+{
+  "milestone": "1.0P",
+  "logged_at": "2026-07-03",
+  "departments": [
+    {
+      "department": "CEO",
+      "artifacts_selected": [
+        "command-center-preview.md"
+      ],
+      "rationale": "Human-readable daily summary of what Paperclip will show today — answers all 10 questions in plain language for boss review before approving."
+    },
+    {
+      "department": "COO",
+      "artifacts_selected": [
+        "approval-queue-model.json"
+      ],
+      "rationale": "Structured model of all items requiring owner decision, prioritized by urgency. Powers the owner_action_required widget in Paperclip."
+    },
+    {
+      "department": "Sales_AI",
+      "artifacts_selected": [
+        "next-best-action-model.json"
+      ],
+      "rationale": "Algorithm-style model that selects the single best lead to contact today, with reason, sales angle reference, and demo recommendation."
+    },
+    {
+      "department": "CMO",
+      "artifacts_selected": [
+        "sales-angle-per-lead-type.json"
+      ],
+      "rationale": "Maps each of the 8 lead verticals (Spa, Nha khoa, etc.) to the recommended sales angle, message tone, and value proposition for use in Paperclip display."
+    },
+    {
+      "department": "CTO",
+      "artifacts_selected": [
+        "daily-command-center-payload.json"
+      ],
+      "rationale": "Full Paperclip-compatible JSON payload answering all 10 command-center questions. This is the primary output consumed by Paperclip widgets."
+    },
+    {
+      "department": "CFO",
+      "artifacts_selected": [
+        "revenue-forecast-summary.json"
+      ],
+      "rationale": "Pipeline financial model: projected revenue, deposit-ready leads, % progress to 3 closed clients, expected close timeline."
+    },
+    {
+      "department": "Customer_Success_AI",
+      "artifacts_selected": [
+        "handoff-readiness-signals.json"
+      ],
+      "rationale": "Identifies which leads in Won or Negotiating stage are ready for handoff checklist activation. Prevents premature commitment without safety review."
+    },
+    {
+      "department": "Research_AI",
+      "artifacts_selected": [
+        "safety-lock-display.json"
+      ],
+      "rationale": "Enumerates all active safety locks, their rationale, and which actions they block. Displayed in Paperclip safety panel so boss understands what AI will never do."
+    },
+    {
+      "department": "QA",
+      "artifacts_selected": [],
+      "rationale": "QA blocks no artifacts but reviews all outputs for clarity, demo-labeling compliance, and absence of misleading claims."
+    },
+    {
+      "department": "CLO_Hermes",
+      "artifacts_selected": [],
+      "rationale": "Records learning lesson from this mission for future iterations."
+    }
+  ]
+}

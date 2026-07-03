@@ -1,0 +1,50 @@
+{
+  "mission_id": "mission_1_0p_revenue_command_center",
+  "milestone": "1.0P",
+  "title": "Paperclip Revenue Command Center",
+  "owner_goal": "Tạo mọi thứ cần thiết để Paperclip hiển thị cho Boss một Revenue Command Center hằng ngày, giúp Alex Minh AI biết hôm nay cần xử lý lead nào, dùng góc bán nào, dùng demo nào, follow-up gì, việc nào cần duyệt, và pipeline có đang tiến gần mục tiêu chốt 3 khách Web + Chatbot AI trong 14 ngày hay không.",
+  "business_context": {
+    "seller_brand": "Alex Minh AI",
+    "target_market": "SME Thanh Hóa",
+    "main_offer": "Web + Chatbot AI",
+    "price_anchor": "12.9 triệu",
+    "target_close_count": 3,
+    "timeframe_days": 14,
+    "primary_ui": "Paperclip"
+  },
+  "source_milestones": {
+    "1.0M": "autonomous revenue sales assets: playbook, demo guide, objection handling, ROI proposals",
+    "1.0N": "lead discovery, scoring, qualification, lead board (50 leads)",
+    "1.0O": "lead-to-sales pipeline, consultation scripts, deposit/ROI framework, handoff checklist"
+  },
+  "command_center_questions": [
+    "What should Boss do today?",
+    "Which leads are highest priority?",
+    "Why are those leads priority?",
+    "Which sales angle should be used?",
+    "Which demo or asset should be used?",
+    "What follow-up is prepared but not sent?",
+    "What needs owner approval?",
+    "What is blocked by safety locks?",
+    "How close is the pipeline to 3 closed clients?",
+    "What should happen tomorrow?"
+  ],
+  "ui_scope": {
+    "primary_ui": "Paperclip",
+    "standalone_dashboard_allowed": false,
+    "production_frontend_modification_allowed": false,
+    "local_payloads_allowed": true,
+    "read_adapter_extension_allowed": true,
+    "local_preview_artifacts_allowed": true
+  },
+  "department_autonomy_required": true,
+  "departments_must_select_artifacts": true,
+  "fixed_list_allowed": false,
+  "simulation_mode": {
+    "local_only": true,
+    "no_contact_policy": true,
+    "no_crm_integration": true,
+    "demo_data_must_be_labeled": true,
+    "no_real_revenue_claims": true
+  }
+}

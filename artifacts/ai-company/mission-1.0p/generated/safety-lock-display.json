@@ -1,0 +1,95 @@
+{
+  "artifact_id": "safety_lock_display_1_0p",
+  "milestone": "1.0P",
+  "owning_department": "Research_AI",
+  "data_label": "DEMO_LOCAL_ONLY",
+  "description": "All active safety locks for display in Paperclip safety panel",
+  "active_locks": [
+    {
+      "lock_id": "LOCK_NO_REAL_MESSAGING",
+      "label": "🔒 No Real Customer Messaging",
+      "rationale": "AI cannot send messages to real leads without explicit owner token and manual approval",
+      "blocks": [
+        "WhatsApp send",
+        "Email send",
+        "Zalo message",
+        "SMS"
+      ]
+    },
+    {
+      "lock_id": "LOCK_NO_CRM_UPDATE",
+      "label": "🔒 No CRM Update",
+      "rationale": "Pipeline data stays local. No CRM write operation is permitted without owner decision.",
+      "blocks": [
+        "HubSpot write",
+        "Google Sheets API write",
+        "Airtable update"
+      ]
+    },
+    {
+      "lock_id": "LOCK_NO_BROWSER_AUTOMATION",
+      "label": "🔒 No Browser Automation",
+      "rationale": "AI cannot open browsers, scrape competitor sites, or automate any web interaction.",
+      "blocks": [
+        "Playwright",
+        "Puppeteer",
+        "web scraping",
+        "form automation"
+      ]
+    },
+    {
+      "lock_id": "LOCK_NO_SPEND",
+      "label": "🔒 No Spending",
+      "rationale": "No paid tool, API credit, or advertising spend is permitted without owner authorization.",
+      "blocks": [
+        "Ad spend",
+        "API credits",
+        "subscription charges",
+        "domain purchases"
+      ]
+    },
+    {
+      "lock_id": "LOCK_NO_DEPLOY",
+      "label": "🔒 No Deploy",
+      "rationale": "No code, config, or content is deployed to any production environment.",
+      "blocks": [
+        "Vercel deploy",
+        "GitHub Pages publish",
+        "server push",
+        "CDN update"
+      ]
+    },
+    {
+      "lock_id": "LOCK_NO_SECRETS",
+      "label": "🔒 No Secrets Read",
+      "rationale": "AI does not read environment variables, API keys, or credential files.",
+      "blocks": [
+        ".env read",
+        "secrets manager access",
+        "API key extraction"
+      ]
+    },
+    {
+      "lock_id": "LOCK_NO_PRODUCTION_MUTATION",
+      "label": "🔒 No Production Mutation",
+      "rationale": "No data in any production database or live service is modified.",
+      "blocks": [
+        "Database write",
+        "live config change",
+        "production file edit"
+      ]
+    },
+    {
+      "lock_id": "LOCK_DEMO_DATA_ONLY",
+      "label": "🔒 Demo Data Only",
+      "rationale": "All lead data, pipeline data, and sales results shown are labeled DEMO_LOCAL_ONLY and must not be treated as real.",
+      "blocks": [
+        "Real contact claims",
+        "Real revenue claims",
+        "Real conversion claims"
+      ]
+    }
+  ],
+  "safety_attestation": "All locks confirmed active. No real action has been taken. This is a local-only simulation.",
+  "generated_at": "2026-07-03"
+}

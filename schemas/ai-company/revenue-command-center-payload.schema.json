@@ -1,0 +1,134 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "schema_id": "revenue_command_center_payload_schema_1_0p",
+  "title": "Revenue Command Center Payload Schema",
+  "description": "Schema for the daily Paperclip Revenue Command Center payload answering 10 boss questions",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "generated_by",
+    "milestone",
+    "data_label",
+    "demo_warning",
+    "daily_brief",
+    "lead_priority_queue",
+    "next_best_actions",
+    "sales_angle_display",
+    "demo_asset_selector",
+    "follow_up_staging",
+    "approval_queue",
+    "pipeline_progress",
+    "safety_lock_display",
+    "tomorrow_plan",
+    "command_center_answers"
+  ],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "generated_by": { "type": "string" },
+    "milestone": { "type": "string" },
+    "data_label": {
+      "type": "string",
+      "enum": ["DEMO_LOCAL_ONLY", "APPROVED_REAL"],
+      "description": "Must be DEMO_LOCAL_ONLY for all simulation runs"
+    },
+    "demo_warning": { "type": "string" },
+    "daily_brief": {
+      "type": "object",
+      "required": ["date_label", "top_priority_action", "pipeline_status"],
+      "properties": {
+        "date_label": { "type": "string" },
+        "top_priority_action": { "type": "string" },
+        "pipeline_status": { "type": "string" },
+        "boss_note": { "type": "string" }
+      }
+    },
+    "lead_priority_queue": {
+      "type": "object",
+      "required": ["leads", "total_active"],
+      "properties": {
+        "leads": { "type": "array", "minItems": 1 },
+        "total_active": { "type": "integer" }
+      }
+    },
+    "next_best_actions": {
+      "type": "object",
+      "required": ["actions"],
+      "properties": {
+        "actions": { "type": "array", "minItems": 1 }
+      }
+    },
+    "sales_angle_display": {
+      "type": "object",
+      "required": ["by_vertical"],
+      "properties": {
+        "by_vertical": { "type": "array", "minItems": 1 }
+      }
+    },
+    "demo_asset_selector": {
+      "type": "object",
+      "required": ["recommended_demo", "demo_label"],
+      "properties": {
+        "recommended_demo": { "type": "string" },
+        "demo_label": { "type": "string" },
+        "assets_available": { "type": "array" }
+      }
+    },
+    "follow_up_staging": {
+      "type": "object",
+      "required": ["staged_follow_ups", "do_not_send_warning"],
+      "properties": {
+        "staged_follow_ups": { "type": "array" },
+        "do_not_send_warning": { "type": "string" }
+      }
+    },
+    "approval_queue": {
+      "type": "object",
+      "required": ["pending_approvals"],
+      "properties": {
+        "pending_approvals": { "type": "array" }
+      }
+    },
+    "pipeline_progress": {
+      "type": "object",
+      "required": ["total_leads", "won_count", "target_close_count", "progress_pct"],
+      "properties": {
+        "total_leads": { "type": "integer", "minimum": 1 },
+        "won_count": { "type": "integer", "minimum": 0 },
+        "target_close_count": { "type": "integer" },
+        "progress_pct": { "type": "number", "minimum": 0, "maximum": 100 },
+        "pipeline_by_stage": { "type": "object" }
+      }
+    },
+    "safety_lock_display": {
+      "type": "object",
+      "required": ["active_locks"],
+      "properties": {
+        "active_locks": { "type": "array", "minItems": 1 }
+      }
+    },
+    "tomorrow_plan": {
+      "type": "object",
+      "required": ["priority_leads_tomorrow", "recommended_actions_tomorrow"],
+      "properties": {
+        "priority_leads_tomorrow": { "type": "array" },
+        "recommended_actions_tomorrow": { "type": "array" }
+      }
+    },
+    "command_center_answers": {
+      "type": "object",
+      "description": "Direct answers to the 10 command center questions",
+      "required": [
+        "q1_what_to_do_today",
+        "q2_highest_priority_leads",
+        "q3_why_priority",
+        "q4_sales_angle",
+        "q5_demo_or_asset",
+        "q6_follow_up_ready",
+        "q7_needs_approval",
+        "q8_blocked_by_safety",
+        "q9_pipeline_progress",
+        "q10_tomorrow"
+      ]
+    }
+  }
+}

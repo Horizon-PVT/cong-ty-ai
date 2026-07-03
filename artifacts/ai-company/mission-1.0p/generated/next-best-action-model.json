@@ -1,0 +1,77 @@
+{
+  "artifact_id": "next_best_action_model_1_0p",
+  "milestone": "1.0P",
+  "owning_department": "Sales_AI",
+  "data_label": "DEMO_LOCAL_ONLY",
+  "demo_warning": "⚠️ DEMO DATA — Do not contact any lead listed here. This is a simulation model only.",
+  "description": "Prioritized next-best-action for each of the top leads in the pipeline today",
+  "today_top_action": {
+    "action_type": "consultation_call",
+    "target_lead": "[DEMO] Phòng khám Đức Thịnh — Nguyễn Bá Đức",
+    "vertical": "Phòng khám",
+    "reason": "Highest composite score (9.1), in Proposal Sent stage — follow-up due today",
+    "recommended_approach": "Reference ROI proposal sent on Day 7, offer 1-month trial period",
+    "demo_to_use": "clinic-patient-communication-demo",
+    "sales_angle_summary": "Tự động hóa nhắc tái khám, giảm tải lễ tân",
+    "time_recommendation": "9:00–11:00 AM (weekday morning — highest answer rate for clinic owners)"
+  },
+  "priority_queue": [
+    {
+      "rank": 1,
+      "lead_id": "L_001_DEMO",
+      "lead_name": "[DEMO] Phòng khám Đức Thịnh",
+      "vertical": "Phòng khám",
+      "stage": "Proposal Sent",
+      "composite_score": 9.1,
+      "action": "Follow up on proposal — offer free onboarding month",
+      "demo_asset": "clinic-patient-communication-demo",
+      "urgency": "HIGH"
+    },
+    {
+      "rank": 2,
+      "lead_id": "L_002_DEMO",
+      "lead_name": "[DEMO] Nha khoa Sao Việt",
+      "vertical": "Nha khoa",
+      "stage": "Negotiating",
+      "composite_score": 8.9,
+      "action": "Address pricing objection — present 3-month ROI breakdown",
+      "demo_asset": "dental-chatbot-booking-demo",
+      "urgency": "HIGH"
+    },
+    {
+      "rank": 3,
+      "lead_id": "L_003_DEMO",
+      "lead_name": "[DEMO] Homestay Sầm Sơn Biển Xanh",
+      "vertical": "Homestay/Khách sạn Sầm Sơn",
+      "stage": "Demo Scheduled",
+      "composite_score": 8.5,
+      "action": "Prepare seasonal urgency pitch for demo call",
+      "demo_asset": "homestay-booking-chatbot-demo",
+      "urgency": "MEDIUM"
+    },
+    {
+      "rank": 4,
+      "lead_id": "L_004_DEMO",
+      "lead_name": "[DEMO] Spa Ngọc Linh Beauty",
+      "vertical": "Spa",
+      "stage": "Contacted",
+      "composite_score": 8.2,
+      "action": "Send consultation script — book demo appointment",
+      "demo_asset": "spa-web-chatbot-demo",
+      "urgency": "MEDIUM"
+    },
+    {
+      "rank": 5,
+      "lead_id": "L_005_DEMO",
+      "lead_name": "[DEMO] Thẩm mỹ viện Kim Ánh",
+      "vertical": "Thẩm mỹ viện",
+      "stage": "Prospecting",
+      "composite_score": 7.9,
+      "action": "Initial outreach — reference competitor web presence",
+      "demo_asset": "aesthetic-consultation-chatbot-demo",
+      "urgency": "LOW"
+    }
+  ],
+  "model_note": "Rankings based on composite score (lead quality × stage readiness × urgency × vertical fit). Re-rank daily as pipeline moves.",
+  "generated_at": "2026-07-03"
+}

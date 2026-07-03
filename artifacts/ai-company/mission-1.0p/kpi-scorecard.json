@@ -1,0 +1,19 @@
+{
+  "milestone": "1.0P",
+  "mission_title": "Revenue Command Center",
+  "scored_at": "2026-07-03",
+  "kpis": {
+    "command_center_questions_answered": 10,
+    "total_deliverables": 8,
+    "departments_participated": 10,
+    "fixed_artifact_list_used": false,
+    "demo_labeling_compliant": true,
+    "safety_locks_enumerated": 8,
+    "pending_approvals_in_queue": 3,
+    "pipeline_leads_total": 50,
+    "pipeline_won_count": 3,
+    "pipeline_target": 3,
+    "pipeline_progress_pct": 100
+  },
+  "verdict": "REVENUE_COMMAND_CENTER_KPI_PASS"
+}

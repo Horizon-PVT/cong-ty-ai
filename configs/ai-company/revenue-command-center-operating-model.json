@@ -1,0 +1,91 @@
+{
+  "operating_model_id": "revenue_command_center_operating_model_1_0p",
+  "milestone": "1.0P",
+  "stages": [
+    {
+      "stage": "owner_goal_intake",
+      "actor": "System",
+      "output": "structured owner goal with 10 command-center questions"
+    },
+    {
+      "stage": "ceo_mission_interpretation",
+      "actor": "CEO",
+      "output": "command center strategy brief, daily operating priority"
+    },
+    {
+      "stage": "department_briefing",
+      "actor": "COO",
+      "output": "department briefing packet with source milestone context"
+    },
+    {
+      "stage": "department_artifact_proposals",
+      "actor": "All departments",
+      "output": "each department proposes what artifacts they will create"
+    },
+    {
+      "stage": "cross_department_negotiation",
+      "actor": "COO + CEO",
+      "output": "resolved artifact list with no duplication, no fixed list"
+    },
+    {
+      "stage": "artifact_manifest_creation",
+      "actor": "COO",
+      "output": "artifact-manifest.json with owning dept and rationale for each"
+    },
+    {
+      "stage": "worker_assignment",
+      "actor": "COO",
+      "output": "worker-to-artifact assignment map"
+    },
+    {
+      "stage": "artifact_generation",
+      "actor": "All departments",
+      "output": "all self-selected deliverables: payloads, models, schemas, previews"
+    },
+    {
+      "stage": "qa_review",
+      "actor": "QA",
+      "output": "qa-review-report.md with completion verdict, safety checks"
+    },
+    {
+      "stage": "gap_analysis",
+      "actor": "QA + Research_AI",
+      "output": "gap-analysis.json identifying missing or weak artifacts"
+    },
+    {
+      "stage": "gap_closure",
+      "actor": "Assigned departments",
+      "output": "patched or supplemented artifacts for all critical gaps"
+    },
+    {
+      "stage": "final_packaging",
+      "actor": "COO",
+      "output": "final-package-index.md summarizing all deliverables"
+    },
+    {
+      "stage": "kpi_scoring",
+      "actor": "CFO",
+      "output": "kpi-scorecard.json with command center readiness score"
+    },
+    {
+      "stage": "learning_update",
+      "actor": "CLO_Hermes",
+      "output": "lesson appended to memory/ai-company/mission-lessons.jsonl"
+    },
+    {
+      "stage": "paperclip_update",
+      "actor": "CTO",
+      "output": "paperclip-department-update.json for Paperclip widget integration"
+    },
+    {
+      "stage": "auto_verification",
+      "actor": "System",
+      "output": "auto-loop PASS: 2 consecutive stable runs"
+    },
+    {
+      "stage": "premerge_simulation",
+      "actor": "System",
+      "output": "premerge simulation PASS: historical + current verifiers all pass"
+    }
+  ]
+}

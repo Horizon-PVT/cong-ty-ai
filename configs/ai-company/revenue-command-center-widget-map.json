@@ -1,0 +1,117 @@
+{
+  "widget_map_id": "revenue_command_center_widget_map_1_0p",
+  "milestone": "1.0P",
+  "description": "Paperclip widget map for Revenue Command Center daily view",
+  "widgets": [
+    {
+      "widget_id": "revenue_command_center_daily_brief",
+      "source_file": "reports/revenue-command-center/daily-command-center-payload.json",
+      "source_json_path": "$.daily_brief",
+      "required_fields": ["date_label", "top_priority_action", "pipeline_status"],
+      "optional_fields": ["boss_note"],
+      "refresh_mode": "on_demand",
+      "read_only": true,
+      "owner_action_required": false,
+      "fallback_empty_state": "No daily brief available. Run command center mission."
+    },
+    {
+      "widget_id": "revenue_lead_priority_queue",
+      "source_file": "reports/revenue-command-center/daily-command-center-payload.json",
+      "source_json_path": "$.lead_priority_queue",
+      "required_fields": ["leads", "total_active"],
+      "optional_fields": [],
+      "refresh_mode": "on_demand",
+      "read_only": true,
+      "owner_action_required": false,
+      "fallback_empty_state": "No leads in priority queue."
+    },
+    {
+      "widget_id": "revenue_next_best_action",
+      "source_file": "reports/revenue-command-center/daily-command-center-payload.json",
+      "source_json_path": "$.next_best_actions",
+      "required_fields": ["actions"],
+      "optional_fields": [],
+      "refresh_mode": "on_demand",
+      "read_only": true,
+      "owner_action_required": false,
+      "fallback_empty_state": "No next-best actions generated."
+    },
+    {
+      "widget_id": "revenue_sales_angle_display",
+      "source_file": "reports/revenue-command-center/daily-command-center-payload.json",
+      "source_json_path": "$.sales_angle_display",
+      "required_fields": ["by_vertical"],
+      "optional_fields": [],
+      "refresh_mode": "on_demand",
+      "read_only": true,
+      "owner_action_required": false,
+      "fallback_empty_state": "No sales angles mapped."
+    },
+    {
+      "widget_id": "revenue_demo_asset_selector",
+      "source_file": "reports/revenue-command-center/daily-command-center-payload.json",
+      "source_json_path": "$.demo_asset_selector",
+      "required_fields": ["recommended_demo", "demo_label"],
+      "optional_fields": [],
+      "refresh_mode": "on_demand",
+      "read_only": true,
+      "owner_action_required": false,
+      "fallback_empty_state": "No demo asset recommended."
+    },
+    {
+      "widget_id": "revenue_follow_up_staging",
+      "source_file": "reports/revenue-command-center/daily-command-center-payload.json",
+      "source_json_path": "$.follow_up_staging",
+      "required_fields": ["staged_follow_ups", "do_not_send_warning"],
+      "optional_fields": [],
+      "refresh_mode": "on_demand",
+      "read_only": true,
+      "owner_action_required": false,
+      "fallback_empty_state": "No follow-ups staged."
+    },
+    {
+      "widget_id": "revenue_approval_queue",
+      "source_file": "reports/revenue-command-center/daily-command-center-payload.json",
+      "source_json_path": "$.approval_queue",
+      "required_fields": ["pending_approvals"],
+      "optional_fields": [],
+      "refresh_mode": "realtime",
+      "read_only": false,
+      "owner_action_required": true,
+      "fallback_empty_state": "No pending approvals."
+    },
+    {
+      "widget_id": "revenue_pipeline_progress",
+      "source_file": "reports/revenue-command-center/daily-command-center-payload.json",
+      "source_json_path": "$.pipeline_progress",
+      "required_fields": ["total_leads", "won_count", "target_close_count", "progress_pct"],
+      "optional_fields": [],
+      "refresh_mode": "on_demand",
+      "read_only": true,
+      "owner_action_required": false,
+      "fallback_empty_state": "Pipeline data unavailable."
+    },
+    {
+      "widget_id": "revenue_safety_lock_display",
+      "source_file": "reports/revenue-command-center/daily-command-center-payload.json",
+      "source_json_path": "$.safety_lock_display",
+      "required_fields": ["active_locks"],
+      "optional_fields": [],
+      "refresh_mode": "realtime",
+      "read_only": true,
+      "owner_action_required": false,
+      "fallback_empty_state": "Safety locks inactive."
+    },
+    {
+      "widget_id": "revenue_tomorrow_plan",
+      "source_file": "reports/revenue-command-center/daily-command-center-payload.json",
+      "source_json_path": "$.tomorrow_plan",
+      "required_fields": ["priority_leads_tomorrow", "recommended_actions_tomorrow"],
+      "optional_fields": [],
+      "refresh_mode": "on_demand",
+      "read_only": true,
+      "owner_action_required": false,
+      "fallback_empty_state": "No tomorrow plan generated."
+    }
+  ]
+}

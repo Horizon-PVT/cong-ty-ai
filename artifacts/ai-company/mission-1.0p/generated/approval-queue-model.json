@@ -1,0 +1,42 @@
+{
+  "artifact_id": "approval_queue_model_1_0p",
+  "milestone": "1.0P",
+  "owning_department": "COO",
+  "data_label": "DEMO_LOCAL_ONLY",
+  "demo_warning": "⚠️ DEMO DATA — No real action is taken without owner token. These are simulation approvals only.",
+  "pending_approvals": [
+    {
+      "approval_id": "APQ_001_DEMO",
+      "item_type": "deposit_acceptance",
+      "description": "Accept 3M VND deposit from [DEMO] Phòng khám Đức Thịnh to confirm project start",
+      "urgency": "HIGH",
+      "risk_level": "LOW",
+      "blocked_by": "OWNER_TOKEN_REQUIRED",
+      "recommended_action": "Review ROI proposal in 1.0M assets, then approve deposit acceptance",
+      "demo_note": "⚠️ DEMO — No real deposit exists. Owner approval would trigger real outreach."
+    },
+    {
+      "approval_id": "APQ_002_DEMO",
+      "item_type": "proposal_send",
+      "description": "Send Web + Chatbot AI proposal to [DEMO] Homestay Sầm Sơn Biển Xanh after demo call",
+      "urgency": "MEDIUM",
+      "risk_level": "LOW",
+      "blocked_by": "OWNER_TOKEN_REQUIRED",
+      "recommended_action": "Review consultation script draft, approve sending after demo completion",
+      "demo_note": "⚠️ DEMO — No real message will be sent. This is a staged follow-up waiting for owner signal."
+    },
+    {
+      "approval_id": "APQ_003_DEMO",
+      "item_type": "discount_authorization",
+      "description": "Authorize 10% early-bird discount for [DEMO] Nha khoa Sao Việt to close negotiation",
+      "urgency": "MEDIUM",
+      "risk_level": "MEDIUM",
+      "blocked_by": "OWNER_TOKEN_REQUIRED",
+      "recommended_action": "Review CFO deposit readiness report, approve only if pipeline target at risk",
+      "demo_note": "⚠️ DEMO — No real discount is being offered. Simulation of negotiation decision."
+    }
+  ],
+  "total_pending": 3,
+  "queue_freshness": "2026-07-03",
+  "generated_at": "2026-07-03"
+}
