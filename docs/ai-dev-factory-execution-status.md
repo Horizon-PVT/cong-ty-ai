@@ -218,3 +218,16 @@ Proof execution records:
 - Implements verification, auto-loop, and premerge simulation scripts for Milestone 1.0M.
 <!-- execution_records_start -->
 <!-- execution_records_end -->
+
+## Milestone 1.0N Proof Status
+
+Status: In Progress — Pending owner merge token after auto-verification.
+Proof execution records:
+- Milestone 1.0N implements the Autonomous Lead Discovery & Qualification Mission, proving that the system can discover, score, and prioritize 50 SME leads in Thanh Hoa within 7 days using safe manual-research workflows and demo lead datasets.
+- Configures lead-discovery policy (9 departments), operating model (17 stages), and structured autonomous mission input with 8 target lead verticals.
+- Implements a lead-discovery runner where 9 departments (CEO, COO, CMO, Sales_AI, Research_AI, CTO, CFO, QA, CLO) negotiate and self-select an artifact manifest (8 deliverables) based on high-level owner goal.
+- Implements verification, auto-loop, and premerge simulation scripts for Milestone 1.0N.
+- Hard locks enforced: no real customer messaging, no CRM update, no browser automation, no scraping credentials.
+<!-- execution_records_start -->
+<!-- execution_records_end -->
+

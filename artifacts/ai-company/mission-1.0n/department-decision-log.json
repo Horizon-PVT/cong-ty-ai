@@ -1,0 +1,89 @@
+{
+  "log_id": "decision_log_1_0n",
+  "milestone": "1.0N",
+  "created_at": "2026-07-02",
+  "decisions": [
+    {
+      "department": "CEO",
+      "participated": true,
+      "artifacts_proposed": [],
+      "artifacts_owned": []
+    },
+    {
+      "department": "COO",
+      "participated": true,
+      "artifacts_proposed": [
+        "7-day-lead-generation-plan.md"
+      ],
+      "artifacts_owned": [
+        "7-day-lead-generation-plan.md"
+      ]
+    },
+    {
+      "department": "CMO",
+      "participated": true,
+      "artifacts_proposed": [
+        "outreach-preparation-guide.md"
+      ],
+      "artifacts_owned": [
+        "outreach-preparation-guide.md"
+      ]
+    },
+    {
+      "department": "Sales_AI",
+      "participated": true,
+      "artifacts_proposed": [
+        "lead-scoring-model.json",
+        "lead-qualification-framework.md"
+      ],
+      "artifacts_owned": [
+        "lead-scoring-model.json",
+        "lead-qualification-framework.md"
+      ]
+    },
+    {
+      "department": "Research_AI",
+      "participated": true,
+      "artifacts_proposed": [
+        "lead-research-checklist.md"
+      ],
+      "artifacts_owned": [
+        "lead-research-checklist.md"
+      ]
+    },
+    {
+      "department": "CTO",
+      "participated": true,
+      "artifacts_proposed": [
+        "demo-lead-dataset.json",
+        "lead-board-template.md"
+      ],
+      "artifacts_owned": [
+        "demo-lead-dataset.json",
+        "lead-board-template.md"
+      ]
+    },
+    {
+      "department": "CFO",
+      "participated": true,
+      "artifacts_proposed": [
+        "revenue-priority-matrix.json"
+      ],
+      "artifacts_owned": [
+        "revenue-priority-matrix.json"
+      ]
+    },
+    {
+      "department": "QA",
+      "participated": true,
+      "artifacts_proposed": [],
+      "artifacts_owned": []
+    },
+    {
+      "department": "CLO",
+      "participated": true,
+      "artifacts_proposed": [],
+      "artifacts_owned": []
+    }
+  ]
+}

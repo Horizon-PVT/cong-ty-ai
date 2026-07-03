@@ -1,0 +1,49 @@
+{
+  "policy_id": "lead_discovery_policy_1_0n",
+  "milestone": "1.0N",
+  "description": "Autonomous Lead Discovery and Qualification Policy for Milestone 1.0N",
+  "department_led": true,
+  "departments_select_artifacts": true,
+  "fixed_artifact_list_allowed": false,
+  "allowed_departments": ["CEO", "COO", "CMO", "Sales_AI", "Research_AI", "CTO", "CFO", "QA", "CLO"],
+  "execution_mode": "local_simulation_only",
+  "allowed_actions": {
+    "local_artifact_write": true,
+    "local_memory_write": true,
+    "local_report_write": true,
+    "local_lead_scoring_model": true,
+    "local_demo_lead_dataset": true,
+    "manual_research_checklist": true,
+    "safe_lead_qualification_framework": true,
+    "generated_lead_board_template": true,
+    "outreach_drafts": true
+  },
+  "blocked_actions": {
+    "live_api_calls": true,
+    "real_customer_messaging": true,
+    "crm_update": true,
+    "scraping_credentials": true,
+    "browser_automation": true,
+    "login_cookie_session": true,
+    "paid_tools": true,
+    "deploy": true,
+    "publish": true,
+    "spend": true,
+    "secrets_read": true,
+    "env_read": true,
+    "env_touch": true,
+    "production_mutation": true,
+    "merge_without_owner_token": true
+  },
+  "lead_safety_rules": {
+    "demo_leads_only": true,
+    "no_real_contact_info_required": true,
+    "manual_research_workflow_acceptable": true,
+    "must_label_demo_data_clearly": true
+  },
+  "qa_gate_required": true,
+  "gap_analysis_required": true,
+  "learning_update_required": true,
+  "paperclip_update_required": true,
+  "kpi_scorecard_required": true
+}
