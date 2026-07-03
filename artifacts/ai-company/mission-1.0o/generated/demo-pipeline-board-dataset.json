@@ -1,0 +1,468 @@
+{
+  "dataset_id": "demo_pipeline_board_dataset_1_0o",
+  "milestone": "1.0O",
+  "warning": "THIS IS DEMO PIPELINE DATA. No real outreach or sales occurred. For training and validation purposes only.",
+  "created_at": "2026-07-03",
+  "target_close_count": 3,
+  "pipeline_stats": {
+    "discovered": 42,
+    "engaged": 2,
+    "pitching": 1,
+    "negotiation": 2,
+    "won": 3,
+    "parked": 0,
+    "total": 50
+  },
+  "leads": [
+    {
+      "lead_id": "DEMO-LEAD-001",
+      "business_name": "[DEMO] Lotus Spa Thanh Hoa",
+      "vertical": "Spa",
+      "score": 4.8,
+      "stage": "Won",
+      "owner_action": "None. Closed.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-002",
+      "business_name": "[DEMO] Ocean Homestay Sam Son",
+      "vertical": "Homestay",
+      "score": 4.6,
+      "stage": "Won",
+      "owner_action": "None. Closed.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-003",
+      "business_name": "[DEMO] Dental Care Thanh Hoa",
+      "vertical": "Nha khoa",
+      "score": 4.5,
+      "stage": "Won",
+      "owner_action": "None. Closed.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-004",
+      "business_name": "[DEMO] Golden Clinic Thanh Hoa",
+      "vertical": "Phong kham",
+      "score": 4.3,
+      "stage": "Negotiation",
+      "owner_action": "Review contract edits.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-005",
+      "business_name": "[DEMO] Sunrise Homestay Sam Son",
+      "vertical": "Homestay",
+      "score": 4.2,
+      "stage": "Negotiation",
+      "owner_action": "Follow up on pricing.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-006",
+      "business_name": "[DEMO] Beauty Center Thanh Hoa",
+      "vertical": "Tham my vien",
+      "score": 4.1,
+      "stage": "Pitching",
+      "owner_action": "Send customized demo.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-007",
+      "business_name": "[DEMO] English Center Thanh Hoa",
+      "vertical": "Giao duc",
+      "score": 3.9,
+      "stage": "Engaged",
+      "owner_action": "Confirm demo time.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-008",
+      "business_name": "[DEMO] Seafood Restaurant Thanh Hoa",
+      "vertical": "Nha hang",
+      "score": 3.8,
+      "stage": "Engaged",
+      "owner_action": "Send intro message.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-009",
+      "business_name": "[DEMO] Green Spa Sầm Sơn",
+      "vertical": "Spa",
+      "score": 3.7,
+      "stage": "Discovered",
+      "owner_action": "Prepare draft message.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-010",
+      "business_name": "[DEMO] Dental Plus Sầm Sơn",
+      "vertical": "Nha khoa",
+      "score": 3.6,
+      "stage": "Discovered",
+      "owner_action": "Check FB activity.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-011",
+      "business_name": "[DEMO] Business 11 Thanh Hoa",
+      "vertical": "Giao duc",
+      "score": 3.1,
+      "stage": "Discovered",
+      "owner_action": "Initial research.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-012",
+      "business_name": "[DEMO] Business 12 Thanh Hoa",
+      "vertical": "Nha hang",
+      "score": 3.2,
+      "stage": "Discovered",
+      "owner_action": "Initial research.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-013",
+      "business_name": "[DEMO] Business 13 Thanh Hoa",
+      "vertical": "Giao duc",
+      "score": 3.3,
+      "stage": "Discovered",
+      "owner_action": "Initial research.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-014",
+      "business_name": "[DEMO] Business 14 Thanh Hoa",
+      "vertical": "Nha hang",
+      "score": 3.4,
+      "stage": "Discovered",
+      "owner_action": "Initial research.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-015",
+      "business_name": "[DEMO] Business 15 Thanh Hoa",
+      "vertical": "Giao duc",
+      "score": 3.5,
+      "stage": "Discovered",
+      "owner_action": "Initial research.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-016",
+      "business_name": "[DEMO] Business 16 Thanh Hoa",
+      "vertical": "Nha hang",
+      "score": 3.6,
+      "stage": "Discovered",
+      "owner_action": "Initial research.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-017",
+      "business_name": "[DEMO] Business 17 Thanh Hoa",
+      "vertical": "Giao duc",
+      "score": 3.7,
+      "stage": "Discovered",
+      "owner_action": "Initial research.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-018",
+      "business_name": "[DEMO] Business 18 Thanh Hoa",
+      "vertical": "Nha hang",
+      "score": 3.8,
+      "stage": "Discovered",
+      "owner_action": "Initial research.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-019",
+      "business_name": "[DEMO] Business 19 Thanh Hoa",
+      "vertical": "Giao duc",
+      "score": 3.9,
+      "stage": "Discovered",
+      "owner_action": "Initial research.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-020",
+      "business_name": "[DEMO] Business 20 Thanh Hoa",
+      "vertical": "Nha hang",
+      "score": 3,
+      "stage": "Discovered",
+      "owner_action": "Initial research.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-021",
+      "business_name": "[DEMO] Business 21 Thanh Hoa",
+      "vertical": "Giao duc",
+      "score": 3.1,
+      "stage": "Discovered",
+      "owner_action": "Initial research.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-022",
+      "business_name": "[DEMO] Business 22 Thanh Hoa",
+      "vertical": "Nha hang",
+      "score": 3.2,
+      "stage": "Discovered",
+      "owner_action": "Initial research.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-023",
+      "business_name": "[DEMO] Business 23 Thanh Hoa",
+      "vertical": "Giao duc",
+      "score": 3.3,
+      "stage": "Discovered",
+      "owner_action": "Initial research.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-024",
+      "business_name": "[DEMO] Business 24 Thanh Hoa",
+      "vertical": "Nha hang",
+      "score": 3.4,
+      "stage": "Discovered",
+      "owner_action": "Initial research.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-025",
+      "business_name": "[DEMO] Business 25 Thanh Hoa",
+      "vertical": "Giao duc",
+      "score": 3.5,
+      "stage": "Discovered",
+      "owner_action": "Initial research.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-026",
+      "business_name": "[DEMO] Business 26 Thanh Hoa",
+      "vertical": "Nha hang",
+      "score": 3.6,
+      "stage": "Discovered",
+      "owner_action": "Initial research.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-027",
+      "business_name": "[DEMO] Business 27 Thanh Hoa",
+      "vertical": "Giao duc",
+      "score": 3.7,
+      "stage": "Discovered",
+      "owner_action": "Initial research.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-028",
+      "business_name": "[DEMO] Business 28 Thanh Hoa",
+      "vertical": "Nha hang",
+      "score": 3.8,
+      "stage": "Discovered",
+      "owner_action": "Initial research.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-029",
+      "business_name": "[DEMO] Business 29 Thanh Hoa",
+      "vertical": "Giao duc",
+      "score": 3.9,
+      "stage": "Discovered",
+      "owner_action": "Initial research.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-030",
+      "business_name": "[DEMO] Business 30 Thanh Hoa",
+      "vertical": "Nha hang",
+      "score": 3,
+      "stage": "Discovered",
+      "owner_action": "Initial research.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-031",
+      "business_name": "[DEMO] Business 31 Thanh Hoa",
+      "vertical": "Giao duc",
+      "score": 3.1,
+      "stage": "Discovered",
+      "owner_action": "Initial research.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-032",
+      "business_name": "[DEMO] Business 32 Thanh Hoa",
+      "vertical": "Nha hang",
+      "score": 3.2,
+      "stage": "Discovered",
+      "owner_action": "Initial research.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-033",
+      "business_name": "[DEMO] Business 33 Thanh Hoa",
+      "vertical": "Giao duc",
+      "score": 3.3,
+      "stage": "Discovered",
+      "owner_action": "Initial research.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-034",
+      "business_name": "[DEMO] Business 34 Thanh Hoa",
+      "vertical": "Nha hang",
+      "score": 3.4,
+      "stage": "Discovered",
+      "owner_action": "Initial research.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-035",
+      "business_name": "[DEMO] Business 35 Thanh Hoa",
+      "vertical": "Giao duc",
+      "score": 3.5,
+      "stage": "Discovered",
+      "owner_action": "Initial research.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-036",
+      "business_name": "[DEMO] Business 36 Thanh Hoa",
+      "vertical": "Nha hang",
+      "score": 3.6,
+      "stage": "Discovered",
+      "owner_action": "Initial research.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-037",
+      "business_name": "[DEMO] Business 37 Thanh Hoa",
+      "vertical": "Giao duc",
+      "score": 3.7,
+      "stage": "Discovered",
+      "owner_action": "Initial research.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-038",
+      "business_name": "[DEMO] Business 38 Thanh Hoa",
+      "vertical": "Nha hang",
+      "score": 3.8,
+      "stage": "Discovered",
+      "owner_action": "Initial research.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-039",
+      "business_name": "[DEMO] Business 39 Thanh Hoa",
+      "vertical": "Giao duc",
+      "score": 3.9,
+      "stage": "Discovered",
+      "owner_action": "Initial research.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-040",
+      "business_name": "[DEMO] Business 40 Thanh Hoa",
+      "vertical": "Nha hang",
+      "score": 3,
+      "stage": "Discovered",
+      "owner_action": "Initial research.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-041",
+      "business_name": "[DEMO] Business 41 Thanh Hoa",
+      "vertical": "Giao duc",
+      "score": 3.1,
+      "stage": "Discovered",
+      "owner_action": "Initial research.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-042",
+      "business_name": "[DEMO] Business 42 Thanh Hoa",
+      "vertical": "Nha hang",
+      "score": 3.2,
+      "stage": "Discovered",
+      "owner_action": "Initial research.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-043",
+      "business_name": "[DEMO] Business 43 Thanh Hoa",
+      "vertical": "Giao duc",
+      "score": 3.3,
+      "stage": "Discovered",
+      "owner_action": "Initial research.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-044",
+      "business_name": "[DEMO] Business 44 Thanh Hoa",
+      "vertical": "Nha hang",
+      "score": 3.4,
+      "stage": "Discovered",
+      "owner_action": "Initial research.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-045",
+      "business_name": "[DEMO] Business 45 Thanh Hoa",
+      "vertical": "Giao duc",
+      "score": 3.5,
+      "stage": "Discovered",
+      "owner_action": "Initial research.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-046",
+      "business_name": "[DEMO] Business 46 Thanh Hoa",
+      "vertical": "Nha hang",
+      "score": 3.6,
+      "stage": "Discovered",
+      "owner_action": "Initial research.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-047",
+      "business_name": "[DEMO] Business 47 Thanh Hoa",
+      "vertical": "Giao duc",
+      "score": 3.7,
+      "stage": "Discovered",
+      "owner_action": "Initial research.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-048",
+      "business_name": "[DEMO] Business 48 Thanh Hoa",
+      "vertical": "Nha hang",
+      "score": 3.8,
+      "stage": "Discovered",
+      "owner_action": "Initial research.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-049",
+      "business_name": "[DEMO] Business 49 Thanh Hoa",
+      "vertical": "Giao duc",
+      "score": 3.9,
+      "stage": "Discovered",
+      "owner_action": "Initial research.",
+      "date_updated": "2026-07-03"
+    },
+    {
+      "lead_id": "DEMO-LEAD-050",
+      "business_name": "[DEMO] Business 50 Thanh Hoa",
+      "vertical": "Nha hang",
+      "score": 3,
+      "stage": "Discovered",
+      "owner_action": "Initial research.",
+      "date_updated": "2026-07-03"
+    }
+  ]
+}

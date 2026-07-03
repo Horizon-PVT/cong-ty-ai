@@ -1,0 +1,50 @@
+{
+  "manifest_id": "manifest_1_0o",
+  "milestone": "1.0O",
+  "created_at": "2026-07-03",
+  "fixed_artifact_list_used": false,
+  "selection_method": "autonomous_department_negotiation",
+  "total_artifacts": 8,
+  "artifacts": [
+    {
+      "artifact_name": "lead-prioritization-matrix.json",
+      "owning_department": "Sales_AI",
+      "rationale": "Lead segment scoring and segment prioritizations."
+    },
+    {
+      "artifact_name": "sales-angle-mapping.md",
+      "owning_department": "Sales_AI",
+      "rationale": "Sales angles and hooks mapped by vertical."
+    },
+    {
+      "artifact_name": "14-day-sales-pipeline-schedule.md",
+      "owning_department": "COO",
+      "rationale": "COO day-by-day 14-day outreach pipeline schedule."
+    },
+    {
+      "artifact_name": "consultation-scripts-drafts.md",
+      "owning_department": "CMO",
+      "rationale": "Personalized consultation template drafts for Zalo/FB."
+    },
+    {
+      "artifact_name": "deposit-and-roi-framework.json",
+      "owning_department": "CFO",
+      "rationale": "12.9M offer deposit, milestone payments, and ROI justification."
+    },
+    {
+      "artifact_name": "handoff-readiness-checklist.md",
+      "owning_department": "CS_AI",
+      "rationale": "Client handoff transition readiness checklist."
+    },
+    {
+      "artifact_name": "demo-pipeline-board-dataset.json",
+      "owning_department": "CTO",
+      "rationale": "50 leads mapped across pipeline stages (Won/Negotiation/etc.)."
+    },
+    {
+      "artifact_name": "pipeline-safety-locks.md",
+      "owning_department": "Research_AI",
+      "rationale": "Safety rules and local-only safeguards."
+    }
+  ]
+}

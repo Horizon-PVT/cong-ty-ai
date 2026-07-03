@@ -1,0 +1,97 @@
+{
+  "log_id": "decision_log_1_0o",
+  "milestone": "1.0O",
+  "created_at": "2026-07-03",
+  "decisions": [
+    {
+      "department": "CEO",
+      "participated": true,
+      "artifacts_proposed": [],
+      "artifacts_owned": []
+    },
+    {
+      "department": "COO",
+      "participated": true,
+      "artifacts_proposed": [
+        "14-day-sales-pipeline-schedule.md"
+      ],
+      "artifacts_owned": [
+        "14-day-sales-pipeline-schedule.md"
+      ]
+    },
+    {
+      "department": "CMO",
+      "participated": true,
+      "artifacts_proposed": [
+        "consultation-scripts-drafts.md"
+      ],
+      "artifacts_owned": [
+        "consultation-scripts-drafts.md"
+      ]
+    },
+    {
+      "department": "Sales_AI",
+      "participated": true,
+      "artifacts_proposed": [
+        "lead-prioritization-matrix.json",
+        "sales-angle-mapping.md"
+      ],
+      "artifacts_owned": [
+        "lead-prioritization-matrix.json",
+        "sales-angle-mapping.md"
+      ]
+    },
+    {
+      "department": "Research_AI",
+      "participated": true,
+      "artifacts_proposed": [
+        "pipeline-safety-locks.md"
+      ],
+      "artifacts_owned": [
+        "pipeline-safety-locks.md"
+      ]
+    },
+    {
+      "department": "CTO",
+      "participated": true,
+      "artifacts_proposed": [
+        "demo-pipeline-board-dataset.json"
+      ],
+      "artifacts_owned": [
+        "demo-pipeline-board-dataset.json"
+      ]
+    },
+    {
+      "department": "CFO",
+      "participated": true,
+      "artifacts_proposed": [
+        "deposit-and-roi-framework.json"
+      ],
+      "artifacts_owned": [
+        "deposit-and-roi-framework.json"
+      ]
+    },
+    {
+      "department": "CS_AI",
+      "participated": true,
+      "artifacts_proposed": [
+        "handoff-readiness-checklist.md"
+      ],
+      "artifacts_owned": [
+        "handoff-readiness-checklist.md"
+      ]
+    },
+    {
+      "department": "QA",
+      "participated": true,
+      "artifacts_proposed": [],
+      "artifacts_owned": []
+    },
+    {
+      "department": "CLO",
+      "participated": true,
+      "artifacts_proposed": [],
+      "artifacts_owned": []
+    }
+  ]
+}

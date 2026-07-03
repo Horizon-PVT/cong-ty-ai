@@ -1,0 +1,52 @@
+{
+  "framework_id": "deposit_roi_framework_1_0o",
+  "milestone": "1.0O",
+  "created_at": "2026-07-03",
+  "pricing_model": {
+    "package_name": "Web + Chatbot AI",
+    "total_cost": 12900000,
+    "deposit_percentage": 50,
+    "deposit_amount": 6450000,
+    "milestones": [
+      {
+        "step": 1,
+        "name": "Contract signing & Deposit",
+        "percentage": 50,
+        "amount": 6450000,
+        "timing": "Day 1"
+      },
+      {
+        "step": 2,
+        "name": "Web design & Bot flow approval",
+        "percentage": 30,
+        "amount": 3870000,
+        "timing": "Day 7"
+      },
+      {
+        "step": 3,
+        "name": "Final handoff & Training",
+        "percentage": 20,
+        "amount": 2580000,
+        "timing": "Day 14"
+      }
+    ]
+  },
+  "roi_projection_framing": {
+    "monthly_subscription_equivalent": "Chỉ tương đương chi phí 1 nhân viên part-time (3.5 triệu/tháng) trong 3.5 tháng",
+    "value_delivered": [
+      {
+        "metric": "Time saved",
+        "value": "Giảm 80% thời gian trả lời inbox lặp đi lặp lại"
+      },
+      {
+        "metric": "Lead retention",
+        "value": "Tăng 25% tỷ lệ chốt booking nhờ phản hồi ngay lập tức dưới 5 giây"
+      },
+      {
+        "metric": "No-show reduction",
+        "value": "Giảm 40% tỷ lệ bệnh nhân quên lịch hẹn nhờ Zalo nhắc hẹn tự động"
+      }
+    ],
+    "payback_period_months": 3
+  }
+}
