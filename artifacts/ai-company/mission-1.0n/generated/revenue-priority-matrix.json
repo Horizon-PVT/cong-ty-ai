@@ -1,0 +1,81 @@
+{
+  "matrix_id": "revenue_priority_matrix_1_0n",
+  "milestone": "1.0N",
+  "created_at": "2026-07-02",
+  "description": "Revenue potential and deal-speed scoring by vertical for SME Thanh Hoa",
+  "verticals": [
+    {
+      "vertical": "Spa",
+      "revenue_potential": 5,
+      "deal_speed": 5,
+      "payment_reliability": 4,
+      "priority_score": 4.8,
+      "recommended_offer": "Web + Chatbot AI (12.9M)",
+      "rationale": "High revenue, owner-operated, chatbot clearly needed for booking"
+    },
+    {
+      "vertical": "Tham my vien",
+      "revenue_potential": 5,
+      "deal_speed": 4,
+      "payment_reliability": 4,
+      "priority_score": 4.5,
+      "recommended_offer": "Web + Chatbot AI (12.9M)",
+      "rationale": "High-value service, strong digital need, visual results easy to demo"
+    },
+    {
+      "vertical": "Nha khoa",
+      "revenue_potential": 5,
+      "deal_speed": 3,
+      "payment_reliability": 5,
+      "priority_score": 4.3,
+      "recommended_offer": "Web + Chatbot AI (12.9M)",
+      "rationale": "High revenue per patient, appointment chatbot is obvious ROI"
+    },
+    {
+      "vertical": "Homestay Sam Son",
+      "revenue_potential": 4,
+      "deal_speed": 5,
+      "payment_reliability": 3,
+      "priority_score": 4,
+      "recommended_offer": "Web Uy Tin (4.9M) → upsell",
+      "rationale": "Seasonal urgency drives fast decisions, Facebook booking pain is acute"
+    },
+    {
+      "vertical": "Phong kham",
+      "revenue_potential": 4,
+      "deal_speed": 3,
+      "payment_reliability": 5,
+      "priority_score": 3.8,
+      "recommended_offer": "Web + Chatbot AI (12.9M)",
+      "rationale": "Steady revenue, appointment management is clear pain"
+    },
+    {
+      "vertical": "Nha hang / Cafe",
+      "revenue_potential": 3,
+      "deal_speed": 4,
+      "payment_reliability": 3,
+      "priority_score": 3.3,
+      "recommended_offer": "Web Uy Tin (4.9M)",
+      "rationale": "Moderate revenue, table booking chatbot is nice-to-have not must-have"
+    },
+    {
+      "vertical": "Giao duc",
+      "revenue_potential": 3,
+      "deal_speed": 2,
+      "payment_reliability": 4,
+      "priority_score": 2.9,
+      "recommended_offer": "Web Uy Tin (4.9M)",
+      "rationale": "Decision-making is slower (committee/management), but strong need"
+    },
+    {
+      "vertical": "Bat dong san",
+      "revenue_potential": 4,
+      "deal_speed": 2,
+      "payment_reliability": 3,
+      "priority_score": 2.8,
+      "recommended_offer": "AI Sales System (18M)",
+      "rationale": "High ticket upsell potential, but longer sales cycle"
+    }
+  ],
+  "note": "Priority scores drive which verticals Sales_AI should assign Hot Lead quota to first."
+}

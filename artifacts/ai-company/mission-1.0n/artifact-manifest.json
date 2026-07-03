@@ -1,0 +1,50 @@
+{
+  "manifest_id": "manifest_1_0n",
+  "milestone": "1.0N",
+  "created_at": "2026-07-02",
+  "fixed_artifact_list_used": false,
+  "selection_method": "autonomous_department_negotiation",
+  "total_artifacts": 8,
+  "artifacts": [
+    {
+      "artifact_name": "lead-research-checklist.md",
+      "owning_department": "Research_AI",
+      "rationale": "Manual safe research workflow using public sources only — no credentials or automation required."
+    },
+    {
+      "artifact_name": "lead-scoring-model.json",
+      "owning_department": "Sales_AI",
+      "rationale": "5-dimension scoring rubric with per-vertical weights for objective lead prioritization."
+    },
+    {
+      "artifact_name": "lead-qualification-framework.md",
+      "owning_department": "Sales_AI",
+      "rationale": "3-tier qualification framework (Hot/Warm/Cold) with clear entry criteria for each tier."
+    },
+    {
+      "artifact_name": "demo-lead-dataset.json",
+      "owning_department": "CTO",
+      "rationale": "50 demo SME leads across 8 verticals, pre-scored, clearly labeled DEMO — salesperson reference model."
+    },
+    {
+      "artifact_name": "lead-board-template.md",
+      "owning_department": "CTO",
+      "rationale": "Markdown lead board organized by tier, vertical, score, and next action for daily salesperson use."
+    },
+    {
+      "artifact_name": "outreach-preparation-guide.md",
+      "owning_department": "CMO",
+      "rationale": "Per-vertical outreach strategy: platform, opening message style, pain point to lead with."
+    },
+    {
+      "artifact_name": "revenue-priority-matrix.json",
+      "owning_department": "CFO",
+      "rationale": "Revenue potential scoring by vertical to help Sales_AI decide which segments to prioritize first."
+    },
+    {
+      "artifact_name": "7-day-lead-generation-plan.md",
+      "owning_department": "COO",
+      "rationale": "Day-by-day execution plan for human salesperson: daily targets, research tools, scoring cadence."
+    }
+  ]
+}

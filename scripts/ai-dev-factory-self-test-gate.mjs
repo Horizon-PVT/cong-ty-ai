@@ -60,7 +60,10 @@ const COMMANDS_BASELINE = [
   { name: "department-autonomy-premerge-simulate", cmd: "node scripts/ai-company-department-autonomy-premerge-simulate.mjs --mission mission_1_0l_department_autonomy --write-report --explain", phase: "1.0l", optional: true },
   { name: "verify-1.0m", cmd: "node packages/db/src/_verify-1.0m.mjs", phase: "1.0m", optional: true },
   { name: "first-autonomous-revenue-auto-loop", cmd: "node scripts/ai-company-first-autonomous-revenue-auto-loop.mjs --mission mission_1_0m_autonomous_revenue --max-iterations 5 --stable-passes 2 --write-report --explain", phase: "1.0m", optional: true },
-  { name: "first-autonomous-revenue-premerge-simulate", cmd: "node scripts/ai-company-first-autonomous-revenue-premerge-simulate.mjs --mission mission_1_0m_autonomous_revenue --write-report --explain", phase: "1.0m", optional: true }
+  { name: "first-autonomous-revenue-premerge-simulate", cmd: "node scripts/ai-company-first-autonomous-revenue-premerge-simulate.mjs --mission mission_1_0m_autonomous_revenue --write-report --explain", phase: "1.0m", optional: true },
+  { name: "verify-1.0n", cmd: "node packages/db/src/_verify-1.0n.mjs", phase: "1.0n", optional: true },
+  { name: "lead-discovery-auto-loop", cmd: "node scripts/ai-company-lead-discovery-auto-loop.mjs", phase: "1.0n", optional: true },
+  { name: "lead-discovery-premerge-simulate", cmd: "node scripts/ai-company-lead-discovery-premerge-simulate.mjs", phase: "1.0n", optional: true }
 ];
 
 async function main() {
@@ -149,6 +152,8 @@ async function main() {
       filteredCommands = COMMANDS_BASELINE.filter(c => c.phase === "0.3j" || c.phase === "0.3k" || c.phase === "0.3l" || c.phase === "0.3m" || c.phase === "0.3n" || c.phase === "0.3o" || c.phase === "0.3p" || c.phase === "0.3q" || c.phase === "0.3r" || c.phase === "0.3s" || c.phase === "1.0a" || c.phase === "1.0b" || c.phase === "1.0c" || c.phase === "1.0d" || c.phase === "1.0e" || c.phase === "1.0f" || c.phase === "1.0g" || c.phase === "1.0h" || c.phase === "1.0i" || c.phase === "1.0i-loop" || c.phase === "1.0j" || c.phase === "1.0k" || c.phase === "1.0l");
     } else if (selectedPhase === "1.0m") {
       filteredCommands = COMMANDS_BASELINE.filter(c => c.phase === "0.3j" || c.phase === "0.3k" || c.phase === "0.3l" || c.phase === "0.3m" || c.phase === "0.3n" || c.phase === "0.3o" || c.phase === "0.3p" || c.phase === "0.3q" || c.phase === "0.3r" || c.phase === "0.3s" || c.phase === "1.0a" || c.phase === "1.0b" || c.phase === "1.0c" || c.phase === "1.0d" || c.phase === "1.0e" || c.phase === "1.0f" || c.phase === "1.0g" || c.phase === "1.0h" || c.phase === "1.0i" || c.phase === "1.0i-loop" || c.phase === "1.0j" || c.phase === "1.0k" || c.phase === "1.0l" || c.phase === "1.0m");
+    } else if (selectedPhase === "1.0n") {
+      filteredCommands = COMMANDS_BASELINE.filter(c => c.phase === "0.3j" || c.phase === "0.3k" || c.phase === "0.3l" || c.phase === "0.3m" || c.phase === "0.3n" || c.phase === "0.3o" || c.phase === "0.3p" || c.phase === "0.3q" || c.phase === "0.3r" || c.phase === "0.3s" || c.phase === "1.0a" || c.phase === "1.0b" || c.phase === "1.0c" || c.phase === "1.0d" || c.phase === "1.0e" || c.phase === "1.0f" || c.phase === "1.0g" || c.phase === "1.0h" || c.phase === "1.0i" || c.phase === "1.0i-loop" || c.phase === "1.0j" || c.phase === "1.0k" || c.phase === "1.0l" || c.phase === "1.0m" || c.phase === "1.0n");
     }
   }
 

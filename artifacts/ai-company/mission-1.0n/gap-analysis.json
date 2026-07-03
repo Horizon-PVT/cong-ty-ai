@@ -1,0 +1,23 @@
+{
+  "gap_analysis_id": "gap_1_0n",
+  "milestone": "1.0N",
+  "created_at": "2026-07-02",
+  "gaps_identified": [
+    {
+      "gap_id": "gap-001",
+      "description": "No CRM integration template",
+      "severity": "low",
+      "decision": "OUT_OF_SCOPE — Hard lock prohibits CRM update. Manual lead board is the correct alternative.",
+      "closed": true
+    },
+    {
+      "gap_id": "gap-002",
+      "description": "No real lead verification (all data is demo)",
+      "severity": "expected",
+      "decision": "BY_DESIGN — Hard locks require demo-only data. Salesperson will research real leads using the checklist.",
+      "closed": true
+    }
+  ],
+  "critical_gaps_open": 0,
+  "verdict": "ALL_GAPS_CLOSED_OR_EXPLAINED"
+}

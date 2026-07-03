@@ -1,0 +1,64 @@
+{
+  "model_id": "lead_scoring_model_1_0n",
+  "milestone": "1.0N",
+  "created_at": "2026-07-02",
+  "description": "5-dimension lead scoring model for SME Thanh Hoa lead qualification",
+  "dimensions": [
+    {
+      "id": "digital_need",
+      "name": "Digital Need",
+      "description": "Does the business need a better website and/or chatbot? (1=low, 5=high)",
+      "weight": 0.25
+    },
+    {
+      "id": "revenue_fit",
+      "name": "Revenue Fit",
+      "description": "Can the business afford 12.9M? Revenue signal from review volume, premises, staff. (1=low, 5=high)",
+      "weight": 0.25
+    },
+    {
+      "id": "accessibility",
+      "name": "Accessibility",
+      "description": "How easy is it to reach the decision maker? Owner-operated = 5, large corp = 1.",
+      "weight": 0.2
+    },
+    {
+      "id": "pain_intensity",
+      "name": "Pain Intensity",
+      "description": "How intense is their customer service bottleneck? Many unanswered comments/reviews = high pain. (1=low, 5=high)",
+      "weight": 0.2
+    },
+    {
+      "id": "decision_speed",
+      "name": "Decision Speed",
+      "description": "How fast can they decide? Owner-ops businesses with <5 staff decide in days. (1=slow, 5=fast)",
+      "weight": 0.1
+    }
+  ],
+  "tier_thresholds": {
+    "hot": {
+      "min_weighted_score": 4,
+      "label": "Hot Lead — Contact in first 3 days"
+    },
+    "warm": {
+      "min_weighted_score": 2.8,
+      "label": "Warm Lead — Contact in days 4-7"
+    },
+    "cold": {
+      "min_weighted_score": 0,
+      "label": "Cold Lead — Park for later cycle"
+    }
+  },
+  "vertical_priority_bonus": {
+    "Spa": 0.2,
+    "Tham my vien": 0.2,
+    "Nha khoa": 0.15,
+    "Phong kham": 0.15,
+    "Homestay": 0.1,
+    "Nha hang": 0.1,
+    "Giao duc": 0.05,
+    "Bat dong san": 0.05
+  },
+  "scoring_formula": "weighted_score = sum(dimension_score * weight for each dimension) + vertical_priority_bonus",
+  "note": "DEMO MODEL — Weights and thresholds should be calibrated with real conversion data after first 30 days of outreach."
+}

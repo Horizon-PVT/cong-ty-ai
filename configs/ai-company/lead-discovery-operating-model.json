@@ -1,0 +1,24 @@
+{
+  "model_id": "lead_discovery_operating_model_1_0n",
+  "milestone": "1.0N",
+  "description": "17-stage operating model for Autonomous Lead Discovery and Qualification Mission",
+  "stages": [
+    { "stage_id": "owner_goal_intake", "name": "Owner Goal Intake", "responsible": "CEO", "description": "Parse and validate owner goal. Confirm no fixed artifact list injected." },
+    { "stage_id": "ceo_mission_interpretation", "name": "CEO Mission Interpretation", "responsible": "CEO", "description": "CEO interprets the lead-gen goal, defines strategic context and success criteria." },
+    { "stage_id": "department_briefing", "name": "Department Briefing", "responsible": "COO", "description": "COO briefs all 9 departments on mission scope, hard locks, and allowed actions." },
+    { "stage_id": "department_artifact_proposals", "name": "Department Artifact Proposals", "responsible": "ALL", "description": "Each department proposes what artifacts they believe are needed, with rationale." },
+    { "stage_id": "cross_department_negotiation", "name": "Cross-Department Negotiation", "responsible": "COO", "description": "COO facilitates negotiation to resolve overlaps, merge duplicate proposals, and confirm ownership." },
+    { "stage_id": "artifact_manifest_creation", "name": "Artifact Manifest Creation", "responsible": "COO", "description": "COO finalizes self-selected artifact manifest with owning department and rationale for each item." },
+    { "stage_id": "worker_assignment", "name": "Worker Assignment", "responsible": "COO", "description": "COO assigns specific worker agents to each artifact." },
+    { "stage_id": "artifact_generation", "name": "Artifact Generation", "responsible": "ALL", "description": "Each department generates its assigned artifacts. Demo lead data must be clearly labeled as demo." },
+    { "stage_id": "qa_review", "name": "QA Review", "responsible": "QA", "description": "QA reviews all artifacts against acceptance criteria. Blocks weak or incomplete output." },
+    { "stage_id": "gap_analysis", "name": "Gap Analysis", "responsible": "QA", "description": "QA runs gap analysis. All critical gaps must be closed before proceeding." },
+    { "stage_id": "gap_closure", "name": "Gap Closure", "responsible": "ALL", "description": "Departments close all critical gaps identified by QA." },
+    { "stage_id": "final_packaging", "name": "Final Packaging", "responsible": "COO", "description": "COO creates final package index, artifact manifest, and decision log." },
+    { "stage_id": "kpi_scoring", "name": "KPI Scoring", "responsible": "CFO", "description": "CFO scores mission KPIs: lead count, qualification rate, pipeline value estimate, time-to-ready." },
+    { "stage_id": "learning_update", "name": "CLO Learning Update", "responsible": "CLO", "description": "CLO/Hermes appends lessons learned to memory/ai-company/mission-lessons.jsonl." },
+    { "stage_id": "paperclip_update", "name": "Paperclip Update", "responsible": "CTO", "description": "CTO generates Paperclip department update payload." },
+    { "stage_id": "auto_verification", "name": "Auto Verification", "responsible": "QA", "description": "QA runs automated verifier script to confirm all checks pass." },
+    { "stage_id": "premerge_simulation", "name": "Pre-Merge Simulation", "responsible": "QA", "description": "QA runs premerge simulation to verify safety, compliance, and integration with all prior milestones." }
+  ]
+}
