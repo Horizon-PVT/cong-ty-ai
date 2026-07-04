@@ -1,0 +1,47 @@
+{
+  "update_id": "paperclip-department-update-1.0u",
+  "milestone": "1.0U",
+  "updates": [
+    {
+      "department": "CEO",
+      "update": "Pilot unlock strategy defined. Safe allowlist-only gate confirmed."
+    },
+    {
+      "department": "COO",
+      "update": "One-action approval workflow defined. Total lock on merge and sandbox tokens for live pilot."
+    },
+    {
+      "department": "Sales AI",
+      "update": "Selected act_email_001 (intro offer) as the safest single pilot use case for future testing."
+    },
+    {
+      "department": "CMO",
+      "update": "CMO approved subject/body/CTA for Alex Minh AI chatbot offer at 12.9M. Unsubscribe footers required."
+    },
+    {
+      "department": "CTO",
+      "update": "Fake provider adapter, allowlist gate, idempotency constraints, and pilot audit ledger implemented."
+    },
+    {
+      "department": "CFO",
+      "update": "Price anchor 12.9M VND validated. Discounts restricted. No payment request mutation allowed."
+    },
+    {
+      "department": "Customer Success AI",
+      "update": "Reply expectations and manual follow-up boundaries mapped for allowlist pilot."
+    },
+    {
+      "department": "QA",
+      "update": "Zero-send, fake provider only, and no-credentials hard lock checks validated."
+    },
+    {
+      "department": "CLO Hermes",
+      "update": "Hermes recorded lessons. Unlock criteria documented."
+    },
+    {
+      "department": "Research AI",
+      "update": "Research AI reviewed operational risks, confirming zero external effects."
+    }
+  ],
+  "demo_badge": "🔵 DEMO / PILOT HARNESS SIMULATION — NOT SENT — NOT A LIVE EMAIL SYSTEM"
+}

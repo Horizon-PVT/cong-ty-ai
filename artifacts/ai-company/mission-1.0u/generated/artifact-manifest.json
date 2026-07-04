@@ -1,0 +1,80 @@
+{
+  "manifest_id": "artifact-manifest-1.0u",
+  "milestone": "1.0U",
+  "decided_by": "departments",
+  "artifacts": [
+    {
+      "id": "A1",
+      "name": "email-live-pilot-payload.json",
+      "owner": "CTO",
+      "description": "Main pilot candidate payload with idempotency and safety warning configuration"
+    },
+    {
+      "id": "A2",
+      "name": "owner-allowlist-model.json",
+      "owner": "CTO",
+      "description": "Placeholder-only allowlist model"
+    },
+    {
+      "id": "A3",
+      "name": "fake-provider-adapter.json",
+      "owner": "CTO",
+      "description": "Fake adapter lock details"
+    },
+    {
+      "id": "A4",
+      "name": "future-live-token-policy.json",
+      "owner": "CTO",
+      "description": "Token format and scoping regulations"
+    },
+    {
+      "id": "A5",
+      "name": "pilot-idempotency-model.json",
+      "owner": "CTO",
+      "description": "Duplicate send protection parameters"
+    },
+    {
+      "id": "A6",
+      "name": "email-pilot-audit-ledger.json",
+      "owner": "QA",
+      "description": "Audit trail record of the pilot setup"
+    },
+    {
+      "id": "A7",
+      "name": "email-pilot-preview.md",
+      "owner": "CMO",
+      "description": "Paperclip-friendly pilot preview page"
+    },
+    {
+      "id": "A8",
+      "name": "gap-analysis.json",
+      "owner": "CTO",
+      "description": "Identified gaps to be solved in future live milestones"
+    },
+    {
+      "id": "A9",
+      "name": "kpi-scorecard.json",
+      "owner": "CFO",
+      "description": "KPI scorecard measuring lock compliance"
+    },
+    {
+      "id": "A10",
+      "name": "paperclip-department-update.json",
+      "owner": "COO",
+      "description": "Collaborative department briefing payload"
+    },
+    {
+      "id": "A11",
+      "name": "qa-review-report.md",
+      "owner": "QA",
+      "description": "QA lock review results"
+    },
+    {
+      "id": "A12",
+      "name": "final-package-index.md",
+      "owner": "COO",
+      "description": "Index of all package deliverables"
+    }
+  ],
+  "demo_badge": "🔵 DEMO / PILOT HARNESS SIMULATION — NOT SENT — NOT A LIVE EMAIL SYSTEM"
+}

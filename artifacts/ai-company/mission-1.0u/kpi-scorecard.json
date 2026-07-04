@@ -1,0 +1,13 @@
+{
+  "scorecard_id": "kpi-scorecard-1.0u",
+  "milestone": "1.0U",
+  "pilot_action_count": 1,
+  "total_blocked": 1,
+  "live_email_enabled": false,
+  "emergency_stop_active": true,
+  "provider_is_mock": true,
+  "idempotency_active": true,
+  "retry_disabled": true,
+  "hard_locks_violated": 0,
+  "demo_badge": "🔵 DEMO / PILOT HARNESS SIMULATION — NOT SENT — NOT A LIVE EMAIL SYSTEM"
+}

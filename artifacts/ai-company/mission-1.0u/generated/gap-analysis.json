@@ -1,0 +1,26 @@
+{
+  "gap_analysis_id": "gap-analysis-1.0u",
+  "milestone": "1.0U",
+  "total_gaps": 2,
+  "gaps": [
+    {
+      "requirement": "provider_ready_is_true",
+      "affected_actions": [
+        "pilot_email_action_001"
+      ],
+      "resolution_required_before_live_send": true,
+      "estimated_effort": "low"
+    },
+    {
+      "requirement": "owner_live_token_provided",
+      "affected_actions": [
+        "pilot_email_action_001"
+      ],
+      "resolution_required_before_live_send": true,
+      "estimated_effort": "none (requires owner interaction)"
+    }
+  ],
+  "all_gaps_are_known": true,
+  "closure_milestone": "1.0V (future pilot execution milestone)",
+  "demo_badge": "🔵 DEMO / PILOT HARNESS SIMULATION — NOT SENT — NOT A LIVE EMAIL SYSTEM"
+}

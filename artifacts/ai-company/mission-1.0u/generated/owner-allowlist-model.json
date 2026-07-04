@@ -1,0 +1,16 @@
+{
+  "model_id": "owner-allowlist-model-1.0u",
+  "milestone": "1.0U",
+  "allowlist": [
+    {
+      "label": "Boss Owner",
+      "email_placeholder": "owner-allowlist@alex-minh-ai.demo",
+      "status": "APPROVED_FOR_FUTURE_PILOT",
+      "is_real_email_in_repo": false
+    }
+  ],
+  "customer_emails_allowed": false,
+  "allowlist_only_enforced": true,
+  "safety_note": "Only placeholders in allowlist. No customer emails can be added or processed.",
+  "demo_badge": "🔵 DEMO / PILOT HARNESS SIMULATION — NOT SENT — NOT A LIVE EMAIL SYSTEM"
+}

@@ -1,0 +1,106 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Email Live Pilot Harness Payload Schema",
+  "description": "Schema for Milestone 1.0U: Email Live Pilot daily payload. Enforces a single local-only fake pilot and strict token separation.",
+  "type": "object",
+  "properties": {
+    "schema_version": { "type": "string" },
+    "generated_by": { "type": "string" },
+    "integration_target": { "type": "string", "const": "paperclip" },
+    "data_label": { "type": "string", "const": "DEMO_LOCAL_ONLY" },
+    "demo_warning": { "type": "string" },
+    "pilot_overview": {
+      "type": "object",
+      "properties": {
+        "live_email_enabled": { "type": "boolean", "const": false },
+        "emergency_stop": { "type": "boolean", "const": true },
+        "pilot_action_count": { "type": "integer", "const": 1 },
+        "total_blocked": { "type": "integer", "const": 1 },
+        "demo_badge": { "type": "string" },
+        "safety_note": { "type": "string" }
+      },
+      "required": ["live_email_enabled", "emergency_stop", "pilot_action_count", "total_blocked", "demo_badge", "safety_note"]
+    },
+    "pilot_action": {
+      "type": "object",
+      "properties": {
+        "pilot_action_id": { "type": "string" },
+        "source_readiness_action_id": { "type": "string" },
+        "mode": { "type": "string", "const": "EMAIL_LIVE_PILOT_HARNESS_ONLY" },
+        "action_type": { "type": "string", "const": "send_email" },
+        "pilot_action_count": { "type": "integer", "const": 1 },
+        "recipient_label": { "type": "string" },
+        "recipient_kind": { "type": "string", "const": "OWNER_ALLOWLIST_PLACEHOLDER" },
+        "recipient_is_customer": { "type": "boolean", "const": false },
+        "recipient_is_demo_or_allowlist_placeholder": { "type": "boolean", "const": true },
+        "recipient_email_placeholder": { "type": "string" },
+        "subject": { "type": "string" },
+        "body_preview": { "type": "string" },
+        "offer": { "type": "string" },
+        "price_anchor": { "type": "string" },
+        "cta": { "type": "string" },
+        "future_live_send_allowed": { "type": "boolean", "const": false },
+        "pilot_send_blocked": { "type": "boolean", "const": true },
+        "block_reason": { "type": "string" },
+        "provider_status": { "type": "string", "const": "FAKE_LOCAL_ONLY" },
+        "provider_ready": { "type": "boolean", "const": false },
+        "fake_provider_result": { "type": "string" },
+        "actual_external_effect": { "type": "string", "const": "NONE" },
+        "owner_live_token_required_for_future": { "type": "boolean", "const": true },
+        "required_future_live_token_name": { "type": "string", "const": "OWNER_APPROVED_LIVE_TOKEN" },
+        "required_future_live_token_scope": { "type": "string" },
+        "merge_token_not_accepted": { "type": "boolean", "const": true },
+        "sandbox_token_not_accepted_for_live_pilot": { "type": "boolean", "const": true },
+        "idempotency_key": { "type": "string" },
+        "duplicate_send_protection": { "type": "boolean", "const": true },
+        "retry_policy": { "type": "string", "const": "DISABLED" },
+        "kill_switch_active": { "type": "boolean", "const": true },
+        "audit_trail_entry": { "type": "object" },
+        "safety_attestation": { "type": "string" },
+        "safety_warning_lines": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "required": [
+        "pilot_action_id", "source_readiness_action_id", "mode", "action_type",
+        "pilot_action_count", "recipient_label", "recipient_kind",
+        "recipient_is_customer", "recipient_is_demo_or_allowlist_placeholder",
+        "recipient_email_placeholder", "subject", "body_preview", "offer",
+        "price_anchor", "cta", "future_live_send_allowed", "pilot_send_blocked",
+        "block_reason", "provider_status", "provider_ready", "fake_provider_result",
+        "actual_external_effect", "owner_live_token_required_for_future",
+        "required_future_live_token_name", "required_future_live_token_scope",
+        "merge_token_not_accepted", "sandbox_token_not_accepted_for_live_pilot",
+        "idempotency_key", "duplicate_send_protection", "retry_policy",
+        "kill_switch_active", "audit_trail_entry", "safety_attestation", "safety_warning_lines"
+      ]
+    },
+    "future_live_token_policy": {
+      "type": "object",
+      "properties": {
+        "merge_token_name": { "type": "string", "const": "OWNER_APPROVED_MERGE_PR" },
+        "sandbox_token_name": { "type": "string", "const": "OWNER_APPROVED_EMAIL_SANDBOX_TOKEN" },
+        "future_live_token_name": { "type": "string", "const": "OWNER_APPROVED_LIVE_TOKEN" },
+        "future_pilot_token_format": { "type": "string", "const": "OWNER_APPROVED_LIVE_TOKEN=<pilot_action_id>" },
+        "merge_token_must_not_enable_live_pilot": { "type": "boolean", "const": true },
+        "sandbox_token_must_not_enable_live_pilot": { "type": "boolean", "const": true },
+        "future_live_token_reserved_only": { "type": "boolean", "const": true },
+        "one_token_one_pilot_action": { "type": "boolean", "const": true },
+        "token_scope": { "type": "string", "const": "PILOT_ACTION_ID" },
+        "token_expires_after_use": { "type": "boolean", "const": true },
+        "token_must_match_action_id": { "type": "boolean", "const": true }
+      },
+      "required": [
+        "merge_token_name", "sandbox_token_name", "future_live_token_name",
+        "future_pilot_token_format", "merge_token_must_not_enable_live_pilot",
+        "sandbox_token_must_not_enable_live_pilot", "future_live_token_reserved_only",
+        "one_token_one_pilot_action", "token_scope", "token_expires_after_use", "token_must_match_action_id"
+      ]
+    }
+  },
+  "required": [
+    "schema_version", "generated_by", "integration_target", "data_label",
+    "demo_warning", "pilot_overview", "pilot_action", "future_live_token_policy"
+  ]
+}

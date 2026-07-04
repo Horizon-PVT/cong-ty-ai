@@ -1,0 +1,16 @@
+{
+  "operating_model_id": "email-live-pilot-harness-operating-model",
+  "milestone": "1.0U",
+  "execution_stages": [
+    { "stage": 1, "name": "pilot_goal_intake", "owner": "CEO", "description": "CEO defines pilot unlock strategy and overall harness scope." },
+    { "stage": 2, "name": "pilot_use_case_selection", "owner": "Sales AI", "description": "Sales AI selects the safest single pilot use case worth unlocking in the future." },
+    { "stage": 3, "name": "compliance_checks_briefing", "owner": "COO", "description": "COO defines the one-action approval workflow and distribues briefings to departments." },
+    { "stage": 4, "name": "content_claims_validation", "owner": "CMO", "description": "CMO defines subject/body/CTA templates, unsubscribe footer guidelines, and claim-safety rules." },
+    { "stage": 5, "name": "pricing_and_discount_review", "owner": "CFO", "description": "CFO reviews offer content for price anchor and discount compliance." },
+    { "stage": 6, "name": "operational_risk_review", "owner": "Research AI", "description": "Research AI reviews operational risks and details possible escalation boundaries." },
+    { "stage": 7, "name": "provider_adapter_setup", "owner": "CTO", "description": "CTO defines the fake provider adapter, allowlist gate, duplicate-send protection model, and idempotency key constraints." },
+    { "stage": 8, "name": "followup_boundary_planning", "owner": "Customer Success AI", "description": "CS AI defines manual follow-up boundaries and reply expectations." },
+    { "stage": 9, "name": "qa_safety_block_verification", "owner": "QA", "description": "QA reviews script execution to enforce zero-send, fake-only provider status, and no-credentials policies." },
+    { "stage": 10, "name": "learning_retrospective", "owner": "CLO Hermes", "description": "CLO Hermes records lessons learned and recommends future pilot unlock criteria." }
+  ]
+}
