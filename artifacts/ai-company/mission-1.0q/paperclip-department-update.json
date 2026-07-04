@@ -1,0 +1,11 @@
+{
+  "milestone": "1.0Q",
+  "updated_widgets": [
+    "owner_approval_workbench_overview",
+    "owner_approval_workbench_queue",
+    "owner_approval_workbench_details",
+    "owner_approval_workbench_actions",
+    "owner_approval_workbench_audit_trail"
+  ],
+  "payload_location": "reports/owner-approval-workbench/daily-approval-workbench-payload.json"
+}

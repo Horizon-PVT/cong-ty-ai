@@ -1,0 +1,40 @@
+{
+  "mission_id": "mission_1_0q_owner_approval_workbench",
+  "milestone": "1.0Q",
+  "fixed_artifact_list_used": false,
+  "departments_selected_artifacts": true,
+  "total_artifacts": 6,
+  "artifacts": [
+    {
+      "artifact_file": "artifacts/ai-company/mission-1.0q/generated/approval-workbench-preview.md",
+      "owning_department": "CEO",
+      "rationale": "Human-readable preview summary of the approval workbench for Boss review."
+    },
+    {
+      "artifact_file": "artifacts/ai-company/mission-1.0q/generated/audit-trail-model.json",
+      "owning_department": "COO",
+      "rationale": "Audit log tracking state transitions and approval history."
+    },
+    {
+      "artifact_file": "artifacts/ai-company/mission-1.0q/generated/daily-approval-workbench-payload.json",
+      "owning_department": "Sales_AI",
+      "rationale": "Complete payload containing all 10 questions and workbench widget data."
+    },
+    {
+      "artifact_file": "artifacts/ai-company/mission-1.0q/generated/owner-revision-requests.json",
+      "owning_department": "CMO",
+      "rationale": "Model representing requested rewrites and revision comments."
+    },
+    {
+      "artifact_file": "artifacts/ai-company/mission-1.0q/generated/pricing-discount-rules.json",
+      "owning_department": "CFO",
+      "rationale": "CFO discount and deposit rules for pricing approvals."
+    },
+    {
+      "artifact_file": "artifacts/ai-company/mission-1.0q/generated/handoff-approval-criteria.json",
+      "owning_department": "Customer_Success_AI",
+      "rationale": "CS handoff criteria checklist for Won leads."
+    }
+  ],
+  "generated_at": "2026-07-03"
+}

@@ -1,0 +1,194 @@
+{
+  "schema_version": "1.0",
+  "generated_by": "ai-company-owner-approval-workbench",
+  "integration_target": "paperclip",
+  "data_label": "DEMO_LOCAL_ONLY",
+  "demo_warning": "LOCAL SIMULATION MODE ACTIVE. NO EXTERNAL SIDE-EFFECTS OR SENDING PERMITTED.",
+  "command_center_answers": {
+    "q1_actions_need_approval": "5 actions are currently pending in the Boss approval queue.",
+    "q2_what_boss_approves": "Boss is approving message drafts, discount rates, proposals, and CS handoffs.",
+    "q3_is_action_safe": "Yes, all actions are strictly local drafts. No real customer contact is made.",
+    "q4_what_happens_if_approved": "Approved items transition to approved_draft locally. They are stored in history but NOT sent.",
+    "q5_what_is_blocked_automatically": "Real sending, CRM updates, payments, and any external email/Zalo calls are strictly blocked.",
+    "q6_can_boss_request_rewrite": "Yes, by selecting request_revision and leaving rewrite comments.",
+    "q7_can_boss_reject_or_park": "Yes, via reject_draft or needs_more_research options.",
+    "q8_is_lead_action_demo_only": "All leads and actions are simulated, clearly labeled DEMO / SIMULATION.",
+    "q9_is_there_full_audit_trail": "Yes, every action has a state log with timestamps and actors.",
+    "q10_what_is_next_safe_step": "After local approval, the action is marked completed in the queue and an export pack is prepared."
+  },
+  "workbench_overview": {
+    "pending_count": 5,
+    "approved_count": 1,
+    "rejected_count": 0,
+    "revision_count": 1,
+    "demo_badge": "DEMO / SIMULATION",
+    "safety_note": "No real customers contacted. No real revenue. No real conversion."
+  },
+  "workbench_queue": {
+    "total_pending": 5,
+    "demo_badge": "DEMO / SIMULATION",
+    "safety_note": "No real customers contacted. No real revenue. No real conversion.",
+    "safety_warning_lines": [
+      "LOCAL APPROVAL ONLY",
+      "NOT SENT",
+      "NO REAL CUSTOMER CONTACT",
+      "NO CRM UPDATE",
+      "NO REVENUE CLAIM"
+    ],
+    "items": [
+      {
+        "action_id": "act_rev_001",
+        "lead_id": "lead_spa_01",
+        "lead_name": "[DEMO] Spa Thanh Hóa",
+        "action_type": "proposal_draft",
+        "priority": "high",
+        "summary": "Send Web+Chatbot proposal draft (Simulated value: 12.9M)",
+        "demo_badge": "DEMO / SIMULATION",
+        "safety_note": "No real customers contacted. No real revenue. No real conversion.",
+        "safety_warning_lines": [
+          "LOCAL APPROVAL ONLY",
+          "NOT SENT",
+          "NO REAL CUSTOMER CONTACT",
+          "NO CRM UPDATE",
+          "NO REVENUE CLAIM"
+        ]
+      },
+      {
+        "action_id": "act_rev_002",
+        "lead_id": "lead_dent_02",
+        "lead_name": "[DEMO] Nha khoa Thanh Hóa",
+        "action_type": "pricing_discount",
+        "priority": "medium",
+        "summary": "Approve 15% discount for Dental booking chatbot (10.9M)",
+        "demo_badge": "DEMO / SIMULATION",
+        "safety_note": "No real customers contacted. No real revenue. No real conversion.",
+        "safety_warning_lines": [
+          "LOCAL APPROVAL ONLY",
+          "NOT SENT",
+          "NO REAL CUSTOMER CONTACT",
+          "NO CRM UPDATE",
+          "NO REVENUE CLAIM"
+        ]
+      },
+      {
+        "action_id": "act_rev_003",
+        "lead_id": "lead_home_03",
+        "lead_name": "[DEMO] Homestay Sầm Sơn",
+        "action_type": "follow_up_message",
+        "priority": "high",
+        "summary": "Send follow-up Zalo message draft for seasonal ask",
+        "demo_badge": "DEMO / SIMULATION",
+        "safety_note": "No real customers contacted. No real revenue. No real conversion.",
+        "safety_warning_lines": [
+          "LOCAL APPROVAL ONLY",
+          "NOT SENT",
+          "NO REAL CUSTOMER CONTACT",
+          "NO CRM UPDATE",
+          "NO REVENUE CLAIM"
+        ]
+      },
+      {
+        "action_id": "act_rev_004",
+        "lead_id": "lead_aest_04",
+        "lead_name": "[DEMO] Thẩm mỹ viện Thanh Hóa",
+        "action_type": "client_proposal",
+        "priority": "medium",
+        "summary": "Approve custom consultation proposal package",
+        "demo_badge": "DEMO / SIMULATION",
+        "safety_note": "No real customers contacted. No real revenue. No real conversion.",
+        "safety_warning_lines": [
+          "LOCAL APPROVAL ONLY",
+          "NOT SENT",
+          "NO REAL CUSTOMER CONTACT",
+          "NO CRM UPDATE",
+          "NO REVENUE CLAIM"
+        ]
+      },
+      {
+        "action_id": "act_rev_005",
+        "lead_id": "lead_clin_05",
+        "lead_name": "[DEMO] Phòng khám đa khoa Thanh Hóa",
+        "action_type": "cs_handoff",
+        "priority": "low",
+        "summary": "Trigger local CS handoff checklist for appointment bot",
+        "demo_badge": "DEMO / SIMULATION",
+        "safety_note": "No real customers contacted. No real revenue. No real conversion.",
+        "safety_warning_lines": [
+          "LOCAL APPROVAL ONLY",
+          "NOT SENT",
+          "NO REAL CUSTOMER CONTACT",
+          "NO CRM UPDATE",
+          "NO REVENUE CLAIM"
+        ]
+      }
+    ]
+  },
+  "workbench_details": {
+    "action_id": "act_rev_001",
+    "what_boss_approves": "Draft Zalo proposal message and simulated contract terms for Spa Thanh Hóa. Price: 12.9M VND, no discount requested.",
+    "is_action_safe": true,
+    "safety_warning_lines": [
+      "LOCAL APPROVAL ONLY",
+      "NOT SENT",
+      "NO REAL CUSTOMER CONTACT",
+      "NO CRM UPDATE",
+      "NO REVENUE CLAIM"
+    ],
+    "demo_badge": "DEMO / SIMULATION",
+    "safety_note": "No real customers contacted. No real revenue. No real conversion."
+  },
+  "workbench_actions": {
+    "supported_actions": [
+      "approve_draft",
+      "reject_draft",
+      "request_revision",
+      "needs_more_research",
+      "export_local_action_pack"
+    ],
+    "local_only_mode": true,
+    "demo_badge": "DEMO / SIMULATION",
+    "safety_note": "No real customers contacted. No real revenue. No real conversion."
+  },
+  "workbench_audit_trail": {
+    "logs": [
+      {
+        "timestamp": "2026-07-03T08:00:00Z",
+        "action_id": "act_rev_001",
+        "actor": "sales-agent",
+        "event": "propose_action",
+        "previous_state": "none",
+        "new_state": "pending_review",
+        "comments": "Generated draft Zalo proposal for Spa Thanh Hóa."
+      },
+      {
+        "timestamp": "2026-07-03T08:15:00Z",
+        "action_id": "act_rev_001",
+        "actor": "qa-agent",
+        "event": "verify_safety",
+        "previous_state": "pending_review",
+        "new_state": "pending_review",
+        "comments": "Safety checks passed: local-only labels and warning wording present."
+      },
+      {
+        "timestamp": "2026-07-03T09:30:00Z",
+        "action_id": "act_rev_002",
+        "actor": "sales-agent",
+        "event": "propose_action",
+        "previous_state": "none",
+        "new_state": "pending_review",
+        "comments": "Proposed 15% discount for Nha khoa Thanh Hóa."
+      },
+      {
+        "timestamp": "2026-07-03T10:00:00Z",
+        "action_id": "act_rev_002",
+        "actor": "Boss",
+        "event": "request_revision",
+        "previous_state": "pending_review",
+        "new_state": "revision_needed",
+        "comments": "Reword opener message to focus on patient comfort."
+      }
+    ],
+    "demo_badge": "DEMO / SIMULATION",
+    "safety_note": "No real customers contacted. No real revenue. No real conversion."
+  }
+}

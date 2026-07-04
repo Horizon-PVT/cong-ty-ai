@@ -1,0 +1,51 @@
+{
+  "artifact_id": "audit_trail_model_1_0q",
+  "milestone": "1.0Q",
+  "owning_department": "COO",
+  "data_label": "DEMO_LOCAL_ONLY",
+  "states": [
+    "pending_review",
+    "approved_draft",
+    "rejected_draft",
+    "revision_needed",
+    "needs_research"
+  ],
+  "logs": [
+    {
+      "timestamp": "2026-07-03T08:00:00Z",
+      "action_id": "act_rev_001",
+      "actor": "sales-agent",
+      "event": "propose_action",
+      "previous_state": "none",
+      "new_state": "pending_review",
+      "comments": "Generated draft Zalo proposal for Spa Thanh Hóa."
+    },
+    {
+      "timestamp": "2026-07-03T08:15:00Z",
+      "action_id": "act_rev_001",
+      "actor": "qa-agent",
+      "event": "verify_safety",
+      "previous_state": "pending_review",
+      "new_state": "pending_review",
+      "comments": "Safety checks passed: local-only labels and warning wording present."
+    },
+    {
+      "timestamp": "2026-07-03T09:30:00Z",
+      "action_id": "act_rev_002",
+      "actor": "sales-agent",
+      "event": "propose_action",
+      "previous_state": "none",
+      "new_state": "pending_review",
+      "comments": "Proposed 15% discount for Nha khoa Thanh Hóa."
+    },
+    {
+      "timestamp": "2026-07-03T10:00:00Z",
+      "action_id": "act_rev_002",
+      "actor": "Boss",
+      "event": "request_revision",
+      "previous_state": "pending_review",
+      "new_state": "revision_needed",
+      "comments": "Reword opener message to focus on patient comfort."
+    }
+  ]
+}
