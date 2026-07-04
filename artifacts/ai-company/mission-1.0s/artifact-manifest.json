@@ -1,0 +1,36 @@
+{
+  "milestone": "1.0S",
+  "fixed_artifact_list_used": false,
+  "artifacts": [
+    {
+      "name": "email-action-ledger.json",
+      "department": "COO",
+      "rationale": "Audit log of sandboxed outbox writes and token validation attempts."
+    },
+    {
+      "name": "mock-email-connector.json",
+      "department": "CTO",
+      "rationale": "Outbound connector mappings with forced is_mock = true."
+    },
+    {
+      "name": "approved-template-rules.json",
+      "department": "CMO",
+      "rationale": "Guidelines for templates, tone, CTAs, and pricing anchors."
+    },
+    {
+      "name": "compliance-checklist.json",
+      "department": "QA & CS",
+      "rationale": "Hard checks for pricing claims and recipient demo tags."
+    },
+    {
+      "name": "email-sandbox-preview.md",
+      "department": "CEO",
+      "rationale": "Human-readable preview outlining 10 questions and outbox status."
+    },
+    {
+      "name": "daily-email-sandbox-payload.json",
+      "department": "Sales_AI & CTO",
+      "rationale": "Unified Paperclip widget payload."
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "cmo_guidelines": {
+    "brand": "Alex Minh AI",
+    "tone": "Professional, value-first, SME-centric",
+    "required_price_anchor": "12.9 triệu",
+    "disallowed_keywords": [
+      "cam kết doanh thu 100%",
+      "cam kết doanh số",
+      "không hiệu quả hoàn tiền vô điều kiện"
+    ]
+  }
+}

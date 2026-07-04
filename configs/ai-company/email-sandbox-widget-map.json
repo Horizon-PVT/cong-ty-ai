@@ -1,0 +1,41 @@
+{
+  "widget_map_id": "email_sandbox_widget_map",
+  "milestone": "1.0S",
+  "widgets": [
+    {
+      "widget_id": "email_sandbox_overview",
+      "display_name": "Email Sandbox Overview",
+      "description": "General status of the Owner-Approved Email Sandbox and policies",
+      "requires_safety_warning": true,
+      "data_sources": ["email-sandbox-policy.json"]
+    },
+    {
+      "widget_id": "email_sandbox_queue",
+      "display_name": "Email Action Queue",
+      "description": "Email drafts awaiting approval for sandbox outbox write",
+      "requires_safety_warning": true,
+      "data_sources": ["daily-email-sandbox-payload.json"]
+    },
+    {
+      "widget_id": "email_sandbox_connectors",
+      "display_name": "Mock Email Connector Status",
+      "description": "Abstract statuses of mock email connectors (conn_email_smtp, etc.)",
+      "requires_safety_warning": true,
+      "data_sources": ["mock-email-connector.json"]
+    },
+    {
+      "widget_id": "email_sandbox_outbox",
+      "display_name": "Sandbox Email Outbox",
+      "description": "Internal sandbox outbox storage containing approved eml records",
+      "requires_safety_warning": true,
+      "data_sources": ["daily-email-sandbox-payload.json"]
+    },
+    {
+      "widget_id": "email_sandbox_audit_trail",
+      "display_name": "Email Action Ledger",
+      "description": "History of sandboxed outbox writes and audit trails",
+      "requires_safety_warning": true,
+      "data_sources": ["email-action-ledger.json"]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "mission_id": "mission_1_0s_email_sandbox",
+  "milestone": "1.0S",
+  "title": "Owner-Approved Email Send Sandbox",
+  "description": "Prepare internal sandboxed email outbound actions with separated sandbox tokens, full audit trail, and mock email connectors.",
+  "owner_goal": "Tạo mọi thứ cần thiết để AI Company OS chuẩn bị gửi email doanh thu theo cơ chế owner-approved, nhưng trong milestone này chỉ được ghi vào Email Sandbox Outbox nội bộ, không được gửi email thật, không được gọi Gmail/SMTP/API thật, không được đọc credential, không được dùng .env.",
+  "questions": {
+    "q1_email_drafts_waiting_approval": "Drafts for local SMEs (Spa, Homestay, Nha Khoa) waiting for sandbox outbox write approval.",
+    "q2_written_to_sandbox_outbox": "A standardized .eml preview payload structured under daily-email-sandbox-payload.json.",
+    "q3_demo_recipients": "Simulated local SME email addresses (e.g. spa-thanhhoa-demo@example.com) marked clearly as demo/test records.",
+    "q4_email_content": "Subject: 'Đề xuất giải pháp Web + Chatbot AI tối ưu vận hành', Body introducing Alex Minh AI and 12.9M VND price anchor, CTA linking to local interactive demo.",
+    "q5_price_discount_safety": "CFO verified pricing safety: price anchor set at exactly 12.9M VND with zero unauthorized discounts.",
+    "q6_token_required": "Writing to sandbox outbox requires OWNER_APPROVED_EMAIL_SANDBOX_TOKEN=<action_id>.",
+    "q7_real_sending_blocked": "Yes, real sending is strictly blocked. All outbound connectors are mock only, with zero Gmail/SMTP/third-party API calls.",
+    "q8_future_live_effect": "If live mode is enabled, it would trigger real SMTP/Gmail API outbound sends to SME email accounts.",
+    "q9_audit_trail": "All sandbox writes and token validation attempts are logged in email-action-ledger.json.",
+    "q10_live_email_fixes": "To enable live email, the owner must update kill_switch settings, upgrade autonomy level, provide live SMTP credentials, and supply OWNER_APPROVED_LIVE_TOKEN."
+  }
+}

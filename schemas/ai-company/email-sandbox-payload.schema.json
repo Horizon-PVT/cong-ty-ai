@@ -1,0 +1,227 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EmailSandboxPayload",
+  "type": "object",
+  "properties": {
+    "schema_version": { "type": "string" },
+    "generated_by": { "type": "string" },
+    "integration_target": { "type": "string", "const": "paperclip" },
+    "data_label": { "type": "string", "const": "DEMO_LOCAL_ONLY" },
+    "demo_warning": { "type": "string" },
+    "sandbox_answers": {
+      "type": "object",
+      "properties": {
+        "q1_email_drafts_waiting_approval": { "type": "string" },
+        "q2_written_to_sandbox_outbox": { "type": "string" },
+        "q3_demo_recipients": { "type": "string" },
+        "q4_email_content": { "type": "string" },
+        "q5_price_discount_safety": { "type": "string" },
+        "q6_token_required": { "type": "string" },
+        "q7_real_sending_blocked": { "type": "string" },
+        "q8_future_live_effect": { "type": "string" },
+        "q9_audit_trail": { "type": "string" },
+        "q10_live_email_fixes": { "type": "string" }
+      },
+      "required": [
+        "q1_email_drafts_waiting_approval",
+        "q2_written_to_sandbox_outbox",
+        "q3_demo_recipients",
+        "q4_email_content",
+        "q5_price_discount_safety",
+        "q6_token_required",
+        "q7_real_sending_blocked",
+        "q8_future_live_effect",
+        "q9_audit_trail",
+        "q10_live_email_fixes"
+      ]
+    },
+    "sandbox_overview": {
+      "type": "object",
+      "properties": {
+        "live_actions_enabled": { "type": "boolean", "const": false },
+        "emergency_stop": { "type": "boolean", "const": true },
+        "demo_badge": { "type": "string" },
+        "safety_note": { "type": "string" }
+      },
+      "required": ["live_actions_enabled", "emergency_stop", "demo_badge", "safety_note"]
+    },
+    "sandbox_queue": {
+      "type": "object",
+      "properties": {
+        "total_eligible": { "type": "integer" },
+        "demo_badge": { "type": "string" },
+        "safety_note": { "type": "string" },
+        "safety_warning_lines": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "action_id": { "type": "string" },
+              "action_type": { "type": "string", "const": "send_email" },
+              "mode": { "type": "string", "const": "EMAIL_SANDBOX_ONLY" },
+              "recipient_label": { "type": "string" },
+              "recipient_email_demo": { "type": "string" },
+              "recipient_is_demo": { "type": "boolean", "const": true },
+              "subject": { "type": "string" },
+              "body": { "type": "string" },
+              "offer": { "type": "string" },
+              "price_anchor": { "type": "string" },
+              "cta": { "type": "string" },
+              "compliance_note": { "type": "string" },
+              "claim_safety_check": { "type": "string" },
+              "pricing_safety_check": { "type": "string" },
+              "owner_approval_required": { "type": "boolean", "const": true },
+              "sandbox_token_required": { "type": "boolean", "const": true },
+              "required_sandbox_token_name": { "type": "string", "const": "OWNER_APPROVED_EMAIL_SANDBOX_TOKEN" },
+              "required_sandbox_token_scope": { "type": "string" },
+              "allowed_or_blocked": { "type": "string" },
+              "block_reason": { "type": "string" },
+              "risk_score": { "type": "integer" },
+              "sandbox_outbox_status": { "type": "string" },
+              "expected_external_effect_if_live": { "type": "string" },
+              "actual_external_effect": { "type": "string", "const": "NONE" },
+              "audit_trail_entry": { "type": "string" },
+              "safety_attestation": { "type": "string" },
+              "demo_badge": { "type": "string" },
+              "safety_note": { "type": "string" },
+              "safety_warning_lines": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "required_live_token_name": { "type": "string", "const": "OWNER_APPROVED_LIVE_TOKEN" },
+              "required_live_token_scope": { "type": "string" },
+              "merge_token_not_accepted": { "type": "boolean", "const": true }
+            },
+            "required": [
+              "action_id",
+              "action_type",
+              "mode",
+              "recipient_label",
+              "recipient_email_demo",
+              "recipient_is_demo",
+              "subject",
+              "body",
+              "offer",
+              "price_anchor",
+              "cta",
+              "compliance_note",
+              "claim_safety_check",
+              "pricing_safety_check",
+              "owner_approval_required",
+              "sandbox_token_required",
+              "required_sandbox_token_name",
+              "required_sandbox_token_scope",
+              "allowed_or_blocked",
+              "block_reason",
+              "risk_score",
+              "sandbox_outbox_status",
+              "expected_external_effect_if_live",
+              "actual_external_effect",
+              "audit_trail_entry",
+              "safety_attestation",
+              "demo_badge",
+              "safety_note",
+              "safety_warning_lines",
+              "required_live_token_name",
+              "required_live_token_scope",
+              "merge_token_not_accepted"
+            ]
+          }
+        }
+      },
+      "required": ["total_eligible", "items", "demo_badge", "safety_note", "safety_warning_lines"]
+    },
+    "sandbox_connectors": {
+      "type": "object",
+      "properties": {
+        "connectors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "connector_id": { "type": "string" },
+              "name": { "type": "string" },
+              "status": { "type": "string" },
+              "is_mock": { "type": "boolean", "const": true }
+            },
+            "required": ["connector_id", "name", "status", "is_mock"]
+          }
+        },
+        "demo_badge": { "type": "string" },
+        "safety_note": { "type": "string" }
+      },
+      "required": ["connectors", "demo_badge", "safety_note"]
+    },
+    "sandbox_outbox": {
+      "type": "object",
+      "properties": {
+        "messages": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "message_id": { "type": "string" },
+              "action_id": { "type": "string" },
+              "recipient_email": { "type": "string" },
+              "subject": { "type": "string" },
+              "eml_content_preview": { "type": "string" },
+              "written_at": { "type": "string" },
+              "delivery_status": { "type": "string", "const": "SANDBOX_OUTBOX_WRITE_ONLY" }
+            },
+            "required": [
+              "message_id",
+              "action_id",
+              "recipient_email",
+              "subject",
+              "eml_content_preview",
+              "written_at",
+              "delivery_status"
+            ]
+          }
+        },
+        "demo_badge": { "type": "string" },
+        "safety_note": { "type": "string" }
+      },
+      "required": ["messages", "demo_badge", "safety_note"]
+    },
+    "sandbox_audit_trail": {
+      "type": "object",
+      "properties": {
+        "logs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "timestamp": { "type": "string" },
+              "action_id": { "type": "string" },
+              "event": { "type": "string" },
+              "status": { "type": "string" },
+              "details": { "type": "string" }
+            },
+            "required": ["timestamp", "action_id", "event", "status", "details"]
+          }
+        },
+        "demo_badge": { "type": "string" },
+        "safety_note": { "type": "string" }
+      },
+      "required": ["logs", "demo_badge", "safety_note"]
+    }
+  },
+  "required": [
+    "schema_version",
+    "generated_by",
+    "integration_target",
+    "data_label",
+    "demo_warning",
+    "sandbox_answers",
+    "sandbox_overview",
+    "sandbox_queue",
+    "sandbox_connectors",
+    "sandbox_outbox",
+    "sandbox_audit_trail"
+  ]
+}

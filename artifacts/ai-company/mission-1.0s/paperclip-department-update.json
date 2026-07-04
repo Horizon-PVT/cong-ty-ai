@@ -1,0 +1,11 @@
+{
+  "milestone": "1.0S",
+  "status": "COMPLETED",
+  "widgets_updated": [
+    "email_sandbox_overview",
+    "email_sandbox_queue",
+    "email_sandbox_connectors",
+    "email_sandbox_outbox",
+    "email_sandbox_audit_trail"
+  ]
+}
