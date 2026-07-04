@@ -258,11 +258,11 @@ async function main() {
     q3_autonomy_level_required: "autonomy_level_required depends on the action class (e.g. LEVEL_2_OWNER_APPROVED_LIVE_SEND for customer messages, LEVEL_3 for CRM deals).",
     q4_future_live_effect: "If live mode becomes enabled, actions will trigger actual external connector calls to HubSpot CRM, Zalo Official Account, or Email SMTP server.",
     q5_owner_token_required: "Future live execution requires explicit owner token OWNER_APPROVED_LIVE_TOKEN matched per action id.",
-    q6_connector_used: "Connectorsconn_zalo_sme, conn_email_smtp, conn_facebook_page, and conn_crm_hubspot will translate actions into API commands.",
+    q6_connector_used: "Connectors conn_zalo_sme, conn_email_smtp, conn_facebook_page, and conn_crm_hubspot will translate actions into API commands.",
     q7_risk_score: "Risk score ranges from 10 (local logging) to 90 (payment requests and direct outbound communication).",
     q8_kill_switch_active: "Yes. live_actions_enabled is false, emergency_stop is true, and all daily limits are set to 0.",
     q9_audit_trail: "All Dry-Run actions are logged inside the live-action-ledger.json audit trail.",
-    q10_pre_live_fixes: "To enable live mode, the owner must update kill_switch settings, switch autonomy level, and provide the OWNER_APPROVED_MERGE_PR token."
+    q10_pre_live_fixes: "To enable live mode, the owner must update kill_switch settings, switch autonomy level, and provide the OWNER_APPROVED_LIVE_TOKEN."
   };
 
   const payload = {
@@ -303,7 +303,10 @@ async function main() {
           safety_attestation: safetyAttestation,
           demo_badge,
           safety_note,
-          safety_warning_lines: safetyWarningLines
+          safety_warning_lines: safetyWarningLines,
+          required_live_token_name: "OWNER_APPROVED_LIVE_TOKEN",
+          required_live_token_scope: "act_live_001",
+          merge_token_not_accepted: true
         },
         {
           action_id: "act_live_002",
@@ -325,7 +328,10 @@ async function main() {
           safety_attestation: safetyAttestation,
           demo_badge,
           safety_note,
-          safety_warning_lines: safetyWarningLines
+          safety_warning_lines: safetyWarningLines,
+          required_live_token_name: "OWNER_APPROVED_LIVE_TOKEN",
+          required_live_token_scope: "act_live_002",
+          merge_token_not_accepted: true
         },
         {
           action_id: "act_live_003",
@@ -348,7 +354,10 @@ async function main() {
           safety_attestation: safetyAttestation,
           demo_badge,
           safety_note,
-          safety_warning_lines: safetyWarningLines
+          safety_warning_lines: safetyWarningLines,
+          required_live_token_name: "OWNER_APPROVED_LIVE_TOKEN",
+          required_live_token_scope: "act_live_003",
+          merge_token_not_accepted: true
         },
         {
           action_id: "act_live_004",
@@ -370,7 +379,10 @@ async function main() {
           safety_attestation: safetyAttestation,
           demo_badge,
           safety_note,
-          safety_warning_lines: safetyWarningLines
+          safety_warning_lines: safetyWarningLines,
+          required_live_token_name: "OWNER_APPROVED_LIVE_TOKEN",
+          required_live_token_scope: "act_live_004",
+          merge_token_not_accepted: true
         },
         {
           action_id: "act_live_005",
@@ -392,7 +404,10 @@ async function main() {
           safety_attestation: safetyAttestation,
           demo_badge,
           safety_note,
-          safety_warning_lines: safetyWarningLines
+          safety_warning_lines: safetyWarningLines,
+          required_live_token_name: "OWNER_APPROVED_LIVE_TOKEN",
+          required_live_token_scope: "act_live_005",
+          merge_token_not_accepted: true
         }
       ]
     },

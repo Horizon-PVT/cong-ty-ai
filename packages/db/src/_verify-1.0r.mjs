@@ -27,6 +27,13 @@ check(policy.kill_switch.emergency_stop === true, "policy kill switch emergency_
 check(policy.kill_switch.max_daily_messages === 0, "policy kill switch max_daily_messages is 0");
 check(policy.kill_switch.max_daily_crm_writes === 0, "policy kill switch max_daily_crm_writes is 0");
 check(policy.kill_switch.max_daily_payment_requests === 0, "policy kill switch max_daily_payment_requests is 0");
+check(policy.token_separation_policy.merge_token_name === "OWNER_APPROVED_MERGE_PR", "policy token separation merge_token_name is OWNER_APPROVED_MERGE_PR");
+check(policy.token_separation_policy.live_action_token_name === "OWNER_APPROVED_LIVE_TOKEN", "policy token separation live_action_token_name is OWNER_APPROVED_LIVE_TOKEN");
+check(policy.token_separation_policy.merge_token_must_not_enable_live_actions === true, "policy restricts merge token from enabling live actions");
+check(policy.token_separation_policy.live_action_token_must_not_merge_code === true, "policy restricts live action token from merging code");
+check(policy.action_scoped_live_token_model.required_live_token_scope === "ACTION_ID", "policy live token model has scope ACTION_ID");
+check(policy.action_scoped_live_token_model.one_token_one_action === true, "policy live token model specifies one_token_one_action");
+
 
 // 2. Widget Map
 const widgetMap = JSON.parse(fs.readFileSync(path.join(ROOT, "configs/ai-company/live-action-gateway-widget-map.json"), "utf8"));
@@ -63,6 +70,9 @@ check(!!answers.q7_risk_score, "answers Q7: What is the risk score?");
 check(!!answers.q8_kill_switch_active, "answers Q8: Is the kill switch active?");
 check(!!answers.q9_audit_trail, "answers Q9: What is the audit trail?");
 check(!!answers.q10_pre_live_fixes, "answers Q10: What must be fixed before live mode can be enabled?");
+
+const serializedAnswers = JSON.stringify(answers);
+check(!serializedAnswers.includes("OWNER_APPROVED_MERGE_PR"), "gateway answers must not contain OWNER_APPROVED_MERGE_PR");
 
 // Overview checks
 check(payload.gateway_overview.live_actions_enabled === false, "gateway_overview: live_actions_enabled is false");
@@ -108,6 +118,10 @@ for (const item of queue.items) {
   check(itemLines.includes("NO PAYMENT REQUEST"), `item ${item.action_id} lines includes NO PAYMENT REQUEST`);
   check(itemLines.includes("OWNER TOKEN REQUIRED FOR FUTURE LIVE MODE"), `item ${item.action_id} lines includes OWNER TOKEN REQUIRED FOR FUTURE LIVE MODE`);
   check(itemLines.includes("KILL SWITCH ACTIVE"), `item ${item.action_id} lines includes KILL SWITCH ACTIVE`);
+
+  check(item.required_live_token_name === "OWNER_APPROVED_LIVE_TOKEN", `item ${item.action_id} has correct required_live_token_name`);
+  check(item.required_live_token_scope === item.action_id, `item ${item.action_id} has scope matching action_id`);
+  check(item.merge_token_not_accepted === true, `item ${item.action_id} merge_token_not_accepted is true`);
 }
 
 // Connectors checks

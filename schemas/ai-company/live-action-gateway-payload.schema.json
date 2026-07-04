@@ -79,7 +79,10 @@
               "safety_warning_lines": {
                 "type": "array",
                 "items": { "type": "string" }
-              }
+              },
+              "required_live_token_name": { "type": "string", "const": "OWNER_APPROVED_LIVE_TOKEN" },
+              "required_live_token_scope": { "type": "string" },
+              "merge_token_not_accepted": { "type": "boolean", "const": true }
             },
             "required": [
               "action_id",
@@ -98,7 +101,10 @@
               "safety_attestation",
               "demo_badge",
               "safety_note",
-              "safety_warning_lines"
+              "safety_warning_lines",
+              "required_live_token_name",
+              "required_live_token_scope",
+              "merge_token_not_accepted"
             ]
           }
         }
