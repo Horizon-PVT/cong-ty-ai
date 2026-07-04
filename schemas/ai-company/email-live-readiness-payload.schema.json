@@ -56,7 +56,67 @@
                 "items": { "type": "string" }
               },
               "demo_badge": { "type": "string" },
-              "safety_note": { "type": "string" }
+              "safety_note": { "type": "string" },
+              "sender_identity_check": {
+                "type": "object",
+                "properties": {
+                  "verified": { "type": "boolean" },
+                  "spf_configured": { "type": "boolean" },
+                  "dkim_configured": { "type": "boolean" },
+                  "dmarc_configured": { "type": "boolean" }
+                },
+                "required": ["verified", "spf_configured", "dkim_configured", "dmarc_configured"]
+              },
+              "unsubscribe_check": {
+                "type": "object",
+                "properties": {
+                  "footer_template_defined": { "type": "boolean" },
+                  "one_click_unsubscribe": { "type": "boolean" },
+                  "list_unsubscribe_header": { "type": "boolean" },
+                  "ready": { "type": "boolean" }
+                },
+                "required": ["footer_template_defined", "one_click_unsubscribe", "list_unsubscribe_header", "ready"]
+              },
+              "rate_limit_check": {
+                "type": "object",
+                "properties": {
+                  "policy_defined": { "type": "boolean" },
+                  "max_per_day": { "type": "integer" },
+                  "min_interval_hours": { "type": "integer" },
+                  "enforced_in_provider": { "type": "boolean" },
+                  "ready": { "type": "boolean" }
+                },
+                "required": ["policy_defined", "max_per_day", "min_interval_hours", "enforced_in_provider", "ready"]
+              },
+              "bounce_handling_check": {
+                "type": "object",
+                "properties": {
+                  "hard_bounce_auto_suppress": { "type": "boolean" },
+                  "soft_bounce_max_retries": { "type": "integer" },
+                  "provider_webhook_configured": { "type": "boolean" },
+                  "ready": { "type": "boolean" }
+                },
+                "required": ["hard_bounce_auto_suppress", "soft_bounce_max_retries", "provider_webhook_configured", "ready"]
+              },
+              "reply_routing_check": {
+                "type": "object",
+                "properties": {
+                  "reply_to_address": { "type": "string" },
+                  "crm_routing": { "type": "boolean" },
+                  "ready": { "type": "boolean" }
+                },
+                "required": ["reply_to_address", "crm_routing", "ready"]
+              },
+              "suppression_list_check": {
+                "type": "object",
+                "properties": {
+                  "list_exists": { "type": "boolean" },
+                  "list_seeded": { "type": "boolean" },
+                  "provider_synced": { "type": "boolean" },
+                  "ready": { "type": "boolean" }
+                },
+                "required": ["list_exists", "list_seeded", "provider_synced", "ready"]
+              }
             },
             "required": [
               "action_id", "source_sandbox_action_id", "mode", "recipient_label",
@@ -66,7 +126,9 @@
               "owner_live_token_required_for_future", "required_future_live_token_name",
               "required_future_live_token_scope", "merge_token_not_accepted",
               "sandbox_token_not_accepted_for_live_send", "safety_attestation",
-              "safety_warning_lines", "demo_badge", "safety_note"
+              "safety_warning_lines", "demo_badge", "safety_note",
+              "sender_identity_check", "unsubscribe_check", "rate_limit_check",
+              "bounce_handling_check", "reply_routing_check", "suppression_list_check"
             ]
           }
         }

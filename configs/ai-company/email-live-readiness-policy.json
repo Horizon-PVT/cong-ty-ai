@@ -24,7 +24,8 @@
     "no_browser_automation": true,
     "no_deploy": true,
     "no_publish": true,
-    "no_production_mutation": true
+    "no_production_mutation": true,
+    "no_merge_without_owner_token": true
   },
   "token_separation_policy": {
     "merge_token_name": "OWNER_APPROVED_MERGE_PR",

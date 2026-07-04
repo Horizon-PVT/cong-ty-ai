@@ -205,6 +205,93 @@ if (fs.existsSync(previewPath)) {
   fail("email-readiness-preview.md missing");
 }
 
+// ─── Extra Hardening Checks for PR #37 ────────────────────────────────────────
+// 1. Schema check
+const schemaPath = path.join(ROOT, "schemas/ai-company/email-live-readiness-payload.schema.json");
+if (fs.existsSync(schemaPath)) {
+  const schema = JSON.parse(fs.readFileSync(schemaPath, "utf8"));
+  const itemProperties = schema.properties?.readiness_queue?.properties?.items?.items?.properties;
+  const itemRequired = schema.properties?.readiness_queue?.properties?.items?.items?.required ?? [];
+
+  const requiredSubChecks = [
+    "sender_identity_check",
+    "unsubscribe_check",
+    "rate_limit_check",
+    "bounce_handling_check",
+    "reply_routing_check",
+    "suppression_list_check"
+  ];
+
+  for (const field of requiredSubChecks) {
+    check(itemRequired.includes(field), `Schema requires "${field}" field in readiness queue items`);
+    const subSchema = itemProperties?.[field];
+    check(typeof subSchema === "object", `Schema defines "${field}" as object`);
+  }
+
+  // Validate minimum required fields in sub-checks schemas
+  const senderIdentityReqs = ["verified", "spf_configured", "dkim_configured", "dmarc_configured"];
+  const senderIdentitySchemaReq = itemProperties?.sender_identity_check?.required ?? [];
+  for (const r of senderIdentityReqs) {
+    check(senderIdentitySchemaReq.includes(r), `sender_identity_check schema requires "${r}"`);
+  }
+
+  const unsubscribeReqs = ["footer_template_defined", "one_click_unsubscribe", "list_unsubscribe_header", "ready"];
+  const unsubscribeSchemaReq = itemProperties?.unsubscribe_check?.required ?? [];
+  for (const r of unsubscribeReqs) {
+    check(unsubscribeSchemaReq.includes(r), `unsubscribe_check schema requires "${r}"`);
+  }
+
+  const rateLimitReqs = ["policy_defined", "max_per_day", "min_interval_hours", "enforced_in_provider", "ready"];
+  const rateLimitSchemaReq = itemProperties?.rate_limit_check?.required ?? [];
+  for (const r of rateLimitReqs) {
+    check(rateLimitSchemaReq.includes(r), `rate_limit_check schema requires "${r}"`);
+  }
+
+  const bounceHandlingReqs = ["hard_bounce_auto_suppress", "soft_bounce_max_retries", "provider_webhook_configured", "ready"];
+  const bounceHandlingSchemaReq = itemProperties?.bounce_handling_check?.required ?? [];
+  for (const r of bounceHandlingReqs) {
+    check(bounceHandlingSchemaReq.includes(r), `bounce_handling_check schema requires "${r}"`);
+  }
+
+  const replyRoutingReqs = ["reply_to_address", "crm_routing", "ready"];
+  const replyRoutingSchemaReq = itemProperties?.reply_routing_check?.required ?? [];
+  for (const r of replyRoutingReqs) {
+    check(replyRoutingSchemaReq.includes(r), `reply_routing_check schema requires "${r}"`);
+  }
+
+  const suppressionListReqs = ["list_exists", "list_seeded", "provider_synced", "ready"];
+  const suppressionListSchemaReq = itemProperties?.suppression_list_check?.required ?? [];
+  for (const r of suppressionListReqs) {
+    check(suppressionListSchemaReq.includes(r), `suppression_list_check schema requires "${r}"`);
+  }
+
+  pass("Payload schema is strict and valid");
+} else {
+  fail("email-live-readiness-payload.schema.json missing");
+}
+
+// 2. Widget map checks
+const widgetMapPath = path.join(ROOT, "configs/ai-company/email-live-readiness-widget-map.json");
+if (fs.existsSync(widgetMapPath)) {
+  const widgetMap = JSON.parse(fs.readFileSync(widgetMapPath, "utf8"));
+  check(Array.isArray(widgetMap.widgets), "Widget map defines widgets array");
+  for (const w of widgetMap.widgets ?? []) {
+    check(Array.isArray(w.data_sources) && w.data_sources.length > 0, `Widget "${w.widget_id}" has explicit data_sources`);
+    check(Array.isArray(w.required_payload_sections) && w.required_payload_sections.length > 0, `Widget "${w.widget_id}" has required_payload_sections`);
+  }
+} else {
+  fail("email-live-readiness-widget-map.json missing");
+}
+
+// 3. Policy hard locks check
+const policyPath = path.join(ROOT, "configs/ai-company/email-live-readiness-policy.json");
+if (fs.existsSync(policyPath)) {
+  const policy = JSON.parse(fs.readFileSync(policyPath, "utf8"));
+  check(policy.hard_locks?.no_merge_without_owner_token === true, "Policy hard_locks.no_merge_without_owner_token is true");
+} else {
+  fail("email-live-readiness-policy.json missing");
+}
+
 // ─── Summary ─────────────────────────────────────────────────────────────────
 console.log("=".repeat(50));
 console.log(`Phase 1.0T Verification Summary: ${failed === 0 ? "All passed!" : `${failed} FAILED, ${passed} passed`}`);
