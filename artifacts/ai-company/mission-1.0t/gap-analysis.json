@@ -1,0 +1,69 @@
+{
+  "gap_analysis_id": "gap-analysis-1.0t",
+  "milestone": "1.0T",
+  "total_gaps": 6,
+  "gaps": [
+    {
+      "requirement": "consent_status",
+      "affected_actions": [
+        "readiness_act_001",
+        "readiness_act_002",
+        "readiness_act_003"
+      ],
+      "resolution_required_before_live_send": true,
+      "estimated_effort": "medium"
+    },
+    {
+      "requirement": "sender_identity_verified",
+      "affected_actions": [
+        "readiness_act_001",
+        "readiness_act_002",
+        "readiness_act_003"
+      ],
+      "resolution_required_before_live_send": true,
+      "estimated_effort": "medium"
+    },
+    {
+      "requirement": "physical_or_business_contact_footer_present",
+      "affected_actions": [
+        "readiness_act_001",
+        "readiness_act_002",
+        "readiness_act_003"
+      ],
+      "resolution_required_before_live_send": true,
+      "estimated_effort": "medium"
+    },
+    {
+      "requirement": "rate_limit_available",
+      "affected_actions": [
+        "readiness_act_001",
+        "readiness_act_002",
+        "readiness_act_003"
+      ],
+      "resolution_required_before_live_send": true,
+      "estimated_effort": "medium"
+    },
+    {
+      "requirement": "suppression_list_checked",
+      "affected_actions": [
+        "readiness_act_001",
+        "readiness_act_002",
+        "readiness_act_003"
+      ],
+      "resolution_required_before_live_send": true,
+      "estimated_effort": "medium"
+    },
+    {
+      "requirement": "unsubscribe_footer_present",
+      "affected_actions": [
+        "readiness_act_002",
+        "readiness_act_003"
+      ],
+      "resolution_required_before_live_send": true,
+      "estimated_effort": "medium"
+    }
+  ],
+  "all_gaps_are_known": true,
+  "closure_milestone": "1.0U (future live send milestone)",
+  "demo_badge": "🔵 DEMO / READINESS SIMULATION — NOT SENT — NOT A LIVE EMAIL SYSTEM"
+}

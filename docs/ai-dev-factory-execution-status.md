@@ -303,3 +303,17 @@ Proof execution records:
 - Every outbox message record includes all 9 safety warning lines and full safety attestation independently.
 <!-- execution_records_start -->
 <!-- execution_records_end -->
+
+## Milestone 1.0T Proof Status
+
+Status: In Progress
+Proof execution records:
+- Milestone 1.0T implements the Owner-Approved Email Live Send Readiness.
+- Defines a local readiness scoring and compliance checklist (19 items).
+- Establishes future live token policy (OWNER_APPROVED_LIVE_TOKEN scoped per ACTION_ID, single-use).
+- Implements sender identity rules, consent/allowlist models, rate limit policy, bounce/reply routing models, and suppression lists locally.
+- Creates Paperclip preview widget maps and payloads displaying readiness score, missing requirements, and safety warnings.
+- Strictly local dry-run assessment only: no real sending, no Gmail API/SMTP/external HTTP.
+- Every readiness item includes 11 safety warning lines and full safety attestation independently.
+- Verifier, auto-loop, and pre-merge simulation scripts implemented and verified stable (2/2 passes).
+

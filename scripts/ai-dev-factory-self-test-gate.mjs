@@ -78,7 +78,10 @@ const COMMANDS_BASELINE = [
   { name: "live-action-gateway-premerge-simulate", cmd: "node scripts/ai-company-live-action-gateway-premerge-simulate.mjs", phase: "1.0r", optional: true },
   { name: "verify-1.0s", cmd: "node packages/db/src/_verify-1.0s.mjs", phase: "1.0s", optional: true },
   { name: "email-sandbox-auto-loop", cmd: "node scripts/ai-company-email-sandbox-auto-loop.mjs", phase: "1.0s", optional: true },
-  { name: "email-sandbox-premerge-simulate", cmd: "node scripts/ai-company-email-sandbox-premerge-simulate.mjs", phase: "1.0s", optional: true }
+  { name: "email-sandbox-premerge-simulate", cmd: "node scripts/ai-company-email-sandbox-premerge-simulate.mjs", phase: "1.0s", optional: true },
+  { name: "verify-1.0t", cmd: "node packages/db/src/_verify-1.0t.mjs", phase: "1.0t", optional: true },
+  { name: "email-live-readiness-auto-loop", cmd: "node scripts/ai-company-email-live-readiness-auto-loop.mjs", phase: "1.0t", optional: true },
+  { name: "email-live-readiness-premerge-simulate", cmd: "node scripts/ai-company-email-live-readiness-premerge-simulate.mjs", phase: "1.0t", optional: true }
 ];
 
 
@@ -180,6 +183,8 @@ async function main() {
       filteredCommands = COMMANDS_BASELINE.filter(c => c.phase === "0.3j" || c.phase === "0.3k" || c.phase === "0.3l" || c.phase === "0.3m" || c.phase === "0.3n" || c.phase === "0.3o" || c.phase === "0.3p" || c.phase === "0.3q" || c.phase === "0.3r" || c.phase === "0.3s" || c.phase === "1.0a" || c.phase === "1.0b" || c.phase === "1.0c" || c.phase === "1.0d" || c.phase === "1.0e" || c.phase === "1.0f" || c.phase === "1.0g" || c.phase === "1.0h" || c.phase === "1.0i" || c.phase === "1.0i-loop" || c.phase === "1.0j" || c.phase === "1.0k" || c.phase === "1.0l" || c.phase === "1.0m" || c.phase === "1.0n" || c.phase === "1.0o" || c.phase === "1.0p" || c.phase === "1.0q" || c.phase === "1.0r");
     } else if (selectedPhase === "1.0s") {
       filteredCommands = COMMANDS_BASELINE.filter(c => c.phase === "0.3j" || c.phase === "0.3k" || c.phase === "0.3l" || c.phase === "0.3m" || c.phase === "0.3n" || c.phase === "0.3o" || c.phase === "0.3p" || c.phase === "0.3q" || c.phase === "0.3r" || c.phase === "0.3s" || c.phase === "1.0a" || c.phase === "1.0b" || c.phase === "1.0c" || c.phase === "1.0d" || c.phase === "1.0e" || c.phase === "1.0f" || c.phase === "1.0g" || c.phase === "1.0h" || c.phase === "1.0i" || c.phase === "1.0i-loop" || c.phase === "1.0j" || c.phase === "1.0k" || c.phase === "1.0l" || c.phase === "1.0m" || c.phase === "1.0n" || c.phase === "1.0o" || c.phase === "1.0p" || c.phase === "1.0q" || c.phase === "1.0r" || c.phase === "1.0s");
+    } else if (selectedPhase === "1.0t") {
+      filteredCommands = COMMANDS_BASELINE.filter(c => c.phase === "0.3j" || c.phase === "0.3k" || c.phase === "0.3l" || c.phase === "0.3m" || c.phase === "0.3n" || c.phase === "0.3o" || c.phase === "0.3p" || c.phase === "0.3q" || c.phase === "0.3r" || c.phase === "0.3s" || c.phase === "1.0a" || c.phase === "1.0b" || c.phase === "1.0c" || c.phase === "1.0d" || c.phase === "1.0e" || c.phase === "1.0f" || c.phase === "1.0g" || c.phase === "1.0h" || c.phase === "1.0i" || c.phase === "1.0i-loop" || c.phase === "1.0j" || c.phase === "1.0k" || c.phase === "1.0l" || c.phase === "1.0m" || c.phase === "1.0n" || c.phase === "1.0o" || c.phase === "1.0p" || c.phase === "1.0q" || c.phase === "1.0r" || c.phase === "1.0s" || c.phase === "1.0t");
     }
   }
 

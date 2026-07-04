@@ -1,0 +1,20 @@
+{
+  "rule_id": "sender-identity-rules-1.0t",
+  "milestone": "1.0T",
+  "sender_domain": "alex-minh-ai.demo",
+  "from_address": "sales-demo@alex-minh-ai.demo",
+  "from_name": "Alex Minh AI [DEMO]",
+  "spf_record": "NOT_CONFIGURED",
+  "dkim_record": "NOT_CONFIGURED",
+  "dmarc_policy": "NOT_CONFIGURED",
+  "sender_verified": false,
+  "unlock_criteria": [
+    "Configure SPF record: v=spf1 include:<provider> ~all",
+    "Configure DKIM: generate 1024/2048 bit key via chosen email provider",
+    "Configure DMARC: v=DMARC1; p=quarantine; rua=mailto:dmarc-reports@alex-minh-ai.com",
+    "Verify all records via MXToolbox or equivalent",
+    "Confirm from_address domain is owned and DNS controlled"
+  ],
+  "safety_note": "Sender identity not verified. No email has been sent. Domain is demo only.",
+  "demo_badge": "🔵 DEMO / READINESS SIMULATION — NOT SENT — NOT A LIVE EMAIL SYSTEM"
+}

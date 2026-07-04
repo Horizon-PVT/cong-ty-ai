@@ -1,0 +1,98 @@
+{
+  "manifest_id": "artifact-manifest-1.0t",
+  "milestone": "1.0T",
+  "decided_by": "departments",
+  "artifacts": [
+    {
+      "id": "A1",
+      "name": "email-live-readiness-payload.json",
+      "owner": "CTO",
+      "description": "Main readiness queue payload with compliance checklist per action"
+    },
+    {
+      "id": "A2",
+      "name": "sender-identity-rules.json",
+      "owner": "CTO",
+      "description": "SPF/DKIM/DMARC unlock criteria and sender identity check results"
+    },
+    {
+      "id": "A3",
+      "name": "consent-allowlist-model.json",
+      "owner": "CMO",
+      "description": "Explicit consent model and allowlist (local, empty, pre-live)"
+    },
+    {
+      "id": "A4",
+      "name": "rate-limit-policy.json",
+      "owner": "COO",
+      "description": "Daily send cap and rate limit policy (local only)"
+    },
+    {
+      "id": "A5",
+      "name": "bounce-reply-routing-model.json",
+      "owner": "Customer Success AI",
+      "description": "Bounce handling and reply routing model (local only)"
+    },
+    {
+      "id": "A6",
+      "name": "suppression-list-model.json",
+      "owner": "CTO",
+      "description": "Local suppression list (empty, to be seeded before live send)"
+    },
+    {
+      "id": "A7",
+      "name": "email-readiness-audit-ledger.json",
+      "owner": "QA",
+      "description": "Audit trail of all readiness assessments"
+    },
+    {
+      "id": "A8",
+      "name": "email-readiness-preview.md",
+      "owner": "CTO",
+      "description": "Paperclip-rendered readiness preview for each candidate action"
+    },
+    {
+      "id": "A9",
+      "name": "gap-analysis.json",
+      "owner": "CTO",
+      "description": "Gap analysis across all readiness items"
+    },
+    {
+      "id": "A10",
+      "name": "kpi-scorecard.json",
+      "owner": "CFO",
+      "description": "KPI scorecard for readiness gate"
+    },
+    {
+      "id": "A11",
+      "name": "paperclip-department-update.json",
+      "owner": "COO",
+      "description": "Department update payload for Paperclip integration"
+    },
+    {
+      "id": "A12",
+      "name": "qa-review-report.md",
+      "owner": "QA",
+      "description": "QA review and hard-block test results"
+    },
+    {
+      "id": "A13",
+      "name": "final-package-index.md",
+      "owner": "COO",
+      "description": "Final package index for milestone deliverables"
+    },
+    {
+      "id": "A14",
+      "name": "approved-unsubscribe-rules.json",
+      "owner": "CMO",
+      "description": "Unsubscribe footer and physical address footer rules"
+    },
+    {
+      "id": "A15",
+      "name": "future-live-token-policy.json",
+      "owner": "CTO",
+      "description": "Future OWNER_APPROVED_LIVE_TOKEN policy document"
+    }
+  ],
+  "demo_badge": "🔵 DEMO / READINESS SIMULATION — NOT SENT — NOT A LIVE EMAIL SYSTEM"
+}

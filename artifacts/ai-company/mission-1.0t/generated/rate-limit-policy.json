@@ -1,0 +1,15 @@
+{
+  "policy_id": "rate-limit-policy-1.0t",
+  "milestone": "1.0T",
+  "max_daily_sends": 50,
+  "min_interval_between_sends_hours": 48,
+  "provider_enforced": false,
+  "local_policy_defined": true,
+  "unlock_criteria": [
+    "Configure rate limit in real email provider dashboard",
+    "Test rate limit enforcement with provider's API",
+    "Set up rate limit monitoring and alerting"
+  ],
+  "safety_note": "Rate limit policy defined locally only. Not enforced by any provider. No email has been sent.",
+  "demo_badge": "🔵 DEMO / READINESS SIMULATION — NOT SENT — NOT A LIVE EMAIL SYSTEM"
+}

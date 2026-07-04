@@ -1,0 +1,15 @@
+{
+  "scorecard_id": "kpi-scorecard-1.0t",
+  "milestone": "1.0T",
+  "total_readiness_candidates": 3,
+  "total_ready": 0,
+  "total_blocked": 3,
+  "average_readiness_score": 70,
+  "total_compliance_checks_per_item": 19,
+  "hard_locks_violated": 0,
+  "live_email_enabled": false,
+  "live_email_blocked": true,
+  "emergency_stop_active": true,
+  "provider_is_mock": true,
+  "demo_badge": "🔵 DEMO / READINESS SIMULATION — NOT SENT — NOT A LIVE EMAIL SYSTEM"
+}

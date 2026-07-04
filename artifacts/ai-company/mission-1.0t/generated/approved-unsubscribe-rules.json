@@ -1,0 +1,15 @@
+{
+  "rule_id": "approved-unsubscribe-rules-1.0t",
+  "milestone": "1.0T",
+  "unsubscribe_footer_text": "Để hủy đăng ký nhận email, vui lòng nhấp vào: [UNSUBSCRIBE_LINK]",
+  "physical_address_footer_text": "Alex Minh AI | Thanh Hóa, Việt Nam",
+  "one_click_unsubscribe_ready": false,
+  "list_unsubscribe_header_ready": false,
+  "unlock_criteria": [
+    "Implement one-click unsubscribe endpoint",
+    "Add List-Unsubscribe header in email provider configuration",
+    "Test unsubscribe flow end-to-end in staging"
+  ],
+  "safety_note": "Unsubscribe mechanism defined but not yet provider-enforced. No email has been sent.",
+  "demo_badge": "🔵 DEMO / READINESS SIMULATION — NOT SENT — NOT A LIVE EMAIL SYSTEM"
+}

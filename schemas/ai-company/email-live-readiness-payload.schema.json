@@ -1,0 +1,166 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Email Live Readiness Payload Schema",
+  "description": "Schema for Milestone 1.0T: Email Live Readiness daily payload. Enforces sandbox-only operations and strict token separation.",
+  "type": "object",
+  "properties": {
+    "schema_version": { "type": "string" },
+    "generated_by": { "type": "string" },
+    "integration_target": { "type": "string", "const": "paperclip" },
+    "data_label": { "type": "string", "const": "DEMO_LOCAL_ONLY" },
+    "demo_warning": { "type": "string" },
+    "readiness_answers": { "type": "object" },
+    "readiness_overview": {
+      "type": "object",
+      "properties": {
+        "live_email_enabled": { "type": "boolean", "const": false },
+        "emergency_stop": { "type": "boolean", "const": true },
+        "total_candidates": { "type": "integer" },
+        "total_ready": { "type": "integer", "const": 0 },
+        "total_blocked": { "type": "integer" },
+        "demo_badge": { "type": "string" },
+        "safety_note": { "type": "string" }
+      },
+      "required": ["live_email_enabled", "emergency_stop", "demo_badge", "safety_note"]
+    },
+    "readiness_queue": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "action_id": { "type": "string" },
+              "source_sandbox_action_id": { "type": "string" },
+              "mode": { "type": "string", "const": "EMAIL_LIVE_READINESS_ONLY" },
+              "recipient_label": { "type": "string" },
+              "recipient_email_demo": { "type": "string" },
+              "recipient_is_demo": { "type": "boolean", "const": true },
+              "future_live_send_allowed": { "type": "boolean", "const": false },
+              "live_send_blocked": { "type": "boolean", "const": true },
+              "block_reason": { "type": "string" },
+              "readiness_score": { "type": "integer" },
+              "readiness_status": { "type": "string" },
+              "missing_requirements": { "type": "array", "items": { "type": "string" } },
+              "compliance_checklist": { "type": "object" },
+              "actual_external_effect": { "type": "string", "const": "NONE" },
+              "owner_live_token_required_for_future": { "type": "boolean", "const": true },
+              "required_future_live_token_name": { "type": "string", "const": "OWNER_APPROVED_LIVE_TOKEN" },
+              "required_future_live_token_scope": { "type": "string" },
+              "merge_token_not_accepted": { "type": "boolean", "const": true },
+              "sandbox_token_not_accepted_for_live_send": { "type": "boolean", "const": true },
+              "safety_attestation": { "type": "string" },
+              "safety_warning_lines": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "demo_badge": { "type": "string" },
+              "safety_note": { "type": "string" },
+              "sender_identity_check": {
+                "type": "object",
+                "properties": {
+                  "verified": { "type": "boolean" },
+                  "spf_configured": { "type": "boolean" },
+                  "dkim_configured": { "type": "boolean" },
+                  "dmarc_configured": { "type": "boolean" }
+                },
+                "required": ["verified", "spf_configured", "dkim_configured", "dmarc_configured"]
+              },
+              "unsubscribe_check": {
+                "type": "object",
+                "properties": {
+                  "footer_template_defined": { "type": "boolean" },
+                  "one_click_unsubscribe": { "type": "boolean" },
+                  "list_unsubscribe_header": { "type": "boolean" },
+                  "ready": { "type": "boolean" }
+                },
+                "required": ["footer_template_defined", "one_click_unsubscribe", "list_unsubscribe_header", "ready"]
+              },
+              "rate_limit_check": {
+                "type": "object",
+                "properties": {
+                  "policy_defined": { "type": "boolean" },
+                  "max_per_day": { "type": "integer" },
+                  "min_interval_hours": { "type": "integer" },
+                  "enforced_in_provider": { "type": "boolean" },
+                  "ready": { "type": "boolean" }
+                },
+                "required": ["policy_defined", "max_per_day", "min_interval_hours", "enforced_in_provider", "ready"]
+              },
+              "bounce_handling_check": {
+                "type": "object",
+                "properties": {
+                  "hard_bounce_auto_suppress": { "type": "boolean" },
+                  "soft_bounce_max_retries": { "type": "integer" },
+                  "provider_webhook_configured": { "type": "boolean" },
+                  "ready": { "type": "boolean" }
+                },
+                "required": ["hard_bounce_auto_suppress", "soft_bounce_max_retries", "provider_webhook_configured", "ready"]
+              },
+              "reply_routing_check": {
+                "type": "object",
+                "properties": {
+                  "reply_to_address": { "type": "string" },
+                  "crm_routing": { "type": "boolean" },
+                  "ready": { "type": "boolean" }
+                },
+                "required": ["reply_to_address", "crm_routing", "ready"]
+              },
+              "suppression_list_check": {
+                "type": "object",
+                "properties": {
+                  "list_exists": { "type": "boolean" },
+                  "list_seeded": { "type": "boolean" },
+                  "provider_synced": { "type": "boolean" },
+                  "ready": { "type": "boolean" }
+                },
+                "required": ["list_exists", "list_seeded", "provider_synced", "ready"]
+              }
+            },
+            "required": [
+              "action_id", "source_sandbox_action_id", "mode", "recipient_label",
+              "recipient_email_demo", "recipient_is_demo", "future_live_send_allowed",
+              "live_send_blocked", "block_reason", "readiness_score", "readiness_status",
+              "missing_requirements", "compliance_checklist", "actual_external_effect",
+              "owner_live_token_required_for_future", "required_future_live_token_name",
+              "required_future_live_token_scope", "merge_token_not_accepted",
+              "sandbox_token_not_accepted_for_live_send", "safety_attestation",
+              "safety_warning_lines", "demo_badge", "safety_note",
+              "sender_identity_check", "unsubscribe_check", "rate_limit_check",
+              "bounce_handling_check", "reply_routing_check", "suppression_list_check"
+            ]
+          }
+        }
+      },
+      "required": ["items"]
+    },
+    "future_live_token_policy": {
+      "type": "object",
+      "properties": {
+        "merge_token_name": { "type": "string", "const": "OWNER_APPROVED_MERGE_PR" },
+        "sandbox_token_name": { "type": "string", "const": "OWNER_APPROVED_EMAIL_SANDBOX_TOKEN" },
+        "future_live_token_name": { "type": "string", "const": "OWNER_APPROVED_LIVE_TOKEN" },
+        "merge_token_must_not_enable_email_live_send": { "type": "boolean", "const": true },
+        "sandbox_token_must_not_enable_email_live_send": { "type": "boolean", "const": true },
+        "live_token_reserved_for_future_milestone_only": { "type": "boolean", "const": true },
+        "one_live_token_one_email_action": { "type": "boolean", "const": true },
+        "live_token_scope": { "type": "string", "const": "ACTION_ID" },
+        "live_token_expires_after_use": { "type": "boolean", "const": true }
+      },
+      "required": [
+        "merge_token_name", "sandbox_token_name", "future_live_token_name",
+        "merge_token_must_not_enable_email_live_send",
+        "sandbox_token_must_not_enable_email_live_send",
+        "live_token_reserved_for_future_milestone_only",
+        "one_live_token_one_email_action", "live_token_scope",
+        "live_token_expires_after_use"
+      ]
+    }
+  },
+  "required": [
+    "schema_version", "generated_by", "integration_target", "data_label",
+    "demo_warning", "readiness_answers", "readiness_overview",
+    "readiness_queue", "future_live_token_policy"
+  ]
+}

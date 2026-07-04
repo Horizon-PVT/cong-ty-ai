@@ -1,0 +1,18 @@
+{
+  "model_id": "bounce-reply-routing-1.0t",
+  "milestone": "1.0T",
+  "hard_bounce_action": "auto_suppress",
+  "soft_bounce_max_retries": 2,
+  "soft_bounce_retry_interval_hours": 24,
+  "reply_to_address": "sandbox-reply@alex-minh-ai.demo",
+  "reply_crm_routing": false,
+  "provider_webhook_configured": false,
+  "unlock_criteria": [
+    "Configure provider bounce webhook URL",
+    "Register reply-to address in provider settings",
+    "Test bounce handling with provider's sandbox mode",
+    "Confirm suppression auto-add on hard bounce"
+  ],
+  "safety_note": "Bounce and reply routing models defined locally only. No provider connected. No email has been sent.",
+  "demo_badge": "🔵 DEMO / READINESS SIMULATION — NOT SENT — NOT A LIVE EMAIL SYSTEM"
+}

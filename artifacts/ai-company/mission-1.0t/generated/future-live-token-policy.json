@@ -1,0 +1,12 @@
+{
+  "merge_token_name": "OWNER_APPROVED_MERGE_PR",
+  "sandbox_token_name": "OWNER_APPROVED_EMAIL_SANDBOX_TOKEN",
+  "future_live_token_name": "OWNER_APPROVED_LIVE_TOKEN",
+  "merge_token_must_not_enable_email_live_send": true,
+  "sandbox_token_must_not_enable_email_live_send": true,
+  "live_token_reserved_for_future_milestone_only": true,
+  "one_live_token_one_email_action": true,
+  "live_token_scope": "ACTION_ID",
+  "live_token_expires_after_use": true,
+  "live_token_note": "OWNER_APPROVED_LIVE_TOKEN is defined in policy but must NOT be used in Milestone 1.0T. Reserved for a future live send milestone only."
+}

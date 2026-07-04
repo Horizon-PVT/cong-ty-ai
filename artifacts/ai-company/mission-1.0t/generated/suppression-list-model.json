@@ -1,0 +1,9 @@
+{
+  "list_id": "suppression-list-1.0t",
+  "milestone": "1.0T",
+  "status": "EMPTY_LOCAL_ONLY",
+  "provider_synced": false,
+  "entries": [],
+  "safety_note": "Suppression list must be seeded with opt-out addresses before live send is authorized.",
+  "demo_badge": "🔵 DEMO / READINESS SIMULATION — NOT SENT — NOT A LIVE EMAIL SYSTEM"
+}

@@ -1,0 +1,60 @@
+{
+  "widget_map_id": "email-live-readiness-widget-map",
+  "milestone": "1.0T",
+  "integration_target": "paperclip",
+  "widgets": [
+    {
+      "widget_id": "email_readiness_overview",
+      "title": "Email Live Readiness Overview",
+      "description": "Overall readiness gate status — how many actions are eligible, score distribution, and blocking reasons.",
+      "requires_safety_warning": true,
+      "safety_warning": "LIVE EMAIL NOT ENABLED. READINESS CHECK ONLY.",
+      "data_sources": ["email-live-readiness-payload.json"],
+      "required_payload_sections": ["readiness_overview"]
+    },
+    {
+      "widget_id": "email_readiness_queue",
+      "title": "Email Readiness Candidate Queue",
+      "description": "Queue of sandbox email actions assessed for future live send readiness. Each item shows score, status, and missing requirements.",
+      "requires_safety_warning": true,
+      "safety_warning": "NO REAL CUSTOMER CONTACT. READINESS CHECK ONLY.",
+      "data_sources": ["email-live-readiness-payload.json"],
+      "required_payload_sections": ["readiness_queue.items"]
+    },
+    {
+      "widget_id": "email_compliance_checklist",
+      "title": "Email Compliance Checklist",
+      "description": "Per-action compliance checklist: consent, sender identity, unsubscribe, rate limit, bounce, reply routing, suppression list.",
+      "requires_safety_warning": true,
+      "safety_warning": "NOT SENT. NO REAL EMAIL SEND.",
+      "data_sources": ["email-live-readiness-payload.json"],
+      "required_payload_sections": [
+        "compliance_checklist",
+        "sender_identity_check",
+        "unsubscribe_check",
+        "rate_limit_check",
+        "bounce_handling_check",
+        "reply_routing_check",
+        "suppression_list_check"
+      ]
+    },
+    {
+      "widget_id": "email_live_token_policy",
+      "title": "Future Live Token Policy",
+      "description": "Displays current token separation policy and what action the future OWNER_APPROVED_LIVE_TOKEN would unlock.",
+      "requires_safety_warning": true,
+      "safety_warning": "FUTURE LIVE TOKEN REQUIRED. KILL SWITCH ACTIVE.",
+      "data_sources": ["email-live-readiness-payload.json", "future-live-token-policy.json"],
+      "required_payload_sections": ["future_live_token_policy"]
+    },
+    {
+      "widget_id": "email_readiness_audit_trail",
+      "title": "Readiness Audit Trail",
+      "description": "Audit log of all readiness assessments performed, with timestamps and compliance gap notes.",
+      "requires_safety_warning": true,
+      "safety_warning": "NO GMAIL API CALL. NO SMTP CALL. NO PROVIDER API CALL.",
+      "data_sources": ["email-readiness-audit-ledger.json"],
+      "required_payload_sections": ["email-readiness-audit-ledger.json"]
+    }
+  ]
+}
