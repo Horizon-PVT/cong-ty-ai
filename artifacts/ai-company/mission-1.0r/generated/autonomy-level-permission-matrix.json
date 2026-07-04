@@ -1,0 +1,91 @@
+{
+  "last_reviewed": "2026-04-19T08:40:24.000Z",
+  "levels": [
+    {
+      "id": "LEVEL_0_LOCAL_ONLY",
+      "title": "Level 0: Local-Only",
+      "allowed_connectors": [],
+      "owner_token_required": false,
+      "permitted_channels": []
+    },
+    {
+      "id": "LEVEL_1_HUMAN_SEND",
+      "title": "Level 1: Human Send",
+      "allowed_connectors": [
+        "conn_email_smtp",
+        "conn_zalo_sme"
+      ],
+      "owner_token_required": true,
+      "permitted_channels": [
+        "email",
+        "zalo"
+      ]
+    },
+    {
+      "id": "LEVEL_2_OWNER_APPROVED_LIVE_SEND",
+      "title": "Level 2: Owner Approved Live Send",
+      "allowed_connectors": [
+        "conn_email_smtp",
+        "conn_zalo_sme",
+        "conn_facebook_page"
+      ],
+      "owner_token_required": true,
+      "permitted_channels": [
+        "email",
+        "zalo",
+        "facebook"
+      ]
+    },
+    {
+      "id": "LEVEL_3_BOUNDED_AUTONOMY",
+      "title": "Level 3: Bounded Autonomy",
+      "allowed_connectors": [
+        "conn_email_smtp",
+        "conn_zalo_sme",
+        "conn_facebook_page",
+        "conn_crm_hubspot"
+      ],
+      "owner_token_required": true,
+      "permitted_channels": [
+        "email",
+        "zalo",
+        "facebook",
+        "crm"
+      ]
+    },
+    {
+      "id": "LEVEL_4_REVENUE_OPERATOR",
+      "title": "Level 4: Revenue Operator",
+      "allowed_connectors": [
+        "conn_email_smtp",
+        "conn_zalo_sme",
+        "conn_facebook_page",
+        "conn_crm_hubspot"
+      ],
+      "owner_token_required": true,
+      "permitted_channels": [
+        "email",
+        "zalo",
+        "facebook",
+        "crm"
+      ]
+    },
+    {
+      "id": "LEVEL_5_AUTONOMOUS_BUSINESS_UNIT",
+      "title": "Level 5: Autonomous Business Unit",
+      "allowed_connectors": [
+        "conn_email_smtp",
+        "conn_zalo_sme",
+        "conn_facebook_page",
+        "conn_crm_hubspot"
+      ],
+      "owner_token_required": true,
+      "permitted_channels": [
+        "email",
+        "zalo",
+        "facebook",
+        "crm"
+      ]
+    }
+  ]
+}

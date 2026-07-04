@@ -1,0 +1,59 @@
+{
+  "mission_id": "mission_1_0r_controlled_live_action_gateway",
+  "title": "Controlled Live Action Gateway",
+  "milestone": "1.0R",
+  "owner_goal": "Tạo mọi thứ cần thiết để AI Company OS có thể chuẩn bị chuyển từ local-only approval sang controlled real-world actions, bao gồm gửi tin nhắn thật, cập nhật CRM thật, tạo deal thật, hoặc tạo payment/deposit request thật trong tương lai, nhưng phải thông qua Live Action Gateway có phân quyền, giới hạn, audit log, kill switch, và owner approval policy.",
+  "target_market": {
+    "brand": "Alex Minh AI",
+    "market": "SME Thanh Hóa",
+    "main_offer": "Web + Chatbot AI",
+    "price_anchor": 12900000
+  },
+  "live_action_questions": [
+    {
+      "q_id": "q1_actions_eligible_live",
+      "question": "Which actions are eligible for future live execution?"
+    },
+    {
+      "q_id": "q2_actions_blocked_reason",
+      "question": "Which actions are blocked and why?"
+    },
+    {
+      "q_id": "q3_autonomy_level_required",
+      "question": "What autonomy level is required?"
+    },
+    {
+      "q_id": "q4_future_live_effect",
+      "question": "What would happen if this action became live?"
+    },
+    {
+      "q_id": "q5_owner_token_required",
+      "question": "Which owner token would be required?"
+    },
+    {
+      "q_id": "q6_connector_used",
+      "question": "Which connector would be used?"
+    },
+    {
+      "q_id": "q7_risk_score",
+      "question": "What is the risk score?"
+    },
+    {
+      "q_id": "q8_kill_switch_active",
+      "question": "Is the kill switch active?"
+    },
+    {
+      "q_id": "q9_audit_trail",
+      "question": "What is the audit trail?"
+    },
+    {
+      "q_id": "q10_pre_live_fixes",
+      "question": "What must be fixed before live mode can be enabled?"
+    }
+  ],
+  "ui_scope": {
+    "primary_ui": "Paperclip",
+    "standalone_dashboard_allowed": false,
+    "live_action_preview_required": true
+  }
+}

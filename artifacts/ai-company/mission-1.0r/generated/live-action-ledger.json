@@ -1,0 +1,35 @@
+{
+  "last_updated": "2026-04-19T08:39:14.000Z",
+  "logs": [
+    {
+      "timestamp": "2026-04-19T08:39:24.000Z",
+      "action_id": "act_live_001",
+      "message": "Simulated send_zalo_message to [DEMO] Spa Thanh Hóa. Dry-run payload validated.",
+      "status": "DRY_RUN_SUCCESS"
+    },
+    {
+      "timestamp": "2026-04-19T08:39:34.000Z",
+      "action_id": "act_live_002",
+      "message": "Simulated update_crm_record to [DEMO] Nha khoa Thanh Hóa. Blocked by LEVEL_0_LOCAL_ONLY policy.",
+      "status": "BLOCKED"
+    },
+    {
+      "timestamp": "2026-04-19T08:39:44.000Z",
+      "action_id": "act_live_003",
+      "message": "Simulated create_payment_request for [DEMO] Homestay Sầm Sơn. Dry-run payload compiled.",
+      "status": "DRY_RUN_SUCCESS"
+    },
+    {
+      "timestamp": "2026-04-19T08:39:54.000Z",
+      "action_id": "act_live_004",
+      "message": "Simulated send_email to [DEMO] Thẩm mỹ viện Thanh Hóa. Blocked by kill switch emergency_stop.",
+      "status": "BLOCKED"
+    },
+    {
+      "timestamp": "2026-04-19T08:40:04.000Z",
+      "action_id": "act_live_005",
+      "message": "Simulated create_crm_deal for [DEMO] Phòng khám đa khoa Thanh Hóa. Dry-run payload compiled.",
+      "status": "DRY_RUN_SUCCESS"
+    }
+  ]
+}
