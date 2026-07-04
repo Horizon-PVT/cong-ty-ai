@@ -291,7 +291,7 @@ Proof execution records:
 
 ## Milestone 1.0S Proof Status
 
-Status: In Progress
+Status: Merged and Cleaned
 Proof execution records:
 - Milestone 1.0S implements the Owner-Approved Email Send Sandbox, establishing the first email-specific sandbox execution layer, mock email connector abstractions, and separated sandbox email tokens.
 - Configures email-sandbox policy (10 roles), operating model (17 stages), widget map (5 widgets), and payload schema.
@@ -299,5 +299,7 @@ Proof execution records:
 - Strictly local-only: no real sending, no SMTP, no Gmail API, and no credentials reading.
 - Every email preview card displays the 9 required safety warnings.
 - Implements verification, auto-loop, and premerge simulation scripts for Milestone 1.0S.
+- Token Separation enforced: OWNER_APPROVED_EMAIL_SANDBOX_TOKEN for sandbox outbox writes only; OWNER_APPROVED_LIVE_TOKEN is blocked and not accepted for sending in 1.0S; OWNER_APPROVED_MERGE_PR must not approve email sandbox actions.
+- Every outbox message record includes all 9 safety warning lines and full safety attestation independently.
 <!-- execution_records_start -->
 <!-- execution_records_end -->
