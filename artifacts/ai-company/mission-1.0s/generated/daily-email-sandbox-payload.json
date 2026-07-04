@@ -1,0 +1,236 @@
+{
+  "schema_version": "1.0",
+  "generated_by": "ai-company-email-sandbox-mission-runner",
+  "integration_target": "paperclip",
+  "data_label": "DEMO_LOCAL_ONLY",
+  "demo_warning": "No real customer contact. No real CRM update. No real payment request.",
+  "sandbox_answers": {
+    "q1_email_drafts_waiting_approval": "Drafts for Spa Thanh Hóa, Nha khoa Thanh Hóa, and Homestay Sầm Sơn waiting for sandbox outbox write approval.",
+    "q2_written_to_sandbox_outbox": "An approved sandboxed email record is written locally into the daily-email-sandbox-payload.json outbox messages list.",
+    "q3_demo_recipients": "Simulated SME recipient email addresses marked clearly with is_demo = true (e.g. spa-thanhhoa-demo@example.com).",
+    "q4_email_content": "Subject: 'Đề xuất Giải pháp Web + Chatbot AI'; Body introducing Alex Minh AI and anchoring the 12.9M price point.",
+    "q5_price_discount_safety": "CFO confirmed all drafts respect the 12.9M price anchor with zero unapproved discounts.",
+    "q6_token_required": "Boss must approve each item by providing the OWNER_APPROVED_EMAIL_SANDBOX_TOKEN=<action_id> token.",
+    "q7_real_sending_blocked": "Yes. All SMTP and API calls are strictly stubbed, and any live execution is hard-locked.",
+    "q8_future_live_effect": "If live email mode is unlocked in future milestones, it would trigger real SMTP sends to Thanh Hoa SMEs.",
+    "q9_audit_trail": "Every sandbox write event is appended with a timestamp to email-action-ledger.json.",
+    "q10_live_email_fixes": "OWNER_APPROVED_LIVE_TOKEN is not accepted for 1.0S and will not enable sending in this sandbox-only phase. To enable live emails in future milestones, policy kill switch configurations must be updated and OWNER_APPROVED_LIVE_TOKEN supplied."
+  },
+  "sandbox_overview": {
+    "live_actions_enabled": false,
+    "emergency_stop": true,
+    "demo_badge": "DEMO / SIMULATION",
+    "safety_note": "No real customers contacted. No real CRM update. No real payment request."
+  },
+  "sandbox_queue": {
+    "total_eligible": 3,
+    "demo_badge": "DEMO / SIMULATION",
+    "safety_note": "No real customers contacted. No real CRM update. No real payment request.",
+    "safety_warning_lines": [
+      "EMAIL SANDBOX ONLY",
+      "NOT SENT",
+      "NO REAL CUSTOMER CONTACT",
+      "NO GMAIL API CALL",
+      "NO SMTP CALL",
+      "NO CRM UPDATE",
+      "NO PAYMENT REQUEST",
+      "OWNER SANDBOX TOKEN REQUIRED",
+      "LIVE SEND NOT ENABLED"
+    ],
+    "items": [
+      {
+        "action_id": "act_email_001",
+        "action_type": "send_email",
+        "mode": "EMAIL_SANDBOX_ONLY",
+        "recipient_label": "Spa Thanh Hóa",
+        "recipient_email_demo": "spa-thanhhoa-demo@example.com",
+        "recipient_is_demo": true,
+        "subject": "Đề xuất Giải pháp Web + Chatbot AI vận hành Spa",
+        "body": "Chào Anh/Chị Spa Thanh Hóa, Alex Minh AI đề xuất chương trình trải nghiệm Web + Chatbot AI đặc quyền 12.9 triệu.",
+        "offer": "Web + Chatbot AI",
+        "price_anchor": "12.9 triệu",
+        "cta": "Trải nghiệm demo chatbot tương tác",
+        "compliance_note": "Nội dung tuân thủ quy tắc bảo mật doanh thu.",
+        "claim_safety_check": "Không cam kết doanh thu thực tế, không chứa từ khóa quảng cáo sai sự thật.",
+        "pricing_safety_check": "Anchor giá chính xác 12.9M VND, không chiết khấu trái phép.",
+        "owner_approval_required": true,
+        "sandbox_token_required": true,
+        "required_sandbox_token_name": "OWNER_APPROVED_EMAIL_SANDBOX_TOKEN",
+        "required_sandbox_token_scope": "act_email_001",
+        "allowed_or_blocked": "BLOCKED",
+        "block_reason": "EMAIL_SANDBOX_ONLY mode active. Draft approved for sandbox outbox write only.",
+        "risk_score": 65,
+        "sandbox_outbox_status": "pending_approval",
+        "expected_external_effect_if_live": "Send marketing email to spa-thanhhoa-demo@example.com.",
+        "actual_external_effect": "NONE",
+        "audit_trail_entry": "Proposed send_email for act_email_001. Dry-run simulation logged.",
+        "safety_attestation": "EMAIL SANDBOX ONLY. NOT SENT. NO REAL CUSTOMER CONTACT. NO GMAIL API CALL. NO SMTP CALL. NO CRM UPDATE. NO PAYMENT REQUEST. OWNER SANDBOX TOKEN REQUIRED. LIVE SEND NOT ENABLED",
+        "demo_badge": "DEMO / SIMULATION",
+        "safety_note": "No real customers contacted. No real CRM update. No real payment request.",
+        "safety_warning_lines": [
+          "EMAIL SANDBOX ONLY",
+          "NOT SENT",
+          "NO REAL CUSTOMER CONTACT",
+          "NO GMAIL API CALL",
+          "NO SMTP CALL",
+          "NO CRM UPDATE",
+          "NO PAYMENT REQUEST",
+          "OWNER SANDBOX TOKEN REQUIRED",
+          "LIVE SEND NOT ENABLED"
+        ],
+        "live_token_not_accepted_for_sending": true,
+        "merge_token_not_accepted": true
+      },
+      {
+        "action_id": "act_email_002",
+        "action_type": "send_email",
+        "mode": "EMAIL_SANDBOX_ONLY",
+        "recipient_label": "Nha khoa Thanh Hóa",
+        "recipient_email_demo": "nhakhoa-thanhhoa-demo@example.com",
+        "recipient_is_demo": true,
+        "subject": "Số hóa quy trình đặt lịch với Chatbot AI Nha Khoa",
+        "body": "Kính gửi Nha khoa Thanh Hóa, giải pháp Chatbot AI giúp đặt lịch hẹn tự động...",
+        "offer": "Web + Chatbot AI",
+        "price_anchor": "12.9 triệu",
+        "cta": "Đặt lịch thử qua Chatbot",
+        "compliance_note": "Tuân thủ bộ quy tắc quảng cáo y tế của Alex Minh AI.",
+        "claim_safety_check": "Mô tả tính năng tự động đặt lịch thực tế, không tâng bốc hiệu quả.",
+        "pricing_safety_check": "Đúng giá niêm yết 12.9M VND.",
+        "owner_approval_required": true,
+        "sandbox_token_required": true,
+        "required_sandbox_token_name": "OWNER_APPROVED_EMAIL_SANDBOX_TOKEN",
+        "required_sandbox_token_scope": "act_email_002",
+        "allowed_or_blocked": "BLOCKED",
+        "block_reason": "EMAIL_SANDBOX_ONLY mode active. Draft approved for sandbox outbox write only.",
+        "risk_score": 70,
+        "sandbox_outbox_status": "pending_approval",
+        "expected_external_effect_if_live": "Send marketing email to nhakhoa-thanhhoa-demo@example.com.",
+        "actual_external_effect": "NONE",
+        "audit_trail_entry": "Proposed send_email for act_email_002. Blocked by policy.",
+        "safety_attestation": "EMAIL SANDBOX ONLY. NOT SENT. NO REAL CUSTOMER CONTACT. NO GMAIL API CALL. NO SMTP CALL. NO CRM UPDATE. NO PAYMENT REQUEST. OWNER SANDBOX TOKEN REQUIRED. LIVE SEND NOT ENABLED",
+        "demo_badge": "DEMO / SIMULATION",
+        "safety_note": "No real customers contacted. No real CRM update. No real payment request.",
+        "safety_warning_lines": [
+          "EMAIL SANDBOX ONLY",
+          "NOT SENT",
+          "NO REAL CUSTOMER CONTACT",
+          "NO GMAIL API CALL",
+          "NO SMTP CALL",
+          "NO CRM UPDATE",
+          "NO PAYMENT REQUEST",
+          "OWNER SANDBOX TOKEN REQUIRED",
+          "LIVE SEND NOT ENABLED"
+        ],
+        "live_token_not_accepted_for_sending": true,
+        "merge_token_not_accepted": true
+      },
+      {
+        "action_id": "act_email_003",
+        "action_type": "send_email",
+        "mode": "EMAIL_SANDBOX_ONLY",
+        "recipient_label": "Homestay Sầm Sơn",
+        "recipient_email_demo": "homestay-samson-demo@example.com",
+        "recipient_is_demo": true,
+        "subject": "Tối ưu công suất phòng mùa du lịch bằng Website + Chatbot AI",
+        "body": "Chào Anh/Chị Homestay Sầm Sơn, website kết hợp chatbot AI của Alex Minh AI giúp...",
+        "offer": "Web + Chatbot AI",
+        "price_anchor": "12.9 triệu",
+        "cta": "Xem giao diện website demo mẫu",
+        "compliance_note": "Nội dung tuân thủ an toàn doanh thu.",
+        "claim_safety_check": "Không hứa hẹn tăng 100% công suất phòng.",
+        "pricing_safety_check": "Giữ đúng mức neo giá 12.9 triệu.",
+        "owner_approval_required": true,
+        "sandbox_token_required": true,
+        "required_sandbox_token_name": "OWNER_APPROVED_EMAIL_SANDBOX_TOKEN",
+        "required_sandbox_token_scope": "act_email_003",
+        "allowed_or_blocked": "BLOCKED",
+        "block_reason": "EMAIL_SANDBOX_ONLY mode active. Draft approved for sandbox outbox write only.",
+        "risk_score": 60,
+        "sandbox_outbox_status": "pending_approval",
+        "expected_external_effect_if_live": "Send marketing email to homestay-samson-demo@example.com.",
+        "actual_external_effect": "NONE",
+        "audit_trail_entry": "Proposed send_email for act_email_003. Dry-run payload generated.",
+        "safety_attestation": "EMAIL SANDBOX ONLY. NOT SENT. NO REAL CUSTOMER CONTACT. NO GMAIL API CALL. NO SMTP CALL. NO CRM UPDATE. NO PAYMENT REQUEST. OWNER SANDBOX TOKEN REQUIRED. LIVE SEND NOT ENABLED",
+        "demo_badge": "DEMO / SIMULATION",
+        "safety_note": "No real customers contacted. No real CRM update. No real payment request.",
+        "safety_warning_lines": [
+          "EMAIL SANDBOX ONLY",
+          "NOT SENT",
+          "NO REAL CUSTOMER CONTACT",
+          "NO GMAIL API CALL",
+          "NO SMTP CALL",
+          "NO CRM UPDATE",
+          "NO PAYMENT REQUEST",
+          "OWNER SANDBOX TOKEN REQUIRED",
+          "LIVE SEND NOT ENABLED"
+        ],
+        "live_token_not_accepted_for_sending": true,
+        "merge_token_not_accepted": true
+      }
+    ]
+  },
+  "sandbox_connectors": {
+    "connectors": [
+      {
+        "connector_id": "conn_email_smtp",
+        "name": "Mock SMTP Server Connector",
+        "status": "SANDBOX_MOCK_ACTIVE",
+        "is_mock": true,
+        "mode": "EMAIL_SANDBOX_ONLY"
+      },
+      {
+        "connector_id": "conn_email_gmail",
+        "name": "Mock Gmail API Connector",
+        "status": "SANDBOX_MOCK_ACTIVE",
+        "is_mock": true,
+        "mode": "EMAIL_SANDBOX_ONLY"
+      }
+    ],
+    "demo_badge": "DEMO / SIMULATION",
+    "safety_note": "No real customers contacted. No real CRM update. No real payment request."
+  },
+  "sandbox_outbox": {
+    "messages": [
+      {
+        "message_id": "msg_sandbox_000",
+        "action_id": "act_email_000",
+        "recipient_email": "cafe-thanhhoa-demo@example.com",
+        "subject": "Đề xuất Giải pháp tối ưu vận hành Cafe bằng Chatbot AI",
+        "eml_content_preview": "Subject: Đề xuất Giải pháp tối ưu vận hành Cafe bằng Chatbot AI\nTo: cafe-thanhhoa-demo@example.com\n\nChào Anh/Chị Cafe Thanh Hóa, Alex Minh AI đề xuất...",
+        "written_at": "2026-07-04T09:24:50Z",
+        "recipient_is_demo": true,
+        "actual_external_effect": "NONE",
+        "delivery_status": "SANDBOX_OUTBOX_WRITE_ONLY",
+        "demo_badge": "DEMO / SIMULATION",
+        "safety_note": "No real customers contacted. No real CRM update. No real payment request.",
+        "safety_warning_lines": [
+          "EMAIL SANDBOX ONLY",
+          "NOT SENT",
+          "NO REAL CUSTOMER CONTACT",
+          "NO GMAIL API CALL",
+          "NO SMTP CALL",
+          "NO CRM UPDATE",
+          "NO PAYMENT REQUEST",
+          "OWNER SANDBOX TOKEN REQUIRED",
+          "LIVE SEND NOT ENABLED"
+        ],
+        "safety_attestation": "EMAIL SANDBOX ONLY. NOT SENT. NO REAL CUSTOMER CONTACT. NO GMAIL API CALL. NO SMTP CALL. NO CRM UPDATE. NO PAYMENT REQUEST. OWNER SANDBOX TOKEN REQUIRED. LIVE SEND NOT ENABLED"
+      }
+    ],
+    "demo_badge": "DEMO / SIMULATION",
+    "safety_note": "No real customers contacted. No real CRM update. No real payment request."
+  },
+  "sandbox_audit_trail": {
+    "logs": [
+      {
+        "timestamp": "2026-07-04T09:25:00Z",
+        "action_id": "act_email_000",
+        "event": "sandbox_outbox_write",
+        "status": "SUCCESS",
+        "details": "Email act_email_000 written successfully to sandbox outbox."
+      }
+    ],
+    "demo_badge": "DEMO / SIMULATION",
+    "safety_note": "No real customers contacted. No real CRM update. No real payment request."
+  }
+}

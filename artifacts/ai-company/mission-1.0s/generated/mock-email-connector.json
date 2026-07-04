@@ -1,0 +1,19 @@
+{
+  "generated_at": "2026-07-04T09:24:40Z",
+  "connectors": [
+    {
+      "connector_id": "conn_email_smtp",
+      "name": "Mock SMTP Server Connector",
+      "status": "SANDBOX_MOCK_ACTIVE",
+      "is_mock": true,
+      "mode": "EMAIL_SANDBOX_ONLY"
+    },
+    {
+      "connector_id": "conn_email_gmail",
+      "name": "Mock Gmail API Connector",
+      "status": "SANDBOX_MOCK_ACTIVE",
+      "is_mock": true,
+      "mode": "EMAIL_SANDBOX_ONLY"
+    }
+  ]
+}

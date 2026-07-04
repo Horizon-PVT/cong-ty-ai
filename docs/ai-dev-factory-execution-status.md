@@ -276,7 +276,7 @@ Proof execution records:
 
 ## Milestone 1.0R Proof Status
 
-Status: In Progress
+Status: Merged and Cleaned
 Proof execution records:
 - Milestone 1.0R implements the Controlled Live Action Gateway, building the abstractions, connector abstractions, emergency kill switch panel, and autonomy level permission matrix for future real-world actions.
 - Configures live-action-gateway policy (10 roles), operating model (17 stages), widget map (5 widgets), and payload schema.
@@ -284,5 +284,20 @@ Proof execution records:
 - Strictly local-only: no real sending, no CRM update, no real revenue or payment requests.
 - Every queue item and preview displays the 7 required safety warnings.
 - Implements verification, auto-loop, and premerge simulation scripts for Milestone 1.0R.
+- Implements Token Separation policy (`OWNER_APPROVED_MERGE_PR` for code merge, `OWNER_APPROVED_LIVE_TOKEN` for future live action, `ACTION_ID` scoped tokens).
+<!-- execution_records_start -->
+<!-- execution_records_end -->
+
+
+## Milestone 1.0S Proof Status
+
+Status: In Progress
+Proof execution records:
+- Milestone 1.0S implements the Owner-Approved Email Send Sandbox, establishing the first email-specific sandbox execution layer, mock email connector abstractions, and separated sandbox email tokens.
+- Configures email-sandbox policy (10 roles), operating model (17 stages), widget map (5 widgets), and payload schema.
+- Implements a sandbox runner where 10 departments negotiate and self-select an artifact manifest (6 deliverables) based on high-level owner goal.
+- Strictly local-only: no real sending, no SMTP, no Gmail API, and no credentials reading.
+- Every email preview card displays the 9 required safety warnings.
+- Implements verification, auto-loop, and premerge simulation scripts for Milestone 1.0S.
 <!-- execution_records_start -->
 <!-- execution_records_end -->

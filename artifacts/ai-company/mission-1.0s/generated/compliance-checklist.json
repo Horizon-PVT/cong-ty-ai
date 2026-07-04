@@ -1,0 +1,24 @@
+{
+  "checks": [
+    {
+      "id": "demo_recipient_tag",
+      "description": "Recipient email must belong to demo records",
+      "required": true
+    },
+    {
+      "id": "price_anchor_match",
+      "description": "Offer price must equal 12.9M VND",
+      "required": true
+    },
+    {
+      "id": "no_unauthorized_discount",
+      "description": "No ad-hoc discounts without owner rules",
+      "required": true
+    },
+    {
+      "id": "no_real_sending_call",
+      "description": "Gmail API and nodemailer send triggers must be mocked out",
+      "required": true
+    }
+  ]
+}

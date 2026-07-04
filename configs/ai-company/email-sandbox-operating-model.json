@@ -1,0 +1,92 @@
+{
+  "model_id": "email_sandbox_operating_model_1_0s",
+  "milestone": "1.0S",
+  "description": "Department-led autonomous operating model for Owner-Approved Email Send Sandbox",
+  "stages": [
+    {
+      "stage_id": "owner_goal_intake",
+      "name": "Owner Goal Intake",
+      "description": "Intake owner goals and map questions"
+    },
+    {
+      "stage_id": "ceo_mission_interpretation",
+      "name": "CEO Mission Interpretation",
+      "description": "CEO translates owner goal into department directives"
+    },
+    {
+      "stage_id": "department_briefing",
+      "name": "Department Briefing",
+      "description": "COO distributes brief to all 10 departments"
+    },
+    {
+      "stage_id": "department_artifact_proposals",
+      "name": "Department Artifact Proposals",
+      "description": "Departments propose self-selected deliverables"
+    },
+    {
+      "stage_id": "cross_department_negotiation",
+      "name": "Cross-Department Negotiation",
+      "description": "Departments debate, refine, and finalize artifact list without fixed lists"
+    },
+    {
+      "stage_id": "artifact_manifest_creation",
+      "name": "Artifact Manifest Creation",
+      "description": "Finalize and write artifact-manifest.json"
+    },
+    {
+      "stage_id": "worker_assignment",
+      "name": "Worker Assignment",
+      "description": "COO maps expert agents/workers to each artifact"
+    },
+    {
+      "stage_id": "artifact_generation",
+      "name": "Artifact Generation",
+      "description": "Execute creation of all negotiated deliverables"
+    },
+    {
+      "stage_id": "qa_review",
+      "name": "QA Review",
+      "description": "QA department audits deliverables for safety wording and hard locks"
+    },
+    {
+      "stage_id": "gap_analysis",
+      "name": "Gap Analysis",
+      "description": "Identify any omissions or security loop-holes"
+    },
+    {
+      "stage_id": "gap_closure",
+      "name": "Gap Closure",
+      "description": "Address and close identified gaps"
+    },
+    {
+      "stage_id": "final_packaging",
+      "name": "Final Packaging",
+      "description": "CFO verifies counts and COO compiles final package index"
+    },
+    {
+      "stage_id": "kpi_scoring",
+      "name": "KPI Scoring",
+      "description": "CLO and CFO score execution against KPI criteria"
+    },
+    {
+      "stage_id": "learning_update",
+      "name": "Learning Update",
+      "description": "CLO Hermes updates lessons-learned feed"
+    },
+    {
+      "stage_id": "paperclip_update",
+      "name": "Paperclip Update",
+      "description": "Export paperclip-department-update.json payload"
+    },
+    {
+      "stage_id": "auto_verification",
+      "name": "Auto Verification",
+      "description": "Run E2E verification loop"
+    },
+    {
+      "stage_id": "premerge_simulation",
+      "name": "Premerge Simulation",
+      "description": "Simulate compatibility with all previous milestones"
+    }
+  ]
+}

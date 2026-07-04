@@ -1,0 +1,26 @@
+{
+  "generated_at": "2026-07-04T09:24:00Z",
+  "logs": [
+    {
+      "timestamp": "2026-07-04T09:24:10Z",
+      "action_id": "act_email_000",
+      "event": "sandbox_token_validate",
+      "status": "SUCCESS",
+      "details": "Validated token OWNER_APPROVED_EMAIL_SANDBOX_TOKEN=act_email_000."
+    },
+    {
+      "timestamp": "2026-07-04T09:24:20Z",
+      "action_id": "act_email_000",
+      "event": "sandbox_outbox_write",
+      "status": "WRITTEN",
+      "details": "Eml content draft written to local sandbox outbox. Real email blocked."
+    },
+    {
+      "timestamp": "2026-07-04T09:24:30Z",
+      "action_id": "act_email_001",
+      "event": "sandbox_queue_stage",
+      "status": "PENDING",
+      "details": "Draft send_email staged for act_email_001. Awaiting token."
+    }
+  ]
+}
