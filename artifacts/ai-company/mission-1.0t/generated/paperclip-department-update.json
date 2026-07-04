@@ -1,0 +1,43 @@
+{
+  "update_id": "paperclip-department-update-1.0t",
+  "milestone": "1.0T",
+  "updates": [
+    {
+      "department": "CEO",
+      "update": "Live email unlock strategy defined. All 3 sandbox actions are readiness candidates but blocked by compliance gaps."
+    },
+    {
+      "department": "COO",
+      "update": "Approval and escalation workflow updated to include email live readiness gate before any live send authorization."
+    },
+    {
+      "department": "Sales AI",
+      "update": "act_email_001 (intro/awareness email) prioritized as first candidate for live send once compliance is complete."
+    },
+    {
+      "department": "CMO",
+      "update": "Email tone, CTA, and unsubscribe wording approved for demo templates. Brand safety passed. Physical address footer required."
+    },
+    {
+      "department": "CTO",
+      "update": "Provider abstraction layer defined (FAKE_LOCAL_ONLY). Kill switch active. Suppression list model, rate limit policy, and bounce handling model implemented."
+    },
+    {
+      "department": "CFO",
+      "update": "Pricing safety passed. 12.9M VND anchor used without unauthorized discount. No payment requests in this milestone."
+    },
+    {
+      "department": "Customer Success AI",
+      "update": "Reply routing defined (sandbox-reply inbox). No real CRM routing. Client expectation safety: all recipients are demo only."
+    },
+    {
+      "department": "QA",
+      "update": "Hard blocking tests defined. All 11 safety warning lines verified per readiness item. No live send function detected in any script."
+    },
+    {
+      "department": "CLO Hermes",
+      "update": "Lessons recorded. Unlock criteria for live email documented. Ready for Milestone 1.0U when owner provides OWNER_APPROVED_LIVE_TOKEN."
+    }
+  ],
+  "demo_badge": "🔵 DEMO / READINESS SIMULATION — NOT SENT — NOT A LIVE EMAIL SYSTEM"
+}

@@ -1,0 +1,23 @@
+{
+  "operating_model_id": "email-live-readiness-operating-model",
+  "milestone": "1.0T",
+  "execution_stages": [
+    { "stage": 1, "name": "owner_goal_intake", "owner": "CEO", "description": "Parse and interpret owner mission for email live readiness assessment." },
+    { "stage": 2, "name": "ceo_mission_interpretation", "owner": "CEO", "description": "CEO defines live email unlock strategy and overall readiness assessment scope." },
+    { "stage": 3, "name": "department_briefing", "owner": "COO", "description": "COO distributes briefing to all 10 departments, defining roles and artifact expectations." },
+    { "stage": 4, "name": "department_artifact_proposals", "owner": "All Departments", "description": "Each department proposes their needed artifacts for readiness assessment." },
+    { "stage": 5, "name": "cross_department_negotiation", "owner": "COO", "description": "Departments negotiate final artifact list. Sales AI prioritizes use cases. CMO adds tone/brand safety. CTO adds technical readiness." },
+    { "stage": 6, "name": "artifact_manifest_creation", "owner": "COO", "description": "Final artifact manifest is locked and assigned to workers." },
+    { "stage": 7, "name": "worker_assignment", "owner": "COO", "description": "Workers assigned to each artifact with clear instructions." },
+    { "stage": 8, "name": "artifact_generation", "owner": "All Departments", "description": "All departments generate assigned readiness artifacts — readiness payload, compliance checklist, sender identity rules, consent model, etc." },
+    { "stage": 9, "name": "qa_review", "owner": "QA", "description": "QA performs safety and compliance audits on all artifacts. Fails if any hard lock is violated." },
+    { "stage": 10, "name": "gap_analysis", "owner": "CTO", "description": "CTO identifies coverage gaps in readiness assessment artifacts." },
+    { "stage": 11, "name": "gap_closure", "owner": "CTO + QA", "description": "Gaps are closed with additional checks or documented as future milestone requirements." },
+    { "stage": 12, "name": "final_packaging", "owner": "COO", "description": "All deliverables compiled into final package." },
+    { "stage": 13, "name": "kpi_scoring", "owner": "CFO", "description": "CFO compiles KPI scorecard for readiness gate." },
+    { "stage": 14, "name": "learning_update", "owner": "CLO Hermes", "description": "CLO Hermes records lessons learned and recommends live email unlock criteria." },
+    { "stage": 15, "name": "paperclip_update", "owner": "CTO", "description": "Export Paperclip department update payload." },
+    { "stage": 16, "name": "verification", "owner": "QA", "description": "Run full verifier suite and auto-loop for stable 2/2 passes." },
+    { "stage": 17, "name": "pr_preparation", "owner": "CTO", "description": "Prepare PR body with [READY_FOR_AUTO_MERGE] title and wait for owner token." }
+  ]
+}

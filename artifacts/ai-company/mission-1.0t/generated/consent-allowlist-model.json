@@ -1,0 +1,17 @@
+{
+  "model_id": "consent-allowlist-1.0t",
+  "milestone": "1.0T",
+  "consent_type": "explicit_opt_in",
+  "allowlist": [],
+  "allowlist_seeded": false,
+  "consent_collected": false,
+  "consent_storage": "LOCAL_JSON_ONLY",
+  "unlock_criteria": [
+    "Collect explicit opt-in consent from recipients before first send",
+    "Seed allowlist with at least 1 confirmed opt-in address",
+    "Implement consent capture form or CRM field",
+    "Store consent records with timestamp and source"
+  ],
+  "safety_note": "No consent collected. Allowlist is empty. No email has been sent.",
+  "demo_badge": "🔵 DEMO / READINESS SIMULATION — NOT SENT — NOT A LIVE EMAIL SYSTEM"
+}
