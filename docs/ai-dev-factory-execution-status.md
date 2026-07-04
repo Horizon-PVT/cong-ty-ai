@@ -306,7 +306,7 @@ Proof execution records:
 
 ## Milestone 1.0T Proof Status
 
-Status: In Progress
+Status: Merged and Cleaned
 Proof execution records:
 - Milestone 1.0T implements the Owner-Approved Email Live Send Readiness.
 - Defines a local readiness scoring and compliance checklist (19 items).
@@ -316,4 +316,17 @@ Proof execution records:
 - Strictly local dry-run assessment only: no real sending, no Gmail API/SMTP/external HTTP.
 - Every readiness item includes 11 safety warning lines and full safety attestation independently.
 - Verifier, auto-loop, and pre-merge simulation scripts implemented and verified stable (2/2 passes).
+
+## Milestone 1.0U Proof Status
+
+Status: In Progress
+Proof execution records:
+- Milestone 1.0U implements the Owner-Approved Email Live Send One-Action Pilot Harness.
+- Prepares a single pilot action with `pilot_action_count: 1` and `future_live_send_allowed: false` in harness-only mode.
+- Restricts recipients to OWNER_ALLOWLIST_PLACEHOLDER placeholder KIND; no real customer contact.
+- Formulates a duplicate send protection and idempotency model using unique keys and disables retry policy.
+- Enforces strict token separation: future live token format `OWNER_APPROVED_LIVE_TOKEN=<pilot_action_id>`; merge and sandbox tokens cannot run the pilot.
+- Incorporates 13 required safety warnings on all pilot preview cards and payload records.
+- Verifier, auto-loop, and pre-merge simulation scripts created and verified stable (2/2 passes).
+
 
