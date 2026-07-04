@@ -262,7 +262,7 @@ Proof execution records:
 
 ## Milestone 1.0Q Proof Status
 
-Status: In Progress
+Status: Merged and Cleaned
 Proof execution records:
 - Milestone 1.0Q implements the Paperclip Owner Approval Workbench Mission, proving that the system can build a local-only approval workbench that allows Boss to safely view, approve, reject, or request revisions for recommended actions.
 - Configures owner-approval-workbench policy (10 roles), operating model (17 stages), widget map (5 widgets), and payload schema.
@@ -274,5 +274,15 @@ Proof execution records:
 <!-- execution_records_end -->
 
 
+## Milestone 1.0R Proof Status
 
-
+Status: In Progress
+Proof execution records:
+- Milestone 1.0R implements the Controlled Live Action Gateway, building the abstractions, connector abstractions, emergency kill switch panel, and autonomy level permission matrix for future real-world actions.
+- Configures live-action-gateway policy (10 roles), operating model (17 stages), widget map (5 widgets), and payload schema.
+- Implements a gateway runner where 10 departments negotiate and self-select an artifact manifest (6 deliverables) based on high-level owner goal.
+- Strictly local-only: no real sending, no CRM update, no real revenue or payment requests.
+- Every queue item and preview displays the 7 required safety warnings.
+- Implements verification, auto-loop, and premerge simulation scripts for Milestone 1.0R.
+<!-- execution_records_start -->
+<!-- execution_records_end -->

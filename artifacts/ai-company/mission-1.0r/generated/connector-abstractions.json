@@ -1,0 +1,33 @@
+{
+  "last_validated": "2026-04-19T08:40:14.000Z",
+  "connectors": [
+    {
+      "connector_id": "conn_zalo_sme",
+      "name": "Zalo Message Connector ( Thanh Hóa )",
+      "status": "MOCK_ACTIVE",
+      "is_mock": true,
+      "channel": "zalo"
+    },
+    {
+      "connector_id": "conn_email_smtp",
+      "name": "SMTP Email Connector",
+      "status": "MOCK_ACTIVE",
+      "is_mock": true,
+      "channel": "email"
+    },
+    {
+      "connector_id": "conn_facebook_page",
+      "name": "Facebook Page API Connector",
+      "status": "MOCK_ACTIVE",
+      "is_mock": true,
+      "channel": "facebook"
+    },
+    {
+      "connector_id": "conn_crm_hubspot",
+      "name": "HubSpot CRM Connector",
+      "status": "MOCK_ACTIVE",
+      "is_mock": true,
+      "channel": "crm"
+    }
+  ]
+}

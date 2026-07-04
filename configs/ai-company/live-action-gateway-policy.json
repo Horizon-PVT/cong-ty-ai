@@ -1,0 +1,93 @@
+{
+  "policy_id": "live_action_gateway_policy_1_0r",
+  "milestone": "1.0R",
+  "description": "Safety policy and autonomy levels for AI Company OS Controlled Live Action Gateway",
+  "department_led": true,
+  "default_mode": "LEVEL_0_LOCAL_ONLY",
+  "autonomy_levels": {
+    "LEVEL_0_LOCAL_ONLY": {
+      "level": 0,
+      "description": "Simulation and dry-run only. Zero real-world side-effects.",
+      "allowed": true
+    },
+    "LEVEL_1_HUMAN_SEND": {
+      "level": 1,
+      "description": "Draft prepared by AI, sent manually by owner outside OS.",
+      "allowed": true
+    },
+    "LEVEL_2_OWNER_APPROVED_LIVE_SEND": {
+      "level": 2,
+      "description": "AI sends message directly, but only after receiving OWNER_APPROVED_LIVE_TOKEN.",
+      "allowed": false
+    },
+    "LEVEL_3_BOUNDED_AUTONOMY": {
+      "level": 3,
+      "description": "Autonomous execution within predefined safe limits.",
+      "allowed": false
+    },
+    "LEVEL_4_REVENUE_OPERATOR": {
+      "level": 4,
+      "description": "Autonomous pipeline operations within approved campaigns.",
+      "allowed": false
+    },
+    "LEVEL_5_AUTONOMOUS_BUSINESS_UNIT": {
+      "level": 5,
+      "description": "Fully autonomous business decisions and transactions.",
+      "allowed": false
+    }
+  },
+  "action_types": [
+    "send_email",
+    "send_zalo_message",
+    "send_facebook_message",
+    "update_crm_record",
+    "create_crm_deal",
+    "create_payment_request",
+    "create_contract_draft",
+    "schedule_follow_up",
+    "mark_lead_status",
+    "export_action_pack"
+  ],
+  "kill_switch": {
+    "live_actions_enabled": false,
+    "emergency_stop": true,
+    "max_daily_messages": 0,
+    "max_daily_crm_writes": 0,
+    "max_daily_payment_requests": 0,
+    "allowed_channels": [],
+    "allowed_connectors": [],
+    "live_mode_requires_owner_token": true
+  },
+  "hard_locks": {
+    "no_actual_email_send": true,
+    "no_actual_zalo_send": true,
+    "no_actual_facebook_meta_message": true,
+    "no_actual_crm_write": true,
+    "no_actual_payment_request": true,
+    "no_actual_contract_send": true,
+    "no_actual_customer_communication": true,
+    "no_browser_automation": true,
+    "no_scraping_credentials": true,
+    "no_login_cookie_session_usage": true,
+    "no_paid_tools": true,
+    "no_spending": true,
+    "no_deploy": true,
+    "no_publish": true,
+    "no_secrets_read": true,
+    "no_env_read_or_touch": true,
+    "no_production_mutation": true,
+    "no_merge_without_owner_token": true
+  },
+  "departments": [
+    "CEO",
+    "COO",
+    "Sales_AI",
+    "CMO",
+    "CTO",
+    "CFO",
+    "Customer_Success_AI",
+    "QA",
+    "CLO_Hermes",
+    "Research_AI"
+  ]
+}

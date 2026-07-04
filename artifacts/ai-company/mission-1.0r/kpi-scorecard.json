@@ -1,0 +1,9 @@
+{
+  "questions_answered": 10,
+  "kill_switch_emergency_stop": true,
+  "live_actions_enabled": false,
+  "max_daily_messages": 0,
+  "max_daily_crm_writes": 0,
+  "max_daily_payment_requests": 0,
+  "local_mode_active": true
+}

@@ -1,0 +1,41 @@
+{
+  "widget_map_id": "live_action_gateway_widget_map",
+  "milestone": "1.0R",
+  "widgets": [
+    {
+      "widget_id": "live_action_overview",
+      "display_name": "Live Action Overview",
+      "description": "General status of the Controlled Live Action Gateway and policy",
+      "requires_safety_warning": true,
+      "data_sources": ["live-action-gateway-policy.json"]
+    },
+    {
+      "widget_id": "live_action_eligible_queue",
+      "display_name": "Eligible Actions Queue",
+      "description": "Actions configured and eligible for future live simulation",
+      "requires_safety_warning": true,
+      "data_sources": ["daily-live-action-gateway-payload.json"]
+    },
+    {
+      "widget_id": "live_action_connector_status",
+      "display_name": "Connector Abstraction Status",
+      "description": "Abstract statuses of modeled connectors (Email, Zalo, CRM)",
+      "requires_safety_warning": true,
+      "data_sources": ["connector-abstractions.json"]
+    },
+    {
+      "widget_id": "live_action_kill_switch",
+      "display_name": "Emergency Kill Switch Panel",
+      "description": "Safety parameters and emergency stop toggles",
+      "requires_safety_warning": true,
+      "data_sources": ["emergency-kill-switch-rules.json"]
+    },
+    {
+      "widget_id": "live_action_audit_trail",
+      "display_name": "Action Audit Ledger",
+      "description": "History of dry-run live actions and audit logs",
+      "requires_safety_warning": true,
+      "data_sources": ["live-action-ledger.json"]
+    }
+  ]
+}

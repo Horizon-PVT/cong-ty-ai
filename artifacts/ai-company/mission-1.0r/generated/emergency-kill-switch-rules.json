@@ -1,0 +1,10 @@
+{
+  "live_actions_enabled": false,
+  "emergency_stop": true,
+  "max_daily_messages": 0,
+  "max_daily_crm_writes": 0,
+  "max_daily_payment_requests": 0,
+  "allowed_channels": [],
+  "allowed_connectors": [],
+  "live_mode_requires_owner_token": true
+}

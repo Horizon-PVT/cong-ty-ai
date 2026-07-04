@@ -1,0 +1,36 @@
+{
+  "milestone": "1.0R",
+  "fixed_artifact_list_used": false,
+  "artifacts": [
+    {
+      "name": "live-action-ledger.json",
+      "department": "COO",
+      "rationale": "Action log of simulated, dry-run live actions."
+    },
+    {
+      "name": "connector-abstractions.json",
+      "department": "CTO",
+      "rationale": "Connector adapters mapping target endpoints with strict mock enforcement."
+    },
+    {
+      "name": "emergency-kill-switch-rules.json",
+      "department": "CTO & QA",
+      "rationale": "Emergency stops and zero-limit daily counts rules."
+    },
+    {
+      "name": "autonomy-level-permission-matrix.json",
+      "department": "CLO_Hermes & CFO",
+      "rationale": "Permission matrix defining levels 0 to 5 operations."
+    },
+    {
+      "name": "live-action-gateway-preview.md",
+      "department": "CEO",
+      "rationale": "Summary of live action gateway and answer keys to owner queries."
+    },
+    {
+      "name": "daily-live-action-gateway-payload.json",
+      "department": "Sales_AI & CTO",
+      "rationale": "Unified Paperclip widget payload."
+    }
+  ]
+}

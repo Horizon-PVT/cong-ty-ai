@@ -1,0 +1,191 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "LiveActionGatewayPayload",
+  "type": "object",
+  "properties": {
+    "schema_version": { "type": "string" },
+    "generated_by": { "type": "string" },
+    "integration_target": { "type": "string", "const": "paperclip" },
+    "data_label": { "type": "string", "const": "DEMO_LOCAL_ONLY" },
+    "demo_warning": { "type": "string" },
+    "gateway_answers": {
+      "type": "object",
+      "properties": {
+        "q1_actions_eligible_live": { "type": "string" },
+        "q2_actions_blocked_reason": { "type": "string" },
+        "q3_autonomy_level_required": { "type": "string" },
+        "q4_future_live_effect": { "type": "string" },
+        "q5_owner_token_required": { "type": "string" },
+        "q6_connector_used": { "type": "string" },
+        "q7_risk_score": { "type": "string" },
+        "q8_kill_switch_active": { "type": "string" },
+        "q9_audit_trail": { "type": "string" },
+        "q10_pre_live_fixes": { "type": "string" }
+      },
+      "required": [
+        "q1_actions_eligible_live",
+        "q2_actions_blocked_reason",
+        "q3_autonomy_level_required",
+        "q4_future_live_effect",
+        "q5_owner_token_required",
+        "q6_connector_used",
+        "q7_risk_score",
+        "q8_kill_switch_active",
+        "q9_audit_trail",
+        "q10_pre_live_fixes"
+      ]
+    },
+    "gateway_overview": {
+      "type": "object",
+      "properties": {
+        "live_actions_enabled": { "type": "boolean" },
+        "emergency_stop": { "type": "boolean" },
+        "demo_badge": { "type": "string" },
+        "safety_note": { "type": "string" }
+      },
+      "required": ["live_actions_enabled", "emergency_stop", "demo_badge", "safety_note"]
+    },
+    "gateway_queue": {
+      "type": "object",
+      "properties": {
+        "total_eligible": { "type": "integer" },
+        "demo_badge": { "type": "string" },
+        "safety_note": { "type": "string" },
+        "safety_warning_lines": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "action_id": { "type": "string" },
+              "action_type": { "type": "string" },
+              "target": { "type": "string" },
+              "channel": { "type": "string" },
+              "autonomy_level_required": { "type": "string" },
+              "owner_approval_required": { "type": "boolean" },
+              "risk_score": { "type": "integer" },
+              "allowed_or_blocked": { "type": "string" },
+              "block_reason": { "type": "string" },
+              "dry_run_payload": { "type": "object" },
+              "expected_external_effect": { "type": "string" },
+              "rollback_or_compensation_note": { "type": "string" },
+              "audit_trail_entry": { "type": "string" },
+              "safety_attestation": { "type": "string" },
+              "demo_badge": { "type": "string" },
+              "safety_note": { "type": "string" },
+              "safety_warning_lines": {
+                "type": "array",
+                "items": { "type": "string" }
+              }
+            },
+            "required": [
+              "action_id",
+              "action_type",
+              "target",
+              "channel",
+              "autonomy_level_required",
+              "owner_approval_required",
+              "risk_score",
+              "allowed_or_blocked",
+              "block_reason",
+              "dry_run_payload",
+              "expected_external_effect",
+              "rollback_or_compensation_note",
+              "audit_trail_entry",
+              "safety_attestation",
+              "demo_badge",
+              "safety_note",
+              "safety_warning_lines"
+            ]
+          }
+        }
+      },
+      "required": ["total_eligible", "items", "demo_badge", "safety_note", "safety_warning_lines"]
+    },
+    "gateway_connectors": {
+      "type": "object",
+      "properties": {
+        "connectors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "connector_id": { "type": "string" },
+              "name": { "type": "string" },
+              "status": { "type": "string" },
+              "is_mock": { "type": "boolean", "const": true }
+            },
+            "required": ["connector_id", "name", "status", "is_mock"]
+          }
+        },
+        "demo_badge": { "type": "string" },
+        "safety_note": { "type": "string" }
+      },
+      "required": ["connectors", "demo_badge", "safety_note"]
+    },
+    "gateway_kill_switch": {
+      "type": "object",
+      "properties": {
+        "live_actions_enabled": { "type": "boolean", "const": false },
+        "emergency_stop": { "type": "boolean", "const": true },
+        "max_daily_messages": { "type": "integer", "const": 0 },
+        "max_daily_crm_writes": { "type": "integer", "const": 0 },
+        "max_daily_payment_requests": { "type": "integer", "const": 0 },
+        "allowed_channels": { "type": "array", "maxItems": 0 },
+        "allowed_connectors": { "type": "array", "maxItems": 0 },
+        "live_mode_requires_owner_token": { "type": "boolean", "const": true },
+        "demo_badge": { "type": "string" },
+        "safety_note": { "type": "string" }
+      },
+      "required": [
+        "live_actions_enabled",
+        "emergency_stop",
+        "max_daily_messages",
+        "max_daily_crm_writes",
+        "max_daily_payment_requests",
+        "allowed_channels",
+        "allowed_connectors",
+        "live_mode_requires_owner_token",
+        "demo_badge",
+        "safety_note"
+      ]
+    },
+    "gateway_audit_trail": {
+      "type": "object",
+      "properties": {
+        "logs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "timestamp": { "type": "string" },
+              "action_id": { "type": "string" },
+              "message": { "type": "string" },
+              "status": { "type": "string" }
+            },
+            "required": ["timestamp", "action_id", "message", "status"]
+          }
+        },
+        "demo_badge": { "type": "string" },
+        "safety_note": { "type": "string" }
+      },
+      "required": ["logs", "demo_badge", "safety_note"]
+    }
+  },
+  "required": [
+    "schema_version",
+    "generated_by",
+    "integration_target",
+    "data_label",
+    "demo_warning",
+    "gateway_answers",
+    "gateway_overview",
+    "gateway_queue",
+    "gateway_connectors",
+    "gateway_kill_switch",
+    "gateway_audit_trail"
+  ]
+}

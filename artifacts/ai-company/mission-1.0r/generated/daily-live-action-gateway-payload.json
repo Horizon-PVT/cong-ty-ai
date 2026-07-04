@@ -1,0 +1,273 @@
+{
+  "schema_version": "1.0",
+  "generated_by": "ai-company-live-action-gateway-mission-runner",
+  "integration_target": "paperclip",
+  "data_label": "DEMO_LOCAL_ONLY",
+  "demo_warning": "No real customer contact. No real CRM update. No real payment request.",
+  "gateway_answers": {
+    "q1_actions_eligible_live": "Actions eligible for future live simulation are zalo/email messaging, crm record updates, and payment requests after gateway configuration.",
+    "q2_actions_blocked_reason": "All actions are currently blocked because the gateway is locked under LEVEL_0_LOCAL_ONLY mode and the emergency stop is active.",
+    "q3_autonomy_level_required": "autonomy_level_required depends on the action class (e.g. LEVEL_2_OWNER_APPROVED_LIVE_SEND for customer messages, LEVEL_3 for CRM deals).",
+    "q4_future_live_effect": "If live mode becomes enabled, actions will trigger actual external connector calls to HubSpot CRM, Zalo Official Account, or Email SMTP server.",
+    "q5_owner_token_required": "Future live execution requires explicit owner token OWNER_APPROVED_LIVE_TOKEN matched per action id.",
+    "q6_connector_used": "Connectorsconn_zalo_sme, conn_email_smtp, conn_facebook_page, and conn_crm_hubspot will translate actions into API commands.",
+    "q7_risk_score": "Risk score ranges from 10 (local logging) to 90 (payment requests and direct outbound communication).",
+    "q8_kill_switch_active": "Yes. live_actions_enabled is false, emergency_stop is true, and all daily limits are set to 0.",
+    "q9_audit_trail": "All Dry-Run actions are logged inside the live-action-ledger.json audit trail.",
+    "q10_pre_live_fixes": "To enable live mode, the owner must update kill_switch settings, switch autonomy level, and provide the OWNER_APPROVED_MERGE_PR token."
+  },
+  "gateway_overview": {
+    "live_actions_enabled": false,
+    "emergency_stop": true,
+    "demo_badge": "DEMO / SIMULATION",
+    "safety_note": "No real customers contacted. No real revenue. No real conversion."
+  },
+  "gateway_queue": {
+    "total_eligible": 5,
+    "demo_badge": "DEMO / SIMULATION",
+    "safety_note": "No real customers contacted. No real revenue. No real conversion.",
+    "safety_warning_lines": [
+      "LIVE ACTION NOT ENABLED",
+      "DRY RUN ONLY",
+      "NO REAL CUSTOMER CONTACT",
+      "NO CRM UPDATE",
+      "NO PAYMENT REQUEST",
+      "OWNER TOKEN REQUIRED FOR FUTURE LIVE MODE",
+      "KILL SWITCH ACTIVE"
+    ],
+    "items": [
+      {
+        "action_id": "act_live_001",
+        "action_type": "send_zalo_message",
+        "target": "[DEMO] Spa Thanh Hóa",
+        "channel": "zalo",
+        "autonomy_level_required": "LEVEL_2_OWNER_APPROVED_LIVE_SEND",
+        "owner_approval_required": true,
+        "risk_score": 75,
+        "allowed_or_blocked": "BLOCKED",
+        "block_reason": "LEVEL_0_LOCAL_ONLY policy active. Zalo messages are blocked.",
+        "dry_run_payload": {
+          "text": "Chào Anh/Chị Spa Thanh Hóa, Alex Minh AI đề xuất chương trình trải nghiệm Web + Chatbot AI đặc quyền 12.9 triệu."
+        },
+        "expected_external_effect": "Zalo message sent via conn_zalo_sme connector.",
+        "rollback_or_compensation_note": "No rollback available. Compensation requires manual retraction message.",
+        "audit_trail_entry": "Proposed send_zalo_message for act_live_001. Dry-run simulation logged.",
+        "safety_attestation": "LIVE ACTION NOT ENABLED. DRY RUN ONLY. NO REAL CUSTOMER CONTACT. NO CRM UPDATE. NO PAYMENT REQUEST. OWNER TOKEN REQUIRED FOR FUTURE LIVE MODE. KILL SWITCH ACTIVE",
+        "demo_badge": "DEMO / SIMULATION",
+        "safety_note": "No real customers contacted. No real revenue. No real conversion.",
+        "safety_warning_lines": [
+          "LIVE ACTION NOT ENABLED",
+          "DRY RUN ONLY",
+          "NO REAL CUSTOMER CONTACT",
+          "NO CRM UPDATE",
+          "NO PAYMENT REQUEST",
+          "OWNER TOKEN REQUIRED FOR FUTURE LIVE MODE",
+          "KILL SWITCH ACTIVE"
+        ]
+      },
+      {
+        "action_id": "act_live_002",
+        "action_type": "update_crm_record",
+        "target": "[DEMO] Nha khoa Thanh Hóa",
+        "channel": "crm",
+        "autonomy_level_required": "LEVEL_3_BOUNDED_AUTONOMY",
+        "owner_approval_required": true,
+        "risk_score": 40,
+        "allowed_or_blocked": "BLOCKED",
+        "block_reason": "LEVEL_0_LOCAL_ONLY policy active. CRM updates are blocked.",
+        "dry_run_payload": {
+          "lead_id": "lead_nk_002",
+          "status": "QUALIFIED_LEAD"
+        },
+        "expected_external_effect": "HubSpot CRM contact updated via conn_crm_hubspot connector.",
+        "rollback_or_compensation_note": "Revert field values to original state.",
+        "audit_trail_entry": "Proposed update_crm_record for act_live_002. Blocked by policy.",
+        "safety_attestation": "LIVE ACTION NOT ENABLED. DRY RUN ONLY. NO REAL CUSTOMER CONTACT. NO CRM UPDATE. NO PAYMENT REQUEST. OWNER TOKEN REQUIRED FOR FUTURE LIVE MODE. KILL SWITCH ACTIVE",
+        "demo_badge": "DEMO / SIMULATION",
+        "safety_note": "No real customers contacted. No real revenue. No real conversion.",
+        "safety_warning_lines": [
+          "LIVE ACTION NOT ENABLED",
+          "DRY RUN ONLY",
+          "NO REAL CUSTOMER CONTACT",
+          "NO CRM UPDATE",
+          "NO PAYMENT REQUEST",
+          "OWNER TOKEN REQUIRED FOR FUTURE LIVE MODE",
+          "KILL SWITCH ACTIVE"
+        ]
+      },
+      {
+        "action_id": "act_live_003",
+        "action_type": "create_payment_request",
+        "target": "[DEMO] Homestay Sầm Sơn",
+        "channel": "payment",
+        "autonomy_level_required": "LEVEL_2_OWNER_APPROVED_LIVE_SEND",
+        "owner_approval_required": true,
+        "risk_score": 90,
+        "allowed_or_blocked": "BLOCKED",
+        "block_reason": "LEVEL_0_LOCAL_ONLY policy active. Payment requests are blocked.",
+        "dry_run_payload": {
+          "amount": 12900000,
+          "currency": "VND",
+          "description": "Deposit for Web + Chatbot AI deployment"
+        },
+        "expected_external_effect": "Payment transaction link generated via payment gateway connector.",
+        "rollback_or_compensation_note": "Cancel transaction link in gateway console.",
+        "audit_trail_entry": "Proposed create_payment_request for act_live_003. Dry-run payload generated.",
+        "safety_attestation": "LIVE ACTION NOT ENABLED. DRY RUN ONLY. NO REAL CUSTOMER CONTACT. NO CRM UPDATE. NO PAYMENT REQUEST. OWNER TOKEN REQUIRED FOR FUTURE LIVE MODE. KILL SWITCH ACTIVE",
+        "demo_badge": "DEMO / SIMULATION",
+        "safety_note": "No real customers contacted. No real revenue. No real conversion.",
+        "safety_warning_lines": [
+          "LIVE ACTION NOT ENABLED",
+          "DRY RUN ONLY",
+          "NO REAL CUSTOMER CONTACT",
+          "NO CRM UPDATE",
+          "NO PAYMENT REQUEST",
+          "OWNER TOKEN REQUIRED FOR FUTURE LIVE MODE",
+          "KILL SWITCH ACTIVE"
+        ]
+      },
+      {
+        "action_id": "act_live_004",
+        "action_type": "send_email",
+        "target": "[DEMO] Thẩm mỹ viện Thanh Hóa",
+        "channel": "email",
+        "autonomy_level_required": "LEVEL_1_HUMAN_SEND",
+        "owner_approval_required": true,
+        "risk_score": 50,
+        "allowed_or_blocked": "BLOCKED",
+        "block_reason": "LEVEL_0_LOCAL_ONLY policy active. Email sending is blocked.",
+        "dry_run_payload": {
+          "subject": "Đề xuất hợp tác Web + Chatbot AI",
+          "body": "Kính gửi Thẩm mỹ viện Thanh Hóa..."
+        },
+        "expected_external_effect": "Outbound SMTP email sent via conn_email_smtp connector.",
+        "rollback_or_compensation_note": "Send retraction email manually.",
+        "audit_trail_entry": "Proposed send_email for act_live_004. Simulated template validation completed.",
+        "safety_attestation": "LIVE ACTION NOT ENABLED. DRY RUN ONLY. NO REAL CUSTOMER CONTACT. NO CRM UPDATE. NO PAYMENT REQUEST. OWNER TOKEN REQUIRED FOR FUTURE LIVE MODE. KILL SWITCH ACTIVE",
+        "demo_badge": "DEMO / SIMULATION",
+        "safety_note": "No real customers contacted. No real revenue. No real conversion.",
+        "safety_warning_lines": [
+          "LIVE ACTION NOT ENABLED",
+          "DRY RUN ONLY",
+          "NO REAL CUSTOMER CONTACT",
+          "NO CRM UPDATE",
+          "NO PAYMENT REQUEST",
+          "OWNER TOKEN REQUIRED FOR FUTURE LIVE MODE",
+          "KILL SWITCH ACTIVE"
+        ]
+      },
+      {
+        "action_id": "act_live_005",
+        "action_type": "create_crm_deal",
+        "target": "[DEMO] Phòng khám đa khoa Thanh Hóa",
+        "channel": "crm",
+        "autonomy_level_required": "LEVEL_3_BOUNDED_AUTONOMY",
+        "owner_approval_required": true,
+        "risk_score": 60,
+        "allowed_or_blocked": "BLOCKED",
+        "block_reason": "LEVEL_0_LOCAL_ONLY policy active. CRM writes are blocked.",
+        "dry_run_payload": {
+          "deal_name": "Web + Chatbot AI - Phòng khám đa khoa Thanh Hóa",
+          "amount": 12900000
+        },
+        "expected_external_effect": "Deal record created inside HubSpot CRM pipeline.",
+        "rollback_or_compensation_note": "Delete deal record from CRM dashboard.",
+        "audit_trail_entry": "Proposed create_crm_deal for act_live_005. Dry-run mapping completed.",
+        "safety_attestation": "LIVE ACTION NOT ENABLED. DRY RUN ONLY. NO REAL CUSTOMER CONTACT. NO CRM UPDATE. NO PAYMENT REQUEST. OWNER TOKEN REQUIRED FOR FUTURE LIVE MODE. KILL SWITCH ACTIVE",
+        "demo_badge": "DEMO / SIMULATION",
+        "safety_note": "No real customers contacted. No real revenue. No real conversion.",
+        "safety_warning_lines": [
+          "LIVE ACTION NOT ENABLED",
+          "DRY RUN ONLY",
+          "NO REAL CUSTOMER CONTACT",
+          "NO CRM UPDATE",
+          "NO PAYMENT REQUEST",
+          "OWNER TOKEN REQUIRED FOR FUTURE LIVE MODE",
+          "KILL SWITCH ACTIVE"
+        ]
+      }
+    ]
+  },
+  "gateway_connectors": {
+    "connectors": [
+      {
+        "connector_id": "conn_zalo_sme",
+        "name": "Zalo Message Connector ( Thanh Hóa )",
+        "status": "MOCK_ACTIVE",
+        "is_mock": true,
+        "channel": "zalo"
+      },
+      {
+        "connector_id": "conn_email_smtp",
+        "name": "SMTP Email Connector",
+        "status": "MOCK_ACTIVE",
+        "is_mock": true,
+        "channel": "email"
+      },
+      {
+        "connector_id": "conn_facebook_page",
+        "name": "Facebook Page API Connector",
+        "status": "MOCK_ACTIVE",
+        "is_mock": true,
+        "channel": "facebook"
+      },
+      {
+        "connector_id": "conn_crm_hubspot",
+        "name": "HubSpot CRM Connector",
+        "status": "MOCK_ACTIVE",
+        "is_mock": true,
+        "channel": "crm"
+      }
+    ],
+    "demo_badge": "DEMO / SIMULATION",
+    "safety_note": "No real customers contacted. No real revenue. No real conversion."
+  },
+  "gateway_kill_switch": {
+    "live_actions_enabled": false,
+    "emergency_stop": true,
+    "max_daily_messages": 0,
+    "max_daily_crm_writes": 0,
+    "max_daily_payment_requests": 0,
+    "allowed_channels": [],
+    "allowed_connectors": [],
+    "live_mode_requires_owner_token": true,
+    "demo_badge": "DEMO / SIMULATION",
+    "safety_note": "No real customers contacted. No real revenue. No real conversion."
+  },
+  "gateway_audit_trail": {
+    "logs": [
+      {
+        "timestamp": "2026-04-19T08:39:24.000Z",
+        "action_id": "act_live_001",
+        "message": "Simulated send_zalo_message to [DEMO] Spa Thanh Hóa. Dry-run payload validated.",
+        "status": "DRY_RUN_SUCCESS"
+      },
+      {
+        "timestamp": "2026-04-19T08:39:34.000Z",
+        "action_id": "act_live_002",
+        "message": "Simulated update_crm_record to [DEMO] Nha khoa Thanh Hóa. Blocked by LEVEL_0_LOCAL_ONLY policy.",
+        "status": "BLOCKED"
+      },
+      {
+        "timestamp": "2026-04-19T08:39:44.000Z",
+        "action_id": "act_live_003",
+        "message": "Simulated create_payment_request for [DEMO] Homestay Sầm Sơn. Dry-run payload compiled.",
+        "status": "DRY_RUN_SUCCESS"
+      },
+      {
+        "timestamp": "2026-04-19T08:39:54.000Z",
+        "action_id": "act_live_004",
+        "message": "Simulated send_email to [DEMO] Thẩm mỹ viện Thanh Hóa. Blocked by kill switch emergency_stop.",
+        "status": "BLOCKED"
+      },
+      {
+        "timestamp": "2026-04-19T08:40:04.000Z",
+        "action_id": "act_live_005",
+        "message": "Simulated create_crm_deal for [DEMO] Phòng khám đa khoa Thanh Hóa. Dry-run payload compiled.",
+        "status": "DRY_RUN_SUCCESS"
+      }
+    ],
+    "demo_badge": "DEMO / SIMULATION",
+    "safety_note": "No real customers contacted. No real revenue. No real conversion."
+  }
+}
