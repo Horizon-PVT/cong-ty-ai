@@ -44,11 +44,21 @@ for (const w of widgetMap.widgets) {
 
 // 3. Payload Schema
 const schema = JSON.parse(fs.readFileSync(path.join(ROOT, "schemas/ai-company/email-sandbox-payload.schema.json"), "utf8"));
-check(schema.properties.sandbox_queue.properties.items.items.required.includes("required_live_token_name"), "schema requires required_live_token_name");
-check(schema.properties.sandbox_queue.properties.items.items.required.includes("required_live_token_scope"), "schema requires required_live_token_scope");
+check(!schema.properties.sandbox_queue.properties.items.items.required.includes("required_live_token_name"), "schema does not require required_live_token_name");
+check(!schema.properties.sandbox_queue.properties.items.items.required.includes("required_live_token_scope"), "schema does not require required_live_token_scope");
+check(schema.properties.sandbox_queue.properties.items.items.required.includes("live_token_not_accepted_for_sending"), "schema requires live_token_not_accepted_for_sending");
 check(schema.properties.sandbox_queue.properties.items.items.required.includes("merge_token_not_accepted"), "schema requires merge_token_not_accepted");
 check(schema.properties.sandbox_queue.properties.items.items.required.includes("required_sandbox_token_name"), "schema requires required_sandbox_token_name");
 check(schema.properties.sandbox_queue.properties.items.items.required.includes("required_sandbox_token_scope"), "schema requires required_sandbox_token_scope");
+
+// Also check outbox message required fields
+check(schema.properties.sandbox_outbox.properties.messages.items.required.includes("recipient_is_demo"), "schema requires recipient_is_demo in outbox");
+check(schema.properties.sandbox_outbox.properties.messages.items.required.includes("actual_external_effect"), "schema requires actual_external_effect in outbox");
+check(schema.properties.sandbox_outbox.properties.messages.items.required.includes("demo_badge"), "schema requires demo_badge in outbox");
+check(schema.properties.sandbox_outbox.properties.messages.items.required.includes("safety_note"), "schema requires safety_note in outbox");
+check(schema.properties.sandbox_outbox.properties.messages.items.required.includes("safety_warning_lines"), "schema requires safety_warning_lines in outbox");
+check(schema.properties.sandbox_outbox.properties.messages.items.required.includes("safety_attestation"), "schema requires safety_attestation in outbox");
+
 
 // 4. Generated Payload & Deliverables
 const payloadFile = path.join(ROOT, "artifacts/ai-company/mission-1.0s/generated/daily-email-sandbox-payload.json");
@@ -81,8 +91,9 @@ for (const item of payload.sandbox_queue.items) {
   check(item.actual_external_effect === "NONE", `item ${item.action_id} actual_external_effect is NONE`);
   check(item.required_sandbox_token_name === "OWNER_APPROVED_EMAIL_SANDBOX_TOKEN", `item ${item.action_id} required_sandbox_token_name is correct`);
   check(item.required_sandbox_token_scope === item.action_id, `item ${item.action_id} required_sandbox_token_scope matches action_id`);
-  check(item.required_live_token_name === "OWNER_APPROVED_LIVE_TOKEN", `item ${item.action_id} required_live_token_name is correct`);
-  check(item.required_live_token_scope === item.action_id, `item ${item.action_id} required_live_token_scope matches action_id`);
+  check(item.required_live_token_name === undefined, `item ${item.action_id} must not contain required_live_token_name`);
+  check(item.required_live_token_scope === undefined, `item ${item.action_id} must not contain required_live_token_scope`);
+  check(item.live_token_not_accepted_for_sending === true, `item ${item.action_id} live_token_not_accepted_for_sending is true`);
   check(item.merge_token_not_accepted === true, `item ${item.action_id} merge_token_not_accepted is true`);
 
   for (const w of requiredWarnings) {
@@ -103,8 +114,26 @@ for (const c of conns.connectors) {
 // 6. Outbox
 check(payload.sandbox_outbox.messages.length >= 1, "sandbox outbox lists at least 1 message");
 for (const msg of payload.sandbox_outbox.messages) {
+  check(msg.recipient_is_demo === true, `outbox message ${msg.message_id} recipient_is_demo is true`);
+  check(msg.actual_external_effect === "NONE", `outbox message ${msg.message_id} actual_external_effect is NONE`);
   check(msg.delivery_status === "SANDBOX_OUTBOX_WRITE_ONLY", `outbox message ${msg.message_id} status is SANDBOX_OUTBOX_WRITE_ONLY`);
+  check(msg.demo_badge === "DEMO / SIMULATION", `outbox message ${msg.message_id} demo_badge is correct`);
+  check(msg.safety_note !== undefined, `outbox message ${msg.message_id} has safety_note`);
+  check(msg.safety_attestation !== undefined, `outbox message ${msg.message_id} has safety_attestation`);
+  
+  for (const w of requiredWarnings) {
+    check(msg.safety_warning_lines.includes(w), `outbox message ${msg.message_id} warning lines include ${w}`);
+    check(msg.safety_attestation.includes(w), `outbox message ${msg.message_id} attestation includes ${w}`);
+  }
+  
+  check(msg.eml_content_preview.includes("Chào Anh/Chị Cafe Thanh Hóa"), `outbox message ${msg.message_id} preview has correct body`);
 }
+
+// Assert no text implies real email send
+const rawText = fs.readFileSync(payloadFile, "utf8");
+check(!rawText.includes("\"delivery_status\": \"SENT\""), "no outbox message status is SENT");
+check(!rawText.includes("real email was sent") && !rawText.includes("real customer email sent"), "no text implies real email was sent");
+
 
 // 7. Code/Keywords Safety & Hard Locks Checks
 const filesToCheck = [

@@ -41,7 +41,7 @@ If live email mode is unlocked in future milestones, it would trigger real SMTP 
 Every sandbox write event is appended with a timestamp to email-action-ledger.json.
 
 ### q10_live_email_fixes
-To enable live emails, the owner must update policy kill switch configurations and provide the OWNER_APPROVED_LIVE_TOKEN.
+OWNER_APPROVED_LIVE_TOKEN is not accepted for 1.0S and will not enable sending in this sandbox-only phase. To enable live emails in future milestones, policy kill switch configurations must be updated and OWNER_APPROVED_LIVE_TOKEN supplied.
 
 ## Simulated Sandbox Email Outbox Messages
 

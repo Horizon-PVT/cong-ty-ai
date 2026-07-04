@@ -92,8 +92,7 @@
                 "type": "array",
                 "items": { "type": "string" }
               },
-              "required_live_token_name": { "type": "string", "const": "OWNER_APPROVED_LIVE_TOKEN" },
-              "required_live_token_scope": { "type": "string" },
+              "live_token_not_accepted_for_sending": { "type": "boolean", "const": true },
               "merge_token_not_accepted": { "type": "boolean", "const": true }
             },
             "required": [
@@ -126,8 +125,7 @@
               "demo_badge",
               "safety_note",
               "safety_warning_lines",
-              "required_live_token_name",
-              "required_live_token_scope",
+              "live_token_not_accepted_for_sending",
               "merge_token_not_accepted"
             ]
           }
@@ -170,7 +168,16 @@
               "subject": { "type": "string" },
               "eml_content_preview": { "type": "string" },
               "written_at": { "type": "string" },
-              "delivery_status": { "type": "string", "const": "SANDBOX_OUTBOX_WRITE_ONLY" }
+              "delivery_status": { "type": "string", "const": "SANDBOX_OUTBOX_WRITE_ONLY" },
+              "recipient_is_demo": { "type": "boolean", "const": true },
+              "actual_external_effect": { "type": "string", "const": "NONE" },
+              "demo_badge": { "type": "string", "const": "DEMO / SIMULATION" },
+              "safety_note": { "type": "string" },
+              "safety_warning_lines": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "safety_attestation": { "type": "string" }
             },
             "required": [
               "message_id",
@@ -179,7 +186,13 @@
               "subject",
               "eml_content_preview",
               "written_at",
-              "delivery_status"
+              "delivery_status",
+              "recipient_is_demo",
+              "actual_external_effect",
+              "demo_badge",
+              "safety_note",
+              "safety_warning_lines",
+              "safety_attestation"
             ]
           }
         },

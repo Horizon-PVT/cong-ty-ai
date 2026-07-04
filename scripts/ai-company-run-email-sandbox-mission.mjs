@@ -213,7 +213,7 @@ async function main() {
     q7_real_sending_blocked: "Yes. All SMTP and API calls are strictly stubbed, and any live execution is hard-locked.",
     q8_future_live_effect: "If live email mode is unlocked in future milestones, it would trigger real SMTP sends to Thanh Hoa SMEs.",
     q9_audit_trail: "Every sandbox write event is appended with a timestamp to email-action-ledger.json.",
-    q10_live_email_fixes: "To enable live emails, the owner must update policy kill switch configurations and provide the OWNER_APPROVED_LIVE_TOKEN."
+    q10_live_email_fixes: "OWNER_APPROVED_LIVE_TOKEN is not accepted for 1.0S and will not enable sending in this sandbox-only phase. To enable live emails in future milestones, policy kill switch configurations must be updated and OWNER_APPROVED_LIVE_TOKEN supplied."
   };
 
   const payload = {
@@ -265,8 +265,7 @@ async function main() {
           demo_badge,
           safety_note,
           safety_warning_lines: safetyWarningLines,
-          required_live_token_name: "OWNER_APPROVED_LIVE_TOKEN",
-          required_live_token_scope: "act_email_001",
+          live_token_not_accepted_for_sending: true,
           merge_token_not_accepted: true
         },
         {
@@ -299,8 +298,7 @@ async function main() {
           demo_badge,
           safety_note,
           safety_warning_lines: safetyWarningLines,
-          required_live_token_name: "OWNER_APPROVED_LIVE_TOKEN",
-          required_live_token_scope: "act_email_002",
+          live_token_not_accepted_for_sending: true,
           merge_token_not_accepted: true
         },
         {
@@ -333,8 +331,7 @@ async function main() {
           demo_badge,
           safety_note,
           safety_warning_lines: safetyWarningLines,
-          required_live_token_name: "OWNER_APPROVED_LIVE_TOKEN",
-          required_live_token_scope: "act_email_003",
+          live_token_not_accepted_for_sending: true,
           merge_token_not_accepted: true
         }
       ]
@@ -353,7 +350,13 @@ async function main() {
           subject: "Đề xuất Giải pháp tối ưu vận hành Cafe bằng Chatbot AI",
           eml_content_preview: "Subject: Đề xuất Giải pháp tối ưu vận hành Cafe bằng Chatbot AI\nTo: cafe-thanhhoa-demo@example.com\n\nChào Anh/Chị Cafe Thanh Hóa, Alex Minh AI đề xuất...",
           written_at: getSimulatedTimestamp(),
-          delivery_status: "SANDBOX_OUTBOX_WRITE_ONLY"
+          recipient_is_demo: true,
+          actual_external_effect: "NONE",
+          delivery_status: "SANDBOX_OUTBOX_WRITE_ONLY",
+          demo_badge,
+          safety_note,
+          safety_warning_lines: safetyWarningLines,
+          safety_attestation: safetyAttestation
         }
       ],
       demo_badge,
