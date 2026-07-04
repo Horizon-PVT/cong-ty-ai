@@ -1,0 +1,12 @@
+{
+  "contract_id": "runtime-send-command-contract-1.0v",
+  "milestone": "1.0V",
+  "command": "node scripts/ai-company-send-boss-allowlist-test.mjs",
+  "required_args": [
+    "--action",
+    "--token",
+    "--recipient"
+  ],
+  "validation": "recipient_must_not_contain_customer_emails",
+  "demo_badge": "🔵 DEMO / BOSS ALLOWLIST TEST GATE SIMULATION — NOT SENT — NOT A LIVE EMAIL SYSTEM"
+}

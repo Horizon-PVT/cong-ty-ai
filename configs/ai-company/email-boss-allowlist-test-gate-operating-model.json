@@ -1,0 +1,15 @@
+{
+  "operating_model_id": "email-boss-allowlist-test-gate-operating-model",
+  "milestone": "1.0V",
+  "execution_stages": [
+    { "stage": 1, "name": "live_test_unlock_strategy", "owner": "CEO", "description": "CEO defines live test unlock strategy and overall compliance boundaries." },
+    { "stage": 2, "name": "one_action_execution_workflow", "owner": "COO", "description": "COO defines one-action execution workflow and manual validation controls." },
+    { "stage": 3, "name": "content_claims_rules", "owner": "CMO", "description": "CMO defines subject/body/CTA templates, unsubscribe validation, and claim-safety rules." },
+    { "stage": 4, "name": "price_anchor_validation", "owner": "CFO", "description": "CFO checks price anchor 12.9M VND and discount safety limits." },
+    { "stage": 5, "name": "reply_handling_model", "owner": "Customer Success AI", "description": "Customer Success AI defines reply expectation and manual-only handling boundaries." },
+    { "stage": 6, "name": "operational_risk_review", "owner": "Research AI", "description": "Research AI reviews operational and compliance risks of boss live test." },
+    { "stage": 7, "name": "boundary_configuration", "owner": "CTO", "description": "CTO defines provider boundary, allowlist gate, kill switch, idempotency, audit ledger, and runtime command contract." },
+    { "stage": 8, "name": "preflight_checks_review", "owner": "QA", "description": "QA defines hard blocking tests for unsafe execution and validates preflight checks." },
+    { "stage": 9, "name": "learning_retrospective", "owner": "CLO Hermes", "description": "CLO Hermes records learning and future unlock criteria." }
+  ]
+}

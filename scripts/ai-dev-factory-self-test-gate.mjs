@@ -84,7 +84,10 @@ const COMMANDS_BASELINE = [
   { name: "email-live-readiness-premerge-simulate", cmd: "node scripts/ai-company-email-live-readiness-premerge-simulate.mjs", phase: "1.0t", optional: true },
   { name: "verify-1.0u", cmd: "node packages/db/src/_verify-1.0u.mjs", phase: "1.0u", optional: true },
   { name: "email-live-pilot-auto-loop", cmd: "node scripts/ai-company-email-live-pilot-auto-loop.mjs", phase: "1.0u", optional: true },
-  { name: "email-live-pilot-premerge-simulate", cmd: "node scripts/ai-company-email-live-pilot-premerge-simulate.mjs", phase: "1.0u", optional: true }
+  { name: "email-live-pilot-premerge-simulate", cmd: "node scripts/ai-company-email-live-pilot-premerge-simulate.mjs", phase: "1.0u", optional: true },
+  { name: "verify-1.0v", cmd: "node packages/db/src/_verify-1.0v.mjs", phase: "1.0v", optional: true },
+  { name: "email-boss-allowlist-test-gate-auto-loop", cmd: "node scripts/ai-company-email-boss-allowlist-test-gate-auto-loop.mjs", phase: "1.0v", optional: true },
+  { name: "email-boss-allowlist-test-gate-premerge-simulate", cmd: "node scripts/ai-company-email-boss-allowlist-test-gate-premerge-simulate.mjs", phase: "1.0v", optional: true }
 ];
 
 
@@ -190,6 +193,8 @@ async function main() {
       filteredCommands = COMMANDS_BASELINE.filter(c => c.phase === "0.3j" || c.phase === "0.3k" || c.phase === "0.3l" || c.phase === "0.3m" || c.phase === "0.3n" || c.phase === "0.3o" || c.phase === "0.3p" || c.phase === "0.3q" || c.phase === "0.3r" || c.phase === "0.3s" || c.phase === "1.0a" || c.phase === "1.0b" || c.phase === "1.0c" || c.phase === "1.0d" || c.phase === "1.0e" || c.phase === "1.0f" || c.phase === "1.0g" || c.phase === "1.0h" || c.phase === "1.0i" || c.phase === "1.0i-loop" || c.phase === "1.0j" || c.phase === "1.0k" || c.phase === "1.0l" || c.phase === "1.0m" || c.phase === "1.0n" || c.phase === "1.0o" || c.phase === "1.0p" || c.phase === "1.0q" || c.phase === "1.0r" || c.phase === "1.0s" || c.phase === "1.0t");
     } else if (selectedPhase === "1.0u") {
       filteredCommands = COMMANDS_BASELINE.filter(c => c.phase === "0.3j" || c.phase === "0.3k" || c.phase === "0.3l" || c.phase === "0.3m" || c.phase === "0.3n" || c.phase === "0.3o" || c.phase === "0.3p" || c.phase === "0.3q" || c.phase === "0.3r" || c.phase === "0.3s" || c.phase === "1.0a" || c.phase === "1.0b" || c.phase === "1.0c" || c.phase === "1.0d" || c.phase === "1.0e" || c.phase === "1.0f" || c.phase === "1.0g" || c.phase === "1.0h" || c.phase === "1.0i" || c.phase === "1.0i-loop" || c.phase === "1.0j" || c.phase === "1.0k" || c.phase === "1.0l" || c.phase === "1.0m" || c.phase === "1.0n" || c.phase === "1.0o" || c.phase === "1.0p" || c.phase === "1.0q" || c.phase === "1.0r" || c.phase === "1.0s" || c.phase === "1.0t" || c.phase === "1.0u");
+    } else if (selectedPhase === "1.0v") {
+      filteredCommands = COMMANDS_BASELINE.filter(c => c.phase === "0.3j" || c.phase === "0.3k" || c.phase === "0.3l" || c.phase === "0.3m" || c.phase === "0.3n" || c.phase === "0.3o" || c.phase === "0.3p" || c.phase === "0.3q" || c.phase === "0.3r" || c.phase === "0.3s" || c.phase === "1.0a" || c.phase === "1.0b" || c.phase === "1.0c" || c.phase === "1.0d" || c.phase === "1.0e" || c.phase === "1.0f" || c.phase === "1.0g" || c.phase === "1.0h" || c.phase === "1.0i" || c.phase === "1.0i-loop" || c.phase === "1.0j" || c.phase === "1.0k" || c.phase === "1.0l" || c.phase === "1.0m" || c.phase === "1.0n" || c.phase === "1.0o" || c.phase === "1.0p" || c.phase === "1.0q" || c.phase === "1.0r" || c.phase === "1.0s" || c.phase === "1.0t" || c.phase === "1.0u" || c.phase === "1.0v");
     }
   }
 

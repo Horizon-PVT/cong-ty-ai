@@ -1,0 +1,12 @@
+{
+  "contract_id": "provider-boundary-contract-1.0v",
+  "milestone": "1.0V",
+  "provider_status_in_pr": "FAKE_LOCAL_ONLY",
+  "provider_ready_in_pr": false,
+  "runtime_provider_required": true,
+  "credential_loading_rule": "never_print_or_log",
+  "no_env_file_mutations": true,
+  "external_calls_in_pr": "NONE",
+  "safety_note": "Ensures credentials are never printed or logged, and .env files are untouched.",
+  "demo_badge": "🔵 DEMO / BOSS ALLOWLIST TEST GATE SIMULATION — NOT SENT — NOT A LIVE EMAIL SYSTEM"
+}

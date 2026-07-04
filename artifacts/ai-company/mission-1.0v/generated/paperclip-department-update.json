@@ -1,0 +1,47 @@
+{
+  "update_id": "paperclip-department-update-1.0v",
+  "milestone": "1.0V",
+  "updates": [
+    {
+      "department": "CEO",
+      "update": "Live test unlock strategy defined. No real email allowed in PR/CI."
+    },
+    {
+      "department": "COO",
+      "update": "One-action execution workflow defined. Manual parameters verified."
+    },
+    {
+      "department": "Sales AI",
+      "update": "Sales AI verified target price 12.9M offer details."
+    },
+    {
+      "department": "CMO",
+      "update": "Subject/body/CTA template claims safety check completed."
+    },
+    {
+      "department": "CTO",
+      "update": "Provider boundary contract, allowlist gate, kill switch, and audit ledger configured."
+    },
+    {
+      "department": "CFO",
+      "update": "Price anchor 12.9M and discount limits validated."
+    },
+    {
+      "department": "Customer Success AI",
+      "update": "Reply expectations and manual CS handling model established."
+    },
+    {
+      "department": "QA",
+      "update": "Unsafe execution preflight block verifications completed."
+    },
+    {
+      "department": "CLO Hermes",
+      "update": "Hermes registered pilot retrospective lessons."
+    },
+    {
+      "department": "Research AI",
+      "update": "Research AI reviewed operational and compliance risks, confirming zero PR external effect."
+    }
+  ],
+  "demo_badge": "🔵 DEMO / BOSS ALLOWLIST TEST GATE SIMULATION — NOT SENT — NOT A LIVE EMAIL SYSTEM"
+}

@@ -1,0 +1,104 @@
+{
+  "manifest_id": "artifact-manifest-1.0v",
+  "milestone": "1.0V",
+  "decided_by": "departments",
+  "artifacts": [
+    {
+      "id": "A1",
+      "name": "email-boss-allowlist-test-gate-payload.json",
+      "owner": "CTO",
+      "description": "Test gate payload with safety warnings and scoping"
+    },
+    {
+      "id": "A2",
+      "name": "runtime-send-command-contract.json",
+      "owner": "CTO",
+      "description": "Operator CLI command schema"
+    },
+    {
+      "id": "A3",
+      "name": "owner-allowlist-runtime-model.json",
+      "owner": "CTO",
+      "description": "Runtime allowlist validation logic"
+    },
+    {
+      "id": "A4",
+      "name": "provider-boundary-contract.json",
+      "owner": "CTO",
+      "description": "Zero-print credential safety"
+    },
+    {
+      "id": "A5",
+      "name": "live-token-execution-policy.json",
+      "owner": "CTO",
+      "description": "Live token scoping regulations"
+    },
+    {
+      "id": "A6",
+      "name": "idempotency-duplicate-send-model.json",
+      "owner": "CTO",
+      "description": "Idempotency hash rules"
+    },
+    {
+      "id": "A7",
+      "name": "retry-disabled-policy.json",
+      "owner": "CTO",
+      "description": "Anti-spam retry policy"
+    },
+    {
+      "id": "A8",
+      "name": "kill-switch-preflight-model.json",
+      "owner": "CTO",
+      "description": "Immediate pre-send kill switch check"
+    },
+    {
+      "id": "A9",
+      "name": "email-boss-test-audit-ledger.json",
+      "owner": "QA",
+      "description": "Audit trail log contract"
+    },
+    {
+      "id": "A10",
+      "name": "email-boss-test-preview.md",
+      "owner": "CMO",
+      "description": "Paperclip test gate preview layout"
+    },
+    {
+      "id": "A11",
+      "name": "post-merge-runbook.json",
+      "owner": "COO",
+      "description": "Operator post-merge runbook steps"
+    },
+    {
+      "id": "A12",
+      "name": "gap-analysis.json",
+      "owner": "CTO",
+      "description": "Remaining gaps to be closed"
+    },
+    {
+      "id": "A13",
+      "name": "kpi-scorecard.json",
+      "owner": "CFO",
+      "description": "KPI scorecard measuring safety checks"
+    },
+    {
+      "id": "A14",
+      "name": "paperclip-department-update.json",
+      "owner": "COO",
+      "description": "Collaborative department briefing payload"
+    },
+    {
+      "id": "A15",
+      "name": "qa-review-report.md",
+      "owner": "QA",
+      "description": "QA preflight block review"
+    },
+    {
+      "id": "A16",
+      "name": "final-package-index.md",
+      "owner": "COO",
+      "description": "Index of all deliverables"
+    }
+  ],
+  "demo_badge": "🔵 DEMO / BOSS ALLOWLIST TEST GATE SIMULATION — NOT SENT — NOT A LIVE EMAIL SYSTEM"
+}

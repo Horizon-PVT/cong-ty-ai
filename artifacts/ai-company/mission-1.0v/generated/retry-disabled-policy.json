@@ -1,0 +1,9 @@
+{
+  "policy_id": "retry-disabled-policy-1.0v",
+  "milestone": "1.0V",
+  "retry_policy": "DISABLED",
+  "automatic_reconnect": false,
+  "max_retries": 0,
+  "safety_note": "Ensures that if the single test send fails or times out, no auto-retries occur.",
+  "demo_badge": "🔵 DEMO / BOSS ALLOWLIST TEST GATE SIMULATION — NOT SENT — NOT A LIVE EMAIL SYSTEM"
+}

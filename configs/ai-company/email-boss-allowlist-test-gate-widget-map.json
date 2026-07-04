@@ -1,0 +1,64 @@
+{
+  "widget_map_id": "email-boss-allowlist-test-gate-widget-map",
+  "milestone": "1.0V",
+  "integration_target": "paperclip",
+  "widgets": [
+    {
+      "widget_id": "email_boss_test_overview",
+      "title": "Boss Test Gate Overview",
+      "description": "Overall status of the Boss allowlist test gate.",
+      "requires_safety_warning": true,
+      "safety_warning": "LIVE TEST SEND NOT ENABLED IN PR.",
+      "data_sources": ["email-boss-allowlist-test-gate-payload.json"],
+      "required_payload_sections": ["test_overview"]
+    },
+    {
+      "widget_id": "email_boss_test_action",
+      "title": "Boss Test Action Details",
+      "description": "The single prepared Boss test email action.",
+      "requires_safety_warning": true,
+      "safety_warning": "NOT SENT. BOSS ALLOWLIST ONLY.",
+      "data_sources": ["email-boss-allowlist-test-gate-payload.json"],
+      "required_payload_sections": ["test_action"]
+    },
+    {
+      "widget_id": "email_boss_test_compliance",
+      "title": "Boss Test Compliance & Attestations",
+      "description": "14 safety warnings and attestation metadata.",
+      "requires_safety_warning": true,
+      "safety_warning": "ONE EMAIL ONLY. NO REAL CUSTOMER CONTACT.",
+      "data_sources": ["email-boss-allowlist-test-gate-payload.json"],
+      "required_payload_sections": [
+        "test_action.safety_warning_lines",
+        "test_action.safety_attestation"
+      ]
+    },
+    {
+      "widget_id": "email_boss_test_token_policy",
+      "title": "Boss Test Token Policy",
+      "description": "Token naming, scoping, and validation policy.",
+      "requires_safety_warning": true,
+      "safety_warning": "RUNTIME LIVE TOKEN REQUIRED. KILL SWITCH REQUIRED.",
+      "data_sources": ["email-boss-allowlist-test-gate-payload.json", "live-token-execution-policy.json"],
+      "required_payload_sections": ["live_token_execution_policy"]
+    },
+    {
+      "widget_id": "email_boss_test_audit_trail",
+      "title": "Boss Test Audit Trail",
+      "description": "Local audit ledger logging premerge gate registry.",
+      "requires_safety_warning": true,
+      "safety_warning": "NO GMAIL API CALL IN PR. NO SMTP CALL IN PR. NO PROVIDER API CALL IN PR.",
+      "data_sources": ["email-boss-test-audit-ledger.json"],
+      "required_payload_sections": ["email-boss-test-audit-ledger.json"]
+    },
+    {
+      "widget_id": "email_boss_test_runbook",
+      "title": "Post-Merge Execution Runbook",
+      "description": "Instructions for triggering the one test email post-merge.",
+      "requires_safety_warning": true,
+      "safety_warning": "RETRY DISABLED. DUPLICATE SEND PROTECTION REQUIRED.",
+      "data_sources": ["post-merge-runbook.json"],
+      "required_payload_sections": ["post-merge-runbook.json"]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "merge_token_name": "OWNER_APPROVED_MERGE_PR",
+  "sandbox_token_name": "OWNER_APPROVED_EMAIL_SANDBOX_TOKEN",
+  "future_live_token_name": "OWNER_APPROVED_LIVE_TOKEN",
+  "merge_token_must_not_enable_live_test": true,
+  "sandbox_token_must_not_enable_live_test": true,
+  "future_live_token_reserved_only": true,
+  "one_token_one_test_action": true,
+  "token_scope": "PILOT_ACTION_ID",
+  "token_expires_after_use": true,
+  "token_must_match_action_id": true
+}
