@@ -1,0 +1,12 @@
+{
+  "adapter_id": "fake-provider-adapter-1.0u",
+  "milestone": "1.0U",
+  "provider_status": "FAKE_LOCAL_ONLY",
+  "provider_ready": false,
+  "supported_methods": [],
+  "implementation": "simulated_outbox_write_only",
+  "real_api_blocked": true,
+  "external_calls_prevented": true,
+  "safety_note": "Adapter is hard-locked to FAKE_LOCAL_ONLY. Real sending endpoints do not exist in code.",
+  "demo_badge": "🔵 DEMO / PILOT HARNESS SIMULATION — NOT SENT — NOT A LIVE EMAIL SYSTEM"
+}

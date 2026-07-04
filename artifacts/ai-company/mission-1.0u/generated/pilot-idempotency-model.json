@@ -1,0 +1,13 @@
+{
+  "model_id": "pilot-idempotency-model-1.0u",
+  "milestone": "1.0U",
+  "enforce_duplicate_send_protection": true,
+  "idempotency_key_format": "idemp_pilot_<action_id>_<hash>",
+  "active_keys": [
+    "idemp_pilot_001_a6b7c8d9"
+  ],
+  "action_limit_per_key": 1,
+  "retry_on_failure": false,
+  "safety_note": "Ensures no double-sends can ever occur for the single pilot action.",
+  "demo_badge": "🔵 DEMO / PILOT HARNESS SIMULATION — NOT SENT — NOT A LIVE EMAIL SYSTEM"
+}

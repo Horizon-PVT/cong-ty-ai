@@ -1,0 +1,55 @@
+{
+  "widget_map_id": "email-live-pilot-harness-widget-map",
+  "milestone": "1.0U",
+  "integration_target": "paperclip",
+  "widgets": [
+    {
+      "widget_id": "email_pilot_overview",
+      "title": "Email Live Pilot Overview",
+      "description": "Overall status of the single live email pilot harness.",
+      "requires_safety_warning": true,
+      "safety_warning": "LIVE PILOT NOT ENABLED. HARNESS ONLY.",
+      "data_sources": ["email-live-pilot-payload.json"],
+      "required_payload_sections": ["pilot_overview"]
+    },
+    {
+      "widget_id": "email_pilot_action",
+      "title": "Email Pilot Action",
+      "description": "The single prepared pilot action details and placeholder recipient.",
+      "requires_safety_warning": true,
+      "safety_warning": "NOT SENT. FAKE PROVIDER ONLY.",
+      "data_sources": ["email-live-pilot-payload.json"],
+      "required_payload_sections": ["pilot_action"]
+    },
+    {
+      "widget_id": "email_pilot_compliance",
+      "title": "Pilot Compliance & Safety",
+      "description": "Compliance status of the pilot action, warning lines, and allowlist placeholders.",
+      "requires_safety_warning": true,
+      "safety_warning": "OWNER ALLOWLIST ONLY. NO REAL CUSTOMER CONTACT.",
+      "data_sources": ["email-live-pilot-payload.json"],
+      "required_payload_sections": [
+        "pilot_action.safety_warning_lines",
+        "pilot_action.safety_attestation"
+      ]
+    },
+    {
+      "widget_id": "email_pilot_token_policy",
+      "title": "Pilot Token Policy",
+      "description": "Future live pilot token formatting, scope, and separation policy.",
+      "requires_safety_warning": true,
+      "safety_warning": "FUTURE LIVE TOKEN REQUIRED. KILL SWITCH ACTIVE.",
+      "data_sources": ["email-live-pilot-payload.json", "future-live-token-policy.json"],
+      "required_payload_sections": ["future_live_token_policy"]
+    },
+    {
+      "widget_id": "email_pilot_audit_trail",
+      "title": "Pilot Audit Trail",
+      "description": "Audit trail entries tracking pilot readiness and idempotency checks.",
+      "requires_safety_warning": true,
+      "safety_warning": "NO GMAIL API CALL. NO SMTP CALL. NO PROVIDER API CALL.",
+      "data_sources": ["email-pilot-audit-ledger.json"],
+      "required_payload_sections": ["email-pilot-audit-ledger.json"]
+    }
+  ]
+}
