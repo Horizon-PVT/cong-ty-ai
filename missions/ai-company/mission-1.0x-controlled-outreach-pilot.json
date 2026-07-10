@@ -1,0 +1,45 @@
+{
+  "milestone": "1.0X",
+  "questions": [
+    {
+      "q": "What is the maximum number of recipients allowed in the pilot outreach allowlist?",
+      "a": "Maximum of 3 verified consented recipients."
+    },
+    {
+      "q": "What is the daily cap for email dispatches in this phase?",
+      "a": "Daily cap of 3 sends."
+    },
+    {
+      "q": "How must unconsented or cold scraped customer lists be handled?",
+      "a": "They are strictly blocked. Sending is only permitted to recipients on the active consent allowlist."
+    },
+    {
+      "q": "What requirement must all outbound email templates meet?",
+      "a": "They must contain clear unsubscribe instructions or opt-out path links."
+    },
+    {
+      "q": "What happens if a recipient hard-bounces or opt-outs?",
+      "a": "They are immediately and automatically added to the active suppression registry."
+    },
+    {
+      "q": "What is the retry policy for pilot outreach sending?",
+      "a": "Strictly DISABLED. Auto-retries are forbidden."
+    },
+    {
+      "q": "Are mock fallbacks allowed when running the live command with --execute-live?",
+      "a": "No. If credentials are missing, the command must fail hard."
+    },
+    {
+      "q": "Are secrets, tokens, or raw email addresses allowed in the committed code or git-tracked logs?",
+      "a": "No. They must be completely redacted before output to git-tracked files."
+    },
+    {
+      "q": "How is the pilot outreach authorized by the owner?",
+      "a": "By passing the manual OWNER_APPROVED_LIVE_TOKEN=pilot_email_action_002 token at runtime."
+    },
+    {
+      "q": "How are responses from recipients classified in this milestone?",
+      "a": "Into positive reply, negative reply, bounce, no response, and opt-out categories."
+    }
+  ]
+}

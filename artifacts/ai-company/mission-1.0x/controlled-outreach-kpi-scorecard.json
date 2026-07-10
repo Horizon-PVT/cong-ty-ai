@@ -1,0 +1,17 @@
+{
+  "milestone": "1.0X",
+  "metrics": {
+    "daily_send_cap": 3,
+    "live_sends_executed": 0,
+    "consented_recipient_count": 3,
+    "suppression_count": 2,
+    "response_outcomes": {
+      "positive_reply": 1,
+      "negative_reply": 0,
+      "opt_out": 1,
+      "bounce": 0,
+      "no_response": 1
+    }
+  },
+  "status": "DRY_RUN_KPI_MET"
+}

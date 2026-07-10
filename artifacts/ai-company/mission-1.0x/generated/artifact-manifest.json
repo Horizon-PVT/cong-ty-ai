@@ -1,0 +1,14 @@
+{
+  "milestone": "1.0X",
+  "files": [
+    "provider-dispatch-evidence-redacted.json",
+    "recipient-consent-allowlist.json",
+    "suppression-list-live.json",
+    "controlled-outreach-send-ledger-redacted.json",
+    "reply-bounce-ledger.json",
+    "controlled-outreach-kpi-scorecard.json",
+    "qa-review-report.md",
+    "gap-analysis.json",
+    "final-package-index.md"
+  ]
+}
