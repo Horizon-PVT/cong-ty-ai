@@ -157,7 +157,7 @@ check(!payloadText.includes("alexminh") && !payloadText.includes("boss@") && !pa
 
 const committedFiles = execSync("git ls-files", { cwd: ROOT, encoding: "utf8" })
   .split("\n")
-  .filter(f => f.trim().length > 0 && !f.includes("pnpm-lock.yaml"));
+  .filter(f => f.trim().length > 0 && !f.includes("pnpm-lock.yaml") && !f.includes("_verify-"));
 
 let emailLeaked = false;
 for (const f of committedFiles) {

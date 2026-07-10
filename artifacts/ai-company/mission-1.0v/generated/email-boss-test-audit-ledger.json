@@ -1,11 +1,11 @@
 {
   "ledger_id": "email-boss-test-audit-ledger-1.0v",
   "milestone": "1.0V",
-  "generated_at": "2026-07-04T11:40:06.983Z",
+  "generated_at": "2026-07-10T14:07:13.069Z",
   "entries": [
     {
       "gate_id": "boss_test_gate_001",
-      "timestamp": "2026-07-04T11:40:06.984Z",
+      "timestamp": "2026-07-10T14:07:13.070Z",
       "idempotency_key": "idemp_test_boss_001_v1",
       "recipient_kind": "BOSS_ALLOWLIST_RUNTIME_ONLY",
       "live_send_blocked": true,

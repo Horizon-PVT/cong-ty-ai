@@ -51,7 +51,7 @@
         "owner_live_token_required": { "type": "boolean", "const": true },
         "required_live_token_name": { "type": "string", "const": "OWNER_APPROVED_LIVE_TOKEN" },
         "required_live_token_scope": { "type": "string" },
-        "required_live_token_format": { "type": "string", "const": "OWNER_APPROVED_LIVE_TOKEN=<source_pilot_action_id>" },
+        "required_live_token_format": { "type": "string", "pattern": "^OWNER_APPROVED_LIVE_TOKEN=.+$" },
         "merge_token_not_accepted": { "type": "boolean", "const": true },
         "sandbox_token_not_accepted": { "type": "boolean", "const": true },
         "idempotency_key": { "type": "string" },

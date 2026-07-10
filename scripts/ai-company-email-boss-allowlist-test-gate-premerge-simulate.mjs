@@ -38,6 +38,7 @@ async function main() {
 
   // 2. Confirm no runtime reports are tracked in git
   console.log("[Premerge Simulate] Checking Git tracking status of runtime reports...");
+  let hasTrackedReports = false;
   try {
     const tracked = execSync("git ls-files logs/ reports/e2e/ reports/post-merge/", {
       cwd: ROOT, encoding: "utf8"
@@ -45,7 +46,8 @@ async function main() {
     if (tracked.length === 0) {
       console.log("[Premerge Simulate] ✅ No runtime reports are tracked in Git");
     } else {
-      console.warn("[Premerge Simulate] ⚠️ Some runtime logs tracked:", tracked);
+      console.error("[Premerge Simulate] ❌ Some runtime logs tracked:", tracked);
+      hasTrackedReports = true;
     }
   } catch { /* ok */ }
 
@@ -63,10 +65,15 @@ async function main() {
   }
   if (metaSafe) console.log("[Premerge Simulate] ✅ Runner does not hardcode forbidden artifact names");
 
+  if (hasTrackedReports || !metaSafe) {
+    console.error("[Premerge Simulate] ❌ Pre-merge simulation failed due to safety violations.");
+    process.exit(1);
+  }
+
   const report = {
     milestone: "1.0V",
     verifier: "PASS",
-    git_runtime_reports_untracked: true,
+    git_runtime_reports_untracked: !hasTrackedReports,
     runner_meta_safe: metaSafe,
     verdict: "EMAIL_BOSS_ALLOWLIST_TEST_GATE_PREMERGE_PASS",
   };
