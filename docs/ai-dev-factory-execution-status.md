@@ -356,7 +356,7 @@ Proof execution records:
 
 ## Milestone 1.0X Proof Status
 
-Status: In Progress
+Status: Merged and Cleaned
 Proof execution records:
 - Milestone 1.0X implements the Controlled Consented Outreach Pilot.
 - Establishes a real runtime command `scripts/ai-company-send-controlled-outreach-pilot.mjs` to dispatch consented pilot outreach emails.
@@ -365,6 +365,19 @@ Proof execution records:
 - Checks active suppressions (`suppression-list-live.json`) and appends opt-out unsubscribe instructions.
 - Tracks outcomes with reply/bounce classification models.
 - Verifier, auto-loop, and pre-merge simulation scripts created and verified stable (2/2 passes).
+
+## Milestone 1.0Y Proof Status
+
+Status: In Progress
+Proof execution records:
+- Milestone 1.0Y implements the Controlled Outreach Outcome & Follow-up Loop.
+- Processes response outcomes (positive, negative, opt-out, bounce, no response) from pilot.
+- Automatically maps opt-outs and bounces directly to a suppression updates plan.
+- Generates personalized follow-up drafts and queues them in the owner approval queue.
+- Disables all automatic follow-up sending in this phase (purely queued as drafts).
+- Compiles KPIs and metrics for outreach scalability and safety.
+- Verifier, auto-loop, and pre-merge simulation scripts created and verified stable (2/2 passes).
+
 
 
 

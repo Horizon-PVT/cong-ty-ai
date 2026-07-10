@@ -1,0 +1,15 @@
+{
+  "milestone": "1.0Y",
+  "departments": {
+    "CEO": "Evaluate positive outreach outcomes and direct qualified interest sales handoffs.",
+    "COO": "Enforce opt-out and bounce thresholds to pause outreach loops if needed.",
+    "Sales_AI": "Draft personalized follow-up templates matching the recipient's initial category.",
+    "CMO": "Review follow-up drafts for brand compliance and opt-out link inclusion.",
+    "CTO": "Establish suppression update pathways and pre-flight validation rules.",
+    "CFO": "Analyze pilot cost-effectiveness and project scale ROI metric models.",
+    "CS_AI": "Process unsubscribe requests and append opt-outs to the suppression list.",
+    "QA": "Run pre-merge compliance simulation scripts and check for secret leaks in code.",
+    "CLO": "Audit consent compliance and redact all sensitive token/email outputs.",
+    "Owner": "Review the follow-up approval queue and decide whether to approve drafts."
+  }
+}

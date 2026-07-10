@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ControlledOutreachOutcomeResult",
+  "type": "object",
+  "properties": {
+    "milestone": { "type": "string", "const": "1.0Y" },
+    "processed_at": { "type": "string" },
+    "opt_outs_detected": { "type": "integer" },
+    "bounces_detected": { "type": "integer" },
+    "positive_responses_detected": { "type": "integer" },
+    "suppression_updates_registered": { "type": "boolean" },
+    "followup_approval_items_queued": { "type": "integer" }
+  },
+  "required": [
+    "milestone",
+    "processed_at",
+    "opt_outs_detected",
+    "bounces_detected",
+    "positive_responses_detected",
+    "suppression_updates_registered",
+    "followup_approval_items_queued"
+  ]
+}

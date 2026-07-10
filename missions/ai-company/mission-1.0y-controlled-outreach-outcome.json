@@ -1,0 +1,45 @@
+{
+  "milestone": "1.0Y",
+  "questions": [
+    {
+      "q": "What is the primary objective of this phase?",
+      "a": "To process pilot outreach outcomes, update suppression lists, and draft follow-up tasks."
+    },
+    {
+      "q": "Are follow-up emails allowed to be sent automatically in this milestone?",
+      "a": "No. All automatic follow-up dispatches are strictly disabled."
+    },
+    {
+      "q": "How must positive replies from the pilot be handled?",
+      "a": "They must generate follow-up drafts and place them in the owner approval queue."
+    },
+    {
+      "q": "How must opt-outs and bounces be processed?",
+      "a": "They must be automatically added to the active suppression updates plan."
+    },
+    {
+      "q": "What is the threshold rate for opt-outs that triggers a loop pause?",
+      "a": "An opt-out rate greater than 20% triggers a safety pause."
+    },
+    {
+      "q": "What is the threshold rate for bounces that triggers a loop pause?",
+      "a": "A bounce rate greater than 10% triggers a safety pause."
+    },
+    {
+      "q": "Are CRM mutations or writes permitted in this phase?",
+      "a": "No. CRM writes are strictly disabled."
+    },
+    {
+      "q": "Are raw email addresses or tokens permitted in the committed logs?",
+      "a": "No. They must be completely redacted before saving to git-tracked files."
+    },
+    {
+      "q": "What token is required to authorize the future execution of a follow-up draft?",
+      "a": "A manual OWNER_APPROVED_LIVE_TOKEN=followup_action_1_0y_001 token."
+    },
+    {
+      "q": "What is the next phase after Milestone 1.0Y if all safety criteria are met?",
+      "a": "Milestone 1.0Z — Owner-Approved Follow-up Live Execution."
+    }
+  ]
+}
