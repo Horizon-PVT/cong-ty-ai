@@ -1,0 +1,25 @@
+{
+  "mode": "EMAIL_BOSS_LIVE_TEST_ONLY",
+  "active_rules": {
+    "live_send_enabled_in_pr": false,
+    "future_runtime_send_allowed": true,
+    "send_blocked_in_pr": true,
+    "provider_status_in_pr": "FAKE_LOCAL_ONLY",
+    "provider_ready_in_pr": false,
+    "actual_external_effect_in_pr": "NONE",
+    "required_live_token_name": "OWNER_APPROVED_LIVE_TOKEN",
+    "required_live_token_format": "OWNER_APPROVED_LIVE_TOKEN=pilot_email_action_001",
+    "required_live_token_scope": "pilot_email_action_001",
+    "merge_token_not_accepted": true,
+    "sandbox_token_not_accepted": true,
+    "duplicate_send_protection": true,
+    "retry_policy": "DISABLED",
+    "kill_switch_required": true,
+    "kill_switch_active_in_pr": true,
+    "audit_required": true
+  },
+  "hard_locks": {
+    "no_merge_without_owner_token": true,
+    "no_unauthorized_live_sends": true
+  }
+}

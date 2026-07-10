@@ -1,0 +1,55 @@
+{
+  "integration_target": "paperclip",
+  "data_label": "LIVE_TEST_EXECUTION",
+  "widgets": [
+    {
+      "widget_id": "email_boss_live_overview",
+      "display_name": "Boss Live Test Status Overview",
+      "data_sources": [
+        "configs/ai-company/email-boss-live-test-policy.json",
+        "reports/owner-approval-workbench/daily-email-boss-live-test-payload.json"
+      ],
+      "required_payload_sections": ["test_overview"]
+    },
+    {
+      "widget_id": "email_boss_live_provider_readiness",
+      "display_name": "Provider Connection Readiness",
+      "data_sources": [
+        "artifacts/ai-company/mission-1.0w/generated/provider-readiness-report.json"
+      ],
+      "required_payload_sections": ["provider_readiness"]
+    },
+    {
+      "widget_id": "email_boss_live_outbox",
+      "display_name": "Live Send Output & Redacted Logs",
+      "data_sources": [
+        "artifacts/ai-company/mission-1.0w/generated/email-boss-live-test-result.json"
+      ],
+      "required_payload_sections": ["result"]
+    },
+    {
+      "widget_id": "email_boss_live_audit_trail",
+      "display_name": "Execution Safety Audit Trail",
+      "data_sources": [
+        "artifacts/ai-company/mission-1.0w/generated/email-boss-live-test-audit-ledger.json"
+      ],
+      "required_payload_sections": ["audit_trail"]
+    },
+    {
+      "widget_id": "email_boss_live_ledger",
+      "display_name": "Idempotency Ledger (Redacted)",
+      "data_sources": [
+        "artifacts/ai-company/mission-1.0w/generated/idempotency-live-ledger-redacted.json"
+      ],
+      "required_payload_sections": ["ledger"]
+    },
+    {
+      "widget_id": "email_boss_live_runbook",
+      "display_name": "Post-Merge Execution Runbook",
+      "data_sources": [
+        "artifacts/ai-company/mission-1.0w/generated/final-package-index.md"
+      ],
+      "required_payload_sections": ["runbook"]
+    }
+  ]
+}

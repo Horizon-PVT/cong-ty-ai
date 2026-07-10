@@ -1,0 +1,15 @@
+{
+  "milestone": "1.0W",
+  "departments": {
+    "CEO": "Define live execution objective and coordinate the 1-action pilot safety approval.",
+    "COO": "Enforce execution scope (one single email only, recipient limited to Boss allowlist).",
+    "Sales_AI": "Provide the exact email action payload (offer: Web + Chatbot for SME Thanh Hoa).",
+    "CMO": "Review body templates for formatting and spam risks.",
+    "CTO": "Ensure secure credentials injection at runtime (never committed, read from env) and preflight kill switches.",
+    "CFO": "Track provider cost and verify zero unnecessary usage charges.",
+    "CS_AI": "Maintain the blocklist ensuring no customer contacts are reached.",
+    "QA": "Run pre-flight verifiers and local simulation loops to assert safety boundaries.",
+    "CLO": "Audit compliance and verify complete redaction of secrets, tokens, and raw emails in committed logs.",
+    "Owner": "Submit the manual OWNER_APPROVED_LIVE_TOKEN at runtime to unlock the live provider."
+  }
+}

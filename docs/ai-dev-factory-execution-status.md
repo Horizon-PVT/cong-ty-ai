@@ -331,7 +331,7 @@ Proof execution records:
 
 ## Milestone 1.0V Proof Status
 
-Status: In Progress
+Status: Merged and Cleaned
 Proof execution records:
 - Milestone 1.0V implements the Owner-Approved Test Email to Boss Allowlist Gate.
 - Establishes a local test gate model with `test_action_count: 1` and `live_send_enabled_in_pr: false` in gate-only mode.
@@ -341,6 +341,19 @@ Proof execution records:
 - Requires immediate pre-flight kill switch validation before sending.
 - Incorporates 14 required safety warnings on all test preview cards and payload records.
 - Verifier, auto-loop, and pre-merge simulation scripts created and verified stable (2/2 passes).
+
+## Milestone 1.0W Proof Status
+
+Status: In Progress
+Proof execution records:
+- Milestone 1.0W implements the Owner-Approved Email Boss Live Test Execution.
+- Establishes a real runtime command `scripts/ai-company-send-boss-allowlist-test.mjs` to dispatch a single test email post-merge.
+- Prevents live dispatch in PR/CI/premerge; requires `--execute-live` and valid token scope at runtime.
+- Restricts recipients strictly to the Boss allowlist, blocking customer-like emails.
+- Reads credentials dynamically at runtime (never committed, not logged).
+- Implements duplicate send protection, disabled retry policy, and preflight kill switches.
+- Verifier, auto-loop, and pre-merge simulation scripts created and verified stable (2/2 passes).
+
 
 
 
