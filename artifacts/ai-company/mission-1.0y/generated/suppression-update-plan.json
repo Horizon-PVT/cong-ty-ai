@@ -1,0 +1,12 @@
+{
+  "milestone": "1.0Y",
+  "last_updated": "2026-07-10T16:46:54.021Z",
+  "updates": [
+    {
+      "recipient_id": "rec_pilot_003",
+      "recipient_redacted": "pi***@alexminh.ai",
+      "reason": "UNSUBSCRIBE_REQUEST",
+      "action_taken": "ADDED_TO_SUPPRESSION_REGISTRY"
+    }
+  ]
+}

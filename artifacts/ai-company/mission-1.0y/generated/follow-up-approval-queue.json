@@ -1,0 +1,16 @@
+{
+  "milestone": "1.0Y",
+  "last_updated": "2026-07-10T16:46:54.022Z",
+  "queue": [
+    {
+      "action_id": "followup_action_1_0y_001",
+      "recipient_id": "rec_pilot_002",
+      "recipient_redacted": "pi***@alexminh.ai",
+      "required_live_token_name": "OWNER_APPROVED_LIVE_TOKEN",
+      "required_live_token_format": "OWNER_APPROVED_LIVE_TOKEN=followup_action_1_0y_001",
+      "consent_source": "1.0X_PILOT_REPLY",
+      "pitch_preview": "Thank you for your interest! Let's schedule a 15-minute demo on Tuesday to walk through our Web + Chatbot solution.",
+      "sent_status": "DRAFT_PENDING_APPROVAL"
+    }
+  ]
+}

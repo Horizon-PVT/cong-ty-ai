@@ -1,0 +1,13 @@
+{
+  "milestone": "1.0Y",
+  "files": [
+    "outcome-classification-ledger.json",
+    "suppression-update-plan.json",
+    "qualified-interest-summary.json",
+    "follow-up-approval-queue.json",
+    "pilot-scale-readiness-scorecard.json",
+    "qa-review-report.md",
+    "gap-analysis.json",
+    "final-package-index.md"
+  ]
+}

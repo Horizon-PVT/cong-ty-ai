@@ -1,0 +1,24 @@
+{
+  "mode": "CONTROLLED_OUTREACH_OUTCOME_PROCESSING_ONLY",
+  "active_rules": {
+    "live_send_enabled_in_pr": false,
+    "send_blocked_in_pr": true,
+    "no_automatic_followups": true,
+    "crm_write_enabled": false,
+    "owner_approval_required_per_followup": true,
+    "opt_out_threshold_rate": 0.20,
+    "bounce_threshold_rate": 0.10,
+    "required_live_token_name": "OWNER_APPROVED_LIVE_TOKEN",
+    "required_live_token_format": "OWNER_APPROVED_LIVE_TOKEN=followup_action_1_0y_001",
+    "required_live_token_scope": "followup_action_1_0y_001",
+    "merge_token_not_accepted": true,
+    "sandbox_token_not_accepted": true,
+    "kill_switch_required": true,
+    "kill_switch_active_in_pr": true,
+    "audit_required": true
+  },
+  "hard_locks": {
+    "no_merge_without_owner_token": true,
+    "no_unauthorized_live_sends": true
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "integration_target": "paperclip",
+  "data_label": "CONTROLLED_OUTREACH_OUTCOME",
+  "widgets": [
+    {
+      "widget_id": "pilot_outcome_overview",
+      "display_name": "Pilot Outcome Overview",
+      "data_sources": [
+        "configs/ai-company/controlled-outreach-outcome-policy.json",
+        "reports/owner-approval-workbench/daily-controlled-outreach-outcome-payload.json"
+      ],
+      "required_payload_sections": ["overview"]
+    },
+    {
+      "widget_id": "reply_bounce_classifications",
+      "display_name": "Reply & Bounce Classification Ledger",
+      "data_sources": [
+        "artifacts/ai-company/mission-1.0y/generated/outcome-classification-ledger.json"
+      ],
+      "required_payload_sections": ["classifications"]
+    },
+    {
+      "widget_id": "suppression_updates",
+      "display_name": "Suppression Update Plan",
+      "data_sources": [
+        "artifacts/ai-company/mission-1.0y/generated/suppression-update-plan.json"
+      ],
+      "required_payload_sections": ["suppression_updates"]
+    },
+    {
+      "widget_id": "followup_approval_queue",
+      "display_name": "Follow-Up Approval Queue",
+      "data_sources": [
+        "artifacts/ai-company/mission-1.0y/generated/follow-up-approval-queue.json"
+      ],
+      "required_payload_sections": ["queue"]
+    },
+    {
+      "widget_id": "scale_readiness_scorecard",
+      "display_name": "Scale Readiness Scorecard",
+      "data_sources": [
+        "artifacts/ai-company/mission-1.0y/generated/pilot-scale-readiness-scorecard.json"
+      ],
+      "required_payload_sections": ["scorecard"]
+    },
+    {
+      "widget_id": "safety_audit",
+      "display_name": "Outcome Safety Audit Trail",
+      "data_sources": [
+        "artifacts/ai-company/mission-1.0y/generated/final-package-index.md"
+      ],
+      "required_payload_sections": ["audit"]
+    }
+  ]
+}

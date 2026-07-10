@@ -1,0 +1,13 @@
+{
+  "milestone": "1.0Y",
+  "last_updated": "2026-07-10T16:46:54.022Z",
+  "metrics": {
+    "total_processed": 3,
+    "opt_out_rate": 0.3333333333333333,
+    "bounce_rate": 0,
+    "positive_reply_rate": 0.3333333333333333,
+    "suppression_registry_updates": 1,
+    "followup_actions_created": 1
+  },
+  "scale_readiness_verdict": "READINESS_APPROVED_FOR_BATCH_EXPANSION"
+}

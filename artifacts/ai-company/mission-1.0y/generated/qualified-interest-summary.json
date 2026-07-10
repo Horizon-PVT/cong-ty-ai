@@ -1,0 +1,12 @@
+{
+  "milestone": "1.0Y",
+  "last_updated": "2026-07-10T16:46:54.021Z",
+  "interests": [
+    {
+      "recipient_id": "rec_pilot_002",
+      "recipient_redacted": "pi***@alexminh.ai",
+      "qualification_status": "QUALIFIED_HOT_LEAD",
+      "handoff_target": "sales_representative_inbox"
+    }
+  ]
+}
