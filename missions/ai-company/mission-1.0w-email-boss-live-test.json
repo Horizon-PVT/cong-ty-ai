@@ -1,0 +1,45 @@
+{
+  "milestone": "1.0W",
+  "questions": [
+    {
+      "q": "What is the maximum number of live emails allowed to be sent in this milestone?",
+      "a": "Exactly one email only."
+    },
+    {
+      "q": "Who is the permitted recipient of the live email?",
+      "a": "Only the Boss email address registered in the runtime parameters (Boss allowlist)."
+    },
+    {
+      "q": "Are customer email addresses allowed as recipients?",
+      "a": "No. Any customer-like email address triggers an immediate hard block and execution failure."
+    },
+    {
+      "q": "Are real provider credentials allowed to be committed to the repository or .env files?",
+      "a": "No. They must be injected dynamically via runtime environment variables."
+    },
+    {
+      "q": "How is the live sending action authorized?",
+      "a": "By providing the manual token OWNER_APPROVED_LIVE_TOKEN=pilot_email_action_001 at runtime."
+    },
+    {
+      "q": "What happens if the same token or idempotency key is submitted more than once?",
+      "a": "The duplicate send protection blocks execution immediately to prevent double sending."
+    },
+    {
+      "q": "What is the retry policy for live test sending?",
+      "a": "Strictly DISABLED. If the send fails, the operator must review the logs and request a new token if needed."
+    },
+    {
+      "q": "What is verified immediately before calling the email provider API?",
+      "a": "The preflight kill switch status. If active, execution is terminated immediately."
+    },
+    {
+      "q": "Is any sensitive token, secret, or raw email address allowed in the committed audit files?",
+      "a": "No. All secrets, tokens, and email addresses must be fully redacted before saving to disk."
+    },
+    {
+      "q": "What is the default execution mode if the --execute-live flag is omitted?",
+      "a": "Dry-run mode, which performs all checks but does not produce any external effect."
+    }
+  ]
+}

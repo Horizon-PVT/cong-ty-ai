@@ -1,0 +1,13 @@
+{
+  "milestone": "1.0W",
+  "files": [
+    "email-boss-live-test-result.json",
+    "provider-readiness-report.json",
+    "idempotency-live-ledger-redacted.json",
+    "email-boss-live-test-audit-ledger.json",
+    "qa-review-report.md",
+    "gap-analysis.json",
+    "kpi-scorecard.json",
+    "final-package-index.md"
+  ]
+}

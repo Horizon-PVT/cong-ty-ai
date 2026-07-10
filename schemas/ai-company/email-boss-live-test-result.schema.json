@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EmailBossLiveTestResult",
+  "type": "object",
+  "properties": {
+    "milestone": { "type": "string", "const": "1.0W" },
+    "execution_id": { "type": "string" },
+    "timestamp": { "type": "string" },
+    "action_id": { "type": "string", "const": "pilot_email_action_001" },
+    "mode": { "type": "string", "enum": ["dry-run", "live-send"] },
+    "token_name": { "type": "string", "const": "OWNER_APPROVED_LIVE_TOKEN" },
+    "token_value_redacted": { "type": "string" },
+    "recipient_redacted": { "type": "string" },
+    "provider_used": { "type": "string" },
+    "provider_result": {
+      "type": "object",
+      "properties": {
+        "status": { "type": "string" },
+        "messageId": { "type": "string" },
+        "error": { "type": "string" }
+      },
+      "required": ["status"]
+    },
+    "idempotency_key": { "type": "string" },
+    "kill_switch_checked": { "type": "boolean", "const": true },
+    "external_effect": { "type": "string", "enum": ["NONE", "SENT_ONE_EMAIL"] }
+  },
+  "required": [
+    "milestone",
+    "execution_id",
+    "timestamp",
+    "action_id",
+    "mode",
+    "token_name",
+    "token_value_redacted",
+    "recipient_redacted",
+    "provider_used",
+    "provider_result",
+    "idempotency_key",
+    "kill_switch_checked",
+    "external_effect"
+  ]
+}

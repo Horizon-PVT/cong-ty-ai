@@ -1,0 +1,14 @@
+{
+  "milestone": "1.0W",
+  "protection_active": true,
+  "records": [
+    {
+      "idempotency_key": "idemp_live_boss_001_v1",
+      "action_id": "pilot_email_action_001",
+      "recipient_redacted": "bo***@alexminh.ai",
+      "registered_at": "2026-07-10T15:07:03.812Z",
+      "attempts": 1,
+      "status": "COMMITTED_DRY_RUN"
+    }
+  ]
+}
