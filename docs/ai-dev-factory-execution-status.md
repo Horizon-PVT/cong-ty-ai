@@ -344,7 +344,7 @@ Proof execution records:
 
 ## Milestone 1.0W Proof Status
 
-Status: In Progress
+Status: Merged and Cleaned
 Proof execution records:
 - Milestone 1.0W implements the Owner-Approved Email Boss Live Test Execution.
 - Establishes a real runtime command `scripts/ai-company-send-boss-allowlist-test.mjs` to dispatch a single test email post-merge.
@@ -353,6 +353,19 @@ Proof execution records:
 - Reads credentials dynamically at runtime (never committed, not logged).
 - Implements duplicate send protection, disabled retry policy, and preflight kill switches.
 - Verifier, auto-loop, and pre-merge simulation scripts created and verified stable (2/2 passes).
+
+## Milestone 1.0X Proof Status
+
+Status: In Progress
+Proof execution records:
+- Milestone 1.0X implements the Controlled Consented Outreach Pilot.
+- Establishes a real runtime command `scripts/ai-company-send-controlled-outreach-pilot.mjs` to dispatch consented pilot outreach emails.
+- Blocks live sending in PR/CI/premerge; fails hard if credentials are missing under `--execute-live`.
+- Restricts recipients strictly to a consent-allowlist (`recipient-consent-allowlist.json`) containing a maximum of 3 verified contacts.
+- Checks active suppressions (`suppression-list-live.json`) and appends opt-out unsubscribe instructions.
+- Tracks outcomes with reply/bounce classification models.
+- Verifier, auto-loop, and pre-merge simulation scripts created and verified stable (2/2 passes).
+
 
 
 

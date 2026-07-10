@@ -1,0 +1,55 @@
+{
+  "integration_target": "paperclip",
+  "data_label": "CONTROLLED_OUTREACH_PILOT",
+  "widgets": [
+    {
+      "widget_id": "controlled_outreach_overview",
+      "display_name": "Outreach Status Overview",
+      "data_sources": [
+        "configs/ai-company/controlled-outreach-policy.json",
+        "reports/owner-approval-workbench/daily-controlled-outreach-payload.json"
+      ],
+      "required_payload_sections": ["overview"]
+    },
+    {
+      "widget_id": "controlled_outreach_allowlist",
+      "display_name": "Consent-Allowlist Model",
+      "data_sources": [
+        "artifacts/ai-company/mission-1.0x/generated/recipient-consent-allowlist.json"
+      ],
+      "required_payload_sections": ["allowlist"]
+    },
+    {
+      "widget_id": "controlled_outreach_suppression",
+      "display_name": "Suppression & Opt-Out Registry",
+      "data_sources": [
+        "artifacts/ai-company/mission-1.0x/generated/suppression-list-live.json"
+      ],
+      "required_payload_sections": ["suppression"]
+    },
+    {
+      "widget_id": "controlled_outreach_outbox",
+      "display_name": "Outbox Dispatch Evidence (Redacted)",
+      "data_sources": [
+        "artifacts/ai-company/mission-1.0x/generated/provider-dispatch-evidence-redacted.json"
+      ],
+      "required_payload_sections": ["outbox"]
+    },
+    {
+      "widget_id": "controlled_outreach_reply_bounce",
+      "display_name": "Reply & Bounce Classifications",
+      "data_sources": [
+        "artifacts/ai-company/mission-1.0x/generated/reply-bounce-ledger.json"
+      ],
+      "required_payload_sections": ["reply_bounce"]
+    },
+    {
+      "widget_id": "controlled_outreach_runbook",
+      "display_name": "Post-Merge Execution Runbook",
+      "data_sources": [
+        "artifacts/ai-company/mission-1.0x/generated/final-package-index.md"
+      ],
+      "required_payload_sections": ["runbook"]
+    }
+  ]
+}

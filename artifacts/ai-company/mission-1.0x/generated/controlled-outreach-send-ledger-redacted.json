@@ -1,0 +1,13 @@
+{
+  "milestone": "1.0X",
+  "entries": [
+    {
+      "execution_id": "exec_outreach_mock11a",
+      "timestamp": "2026-07-10T15:56:31.188Z",
+      "idempotency_key": "idemp_1_0x_outreach_rec_pilot_001_v1",
+      "recipient_id": "rec_pilot_001",
+      "recipient_redacted": "pi***@alexminh.ai",
+      "status": "DRY_RUN_PASS"
+    }
+  ]
+}

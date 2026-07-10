@@ -1,0 +1,15 @@
+{
+  "milestone": "1.0X",
+  "departments": {
+    "CEO": "Direct consented pilot client selection and approve overall messaging strategies.",
+    "COO": "Enforce strict send caps (daily cap of 3) and ensure no mass lists are loaded.",
+    "Sales_AI": "Generate the outreach payload and custom business pitch value propositions.",
+    "CMO": "Review unsubscribe footers and templates to ensure opt-out transparency.",
+    "CTO": "Establish SMTP/Resend API connectors, error trapping, and preflight checks.",
+    "CFO": "Track client acquisition metrics, email costs, and conversion projections.",
+    "CS_AI": "Manage unsubscribe processing and update the suppression registry.",
+    "QA": "Execute pre-flight simulations, verifiers, and check for secret leaks in code.",
+    "CLO": "Perform compliance audit, redact email outputs, and check consent evidence.",
+    "Owner": "Submit the manual OWNER_APPROVED_LIVE_TOKEN to authorize each individual pilot email action."
+  }
+}

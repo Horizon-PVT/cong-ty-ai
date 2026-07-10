@@ -1,0 +1,26 @@
+{
+  "milestone": "1.0X",
+  "last_updated": "2026-07-10T15:56:31.188Z",
+  "classifications": [
+    {
+      "recipient_id": "rec_pilot_001",
+      "recipient_redacted": "pi***@alexminh.ai",
+      "outcome": "no_response",
+      "detected_at": "2026-07-10T15:56:31.188Z"
+    },
+    {
+      "recipient_id": "rec_pilot_002",
+      "recipient_redacted": "pi***@alexminh.ai",
+      "outcome": "positive_reply",
+      "notes": "Requested a demo appointment next Tuesday",
+      "detected_at": "2026-07-10T15:56:31.188Z"
+    },
+    {
+      "recipient_id": "rec_pilot_003",
+      "recipient_redacted": "pi***@alexminh.ai",
+      "outcome": "opt-out",
+      "notes": "Replied 'Unsubscribe'",
+      "detected_at": "2026-07-10T15:56:31.188Z"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "milestone": "1.0X",
+  "last_updated": "2026-07-10T15:56:31.186Z",
+  "recipients": [
+    {
+      "recipient_id": "rec_pilot_001",
+      "email": "pilot_client_a@alexminh.ai",
+      "consent_source": "WEBSITE_INQUIRY_FORM",
+      "allowed_campaign_id": "campaign_1.0x_sme",
+      "max_send_count": 1
+    },
+    {
+      "recipient_id": "rec_pilot_002",
+      "email": "pilot_client_b@alexminh.ai",
+      "consent_source": "LINKEDIN_OPT_IN",
+      "allowed_campaign_id": "campaign_1.0x_sme",
+      "max_send_count": 1
+    },
+    {
+      "recipient_id": "rec_pilot_003",
+      "email": "pilot_client_c@alexminh.ai",
+      "consent_source": "PARTNER_REFERRAL",
+      "allowed_campaign_id": "campaign_1.0x_sme",
+      "max_send_count": 1
+    }
+  ]
+}
