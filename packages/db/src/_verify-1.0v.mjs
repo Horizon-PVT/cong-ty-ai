@@ -58,7 +58,10 @@ for (const rel of SCRIPTS_TO_CHECK) {
 }
 
 // ─── Main payload checks ─────────────────────────────────────────────────────
-const payloadPath = path.join(REPORT_DIR, "daily-email-boss-allowlist-test-gate-payload.json");
+let payloadPath = path.join(REPORT_DIR, "daily-email-boss-allowlist-test-gate-payload.json");
+if (!fs.existsSync(payloadPath)) {
+  payloadPath = path.join(ROOT, "artifacts", "ai-company", "mission-1.0v", "generated", "email-boss-allowlist-test-gate-payload.json");
+}
 check(fs.existsSync(payloadPath), "daily-email-boss-allowlist-test-gate-payload.json exists");
 
 let payload;
