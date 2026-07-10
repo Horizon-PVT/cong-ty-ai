@@ -1,0 +1,113 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Email Boss Allowlist Test Gate Payload Schema",
+  "description": "Schema for Milestone 1.0V: Boss allowlist test gate payload. Enforces strict safety gates and token scoping.",
+  "type": "object",
+  "properties": {
+    "schema_version": { "type": "string" },
+    "generated_by": { "type": "string" },
+    "integration_target": { "type": "string", "const": "paperclip" },
+    "data_label": { "type": "string", "const": "DEMO_LOCAL_ONLY" },
+    "demo_warning": { "type": "string" },
+    "test_overview": {
+      "type": "object",
+      "properties": {
+        "live_send_enabled_in_pr": { "type": "boolean", "const": false },
+        "emergency_stop": { "type": "boolean", "const": true },
+        "test_action_count": { "type": "integer", "const": 1 },
+        "total_blocked": { "type": "integer", "const": 1 },
+        "demo_badge": { "type": "string" },
+        "safety_note": { "type": "string" }
+      },
+      "required": ["live_send_enabled_in_pr", "emergency_stop", "test_action_count", "total_blocked", "demo_badge", "safety_note"]
+    },
+    "test_action": {
+      "type": "object",
+      "properties": {
+        "gate_id": { "type": "string" },
+        "milestone": { "type": "string", "const": "1.0V" },
+        "mode": { "type": "string", "const": "EMAIL_BOSS_ALLOWLIST_TEST_GATE_ONLY" },
+        "source_pilot_action_id": { "type": "string" },
+        "test_action_type": { "type": "string", "const": "send_email" },
+        "test_action_count": { "type": "integer", "const": 1 },
+        "recipient_kind": { "type": "string", "const": "BOSS_ALLOWLIST_RUNTIME_ONLY" },
+        "recipient_is_customer": { "type": "boolean", "const": false },
+        "recipient_email_in_repo": { "type": "boolean", "const": false },
+        "recipient_email_placeholder": { "type": "string" },
+        "recipient_runtime_required": { "type": "boolean", "const": true },
+        "subject": { "type": "string" },
+        "body_preview": { "type": "string" },
+        "offer": { "type": "string" },
+        "price_anchor": { "type": "string" },
+        "cta": { "type": "string" },
+        "live_send_enabled_in_pr": { "type": "boolean", "const": false },
+        "future_runtime_send_allowed": { "type": "boolean", "const": false },
+        "send_blocked_in_pr": { "type": "boolean", "const": true },
+        "block_reason": { "type": "string" },
+        "provider_status_in_pr": { "type": "string", "const": "FAKE_LOCAL_ONLY" },
+        "provider_ready_in_pr": { "type": "boolean", "const": false },
+        "runtime_provider_required": { "type": "boolean", "const": true },
+        "actual_external_effect": { "type": "string", "const": "NONE" },
+        "owner_live_token_required": { "type": "boolean", "const": true },
+        "required_live_token_name": { "type": "string", "const": "OWNER_APPROVED_LIVE_TOKEN" },
+        "required_live_token_scope": { "type": "string" },
+        "required_live_token_format": { "type": "string", "pattern": "^OWNER_APPROVED_LIVE_TOKEN=.+$" },
+        "merge_token_not_accepted": { "type": "boolean", "const": true },
+        "sandbox_token_not_accepted": { "type": "boolean", "const": true },
+        "idempotency_key": { "type": "string" },
+        "duplicate_send_protection": { "type": "boolean", "const": true },
+        "retry_policy": { "type": "string", "const": "DISABLED" },
+        "kill_switch_required": { "type": "boolean", "const": true },
+        "kill_switch_active_in_pr": { "type": "boolean", "const": true },
+        "audit_required": { "type": "boolean", "const": true },
+        "runtime_audit_log_must_include": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "safety_attestation": { "type": "string" },
+        "safety_warning_lines": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "required": [
+        "gate_id", "milestone", "mode", "source_pilot_action_id", "test_action_type",
+        "test_action_count", "recipient_kind", "recipient_is_customer",
+        "recipient_email_in_repo", "recipient_email_placeholder", "recipient_runtime_required",
+        "subject", "body_preview", "offer", "price_anchor", "cta", "live_send_enabled_in_pr",
+        "future_runtime_send_allowed", "send_blocked_in_pr", "block_reason",
+        "provider_status_in_pr", "provider_ready_in_pr", "runtime_provider_required",
+        "actual_external_effect", "owner_live_token_required", "required_live_token_name",
+        "required_live_token_scope", "required_live_token_format", "merge_token_not_accepted",
+        "sandbox_token_not_accepted", "idempotency_key", "duplicate_send_protection",
+        "retry_policy", "kill_switch_required", "kill_switch_active_in_pr", "audit_required",
+        "runtime_audit_log_must_include", "safety_attestation", "safety_warning_lines"
+      ]
+    },
+    "live_token_execution_policy": {
+      "type": "object",
+      "properties": {
+        "merge_token_name": { "type": "string", "const": "OWNER_APPROVED_MERGE_PR" },
+        "sandbox_token_name": { "type": "string", "const": "OWNER_APPROVED_EMAIL_SANDBOX_TOKEN" },
+        "future_live_token_name": { "type": "string", "const": "OWNER_APPROVED_LIVE_TOKEN" },
+        "merge_token_must_not_enable_live_test": { "type": "boolean", "const": true },
+        "sandbox_token_must_not_enable_live_test": { "type": "boolean", "const": true },
+        "future_live_token_reserved_only": { "type": "boolean", "const": true },
+        "one_token_one_test_action": { "type": "boolean", "const": true },
+        "token_scope": { "type": "string", "const": "PILOT_ACTION_ID" },
+        "token_expires_after_use": { "type": "boolean", "const": true },
+        "token_must_match_action_id": { "type": "boolean", "const": true }
+      },
+      "required": [
+        "merge_token_name", "sandbox_token_name", "future_live_token_name",
+        "merge_token_must_not_enable_live_test", "sandbox_token_must_not_enable_live_test",
+        "future_live_token_reserved_only", "one_token_one_test_action",
+        "token_scope", "token_expires_after_use", "token_must_match_action_id"
+      ]
+    }
+  },
+  "required": [
+    "schema_version", "generated_by", "integration_target", "data_label",
+    "demo_warning", "test_overview", "test_action", "live_token_execution_policy"
+  ]
+}

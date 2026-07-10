@@ -1,0 +1,13 @@
+{
+  "model_id": "idempotency-duplicate-send-model-1.0v",
+  "milestone": "1.0V",
+  "enforce_duplicate_send_protection": true,
+  "idempotency_key_format": "idemp_test_boss_<action_id>_<hash>",
+  "active_keys": [
+    "idemp_test_boss_001_v1"
+  ],
+  "action_limit_per_key": 1,
+  "retry_on_failure": false,
+  "safety_note": "Ensures no double-sends can ever occur for the Boss allowlist test.",
+  "demo_badge": "🔵 DEMO / BOSS ALLOWLIST TEST GATE SIMULATION — NOT SENT — NOT A LIVE EMAIL SYSTEM"
+}

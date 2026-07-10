@@ -1,0 +1,18 @@
+{
+  "ledger_id": "email-boss-test-audit-ledger-1.0v",
+  "milestone": "1.0V",
+  "generated_at": "2026-07-10T14:07:13.069Z",
+  "entries": [
+    {
+      "gate_id": "boss_test_gate_001",
+      "timestamp": "2026-07-10T14:07:13.070Z",
+      "idempotency_key": "idemp_test_boss_001_v1",
+      "recipient_kind": "BOSS_ALLOWLIST_RUNTIME_ONLY",
+      "live_send_blocked": true,
+      "actual_external_effect": "NONE",
+      "status": "TEST_GATE_REGISTERED"
+    }
+  ],
+  "demo_badge": "🔵 DEMO / BOSS ALLOWLIST TEST GATE SIMULATION — NOT SENT — NOT A LIVE EMAIL SYSTEM",
+  "safety_note": "Tracks the setup and constraints validation for the Boss test gate."
+}

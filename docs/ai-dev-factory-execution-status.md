@@ -319,7 +319,7 @@ Proof execution records:
 
 ## Milestone 1.0U Proof Status
 
-Status: In Progress
+Status: Merged and Cleaned
 Proof execution records:
 - Milestone 1.0U implements the Owner-Approved Email Live Send One-Action Pilot Harness.
 - Prepares a single pilot action with `pilot_action_count: 1` and `future_live_send_allowed: false` in harness-only mode.
@@ -328,5 +328,19 @@ Proof execution records:
 - Enforces strict token separation: future live token format `OWNER_APPROVED_LIVE_TOKEN=<pilot_action_id>`; merge and sandbox tokens cannot run the pilot.
 - Incorporates 13 required safety warnings on all pilot preview cards and payload records.
 - Verifier, auto-loop, and pre-merge simulation scripts created and verified stable (2/2 passes).
+
+## Milestone 1.0V Proof Status
+
+Status: In Progress
+Proof execution records:
+- Milestone 1.0V implements the Owner-Approved Test Email to Boss Allowlist Gate.
+- Establishes a local test gate model with `test_action_count: 1` and `live_send_enabled_in_pr: false` in gate-only mode.
+- Blocks real sending during PR/CI/premerge; no real Boss email is committed to the repository (runtime parameters only).
+- Enforces live token format `OWNER_APPROVED_LIVE_TOKEN=<source_pilot_action_id>`; merge and sandbox tokens rejected.
+- Formulates duplicate send protection, idempotency models, and disabled retry policy.
+- Requires immediate pre-flight kill switch validation before sending.
+- Incorporates 14 required safety warnings on all test preview cards and payload records.
+- Verifier, auto-loop, and pre-merge simulation scripts created and verified stable (2/2 passes).
+
 
 
