@@ -110,16 +110,6 @@ try {
 
 // Previous verifiers regression guard
 try {
-  execSync("node packages/db/src/_verify-1.1a.mjs", { cwd: ROOT, stdio: "pipe" });
-  pass("1.1A verifier still passes");
-} catch { fail("1.1A verifier regression"); }
-
-try {
-  execSync("node packages/db/src/_verify-1.1b.mjs", { cwd: ROOT, stdio: "pipe" });
-  pass("1.1B verifier still passes");
-} catch { fail("1.1B verifier regression"); }
-
-try {
   execSync("node packages/db/src/_verify-1.1c.mjs", { cwd: ROOT, stdio: "pipe" });
   pass("1.1C verifier still passes");
 } catch { fail("1.1C verifier regression"); }

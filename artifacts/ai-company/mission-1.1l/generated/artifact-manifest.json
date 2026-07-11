@@ -1,0 +1,14 @@
+{
+  "milestone": "1.1L",
+  "generated_at": "2026-07-11T07:43:13.978Z",
+  "artifacts": [
+    "live-commit-execution-ledger-redacted.json",
+    "live-commit-verification-report.json",
+    "compensation-ledger-redacted.json",
+    "owner-outcome-summary.md",
+    "revenue-commit-outcome-scorecard.json",
+    "qa-review-report.md",
+    "artifact-manifest.json",
+    "final-package-index.md"
+  ]
+}

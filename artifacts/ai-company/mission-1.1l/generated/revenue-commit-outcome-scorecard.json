@@ -1,0 +1,14 @@
+{
+  "milestone": "1.1L",
+  "generated_at": "2026-07-11T07:43:13.978Z",
+  "verdict": "LIVE_REVENUE_COMMIT_OUTCOME_READY",
+  "total_actions": 1,
+  "verified_committed_count": 0,
+  "blocked_by_gate_count": 1,
+  "failed_safe_count": 0,
+  "compensated_count": 0,
+  "safety_locks": {
+    "crm_isolation_active": true,
+    "emergency_lock_intact": true
+  }
+}

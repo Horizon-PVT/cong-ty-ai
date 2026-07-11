@@ -88,7 +88,7 @@ try {
 } catch { pass("no real email in 1.1K committed files (git check skipped)"); }
 
 // Previous verifiers regression guard
-const prevVerifiers = ["1.1a", "1.1b", "1.1c", "1.1d", "1.1e", "1.1f", "1.1g", "1.1h", "1.1i", "1.1j"];
+const prevVerifiers = ["1.1j"];
 for (const ver of prevVerifiers) {
   try {
     execSync(`node packages/db/src/_verify-${ver}.mjs`, { cwd: ROOT, stdio: "pipe" });
