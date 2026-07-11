@@ -1,0 +1,12 @@
+{
+  "milestone": "1.1F",
+  "generated_at": "2026-07-11T01:20:12.630Z",
+  "responses": [
+    {
+      "dispatch_id": "email_disp_meet_1_1c_001",
+      "write_status": "EMAIL_CALENDAR_DISPATCH_BLOCKED_PROVIDER_AUTH",
+      "message_id": null,
+      "error": "RESEND_API_KEY is not set"
+    }
+  ]
+}

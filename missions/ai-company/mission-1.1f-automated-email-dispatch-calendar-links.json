@@ -1,0 +1,13 @@
+{
+  "milestone": "1.1F",
+  "name": "Automated Email Dispatch with Calendar Links",
+  "status": "IN_PROGRESS",
+  "objectives": [
+    "Load email dispatch actions from 1.1D plans",
+    "Integrate normalized display times from 1.1E previews",
+    "Enforce suppression and consent checks on all dispatches",
+    "Render HTML/text bodies containing calendar links and unsubscribe lines",
+    "Manage daily send caps to limit execution to maximum 3 emails",
+    "Execute dry-run and sandbox email dispatches with token redactions"
+  ]
+}

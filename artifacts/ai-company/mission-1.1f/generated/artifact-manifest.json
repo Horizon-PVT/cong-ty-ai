@@ -1,0 +1,15 @@
+{
+  "milestone": "1.1F",
+  "generated_at": "2026-07-11T01:20:12.630Z",
+  "artifacts": [
+    "email-calendar-dispatch-preview.json",
+    "email-calendar-message-render-preview.md",
+    "email-calendar-dispatch-ledger-redacted.json",
+    "email-provider-response-redacted.json",
+    "email-calendar-dispatch-scorecard.json",
+    "qa-review-report.md",
+    "gap-analysis.json",
+    "artifact-manifest.json",
+    "final-package-index.md"
+  ]
+}

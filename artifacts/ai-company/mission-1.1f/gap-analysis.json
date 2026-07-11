@@ -1,0 +1,11 @@
+{
+  "milestone": "1.1F",
+  "generated_at": "2026-07-11T01:20:12.630Z",
+  "gaps": [
+    {
+      "gap": "Automatic follow-up trigger logic for non-responding recipients",
+      "status": "DEFERRED_TO_1.1G",
+      "priority": "LOW"
+    }
+  ]
+}

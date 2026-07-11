@@ -1,0 +1,18 @@
+{
+  "milestone": "1.1F",
+  "generated_at": "2026-07-11T01:20:12.630Z",
+  "provider": "resend",
+  "mode": "sandbox",
+  "verdict": "EMAIL_CALENDAR_DISPATCH_READY_DRY_RUN_ONLY",
+  "total_actions": 1,
+  "dry_run_count": 0,
+  "sent_count": 0,
+  "blocked_approval_count": 0,
+  "called_real_provider": false,
+  "safety_audit": {
+    "consent_check_passed": true,
+    "suppression_check_passed": true,
+    "daily_cap_enforced": true,
+    "unsubscribe_link_rendered": true
+  }
+}
