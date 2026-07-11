@@ -1,0 +1,13 @@
+{
+  "milestone": "1.1I",
+  "generated_at": "2026-07-11T01:59:52.426Z",
+  "artifacts": [
+    "lead-outcome-timeline-redacted.json",
+    "owner-escalation-queue.json",
+    "crm-stage-sync-preview.json",
+    "revenue-outcome-scorecard.json",
+    "qa-review-report.md",
+    "artifact-manifest.json",
+    "final-package-index.md"
+  ]
+}

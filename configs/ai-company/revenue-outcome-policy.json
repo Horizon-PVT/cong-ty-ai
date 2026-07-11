@@ -1,0 +1,9 @@
+{
+  "milestone": "1.1I",
+  "default_mode": "dry_run",
+  "owner_approval_required": true,
+  "no_raw_pii_in_artifacts": true,
+  "no_provider_secrets_in_committed_files": true,
+  "allowed_modes": ["dry_run", "sandbox", "live"],
+  "required_live_token_prefix": "OWNER_APPROVED_REVENUE_OUTCOME_TOKEN="
+}
