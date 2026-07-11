@@ -1,0 +1,15 @@
+{
+  "milestone": "1.1I",
+  "generated_at": "2026-07-11T01:59:52.426Z",
+  "timelines": [
+    {
+      "recipient_id": "rec_meet_1_1c_001",
+      "classification": "DISQUALIFIED",
+      "reason": "Error occurred during execution: Within cooldown window of 48 hours",
+      "next_action": "mark_disqualified",
+      "detail": "Mark lead disqualified in CRM",
+      "escalated": false,
+      "idempotency_key": "idemp_1_1G_fup_1d6c16a5306a51f7"
+    }
+  ]
+}

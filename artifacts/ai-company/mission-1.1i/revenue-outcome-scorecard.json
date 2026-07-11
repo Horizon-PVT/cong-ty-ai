@@ -1,0 +1,12 @@
+{
+  "milestone": "1.1I",
+  "generated_at": "2026-07-11T01:59:52.426Z",
+  "verdict": "REVENUE_OUTCOME_INTELLIGENCE_DRY_RUN_PASS",
+  "total_actions": 1,
+  "meeting_booked_count": 0,
+  "owner_review_count": 0,
+  "safety_locks": {
+    "no_pii_leakage": true,
+    "escalation_routing_active": true
+  }
+}
