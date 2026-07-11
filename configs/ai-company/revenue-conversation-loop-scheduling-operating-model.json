@@ -1,0 +1,28 @@
+{
+  "milestone": "1.1C",
+  "departments": {
+    "CEO": "Approve meeting schedule and CRM actions per lead via OWNER_APPROVED_MEETING_TOKEN and OWNER_APPROVED_CRM_WRITE_TOKEN.",
+    "COO": "Enforce dry-run scheduling by default and monitor meeting-scheduling-ledger.json.",
+    "CMO": "Review proposed meeting slots and ensure slot template copy aligns with brand guides.",
+    "CRO": "Review and track candidate conversion fromqualified interest to meeting scheduled.",
+    "CSO": "Audit compliance for suppression and consent checks on all scheduling actions.",
+    "CTO": "Orchestrate scheduling adapters, prevent double-bookings, and maintain verifiers.",
+    "CFO": "Analyze pipeline values from scheduled meetings.",
+    "CISO": "Prevent credentials leakage (API tokens, OAuth client secrets) into git-tracked files.",
+    "CPO": "Monitor revenue loop dashboard scorecard and verdict."
+  },
+  "scheduling_providers": {
+    "target": "DRY_RUN_CALENDAR",
+    "future_providers": ["google_calendar", "cal_com", "calendly"]
+  },
+  "lead_lifecycle_states": [
+    "NEW_HANDOFF",
+    "ELIBILITY_CHECKED",
+    "DECISION_PROCESSED",
+    "MEETING_PROPOSED",
+    "MEETING_SCHEDULED",
+    "CRM_SYNCED",
+    "SUPPRESSED",
+    "DISQUALIFIED"
+  ]
+}

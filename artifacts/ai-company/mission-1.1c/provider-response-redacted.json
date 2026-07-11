@@ -1,0 +1,15 @@
+{
+  "milestone": "1.1C",
+  "generated_at": "2026-07-11T01:08:37.914Z",
+  "provider": "dry_run",
+  "mode": "dry_run",
+  "responses": [
+    {
+      "meeting_action_id": "meet_1_1c_001",
+      "write_status": "BLOCKED_PENDING_OWNER_APPROVAL",
+      "calendar_event_id": null,
+      "meeting_link": null,
+      "error": "Lead failed eligibility audit"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "integration_target": "paperclip",
+  "data_label": "REVENUE_CONVERSATION_SCHEDULING",
+  "milestone": "1.1C",
+  "widgets": [
+    {
+      "widget_id": "conversation_candidates",
+      "display_name": "Conversation Candidate Ledger",
+      "data_sources": ["conversation-candidate-ledger.json"],
+      "required_payload_sections": ["candidates", "eligible_count", "blocked_count"]
+    },
+    {
+      "widget_id": "meeting_action_plan",
+      "display_name": "Meeting Scheduling Plan",
+      "data_sources": ["meeting-action-plan.json"],
+      "required_payload_sections": ["actions", "slots_proposed"]
+    },
+    {
+      "widget_id": "meeting_write_preview",
+      "display_name": "Scheduling Preview (Dry-Run)",
+      "data_sources": ["meeting-write-preview.json"],
+      "required_payload_sections": ["previews", "summary"]
+    },
+    {
+      "widget_id": "meeting_scheduling_ledger",
+      "display_name": "Meeting Scheduling Ledger",
+      "data_sources": ["meeting-scheduling-ledger.json"],
+      "required_payload_sections": ["entries", "scheduled_count", "blocked_count"]
+    },
+    {
+      "widget_id": "crm_followup_sync_plan",
+      "display_name": "CRM Sync Plan",
+      "data_sources": ["crm-followup-sync-plan.json"],
+      "required_payload_sections": ["sync_actions", "status"]
+    },
+    {
+      "widget_id": "revenue_conversation_scorecard",
+      "display_name": "Scheduling Loop Scorecard",
+      "data_sources": ["revenue-conversation-scorecard.json"],
+      "required_payload_sections": ["verdict", "actions_processed", "verdict_history"]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "milestone": "1.1C",
+  "generated_at": "2026-07-11T01:08:37.914Z",
+  "gaps": [
+    {
+      "gap": "Real calendar provider token verification (Oauth flow)",
+      "status": "DEFERRED_TO_1.1D",
+      "priority": "HIGH"
+    },
+    {
+      "gap": "Automatic email message dispatch with calendar slots",
+      "status": "DEFERRED_TO_1.1D",
+      "priority": "MEDIUM"
+    },
+    {
+      "gap": "Custom conflict check with calendar availability querying",
+      "status": "DEFERRED_TO_1.1D",
+      "priority": "HIGH"
+    }
+  ]
+}

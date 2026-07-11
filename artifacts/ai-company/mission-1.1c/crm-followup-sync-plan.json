@@ -1,0 +1,20 @@
+{
+  "milestone": "1.1C",
+  "generated_at": "2026-07-11T01:08:37.914Z",
+  "sync_actions": [
+    {
+      "crm_action_id": "crm_sync_1_1c_001",
+      "lead_id": "rec_pilot_002",
+      "operation": "UPDATE_CONTACT_STAGE",
+      "fields_redacted": {
+        "stage": "meeting_proposed",
+        "next_action": "awaiting_customer_slot_confirmation",
+        "last_activity": "meeting_proposal_slots_generated"
+      },
+      "requires_owner_token": true,
+      "required_token": "OWNER_APPROVED_CRM_WRITE_TOKEN=crm_action_crm_sync_1_1c_001_1_1c",
+      "write_status": "BLOCKED_PENDING_OWNER_APPROVAL"
+    }
+  ],
+  "status": "CRM_SYNC_BLOCKED_PENDING_OWNER_APPROVAL"
+}
