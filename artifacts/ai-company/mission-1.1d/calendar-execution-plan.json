@@ -1,0 +1,22 @@
+{
+  "milestone": "1.1D",
+  "generated_at": "2026-07-11T01:12:04.769Z",
+  "provider": "dry_run",
+  "mode": "dry_run",
+  "plan": [
+    {
+      "meeting_action_id": "meet_1_1c_001",
+      "recipient_id": "rec_pilot_002",
+      "provider": "dry_run",
+      "mode": "dry_run",
+      "selected_slot": {
+        "slot_id": "slot_rec_pilot_002_1",
+        "start_time": "2026-07-16T09:00:00.000Z",
+        "duration_minutes": 30
+      },
+      "status": "DRY_RUN",
+      "error": null,
+      "required_token": "OWNER_APPROVED_MEETING_TOKEN=meeting_action_meet_1_1c_001_1_1d"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "milestone": "1.1D",
+  "generated_at": "2026-07-11T01:12:04.769Z",
+  "busy_slots_count": 0,
+  "checks": [
+    {
+      "meeting_action_id": "meet_1_1c_001",
+      "recipient_id": "rec_pilot_002",
+      "checked_slots": [
+        {
+          "slot_id": "slot_rec_pilot_002_1",
+          "start_time": "2026-07-16T09:00:00.000Z",
+          "has_conflict": false
+        },
+        {
+          "slot_id": "slot_rec_pilot_002_2",
+          "start_time": "2026-07-17T13:00:00.000Z",
+          "has_conflict": false
+        },
+        {
+          "slot_id": "slot_rec_pilot_002_3",
+          "start_time": "2026-07-18T11:00:00.000Z",
+          "has_conflict": false
+        }
+      ]
+    }
+  ]
+}

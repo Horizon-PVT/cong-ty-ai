@@ -1,0 +1,19 @@
+{
+  "milestone": "1.1D",
+  "generated_at": "2026-07-11T01:12:04.769Z",
+  "provider": "dry_run",
+  "mode": "dry_run",
+  "verdict": "CALENDAR_CRM_EXECUTION_READY_DRY_RUN_ONLY",
+  "total_actions": 1,
+  "dry_run_count": 1,
+  "scheduled_count": 0,
+  "blocked_conflict_count": 0,
+  "blocked_approval_count": 0,
+  "called_real_provider": false,
+  "safety_audit": {
+    "conflict_check_run": true,
+    "idempotency_enforced": true,
+    "redaction_applied": true,
+    "no_live_write_without_token": true
+  }
+}
