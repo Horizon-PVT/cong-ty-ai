@@ -1,0 +1,14 @@
+{
+  "milestone": "1.1K",
+  "generated_at": "2026-07-11T07:26:29.985Z",
+  "entries": [
+    {
+      "recipient_id": "rec_meet_1_1c_001",
+      "target_stage": "mark_disqualified",
+      "idempotency_key": "idemp_1_1G_fup_1d6c16a5306a51f7",
+      "commit_status": "BLOCKED_GATED_APPROVAL",
+      "error": "Gated: token OWNER_APPROVED_DECISION_COMMIT_TOKEN required.",
+      "synced_at": "2026-07-11T07:26:29.985Z"
+    }
+  ]
+}

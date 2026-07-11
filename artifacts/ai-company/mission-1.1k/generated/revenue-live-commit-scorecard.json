@@ -1,0 +1,13 @@
+{
+  "milestone": "1.1K",
+  "generated_at": "2026-07-11T07:26:29.985Z",
+  "verdict": "LIVE_REVENUE_COMMIT_PILOT_READY",
+  "total_actions": 1,
+  "committed_count": 0,
+  "deferred_count": 0,
+  "blocked_approval_count": 1,
+  "safety_locks": {
+    "crm_isolation_active": true,
+    "emergency_lock_intact": true
+  }
+}

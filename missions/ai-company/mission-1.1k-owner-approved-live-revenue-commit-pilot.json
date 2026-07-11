@@ -1,0 +1,13 @@
+{
+  "milestone": "1.1K",
+  "name": "Owner-Approved Live Revenue Commit Pilot",
+  "status": "IN_PROGRESS",
+  "objectives": [
+    "Load 1.1J decision logs and sync plans",
+    "Resolve cooldown and retry conditions for deferred actions",
+    "Abstract the commit adapter interface (prepare, commit, rollback/compensate, redact)",
+    "Execute owner-approved live CRM commits when token is active",
+    "Prevent live operations unless explicit live token is supplied",
+    "Produce redacted audit logs and live revenue commit scorecards"
+  ]
+}

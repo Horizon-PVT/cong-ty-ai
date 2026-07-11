@@ -1,0 +1,12 @@
+{
+  "milestone": "1.1K",
+  "generated_at": "2026-07-11T07:26:29.985Z",
+  "report": [
+    {
+      "recipient_id": "rec_meet_1_1c_001",
+      "owner_choice": "defer",
+      "status": "READY_FOR_OWNER_COMMIT",
+      "reason": "Cooldown period expired. Ready to commit."
+    }
+  ]
+}

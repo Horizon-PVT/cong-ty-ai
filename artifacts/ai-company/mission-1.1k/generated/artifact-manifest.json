@@ -1,0 +1,14 @@
+{
+  "milestone": "1.1K",
+  "generated_at": "2026-07-11T07:26:29.985Z",
+  "artifacts": [
+    "owner-live-approval-ledger-redacted.json",
+    "cooldown-resolution-report.json",
+    "live-crm-commit-plan.json",
+    "live-crm-commit-ledger-redacted.json",
+    "revenue-live-commit-scorecard.json",
+    "qa-review-report.md",
+    "artifact-manifest.json",
+    "final-package-index.md"
+  ]
+}
