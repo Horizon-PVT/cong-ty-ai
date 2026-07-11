@@ -1,0 +1,40 @@
+{
+  "milestone": "1.0Z",
+  "generated_at": "2026-07-11T00:46:50.196Z",
+  "source": "1.0Y qualified-interest-summary + new consent allowlist",
+  "daily_cap": 25,
+  "batch_recipients": [
+    {
+      "recipient_id": "batch_001",
+      "recipient_redacted": "****@alexminh.ai",
+      "consent_source": "explicit_opt_in_form",
+      "interest_tier": "WARM",
+      "lane": "BATCH_OUTREACH",
+      "status": "DRAFT_PENDING_APPROVAL",
+      "suppression_checked": true,
+      "in_suppression": false
+    },
+    {
+      "recipient_id": "batch_002",
+      "recipient_redacted": "****@alexminh.ai",
+      "consent_source": "explicit_opt_in_form",
+      "interest_tier": "WARM",
+      "lane": "BATCH_OUTREACH",
+      "status": "DRAFT_PENDING_APPROVAL",
+      "suppression_checked": true,
+      "in_suppression": false
+    },
+    {
+      "recipient_id": "batch_003",
+      "recipient_redacted": "****@alexminh.ai",
+      "consent_source": "explicit_opt_in_form",
+      "interest_tier": "COLD",
+      "lane": "BATCH_OUTREACH",
+      "status": "DRAFT_PENDING_APPROVAL",
+      "suppression_checked": true,
+      "in_suppression": false
+    }
+  ],
+  "followup_hot_leads": [],
+  "verdict": "BATCH_PLAN_READY_FOR_OWNER_REVIEW"
+}

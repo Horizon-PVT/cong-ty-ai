@@ -1,0 +1,26 @@
+{
+  "milestone": "1.0Z",
+  "generated_at": "2026-07-11T00:46:50.196Z",
+  "gaps": [
+    {
+      "gap": "CRM write not implemented",
+      "status": "DEFERRED_TO_1.1A",
+      "priority": "HIGH"
+    },
+    {
+      "gap": "Live batch send not enabled",
+      "status": "BY_DESIGN — requires owner token",
+      "priority": "N/A"
+    },
+    {
+      "gap": "Auto follow-up not implemented",
+      "status": "BY_DESIGN — no_automatic_followups: true",
+      "priority": "N/A"
+    },
+    {
+      "gap": "Revenue conversation loop",
+      "status": "DEFERRED_TO_1.1A",
+      "priority": "HIGH"
+    }
+  ]
+}

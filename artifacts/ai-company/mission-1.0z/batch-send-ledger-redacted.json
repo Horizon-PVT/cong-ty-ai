@@ -1,0 +1,53 @@
+{
+  "milestone": "1.0Z",
+  "generated_at": "2026-07-11T00:46:50.196Z",
+  "daily_cap": 25,
+  "entries": [
+    {
+      "send_id": "send_1_0z_batch_001",
+      "recipient_id": "batch_001",
+      "recipient_redacted": "****@alexminh.ai",
+      "lane": "BATCH_OUTREACH",
+      "sent_status": "DRY_RUN",
+      "blocked_reason": "default_live_send_enabled: false — dry-run mode active",
+      "called_real_provider": false,
+      "provider": "FAKE_LOCAL_ONLY",
+      "approval_action_id": null,
+      "unsubscribe_appended": true,
+      "idempotency_key": "idemp_1_0z_batch_001_v1"
+    },
+    {
+      "send_id": "send_1_0z_batch_002",
+      "recipient_id": "batch_002",
+      "recipient_redacted": "****@alexminh.ai",
+      "lane": "BATCH_OUTREACH",
+      "sent_status": "DRY_RUN",
+      "blocked_reason": "default_live_send_enabled: false — dry-run mode active",
+      "called_real_provider": false,
+      "provider": "FAKE_LOCAL_ONLY",
+      "approval_action_id": null,
+      "unsubscribe_appended": true,
+      "idempotency_key": "idemp_1_0z_batch_002_v1"
+    },
+    {
+      "send_id": "send_1_0z_batch_003",
+      "recipient_id": "batch_003",
+      "recipient_redacted": "****@alexminh.ai",
+      "lane": "BATCH_OUTREACH",
+      "sent_status": "DRY_RUN",
+      "blocked_reason": "default_live_send_enabled: false — dry-run mode active",
+      "called_real_provider": false,
+      "provider": "FAKE_LOCAL_ONLY",
+      "approval_action_id": null,
+      "unsubscribe_appended": true,
+      "idempotency_key": "idemp_1_0z_batch_003_v1"
+    }
+  ],
+  "summary": {
+    "total_entries": 3,
+    "dry_run_count": 3,
+    "blocked_count": 0,
+    "sent_count": 0,
+    "called_real_provider": false
+  }
+}

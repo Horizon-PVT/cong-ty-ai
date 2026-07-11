@@ -1,0 +1,25 @@
+{
+  "milestone": "1.0Z",
+  "departments": {
+    "CEO": "Approve batch expansion targets and authorize hot lead follow-up tokens per recipient.",
+    "COO": "Enforce daily_batch_cap (25) and ensure no auto-followups trigger without owner token.",
+    "CMO": "Design batch outreach messaging, sales handoff package, and meeting/demo CTA templates.",
+    "CRO": "Define hot lead qualification criteria from 1.0Y qualified-interest-summary.json.",
+    "CSO": "Enforce suppression-check, consent-allowlist, and opt-out auto-mapping for all batch sends.",
+    "CTO": "Maintain runner, send CLI, premerge simulator, verifier, and auto-loop scripts for 1.0Z.",
+    "CFO": "Track cost-per-send, provider fees, and revenue pipeline contribution from sales handoff.",
+    "CISO": "Run pre-send safety scan: no raw emails, no secrets, no tokens in committed artifacts.",
+    "CPO": "Review batch-recipient-plan.json and batch-outcome-readiness-scorecard verdict before next batch.",
+    "CLO": "Validate consent source, unsubscribe path, and suppression compliance for each send."
+  },
+  "lanes": {
+    "followup_lane": "Process hot leads from 1.0Y follow-up-approval-queue.json. Generate approved-followup-dispatch-plan.json. Send only with OWNER_APPROVED_LIVE_TOKEN matching action_id.",
+    "batch_outreach_lane": "Select new batch recipients from allowlist. Default dry-run. Live-send only when explicitly enabled and policy gates pass."
+  },
+  "escalation": {
+    "opt_out_rate_exceeded": "PAUSE_BATCH_AND_NOTIFY_CEO",
+    "bounce_rate_exceeded": "PAUSE_BATCH_AND_NOTIFY_CSO",
+    "missing_token": "BLOCK_SEND_HARD_FAIL",
+    "suppressed_recipient": "BLOCK_SEND_HARD_FAIL"
+  }
+}

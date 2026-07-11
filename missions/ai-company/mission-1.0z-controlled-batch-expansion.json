@@ -1,0 +1,45 @@
+{
+  "milestone": "1.0Z",
+  "questions": [
+    {
+      "q": "What is the maximum number of recipients allowed per day in Milestone 1.0Z batch expansion?",
+      "a": "Maximum 25 recipients per day (daily_batch_cap: 25)."
+    },
+    {
+      "q": "Can follow-up emails be sent automatically to hot leads from 1.0Y?",
+      "a": "No. Follow-up sends require an explicit OWNER_APPROVED_LIVE_TOKEN matching the correct action_id. No automatic follow-ups are permitted."
+    },
+    {
+      "q": "What happens if a recipient is found in the suppression registry?",
+      "a": "The send is hard-blocked. No suppressed recipient can receive any outreach regardless of consent status."
+    },
+    {
+      "q": "What are the two lanes in Milestone 1.0Z?",
+      "a": "Follow-up lane (hot leads from 1.0Y with owner-approved token) and Batch outreach lane (new recipients from allowlist, dry-run by default)."
+    },
+    {
+      "q": "What verdict options exist in batch-outcome-readiness-scorecard.json?",
+      "a": "Three verdicts: APPROVED_FOR_NEXT_BATCH, HOLD_FOR_OWNER_REVIEW, or PAUSED_BY_SAFETY_THRESHOLD."
+    },
+    {
+      "q": "What secrets are forbidden in committed artifacts?",
+      "a": "Raw email addresses, sk- tokens, OPENAI_API_KEY, RESEND_API_KEY, and any live owner-approved tokens."
+    },
+    {
+      "q": "What is the opt-out threshold rate that triggers a batch pause?",
+      "a": "20% opt-out rate (opt_out_threshold_rate: 0.20)."
+    },
+    {
+      "q": "What is the bounce rate threshold that triggers a batch pause?",
+      "a": "10% bounce rate (bounce_threshold_rate: 0.10)."
+    },
+    {
+      "q": "What does the sales handoff package contain?",
+      "a": "Redacted recipient, interest classification, recommended next action, approved draft, meeting/demo CTA, and owner approval state. No real CRM write in 1.0Z."
+    },
+    {
+      "q": "What is the next milestone after 1.0Z?",
+      "a": "Milestone 1.1A — Revenue Conversation Loop / CRM Integration Gate."
+    }
+  ]
+}

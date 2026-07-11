@@ -1,0 +1,11 @@
+{
+  "milestone": "1.0Z",
+  "generated_at": "2026-07-11T00:46:50.196Z",
+  "policy": "No CRM write in 1.0Z — package is for owner review only",
+  "hot_leads": [],
+  "summary": {
+    "total_hot_leads": 0,
+    "crm_write_enabled": false,
+    "next_action": "Owner review and token approval required"
+  }
+}

@@ -1,11 +1,11 @@
 {
   "ledger_id": "email-pilot-audit-ledger-1.0u",
   "milestone": "1.0U",
-  "generated_at": "2026-07-04T09:43:23.596Z",
+  "generated_at": "2026-07-10T17:14:56.415Z",
   "entries": [
     {
       "pilot_action_id": "pilot_email_action_001",
-      "timestamp": "2026-07-04T09:43:23.596Z",
+      "timestamp": "2026-07-10T17:14:56.415Z",
       "idempotency_key": "idemp_pilot_001_a6b7c8d9",
       "recipient_kind": "OWNER_ALLOWLIST_PLACEHOLDER",
       "live_send_blocked": true,

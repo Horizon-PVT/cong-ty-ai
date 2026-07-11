@@ -1,11 +1,11 @@
 {
   "ledger_id": "email-boss-live-test-audit-ledger-1.0w",
   "milestone": "1.0W",
-  "generated_at": "2026-07-10T15:07:03.812Z",
+  "generated_at": "2026-07-10T17:15:04.179Z",
   "entries": [
     {
       "execution_id": "exec_live_boss_9912a",
-      "timestamp": "2026-07-10T15:07:03.812Z",
+      "timestamp": "2026-07-10T17:15:04.179Z",
       "idempotency_key": "idemp_live_boss_001_v1",
       "recipient_redacted": "bo***@alexminh.ai",
       "status": "DRY_RUN_PASS"

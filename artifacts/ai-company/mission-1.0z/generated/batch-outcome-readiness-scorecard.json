@@ -1,0 +1,15 @@
+{
+  "milestone": "1.0Z",
+  "generated_at": "2026-07-11T00:46:50.196Z",
+  "verdict": "APPROVED_FOR_NEXT_BATCH",
+  "opt_out_rate": 0,
+  "bounce_rate": 0,
+  "send_count": 3,
+  "dry_run_count": 3,
+  "blocked_count": 0,
+  "live_sent_count": 0,
+  "daily_cap": 25,
+  "hot_leads_pending_approval": 0,
+  "safety_checks_passed": true,
+  "notes": "1.0Z batch expansion complete. All live sends blocked pending owner approval. Suppression registry updated from 1.0Y."
+}
