@@ -1,0 +1,13 @@
+{
+  "milestone": "1.1L",
+  "generated_at": "2026-07-11T07:43:13.978Z",
+  "report": [
+    {
+      "recipient_id": "rec_meet_1_1c_001",
+      "target_stage": "mark_disqualified",
+      "verdict": "SKIPPED_BLOCKED",
+      "verified_at": "2026-07-11T07:43:13.978Z",
+      "error": null
+    }
+  ]
+}

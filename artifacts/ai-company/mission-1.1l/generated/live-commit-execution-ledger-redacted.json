@@ -1,0 +1,13 @@
+{
+  "milestone": "1.1L",
+  "generated_at": "2026-07-11T07:43:13.978Z",
+  "entries": [
+    {
+      "recipient_id": "rec_meet_1_1c_001",
+      "commit_status": "BLOCKED_BY_GATE",
+      "idempotency_key": "idemp_1_1G_fup_1d6c16a5306a51f7",
+      "synced_at": "2026-07-11T07:43:13.978Z",
+      "error": null
+    }
+  ]
+}

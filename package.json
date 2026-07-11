@@ -65,7 +65,10 @@
     "ai-company:1.1j:auto-loop": "node scripts/ai-company-owner-decision-execution-auto-loop.mjs",
     "ai-company:1.1k": "node scripts/ai-company-live-revenue-commit-pilot.mjs",
     "ai-company:1.1k:verify": "node packages/db/src/_verify-1.1k.mjs",
-    "ai-company:1.1k:auto-loop": "node scripts/ai-company-live-revenue-commit-pilot-auto-loop.mjs"
+    "ai-company:1.1k:auto-loop": "node scripts/ai-company-live-revenue-commit-pilot-auto-loop.mjs",
+    "ai-company:1.1l": "node scripts/ai-company-live-revenue-commit-outcome-recovery.mjs",
+    "ai-company:1.1l:verify": "node packages/db/src/_verify-1.1l.mjs",
+    "ai-company:1.1l:auto-loop": "node scripts/ai-company-live-revenue-commit-outcome-recovery-auto-loop.mjs"
   },
   "devDependencies": {
     "@playwright/test": "^1.58.2",
