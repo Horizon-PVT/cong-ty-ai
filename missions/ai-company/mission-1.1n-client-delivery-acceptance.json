@@ -1,0 +1,14 @@
+{
+  "milestone": "1.1N",
+  "name": "Owner-Approved Client Delivery & Acceptance Loop",
+  "status": "IN_PROGRESS",
+  "objectives": [
+    "Load 1.1M proposal packages, payment ledgers, and kickoff checklists",
+    "Create delivery plans from approved kickoff items with scope lock",
+    "Generate work packages for agent/team execution",
+    "Track deliverables through QA and client acceptance gates",
+    "Classify outcomes: accepted, revision_requested, blocked, escalated",
+    "Prevent live delivery actions unless explicit delivery token is supplied",
+    "Produce redacted delivery plans and acceptance ledger artifacts"
+  ]
+}

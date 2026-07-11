@@ -1,0 +1,16 @@
+{
+  "milestone": "1.1N",
+  "generated_at": "2026-07-11T09:46:37.326Z",
+  "artifacts": [
+    "delivery-plan.json",
+    "scope-lock-ledger.json",
+    "work-package-redacted.json",
+    "client-update-preview.md",
+    "qa-acceptance-report.md",
+    "owner-acceptance-approval-queue.json",
+    "client-acceptance-ledger-redacted.json",
+    "delivery-scorecard.json",
+    "artifact-manifest.json",
+    "final-package-index.md"
+  ]
+}

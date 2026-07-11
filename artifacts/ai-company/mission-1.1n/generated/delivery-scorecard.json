@@ -1,0 +1,14 @@
+{
+  "milestone": "1.1N",
+  "generated_at": "2026-07-11T09:46:37.326Z",
+  "verdict": "NO_ELIGIBLE_CLIENT_DELIVERY_ACTIONS",
+  "total_deliveries": 0,
+  "delivered_count": 0,
+  "blocked_by_owner_gate_count": 0,
+  "failed_count": 1,
+  "safety_locks": {
+    "scope_lock_active": true,
+    "client_update_send_blocked": true,
+    "emergency_lock_intact": true
+  }
+}
