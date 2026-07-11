@@ -1,7 +1,7 @@
 {
   "milestone": "1.1H",
   "name": "Closed-loop Follow-up Execution & Outcome Sync",
-  "status": "IN_PROGRESS",
+  "status": "COMPLETED",
   "objectives": [
     "Load 1.1G follow-up trigger decisions",
     "Dispatch follow-up messages via simulated or live SMTP/Resend providers",
