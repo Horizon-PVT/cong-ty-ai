@@ -1,0 +1,16 @@
+{
+  "milestone": "1.0Z",
+  "generated_at": "2026-07-11T00:46:50.196Z",
+  "artifacts": [
+    "batch-recipient-plan.json",
+    "approved-followup-dispatch-plan.json",
+    "sales-handoff-package.json",
+    "suppression-registry-delta.json",
+    "batch-send-ledger-redacted.json",
+    "batch-outcome-readiness-scorecard.json",
+    "qa-review-report.md",
+    "gap-analysis.json",
+    "artifact-manifest.json",
+    "final-package-index.md"
+  ]
+}

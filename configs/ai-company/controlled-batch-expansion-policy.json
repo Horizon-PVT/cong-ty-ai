@@ -1,0 +1,40 @@
+{
+  "mode": "CONTROLLED_BATCH_EXPANSION",
+  "milestone": "1.0Z",
+  "active_rules": {
+    "daily_batch_cap": 25,
+    "default_live_send_enabled": false,
+    "owner_approval_required_per_followup": true,
+    "owner_approval_required_for_batch_live_send": true,
+    "no_automatic_followups": true,
+    "retry_disabled": true,
+    "suppression_check_required": true,
+    "consent_allowlist_required": true,
+    "opt_out_threshold_rate": 0.20,
+    "bounce_threshold_rate": 0.10,
+    "kill_switch_required": true,
+    "audit_required": true,
+    "redaction_required": true
+  },
+  "hard_locks": {
+    "no_send_without_consent": true,
+    "no_send_to_suppressed_recipient": true,
+    "no_followup_without_matching_owner_token": true,
+    "no_raw_emails_in_committed_artifacts": true
+  },
+  "safety_gates": {
+    "daily_cap": 25,
+    "retry": "DISABLED",
+    "duplicate_send_protection": true,
+    "unsubscribe_path_required": true,
+    "suppression_check_required": true,
+    "provider_receipt_required_in_live_mode": true,
+    "secrets_in_committed_files": "HARD_FAIL",
+    "raw_emails_in_committed_files": "HARD_FAIL"
+  },
+  "kill_switch": {
+    "enabled": true,
+    "type": "PREFLIGHT_CHECK",
+    "description": "If kill_switch is enabled, all sends are blocked regardless of other settings."
+  }
+}

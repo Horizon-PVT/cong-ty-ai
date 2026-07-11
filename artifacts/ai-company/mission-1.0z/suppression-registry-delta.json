@@ -1,0 +1,10 @@
+{
+  "milestone": "1.0Z",
+  "generated_at": "2026-07-11T00:46:50.196Z",
+  "source": "1.0Y suppression-update-plan.json",
+  "new_suppressions": [],
+  "opt_out_count": 0,
+  "bounce_count": 0,
+  "suppression_registry_updated": true,
+  "policy": "All new opt-outs and bounces from 1.0Y applied before any 1.0Z send"
+}

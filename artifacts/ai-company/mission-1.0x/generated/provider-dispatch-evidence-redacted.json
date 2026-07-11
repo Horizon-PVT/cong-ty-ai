@@ -1,7 +1,7 @@
 {
   "milestone": "1.0X",
   "evidence_id": "evid_1.0x_001",
-  "timestamp": "2026-07-10T15:56:31.188Z",
+  "timestamp": "2026-07-10T17:15:09.031Z",
   "dispatched_sends": [
     {
       "recipient_id": "rec_pilot_001",
@@ -9,7 +9,7 @@
       "provider_used": "MOCK_LOCAL_PROVIDER",
       "message_id": "msg_outreach_mock11a",
       "status": "DRY_RUN_PASS",
-      "timestamp": "2026-07-10T15:56:31.188Z"
+      "timestamp": "2026-07-10T17:15:09.031Z"
     }
   ]
 }

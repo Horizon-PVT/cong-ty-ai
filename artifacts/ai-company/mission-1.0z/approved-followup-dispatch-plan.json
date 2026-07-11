@@ -1,0 +1,8 @@
+{
+  "milestone": "1.0Z",
+  "generated_at": "2026-07-11T00:46:50.196Z",
+  "lane": "FOLLOWUP_LANE",
+  "policy": "no_automatic_followups: true — all follow-ups require OWNER_APPROVED_LIVE_TOKEN",
+  "dispatch_items": [],
+  "dispatch_verdict": "AWAITING_OWNER_TOKEN_APPROVAL"
+}

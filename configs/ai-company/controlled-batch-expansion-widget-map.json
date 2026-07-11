@@ -1,0 +1,43 @@
+{
+  "integration_target": "paperclip",
+  "data_label": "CONTROLLED_BATCH_EXPANSION",
+  "milestone": "1.0Z",
+  "widgets": [
+    {
+      "widget_id": "batch_expansion_overview",
+      "display_name": "Batch Expansion Status Overview",
+      "data_sources": ["batch-send-ledger-redacted.json", "batch-recipient-plan.json"],
+      "required_payload_sections": ["batch_summary", "daily_cap_status", "send_status_breakdown"]
+    },
+    {
+      "widget_id": "followup_dispatch_status",
+      "display_name": "Approved Follow-up Dispatch Status",
+      "data_sources": ["approved-followup-dispatch-plan.json"],
+      "required_payload_sections": ["followup_queue", "token_validation_status", "dispatch_verdict"]
+    },
+    {
+      "widget_id": "sales_handoff_tracker",
+      "display_name": "Sales Handoff Package Tracker",
+      "data_sources": ["sales-handoff-package.json"],
+      "required_payload_sections": ["hot_leads", "recommended_actions", "owner_approval_state"]
+    },
+    {
+      "widget_id": "suppression_registry_delta",
+      "display_name": "Suppression Registry Delta",
+      "data_sources": ["suppression-registry-delta.json"],
+      "required_payload_sections": ["new_suppressions", "opt_out_count", "bounce_count"]
+    },
+    {
+      "widget_id": "batch_outcome_readiness",
+      "display_name": "Batch Outcome Readiness Scorecard",
+      "data_sources": ["batch-outcome-readiness-scorecard.json"],
+      "required_payload_sections": ["verdict", "opt_out_rate", "bounce_rate", "send_count"]
+    },
+    {
+      "widget_id": "batch_safety_audit",
+      "display_name": "Batch Safety & Compliance Audit",
+      "data_sources": ["batch-send-ledger-redacted.json", "suppression-registry-delta.json"],
+      "required_payload_sections": ["safety_checks", "hard_lock_status", "policy_compliance"]
+    }
+  ]
+}
