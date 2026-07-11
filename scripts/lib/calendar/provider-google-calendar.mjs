@@ -92,8 +92,8 @@ export const googleCalendarProvider = {
         body: JSON.stringify({
           summary: params.summary,
           description: params.description,
-          start: { dateTime: params.startTime },
-          end: { dateTime: params.endTime },
+          start: { dateTime: params.startTime, timeZone: params.timeZone || "UTC" },
+          end: { dateTime: params.endTime, timeZone: params.timeZone || "UTC" },
           attendees: params.attendees || [],
           singleEvents: true
         })

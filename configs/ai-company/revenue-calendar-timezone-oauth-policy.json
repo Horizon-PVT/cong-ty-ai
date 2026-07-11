@@ -1,0 +1,20 @@
+{
+  "milestone": "1.1E",
+  "default_mode": "dry_run",
+  "owner_approval_required": true,
+  "oauth_required_for_provider_write": true,
+  "pkce_required": true,
+  "oauth_state_required": true,
+  "oauth_callback_origin_allowlist_required": true,
+  "timezone_required_for_all_calendar_writes": true,
+  "iana_timezone_required": true,
+  "dst_boundary_check_required": true,
+  "recipient_display_time_required": true,
+  "no_raw_pii_in_artifacts": true,
+  "no_provider_secrets_in_committed_files": true,
+  "no_refresh_token_in_artifacts": true,
+  "retry_live_actions_disabled": true,
+  "allowed_providers": ["dry_run", "google_calendar"],
+  "allowed_modes": ["dry_run", "oauth_simulated", "sandbox", "live"],
+  "allowed_oauth_redirect_hosts": ["127.0.0.1", "localhost"]
+}

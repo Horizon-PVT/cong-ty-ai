@@ -1,0 +1,21 @@
+{
+  "milestone": "1.1E",
+  "generated_at": "2026-07-11T01:16:16.708Z",
+  "previews": [
+    {
+      "slot_id": "slot_rec_pilot_002_1",
+      "display_for_owner": "Thu, Jul 16, 2026, 5:00 AM EDT",
+      "display_for_recipient": "Thu, Jul 16, 2026, 5:00 AM EDT"
+    },
+    {
+      "slot_id": "slot_rec_pilot_002_2",
+      "display_for_owner": "Fri, Jul 17, 2026, 9:00 AM EDT",
+      "display_for_recipient": "Fri, Jul 17, 2026, 9:00 AM EDT"
+    },
+    {
+      "slot_id": "slot_rec_pilot_002_3",
+      "display_for_owner": "Sat, Jul 18, 2026, 7:00 AM EDT",
+      "display_for_recipient": "Sat, Jul 18, 2026, 7:00 AM EDT"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "milestone": "1.1E",
+  "generated_at": "2026-07-11T01:16:16.708Z",
+  "previews": [
+    {
+      "meeting_action_id": "meet_1_1c_001",
+      "recipient_id": "rec_pilot_002",
+      "write_status": "BLOCKED_PENDING_OWNER_APPROVAL",
+      "timezone": "America/New_York",
+      "idempotency_key": "idemp_1_1E_cal_e1971b76d9e5d30c",
+      "start": {
+        "dateTime": "2026-07-16T09:00:00.000Z",
+        "timeZone": "America/New_York"
+      },
+      "end": {
+        "dateTime": "2026-07-16T09:30:00.000Z",
+        "timeZone": "America/New_York"
+      }
+    }
+  ]
+}

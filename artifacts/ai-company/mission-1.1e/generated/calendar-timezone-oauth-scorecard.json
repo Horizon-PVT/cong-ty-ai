@@ -1,0 +1,13 @@
+{
+  "milestone": "1.1E",
+  "generated_at": "2026-07-11T01:16:16.708Z",
+  "verdict": "CALENDAR_OAUTH_SIMULATION_SUCCEEDED",
+  "timezone_validated": "America/New_York",
+  "total_actions": 1,
+  "dst_safe_count": 3,
+  "safety_locks": {
+    "conflict_check_passed": true,
+    "token_redacted_passed": true,
+    "redirect_origins_checked": true
+  }
+}
