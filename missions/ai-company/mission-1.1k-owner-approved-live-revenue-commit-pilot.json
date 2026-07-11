@@ -1,7 +1,7 @@
 {
   "milestone": "1.1K",
   "name": "Owner-Approved Live Revenue Commit Pilot",
-  "status": "IN_PROGRESS",
+  "status": "COMPLETED",
   "objectives": [
     "Load 1.1J decision logs and sync plans",
     "Resolve cooldown and retry conditions for deferred actions",
