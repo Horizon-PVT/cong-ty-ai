@@ -1,0 +1,12 @@
+{
+  "milestone": "1.1N",
+  "default_mode": "dry_run",
+  "default_live_commit_enabled": false,
+  "allow_delivery_modes": ["dry_run", "sandbox"],
+  "owner_approval_required": true,
+  "no_raw_pii_in_artifacts": true,
+  "no_provider_secrets_in_committed_files": true,
+  "allowed_modes": ["dry_run", "sandbox", "live"],
+  "required_live_token_prefix": "OWNER_APPROVED_CLIENT_DELIVERY_TOKEN=",
+  "idempotency_key_format": "{client_id}_{proposal_id}_{delivery_phase}"
+}
