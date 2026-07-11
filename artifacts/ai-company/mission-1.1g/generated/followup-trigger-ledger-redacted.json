@@ -1,0 +1,18 @@
+{
+  "milestone": "1.1G",
+  "generated_at": "2026-07-11T01:24:37.720Z",
+  "entries": [
+    {
+      "dispatch_id": "email_disp_meet_1_1c_001",
+      "meeting_action_id": "meet_1_1c_001",
+      "recipient_id": "rec_meet_1_1c_001",
+      "signal": "no_response",
+      "previous_attempts": 0,
+      "last_sent_time": "2026-07-11T01:20:12.630Z",
+      "write_status": "FOLLOWUP_BLOCKED_COOLDOWN",
+      "error": "Within cooldown window of 48 hours",
+      "idempotency_key": "idemp_1_1G_fup_1d6c16a5306a51f7",
+      "created_at": "2026-07-11T01:24:37.720Z"
+    }
+  ]
+}

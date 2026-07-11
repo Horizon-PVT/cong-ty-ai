@@ -1,0 +1,18 @@
+{
+  "milestone": "1.1G",
+  "generated_at": "2026-07-11T01:24:37.720Z",
+  "verdict": "FOLLOWUP_BLOCKED_COOLDOWN",
+  "total_actions": 1,
+  "dry_run_count": 0,
+  "blocked_approval_count": 0,
+  "blocked_terminal_count": 0,
+  "blocked_cooldown_count": 1,
+  "blocked_suppressed_count": 0,
+  "blocked_daily_cap_count": 0,
+  "safety_locks": {
+    "cooldown_checks_passed": true,
+    "suppression_checks_passed": true,
+    "frequency_checks_passed": true,
+    "consent_checks_passed": true
+  }
+}

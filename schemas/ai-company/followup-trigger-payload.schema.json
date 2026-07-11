@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "FollowupTriggerPayload",
+  "type": "object",
+  "properties": {
+    "milestone": { "type": "string", "const": "1.1G" },
+    "generated_at": { "type": "string" },
+    "actions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "recipient_id": { "type": "string" },
+          "followup_eligible": { "type": "boolean" },
+          "status": { "type": "string" },
+          "error": { "type": "string", "nullable": true }
+        },
+        "required": ["recipient_id", "followup_eligible", "status"]
+      }
+    }
+  },
+  "required": ["milestone", "generated_at", "actions"]
+}

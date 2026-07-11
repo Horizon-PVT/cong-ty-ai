@@ -1,0 +1,7 @@
+{
+  "operational_mode": "monitored_loops",
+  "cooldown_checks_enabled": true,
+  "suppression_checks_enabled": true,
+  "consent_checks_enabled": true,
+  "frequency_checks_enabled": true
+}

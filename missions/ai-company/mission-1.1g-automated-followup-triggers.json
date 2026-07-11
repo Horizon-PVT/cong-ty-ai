@@ -1,0 +1,12 @@
+{
+  "milestone": "1.1G",
+  "name": "Automated Follow-up Trigger Logic",
+  "status": "IN_PROGRESS",
+  "objectives": [
+    "Load 1.1F email dispatches",
+    "Support terminal response signals such as replies or unsubscribes",
+    "Evaluate cooldown rules and daily frequency limits",
+    "Render follow-up message previews containing timezone templates",
+    "Produce follow-up trigger scorecards and verifier reports"
+  ]
+}
