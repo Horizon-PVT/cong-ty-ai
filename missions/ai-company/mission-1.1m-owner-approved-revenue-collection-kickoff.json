@@ -1,0 +1,13 @@
+{
+  "milestone": "1.1M",
+  "name": "Owner-Approved Revenue Collection & Client Kickoff Loop",
+  "status": "IN_PROGRESS",
+  "objectives": [
+    "Load 1.1L live commit verification reports",
+    "Identify leads eligible for revenue collection or onboarding kickoff",
+    "Create proposal packages and mock billing requests under strict approval gates",
+    "Establish client kickoff checklists with clear next steps and owners",
+    "Prevent live operations unless explicit live token is supplied",
+    "Produce redacted payment requests and client kickoff checklist artifacts"
+  ]
+}

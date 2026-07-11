@@ -1,0 +1,13 @@
+{
+  "milestone": "1.1M",
+  "generated_at": "2026-07-11T07:47:10.463Z",
+  "verdict": "REVENUE_COLLECTION_READY",
+  "total_actions": 0,
+  "verified_count": 0,
+  "blocked_by_owner_gate_count": 0,
+  "failed_count": 1,
+  "safety_locks": {
+    "crm_isolation_active": true,
+    "emergency_lock_intact": true
+  }
+}
