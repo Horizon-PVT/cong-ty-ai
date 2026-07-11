@@ -1,0 +1,9 @@
+{
+  "milestone": "1.1A",
+  "generated_at": "2026-07-11T00:55:40.733Z",
+  "source": "1.0Z suppression-registry-delta + sales-handoff-package",
+  "suppressed_leads": [],
+  "consent_verified": [],
+  "audit_status": "PASSED",
+  "policy": "suppression_check_required: true — no CRM write for suppressed leads"
+}

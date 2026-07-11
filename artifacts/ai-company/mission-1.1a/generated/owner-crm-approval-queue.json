@@ -1,0 +1,8 @@
+{
+  "milestone": "1.1A",
+  "generated_at": "2026-07-11T00:55:40.733Z",
+  "policy": "owner_approval_required_for_crm_write: true",
+  "token_format": "OWNER_APPROVED_CRM_WRITE_TOKEN=crm_action_<id>_1_1a",
+  "approval_count": 0,
+  "pending_approvals": []
+}

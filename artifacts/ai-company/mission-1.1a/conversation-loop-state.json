@@ -1,0 +1,19 @@
+{
+  "milestone": "1.1A",
+  "generated_at": "2026-07-11T00:55:40.733Z",
+  "total_leads": 0,
+  "lead_states": [],
+  "crm_gate_status": "CRM_GATE_READY_NO_HOT_LEADS",
+  "valid_states": [
+    "NEW_HANDOFF",
+    "OWNER_REVIEW_REQUIRED",
+    "CRM_WRITE_APPROVED",
+    "CRM_WRITE_DRY_RUN_RECORDED",
+    "CUSTOMER_REPLY_WAITING",
+    "MEETING_SCHEDULED",
+    "DISQUALIFIED",
+    "SUPPRESSED",
+    "CLOSED_WON",
+    "CLOSED_LOST"
+  ]
+}

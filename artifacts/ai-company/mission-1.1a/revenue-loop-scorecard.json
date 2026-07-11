@@ -1,0 +1,14 @@
+{
+  "milestone": "1.1A",
+  "generated_at": "2026-07-11T00:55:40.733Z",
+  "verdict": "CRM_GATE_READY_NO_HOT_LEADS",
+  "hot_lead_count": 0,
+  "crm_write_count": 0,
+  "crm_blocked_count": 0,
+  "called_real_crm_provider": false,
+  "safety_status": "ALL_GATES_PASSED",
+  "suppression_checked": true,
+  "consent_verified": true,
+  "idempotency_enforced": true,
+  "notes": "1.1A CRM gate complete. All CRM writes blocked pending owner approval. Provider-neutral dry-run sink used."
+}

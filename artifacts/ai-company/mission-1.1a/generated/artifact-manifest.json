@@ -1,0 +1,18 @@
+{
+  "milestone": "1.1A",
+  "generated_at": "2026-07-11T00:55:40.733Z",
+  "artifacts": [
+    "revenue-conversation-plan.json",
+    "crm-write-preview.json",
+    "crm-sync-gate-ledger.json",
+    "conversation-loop-state.json",
+    "owner-crm-approval-queue.json",
+    "sales-next-action-queue.json",
+    "revenue-loop-scorecard.json",
+    "suppression-and-consent-audit.json",
+    "qa-review-report.md",
+    "gap-analysis.json",
+    "artifact-manifest.json",
+    "final-package-index.md"
+  ]
+}

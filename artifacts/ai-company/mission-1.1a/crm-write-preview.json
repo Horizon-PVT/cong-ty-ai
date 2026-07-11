@@ -1,0 +1,13 @@
+{
+  "milestone": "1.1A",
+  "generated_at": "2026-07-11T00:55:40.733Z",
+  "provider": "DRY_RUN_CRM",
+  "policy": "default_crm_write_enabled: false — all writes blocked by default",
+  "crm_actions": [],
+  "write_status_summary": {
+    "total": 0,
+    "dry_run": 0,
+    "blocked": 0,
+    "written": 0
+  }
+}

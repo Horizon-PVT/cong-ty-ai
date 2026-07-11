@@ -1,0 +1,49 @@
+{
+  "integration_target": "paperclip",
+  "data_label": "REVENUE_CONVERSATION_LOOP",
+  "milestone": "1.1A",
+  "widgets": [
+    {
+      "widget_id": "revenue_conversation_overview",
+      "display_name": "Revenue Conversation Loop Overview",
+      "data_sources": ["revenue-conversation-plan.json", "conversation-loop-state.json"],
+      "required_payload_sections": ["lead_states", "total_leads", "crm_gate_status"]
+    },
+    {
+      "widget_id": "crm_write_preview",
+      "display_name": "CRM Write Preview (Dry-Run)",
+      "data_sources": ["crm-write-preview.json"],
+      "required_payload_sections": ["crm_actions", "write_status_summary", "provider"]
+    },
+    {
+      "widget_id": "crm_sync_gate_ledger",
+      "display_name": "CRM Sync Gate Ledger",
+      "data_sources": ["crm-sync-gate-ledger.json"],
+      "required_payload_sections": ["entries", "blocked_count", "written_count"]
+    },
+    {
+      "widget_id": "owner_crm_approval_queue",
+      "display_name": "Owner CRM Approval Queue",
+      "data_sources": ["owner-crm-approval-queue.json"],
+      "required_payload_sections": ["pending_approvals", "token_format", "approval_count"]
+    },
+    {
+      "widget_id": "sales_next_action_queue",
+      "display_name": "Sales Next Action Queue",
+      "data_sources": ["sales-next-action-queue.json"],
+      "required_payload_sections": ["actions", "priority_leads", "recommended_steps"]
+    },
+    {
+      "widget_id": "revenue_loop_scorecard",
+      "display_name": "Revenue Loop Scorecard",
+      "data_sources": ["revenue-loop-scorecard.json"],
+      "required_payload_sections": ["verdict", "hot_lead_count", "crm_write_count", "safety_status"]
+    },
+    {
+      "widget_id": "suppression_consent_audit",
+      "display_name": "Suppression & Consent Audit",
+      "data_sources": ["suppression-and-consent-audit.json"],
+      "required_payload_sections": ["suppressed_leads", "consent_verified", "audit_status"]
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "mode": "REVENUE_CONVERSATION_LOOP_CRM_GATE",
+  "milestone": "1.1A",
+  "active_rules": {
+    "default_crm_write_enabled": false,
+    "owner_approval_required_for_crm_write": true,
+    "owner_approval_required_for_customer_message": true,
+    "no_automatic_followups": true,
+    "crm_dry_run_sink_required": true,
+    "suppression_check_required": true,
+    "consent_check_required": true,
+    "idempotency_required": true,
+    "retry_disabled": true,
+    "audit_required": true,
+    "redaction_required": true
+  },
+  "hard_locks": {
+    "no_crm_write_without_owner_token": true,
+    "no_send_without_consent": true,
+    "no_send_to_suppressed_recipient": true,
+    "no_raw_emails_in_committed_artifacts": true,
+    "no_crm_provider_secrets_in_committed_files": true
+  },
+  "crm_token_format": "OWNER_APPROVED_CRM_WRITE_TOKEN=crm_action_<id>_1_1a",
+  "safety_gates": {
+    "crm_write": "BLOCKED_BY_DEFAULT",
+    "crm_provider": "DRY_RUN_SINK_ONLY",
+    "hubspot_api_key": "HARD_FAIL_IF_PRESENT",
+    "salesforce_token": "HARD_FAIL_IF_PRESENT",
+    "pipedrive_api_key": "HARD_FAIL_IF_PRESENT",
+    "raw_emails_in_committed_files": "HARD_FAIL",
+    "secrets_in_committed_files": "HARD_FAIL"
+  },
+  "valid_crm_write_statuses": [
+    "DRY_RUN",
+    "BLOCKED_PENDING_OWNER_APPROVAL",
+    "WRITTEN"
+  ],
+  "valid_scorecard_verdicts": [
+    "CRM_GATE_READY_NO_HOT_LEADS",
+    "CRM_GATE_READY_FOR_OWNER_REVIEW",
+    "CRM_WRITE_BLOCKED_PENDING_OWNER_APPROVAL",
+    "PAUSED_BY_SAFETY_THRESHOLD",
+    "HOLD_FOR_DATA_QUALITY_REVIEW"
+  ]
+}
