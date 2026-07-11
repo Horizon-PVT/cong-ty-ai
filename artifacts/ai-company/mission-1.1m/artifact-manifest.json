@@ -1,0 +1,14 @@
+{
+  "milestone": "1.1M",
+  "generated_at": "2026-07-11T07:47:10.463Z",
+  "artifacts": [
+    "proposal-package-redacted.json",
+    "payment-request-ledger-redacted.json",
+    "client-kickoff-checklist.json",
+    "owner-revenue-collection-approval-queue.json",
+    "revenue-collection-scorecard.json",
+    "qa-review-report.md",
+    "artifact-manifest.json",
+    "final-package-index.md"
+  ]
+}
