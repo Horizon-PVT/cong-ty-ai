@@ -1,0 +1,12 @@
+{
+  "milestone": "1.1H",
+  "name": "Closed-loop Follow-up Execution & Outcome Sync",
+  "status": "IN_PROGRESS",
+  "objectives": [
+    "Load 1.1G follow-up trigger decisions",
+    "Dispatch follow-up messages via simulated or live SMTP/Resend providers",
+    "Log execution results in local outcome ledgers with proper redaction",
+    "Synchronize final follow-up outcome status to the CRM profiles",
+    "Produce execution scorecards and verifier reports"
+  ]
+}

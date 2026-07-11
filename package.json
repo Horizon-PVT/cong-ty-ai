@@ -53,7 +53,10 @@
     "perf:issue-chat-long-thread": "node scripts/measure-issue-chat-long-thread.mjs",
     "ai-company:1.1g": "node scripts/ai-company-followup-trigger.mjs",
     "ai-company:1.1g:verify": "node packages/db/src/_verify-1.1g.mjs",
-    "ai-company:1.1g:auto-loop": "node scripts/ai-company-followup-trigger-auto-loop.mjs"
+    "ai-company:1.1g:auto-loop": "node scripts/ai-company-followup-trigger-auto-loop.mjs",
+    "ai-company:1.1h": "node scripts/ai-company-followup-execution.mjs",
+    "ai-company:1.1h:verify": "node packages/db/src/_verify-1.1h.mjs",
+    "ai-company:1.1h:auto-loop": "node scripts/ai-company-followup-execution-auto-loop.mjs"
   },
   "devDependencies": {
     "@playwright/test": "^1.58.2",

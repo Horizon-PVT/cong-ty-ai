@@ -1,0 +1,5 @@
+{
+  "operational_mode": "enforced_outcomes",
+  "sync_back_to_crm": true,
+  "crm_isolation_enforced": true
+}

@@ -1,0 +1,15 @@
+{
+  "milestone": "1.1H",
+  "generated_at": "2026-07-11T01:52:21.034Z",
+  "verdict": "FOLLOWUP_EXECUTION_BLOCKED_SAFELY",
+  "total_actions": 1,
+  "dry_run_count": 0,
+  "sent_count": 0,
+  "blocked_approval_count": 0,
+  "crm_synced_count": 1,
+  "safety_locks": {
+    "crm_outcome_sync_passed": true,
+    "write_gate_active": true,
+    "tokens_redacted_passed": true
+  }
+}

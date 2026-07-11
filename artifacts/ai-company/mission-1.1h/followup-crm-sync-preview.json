@@ -1,0 +1,13 @@
+{
+  "milestone": "1.1H",
+  "generated_at": "2026-07-11T01:52:21.034Z",
+  "syncs": [
+    {
+      "recipient_id": "rec_meet_1_1c_001",
+      "last_followup_status": "BLOCKED_BY_TRIGGER_DECISION",
+      "last_followup_error": "Within cooldown window of 48 hours",
+      "sync_action": "UPDATE_LEAD_FOLLOWUP_STATE",
+      "synced_at": "2026-07-11T01:52:21.035Z"
+    }
+  ]
+}
