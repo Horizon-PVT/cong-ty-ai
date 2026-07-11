@@ -1,0 +1,12 @@
+{
+  "milestone": "1.1J",
+  "generated_at": "2026-07-11T02:15:33.215Z",
+  "plan": [
+    {
+      "recipient_id": "rec_meet_1_1c_001",
+      "execution_status": "DEFERRED_COOLDOWN",
+      "action_type": "mark_disqualified",
+      "idempotency_key": "idemp_1_1G_fup_1d6c16a5306a51f7"
+    }
+  ]
+}
