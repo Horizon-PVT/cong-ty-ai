@@ -1,0 +1,15 @@
+{
+  "milestone": "1.1J",
+  "generated_at": "2026-07-11T02:15:33.215Z",
+  "entries": [
+    {
+      "recipient_id": "rec_meet_1_1c_001",
+      "classification": "DISQUALIFIED",
+      "recommended_action": "mark_disqualified",
+      "owner_choice": "defer",
+      "status": "DEFERRED",
+      "idempotency_key": "idemp_1_1G_fup_1d6c16a5306a51f7",
+      "error": null
+    }
+  ]
+}

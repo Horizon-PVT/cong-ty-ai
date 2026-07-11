@@ -1,0 +1,9 @@
+{
+  "decisions": [
+    {
+      "recipient_id": "rec_pilot_002",
+      "decision": "approve",
+      "reason": "Auto-loop simulated choice"
+    }
+  ]
+}

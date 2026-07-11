@@ -59,7 +59,10 @@
     "ai-company:1.1h:auto-loop": "node scripts/ai-company-followup-execution-auto-loop.mjs",
     "ai-company:1.1i": "node scripts/ai-company-revenue-outcome-intelligence.mjs",
     "ai-company:1.1i:verify": "node packages/db/src/_verify-1.1i.mjs",
-    "ai-company:1.1i:auto-loop": "node scripts/ai-company-revenue-outcome-intelligence-auto-loop.mjs"
+    "ai-company:1.1i:auto-loop": "node scripts/ai-company-revenue-outcome-intelligence-auto-loop.mjs",
+    "ai-company:1.1j": "node scripts/ai-company-owner-decision-execution.mjs",
+    "ai-company:1.1j:verify": "node packages/db/src/_verify-1.1j.mjs",
+    "ai-company:1.1j:auto-loop": "node scripts/ai-company-owner-decision-execution-auto-loop.mjs"
   },
   "devDependencies": {
     "@playwright/test": "^1.58.2",

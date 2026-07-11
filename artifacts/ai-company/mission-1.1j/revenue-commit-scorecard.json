@@ -1,0 +1,14 @@
+{
+  "milestone": "1.1J",
+  "generated_at": "2026-07-11T02:15:33.215Z",
+  "verdict": "REVENUE_COMMIT_DRY_RUN_PASS",
+  "total_actions": 1,
+  "committed_count": 0,
+  "deferred_count": 1,
+  "revision_requested_count": 0,
+  "blocked_approval_count": 0,
+  "safety_locks": {
+    "crm_isolation_active": true,
+    "emergency_lock_intact": true
+  }
+}

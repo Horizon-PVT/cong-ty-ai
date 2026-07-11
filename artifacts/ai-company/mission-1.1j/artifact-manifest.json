@@ -1,0 +1,15 @@
+{
+  "milestone": "1.1J",
+  "generated_at": "2026-07-11T02:15:33.215Z",
+  "artifacts": [
+    "owner-decision-ledger-redacted.json",
+    "crm-stage-commit-plan.json",
+    "crm-stage-commit-ledger-redacted.json",
+    "next-action-execution-plan.json",
+    "blocked-action-report.json",
+    "revenue-commit-scorecard.json",
+    "qa-review-report.md",
+    "artifact-manifest.json",
+    "final-package-index.md"
+  ]
+}
