@@ -1,0 +1,20 @@
+{
+  "milestone": "1.1F",
+  "generated_at": "2026-07-11T01:20:12.630Z",
+  "provider": "resend",
+  "mode": "sandbox",
+  "previews": [
+    {
+      "dispatch_id": "email_disp_meet_1_1c_001",
+      "meeting_action_id": "meet_1_1c_001",
+      "recipient_id": "rec_meet_1_1c_001",
+      "recipient_redacted": "pi***@alexminh.ai",
+      "subject": "Action Required: Confirm your AI outreach demo appointment",
+      "body_text_redacted": "[Timezone: America/New_York | Slots: reserved slot on 2026-07-16T09:00:00.000Z | Link: https://calendar.google.com/calendar/event?eid=mock_meet_1_1c_001]",
+      "timezone": "America/New_York",
+      "calendar_link_status": "AVAILABLE",
+      "idempotency_key": "idemp_1_1F_email_8544f8c289fd041e",
+      "write_status": "EMAIL_CALENDAR_DISPATCH_BLOCKED_PROVIDER_AUTH"
+    }
+  ]
+}

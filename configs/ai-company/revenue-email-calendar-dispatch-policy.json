@@ -1,0 +1,14 @@
+{
+  "milestone": "1.1F",
+  "default_mode": "dry_run",
+  "owner_approval_required": true,
+  "oauth_required_for_provider_write": true,
+  "no_raw_pii_in_artifacts": true,
+  "no_provider_secrets_in_committed_files": true,
+  "no_refresh_token_in_artifacts": true,
+  "retry_live_actions_disabled": true,
+  "allowed_providers": ["dry_run", "smtp", "resend"],
+  "allowed_modes": ["dry_run", "sandbox", "live"],
+  "daily_send_cap": 3,
+  "required_live_token_prefix": "OWNER_APPROVED_EMAIL_DISPATCH_TOKEN="
+}
