@@ -1,0 +1,11 @@
+{
+  "milestone": "1.1B",
+  "generated_at": "2026-07-11T01:03:07.921Z",
+  "provider": "dry_run",
+  "mode": "dry_run",
+  "entries": [],
+  "blocked_count": 0,
+  "written_count": 0,
+  "dry_run_count": 0,
+  "called_real_provider": false
+}

@@ -1,0 +1,15 @@
+{
+  "milestone": "1.1B",
+  "generated_at": "2026-07-11T01:03:07.921Z",
+  "artifacts": [
+    "crm-provider-sync-plan.json",
+    "crm-provider-write-preview.json",
+    "crm-provider-sync-ledger.json",
+    "crm-provider-response-redacted.json",
+    "crm-provider-scorecard.json",
+    "qa-review-report.md",
+    "gap-analysis.json",
+    "artifact-manifest.json",
+    "final-package-index.md"
+  ]
+}

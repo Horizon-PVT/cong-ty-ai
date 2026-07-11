@@ -1,0 +1,16 @@
+{
+  "milestone": "1.1B",
+  "generated_at": "2026-07-11T01:03:07.921Z",
+  "provider": "dry_run",
+  "mode": "dry_run",
+  "verdict": "CRM_PROVIDER_READY_DRY_RUN_ONLY",
+  "total_actions": 0,
+  "dry_run_count": 0,
+  "written_count": 0,
+  "blocked_count": 0,
+  "called_real_provider": false,
+  "safety_status": "ALL_GATES_PASSED",
+  "suppression_checked": true,
+  "idempotency_enforced": true,
+  "redaction_applied": true
+}
