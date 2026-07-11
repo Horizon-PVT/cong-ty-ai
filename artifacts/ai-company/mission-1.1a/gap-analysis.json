@@ -1,0 +1,26 @@
+{
+  "milestone": "1.1A",
+  "generated_at": "2026-07-11T00:55:40.733Z",
+  "gaps": [
+    {
+      "gap": "Real CRM provider integration (HubSpot/Salesforce/Pipedrive)",
+      "status": "DEFERRED_TO_1.1B",
+      "priority": "HIGH"
+    },
+    {
+      "gap": "Revenue conversation messaging automation",
+      "status": "DEFERRED_TO_1.1B",
+      "priority": "MEDIUM"
+    },
+    {
+      "gap": "Meeting/demo scheduling automation",
+      "status": "DEFERRED_TO_1.1C",
+      "priority": "MEDIUM"
+    },
+    {
+      "gap": "CLOSED_WON / CLOSED_LOST tracking",
+      "status": "DEFERRED_TO_1.1B",
+      "priority": "HIGH"
+    }
+  ]
+}

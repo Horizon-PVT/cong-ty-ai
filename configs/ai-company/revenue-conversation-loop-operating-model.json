@@ -1,0 +1,38 @@
+{
+  "milestone": "1.1A",
+  "departments": {
+    "CEO": "Approve CRM write actions per lead via OWNER_APPROVED_CRM_WRITE_TOKEN. Review owner-crm-approval-queue.json.",
+    "COO": "Enforce no_automatic_followups and crm_dry_run_sink_required. Monitor conversation-loop-state.json.",
+    "CMO": "Design revenue conversation messaging, meeting/demo CTAs, and next-action recommendations.",
+    "CRO": "Define lead qualification states and manage CLOSED_WON / CLOSED_LOST transitions.",
+    "CSO": "Enforce suppression-and-consent-audit.json before any CRM write or customer message.",
+    "CTO": "Maintain runner, verifier, premerge simulator, and auto-loop scripts for 1.1A.",
+    "CFO": "Track revenue pipeline contribution from sales-next-action-queue.json.",
+    "CISO": "Ensure no CRM provider secrets (HubSpot, Salesforce, Pipedrive) in committed files.",
+    "CPO": "Review revenue-loop-scorecard.json verdict before next milestone.",
+    "CLO": "Validate CRM delta contract compliance and idempotency before any write."
+  },
+  "crm_providers": {
+    "note": "1.1A uses provider-neutral DRY_RUN_SINK only. No real HubSpot/Salesforce/Pipedrive integration.",
+    "target": "DRY_RUN_CRM",
+    "future_providers": ["hubspot", "salesforce", "pipedrive"]
+  },
+  "conversation_states": [
+    "NEW_HANDOFF",
+    "OWNER_REVIEW_REQUIRED",
+    "CRM_WRITE_APPROVED",
+    "CRM_WRITE_DRY_RUN_RECORDED",
+    "CUSTOMER_REPLY_WAITING",
+    "MEETING_SCHEDULED",
+    "DISQUALIFIED",
+    "SUPPRESSED",
+    "CLOSED_WON",
+    "CLOSED_LOST"
+  ],
+  "escalation": {
+    "missing_crm_token": "BLOCK_WRITE_HARD_FAIL",
+    "suppressed_lead": "BLOCK_ALL_ACTIONS_HARD_FAIL",
+    "data_quality_issue": "HOLD_FOR_DATA_QUALITY_REVIEW",
+    "safety_threshold_exceeded": "PAUSED_BY_SAFETY_THRESHOLD"
+  }
+}

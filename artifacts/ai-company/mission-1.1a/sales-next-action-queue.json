@@ -1,0 +1,13 @@
+{
+  "milestone": "1.1A",
+  "generated_at": "2026-07-11T00:55:40.733Z",
+  "total_actions": 0,
+  "priority_leads": 0,
+  "actions": [],
+  "recommended_steps": [
+    "Owner reviews owner-crm-approval-queue.json",
+    "Owner issues OWNER_APPROVED_CRM_WRITE_TOKEN per lead",
+    "CRM write executes via approved-followup-dispatch-plan or direct CLI",
+    "Sales team contacts lead for discovery call"
+  ]
+}
