@@ -1,0 +1,24 @@
+{
+  "milestone": "1.1G",
+  "default_mode": "dry_run",
+  "owner_approval_required": true,
+  "no_raw_pii_in_artifacts": true,
+  "no_provider_secrets_in_committed_files": true,
+  "live_followup_disabled_by_default": true,
+  "retry_live_actions_disabled": true,
+  "daily_followup_cap": 3,
+  "max_followups_per_recipient": 2,
+  "minimum_cooldown_hours": 48,
+  "allowed_modes": ["dry_run", "sandbox", "live"],
+  "allowed_response_signals": [
+    "no_response",
+    "opened",
+    "clicked_calendar",
+    "replied",
+    "meeting_booked",
+    "bounced",
+    "unsubscribed"
+  ],
+  "terminal_signals": ["replied", "meeting_booked", "bounced", "unsubscribed"],
+  "required_live_token_prefix": "OWNER_APPROVED_FOLLOWUP_TRIGGER_TOKEN="
+}

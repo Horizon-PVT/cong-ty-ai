@@ -1,0 +1,9 @@
+{
+  "widgets": [
+    {
+      "widget_id": "followup_trigger_status",
+      "display_name": "Followup Trigger Outcomes",
+      "data_source": "artifacts/ai-company/mission-1.1g/generated/followup-trigger-ledger-redacted.json"
+    }
+  ]
+}

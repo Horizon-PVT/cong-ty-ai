@@ -1,0 +1,13 @@
+{
+  "milestone": "1.1G",
+  "generated_at": "2026-07-11T01:24:37.720Z",
+  "artifacts": [
+    "followup-trigger-plan.json",
+    "followup-message-render-preview.md",
+    "followup-trigger-ledger-redacted.json",
+    "followup-trigger-scorecard.json",
+    "qa-review-report.md",
+    "artifact-manifest.json",
+    "final-package-index.md"
+  ]
+}

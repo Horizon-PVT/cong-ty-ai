@@ -1,7 +1,7 @@
 {
   "milestone": "1.1F",
   "name": "Automated Email Dispatch with Calendar Links",
-  "status": "IN_PROGRESS",
+  "status": "COMPLETED",
   "objectives": [
     "Load email dispatch actions from 1.1D plans",
     "Integrate normalized display times from 1.1E previews",
