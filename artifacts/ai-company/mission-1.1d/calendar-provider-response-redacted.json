@@ -1,0 +1,13 @@
+{
+  "milestone": "1.1D",
+  "generated_at": "2026-07-11T01:12:04.769Z",
+  "responses": [
+    {
+      "meeting_action_id": "meet_1_1c_001",
+      "write_status": "DRY_RUN",
+      "calendar_event_id": "cal_event_dry_meet_1_1c_001",
+      "meeting_link": "https://calendar.google.com/calendar/event?eid=dry_meet_1_1c_001",
+      "error": null
+    }
+  ]
+}

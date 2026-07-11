@@ -1,0 +1,17 @@
+{
+  "milestone": "1.1D",
+  "generated_at": "2026-07-11T01:12:04.769Z",
+  "artifacts": [
+    "calendar-execution-plan.json",
+    "calendar-conflict-check-ledger.json",
+    "calendar-write-preview.json",
+    "calendar-provider-response-redacted.json",
+    "email-slot-dispatch-plan.json",
+    "crm-post-schedule-sync-plan.json",
+    "calendar-crm-execution-scorecard.json",
+    "qa-review-report.md",
+    "gap-analysis.json",
+    "artifact-manifest.json",
+    "final-package-index.md"
+  ]
+}

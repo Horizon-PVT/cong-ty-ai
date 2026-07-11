@@ -1,0 +1,22 @@
+{
+  "milestone": "1.1D",
+  "generated_at": "2026-07-11T01:12:04.769Z",
+  "sync_actions": [
+    {
+      "crm_action_id": "crm_sync_1_1d_meet_1_1c_001",
+      "meeting_action_id": "meet_1_1c_001",
+      "lead_id": "rec_pilot_002",
+      "operation": "UPDATE_STAGE_AND_ACTIVITY",
+      "fields_redacted": {
+        "stage": "meeting_scheduled_pending_confirmation",
+        "calendar_event_id": "[REDACTED]",
+        "meeting_link": "[REDACTED]",
+        "last_activity": "calendar_event_created_dry_run"
+      },
+      "requires_owner_token": true,
+      "required_token": "OWNER_APPROVED_CRM_WRITE_TOKEN=crm_sync_1_1d_meet_1_1c_001_1_1d",
+      "write_status": "BLOCKED_PENDING_OWNER_APPROVAL"
+    }
+  ],
+  "status": "CRM_SYNC_BLOCKED_PENDING_OWNER_APPROVAL"
+}

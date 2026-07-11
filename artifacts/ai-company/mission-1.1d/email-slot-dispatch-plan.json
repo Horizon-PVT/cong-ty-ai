@@ -1,0 +1,16 @@
+{
+  "milestone": "1.1D",
+  "generated_at": "2026-07-11T01:12:04.769Z",
+  "total_emails": 1,
+  "dispatches": [
+    {
+      "dispatch_id": "email_disp_meet_1_1c_001",
+      "meeting_action_id": "meet_1_1c_001",
+      "recipient_redacted": "pi***@alexminh.ai",
+      "subject": "Action Required: Confirm your AI outreach demo appointment",
+      "body_template": "Hi there, we have reserved a slot for our call on Thu, 16 Jul 2026 09:00:00 GMT. Please confirm if this works for you.",
+      "status": "BLOCKED_PENDING_OWNER_APPROVAL",
+      "required_token": "OWNER_APPROVED_EMAIL_DISPATCH_TOKEN=email_dispatch_meet_1_1c_001_1_1d"
+    }
+  ]
+}

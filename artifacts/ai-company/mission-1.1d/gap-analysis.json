@@ -1,0 +1,16 @@
+{
+  "milestone": "1.1D",
+  "generated_at": "2026-07-11T01:12:04.769Z",
+  "gaps": [
+    {
+      "gap": "Live production Oauth consent screen verification",
+      "status": "PENDING_GOOGLE_APPROVAL",
+      "priority": "MEDIUM"
+    },
+    {
+      "gap": "Calendar timezone formatting options for non-UTC clients",
+      "status": "DEFERRED_TO_1.1E",
+      "priority": "LOW"
+    }
+  ]
+}
