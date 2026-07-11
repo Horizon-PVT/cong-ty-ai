@@ -1,0 +1,14 @@
+{
+  "milestone": "1.1H",
+  "generated_at": "2026-07-11T01:52:21.034Z",
+  "entries": [
+    {
+      "recipient_id": "rec_meet_1_1c_001",
+      "dispatch_status": "BLOCKED_BY_TRIGGER_DECISION",
+      "crm_sync_status": "SKIPPED",
+      "idempotency_key": "idemp_1_1G_fup_1d6c16a5306a51f7",
+      "error": "Within cooldown window of 48 hours",
+      "timestamp": "2026-07-11T01:52:21.035Z"
+    }
+  ]
+}

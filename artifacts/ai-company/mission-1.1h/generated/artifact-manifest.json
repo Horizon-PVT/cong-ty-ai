@@ -1,0 +1,13 @@
+{
+  "milestone": "1.1H",
+  "generated_at": "2026-07-11T01:52:21.034Z",
+  "artifacts": [
+    "followup-execution-plan.json",
+    "followup-execution-ledger-redacted.json",
+    "followup-crm-sync-preview.json",
+    "followup-execution-scorecard.json",
+    "qa-review-report.md",
+    "artifact-manifest.json",
+    "final-package-index.md"
+  ]
+}

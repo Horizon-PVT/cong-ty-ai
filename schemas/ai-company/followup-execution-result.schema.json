@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "FollowupExecutionResult",
+  "type": "object",
+  "properties": {
+    "milestone": { "type": "string", "const": "1.1H" },
+    "generated_at": { "type": "string" },
+    "executions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "recipient_id": { "type": "string" },
+          "dispatch_status": { "type": "string" },
+          "crm_sync_status": { "type": "string" },
+          "error": { "type": "string", "nullable": true }
+        },
+        "required": ["recipient_id", "dispatch_status", "crm_sync_status"]
+      }
+    }
+  },
+  "required": ["milestone", "generated_at", "executions"]
+}
