@@ -1,0 +1,31 @@
+{
+  "milestone": "1.1B",
+  "generated_at": "2026-07-11T01:03:07.921Z",
+  "gaps": [
+    {
+      "gap": "Salesforce custom external ID field Paperclip_Action_Id__c",
+      "status": "REQUIRES_ORG_CONFIG",
+      "priority": "HIGH"
+    },
+    {
+      "gap": "Revenue conversation messaging automation",
+      "status": "DEFERRED_TO_1.1C",
+      "priority": "MEDIUM"
+    },
+    {
+      "gap": "Meeting/demo scheduling integration (Calendly/Google Meet)",
+      "status": "DEFERRED_TO_1.1C",
+      "priority": "MEDIUM"
+    },
+    {
+      "gap": "HubSpot Deal creation on CLOSED_WON",
+      "status": "DEFERRED_TO_1.1C",
+      "priority": "MEDIUM"
+    },
+    {
+      "gap": "Live production CRM write enablement",
+      "status": "REQUIRES_OWNER_DECISION",
+      "priority": "HIGH"
+    }
+  ]
+}
