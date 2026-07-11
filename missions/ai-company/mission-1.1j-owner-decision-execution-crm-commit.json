@@ -1,7 +1,7 @@
 {
   "milestone": "1.1J",
   "name": "Owner Decision Execution & CRM Commit Gate",
-  "status": "IN_PROGRESS",
+  "status": "COMPLETED",
   "objectives": [
     "Load 1.1I timeline and escalation outcomes",
     "Evaluate manual choices approved/rejected/deferred by the owner",
