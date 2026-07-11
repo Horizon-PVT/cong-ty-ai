@@ -1,0 +1,22 @@
+{
+  "milestone": "1.1C",
+  "generated_at": "2026-07-11T01:08:37.914Z",
+  "provider": "dry_run",
+  "mode": "dry_run",
+  "previews": [
+    {
+      "meeting_action_id": "meet_1_1c_001",
+      "recipient_id": "rec_pilot_002",
+      "write_status": "BLOCKED_PENDING_OWNER_APPROVAL",
+      "blocked_reason": "INELIGIBLE_OUTCOME",
+      "idempotency_key": "idemp_1_1C_bc0cd0fc8e0a7d18",
+      "action_hash": "70d3cf54487ba0b8e99a884bc6963437"
+    }
+  ],
+  "summary": {
+    "total": 1,
+    "dry_run": 0,
+    "blocked": 1,
+    "scheduled": 0
+  }
+}

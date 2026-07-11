@@ -1,0 +1,38 @@
+{
+  "milestone": "1.1C",
+  "generated_at": "2026-07-11T01:08:37.914Z",
+  "provider": "dry_run",
+  "mode": "dry_run",
+  "actions_count": 1,
+  "slots_proposed": 3,
+  "actions": [
+    {
+      "meeting_action_id": "meet_1_1c_001",
+      "recipient_id": "rec_pilot_002",
+      "recipient_redacted": "pi***@alexminh.ai",
+      "operation": "PROPOSE_SLOTS",
+      "decision": "propose_time_slots",
+      "proposed_slots": [
+        {
+          "slot_id": "slot_rec_pilot_002_1",
+          "start_time": "2026-07-16T09:00:00.000Z",
+          "duration_minutes": 30
+        },
+        {
+          "slot_id": "slot_rec_pilot_002_2",
+          "start_time": "2026-07-17T13:00:00.000Z",
+          "duration_minutes": 30
+        },
+        {
+          "slot_id": "slot_rec_pilot_002_3",
+          "start_time": "2026-07-18T11:00:00.000Z",
+          "duration_minutes": 30
+        }
+      ],
+      "idempotency_key": "idemp_1_1C_bc0cd0fc8e0a7d18",
+      "consent_source": "explicit_demo_request",
+      "action_hash": "70d3cf54487ba0b8e99a884bc6963437",
+      "required_token": "OWNER_APPROVED_MEETING_TOKEN=meeting_action_meet_1_1c_001_1_1c"
+    }
+  ]
+}

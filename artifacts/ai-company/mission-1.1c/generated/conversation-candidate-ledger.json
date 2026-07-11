@@ -1,0 +1,45 @@
+{
+  "milestone": "1.1C",
+  "generated_at": "2026-07-11T01:08:37.914Z",
+  "total_candidates": 3,
+  "eligible_count": 1,
+  "blocked_count": 2,
+  "candidates": [
+    {
+      "recipient_id": "rec_pilot_001",
+      "recipient_redacted": "pi***@alexminh.ai",
+      "outcome": "no_response",
+      "source_milestone": "1.0Y",
+      "consent_source": null,
+      "is_eligible": false,
+      "block_reason": "MISSING_CONSENT_SOURCE",
+      "decision": null,
+      "decision_reason": null,
+      "notes": ""
+    },
+    {
+      "recipient_id": "rec_pilot_002",
+      "recipient_redacted": "pi***@alexminh.ai",
+      "outcome": "positive_reply",
+      "source_milestone": "1.0Y",
+      "consent_source": "explicit_demo_request",
+      "is_eligible": true,
+      "block_reason": null,
+      "decision": "propose_time_slots",
+      "decision_reason": "Lead explicitly requested or expressed interest in scheduling a demo/meeting",
+      "notes": "Requested a demo appointment next Tuesday"
+    },
+    {
+      "recipient_id": "rec_pilot_003",
+      "recipient_redacted": "pi***@alexminh.ai",
+      "outcome": "opt-out",
+      "source_milestone": "1.0Y",
+      "consent_source": null,
+      "is_eligible": false,
+      "block_reason": "SUPPRESSED_RECIPIENT",
+      "decision": null,
+      "decision_reason": null,
+      "notes": "Replied 'Unsubscribe'"
+    }
+  ]
+}

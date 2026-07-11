@@ -1,0 +1,41 @@
+{
+  "mode": "REVENUE_CONVERSATION_LOOP_SCHEDULING",
+  "milestone": "1.1C",
+  "active_rules": {
+    "default_mode": "dry_run",
+    "no_live_message_without_owner_token": true,
+    "no_live_calendar_write_without_owner_token": true,
+    "no_live_crm_write_without_owner_token": true,
+    "suppression_check_required": true,
+    "consent_check_required": true,
+    "idempotency_required": true,
+    "redaction_required": true,
+    "meeting_conflict_check_required": true,
+    "retry_live_actions_disabled": true,
+    "audit_required": true
+  },
+  "hard_locks": {
+    "no_scheduling_without_owner_token": true,
+    "no_send_without_consent": true,
+    "no_send_to_suppressed_recipient": true,
+    "no_raw_pii_in_committed_artifacts": true,
+    "no_provider_secrets_in_committed_files": true
+  },
+  "token_formats": {
+    "meeting_token": "OWNER_APPROVED_MEETING_TOKEN=meeting_action_<id>_1_1c",
+    "crm_token": "OWNER_APPROVED_CRM_WRITE_TOKEN=crm_action_<id>_1_1c"
+  },
+  "allowed_meeting_providers": ["dry_run", "google_calendar", "calendly"],
+  "valid_meeting_statuses": [
+    "DRY_RUN",
+    "BLOCKED_PENDING_OWNER_APPROVAL",
+    "SCHEDULED_SANDBOX",
+    "SCHEDULED_LIVE"
+  ],
+  "valid_scorecard_verdicts": [
+    "REVENUE_CONVERSATION_SCHEDULING_READY_DRY_RUN_ONLY",
+    "MEETING_SCHEDULING_BLOCKED_PENDING_OWNER_APPROVAL",
+    "MEETING_SCHEDULING_FAILED",
+    "HOLD_FOR_DATA_QUALITY_REVIEW"
+  ]
+}

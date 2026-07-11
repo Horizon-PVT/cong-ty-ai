@@ -1,0 +1,27 @@
+{
+  "milestone": "1.1C",
+  "generated_at": "2026-07-11T01:08:37.914Z",
+  "verdict": "MEETING_SCHEDULING_BLOCKED_PENDING_OWNER_APPROVAL",
+  "actions_processed": 1,
+  "verdict_history": [
+    {
+      "verdict": "CRM_GATE_READY_NO_HOT_LEADS",
+      "milestone": "1.1A"
+    },
+    {
+      "verdict": "CRM_PROVIDER_READY_DRY_RUN_ONLY",
+      "milestone": "1.1B"
+    },
+    {
+      "verdict": "MEETING_SCHEDULING_BLOCKED_PENDING_OWNER_APPROVAL",
+      "milestone": "1.1C"
+    }
+  ],
+  "safety_audit": {
+    "no_live_write_without_token": true,
+    "consent_check_passed": true,
+    "suppression_check_passed": true,
+    "idempotency_enforced": true,
+    "redaction_applied": true
+  }
+}
