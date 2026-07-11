@@ -1,0 +1,18 @@
+{
+  "milestone": "1.1E",
+  "generated_at": "2026-07-11T01:16:16.708Z",
+  "artifacts": [
+    "timezone-normalization-ledger.json",
+    "timezone-display-preview.json",
+    "oauth-authorization-plan.json",
+    "oauth-callback-ledger-redacted.json",
+    "oauth-token-status-redacted.json",
+    "calendar-timezone-write-preview.json",
+    "calendar-timezone-provider-response-redacted.json",
+    "calendar-timezone-oauth-scorecard.json",
+    "qa-review-report.md",
+    "gap-analysis.json",
+    "artifact-manifest.json",
+    "final-package-index.md"
+  ]
+}

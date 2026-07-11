@@ -1,0 +1,11 @@
+{
+  "milestone": "1.1E",
+  "generated_at": "2026-07-11T01:16:16.708Z",
+  "plan": {
+    "status": "PENDING_AUTHORIZATION",
+    "auth_url": "https://accounts.google.com/o/oauth2/v2/auth?client_id=mock_client_id_1.1e&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Foauth%2Fcallback&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar.events+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar.readonly&code_challenge=acIK0y75pevZKeb4vPbDlfhZ2OcoidMmSMQrx2vbqw0&code_challenge_method=S256&state=cf59b00dae27f6b380d8c297f774105f&access_type=offline&prompt=consent",
+    "code_verifier": "[REDACTED]",
+    "state": "cf59b00dae27f6b380d8c297f774105f",
+    "redirect_uri": "http://localhost:3000/oauth/callback"
+  }
+}

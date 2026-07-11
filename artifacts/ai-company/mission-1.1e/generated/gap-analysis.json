@@ -1,0 +1,11 @@
+{
+  "milestone": "1.1E",
+  "generated_at": "2026-07-11T01:16:16.708Z",
+  "gaps": [
+    {
+      "gap": "Automatic email message dispatch with calendar slots",
+      "status": "DEFERRED_TO_1.1F",
+      "priority": "MEDIUM"
+    }
+  ]
+}
