@@ -1,0 +1,14 @@
+{
+  "milestone": "1.2B",
+  "generated_at": "2026-07-13T13:52:34.381Z",
+  "artifacts": [
+    "sandbox-api-status.json",
+    "sandbox-api-execution-events.json",
+    "sandbox-api-collected-artifacts.json",
+    "owner-sandbox-api-approval-queue.json",
+    "sandbox-real-api-scorecard.json",
+    "qa-acceptance-report.md",
+    "artifact-manifest.json",
+    "final-package-index.md"
+  ]
+}

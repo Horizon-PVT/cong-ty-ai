@@ -1,0 +1,12 @@
+{
+  "milestone": "1.2B",
+  "name": "Remote Sandbox Real API Integration",
+  "status": "IN_PROGRESS",
+  "objectives": [
+    "Extend SandboxRuntimeService with E2B/Cursor Cloud API provider connection adapter",
+    "Implement real API environment setup validation (checking E2B_API_KEY environment presence)",
+    "Secure external token gate checks with OWNER_APPROVED_REAL_SANDBOX_API_TOKEN prefix",
+    "Simulate container provisioning, file upload, shell execution, and artifact retrieval flows",
+    "Generate sandbox api status logs, workspace scorecards, and QA reports without leaking key/PII data"
+  ]
+}

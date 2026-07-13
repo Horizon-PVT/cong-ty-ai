@@ -1,0 +1,12 @@
+{
+  "milestone": "1.2B",
+  "default_mode": "dry_run",
+  "allowed_sandbox_providers": ["dry_run_provider", "generic_http_sandbox", "e2b_sandbox_api"],
+  "enforce_sandbox_company_isolation": true,
+  "enforce_sandbox_budget_limits": true,
+  "max_sandbox_execution_time_seconds": 3600,
+  "prevent_raw_secrets_injection": true,
+  "allow_external_network_access": false,
+  "allowed_modes": ["dry_run", "sandbox", "live"],
+  "required_live_token_prefix": "OWNER_APPROVED_REAL_SANDBOX_API_TOKEN="
+}
