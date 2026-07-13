@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.2",
+  "milestone": "1.2A",
+  "generated_at": "2026-07-13T13:39:40.593Z",
+  "workspaces": [
+    {
+      "workspace_id": "ws_comp_tech_alpha_804c271c",
+      "company_id": "comp_tech_alpha",
+      "agent_id": "agent_dev_1",
+      "repo_ref": "Horizon-PVT/cong-ty-ai",
+      "branch_ref": "master",
+      "provider": "dry_run_provider",
+      "status": "stopped",
+      "external_workspace_id": "ext_dryrun_804c271c",
+      "allocated_budget": 50,
+      "created_at": "2026-07-13T13:39:40.594Z",
+      "updated_at": "2026-07-13T13:39:40.595Z",
+      "last_error": null
+    },
+    {
+      "workspace_id": "ws_comp_design_beta_7190f3c6",
+      "company_id": "comp_design_beta",
+      "agent_id": "agent_qa_2",
+      "repo_ref": "Horizon-PVT/cong-ty-ai",
+      "branch_ref": "master",
+      "provider": "dry_run_provider",
+      "status": "stopped",
+      "external_workspace_id": "ext_dryrun_7190f3c6",
+      "allocated_budget": 30,
+      "created_at": "2026-07-13T13:39:40.595Z",
+      "updated_at": "2026-07-13T13:39:40.595Z",
+      "last_error": null
+    },
+    {
+      "workspace_id": "ws_comp_sales_gamma_5e0cdcd6",
+      "company_id": "comp_sales_gamma",
+      "agent_id": "agent_sales_3",
+      "repo_ref": "Horizon-PVT/cong-ty-ai",
+      "branch_ref": "master",
+      "provider": "dry_run_provider",
+      "status": "stopped",
+      "external_workspace_id": "ext_dryrun_5e0cdcd6",
+      "allocated_budget": 20,
+      "created_at": "2026-07-13T13:39:40.595Z",
+      "updated_at": "2026-07-13T13:39:40.595Z",
+      "last_error": null
+    }
+  ]
+}

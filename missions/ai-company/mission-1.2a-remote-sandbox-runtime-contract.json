@@ -1,0 +1,12 @@
+{
+  "milestone": "1.2A",
+  "name": "Remote Sandbox Runtime Contract & Dry-Run Provider",
+  "status": "IN_PROGRESS",
+  "objectives": [
+    "Define remote sandbox runtime contract schemas (lifecycle states, workspace bindings)",
+    "Implement SandboxRuntimeService mock/dry-run provider",
+    "Integrate isolation checks (company boundary, budget checks) into provision loops",
+    "Persist sandbox execution events to activity/heartbeat state",
+    "Generate dry-run remote runtime workspace reports and verification logs"
+  ]
+}

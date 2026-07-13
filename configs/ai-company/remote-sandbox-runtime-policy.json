@@ -1,0 +1,11 @@
+{
+  "milestone": "1.2A",
+  "default_mode": "dry_run",
+  "allowed_sandbox_providers": ["dry_run_provider", "generic_http_sandbox"],
+  "enforce_sandbox_company_isolation": true,
+  "enforce_sandbox_budget_limits": true,
+  "max_sandbox_execution_time_seconds": 3600,
+  "prevent_raw_secrets_injection": true,
+  "allowed_modes": ["dry_run", "sandbox", "live"],
+  "required_live_token_prefix": "OWNER_APPROVED_SANDBOX_RUNTIME_TOKEN="
+}
