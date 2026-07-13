@@ -1,0 +1,21 @@
+{
+  "milestone": "1.2D",
+  "generated_at": "2026-07-13T14:08:32.713Z",
+  "artifacts": [
+    {
+      "workspace_id": "ws_comp_tech_alpha_1bb0efa0",
+      "artifacts": [
+        {
+          "name": "build-log.txt",
+          "size": 1204,
+          "content_preview": "[INFO] Sandbox build completed."
+        },
+        {
+          "name": "artifacts-report.json",
+          "size": 450,
+          "content_preview": "{\"verdict\":\"PASS\"}"
+        }
+      ]
+    }
+  ]
+}

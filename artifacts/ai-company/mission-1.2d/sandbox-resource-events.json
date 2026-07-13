@@ -1,0 +1,50 @@
+{
+  "milestone": "1.2D",
+  "generated_at": "2026-07-13T14:08:32.713Z",
+  "events": [
+    {
+      "workspace_id": "ws_comp_tech_alpha_1bb0efa0",
+      "command": "npm run build",
+      "events": [
+        {
+          "timestamp": "2026-07-13T14:08:32.715Z",
+          "type": "provision",
+          "message": "Workspace sandbox verified."
+        },
+        {
+          "timestamp": "2026-07-13T14:08:32.715Z",
+          "type": "exec",
+          "message": "Running command: npm run build"
+        },
+        {
+          "timestamp": "2026-07-13T14:08:32.715Z",
+          "type": "output",
+          "message": "[Command Executed] npm run build"
+        }
+      ],
+      "terminal_state": "stopped"
+    },
+    {
+      "workspace_id": "ws_comp_tech_alpha_01e87706",
+      "command": "npm run build",
+      "events": [
+        {
+          "timestamp": "2026-07-13T14:08:32.716Z",
+          "type": "provision",
+          "message": "Workspace sandbox verified."
+        },
+        {
+          "timestamp": "2026-07-13T14:08:32.716Z",
+          "type": "exec",
+          "message": "Running command: npm run build"
+        },
+        {
+          "timestamp": "2026-07-13T14:08:32.716Z",
+          "type": "error",
+          "message": "FATAL ERROR: Ineffective mark-and-sweep in-object memory limit. Out of Memory (OOM) crash simulated."
+        }
+      ],
+      "terminal_state": "failed"
+    }
+  ]
+}

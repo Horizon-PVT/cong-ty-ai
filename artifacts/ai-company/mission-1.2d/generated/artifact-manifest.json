@@ -1,0 +1,14 @@
+{
+  "milestone": "1.2D",
+  "generated_at": "2026-07-13T14:08:32.713Z",
+  "artifacts": [
+    "sandbox-allocated-workspaces.json",
+    "sandbox-resource-events.json",
+    "sandbox-resource-collected-artifacts.json",
+    "owner-resource-limits-approval-queue.json",
+    "sandbox-resource-limits-scorecard.json",
+    "qa-acceptance-report.md",
+    "artifact-manifest.json",
+    "final-package-index.md"
+  ]
+}
