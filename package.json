@@ -74,7 +74,10 @@
     "ai-company:1.1m:auto-loop": "node scripts/ai-company-revenue-collection-kickoff-auto-loop.mjs",
     "ai-company:1.1n": "node scripts/ai-company-client-delivery-acceptance.mjs",
     "ai-company:1.1n:verify": "node packages/db/src/_verify-1.1n.mjs",
-    "ai-company:1.1n:auto-loop": "node scripts/ai-company-client-delivery-acceptance-auto-loop.mjs"
+    "ai-company:1.1n:auto-loop": "node scripts/ai-company-client-delivery-acceptance-auto-loop.mjs",
+    "ai-company:1.1o": "node scripts/ai-company-client-success-renewal.mjs",
+    "ai-company:1.1o:verify": "node packages/db/src/_verify-1.1o.mjs",
+    "ai-company:1.1o:auto-loop": "node scripts/ai-company-client-success-renewal-auto-loop.mjs"
   },
   "devDependencies": {
     "@playwright/test": "^1.58.2",

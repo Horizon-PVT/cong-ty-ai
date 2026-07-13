@@ -1,0 +1,18 @@
+{
+  "milestone": "1.1O",
+  "generated_at": "2026-07-13T13:31:44.012Z",
+  "verdict": "NO_CLIENT_SUCCESS_ACTIONS_ELIGIBLE",
+  "total_clients": 0,
+  "healthy_count": 0,
+  "revision_count": 0,
+  "blocked_count": 0,
+  "no_eligible_count": 1,
+  "safety_locks": {
+    "no_auto_send_client_update": true,
+    "no_crm_mutation": true,
+    "no_invoice_payment_mutation": true,
+    "no_public_testimonial_publishing": true,
+    "emergency_lock_intact": true
+  },
+  "recommendation": "Complete 1.1M/1.1N pipeline to create eligible client deliveries before running client success loop."
+}
