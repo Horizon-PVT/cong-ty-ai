@@ -1,0 +1,51 @@
+{
+  "milestone": "1.2A",
+  "generated_at": "2026-07-13T13:39:40.593Z",
+  "artifacts": [
+    {
+      "workspace_id": "ws_comp_tech_alpha_804c271c",
+      "artifacts": [
+        {
+          "name": "build-log.txt",
+          "size": 1204,
+          "content_preview": "[INFO] Sandbox build completed."
+        },
+        {
+          "name": "artifacts-report.json",
+          "size": 450,
+          "content_preview": "{\"verdict\":\"PASS\"}"
+        }
+      ]
+    },
+    {
+      "workspace_id": "ws_comp_design_beta_7190f3c6",
+      "artifacts": [
+        {
+          "name": "build-log.txt",
+          "size": 1204,
+          "content_preview": "[INFO] Sandbox build completed."
+        },
+        {
+          "name": "artifacts-report.json",
+          "size": 450,
+          "content_preview": "{\"verdict\":\"PASS\"}"
+        }
+      ]
+    },
+    {
+      "workspace_id": "ws_comp_sales_gamma_5e0cdcd6",
+      "artifacts": [
+        {
+          "name": "build-log.txt",
+          "size": 1204,
+          "content_preview": "[INFO] Sandbox build completed."
+        },
+        {
+          "name": "artifacts-report.json",
+          "size": 450,
+          "content_preview": "{\"verdict\":\"PASS\"}"
+        }
+      ]
+    }
+  ]
+}

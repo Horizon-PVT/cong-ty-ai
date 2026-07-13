@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "RemoteSandboxRuntimeContract",
+  "type": "object",
+  "properties": {
+    "schema_version": { "type": "string", "const": "1.2" },
+    "milestone": { "type": "string", "const": "1.2A" },
+    "workspaces": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "workspace_id": { "type": "string" },
+          "company_id": { "type": "string" },
+          "agent_id": { "type": "string" },
+          "repo_ref": { "type": "string" },
+          "branch_ref": { "type": "string" },
+          "provider": { "type": "string", "enum": ["dry_run_provider", "generic_http_sandbox"] },
+          "status": { "type": "string", "enum": ["provisioning", "ready", "running", "stopping", "stopped", "failed"] },
+          "external_workspace_id": { "type": "string" },
+          "allocated_budget": { "type": "number" },
+          "created_at": { "type": "string" },
+          "updated_at": { "type": "string" },
+          "last_error": { "type": ["string", "null"] }
+        },
+        "required": ["workspace_id", "company_id", "agent_id", "repo_ref", "provider", "status", "allocated_budget", "created_at"]
+      }
+    }
+  },
+  "required": ["schema_version", "milestone", "workspaces"]
+}
