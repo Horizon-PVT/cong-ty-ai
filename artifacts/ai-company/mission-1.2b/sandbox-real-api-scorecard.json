@@ -1,0 +1,16 @@
+{
+  "milestone": "1.2B",
+  "generated_at": "2026-07-13T13:52:34.381Z",
+  "verdict": "SANDBOX_REAL_API_VERIFIED",
+  "total_workspaces": 2,
+  "provisioned_count": 2,
+  "blocked_by_owner_gate_count": 0,
+  "failed_count": 0,
+  "safety_locks": {
+    "enforce_sandbox_company_isolation": true,
+    "enforce_sandbox_budget_limits": true,
+    "prevent_raw_secrets_injection": true,
+    "allow_external_network_access": false,
+    "emergency_lock_intact": true
+  }
+}

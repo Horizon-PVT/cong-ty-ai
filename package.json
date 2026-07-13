@@ -80,7 +80,10 @@
     "ai-company:1.1o:auto-loop": "node scripts/ai-company-client-success-renewal-auto-loop.mjs",
     "ai-company:1.2a": "node scripts/ai-company-remote-sandbox-runtime-contract.mjs",
     "ai-company:1.2a:verify": "node packages/db/src/_verify-1.2a.mjs",
-    "ai-company:1.2a:auto-loop": "node scripts/ai-company-remote-sandbox-runtime-contract-auto-loop.mjs"
+    "ai-company:1.2a:auto-loop": "node scripts/ai-company-remote-sandbox-runtime-contract-auto-loop.mjs",
+    "ai-company:1.2b": "node scripts/ai-company-remote-sandbox-real-api-integration.mjs",
+    "ai-company:1.2b:verify": "node packages/db/src/_verify-1.2b.mjs",
+    "ai-company:1.2b:auto-loop": "node scripts/ai-company-remote-sandbox-real-api-integration-auto-loop.mjs"
   },
   "devDependencies": {
     "@playwright/test": "^1.58.2",

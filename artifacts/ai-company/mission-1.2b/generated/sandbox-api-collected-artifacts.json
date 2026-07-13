@@ -1,0 +1,36 @@
+{
+  "milestone": "1.2B",
+  "generated_at": "2026-07-13T13:52:34.381Z",
+  "artifacts": [
+    {
+      "workspace_id": "ws_comp_tech_alpha_fee607db",
+      "artifacts": [
+        {
+          "name": "build-log.txt",
+          "size": 1204,
+          "content_preview": "[INFO] Sandbox build completed."
+        },
+        {
+          "name": "artifacts-report.json",
+          "size": 450,
+          "content_preview": "{\"verdict\":\"PASS\"}"
+        }
+      ]
+    },
+    {
+      "workspace_id": "ws_comp_design_beta_c21032f0",
+      "artifacts": [
+        {
+          "name": "build-log.txt",
+          "size": 1204,
+          "content_preview": "[INFO] Sandbox build completed."
+        },
+        {
+          "name": "artifacts-report.json",
+          "size": 450,
+          "content_preview": "{\"verdict\":\"PASS\"}"
+        }
+      ]
+    }
+  ]
+}

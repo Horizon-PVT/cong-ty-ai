@@ -28,11 +28,35 @@ export class SandboxRuntimeService {
       };
     }
 
+    // Check E2B API Key presence in sandbox/live modes
+    let provider = "dry_run_provider";
+    let external_workspace_id = "";
     const mockId = crypto.randomUUID().slice(0, 8);
     const workspace_id = `ws_${company_id || "default"}_${mockId}`;
-    const external_workspace_id = mode === "dry_run" 
-      ? `ext_dryrun_${mockId}` 
-      : `ext_sandbox_${mockId}`;
+
+    if (mode === "sandbox" || mode === "live") {
+      const apiKey = process.env.E2B_API_KEY;
+      if (!apiKey || apiKey.trim() === "") {
+        return {
+          workspace_id,
+          company_id,
+          agent_id,
+          repo_ref,
+          branch_ref,
+          provider: "e2b_sandbox_api",
+          status: "failed",
+          allocated_budget: budget,
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString(),
+          last_error: "E2B Integration Error: E2B_API_KEY environment variable is missing or empty."
+        };
+      }
+      provider = "e2b_sandbox_api";
+      external_workspace_id = `ext_e2b_${mockId}`;
+    } else {
+      provider = "dry_run_provider";
+      external_workspace_id = `ext_dryrun_${mockId}`;
+    }
 
     return {
       workspace_id,
@@ -40,7 +64,7 @@ export class SandboxRuntimeService {
       agent_id,
       repo_ref,
       branch_ref,
-      provider: mode === "dry_run" ? "dry_run_provider" : "generic_http_sandbox",
+      provider,
       status: "ready",
       external_workspace_id,
       allocated_budget: budget,
