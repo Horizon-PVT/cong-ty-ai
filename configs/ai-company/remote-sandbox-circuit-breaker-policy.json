@@ -1,0 +1,11 @@
+{
+  "milestone": "1.2E",
+  "default_mode": "dry_run",
+  "circuit_breaker_threshold_ratio": 0.9,
+  "max_allowed_consecutive_oom_crashes": 3,
+  "enforce_sandbox_company_isolation": true,
+  "enforce_sandbox_budget_limits": true,
+  "enforce_circuit_breakers": true,
+  "allowed_modes": ["dry_run", "sandbox", "live"],
+  "required_live_token_prefix": "OWNER_APPROVED_CIRCUIT_BREAKER_TOKEN="
+}

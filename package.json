@@ -89,7 +89,10 @@
     "ai-company:1.2c:auto-loop": "node scripts/ai-company-remote-sandbox-secret-routing-auto-loop.mjs",
     "ai-company:1.2d": "node scripts/ai-company-remote-sandbox-resource-limits.mjs",
     "ai-company:1.2d:verify": "node packages/db/src/_verify-1.2d.mjs",
-    "ai-company:1.2d:auto-loop": "node scripts/ai-company-remote-sandbox-resource-limits-auto-loop.mjs"
+    "ai-company:1.2d:auto-loop": "node scripts/ai-company-remote-sandbox-resource-limits-auto-loop.mjs",
+    "ai-company:1.2e": "node scripts/ai-company-remote-sandbox-circuit-breaker.mjs",
+    "ai-company:1.2e:verify": "node packages/db/src/_verify-1.2e.mjs",
+    "ai-company:1.2e:auto-loop": "node scripts/ai-company-remote-sandbox-circuit-breaker-auto-loop.mjs"
   },
   "devDependencies": {
     "@playwright/test": "^1.58.2",

@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.2",
+  "milestone": "1.2E",
+  "generated_at": "2026-07-13T15:04:30.814Z",
+  "workspaces": [
+    {
+      "workspace_id": "ws_comp_tech_alpha_bd0941cb",
+      "company_id": "comp_tech_alpha",
+      "agent_id": "agent_dev_1",
+      "repo_ref": "Horizon-PVT/cong-ty-ai",
+      "branch_ref": "master",
+      "provider": "dry_run_provider",
+      "status": "stopped",
+      "external_workspace_id": "ext_dryrun_bd0941cb",
+      "allocated_budget": 50,
+      "allocated_resources": {
+        "cpu_cores": 1,
+        "memory_mb": 2048,
+        "disk_gb": 5
+      },
+      "created_at": "2026-07-13T15:04:30.816Z",
+      "updated_at": "2026-07-13T15:04:30.816Z",
+      "last_error": null,
+      "secret_manifest": []
+    },
+    {
+      "workspace_id": "ws_comp_tech_alpha_27f36050",
+      "company_id": "comp_tech_alpha",
+      "agent_id": "agent_dev_2",
+      "repo_ref": "Horizon-PVT/cong-ty-ai",
+      "branch_ref": "master",
+      "provider": "dry_run_provider",
+      "status": "stopped",
+      "external_workspace_id": "ext_dryrun_27f36050",
+      "allocated_budget": 50,
+      "allocated_resources": {
+        "cpu_cores": 1,
+        "memory_mb": 2048,
+        "disk_gb": 5
+      },
+      "created_at": "2026-07-13T15:04:30.816Z",
+      "updated_at": "2026-07-13T15:04:30.816Z",
+      "last_error": null,
+      "secret_manifest": []
+    },
+    {
+      "workspace_id": "ws_quarantined_agent_unstable_4",
+      "company_id": "comp_tech_alpha",
+      "agent_id": "agent_unstable_4",
+      "status": "failed",
+      "last_error": "Quarantine Lockdown: Agent agent_unstable_4 is quarantined due to 4 consecutive OOM crashes. Resource deployment blocked.",
+      "created_at": "2026-07-13T15:04:30.816Z"
+    }
+  ]
+}
