@@ -5,8 +5,46 @@ export class SandboxRuntimeService {
     this.policy = policy;
   }
 
+  async resolveSecrets(companyId, secretRefs) {
+    const resolved = {};
+    const manifest = [];
+
+    for (const ref of secretRefs) {
+      // Enforce cross-company access block
+      if (this.policy.prevent_cross_company_secret_refs && ref.owning_company_id !== companyId) {
+        throw new Error(`Security Violation: Agent of company ${companyId} attempted to access secret of company ${ref.owning_company_id}`);
+      }
+
+      resolved[ref.env_key] = ref.plaintext_value;
+      manifest.push({
+        env_key: ref.env_key,
+        secret_id: ref.secret_id,
+        version: ref.version || "latest",
+        injected: true,
+        redacted: true
+      });
+    }
+
+    return { resolved, manifest };
+  }
+
+  redactOutput(text, resolvedSecrets) {
+    if (!this.policy.enable_redaction_scanner || !text) return text;
+    let redacted = text;
+    for (const key of Object.keys(resolvedSecrets)) {
+      const val = resolvedSecrets[key];
+      if (val && val.length > 2) {
+        // Redact exact match of the secret material
+        const escaped = val.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+        const re = new RegExp(escaped, "g");
+        redacted = redacted.replace(re, "[REDACTED]");
+      }
+    }
+    return redacted;
+  }
+
   async provisionWorkspace(req, opts = {}) {
-    const { company_id, agent_id, repo_ref, branch_ref = "master", budget } = req;
+    const { company_id, agent_id, repo_ref, branch_ref = "master", budget, secret_refs = [] } = req;
     const { mode = "dry_run", token } = opts;
 
     if (this.policy.enforce_sandbox_company_isolation && !company_id) {
@@ -25,6 +63,29 @@ export class SandboxRuntimeService {
         status: "failed",
         last_error: `Gated: Valid token with prefix ${this.policy.required_live_token_prefix} is required.`,
         created_at: new Date().toISOString()
+      };
+    }
+
+    // Resolve secrets (with cross-company check)
+    let secretEnv = {};
+    let secretManifest = [];
+    try {
+      const res = await this.resolveSecrets(company_id, secret_refs);
+      secretEnv = res.resolved;
+      secretManifest = res.manifest;
+    } catch (e) {
+      return {
+        workspace_id: `ws_failed_${company_id || "unknown"}`,
+        company_id,
+        agent_id,
+        repo_ref,
+        branch_ref,
+        provider: "dry_run_provider",
+        status: "failed",
+        allocated_budget: budget,
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+        last_error: e.message
       };
     }
 
@@ -70,7 +131,9 @@ export class SandboxRuntimeService {
       allocated_budget: budget,
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
-      last_error: null
+      last_error: null,
+      secret_env: secretEnv, // Ephemeral memory only
+      secret_manifest: secretManifest // Persistable redacted manifest
     };
   }
 
@@ -82,21 +145,35 @@ export class SandboxRuntimeService {
     workspace.status = "running";
     workspace.updated_at = new Date().toISOString();
 
-    // Mock execution delay & event logs
-    const events = [
-      { timestamp: new Date().toISOString(), type: "provision", message: "Workspace sandbox verified." },
-      { timestamp: new Date().toISOString(), type: "exec", message: `Running command: ${command}` }
-    ];
+    const secretEnv = workspace.secret_env || {};
 
-    if (mode === "dry_run") {
-      events.push({ timestamp: new Date().toISOString(), type: "output", message: "[Dry-run] Command simulation completed successfully." });
-      workspace.status = "stopped";
-    } else {
-      events.push({ timestamp: new Date().toISOString(), type: "output", message: "[Sandbox/Live] Command executed on remote container node." });
-      workspace.status = "stopped";
+    // Mock execution logs
+    let rawOutput = `[Command Executed] ${command}`;
+    if (command.includes("echo")) {
+      // Simulate command echo leak
+      const key = command.split(" ").pop().replace("$", "");
+      if (secretEnv[key]) {
+        rawOutput += `\nOutput material value is: ${secretEnv[key]}`;
+      } else {
+        rawOutput += `\nOutput material value is empty.`;
+      }
     }
 
+    // Auto redact scanner check
+    const redactedOutput = this.redactOutput(rawOutput, secretEnv);
+
+    const events = [
+      { timestamp: new Date().toISOString(), type: "provision", message: "Workspace sandbox verified." },
+      { timestamp: new Date().toISOString(), type: "exec", message: `Running command: ${command}` },
+      { timestamp: new Date().toISOString(), type: "output", message: redactedOutput }
+    ];
+
+    workspace.status = "stopped";
     workspace.updated_at = new Date().toISOString();
+
+    // Ephemeral cleanup immediately after execution
+    delete workspace.secret_env;
+
     return {
       success: true,
       events,
@@ -114,7 +191,7 @@ export class SandboxRuntimeService {
 
   async collectArtifacts(workspace) {
     if (workspace.status !== "stopped") {
-      throw new Error(`Workspace must be stopped to collect artifacts. Current state: ${workspace.status}`);
+      throw new Error("Workspace must be stopped to collect artifacts.");
     }
     return [
       { name: "build-log.txt", size: 1204, content_preview: "[INFO] Sandbox build completed." },
@@ -122,3 +199,4 @@ export class SandboxRuntimeService {
     ];
   }
 }
+

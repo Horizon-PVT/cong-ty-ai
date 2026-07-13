@@ -1,0 +1,37 @@
+{
+  "milestone": "1.2C",
+  "generated_at": "2026-07-13T14:05:49.526Z",
+  "audit": [
+    {
+      "timestamp": "2026-07-13T14:05:49.528Z",
+      "company_id": "comp_tech_alpha",
+      "agent_id": "agent_dev_1",
+      "resolved_secrets_manifest": [
+        {
+          "env_key": "OPENAI_API_KEY",
+          "secret_id": "sec_openai_key",
+          "version": "latest",
+          "injected": true,
+          "redacted": true
+        },
+        {
+          "env_key": "HUBSPOT_TOKEN",
+          "secret_id": "sec_hubspot_token",
+          "version": "latest",
+          "injected": true,
+          "redacted": true
+        }
+      ],
+      "status": "ready",
+      "last_error": null
+    },
+    {
+      "timestamp": "2026-07-13T14:05:49.529Z",
+      "company_id": "comp_tech_alpha",
+      "agent_id": "agent_dev_1",
+      "resolved_secrets_manifest": [],
+      "status": "failed",
+      "last_error": "Security Violation: Agent of company comp_tech_alpha attempted to access secret of company comp_rogue_evil"
+    }
+  ]
+}
