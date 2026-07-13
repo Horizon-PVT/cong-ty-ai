@@ -1,7 +1,7 @@
 {
   "milestone": "1.2D",
   "name": "Resource Limit & CPU/Memory Isolation Controls for Sandbox Workspaces",
-  "status": "IN_PROGRESS",
+  "status": "COMPLETED",
   "objectives": [
     "Extend SandboxRuntimeService with CPU, Memory, and Disk allocations",
     "Enforce resource caps checking (reject requests exceeding maximum allowed policy parameters)",
