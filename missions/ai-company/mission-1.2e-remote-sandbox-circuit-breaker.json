@@ -1,0 +1,12 @@
+{
+  "milestone": "1.2E",
+  "name": "Out-of-Budget & Exceeded Resources Circuit Breaker for Sandbox Runs",
+  "status": "IN_PROGRESS",
+  "objectives": [
+    "Extend SandboxRuntimeService with budget threshold tracking and circuit breakers",
+    "Trigger emergency stop (circuit breaker trip) when run cost hits 90% of budget cap",
+    "Implement temporary quarantine/lockdown for sandboxes hitting consecutive OOM crashes",
+    "Generate circuit breaker trip logs, safety scorecard metrics, and warning manifests",
+    "Complete regression tests ensuring all previous sandbox features remain 100% operational"
+  ]
+}

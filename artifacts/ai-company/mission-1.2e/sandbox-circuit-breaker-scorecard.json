@@ -1,0 +1,17 @@
+{
+  "milestone": "1.2E",
+  "generated_at": "2026-07-13T15:04:30.814Z",
+  "verdict": "CIRCUIT_BREAKER_VERIFIED",
+  "total_workspaces": 3,
+  "provisioned_count": 2,
+  "blocked_by_owner_gate_count": 0,
+  "quarantined_count": 1,
+  "tripped_count": 1,
+  "failed_count": 0,
+  "safety_locks": {
+    "enforce_sandbox_company_isolation": true,
+    "enforce_sandbox_budget_limits": true,
+    "enforce_circuit_breakers": true,
+    "emergency_lock_intact": true
+  }
+}

@@ -44,7 +44,7 @@ export class SandboxRuntimeService {
   }
 
   async provisionWorkspace(req, opts = {}) {
-    const { company_id, agent_id, repo_ref, branch_ref = "master", budget, secret_refs = [], cpu_cores = 1.0, memory_mb = 2048, disk_gb = 5.0 } = req;
+    const { company_id, agent_id, repo_ref, branch_ref = "master", budget, secret_refs = [], cpu_cores = 1.0, memory_mb = 2048, disk_gb = 5.0, consecutive_oom_crashes = 0 } = req;
     const { mode = "dry_run", token } = opts;
 
     if (this.policy.enforce_sandbox_company_isolation && !company_id) {
@@ -53,6 +53,18 @@ export class SandboxRuntimeService {
 
     if (this.policy.enforce_sandbox_budget_limits && (budget === undefined || budget <= 0)) {
       throw new Error("Sandbox Isolation Violation: budget limit must be greater than 0.");
+    }
+
+    // Quarantine check for consecutive OOM crashes
+    if (this.policy.enforce_circuit_breakers && consecutive_oom_crashes >= this.policy.max_allowed_consecutive_oom_crashes) {
+      return {
+        workspace_id: `ws_quarantined_${agent_id}`,
+        company_id,
+        agent_id,
+        status: "failed",
+        last_error: `Quarantine Lockdown: Agent ${agent_id} is quarantined due to ${consecutive_oom_crashes} consecutive OOM crashes. Resource deployment blocked.`,
+        created_at: new Date().toISOString()
+      };
     }
 
     // Resource Limit Checks
@@ -155,7 +167,7 @@ export class SandboxRuntimeService {
     };
   }
 
-  async invokeRun(workspace, command, mode = "dry_run") {
+  async invokeRun(workspace, command, mode = "dry_run", runCost = 0) {
     if (workspace.status !== "ready") {
       throw new Error(`Cannot invoke run in workspace state: ${workspace.status}`);
     }
@@ -165,6 +177,23 @@ export class SandboxRuntimeService {
 
     const secretEnv = workspace.secret_env || {};
     const resources = workspace.allocated_resources || { cpu_cores: 1, memory_mb: 2048, disk_gb: 5 };
+    const budget = workspace.allocated_budget || 50;
+
+    // Check Budget Circuit Breaker Trip
+    if (this.policy.enforce_circuit_breakers && runCost >= budget * this.policy.circuit_breaker_threshold_ratio) {
+      workspace.status = "tripped";
+      workspace.updated_at = new Date().toISOString();
+      delete workspace.secret_env;
+      return {
+        success: false,
+        events: [
+          { timestamp: new Date().toISOString(), type: "provision", message: "Workspace sandbox verified." },
+          { timestamp: new Date().toISOString(), type: "exec", message: `Running command: ${command}` },
+          { timestamp: new Date().toISOString(), type: "error", message: `BUDGET CIRCUIT BREAKER TRIPPED: Run cost (${runCost}) reached ${this.policy.circuit_breaker_threshold_ratio * 100}% of budget cap (${budget}). Emergency stop triggered.` }
+        ],
+        terminal_state: "tripped"
+      };
+    }
 
     // Simulate memory OOM crash if memory request is too low for command execution
     if (command.includes("npm run build") && resources.memory_mb < 1024) {
@@ -225,8 +254,8 @@ export class SandboxRuntimeService {
   }
 
   async collectArtifacts(workspace) {
-    if (workspace.status !== "stopped") {
-      throw new Error("Workspace must be stopped to collect artifacts.");
+    if (workspace.status !== "stopped" && workspace.status !== "tripped") {
+      throw new Error("Workspace must be stopped or tripped to collect artifacts.");
     }
     return [
       { name: "build-log.txt", size: 1204, content_preview: "[INFO] Sandbox build completed." },

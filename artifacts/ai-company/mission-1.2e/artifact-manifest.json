@@ -1,0 +1,13 @@
+{
+  "milestone": "1.2E",
+  "generated_at": "2026-07-13T15:04:30.814Z",
+  "artifacts": [
+    "sandbox-active-workspaces.json",
+    "sandbox-tripped-events.json",
+    "owner-circuit-breaker-approval-queue.json",
+    "sandbox-circuit-breaker-scorecard.json",
+    "qa-acceptance-report.md",
+    "artifact-manifest.json",
+    "final-package-index.md"
+  ]
+}
