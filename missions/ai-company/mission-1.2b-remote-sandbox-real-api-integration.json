@@ -1,7 +1,7 @@
 {
   "milestone": "1.2B",
   "name": "Remote Sandbox Real API Integration",
-  "status": "IN_PROGRESS",
+  "status": "COMPLETED",
   "objectives": [
     "Extend SandboxRuntimeService with E2B/Cursor Cloud API provider connection adapter",
     "Implement real API environment setup validation (checking E2B_API_KEY environment presence)",
