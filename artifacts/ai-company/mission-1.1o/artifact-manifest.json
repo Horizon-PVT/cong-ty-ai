@@ -1,0 +1,15 @@
+{
+  "milestone": "1.1O",
+  "generated_at": "2026-07-13T13:31:44.012Z",
+  "artifacts": [
+    "client-success-health-report.json",
+    "revision-recovery-plan.json",
+    "renewal-upsell-candidates-redacted.json",
+    "referral-testimonial-candidates-redacted.json",
+    "owner-client-success-approval-queue.json",
+    "client-success-scorecard.json",
+    "qa-acceptance-report.md",
+    "artifact-manifest.json",
+    "final-package-index.md"
+  ]
+}
