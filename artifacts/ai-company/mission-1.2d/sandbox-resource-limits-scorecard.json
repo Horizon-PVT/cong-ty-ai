@@ -1,0 +1,15 @@
+{
+  "milestone": "1.2D",
+  "generated_at": "2026-07-13T14:08:32.713Z",
+  "verdict": "RESOURCE_LIMITS_VERIFIED",
+  "total_workspaces": 3,
+  "provisioned_count": 2,
+  "blocked_by_owner_gate_count": 0,
+  "failed_and_rejected_count": 2,
+  "safety_locks": {
+    "enforce_sandbox_company_isolation": true,
+    "enforce_sandbox_budget_limits": true,
+    "enforce_sandbox_resource_caps": true,
+    "emergency_lock_intact": true
+  }
+}

@@ -44,7 +44,7 @@ export class SandboxRuntimeService {
   }
 
   async provisionWorkspace(req, opts = {}) {
-    const { company_id, agent_id, repo_ref, branch_ref = "master", budget, secret_refs = [] } = req;
+    const { company_id, agent_id, repo_ref, branch_ref = "master", budget, secret_refs = [], cpu_cores = 1.0, memory_mb = 2048, disk_gb = 5.0 } = req;
     const { mode = "dry_run", token } = opts;
 
     if (this.policy.enforce_sandbox_company_isolation && !company_id) {
@@ -53,6 +53,19 @@ export class SandboxRuntimeService {
 
     if (this.policy.enforce_sandbox_budget_limits && (budget === undefined || budget <= 0)) {
       throw new Error("Sandbox Isolation Violation: budget limit must be greater than 0.");
+    }
+
+    // Resource Limit Checks
+    if (this.policy.enforce_sandbox_resource_caps) {
+      if (cpu_cores > this.policy.max_allowed_cpu_cores) {
+        throw new Error(`Resource cap exceeded: CPU cores request (${cpu_cores}) exceeds policy maximum of ${this.policy.max_allowed_cpu_cores}`);
+      }
+      if (memory_mb > this.policy.max_allowed_memory_mb) {
+        throw new Error(`Resource cap exceeded: Memory request (${memory_mb}MB) exceeds policy maximum of ${this.policy.max_allowed_memory_mb}MB`);
+      }
+      if (disk_gb > this.policy.max_allowed_disk_gb) {
+        throw new Error(`Resource cap exceeded: Disk space request (${disk_gb}GB) exceeds policy maximum of ${this.policy.max_allowed_disk_gb}GB`);
+      }
     }
 
     // Token Gate for live/sandbox modes
@@ -129,6 +142,11 @@ export class SandboxRuntimeService {
       status: "ready",
       external_workspace_id,
       allocated_budget: budget,
+      allocated_resources: {
+        cpu_cores,
+        memory_mb,
+        disk_gb
+      },
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
       last_error: null,
@@ -146,6 +164,23 @@ export class SandboxRuntimeService {
     workspace.updated_at = new Date().toISOString();
 
     const secretEnv = workspace.secret_env || {};
+    const resources = workspace.allocated_resources || { cpu_cores: 1, memory_mb: 2048, disk_gb: 5 };
+
+    // Simulate memory OOM crash if memory request is too low for command execution
+    if (command.includes("npm run build") && resources.memory_mb < 1024) {
+      workspace.status = "failed";
+      workspace.updated_at = new Date().toISOString();
+      delete workspace.secret_env;
+      return {
+        success: false,
+        events: [
+          { timestamp: new Date().toISOString(), type: "provision", message: "Workspace sandbox verified." },
+          { timestamp: new Date().toISOString(), type: "exec", message: `Running command: ${command}` },
+          { timestamp: new Date().toISOString(), type: "error", message: "FATAL ERROR: Ineffective mark-and-sweep in-object memory limit. Out of Memory (OOM) crash simulated." }
+        ],
+        terminal_state: "failed"
+      };
+    }
 
     // Mock execution logs
     let rawOutput = `[Command Executed] ${command}`;

@@ -1,0 +1,12 @@
+{
+  "milestone": "1.2D",
+  "default_mode": "dry_run",
+  "max_allowed_cpu_cores": 2.0,
+  "max_allowed_memory_mb": 4096,
+  "max_allowed_disk_gb": 10.0,
+  "enforce_sandbox_company_isolation": true,
+  "enforce_sandbox_budget_limits": true,
+  "enforce_sandbox_resource_caps": true,
+  "allowed_modes": ["dry_run", "sandbox", "live"],
+  "required_live_token_prefix": "OWNER_APPROVED_RESOURCE_LIMIT_TOKEN="
+}

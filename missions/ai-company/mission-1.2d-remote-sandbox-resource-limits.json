@@ -1,0 +1,12 @@
+{
+  "milestone": "1.2D",
+  "name": "Resource Limit & CPU/Memory Isolation Controls for Sandbox Workspaces",
+  "status": "IN_PROGRESS",
+  "objectives": [
+    "Extend SandboxRuntimeService with CPU, Memory, and Disk allocations",
+    "Enforce resource caps checking (reject requests exceeding maximum allowed policy parameters)",
+    "Integrate out-of-memory (OOM) simulation and disk-full exception recovery mechanisms",
+    "Persist resource allocation statistics and OOM status reports in JSON metadata",
+    "Ensure total integration verification stability and regression checks pass 100%"
+  ]
+}
