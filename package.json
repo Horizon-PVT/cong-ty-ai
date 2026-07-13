@@ -83,7 +83,10 @@
     "ai-company:1.2a:auto-loop": "node scripts/ai-company-remote-sandbox-runtime-contract-auto-loop.mjs",
     "ai-company:1.2b": "node scripts/ai-company-remote-sandbox-real-api-integration.mjs",
     "ai-company:1.2b:verify": "node packages/db/src/_verify-1.2b.mjs",
-    "ai-company:1.2b:auto-loop": "node scripts/ai-company-remote-sandbox-real-api-integration-auto-loop.mjs"
+    "ai-company:1.2b:auto-loop": "node scripts/ai-company-remote-sandbox-real-api-integration-auto-loop.mjs",
+    "ai-company:1.2c": "node scripts/ai-company-remote-sandbox-secret-routing.mjs",
+    "ai-company:1.2c:verify": "node packages/db/src/_verify-1.2c.mjs",
+    "ai-company:1.2c:auto-loop": "node scripts/ai-company-remote-sandbox-secret-routing-auto-loop.mjs"
   },
   "devDependencies": {
     "@playwright/test": "^1.58.2",

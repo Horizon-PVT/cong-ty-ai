@@ -1,0 +1,14 @@
+{
+  "milestone": "1.2C",
+  "generated_at": "2026-07-13T14:05:49.526Z",
+  "artifacts": [
+    "sandbox-routed-secrets.json",
+    "sandbox-redacted-events.json",
+    "sandbox-audit-logs.json",
+    "owner-secret-routing-approval-queue.json",
+    "sandbox-secret-routing-scorecard.json",
+    "qa-acceptance-report.md",
+    "artifact-manifest.json",
+    "final-package-index.md"
+  ]
+}
