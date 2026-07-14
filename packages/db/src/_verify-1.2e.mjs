@@ -62,6 +62,9 @@ policy.default_mode === "dry_run" ? pass("policy: default_mode is dry_run") : fa
 const sandboxActive = JSON.parse(fs.readFileSync(path.join(GEN_DIR, "sandbox-active-workspaces.json"), "utf8"));
 sandboxActive.milestone === "1.2E" ? pass("sandbox active workspaces milestone correct") : fail("sandbox active workspaces milestone wrong");
 
+const hasSecrets = sandboxActive.workspaces.some(ws => ws.secret_env !== undefined);
+!hasSecrets ? pass("No plaintext secrets leaked in active workspaces JSON") : fail("Vulnerability: Plaintext secret_env leaked in active workspaces JSON");
+
 // Circuit breaker trip check in events
 const resourceEvents = JSON.parse(fs.readFileSync(path.join(GEN_DIR, "sandbox-tripped-events.json"), "utf8"));
 const tripDetected = JSON.stringify(resourceEvents).includes("BUDGET CIRCUIT BREAKER TRIPPED");

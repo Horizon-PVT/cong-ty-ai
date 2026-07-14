@@ -1,23 +1,23 @@
 {
   "milestone": "1.2E",
-  "generated_at": "2026-07-13T15:04:30.814Z",
+  "generated_at": "2026-07-14T08:16:05.291Z",
   "events": [
     {
-      "workspace_id": "ws_comp_tech_alpha_bd0941cb",
+      "workspace_id": "ws_comp_tech_alpha_7c899eed",
       "command": "npm run build",
       "events": [
         {
-          "timestamp": "2026-07-13T15:04:30.816Z",
+          "timestamp": "2026-07-14T08:16:05.294Z",
           "type": "provision",
           "message": "Workspace sandbox verified."
         },
         {
-          "timestamp": "2026-07-13T15:04:30.816Z",
+          "timestamp": "2026-07-14T08:16:05.294Z",
           "type": "exec",
           "message": "Running command: npm run build"
         },
         {
-          "timestamp": "2026-07-13T15:04:30.816Z",
+          "timestamp": "2026-07-14T08:16:05.294Z",
           "type": "output",
           "message": "[Command Executed] npm run build"
         }
@@ -25,21 +25,21 @@
       "terminal_state": "stopped"
     },
     {
-      "workspace_id": "ws_comp_tech_alpha_27f36050",
+      "workspace_id": "ws_comp_tech_alpha_37b421b3",
       "command": "npm run build",
       "events": [
         {
-          "timestamp": "2026-07-13T15:04:30.816Z",
+          "timestamp": "2026-07-14T08:16:05.294Z",
           "type": "provision",
           "message": "Workspace sandbox verified."
         },
         {
-          "timestamp": "2026-07-13T15:04:30.816Z",
+          "timestamp": "2026-07-14T08:16:05.294Z",
           "type": "exec",
           "message": "Running command: npm run build"
         },
         {
-          "timestamp": "2026-07-13T15:04:30.816Z",
+          "timestamp": "2026-07-14T08:16:05.294Z",
           "type": "error",
           "message": "BUDGET CIRCUIT BREAKER TRIPPED: Run cost (46) reached 90% of budget cap (50). Emergency stop triggered."
         }

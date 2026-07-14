@@ -169,80 +169,81 @@ export class SandboxRuntimeService {
 
   async invokeRun(workspace, command, mode = "dry_run", runCost = 0) {
     if (workspace.status !== "ready") {
+      delete workspace.secret_env; // Ephemeral cleanup safeguard on non-ready calls
       throw new Error(`Cannot invoke run in workspace state: ${workspace.status}`);
     }
 
     workspace.status = "running";
     workspace.updated_at = new Date().toISOString();
 
-    const secretEnv = workspace.secret_env || {};
-    const resources = workspace.allocated_resources || { cpu_cores: 1, memory_mb: 2048, disk_gb: 5 };
-    const budget = workspace.allocated_budget || 50;
+    try {
+      const secretEnv = workspace.secret_env || {};
+      const resources = workspace.allocated_resources || { cpu_cores: 1, memory_mb: 2048, disk_gb: 5 };
+      const budget = workspace.allocated_budget || 50;
 
-    // Check Budget Circuit Breaker Trip
-    if (this.policy.enforce_circuit_breakers && runCost >= budget * this.policy.circuit_breaker_threshold_ratio) {
-      workspace.status = "tripped";
-      workspace.updated_at = new Date().toISOString();
-      delete workspace.secret_env;
-      return {
-        success: false,
-        events: [
-          { timestamp: new Date().toISOString(), type: "provision", message: "Workspace sandbox verified." },
-          { timestamp: new Date().toISOString(), type: "exec", message: `Running command: ${command}` },
-          { timestamp: new Date().toISOString(), type: "error", message: `BUDGET CIRCUIT BREAKER TRIPPED: Run cost (${runCost}) reached ${this.policy.circuit_breaker_threshold_ratio * 100}% of budget cap (${budget}). Emergency stop triggered.` }
-        ],
-        terminal_state: "tripped"
-      };
-    }
-
-    // Simulate memory OOM crash if memory request is too low for command execution
-    if (command.includes("npm run build") && resources.memory_mb < 1024) {
-      workspace.status = "failed";
-      workspace.updated_at = new Date().toISOString();
-      delete workspace.secret_env;
-      return {
-        success: false,
-        events: [
-          { timestamp: new Date().toISOString(), type: "provision", message: "Workspace sandbox verified." },
-          { timestamp: new Date().toISOString(), type: "exec", message: `Running command: ${command}` },
-          { timestamp: new Date().toISOString(), type: "error", message: "FATAL ERROR: Ineffective mark-and-sweep in-object memory limit. Out of Memory (OOM) crash simulated." }
-        ],
-        terminal_state: "failed"
-      };
-    }
-
-    // Mock execution logs
-    let rawOutput = `[Command Executed] ${command}`;
-    if (command.includes("echo")) {
-      // Simulate command echo leak
-      const key = command.split(" ").pop().replace("$", "");
-      if (secretEnv[key]) {
-        rawOutput += `\nOutput material value is: ${secretEnv[key]}`;
-      } else {
-        rawOutput += `\nOutput material value is empty.`;
+      // Check Budget Circuit Breaker Trip
+      if (this.policy.enforce_circuit_breakers && runCost >= budget * this.policy.circuit_breaker_threshold_ratio) {
+        workspace.status = "tripped";
+        workspace.updated_at = new Date().toISOString();
+        return {
+          success: false,
+          events: [
+            { timestamp: new Date().toISOString(), type: "provision", message: "Workspace sandbox verified." },
+            { timestamp: new Date().toISOString(), type: "exec", message: `Running command: ${command}` },
+            { timestamp: new Date().toISOString(), type: "error", message: `BUDGET CIRCUIT BREAKER TRIPPED: Run cost (${runCost}) reached ${this.policy.circuit_breaker_threshold_ratio * 100}% of budget cap (${budget}). Emergency stop triggered.` }
+          ],
+          terminal_state: "tripped"
+        };
       }
+
+      // Simulate memory OOM crash if memory request is too low for command execution
+      if (command.includes("npm run build") && resources.memory_mb < 1024) {
+        workspace.status = "failed";
+        workspace.updated_at = new Date().toISOString();
+        return {
+          success: false,
+          events: [
+            { timestamp: new Date().toISOString(), type: "provision", message: "Workspace sandbox verified." },
+            { timestamp: new Date().toISOString(), type: "exec", message: `Running command: ${command}` },
+            { timestamp: new Date().toISOString(), type: "error", message: "FATAL ERROR: Ineffective mark-and-sweep in-object memory limit. Out of Memory (OOM) crash simulated." }
+          ],
+          terminal_state: "failed"
+        };
+      }
+
+      // Mock execution logs
+      let rawOutput = `[Command Executed] ${command}`;
+      if (command.includes("echo")) {
+        // Simulate command echo leak
+        const key = command.split(" ").pop().replace("$", "");
+        if (secretEnv[key]) {
+          rawOutput += `\nOutput material value is: ${secretEnv[key]}`;
+        } else {
+          rawOutput += `\nOutput material value is empty.`;
+        }
+      }
+
+      // Auto redact scanner check
+      const redactedOutput = this.redactOutput(rawOutput, secretEnv);
+
+      const events = [
+        { timestamp: new Date().toISOString(), type: "provision", message: "Workspace sandbox verified." },
+        { timestamp: new Date().toISOString(), type: "exec", message: `Running command: ${command}` },
+        { timestamp: new Date().toISOString(), type: "output", message: redactedOutput }
+      ];
+
+      workspace.status = "stopped";
+      workspace.updated_at = new Date().toISOString();
+
+      return {
+        success: true,
+        events,
+        terminal_state: workspace.status
+      };
+    } finally {
+      // Ephemeral cleanup strictly guaranteed to execute under any failure/success outcomes
+      delete workspace.secret_env;
     }
-
-    // Auto redact scanner check
-    const redactedOutput = this.redactOutput(rawOutput, secretEnv);
-
-    const events = [
-      { timestamp: new Date().toISOString(), type: "provision", message: "Workspace sandbox verified." },
-      { timestamp: new Date().toISOString(), type: "exec", message: `Running command: ${command}` },
-      { timestamp: new Date().toISOString(), type: "output", message: redactedOutput }
-    ];
-
-    workspace.status = "stopped";
-    workspace.updated_at = new Date().toISOString();
-
-    // Ephemeral cleanup immediately after execution
-    delete workspace.secret_env;
-
-    return {
-      success: true,
-      events,
-      terminal_state: workspace.status
-    };
   }
 
   async stopWorkspace(workspace) {
