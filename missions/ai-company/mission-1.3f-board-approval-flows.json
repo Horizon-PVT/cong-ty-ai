@@ -1,0 +1,17 @@
+{
+  "milestone": "1.3F",
+  "name": "Board Approval & Rejection Flows",
+  "status": "IN_PROGRESS",
+  "objectives": [
+    "Validate owner can approve agent hire requests",
+    "Validate owner can reject agent hire requests",
+    "Validate admin cannot approve hire (insufficient role)",
+    "Validate pending approval blocks agent execution",
+    "Validate approved status unblocks execution",
+    "Validate rejected status keeps execution blocked",
+    "Validate strategy proposals require owner approval",
+    "Validate review gates can be approved by admin",
+    "Validate expired approvals auto-reject",
+    "Validate approval actions create audit trail entries"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "milestone": "1.3F",
+  "default_mode": "dry_run",
+  "board_approval_flows": {
+    "approval_types": ["hire_agent", "strategy_proposal", "review_gate", "budget_override_required"],
+    "approval_statuses": ["pending", "approved", "rejected", "expired"],
+    "resolution_actions": {
+      "hire_agent": ["approve_hire", "reject_hire"],
+      "strategy_proposal": ["approve_strategy", "reject_strategy", "request_revision"],
+      "review_gate": ["approve_release", "block_release"],
+      "budget_override_required": ["raise_budget_and_resume", "dismiss"]
+    },
+    "approval_action_mapping": {
+      "approve_hire": "approve",
+      "reject_hire": "reject",
+      "approve_strategy": "approve",
+      "reject_strategy": "reject",
+      "request_revision": "reject",
+      "approve_release": "approve",
+      "block_release": "reject",
+      "raise_budget_and_resume": "approve",
+      "dismiss": "reject"
+    },
+    "board_roles": ["owner", "admin", "member"],
+    "approval_permissions": {
+      "owner": ["hire_agent", "strategy_proposal", "review_gate", "budget_override_required"],
+      "admin": ["review_gate", "budget_override_required"],
+      "member": []
+    }
+  },
+  "assertions": {
+    "owner_can_approve_hire": true,
+    "owner_can_reject_hire": true,
+    "admin_cannot_approve_hire": true,
+    "pending_approval_blocks_execution": true,
+    "approved_unblocks_execution": true,
+    "rejected_keeps_blocked": true,
+    "strategy_proposal_requires_owner": true,
+    "review_gate_admin_can_approve": true,
+    "expired_approval_auto_rejects": true,
+    "approval_audit_trail_recorded": true
+  },
+  "allowed_modes": ["dry_run", "live"],
+  "required_live_token_prefix": "OWNER_APPROVED_BOARD_FLOWS_TOKEN="
+}

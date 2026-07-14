@@ -148,6 +148,12 @@ const MILESTONES = [
     verifier: "node packages/db/src/_verify-1.3e.mjs",
     scorecard: "artifacts/ai-company/mission-1.3e/generated",
   },
+  {
+    id: "1.3f", name: "Board Approval & Rejection Flows",
+    runner: "node scripts/ai-company-board-approval-flows.mjs",
+    verifier: "node packages/db/src/_verify-1.3f.mjs",
+    scorecard: "artifacts/ai-company/mission-1.3f/generated",
+  },
 ];
 
 // ── Argument parsing ────────────────────────────────────────────────────

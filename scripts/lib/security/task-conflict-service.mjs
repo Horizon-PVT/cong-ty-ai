@@ -100,8 +100,13 @@ export class TaskConflictService {
     }
 
     // Agent can only update their own assigned tasks
-    if (actor.type === "agent" && task.assigneeAgentId !== actor.agentId) {
-      return { status: 403, error: "Agent can only update tasks assigned to them" };
+    if (actor.type === "agent") {
+      if (task.assigneeAgentId !== actor.agentId) {
+        return { status: 403, error: "Agent can only update tasks assigned to them" };
+      }
+      if (updates.status && !this.hasPermission(actor.agentId, "update_task_status").allowed) {
+        return { status: 403, error: "No permission to update task status" };
+      }
     }
 
     // Version conflict check (optimistic locking)

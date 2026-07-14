@@ -1,0 +1,13 @@
+{
+  "milestone": "1.3F",
+  "generated_at": "2026-07-14T16:35:50.163Z",
+  "artifacts": [
+    "board-approval-active-config.json",
+    "board-approval-events.json",
+    "board-approval-validation-details.json",
+    "board-approval-scorecard.json",
+    "qa-acceptance-report.md",
+    "artifact-manifest.json",
+    "final-package-index.md"
+  ]
+}
