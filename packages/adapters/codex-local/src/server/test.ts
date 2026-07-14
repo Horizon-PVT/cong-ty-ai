@@ -129,6 +129,28 @@ async function prepareCodexHelloProbe(input: {
     const probeHome = input.targetIsRemote
       ? path.posix.join(input.cwd, ".paperclip-runtime", "codex", `probe-home-${input.runId}`)
       : path.join(os.tmpdir(), `paperclip-codex-probe-${input.runId}`);
+
+    if (!input.targetIsRemote) {
+      await fs.mkdir(probeHome, { recursive: true });
+      await fs.writeFile(
+        path.join(probeHome, "auth.json"),
+        JSON.stringify({ OPENAI_API_KEY: input.probeApiKey }),
+        { mode: 0o600 }
+      );
+      return {
+        command: input.command,
+        args: input.args,
+        env: {
+          ...input.env,
+          CODEX_HOME: probeHome,
+        },
+        cleanup: async () => {
+          await cleanup();
+          await fs.rm(probeHome, { recursive: true, force: true }).catch(() => {});
+        },
+      };
+    }
+
     return {
       command: "sh",
       args: [
