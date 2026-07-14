@@ -1,0 +1,17 @@
+{
+  "milestone": "5.1A",
+  "name": "Company Memory Bindings & Local Markdown Provider",
+  "status": "IN_PROGRESS",
+  "objectives": [
+    "Verify default memory lookup fetches correct company-level context",
+    "Verify agent-specific memory override fetches agent context instead of default",
+    "Verify markdown provider reads memory files correctly",
+    "Verify markdown provider writes memory files correctly",
+    "Verify every memory operation logs detailed provenance metadata",
+    "Verify cross-company memory read/write access is blocked with 403",
+    "Verify directory traversal attempts outside the memory root are blocked with 403",
+    "Verify registering/writing unsupported memory formats is rejected",
+    "Verify memory content and provenance logs scrub secrets and email PII",
+    "Ensure verifier regression chain rolls back to 4.1B"
+  ]
+}

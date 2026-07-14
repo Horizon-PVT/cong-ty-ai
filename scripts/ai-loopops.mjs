@@ -196,6 +196,12 @@ const MILESTONES = [
     verifier: "node packages/db/src/_verify-4.1b.mjs",
     scorecard: "artifacts/ai-company/mission-4.1b/generated",
   },
+  {
+    id: "5.1a", name: "Company Memory Bindings & Local Markdown Provider",
+    runner: "node scripts/ai-company-memory.mjs",
+    verifier: "node packages/db/src/_verify-5.1a.mjs",
+    scorecard: "artifacts/ai-company/mission-5.1a/generated",
+  },
 ];
 
 // ── Argument parsing ────────────────────────────────────────────────────

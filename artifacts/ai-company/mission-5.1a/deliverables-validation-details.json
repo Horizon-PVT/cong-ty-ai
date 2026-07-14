@@ -1,0 +1,19 @@
+{
+  "milestone": "5.1A",
+  "verdict": "MEMORY_VERIFIED",
+  "generated_at": "2026-07-14T17:33:08.511Z",
+  "passed_cases": 10,
+  "failed_cases": 0,
+  "test_coverage": {
+    "memory_default_lookup_succeeds": true,
+    "memory_agent_override_succeeds": true,
+    "markdown_provider_reads_correctly": true,
+    "markdown_provider_writes_correctly": true,
+    "operation_logging_saves_provenance": true,
+    "memory_enforces_company_isolation": true,
+    "memory_prevents_path_traversal": true,
+    "unsupported_memory_formats_are_rejected": true,
+    "memory_scrubs_pii_and_secrets": true,
+    "regression_chain_integrity_verified": true
+  }
+}

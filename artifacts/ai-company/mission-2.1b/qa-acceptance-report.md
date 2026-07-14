@@ -1,6 +1,6 @@
 # QA Acceptance Report — Milestone 2.1B
 
-**Generated:** 2026-07-14T17:22:40.165Z
+**Generated:** 2026-07-14T17:32:32.532Z
 **Milestone:** 2.1B — Onboarding CLI & Doctor Repair
 **Verdict:** CLI_RUN_VERIFIED
 

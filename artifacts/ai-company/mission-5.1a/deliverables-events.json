@@ -1,0 +1,129 @@
+{
+  "milestone": "5.1A",
+  "generated_at": "2026-07-14T17:33:08.511Z",
+  "total_tests": 10,
+  "passed": 10,
+  "failed": 0,
+  "events": [
+    {
+      "test_case": "memory_default_lookup_succeeds",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:33:08.514Z",
+      "res": {
+        "status": 200,
+        "filePath": "D:\\Project\\A Tung\\paperclip-dự án công ty AI\\memory\\ai-company\\comp_1\\company_kb.md",
+        "content": "Company 1 Default Context"
+      },
+      "reason": "default lookup fetched correct company-level context successfully"
+    },
+    {
+      "test_case": "memory_agent_override_succeeds",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:33:08.514Z",
+      "res": {
+        "status": 200,
+        "filePath": "D:\\Project\\A Tung\\paperclip-dự án công ty AI\\memory\\ai-company\\comp_1\\agent_special_kb.md",
+        "content": "Agent Specific Custom Context"
+      },
+      "reason": "agent-specific binding lookup override fetched agent context successfully"
+    },
+    {
+      "test_case": "markdown_provider_reads_correctly",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:33:08.514Z",
+      "res": {
+        "status": 200,
+        "content": "Markdown Content Line"
+      },
+      "reason": "local markdown provider successfully read memory file content"
+    },
+    {
+      "test_case": "markdown_provider_writes_correctly",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:33:08.514Z",
+      "res": {
+        "status": 200,
+        "resolvedPath": "D:\\Project\\A Tung\\paperclip-dự án công ty AI\\memory\\ai-company\\comp_1\\company_kb.md",
+        "content": "New Written Line"
+      },
+      "reason": "local markdown provider successfully wrote memory file content"
+    },
+    {
+      "test_case": "operation_logging_saves_provenance",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:33:08.514Z",
+      "audit": {
+        "action": "memory_written",
+        "filePath": "D:\\Project\\A Tung\\paperclip-dự án công ty AI\\memory\\ai-company\\comp_1\\doc.md",
+        "companyId": "comp_1",
+        "actor": "user_1",
+        "format": "markdown",
+        "provenance": {
+          "company_id": "comp_1",
+          "agent_id": "agent_qa",
+          "project_id": "project_v1",
+          "issue_id": "issue_42",
+          "run_id": "run_77"
+        },
+        "timestamp": "2026-07-14T17:33:08.514Z"
+      },
+      "reason": "operation audit trail saved detailed provenance metadata correctly"
+    },
+    {
+      "test_case": "memory_enforces_company_isolation",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:33:08.515Z",
+      "readRes": {
+        "status": 403,
+        "error": "Access denied: Tenant boundary violation"
+      },
+      "writeRes": {
+        "status": 403,
+        "error": "Access denied: Tenant boundary violation"
+      },
+      "reason": "cross-company memory read/write calls blocked with 403 Forbidden"
+    },
+    {
+      "test_case": "memory_prevents_path_traversal",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:33:08.515Z",
+      "r1": {
+        "status": 403,
+        "error": "Security Error: Directory traversal detected"
+      },
+      "r2": {
+        "status": 403,
+        "error": "Security Error: Directory traversal detected"
+      },
+      "reason": "path traversal sibling prefix attempts blocked successfully with 403"
+    },
+    {
+      "test_case": "unsupported_memory_formats_are_rejected",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:33:08.515Z",
+      "res": {
+        "status": 400,
+        "error": "Unsupported memory format \"exe\""
+      },
+      "reason": "rejected write to memory using unsupported exe format"
+    },
+    {
+      "test_case": "memory_scrubs_pii_and_secrets",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:33:08.515Z",
+      "res": {
+        "status": 200,
+        "resolvedPath": "D:\\Project\\A Tung\\paperclip-dự án công ty AI\\memory\\ai-company\\comp_1\\company_kb.md",
+        "content": "Secret key [REDACTED_API_KEY] and mail [REDACTED_EMAIL] (whitelisted owner@example.com / test@paperclip.dev)"
+      },
+      "reason": "secrets and PII email values redacted, while whitelisted domains are preserved"
+    },
+    {
+      "test_case": "regression_chain_integrity_verified",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:33:08.515Z",
+      "liveBlockCheck": true,
+      "reason": "regression verifier cascade executes and live token checks block run"
+    }
+  ]
+}

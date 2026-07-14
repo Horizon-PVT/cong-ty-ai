@@ -1,6 +1,6 @@
 {
   "milestone": "1.3D",
-  "generated_at": "2026-07-14T17:22:08.088Z",
+  "generated_at": "2026-07-14T17:32:05.683Z",
   "total_tests": 10,
   "passed": 10,
   "failed": 0,
@@ -8,7 +8,7 @@
     {
       "test_case": "hard_stop_pauses_agent",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:22:08.091Z",
+      "timestamp": "2026-07-14T17:32:05.685Z",
       "spend": 10500,
       "limit": 10000,
       "percent": 105,
@@ -18,7 +18,7 @@
     {
       "test_case": "invocation_block_all_checkpoints",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:22:08.091Z",
+      "timestamp": "2026-07-14T17:32:05.685Z",
       "checkpoints_tested": 4,
       "all_blocked": true,
       "blocked_by": "company::comp_a",
@@ -27,7 +27,7 @@
     {
       "test_case": "soft_warning_at_threshold",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:22:08.091Z",
+      "timestamp": "2026-07-14T17:32:05.685Z",
       "percent_used": 85,
       "warning_triggered": true,
       "still_running": true,
@@ -36,8 +36,8 @@
     {
       "test_case": "incident_creates_approval",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:22:08.091Z",
-      "incident_id": "bi_1784049728091_s3u3s9",
+      "timestamp": "2026-07-14T17:32:05.685Z",
+      "incident_id": "bi_1784050325685_2t0j38",
       "incident_status": "open",
       "approval_type": "budget_override_required",
       "approval_status": "pending",
@@ -50,7 +50,7 @@
     {
       "test_case": "raise_and_resume_restores",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:22:08.092Z",
+      "timestamp": "2026-07-14T17:32:05.686Z",
       "paused_before": true,
       "blocked_before": true,
       "paused_after": false,
@@ -61,7 +61,7 @@
     {
       "test_case": "dismiss_keeps_paused",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:22:08.092Z",
+      "timestamp": "2026-07-14T17:32:05.686Z",
       "resumed": false,
       "still_paused": true,
       "still_blocked": true,
@@ -70,7 +70,7 @@
     {
       "test_case": "subscription_included_exempt",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:22:08.092Z",
+      "timestamp": "2026-07-14T17:32:05.686Z",
       "exempt": true,
       "spend_after": 0,
       "not_paused": true,
@@ -79,7 +79,7 @@
     {
       "test_case": "incident_deduplication",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:22:08.092Z",
+      "timestamp": "2026-07-14T17:32:05.687Z",
       "total_incidents": 1,
       "second_deduplicated": true,
       "reason": "second cost event reused existing open incident"
@@ -87,7 +87,7 @@
     {
       "test_case": "multi_scope_hierarchy",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:22:08.093Z",
+      "timestamp": "2026-07-14T17:32:05.687Z",
       "blocked": true,
       "blocked_by": "company::comp_hierarchy",
       "agent_own_budget_ok": true,
@@ -96,7 +96,7 @@
     {
       "test_case": "full_cost_cascade",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:22:08.093Z",
+      "timestamp": "2026-07-14T17:32:05.687Z",
       "step1_status": "ok",
       "step2_status": "warning",
       "step3_status": "hard_stop",
