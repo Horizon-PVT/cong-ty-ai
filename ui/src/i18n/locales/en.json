@@ -20,5 +20,19 @@
     "costs": "Costs",
     "activity": "Activity",
     "settings": "Settings"
+  },
+  "agent": {
+    "tabs": {
+      "dashboard": "Dashboard",
+      "instructions": "Instructions",
+      "skills": "Skills",
+      "configuration": "Configuration",
+      "runs": "Runs",
+      "budget": "Budget"
+    },
+    "crumbs": {
+      "agents": "Agents",
+      "run": "Run"
+    }
   }
 }

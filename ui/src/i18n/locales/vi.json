@@ -20,5 +20,19 @@
     "costs": "Chi phí",
     "activity": "Hoạt động",
     "settings": "Cài đặt"
+  },
+  "agent": {
+    "tabs": {
+      "dashboard": "Bảng điều khiển",
+      "instructions": "Hướng dẫn",
+      "skills": "Kỹ năng",
+      "configuration": "Cấu hình",
+      "runs": "Lịch sử chạy",
+      "budget": "Ngân sách"
+    },
+    "crumbs": {
+      "agents": "Đặc vụ",
+      "run": "Lượt chạy"
+    }
   }
 }
