@@ -9,6 +9,8 @@
  * - Secrets & PII scrubbing
  */
 
+import crypto from "node:crypto";
+
 export class CliRunService {
   constructor(policy) {
     this.policy = policy;
@@ -61,9 +63,10 @@ export class CliRunService {
     if (env.portConflict) {
       if (policyConfig.auto_repair_enabled) {
         let repaired = false;
+        const basePort = Number(env.port || 3100);
         const maxRetries = policyConfig.max_port_retries || 10;
         for (let i = 1; i <= maxRetries; i++) {
-          const candidatePort = (env.port || 3100) + i;
+          const candidatePort = basePort + i;
           if (!env.busyPorts?.includes(candidatePort)) {
             selectedPort = candidatePort;
             repaired = true;
@@ -115,7 +118,7 @@ export class CliRunService {
 
   generateBootstrapCeoInvite(host, port, email) {
     // Construct bootstrap link securely
-    const token = "boot_" + Math.random().toString(36).substring(2, 10);
+    const token = "boot_" + crypto.randomBytes(4).toString("hex");
     const url = `http://${host}:${port}/invite/ceo?email=${encodeURIComponent(email)}&token=${token}`;
     return {
       token,

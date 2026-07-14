@@ -1,6 +1,6 @@
 {
   "milestone": "2.1B",
-  "generated_at": "2026-07-14T16:56:56.296Z",
+  "generated_at": "2026-07-14T16:58:55.537Z",
   "total_tests": 10,
   "passed": 10,
   "failed": 0,
@@ -8,7 +8,7 @@
     {
       "test_case": "cli_run_redirects_to_onboarding_if_no_config",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:56:56.298Z",
+      "timestamp": "2026-07-14T16:58:55.539Z",
       "res": {
         "exists": false,
         "action": "redirect_to_onboarding"
@@ -18,7 +18,7 @@
     {
       "test_case": "doctor_check_detects_port_conflict",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:56:56.299Z",
+      "timestamp": "2026-07-14T16:58:55.539Z",
       "res": {
         "status": "FAILED",
         "checks": {
@@ -40,7 +40,7 @@
     {
       "test_case": "doctor_check_resolves_port_conflict_via_repair",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:56:56.299Z",
+      "timestamp": "2026-07-14T16:58:55.539Z",
       "res": {
         "status": "PASSED",
         "checks": {
@@ -62,7 +62,7 @@
     {
       "test_case": "doctor_check_flags_critical_db_errors",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:56:56.299Z",
+      "timestamp": "2026-07-14T16:58:55.539Z",
       "res": {
         "status": "FAILED",
         "checks": {
@@ -84,7 +84,7 @@
     {
       "test_case": "doctor_check_resolves_db_errors_via_fallback",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:56:56.299Z",
+      "timestamp": "2026-07-14T16:58:55.539Z",
       "res": {
         "status": "PASSED",
         "checks": {
@@ -106,7 +106,7 @@
     {
       "test_case": "tailscale_detection_returns_proper_host",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:56:56.299Z",
+      "timestamp": "2026-07-14T16:58:55.539Z",
       "res": {
         "status": "PASSED",
         "checks": {
@@ -126,17 +126,17 @@
     {
       "test_case": "bootstrap_invite_generates_ceo_link",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:56:56.299Z",
+      "timestamp": "2026-07-14T16:58:55.540Z",
       "invite": {
-        "token": "boot_o4b80fbn",
-        "url": "http://127.0.0.1:3100/invite/ceo?email=ceo%40example.com&token=boot_o4b80fbn"
+        "token": "boot_c8b4f5a7",
+        "url": "http://127.0.0.1:3100/invite/ceo?email=ceo%40example.com&token=boot_c8b4f5a7"
       },
       "reason": "bootstrap CEO invite URL and token successfully constructed"
     },
     {
       "test_case": "cli_run_blocks_on_unrepairable_errors",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:56:56.299Z",
+      "timestamp": "2026-07-14T16:58:55.540Z",
       "res": {
         "status": "FAILED",
         "checks": {
@@ -158,7 +158,7 @@
     {
       "test_case": "cli_run_completes_successfully_in_clean_env",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:56:56.300Z",
+      "timestamp": "2026-07-14T16:58:55.540Z",
       "res": {
         "status": "PASSED",
         "checks": {
@@ -178,7 +178,7 @@
     {
       "test_case": "regression_chain_integrity_verified",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:56:56.300Z",
+      "timestamp": "2026-07-14T16:58:55.540Z",
       "sanitized": "Email is [REDACTED_EMAIL] and key is [REDACTED_API_KEY]",
       "reason": "live token checks block execution and audit trail redacts raw keys and emails"
     }
