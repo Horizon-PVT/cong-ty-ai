@@ -1,0 +1,100 @@
+{
+  "milestone": "1.3E",
+  "generated_at": "2026-07-14T16:20:58.032Z",
+  "total_tests": 10,
+  "passed": 10,
+  "failed": 0,
+  "events": [
+    {
+      "test_case": "concurrent_claim_returns_409",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:20:58.035Z",
+      "first_claim": 200,
+      "second_claim": 409,
+      "conflict_with": "agent_1",
+      "reason": "second agent gets 409 on concurrent claim"
+    },
+    {
+      "test_case": "first_claimer_wins",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:20:58.035Z",
+      "assignee": "fast_agent",
+      "status": "in_progress",
+      "reason": "first claimer owns the task"
+    },
+    {
+      "test_case": "stale_version_rejected",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:20:58.036Z",
+      "stale_version": 1,
+      "current_version": 2,
+      "response_status": 409,
+      "reason": "stale version update rejected with 409"
+    },
+    {
+      "test_case": "agent_reads_assigned_tasks",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:20:58.036Z",
+      "status": 200,
+      "tasks_found": 2,
+      "reason": "agent reads 2 assigned tasks from own company"
+    },
+    {
+      "test_case": "agent_updates_task_status",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:20:58.036Z",
+      "old_status": "in_progress",
+      "new_status": "review",
+      "response_status": 200,
+      "reason": "valid transition in_progress → review accepted"
+    },
+    {
+      "test_case": "agent_adds_comment",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:20:58.036Z",
+      "comment_status": 201,
+      "comment_count": 1,
+      "comment_content": "Found root cause — null pointe",
+      "reason": "agent added comment to assigned task"
+    },
+    {
+      "test_case": "agent_reports_cost",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:20:58.037Z",
+      "report_status": 201,
+      "report_count": 1,
+      "cost_cents": 15,
+      "reason": "agent reported cost event via API key"
+    },
+    {
+      "test_case": "agent_cannot_delete_task",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:20:58.037Z",
+      "delete_status": 403,
+      "task_still_exists": true,
+      "reason": "agent delete blocked with 403"
+    },
+    {
+      "test_case": "agent_cannot_access_other_company",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:20:58.037Z",
+      "claim_status": 403,
+      "comment_status": 403,
+      "cost_status": 403,
+      "reason": "cross-company access blocked at all endpoints"
+    },
+    {
+      "test_case": "invalid_transition_rejected",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:20:58.037Z",
+      "attempted": "in_progress → done",
+      "response_status": 422,
+      "valid_transitions": [
+        "review",
+        "blocked",
+        "open"
+      ],
+      "reason": "invalid transition rejected with 422"
+    }
+  ]
+}

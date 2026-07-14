@@ -1,0 +1,17 @@
+{
+  "milestone": "1.3E",
+  "name": "Task Conflict Safety & Agent API Permissions",
+  "status": "IN_PROGRESS",
+  "objectives": [
+    "Validate concurrent task claims return 409 conflict response",
+    "Validate first-claimer-wins semantics for task checkout",
+    "Validate stale version updates are rejected with conflict error",
+    "Validate agents can read their assigned tasks via API key",
+    "Validate agents can update task status through valid transitions",
+    "Validate agents can add comments to assigned tasks",
+    "Validate agents can report costs via API key",
+    "Validate agents cannot delete tasks (forbidden)",
+    "Validate agents cannot access other company data (403)",
+    "Validate invalid status transitions are rejected"
+  ]
+}

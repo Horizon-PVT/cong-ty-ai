@@ -142,6 +142,12 @@ const MILESTONES = [
     verifier: "node packages/db/src/_verify-1.3d.mjs",
     scorecard: "artifacts/ai-company/mission-1.3d/generated",
   },
+  {
+    id: "1.3e", name: "Task Conflict Safety & Agent API Permissions",
+    runner: "node scripts/ai-company-task-conflict-agent-perms.mjs",
+    verifier: "node packages/db/src/_verify-1.3e.mjs",
+    scorecard: "artifacts/ai-company/mission-1.3e/generated",
+  },
 ];
 
 // ── Argument parsing ────────────────────────────────────────────────────

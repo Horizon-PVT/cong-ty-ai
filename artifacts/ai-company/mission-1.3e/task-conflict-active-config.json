@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.3",
+  "milestone": "1.3E",
+  "generated_at": "2026-07-14T16:20:58.032Z",
+  "policy": {
+    "milestone": "1.3E",
+    "default_mode": "dry_run",
+    "task_conflict_safety": {
+      "concurrent_claim_response": 409,
+      "conflict_detection": "optimistic_locking",
+      "checkout_fields": [
+        "assignee_agent_id",
+        "status",
+        "checked_out_at"
+      ],
+      "valid_transitions": {
+        "open": [
+          "in_progress",
+          "assigned"
+        ],
+        "assigned": [
+          "in_progress",
+          "open"
+        ],
+        "in_progress": [
+          "review",
+          "blocked",
+          "open"
+        ],
+        "review": [
+          "done",
+          "in_progress"
+        ],
+        "blocked": [
+          "in_progress",
+          "open"
+        ],
+        "done": []
+      },
+      "conflict_scenarios": [
+        "two_agents_claim_same_task",
+        "claim_already_assigned_task",
+        "stale_version_update",
+        "concurrent_status_transition"
+      ]
+    },
+    "agent_api_permissions": {
+      "allowed_operations": [
+        "read_assigned_tasks",
+        "update_task_status",
+        "add_comment",
+        "report_cost",
+        "read_own_agent_profile"
+      ],
+      "denied_operations": [
+        "delete_task",
+        "modify_other_agent_task",
+        "access_board_settings",
+        "manage_company",
+        "read_other_company_data"
+      ],
+      "auth_method": "api_key",
+      "scope_enforcement": "company_scoped"
+    },
+    "assertions": {
+      "concurrent_claim_returns_409": true,
+      "first_claimer_wins": true,
+      "stale_version_rejected": true,
+      "agent_can_read_assigned_tasks": true,
+      "agent_can_update_own_task_status": true,
+      "agent_can_add_comment": true,
+      "agent_can_report_cost": true,
+      "agent_cannot_delete_task": true,
+      "agent_cannot_access_other_company": true,
+      "invalid_transition_rejected": true
+    },
+    "allowed_modes": [
+      "dry_run",
+      "live"
+    ],
+    "required_live_token_prefix": "OWNER_APPROVED_TASK_CONFLICT_TOKEN="
+  }
+}

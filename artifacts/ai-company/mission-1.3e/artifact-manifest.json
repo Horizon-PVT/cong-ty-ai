@@ -1,0 +1,13 @@
+{
+  "milestone": "1.3E",
+  "generated_at": "2026-07-14T16:20:58.032Z",
+  "artifacts": [
+    "task-conflict-active-config.json",
+    "task-conflict-events.json",
+    "task-conflict-validation-details.json",
+    "task-conflict-scorecard.json",
+    "qa-acceptance-report.md",
+    "artifact-manifest.json",
+    "final-package-index.md"
+  ]
+}
