@@ -1,0 +1,19 @@
+{
+  "milestone": "4.1A",
+  "verdict": "SAFETY_VERIFIED",
+  "generated_at": "2026-07-14T17:17:17.018Z",
+  "passed_cases": 10,
+  "failed_cases": 0,
+  "test_coverage": {
+    "wake_blocked_when_idle_without_inputs": true,
+    "wake_allowed_on_new_assignment": true,
+    "wake_allowed_on_new_comment_or_mention": true,
+    "breaker_tripped_on_consecutive_failures": true,
+    "breaker_tripped_on_no_progress_runs": true,
+    "breaker_tripped_on_token_velocity_spike": true,
+    "budget_80_percent_warning_triggered": true,
+    "budget_100_percent_hard_stop_blocks_invocation": true,
+    "breaker_reset_allows_invocation": true,
+    "regression_chain_integrity_verified": true
+  }
+}

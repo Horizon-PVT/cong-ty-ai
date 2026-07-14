@@ -184,6 +184,12 @@ const MILESTONES = [
     verifier: "node packages/db/src/_verify-3.1b.mjs",
     scorecard: "artifacts/ai-company/mission-3.1b/generated",
   },
+  {
+    id: "4.1a", name: "Deterministic Wake Gating & Circuit Breakers",
+    runner: "node scripts/ai-company-runtime-safety.mjs",
+    verifier: "node packages/db/src/_verify-4.1a.mjs",
+    scorecard: "artifacts/ai-company/mission-4.1a/generated",
+  },
 ];
 
 // ── Argument parsing ────────────────────────────────────────────────────

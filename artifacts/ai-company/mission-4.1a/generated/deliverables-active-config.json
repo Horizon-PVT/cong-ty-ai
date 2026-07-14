@@ -1,0 +1,32 @@
+{
+  "schema_version": "2.0",
+  "milestone": "4.1A",
+  "generated_at": "2026-07-14T17:17:17.018Z",
+  "policy": {
+    "milestone": "4.1A",
+    "default_mode": "dry_run",
+    "safety": {
+      "max_consecutive_failures": 3,
+      "max_consecutive_no_progress": 3,
+      "token_velocity_limit_per_minute": 100000,
+      "budget_warning_threshold_pct": 80
+    },
+    "assertions": {
+      "wake_blocked_when_idle_without_inputs": true,
+      "wake_allowed_on_new_assignment": true,
+      "wake_allowed_on_new_comment_or_mention": true,
+      "breaker_tripped_on_consecutive_failures": true,
+      "breaker_tripped_on_no_progress_runs": true,
+      "breaker_tripped_on_token_velocity_spike": true,
+      "budget_80_percent_warning_triggered": true,
+      "budget_100_percent_hard_stop_blocks_invocation": true,
+      "breaker_reset_allows_invocation": true,
+      "regression_chain_integrity_verified": true
+    },
+    "allowed_modes": [
+      "dry_run",
+      "live"
+    ],
+    "required_live_token_prefix": "OWNER_APPROVED_SAFETY_TOKEN="
+  }
+}

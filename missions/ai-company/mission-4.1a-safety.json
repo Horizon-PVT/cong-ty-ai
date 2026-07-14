@@ -1,0 +1,17 @@
+{
+  "milestone": "4.1A",
+  "name": "Deterministic Wake Gating & Circuit Breakers",
+  "status": "IN_PROGRESS",
+  "objectives": [
+    "Verify wake is blocked when agent is idle without new inputs",
+    "Verify wake is allowed on new task assignment",
+    "Verify wake is allowed when agent is mentioned or commented on",
+    "Verify breaker trips and blocks execution after 3 consecutive failures",
+    "Verify breaker trips and blocks execution after 3 consecutive no-progress runs",
+    "Verify token velocity spikes cause circuit breaker to trip",
+    "Verify budget warning is triggered at 80% consumption",
+    "Verify budget hard stop blocks any new agent invocation at 100%",
+    "Verify manual breaker reset restores normal agent operations",
+    "Ensure verifier regression chain rolls back to 3.1B"
+  ]
+}
