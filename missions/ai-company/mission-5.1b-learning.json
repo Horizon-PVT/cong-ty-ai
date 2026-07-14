@@ -1,0 +1,17 @@
+{
+  "milestone": "5.1B",
+  "name": "Memory Hooks & Organizational Learning",
+  "status": "IN_PROGRESS",
+  "objectives": [
+    "Verify pre-run hydrate hook injects relevant memory into agent runtime context",
+    "Verify post-run capture hook extracts new facts from agent outputs and writes them",
+    "Verify manual memory capture registers new knowledge logs successfully",
+    "Verify successful runs automatically capture playbooks when quality exceeds threshold",
+    "Verify repeated blockers and failure logs generate proposed agent config updates",
+    "Verify learning system proposes updates to agent skills and templates",
+    "Verify hook operations save detailed provenance logs to the audit trail",
+    "Verify memory hydrate hooks reject unauthorized cross-tenant read access",
+    "Verify memory capture hooks reject unauthorized cross-tenant write access",
+    "Ensure verifier regression chain rolls back to 5.1A"
+  ]
+}

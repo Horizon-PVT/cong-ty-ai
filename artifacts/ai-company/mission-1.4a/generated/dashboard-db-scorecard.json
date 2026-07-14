@@ -1,6 +1,6 @@
 {
   "milestone": "1.4A",
-  "generated_at": "2026-07-14T17:32:21.184Z",
+  "generated_at": "2026-07-14T17:43:09.952Z",
   "verdict": "DASHBOARD_DB_VERIFIED",
   "dashboard_db_checks": {
     "dashboard_spend_matches_live_events": true,

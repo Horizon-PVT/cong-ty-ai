@@ -71,7 +71,8 @@ export class MemoryService {
   }
 
   validateProvenance(companyId, provenance = {}) {
-    for (const field of this.policy.memory.provenance_required_fields) {
+    const required = this.policy.memory?.provenance_required_fields || ["company_id", "agent_id", "project_id", "issue_id", "run_id"];
+    for (const field of required) {
       const val = field === "company_id" ? companyId : provenance[field];
       if (!val) {
         return { valid: false, error: `Missing required provenance field "${field}"` };
@@ -86,7 +87,8 @@ export class MemoryService {
     const companyId = actor.companyId;
 
     // 1. Whitelist format check
-    if (!this.policy.memory.supported_formats.includes(format)) {
+    const supported = this.policy.memory?.supported_formats || ["markdown", "text", "json"];
+    if (!supported.includes(format)) {
       return { status: 400, error: `Unsupported memory format "${format}"` };
     }
 
@@ -137,7 +139,8 @@ export class MemoryService {
   readMemory(actor, filename, format, provenance = {}) {
     const companyId = actor.companyId;
 
-    if (!this.policy.memory.supported_formats.includes(format)) {
+    const supported = this.policy.memory?.supported_formats || ["markdown", "text", "json"];
+    if (!supported.includes(format)) {
       return { status: 400, error: `Unsupported memory format "${format}"` };
     }
 
@@ -159,7 +162,11 @@ export class MemoryService {
       return { status: 400, error: provCheck.error };
     }
 
-    const content = this._memories.get(resolvedPath) || "";
+    if (!this._memories.has(resolvedPath)) {
+      return { status: 404, error: "Memory file not found" };
+    }
+
+    const content = this._memories.get(resolvedPath);
 
     this._recordAudit({
       action: "memory_read",

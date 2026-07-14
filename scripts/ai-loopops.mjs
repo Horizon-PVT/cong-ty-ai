@@ -202,6 +202,12 @@ const MILESTONES = [
     verifier: "node packages/db/src/_verify-5.1a.mjs",
     scorecard: "artifacts/ai-company/mission-5.1a/generated",
   },
+  {
+    id: "5.1b", name: "Memory Hooks & Organizational Learning",
+    runner: "node scripts/ai-company-learning.mjs",
+    verifier: "node packages/db/src/_verify-5.1b.mjs",
+    scorecard: "artifacts/ai-company/mission-5.1b/generated",
+  },
 ];
 
 // ── Argument parsing ────────────────────────────────────────────────────
