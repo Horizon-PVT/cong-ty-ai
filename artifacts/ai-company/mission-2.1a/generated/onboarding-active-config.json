@@ -1,0 +1,60 @@
+{
+  "schema_version": "2.0",
+  "milestone": "2.1A",
+  "generated_at": "2026-07-14T16:52:06.812Z",
+  "policy": {
+    "milestone": "2.1A",
+    "default_mode": "dry_run",
+    "onboarding": {
+      "supported_org_types": [
+        "startup",
+        "agency",
+        "internal_team"
+      ],
+      "supported_autonomy_modes": [
+        "hands_on",
+        "hybrid",
+        "full_auto"
+      ],
+      "required_credentials": [
+        "OPENAI_API_KEY",
+        "ANTHROPIC_API_KEY"
+      ],
+      "default_templates": {
+        "startup": {
+          "company_name": "AI Innovation Startup",
+          "roles": [
+            "CEO",
+            "Founding_Engineer"
+          ],
+          "initial_task": "Draft MVP product specification"
+        },
+        "agency": {
+          "company_name": "AI Digital Agency",
+          "roles": [
+            "Account_Manager",
+            "Delivery_Agent"
+          ],
+          "initial_task": "Generate client project proposal"
+        }
+      }
+    },
+    "assertions": {
+      "onboarding_validation_rejects_invalid_inputs": true,
+      "onboarding_generates_correct_template_data": true,
+      "doctor_checks_detect_missing_credentials": true,
+      "doctor_checks_recommend_correct_runtime": true,
+      "doctor_checks_recommend_fallback_runtime": true,
+      "starter_org_creates_ceo_and_engineer": true,
+      "initial_task_successfully_queued": true,
+      "onboarding_prevented_in_live_without_token": true,
+      "onboarding_flow_completes_cleanly": true,
+      "regression_chain_integrity_verified": true
+    },
+    "allowed_modes": [
+      "dry_run",
+      "live"
+    ],
+    "required_live_token_prefix": "OWNER_APPROVED_ONBOARDING_TOKEN="
+  }
+}

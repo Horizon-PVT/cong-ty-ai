@@ -1,0 +1,82 @@
+{
+  "report_type": "ai_loopops_verification",
+  "generated_at": "2026-07-14T16:52:13.264Z",
+  "total_milestones": 8,
+  "passed": 8,
+  "failed": 0,
+  "total_time_seconds": 46.9,
+  "milestones": [
+    {
+      "id": "1.3A",
+      "name": "Company-Scoped Data Boundaries",
+      "runner": "PASS",
+      "verifier": "PASS",
+      "verdict": "BOUNDARIES_VERIFIED",
+      "overall": "PASS",
+      "time": "5.5s"
+    },
+    {
+      "id": "1.3B",
+      "name": "Rate Limiting & API Throttle Controls",
+      "runner": "PASS",
+      "verifier": "PASS",
+      "verdict": "RATE_LIMIT_VERIFIED",
+      "overall": "PASS",
+      "time": "5.2s"
+    },
+    {
+      "id": "1.3C",
+      "name": "Audit Trail & Event Logging Validation",
+      "runner": "PASS",
+      "verifier": "PASS",
+      "verdict": "AUDIT_TRAIL_VERIFIED",
+      "overall": "PASS",
+      "time": "5.5s"
+    },
+    {
+      "id": "1.3D",
+      "name": "Budget Enforcement & Real Cost Control",
+      "runner": "PASS",
+      "verifier": "PASS",
+      "verdict": "BUDGET_ENFORCEMENT_VERIFIED",
+      "overall": "PASS",
+      "time": "5.6s"
+    },
+    {
+      "id": "1.3E",
+      "name": "Task Conflict Safety & Agent API Permissions",
+      "runner": "PASS",
+      "verifier": "PASS",
+      "verdict": "TASK_CONFLICT_VERIFIED",
+      "overall": "PASS",
+      "time": "5.9s"
+    },
+    {
+      "id": "1.3F",
+      "name": "Board Approval & Rejection Flows",
+      "runner": "PASS",
+      "verifier": "PASS",
+      "verdict": "BOARD_APPROVAL_VERIFIED",
+      "overall": "PASS",
+      "time": "6.1s"
+    },
+    {
+      "id": "1.4A",
+      "name": "Live Dashboard Aggregations & DB Adaptability (PostgreSQL)",
+      "runner": "PASS",
+      "verifier": "PASS",
+      "verdict": "DASHBOARD_DB_VERIFIED",
+      "overall": "PASS",
+      "time": "6.5s"
+    },
+    {
+      "id": "2.1A",
+      "name": "Guided Onboarding & Starter Org Generation",
+      "runner": "PASS",
+      "verifier": "PASS",
+      "verdict": "ONBOARDING_VERIFIED",
+      "overall": "PASS",
+      "time": "6.5s"
+    }
+  ]
+}

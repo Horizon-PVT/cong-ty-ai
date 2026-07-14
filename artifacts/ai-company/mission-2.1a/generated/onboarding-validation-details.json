@@ -1,0 +1,19 @@
+{
+  "milestone": "2.1A",
+  "verdict": "ONBOARDING_VERIFIED",
+  "generated_at": "2026-07-14T16:52:06.812Z",
+  "passed_cases": 10,
+  "failed_cases": 0,
+  "test_coverage": {
+    "onboarding_validation_rejects_invalid_inputs": true,
+    "onboarding_generates_correct_template_data": true,
+    "doctor_checks_detect_missing_credentials": true,
+    "doctor_checks_recommend_correct_runtime": true,
+    "doctor_checks_recommend_fallback_runtime": true,
+    "starter_org_creates_ceo_and_engineer": true,
+    "initial_task_successfully_queued": true,
+    "onboarding_prevented_in_live_without_token": true,
+    "onboarding_flow_completes_cleanly": true,
+    "onboarding_scrubs_secrets_and_pii": true
+  }
+}

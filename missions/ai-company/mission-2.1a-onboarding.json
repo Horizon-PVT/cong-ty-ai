@@ -1,0 +1,17 @@
+{
+  "milestone": "2.1A",
+  "name": "Guided Onboarding & Starter Org Generation",
+  "status": "IN_PROGRESS",
+  "objectives": [
+    "Verify onboarding input validation rejects unsupported org types or autonomy modes",
+    "Verify onboarding correctly applies templates based on selected org type",
+    "Verify environment doctor check successfully detects missing or present credentials",
+    "Verify doctor recommends Claude runtime when ANTHROPIC_API_KEY is present",
+    "Verify doctor recommends fallback runtime when credentials are missing",
+    "Verify onboarding generates starter company, goal, and roles correctly",
+    "Verify initial task is generated and pushed to active queue",
+    "Verify onboarding in live mode is blocked without a valid OWNER_APPROVED_ONBOARDING_TOKEN prefix",
+    "Verify invalid runtime recommendation behaves gracefully",
+    "Ensure verifier regression chain rolls back to 1.4A and propagates failures correctly"
+  ]
+}

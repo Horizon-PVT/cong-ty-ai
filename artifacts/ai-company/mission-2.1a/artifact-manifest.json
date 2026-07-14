@@ -1,0 +1,13 @@
+{
+  "milestone": "2.1A",
+  "generated_at": "2026-07-14T16:52:06.812Z",
+  "artifacts": [
+    "onboarding-active-config.json",
+    "onboarding-events.json",
+    "onboarding-validation-details.json",
+    "onboarding-scorecard.json",
+    "qa-acceptance-report.md",
+    "artifact-manifest.json",
+    "final-package-index.md"
+  ]
+}

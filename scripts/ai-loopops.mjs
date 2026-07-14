@@ -160,6 +160,12 @@ const MILESTONES = [
     verifier: "node packages/db/src/_verify-1.4a.mjs",
     scorecard: "artifacts/ai-company/mission-1.4a/generated",
   },
+  {
+    id: "2.1a", name: "Guided Onboarding & Starter Org Generation",
+    runner: "node scripts/ai-company-onboarding.mjs",
+    verifier: "node packages/db/src/_verify-2.1a.mjs",
+    scorecard: "artifacts/ai-company/mission-2.1a/generated",
+  },
 ];
 
 // ── Argument parsing ────────────────────────────────────────────────────

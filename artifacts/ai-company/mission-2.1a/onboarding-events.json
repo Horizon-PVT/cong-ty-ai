@@ -1,0 +1,145 @@
+{
+  "milestone": "2.1A",
+  "generated_at": "2026-07-14T16:52:06.812Z",
+  "total_tests": 10,
+  "passed": 10,
+  "failed": 0,
+  "events": [
+    {
+      "test_case": "onboarding_validation_rejects_invalid_inputs",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:52:06.813Z",
+      "res1": {
+        "valid": false,
+        "error": "Invalid org type \"enterprise\". Supported: startup, agency, internal_team"
+      },
+      "res2": {
+        "valid": false,
+        "error": "Invalid autonomy mode \"manual\". Supported: hands_on, hybrid, full_auto"
+      },
+      "reason": "unsupported orgType and autonomyMode successfully rejected"
+    },
+    {
+      "test_case": "onboarding_generates_correct_template_data",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:52:06.814Z",
+      "taskTitle": "Draft MVP product specification",
+      "reason": "applied startup template successfully"
+    },
+    {
+      "test_case": "doctor_checks_detect_missing_credentials",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:52:06.814Z",
+      "doctor": {
+        "credentialsCheck": {
+          "ANTHROPIC_API_KEY": "MISSING_OR_INVALID",
+          "OPENAI_API_KEY": "MISSING_OR_INVALID"
+        },
+        "recommendedRuntime": {
+          "primary": "Codex",
+          "fallback": "Codex"
+        }
+      },
+      "reason": "missing keys successfully detected by doctor check"
+    },
+    {
+      "test_case": "doctor_checks_recommend_correct_runtime",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:52:06.814Z",
+      "recommended": "Claude",
+      "reason": "recommended Claude runtime because ANTHROPIC_API_KEY is present"
+    },
+    {
+      "test_case": "doctor_checks_recommend_fallback_runtime",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:52:06.814Z",
+      "recommended": "Codex",
+      "reason": "fallback to Codex when credentials are missing"
+    },
+    {
+      "test_case": "starter_org_creates_ceo_and_engineer",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:52:06.815Z",
+      "agents": [
+        {
+          "id": "agent_ceo_3ytb",
+          "companyId": "comp_1784047926815_jpph",
+          "role": "CEO",
+          "status": "idle"
+        },
+        {
+          "id": "agent_founding_engineer_98pl",
+          "companyId": "comp_1784047926815_jpph",
+          "role": "Founding_Engineer",
+          "status": "idle"
+        }
+      ],
+      "reason": "CEO and Founding_Engineer agents successfully created for startup template"
+    },
+    {
+      "test_case": "initial_task_successfully_queued",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:52:06.815Z",
+      "queueLength": 1,
+      "taskStatus": "open",
+      "reason": "initial task created in open status and pushed to active queue"
+    },
+    {
+      "test_case": "onboarding_prevented_in_live_without_token",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:52:06.815Z",
+      "blockCheck": true,
+      "reason": "onboarding is blocked in live mode without owner approval token"
+    },
+    {
+      "test_case": "onboarding_flow_completes_cleanly",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:52:06.815Z",
+      "out": {
+        "company": {
+          "id": "comp_1784047926815_4omd",
+          "name": "StartupCo",
+          "owner": "Boss",
+          "orgType": "startup",
+          "autonomyMode": "full_auto",
+          "runtime": "Claude"
+        },
+        "goal": {
+          "id": "goal_1784047926815",
+          "companyId": "comp_1784047926815_4omd",
+          "description": "Establish successful startup operations"
+        },
+        "agents": [
+          {
+            "id": "agent_ceo_z8do",
+            "companyId": "comp_1784047926815_4omd",
+            "role": "CEO",
+            "status": "idle"
+          },
+          {
+            "id": "agent_founding_engineer_2owq",
+            "companyId": "comp_1784047926815_4omd",
+            "role": "Founding_Engineer",
+            "status": "idle"
+          }
+        ],
+        "task": {
+          "id": "task_1784047926815",
+          "companyId": "comp_1784047926815_4omd",
+          "title": "Draft MVP product specification",
+          "status": "open",
+          "assigneeAgentId": "agent_ceo_z8do"
+        },
+        "queueLength": 1
+      },
+      "reason": "entire onboarding flow aggregates all components cleanly"
+    },
+    {
+      "test_case": "onboarding_scrubs_secrets_and_pii",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:52:06.815Z",
+      "clean": "Welcome [REDACTED_EMAIL] with key [REDACTED_API_KEY]",
+      "reason": "onboarding inputs securely stripped of secrets and email PII"
+    }
+  ]
+}
