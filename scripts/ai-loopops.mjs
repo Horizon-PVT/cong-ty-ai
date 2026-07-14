@@ -136,6 +136,12 @@ const MILESTONES = [
     verifier: "node packages/db/src/_verify-1.3c.mjs",
     scorecard: "artifacts/ai-company/mission-1.3c/generated",
   },
+  {
+    id: "1.3d", name: "Budget Enforcement & Real Cost Control",
+    runner: "node scripts/ai-company-budget-enforcement.mjs",
+    verifier: "node packages/db/src/_verify-1.3d.mjs",
+    scorecard: "artifacts/ai-company/mission-1.3d/generated",
+  },
 ];
 
 // ── Argument parsing ────────────────────────────────────────────────────

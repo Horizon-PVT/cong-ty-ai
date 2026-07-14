@@ -1,0 +1,17 @@
+{
+  "milestone": "1.3D",
+  "name": "Budget Enforcement & Real Cost Control Validation",
+  "status": "IN_PROGRESS",
+  "objectives": [
+    "Validate budget hard-stop pauses agents/projects/companies correctly when spend exceeds limit",
+    "Validate getInvocationBlock() preflight check blocks agent execution at all entry points",
+    "Validate soft warning triggers at configurable threshold (default 80%)",
+    "Validate budget incidents create proper approval records with correct approval type",
+    "Validate raise_budget_and_resume resolution action correctly restores paused scopes",
+    "Validate dismiss resolution action keeps scope paused without clearing incident",
+    "Validate subscription-included usage does not trigger money-budget enforcement",
+    "Validate incident deduplication within the same budget window",
+    "Validate multi-scope hierarchy enforcement (company → agent → project)",
+    "Validate cost event → budget evaluation → incident → pause cascade works end-to-end"
+  ]
+}

@@ -1,0 +1,109 @@
+{
+  "milestone": "1.3D",
+  "generated_at": "2026-07-14T16:10:55.799Z",
+  "total_tests": 10,
+  "passed": 10,
+  "failed": 0,
+  "events": [
+    {
+      "test_case": "hard_stop_pauses_agent",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:10:55.801Z",
+      "spend": 10500,
+      "limit": 10000,
+      "percent": 105,
+      "is_paused": true,
+      "reason": "agent paused when spend exceeded budget"
+    },
+    {
+      "test_case": "invocation_block_all_checkpoints",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:10:55.801Z",
+      "checkpoints_tested": 4,
+      "all_blocked": true,
+      "blocked_by": "company::comp_a",
+      "reason": "all 4 invocation checkpoints blocked"
+    },
+    {
+      "test_case": "soft_warning_at_threshold",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:10:55.801Z",
+      "percent_used": 85,
+      "warning_triggered": true,
+      "still_running": true,
+      "reason": "soft warning triggered at 85%, agent still running"
+    },
+    {
+      "test_case": "incident_creates_approval",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:10:55.802Z",
+      "incident_id": "bi_1784045455802_pl0d75",
+      "incident_status": "open",
+      "approval_type": "budget_override_required",
+      "approval_status": "pending",
+      "available_actions": [
+        "raise_budget_and_resume",
+        "dismiss"
+      ],
+      "reason": "incident created with pending approval"
+    },
+    {
+      "test_case": "raise_and_resume_restores",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:10:55.802Z",
+      "paused_before": true,
+      "blocked_before": true,
+      "paused_after": false,
+      "can_invoke_after": true,
+      "new_limit": 20000,
+      "reason": "budget raised to $200, scope resumed, invocations unblocked"
+    },
+    {
+      "test_case": "dismiss_keeps_paused",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:10:55.802Z",
+      "resumed": false,
+      "still_paused": true,
+      "still_blocked": true,
+      "reason": "incident dismissed — scope remains paused"
+    },
+    {
+      "test_case": "subscription_included_exempt",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:10:55.803Z",
+      "exempt": true,
+      "spend_after": 0,
+      "not_paused": true,
+      "reason": "subscription-included usage exempt from money budget"
+    },
+    {
+      "test_case": "incident_deduplication",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:10:55.803Z",
+      "total_incidents": 1,
+      "second_deduplicated": true,
+      "reason": "second cost event reused existing open incident"
+    },
+    {
+      "test_case": "multi_scope_hierarchy",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:10:55.803Z",
+      "blocked": true,
+      "blocked_by": "company::comp_hierarchy",
+      "agent_own_budget_ok": true,
+      "reason": "company budget blocks agent invocation even though agent budget is OK"
+    },
+    {
+      "test_case": "full_cost_cascade",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:10:55.803Z",
+      "step1_status": "ok",
+      "step2_status": "warning",
+      "step3_status": "hard_stop",
+      "final_spend": 10500,
+      "final_paused": true,
+      "incident_created": true,
+      "reason": "ok → warning → hard_stop cascade correct"
+    }
+  ]
+}

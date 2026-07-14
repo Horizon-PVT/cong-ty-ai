@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.3",
+  "milestone": "1.3D",
+  "generated_at": "2026-07-14T16:10:55.799Z",
+  "budget_policy": {
+    "milestone": "1.3D",
+    "default_mode": "dry_run",
+    "budget_enforcement": {
+      "scope_types": [
+        "company",
+        "agent",
+        "project"
+      ],
+      "thresholds": {
+        "soft_warn_percent": 80,
+        "hard_stop_percent": 100
+      },
+      "hard_stop_behavior": {
+        "pause_scope": true,
+        "block_new_invocations": true,
+        "cancel_active_work": true,
+        "create_incident": true,
+        "require_approval": true
+      },
+      "resolution_actions": [
+        "raise_budget_and_resume",
+        "dismiss"
+      ],
+      "subscription_included_exempt": true
+    },
+    "invocation_block_checkpoints": [
+      "heartbeat_dispatch",
+      "manual_invoke",
+      "queued_run_promotion",
+      "assignment_wakeup"
+    ],
+    "cost_cascade": {
+      "cost_event_triggers_evaluation": true,
+      "evaluation_checks_all_scopes": true,
+      "incident_deduplication_per_window": true,
+      "pause_cascades_to_children": true
+    },
+    "assertions": {
+      "hard_stop_pauses_agent": true,
+      "hard_stop_blocks_invocation": true,
+      "soft_warn_triggers_warning": true,
+      "approval_required_on_hard_stop": true,
+      "raise_and_resume_restores_execution": true,
+      "dismiss_keeps_paused": true,
+      "subscription_included_exempt_from_money_budget": true,
+      "incident_deduplicates_within_window": true,
+      "preflight_block_returns_reason": true,
+      "multi_scope_hierarchy_enforced": true
+    },
+    "allowed_modes": [
+      "dry_run",
+      "live"
+    ],
+    "required_live_token_prefix": "OWNER_APPROVED_BUDGET_ENFORCEMENT_TOKEN="
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "milestone": "1.3D",
+  "generated_at": "2026-07-14T16:10:55.799Z",
+  "artifacts": [
+    "budget-active-config.json",
+    "budget-enforcement-events.json",
+    "budget-validation-details.json",
+    "budget-enforcement-scorecard.json",
+    "qa-acceptance-report.md",
+    "artifact-manifest.json",
+    "final-package-index.md"
+  ]
+}

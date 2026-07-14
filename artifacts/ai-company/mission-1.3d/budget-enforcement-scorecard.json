@@ -1,0 +1,17 @@
+{
+  "milestone": "1.3D",
+  "generated_at": "2026-07-14T16:10:55.799Z",
+  "verdict": "BUDGET_ENFORCEMENT_VERIFIED",
+  "budget_checks": {
+    "hard_stop_pauses_agent": true,
+    "invocation_block_all_checkpoints": true,
+    "soft_warning_at_threshold": true,
+    "incident_creates_approval": true,
+    "raise_and_resume_restores": true,
+    "dismiss_keeps_paused": true,
+    "subscription_included_exempt": true,
+    "incident_deduplication": true,
+    "multi_scope_hierarchy": true,
+    "full_cost_cascade": true
+  }
+}
