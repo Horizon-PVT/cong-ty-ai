@@ -101,7 +101,11 @@
     "ai-company:1.3a:auto-loop": "node scripts/ai-company-boundaries-validation-auto-loop.mjs",
     "ai-company:1.3b": "node scripts/ai-company-rate-limit-throttle.mjs",
     "ai-company:1.3b:verify": "node packages/db/src/_verify-1.3b.mjs",
-    "ai-company:1.3b:auto-loop": "node scripts/ai-company-rate-limit-throttle-auto-loop.mjs"
+    "ai-company:1.3b:auto-loop": "node scripts/ai-company-rate-limit-throttle-auto-loop.mjs",
+    "ai-loopops": "node scripts/ai-loopops.mjs",
+    "ai-loopops:verify": "node scripts/ai-loopops.mjs --verify-only",
+    "ai-loopops:report": "node scripts/ai-loopops.mjs --report",
+    "ai-loopops:verbose": "node scripts/ai-loopops.mjs --verbose --report"
   },
   "devDependencies": {
     "@playwright/test": "^1.58.2",
