@@ -1,9 +1,24 @@
 {
   "app": {
     "noCompanies": {
-      "title": "Tạo công ty đầu tiên của bạn",
-      "description": "Bắt đầu bằng cách tạo một công ty.",
+      "title": "Khởi tạo công ty đầu tiên",
+      "description": "Bắt đầu bằng việc khởi tạo một công ty mới.",
       "newCompany": "Công ty mới"
     }
+  },
+  "nav": {
+    "newIssue": "Tạo nhiệm vụ",
+    "dashboard": "Bảng tin",
+    "inbox": "Hộp thư",
+    "work": "Công việc",
+    "issues": "Nhiệm vụ",
+    "routines": "Quy trình",
+    "goals": "Mục tiêu",
+    "company": "Doanh nghiệp",
+    "org": "Cơ cấu tổ chức",
+    "skills": "Kỹ năng",
+    "costs": "Chi phí",
+    "activity": "Hoạt động",
+    "settings": "Cài đặt"
   }
 }

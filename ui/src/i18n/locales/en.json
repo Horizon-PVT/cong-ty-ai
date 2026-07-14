@@ -5,5 +5,20 @@
       "description": "Get started by creating a company.",
       "newCompany": "New Company"
     }
+  },
+  "nav": {
+    "newIssue": "New Issue",
+    "dashboard": "Dashboard",
+    "inbox": "Inbox",
+    "work": "Work",
+    "issues": "Issues",
+    "routines": "Routines",
+    "goals": "Goals",
+    "company": "Company",
+    "org": "Organization",
+    "skills": "Skills",
+    "costs": "Costs",
+    "activity": "Activity",
+    "settings": "Settings"
   }
 }

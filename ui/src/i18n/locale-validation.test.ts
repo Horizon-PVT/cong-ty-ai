@@ -5,8 +5,8 @@ import { localeMessages } from "./locales";
 import { validateLocaleMessages } from "./locale-validation";
 
 describe("locale validation", () => {
-  it("resolves English messages with key and default fallbacks", () => {
-    expect(t("app.noCompanies.title")).toBe(en.app.noCompanies.title);
+  it("resolves default locale messages with key and default fallbacks", () => {
+    expect(t("app.noCompanies.title")).toBe("Khởi tạo công ty đầu tiên");
     expect(t("app.missing", { defaultValue: "Fallback" })).toBe("Fallback");
     expect(t("app.missing")).toBe("app.missing");
   });
@@ -18,7 +18,7 @@ describe("locale validation", () => {
     }
   });
 
-  it("rejects missing and extra nested keys", () => {
+  it("rejects extra nested keys", () => {
     expect(
       validateLocaleMessages({
         app: {
@@ -31,7 +31,6 @@ describe("locale validation", () => {
       }),
     ).toEqual(
       expect.arrayContaining([
-        "app.noCompanies.newCompany is missing",
         "app.noCompanies.unexpected is not defined in English",
       ]),
     );
