@@ -1,6 +1,6 @@
 {
   "milestone": "6.1A",
-  "generated_at": "2026-07-14T18:01:47.783Z",
+  "generated_at": "2026-07-14T18:07:30.043Z",
   "total_tests": 10,
   "passed": 10,
   "failed": 0,
@@ -8,7 +8,7 @@
     {
       "test_case": "local_trusted_mode_allows_no_auth",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T18:01:47.785Z",
+      "timestamp": "2026-07-14T18:07:30.044Z",
       "res": {
         "status": 200,
         "user": {
@@ -22,7 +22,7 @@
     {
       "test_case": "private_mode_enforces_authentication",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T18:01:47.785Z",
+      "timestamp": "2026-07-14T18:07:30.044Z",
       "resEmpty": {
         "status": 401,
         "error": "Authentication required: Missing session token"
@@ -36,7 +36,7 @@
     {
       "test_case": "non_member_access_is_blocked",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T18:01:47.785Z",
+      "timestamp": "2026-07-14T18:07:30.045Z",
       "authRes": {
         "status": 200,
         "user": {
@@ -50,10 +50,10 @@
     {
       "test_case": "invite_flow_issues_membership",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T18:01:47.786Z",
+      "timestamp": "2026-07-14T18:07:30.045Z",
       "inviteRes": {
         "status": 200,
-        "inviteToken": "invite_bjazcav3"
+        "inviteToken": "invite_hhohfvxl"
       },
       "acceptRes": {
         "status": 200,
@@ -79,7 +79,7 @@
     {
       "test_case": "command_attribution_logged_successfully",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T18:01:47.786Z",
+      "timestamp": "2026-07-14T18:07:30.046Z",
       "audit": {
         "action": "[REDACTED_INVITE_TOKEN]",
         "actor": "user_owner",
@@ -87,14 +87,14 @@
         "email": "another@example.com",
         "role": "Operator",
         "inviteToken": "[REDACTED_INVITE_TOKEN]",
-        "timestamp": "2026-07-14T18:01:47.786Z"
+        "timestamp": "2026-07-14T18:07:30.046Z"
       },
       "reason": "audit logs captured complete attribution details of the executing user"
     },
     {
       "test_case": "owner_only_actions_restricted",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T18:01:47.787Z",
+      "timestamp": "2026-07-14T18:07:30.046Z",
       "resOwner": {
         "status": 200,
         "allowed": true
@@ -108,7 +108,7 @@
     {
       "test_case": "board_only_actions_restricted",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T18:01:47.787Z",
+      "timestamp": "2026-07-14T18:07:30.046Z",
       "resBoard": {
         "status": 200,
         "allowed": true
@@ -126,7 +126,7 @@
     {
       "test_case": "teamwork_enforces_company_isolation",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T18:01:47.787Z",
+      "timestamp": "2026-07-14T18:07:30.046Z",
       "rosterRes": {
         "status": 200,
         "members": [
@@ -142,7 +142,7 @@
     {
       "test_case": "session_expiration_blocks_actions",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T18:01:47.787Z",
+      "timestamp": "2026-07-14T18:07:30.046Z",
       "validRes": {
         "status": 200,
         "user": {
@@ -160,7 +160,7 @@
     {
       "test_case": "regression_chain_integrity_verified",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T18:01:47.787Z",
+      "timestamp": "2026-07-14T18:07:30.046Z",
       "cleanKey": true,
       "cleanEmail": true,
       "reason": "PII emails and secrets successfully redacted in attribution logs and live token gate blocks runs"

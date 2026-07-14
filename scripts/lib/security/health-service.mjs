@@ -69,6 +69,9 @@ export class HealthService {
       return { status: 403, error: "Access denied: Only Owner can modify settings" };
     }
     const modes = this.policy.health.allowed_deployment_modes || ["local_trusted", "authenticated_private", "authenticated_public"];
+    if (!modes.includes(newMode)) {
+      return { status: 400, error: `Invalid deployment mode: ${newMode}` };
+    }
     this.deploymentMode = newMode;
 
     this._recordAudit({

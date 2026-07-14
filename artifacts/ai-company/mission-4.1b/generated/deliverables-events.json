@@ -1,6 +1,6 @@
 {
   "milestone": "4.1B",
-  "generated_at": "2026-07-14T18:01:23.750Z",
+  "generated_at": "2026-07-14T18:07:06.134Z",
   "total_tests": 10,
   "passed": 10,
   "failed": 0,
@@ -8,7 +8,7 @@
     {
       "test_case": "auto_mode_initializes_and_runs",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T18:01:23.751Z",
+      "timestamp": "2026-07-14T18:07:06.136Z",
       "res": {
         "status": 200,
         "state": "running"
@@ -18,7 +18,7 @@
     {
       "test_case": "auto_mode_pauses_on_waiting_input",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T18:01:23.752Z",
+      "timestamp": "2026-07-14T18:07:06.136Z",
       "res": {
         "status": 200,
         "state": "waiting_input"
@@ -28,7 +28,7 @@
     {
       "test_case": "auto_mode_pauses_on_waiting_approval",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T18:01:23.752Z",
+      "timestamp": "2026-07-14T18:07:06.136Z",
       "res": {
         "status": 200,
         "state": "waiting_approval"
@@ -38,7 +38,7 @@
     {
       "test_case": "board_interrupt_pauses_execution",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T18:01:23.752Z",
+      "timestamp": "2026-07-14T18:07:06.136Z",
       "res": {
         "status": 200,
         "state": "paused"
@@ -48,7 +48,7 @@
     {
       "test_case": "board_resume_restores_session",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T18:01:23.752Z",
+      "timestamp": "2026-07-14T18:07:06.136Z",
       "res": {
         "status": 200,
         "state": "running"
@@ -58,7 +58,7 @@
     {
       "test_case": "board_cancel_stops_and_cleans_session",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T18:01:23.752Z",
+      "timestamp": "2026-07-14T18:07:06.136Z",
       "res": {
         "status": 200,
         "state": "cancelled"
@@ -68,7 +68,7 @@
     {
       "test_case": "remote_sandbox_executes_allowed_capabilities",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T18:01:23.753Z",
+      "timestamp": "2026-07-14T18:07:06.137Z",
       "wRes": {
         "status": 200,
         "message": "File written successfully"
@@ -87,7 +87,7 @@
     {
       "test_case": "unauthorized_sandbox_capabilities_are_blocked",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T18:01:23.753Z",
+      "timestamp": "2026-07-14T18:07:06.137Z",
       "rTraverse": {
         "status": 400,
         "error": "Security Error: Sandbox directory traversal detected"
@@ -105,7 +105,7 @@
     {
       "test_case": "budget_exhaustion_stops_auto_run_cleanly",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T18:01:23.753Z",
+      "timestamp": "2026-07-14T18:07:06.138Z",
       "stepRes": {
         "status": 200,
         "state": "running",
@@ -120,7 +120,7 @@
     {
       "test_case": "regression_chain_integrity_verified",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T18:01:23.753Z",
+      "timestamp": "2026-07-14T18:07:06.138Z",
       "piiScrubbed": true,
       "reason": "PII emails and secrets successfully redacted in sandbox stdout/stderr and live token gates"
     }

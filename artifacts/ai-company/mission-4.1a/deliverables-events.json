@@ -1,6 +1,6 @@
 {
   "milestone": "4.1A",
-  "generated_at": "2026-07-14T18:01:16.201Z",
+  "generated_at": "2026-07-14T18:06:58.533Z",
   "total_tests": 10,
   "passed": 10,
   "failed": 0,
@@ -8,7 +8,7 @@
     {
       "test_case": "wake_blocked_when_idle_without_inputs",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T18:01:16.202Z",
+      "timestamp": "2026-07-14T18:06:58.535Z",
       "res": {
         "allowed": false,
         "error": "Wake blocked: Agent is idle with no trigger inputs"
@@ -18,7 +18,7 @@
     {
       "test_case": "wake_allowed_on_new_assignment",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T18:01:16.202Z",
+      "timestamp": "2026-07-14T18:06:58.535Z",
       "res": {
         "allowed": true
       },
@@ -27,7 +27,7 @@
     {
       "test_case": "wake_allowed_on_new_comment_or_mention",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T18:01:16.202Z",
+      "timestamp": "2026-07-14T18:06:58.535Z",
       "res1": {
         "allowed": true
       },
@@ -39,7 +39,7 @@
     {
       "test_case": "breaker_tripped_on_consecutive_failures",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T18:01:16.203Z",
+      "timestamp": "2026-07-14T18:06:58.536Z",
       "res": {
         "tripped": true,
         "reason": "Tripped due to 3 consecutive failures"
@@ -49,7 +49,7 @@
     {
       "test_case": "breaker_tripped_on_no_progress_runs",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T18:01:16.203Z",
+      "timestamp": "2026-07-14T18:06:58.536Z",
       "res": {
         "tripped": true,
         "reason": "Tripped due to 3 consecutive no-progress runs"
@@ -59,7 +59,7 @@
     {
       "test_case": "breaker_tripped_on_token_velocity_spike",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T18:01:16.203Z",
+      "timestamp": "2026-07-14T18:06:58.536Z",
       "res": {
         "tripped": true,
         "totalTokens": 120000
@@ -69,7 +69,7 @@
     {
       "test_case": "budget_80_percent_warning_triggered",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T18:01:16.203Z",
+      "timestamp": "2026-07-14T18:06:58.537Z",
       "res": {
         "status": "warning",
         "consumedPct": 85,
@@ -80,14 +80,14 @@
     {
       "test_case": "budget_100_percent_hard_stop_blocks_invocation",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T18:01:16.203Z",
+      "timestamp": "2026-07-14T18:06:58.537Z",
       "blocked": true,
       "reason": "exhausted budget blocked agent invocation with hard stop"
     },
     {
       "test_case": "breaker_reset_allows_invocation",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T18:01:16.203Z",
+      "timestamp": "2026-07-14T18:06:58.537Z",
       "resetRes": {
         "status": 200,
         "message": "Circuit breaker reset successfully"
@@ -100,7 +100,7 @@
     {
       "test_case": "regression_chain_integrity_verified",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T18:01:16.204Z",
+      "timestamp": "2026-07-14T18:06:58.537Z",
       "piiScrubbed": true,
       "reason": "PII email and secret keys scrubbed successfully in logs and live token gate blocks runs"
     }

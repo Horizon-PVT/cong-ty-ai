@@ -1,0 +1,163 @@
+{
+  "report_type": "ai_loopops_verification",
+  "generated_at": "2026-07-14T18:07:47.327Z",
+  "total_milestones": 17,
+  "passed": 17,
+  "failed": 0,
+  "total_time_seconds": 118.2,
+  "milestones": [
+    {
+      "id": "1.3A",
+      "name": "Company-Scoped Data Boundaries",
+      "runner": "PASS",
+      "verifier": "PASS",
+      "verdict": "BOUNDARIES_VERIFIED",
+      "overall": "PASS",
+      "time": "5.7s"
+    },
+    {
+      "id": "1.3B",
+      "name": "Rate Limiting & API Throttle Controls",
+      "runner": "PASS",
+      "verifier": "PASS",
+      "verdict": "RATE_LIMIT_VERIFIED",
+      "overall": "PASS",
+      "time": "5.5s"
+    },
+    {
+      "id": "1.3C",
+      "name": "Audit Trail & Event Logging Validation",
+      "runner": "PASS",
+      "verifier": "PASS",
+      "verdict": "AUDIT_TRAIL_VERIFIED",
+      "overall": "PASS",
+      "time": "5.8s"
+    },
+    {
+      "id": "1.3D",
+      "name": "Budget Enforcement & Real Cost Control",
+      "runner": "PASS",
+      "verifier": "PASS",
+      "verdict": "BUDGET_ENFORCEMENT_VERIFIED",
+      "overall": "PASS",
+      "time": "5.9s"
+    },
+    {
+      "id": "1.3E",
+      "name": "Task Conflict Safety & Agent API Permissions",
+      "runner": "PASS",
+      "verifier": "PASS",
+      "verdict": "TASK_CONFLICT_VERIFIED",
+      "overall": "PASS",
+      "time": "6.0s"
+    },
+    {
+      "id": "1.3F",
+      "name": "Board Approval & Rejection Flows",
+      "runner": "PASS",
+      "verifier": "PASS",
+      "verdict": "BOARD_APPROVAL_VERIFIED",
+      "overall": "PASS",
+      "time": "6.3s"
+    },
+    {
+      "id": "1.4A",
+      "name": "Live Dashboard Aggregations & DB Adaptability (PostgreSQL)",
+      "runner": "PASS",
+      "verifier": "PASS",
+      "verdict": "DASHBOARD_DB_VERIFIED",
+      "overall": "PASS",
+      "time": "6.5s"
+    },
+    {
+      "id": "2.1A",
+      "name": "Guided Onboarding & Starter Org Generation",
+      "runner": "PASS",
+      "verifier": "PASS",
+      "verdict": "ONBOARDING_VERIFIED",
+      "overall": "PASS",
+      "time": "6.7s"
+    },
+    {
+      "id": "2.1B",
+      "name": "Onboarding CLI (paperclipai run) & Doctor Repair",
+      "runner": "PASS",
+      "verifier": "PASS",
+      "verdict": "CLI_RUN_VERIFIED",
+      "overall": "PASS",
+      "time": "6.9s"
+    },
+    {
+      "id": "3.1A",
+      "name": "Work Product Schema, API & Issue Deliverables Panel",
+      "runner": "PASS",
+      "verifier": "PASS",
+      "verdict": "DELIVERABLES_VERIFIED",
+      "overall": "PASS",
+      "time": "6.9s"
+    },
+    {
+      "id": "3.1B",
+      "name": "Enforced Outcomes & Planning Lifecycle",
+      "runner": "PASS",
+      "verifier": "PASS",
+      "verdict": "OUTCOMES_VERIFIED",
+      "overall": "PASS",
+      "time": "7.3s"
+    },
+    {
+      "id": "4.1A",
+      "name": "Deterministic Wake Gating & Circuit Breakers",
+      "runner": "PASS",
+      "verifier": "PASS",
+      "verdict": "SAFETY_VERIFIED",
+      "overall": "PASS",
+      "time": "7.6s"
+    },
+    {
+      "id": "4.1B",
+      "name": "Auto Mode Semantics & Cloud Sandbox Runtime",
+      "runner": "PASS",
+      "verifier": "PASS",
+      "verdict": "AUTO_RUNTIME_VERIFIED",
+      "overall": "PASS",
+      "time": "7.7s"
+    },
+    {
+      "id": "5.1A",
+      "name": "Company Memory Bindings & Local Markdown Provider",
+      "runner": "PASS",
+      "verifier": "PASS",
+      "verdict": "MEMORY_VERIFIED",
+      "overall": "PASS",
+      "time": "8.0s"
+    },
+    {
+      "id": "5.1B",
+      "name": "Memory Hooks & Organizational Learning",
+      "runner": "PASS",
+      "verifier": "PASS",
+      "verdict": "LEARNING_VERIFIED",
+      "overall": "PASS",
+      "time": "8.2s"
+    },
+    {
+      "id": "6.1A",
+      "name": "Team Invite, Membership & Deployment Auth",
+      "runner": "PASS",
+      "verifier": "PASS",
+      "verdict": "TEAMWORK_VERIFIED",
+      "overall": "PASS",
+      "time": "8.7s"
+    },
+    {
+      "id": "6.1B",
+      "name": "Health Diagnostics, Settings & Backup/Restore",
+      "runner": "PASS",
+      "verifier": "PASS",
+      "verdict": "HEALTH_VERIFIED",
+      "overall": "PASS",
+      "time": "8.7s"
+    }
+  ]
+}
