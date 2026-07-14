@@ -98,7 +98,10 @@
     "ai-company:1.2f:auto-loop": "node scripts/ai-company-remote-sandbox-cleanup-auto-loop.mjs",
     "ai-company:1.3a": "node cli/node_modules/tsx/dist/cli.mjs scripts/ai-company-boundaries-validation.mjs",
     "ai-company:1.3a:verify": "node packages/db/src/_verify-1.3a.mjs",
-    "ai-company:1.3a:auto-loop": "node scripts/ai-company-boundaries-validation-auto-loop.mjs"
+    "ai-company:1.3a:auto-loop": "node scripts/ai-company-boundaries-validation-auto-loop.mjs",
+    "ai-company:1.3b": "node scripts/ai-company-rate-limit-throttle.mjs",
+    "ai-company:1.3b:verify": "node packages/db/src/_verify-1.3b.mjs",
+    "ai-company:1.3b:auto-loop": "node scripts/ai-company-rate-limit-throttle-auto-loop.mjs"
   },
   "devDependencies": {
     "@playwright/test": "^1.58.2",

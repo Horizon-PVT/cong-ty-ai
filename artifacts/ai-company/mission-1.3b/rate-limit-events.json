@@ -1,0 +1,102 @@
+{
+  "milestone": "1.3B",
+  "generated_at": "2026-07-14T15:45:38.803Z",
+  "total_tests": 10,
+  "passed": 10,
+  "failed": 0,
+  "events": [
+    {
+      "test_case": "agent_within_limit",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T15:45:38.805Z",
+      "expected_status": 200,
+      "actual_status": 200,
+      "reason": "allowed"
+    },
+    {
+      "test_case": "agent_over_rate_limit",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T15:45:38.805Z",
+      "expected_status": 429,
+      "actual_status": 429,
+      "reason": "burst_exceeded",
+      "requests_sent": 61
+    },
+    {
+      "test_case": "company_over_rate_limit",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T15:45:38.806Z",
+      "expected_status": 429,
+      "actual_status": 429,
+      "reason": "burst_exceeded",
+      "requests_sent": 301
+    },
+    {
+      "test_case": "global_over_rate_limit",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T15:45:38.807Z",
+      "expected_status": 429,
+      "actual_status": 429,
+      "reason": "burst_exceeded",
+      "requests_sent": 1001
+    },
+    {
+      "test_case": "throttled_retry_after_header",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T15:45:38.807Z",
+      "expected_status": 429,
+      "actual_status": 429,
+      "retry_after_seconds": 30,
+      "has_retry_after": true,
+      "reason": "throttled"
+    },
+    {
+      "test_case": "soft_limit_warning_at_80pct",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T15:45:38.807Z",
+      "expected_status": 200,
+      "actual_status": 200,
+      "warning_triggered": true,
+      "warning_message": "[SOFT LIMIT WARNING] agent_soft at 80.0% of per_agent limit (48/60 req/min)",
+      "current_ratio": 0.8,
+      "reason": "soft limit warning triggered correctly"
+    },
+    {
+      "test_case": "penalty_escalation_2x_cooldown",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T15:45:38.807Z",
+      "first_cooldown_seconds": 30,
+      "second_cooldown_seconds": 120,
+      "escalation_factor": 4,
+      "expected_multiplier": 2,
+      "reason": "cooldown escalated 30s → 120s"
+    },
+    {
+      "test_case": "auto_unblock_after_cooldown",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T15:45:38.808Z",
+      "was_throttled": true,
+      "auto_unblocked": true,
+      "post_unblock_status": 200,
+      "reason": "auto-unblock after cooldown expiry"
+    },
+    {
+      "test_case": "local_implicit_admin_bypass",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T15:45:38.808Z",
+      "expected_status": 200,
+      "actual_status": 200,
+      "reason": "exempt",
+      "requests_over_limit": true
+    },
+    {
+      "test_case": "instance_admin_bypass",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T15:45:38.809Z",
+      "expected_status": 200,
+      "actual_status": 200,
+      "reason": "exempt",
+      "requests_over_limit": true
+    }
+  ]
+}

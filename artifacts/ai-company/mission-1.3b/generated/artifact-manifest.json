@@ -1,0 +1,13 @@
+{
+  "milestone": "1.3B",
+  "generated_at": "2026-07-14T15:45:38.803Z",
+  "artifacts": [
+    "rate-limit-active-config.json",
+    "rate-limit-events.json",
+    "rate-limit-validation-details.json",
+    "rate-limit-scorecard.json",
+    "qa-acceptance-report.md",
+    "artifact-manifest.json",
+    "final-package-index.md"
+  ]
+}

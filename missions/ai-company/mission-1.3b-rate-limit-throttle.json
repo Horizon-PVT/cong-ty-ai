@@ -1,0 +1,15 @@
+{
+  "milestone": "1.3B",
+  "name": "Rate Limiting & API Throttle Controls",
+  "status": "IN_PROGRESS",
+  "objectives": [
+    "Implement per-agent, per-company, and global rate limiting with configurable thresholds",
+    "Verify that agents exceeding rate limits receive HTTP 429 with Retry-After header",
+    "Implement soft-limit warning system at 80% threshold before hard block",
+    "Verify throttle penalty escalation (2x cooldown on repeated violations)",
+    "Ensure local_implicit and instance_admin actors bypass rate limits",
+    "Implement auto-unblock mechanism after cooldown expiration",
+    "Validate regression tests for Milestone 1.3A boundaries remain intact",
+    "Output validation scorecard and pass autonomous self-test gate checks"
+  ]
+}

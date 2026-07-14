@@ -1,0 +1,17 @@
+{
+  "milestone": "1.3B",
+  "verdict": "RATE_LIMIT_VERIFIED",
+  "generated_at": "2026-07-14T15:45:38.803Z",
+  "passed_cases": 10,
+  "failed_cases": 0,
+  "test_coverage": {
+    "per_agent_limit": true,
+    "per_company_limit": true,
+    "global_limit": true,
+    "retry_after_header": true,
+    "soft_limit_warning": true,
+    "penalty_escalation": true,
+    "auto_unblock": true,
+    "admin_exemption": true
+  }
+}
