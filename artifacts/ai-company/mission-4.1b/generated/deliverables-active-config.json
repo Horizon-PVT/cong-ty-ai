@@ -1,0 +1,54 @@
+{
+  "schema_version": "2.0",
+  "milestone": "4.1B",
+  "generated_at": "2026-07-14T17:23:10.266Z",
+  "policy": {
+    "milestone": "4.1B",
+    "default_mode": "dry_run",
+    "runtime": {
+      "supported_capabilities": [
+        "file_read",
+        "file_write",
+        "shell_exec"
+      ],
+      "max_execution_steps": 20,
+      "interrupt_commands": [
+        "pause",
+        "resume",
+        "restart",
+        "cancel"
+      ]
+    },
+    "safety": {
+      "budget_limit": 1000,
+      "budget_warning_threshold_pct": 80,
+      "token_velocity_limit_per_minute": 100000
+    },
+    "sandbox": {
+      "root_dir": "./sandbox",
+      "allowed_commands": [
+        "ls",
+        "cat",
+        "echo",
+        "node"
+      ]
+    },
+    "assertions": {
+      "auto_mode_initializes_and_runs": true,
+      "auto_mode_pauses_on_waiting_input": true,
+      "auto_mode_pauses_on_waiting_approval": true,
+      "board_interrupt_pauses_execution": true,
+      "board_resume_restores_session": true,
+      "board_cancel_stops_and_cleans_session": true,
+      "remote_sandbox_executes_allowed_capabilities": true,
+      "unauthorized_sandbox_capabilities_are_blocked": true,
+      "budget_exhaustion_stops_auto_run_cleanly": true,
+      "regression_chain_integrity_verified": true
+    },
+    "allowed_modes": [
+      "dry_run",
+      "live"
+    ],
+    "required_live_token_prefix": "OWNER_APPROVED_AUTO_RUNTIME_TOKEN="
+  }
+}

@@ -1,6 +1,6 @@
 # QA Acceptance Report — Milestone 3.1B
 
-**Generated:** 2026-07-14T17:11:47.017Z
+**Generated:** 2026-07-14T17:22:54.759Z
 **Milestone:** 3.1B — Enforced Outcomes & Planning Lifecycle
 **Verdict:** OUTCOMES_VERIFIED
 

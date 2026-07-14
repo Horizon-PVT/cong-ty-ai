@@ -1,6 +1,6 @@
 {
   "milestone": "2.1B",
-  "generated_at": "2026-07-14T17:11:32.604Z",
+  "generated_at": "2026-07-14T17:22:40.165Z",
   "verdict": "CLI_RUN_VERIFIED",
   "cli_run_checks": {
     "cli_run_redirects_to_onboarding_if_no_config": true,

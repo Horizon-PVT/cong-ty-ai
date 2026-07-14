@@ -1,0 +1,17 @@
+{
+  "milestone": "4.1B",
+  "name": "Auto Mode Semantics & Cloud Sandbox Runtime",
+  "status": "IN_PROGRESS",
+  "objectives": [
+    "Verify auto mode initializes and progresses steps successfully",
+    "Verify auto mode pauses cleanly when agent is waiting on user input",
+    "Verify auto mode pauses cleanly when agent is waiting on board approval",
+    "Verify operator can interrupt and pause an active running session",
+    "Verify operator can resume a paused agent session successfully",
+    "Verify operator can cancel and cleanly terminate an active session",
+    "Verify remote sandbox runs shell commands inside allowed boundaries",
+    "Verify requests for unauthorized capabilities in sandbox are rejected",
+    "Verify budget limits dynamically stop auto mode runs cleanly",
+    "Ensure verifier regression chain rolls back to 4.1A"
+  ]
+}

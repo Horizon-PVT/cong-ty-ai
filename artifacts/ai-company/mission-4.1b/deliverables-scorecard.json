@@ -1,0 +1,17 @@
+{
+  "milestone": "4.1B",
+  "generated_at": "2026-07-14T17:23:10.266Z",
+  "verdict": "AUTO_RUNTIME_VERIFIED",
+  "deliverables_checks": {
+    "auto_mode_initializes_and_runs": true,
+    "auto_mode_pauses_on_waiting_input": true,
+    "auto_mode_pauses_on_waiting_approval": true,
+    "board_interrupt_pauses_execution": true,
+    "board_resume_restores_session": true,
+    "board_cancel_stops_and_cleans_session": true,
+    "remote_sandbox_executes_allowed_capabilities": true,
+    "unauthorized_sandbox_capabilities_are_blocked": true,
+    "budget_exhaustion_stops_auto_run_cleanly": true,
+    "regression_chain_integrity_verified": true
+  }
+}

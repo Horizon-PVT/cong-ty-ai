@@ -190,6 +190,12 @@ const MILESTONES = [
     verifier: "node packages/db/src/_verify-4.1a.mjs",
     scorecard: "artifacts/ai-company/mission-4.1a/generated",
   },
+  {
+    id: "4.1b", name: "Auto Mode Semantics & Cloud Sandbox Runtime",
+    runner: "node scripts/ai-company-auto-runtime.mjs",
+    verifier: "node packages/db/src/_verify-4.1b.mjs",
+    scorecard: "artifacts/ai-company/mission-4.1b/generated",
+  },
 ];
 
 // ── Argument parsing ────────────────────────────────────────────────────

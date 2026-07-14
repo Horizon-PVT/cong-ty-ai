@@ -1,0 +1,128 @@
+{
+  "milestone": "4.1B",
+  "generated_at": "2026-07-14T17:23:10.266Z",
+  "total_tests": 10,
+  "passed": 10,
+  "failed": 0,
+  "events": [
+    {
+      "test_case": "auto_mode_initializes_and_runs",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:23:10.268Z",
+      "res": {
+        "status": 200,
+        "state": "running"
+      },
+      "reason": "auto mode successfully initialized to running status"
+    },
+    {
+      "test_case": "auto_mode_pauses_on_waiting_input",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:23:10.268Z",
+      "res": {
+        "status": 200,
+        "state": "waiting_input"
+      },
+      "reason": "agent cleanly paused state waiting on user input"
+    },
+    {
+      "test_case": "auto_mode_pauses_on_waiting_approval",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:23:10.268Z",
+      "res": {
+        "status": 200,
+        "state": "waiting_approval"
+      },
+      "reason": "agent cleanly paused state waiting on board approval"
+    },
+    {
+      "test_case": "board_interrupt_pauses_execution",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:23:10.268Z",
+      "res": {
+        "status": 200,
+        "state": "paused"
+      },
+      "reason": "operator interrupted active execution and set status to paused"
+    },
+    {
+      "test_case": "board_resume_restores_session",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:23:10.268Z",
+      "res": {
+        "status": 200,
+        "state": "running"
+      },
+      "reason": "operator successfully resumed the paused agent session"
+    },
+    {
+      "test_case": "board_cancel_stops_and_cleans_session",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:23:10.268Z",
+      "res": {
+        "status": 200,
+        "state": "cancelled"
+      },
+      "reason": "operator cleanly terminated session and canceled run"
+    },
+    {
+      "test_case": "remote_sandbox_executes_allowed_capabilities",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:23:10.269Z",
+      "wRes": {
+        "status": 200,
+        "message": "File written successfully"
+      },
+      "rRes": {
+        "status": 200,
+        "content": "Safe content in sandbox"
+      },
+      "sRes": {
+        "status": 200,
+        "stdout": "Output from executing \"node -v\" on sandbox host",
+        "stderr": ""
+      },
+      "reason": "sandbox executed allowed file and whitelisted command successfully"
+    },
+    {
+      "test_case": "unauthorized_sandbox_capabilities_are_blocked",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:23:10.269Z",
+      "rTraverse": {
+        "status": 400,
+        "error": "Security Error: Sandbox directory traversal detected"
+      },
+      "sForbidden": {
+        "status": 400,
+        "error": "Security Error: Command \"rm\" is not whitelisted"
+      },
+      "sInjection": {
+        "status": 400,
+        "error": "Security Error: Shell command injection detected"
+      },
+      "reason": "directory traversal, forbidden commands, and command injections properly blocked"
+    },
+    {
+      "test_case": "budget_exhaustion_stops_auto_run_cleanly",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:23:10.269Z",
+      "stepRes": {
+        "status": 200,
+        "state": "running",
+        "step": 1
+      },
+      "exhaustedRes": {
+        "status": 400,
+        "error": "Auto Mode stopped cleanly: budget limit exhausted"
+      },
+      "reason": "auto mode progression stopped cleanly at budget limit exhaustion"
+    },
+    {
+      "test_case": "regression_chain_integrity_verified",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:23:10.270Z",
+      "piiScrubbed": true,
+      "reason": "PII emails and secrets successfully redacted in sandbox stdout/stderr and live token gates"
+    }
+  ]
+}
