@@ -29,8 +29,14 @@ export class MemoryService {
     clean = clean.replace(/sk-[a-zA-Z0-9_-]{32,}/g, "[REDACTED_API_KEY]");
     clean = clean.replace(/pat-[a-zA-Z0-9-]{10,}/g, "[REDACTED_PAT]");
     clean = clean.replace(/re_[a-zA-Z0-9]{20,}/g, "[REDACTED_REF]");
-    // Scrub email with negative lookahead to protect whitelisted domains
-    clean = clean.replace(/[a-zA-Z0-9._%+-]+@(?!example\.com|example\.org|test\.com|paperclip\.dev)[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g, "[REDACTED_EMAIL]");
+    // Scrub email with exact domain matching to protect whitelisted domains
+    clean = clean.replace(/([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/g, (match, username, domain) => {
+      const whitelisted = ["example.com", "example.org", "test.com", "paperclip.dev"];
+      if (whitelisted.includes(domain.toLowerCase())) {
+        return match;
+      }
+      return "[REDACTED_EMAIL]";
+    });
     return clean;
   }
 
@@ -55,8 +61,23 @@ export class MemoryService {
     if (!isSafe) {
       return { status: 403, error: "Security Error: Directory traversal detected" };
     }
+    const relative = path.relative(this.memoryRoot, resolvedPath);
+    const pathParts = relative.split(path.sep);
+    if (pathParts[0] !== actor.companyId) {
+      return { status: 403, error: "Access denied: Tenant boundary violation" };
+    }
     this._bindings.set(key, resolvedPath);
     return { status: 200, bindingKey: key, filePath: resolvedPath };
+  }
+
+  validateProvenance(companyId, provenance = {}) {
+    for (const field of this.policy.memory.provenance_required_fields) {
+      const val = field === "company_id" ? companyId : provenance[field];
+      if (!val) {
+        return { valid: false, error: `Missing required provenance field "${field}"` };
+      }
+    }
+    return { valid: true };
   }
 
   // ── Memory Core API ──────────────────────────────────────────────────
@@ -75,11 +96,17 @@ export class MemoryService {
       return { status: 403, error: "Security Error: Directory traversal detected" };
     }
 
-    // 3. Multi-tenant company boundary check (via file path naming convention or directory layout)
-    // We enforce that files belonging to comp_X must have path starting with comp_X or companyRoot/comp_X
+    // 3. Multi-tenant company boundary check (segment-based)
     const relative = path.relative(this.memoryRoot, resolvedPath);
-    if (!relative.startsWith(companyId)) {
+    const pathParts = relative.split(path.sep);
+    if (pathParts[0] !== companyId) {
       return { status: 403, error: "Access denied: Tenant boundary violation" };
+    }
+
+    // 4. Provenance required fields check
+    const provCheck = this.validateProvenance(companyId, provenance);
+    if (!provCheck.valid) {
+      return { status: 400, error: provCheck.error };
     }
 
     // Scrub secrets & PII
@@ -97,10 +124,10 @@ export class MemoryService {
       format,
       provenance: {
         company_id: companyId,
-        agent_id: provenance.agent_id || "default",
-        project_id: provenance.project_id || "default",
-        issue_id: provenance.issue_id || "default",
-        run_id: provenance.run_id || "default",
+        agent_id: provenance.agent_id,
+        project_id: provenance.project_id,
+        issue_id: provenance.issue_id,
+        run_id: provenance.run_id,
       },
     });
 
@@ -121,8 +148,15 @@ export class MemoryService {
 
     // Multi-tenant check
     const relative = path.relative(this.memoryRoot, resolvedPath);
-    if (!relative.startsWith(companyId)) {
+    const pathParts = relative.split(path.sep);
+    if (pathParts[0] !== companyId) {
       return { status: 403, error: "Access denied: Tenant boundary violation" };
+    }
+
+    // Provenance check
+    const provCheck = this.validateProvenance(companyId, provenance);
+    if (!provCheck.valid) {
+      return { status: 400, error: provCheck.error };
     }
 
     const content = this._memories.get(resolvedPath) || "";
@@ -135,10 +169,10 @@ export class MemoryService {
       format,
       provenance: {
         company_id: companyId,
-        agent_id: provenance.agent_id || "default",
-        project_id: provenance.project_id || "default",
-        issue_id: provenance.issue_id || "default",
-        run_id: provenance.run_id || "default",
+        agent_id: provenance.agent_id,
+        project_id: provenance.project_id,
+        issue_id: provenance.issue_id,
+        run_id: provenance.run_id,
       },
     });
 
@@ -159,8 +193,15 @@ export class MemoryService {
 
     // Tenant check
     const relative = path.relative(this.memoryRoot, filePath);
-    if (!relative.startsWith(companyId)) {
+    const pathParts = relative.split(path.sep);
+    if (pathParts[0] !== companyId) {
       return { status: 403, error: "Access denied: Tenant boundary violation" };
+    }
+
+    // Provenance check
+    const provCheck = this.validateProvenance(companyId, provenance);
+    if (!provCheck.valid) {
+      return { status: 400, error: provCheck.error };
     }
 
     const content = this._memories.get(filePath) || "";
@@ -173,9 +214,9 @@ export class MemoryService {
       provenance: {
         company_id: companyId,
         agent_id: agentId || "default",
-        project_id: provenance.project_id || "default",
-        issue_id: provenance.issue_id || "default",
-        run_id: provenance.run_id || "default",
+        project_id: provenance.project_id,
+        issue_id: provenance.issue_id,
+        run_id: provenance.run_id,
       },
     });
 

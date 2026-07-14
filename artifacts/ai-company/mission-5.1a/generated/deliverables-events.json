@@ -1,6 +1,6 @@
 {
   "milestone": "5.1A",
-  "generated_at": "2026-07-14T17:33:08.511Z",
+  "generated_at": "2026-07-14T17:39:07.500Z",
   "total_tests": 10,
   "passed": 10,
   "failed": 0,
@@ -8,7 +8,7 @@
     {
       "test_case": "memory_default_lookup_succeeds",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:33:08.514Z",
+      "timestamp": "2026-07-14T17:39:07.503Z",
       "res": {
         "status": 200,
         "filePath": "D:\\Project\\A Tung\\paperclip-dự án công ty AI\\memory\\ai-company\\comp_1\\company_kb.md",
@@ -19,7 +19,7 @@
     {
       "test_case": "memory_agent_override_succeeds",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:33:08.514Z",
+      "timestamp": "2026-07-14T17:39:07.504Z",
       "res": {
         "status": 200,
         "filePath": "D:\\Project\\A Tung\\paperclip-dự án công ty AI\\memory\\ai-company\\comp_1\\agent_special_kb.md",
@@ -30,7 +30,7 @@
     {
       "test_case": "markdown_provider_reads_correctly",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:33:08.514Z",
+      "timestamp": "2026-07-14T17:39:07.504Z",
       "res": {
         "status": 200,
         "content": "Markdown Content Line"
@@ -40,7 +40,7 @@
     {
       "test_case": "markdown_provider_writes_correctly",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:33:08.514Z",
+      "timestamp": "2026-07-14T17:39:07.505Z",
       "res": {
         "status": 200,
         "resolvedPath": "D:\\Project\\A Tung\\paperclip-dự án công ty AI\\memory\\ai-company\\comp_1\\company_kb.md",
@@ -51,7 +51,7 @@
     {
       "test_case": "operation_logging_saves_provenance",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:33:08.514Z",
+      "timestamp": "2026-07-14T17:39:07.505Z",
       "audit": {
         "action": "memory_written",
         "filePath": "D:\\Project\\A Tung\\paperclip-dự án công ty AI\\memory\\ai-company\\comp_1\\doc.md",
@@ -65,14 +65,14 @@
           "issue_id": "issue_42",
           "run_id": "run_77"
         },
-        "timestamp": "2026-07-14T17:33:08.514Z"
+        "timestamp": "2026-07-14T17:39:07.505Z"
       },
       "reason": "operation audit trail saved detailed provenance metadata correctly"
     },
     {
       "test_case": "memory_enforces_company_isolation",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:33:08.515Z",
+      "timestamp": "2026-07-14T17:39:07.506Z",
       "readRes": {
         "status": 403,
         "error": "Access denied: Tenant boundary violation"
@@ -81,12 +81,16 @@
         "status": 403,
         "error": "Access denied: Tenant boundary violation"
       },
-      "reason": "cross-company memory read/write calls blocked with 403 Forbidden"
+      "bypassRes": {
+        "status": 403,
+        "error": "Access denied: Tenant boundary violation"
+      },
+      "reason": "cross-company and overlapping prefix memory read/write calls blocked with 403 Forbidden"
     },
     {
       "test_case": "memory_prevents_path_traversal",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:33:08.515Z",
+      "timestamp": "2026-07-14T17:39:07.506Z",
       "r1": {
         "status": 403,
         "error": "Security Error: Directory traversal detected"
@@ -100,7 +104,7 @@
     {
       "test_case": "unsupported_memory_formats_are_rejected",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:33:08.515Z",
+      "timestamp": "2026-07-14T17:39:07.507Z",
       "res": {
         "status": 400,
         "error": "Unsupported memory format \"exe\""
@@ -110,18 +114,18 @@
     {
       "test_case": "memory_scrubs_pii_and_secrets",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:33:08.515Z",
+      "timestamp": "2026-07-14T17:39:07.507Z",
       "res": {
         "status": 200,
         "resolvedPath": "D:\\Project\\A Tung\\paperclip-dự án công ty AI\\memory\\ai-company\\comp_1\\company_kb.md",
-        "content": "Secret key [REDACTED_API_KEY] and mail [REDACTED_EMAIL] (whitelisted owner@example.com / test@paperclip.dev)"
+        "content": "Secret key [REDACTED_API_KEY] and mail [REDACTED_EMAIL] (whitelisted owner@example.com / test@paperclip.dev) and mock attack mail bypass: [REDACTED_EMAIL]"
       },
-      "reason": "secrets and PII email values redacted, while whitelisted domains are preserved"
+      "reason": "secrets and PII email values redacted, while whitelisted domains are preserved and lookahead bypasses blocked"
     },
     {
       "test_case": "regression_chain_integrity_verified",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:33:08.515Z",
+      "timestamp": "2026-07-14T17:39:07.507Z",
       "liveBlockCheck": true,
       "reason": "regression verifier cascade executes and live token checks block run"
     }
