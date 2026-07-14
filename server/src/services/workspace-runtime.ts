@@ -273,7 +273,8 @@ export async function ensureServerWorkspaceLinksCurrent(
     const linkPath = path.join(workspaceRoot, "server", "node_modules", ...mismatch.packageName.split("/"));
     await fs.mkdir(path.dirname(linkPath), { recursive: true });
     await fs.rm(linkPath, { recursive: true, force: true });
-    await fs.symlink(mismatch.expectedPath, linkPath);
+    const isWindows = process.platform === "win32";
+    await fs.symlink(mismatch.expectedPath, linkPath, isWindows ? "junction" : undefined);
   }
 
   const remainingMismatches = findServerWorkspaceLinkMismatches(workspaceRoot);
