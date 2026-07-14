@@ -117,7 +117,7 @@ export class OutcomesService {
 
     // Scrub metadata
     const cleanMeta = {};
-    for (const [k, v] of Object.entries(metadata)) {
+    for (const [k, v] of Object.entries(metadata || {})) {
       cleanMeta[k] = this.sanitizeInput(v);
     }
 
