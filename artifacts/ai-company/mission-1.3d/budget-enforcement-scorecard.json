@@ -1,6 +1,6 @@
 {
   "milestone": "1.3D",
-  "generated_at": "2026-07-14T16:56:25.266Z",
+  "generated_at": "2026-07-14T17:04:24.584Z",
   "verdict": "BUDGET_ENFORCEMENT_VERIFIED",
   "budget_checks": {
     "hard_stop_pauses_agent": true,

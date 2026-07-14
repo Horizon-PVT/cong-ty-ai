@@ -1,6 +1,6 @@
 {
   "milestone": "1.3B",
-  "generated_at": "2026-07-14T16:56:14.332Z",
+  "generated_at": "2026-07-14T17:04:13.168Z",
   "total_tests": 10,
   "passed": 10,
   "failed": 0,
@@ -8,7 +8,7 @@
     {
       "test_case": "agent_within_limit",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:56:14.334Z",
+      "timestamp": "2026-07-14T17:04:13.170Z",
       "expected_status": 200,
       "actual_status": 200,
       "reason": "allowed"
@@ -16,7 +16,7 @@
     {
       "test_case": "agent_over_rate_limit",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:56:14.334Z",
+      "timestamp": "2026-07-14T17:04:13.171Z",
       "expected_status": 429,
       "actual_status": 429,
       "reason": "burst_exceeded",
@@ -25,7 +25,7 @@
     {
       "test_case": "company_over_rate_limit",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:56:14.335Z",
+      "timestamp": "2026-07-14T17:04:13.171Z",
       "expected_status": 429,
       "actual_status": 429,
       "reason": "burst_exceeded",
@@ -34,7 +34,7 @@
     {
       "test_case": "global_over_rate_limit",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:56:14.336Z",
+      "timestamp": "2026-07-14T17:04:13.174Z",
       "expected_status": 429,
       "actual_status": 429,
       "reason": "burst_exceeded",
@@ -43,7 +43,7 @@
     {
       "test_case": "throttled_retry_after_header",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:56:14.336Z",
+      "timestamp": "2026-07-14T17:04:13.174Z",
       "expected_status": 429,
       "actual_status": 429,
       "retry_after_seconds": 30,
@@ -53,7 +53,7 @@
     {
       "test_case": "soft_limit_warning_at_80pct",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:56:14.336Z",
+      "timestamp": "2026-07-14T17:04:13.174Z",
       "expected_status": 200,
       "actual_status": 200,
       "warning_triggered": true,
@@ -64,7 +64,7 @@
     {
       "test_case": "penalty_escalation_2x_cooldown",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:56:14.337Z",
+      "timestamp": "2026-07-14T17:04:13.174Z",
       "first_cooldown_seconds": 30,
       "second_cooldown_seconds": 120,
       "escalation_factor": 4,
@@ -74,7 +74,7 @@
     {
       "test_case": "auto_unblock_after_cooldown",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:56:14.337Z",
+      "timestamp": "2026-07-14T17:04:13.175Z",
       "was_throttled": true,
       "auto_unblocked": true,
       "post_unblock_status": 200,
@@ -83,7 +83,7 @@
     {
       "test_case": "local_implicit_admin_bypass",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:56:14.337Z",
+      "timestamp": "2026-07-14T17:04:13.175Z",
       "expected_status": 200,
       "actual_status": 200,
       "reason": "exempt",
@@ -92,7 +92,7 @@
     {
       "test_case": "instance_admin_bypass",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:56:14.338Z",
+      "timestamp": "2026-07-14T17:04:13.176Z",
       "expected_status": 200,
       "actual_status": 200,
       "reason": "exempt",

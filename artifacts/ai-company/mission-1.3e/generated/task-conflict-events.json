@@ -1,6 +1,6 @@
 {
   "milestone": "1.3E",
-  "generated_at": "2026-07-14T16:56:31.005Z",
+  "generated_at": "2026-07-14T17:04:30.652Z",
   "total_tests": 10,
   "passed": 10,
   "failed": 0,
@@ -8,7 +8,7 @@
     {
       "test_case": "concurrent_claim_returns_409",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:56:31.007Z",
+      "timestamp": "2026-07-14T17:04:30.653Z",
       "first_claim": 200,
       "second_claim": 409,
       "conflict_with": "agent_1",
@@ -17,7 +17,7 @@
     {
       "test_case": "first_claimer_wins",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:56:31.007Z",
+      "timestamp": "2026-07-14T17:04:30.654Z",
       "assignee": "fast_agent",
       "status": "in_progress",
       "reason": "first claimer owns the task"
@@ -25,7 +25,7 @@
     {
       "test_case": "stale_version_rejected",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:56:31.007Z",
+      "timestamp": "2026-07-14T17:04:30.654Z",
       "stale_version": 1,
       "current_version": 2,
       "response_status": 409,
@@ -34,7 +34,7 @@
     {
       "test_case": "agent_reads_assigned_tasks",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:56:31.008Z",
+      "timestamp": "2026-07-14T17:04:30.654Z",
       "status": 200,
       "tasks_found": 2,
       "reason": "agent reads 2 assigned tasks from own company"
@@ -42,7 +42,7 @@
     {
       "test_case": "agent_updates_task_status",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:56:31.008Z",
+      "timestamp": "2026-07-14T17:04:30.654Z",
       "old_status": "in_progress",
       "new_status": "review",
       "response_status": 200,
@@ -51,7 +51,7 @@
     {
       "test_case": "agent_adds_comment",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:56:31.008Z",
+      "timestamp": "2026-07-14T17:04:30.655Z",
       "comment_status": 201,
       "comment_count": 1,
       "comment_content": "Found root cause — null pointe",
@@ -60,7 +60,7 @@
     {
       "test_case": "agent_reports_cost",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:56:31.008Z",
+      "timestamp": "2026-07-14T17:04:30.655Z",
       "report_status": 201,
       "report_count": 1,
       "cost_cents": 15,
@@ -69,7 +69,7 @@
     {
       "test_case": "agent_cannot_delete_task",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:56:31.008Z",
+      "timestamp": "2026-07-14T17:04:30.655Z",
       "delete_status": 403,
       "task_still_exists": true,
       "reason": "agent delete blocked with 403"
@@ -77,7 +77,7 @@
     {
       "test_case": "agent_cannot_access_other_company",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:56:31.009Z",
+      "timestamp": "2026-07-14T17:04:30.655Z",
       "claim_status": 403,
       "comment_status": 403,
       "cost_status": 403,
@@ -86,7 +86,7 @@
     {
       "test_case": "invalid_transition_rejected",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:56:31.009Z",
+      "timestamp": "2026-07-14T17:04:30.655Z",
       "attempted": "in_progress → done",
       "response_status": 422,
       "valid_transitions": [

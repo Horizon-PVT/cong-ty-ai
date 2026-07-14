@@ -1,0 +1,186 @@
+{
+  "milestone": "3.1A",
+  "generated_at": "2026-07-14T17:07:13.263Z",
+  "total_tests": 10,
+  "passed": 10,
+  "failed": 0,
+  "events": [
+    {
+      "test_case": "deliverable_registration_saves_metadata",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:07:13.265Z",
+      "res": {
+        "status": 200,
+        "deliverable": {
+          "id": "del_1",
+          "companyId": "comp_1",
+          "filename": "design.md",
+          "sizeBytes": 1500,
+          "type": "markdown",
+          "url": null,
+          "version": 1,
+          "metadata": {
+            "description": "System design specs"
+          },
+          "registeredBy": "user_1",
+          "registeredAt": "2026-07-14T17:07:13.265Z"
+        }
+      },
+      "reason": "deliverable registered successfully and metadata preserved"
+    },
+    {
+      "test_case": "deliverable_validation_rejects_unsupported_formats",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:07:13.265Z",
+      "res1": {
+        "status": 400,
+        "error": "Unsupported deliverable file format or directory traversal detected"
+      },
+      "res2": {
+        "status": 400,
+        "error": "Unsupported deliverable file format or directory traversal detected"
+      },
+      "reason": "rejected invalid extensions and traversal attempts correctly"
+    },
+    {
+      "test_case": "deliverable_validation_rejects_oversized_files",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:07:13.265Z",
+      "res": {
+        "status": 400,
+        "error": "Deliverable size exceeds policy limit"
+      },
+      "reason": "file size > 10MB successfully rejected"
+    },
+    {
+      "test_case": "deliverables_enforce_company_boundaries_on_read",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:07:13.265Z",
+      "res": {
+        "status": 403,
+        "error": "Access denied: Tenant boundary violation"
+      },
+      "reason": "cross-company read access blocked with 403 Forbidden"
+    },
+    {
+      "test_case": "deliverables_enforce_company_boundaries_on_write",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:07:13.265Z",
+      "res": {
+        "status": 403,
+        "error": "403 Forbidden: Tenant mismatch on deliverable update"
+      },
+      "reason": "cross-company update/hijack blocked with 403 Forbidden"
+    },
+    {
+      "test_case": "deliverables_support_versioning",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:07:13.265Z",
+      "res": {
+        "status": 200,
+        "deliverable": {
+          "id": "del_1",
+          "companyId": "comp_1",
+          "filename": "design.md",
+          "sizeBytes": 1600,
+          "type": "markdown",
+          "url": null,
+          "version": 2,
+          "metadata": {
+            "note": "updated spec"
+          },
+          "registeredBy": "user_1",
+          "registeredAt": "2026-07-14T17:07:13.265Z"
+        }
+      },
+      "reason": "version correctly incremented to 2 on re-registration"
+    },
+    {
+      "test_case": "url_deliverables_parse_preview_meta",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:07:13.266Z",
+      "res": {
+        "status": 200,
+        "deliverable": {
+          "id": "del_url",
+          "companyId": "comp_1",
+          "filename": null,
+          "type": "url",
+          "url": "https://paperclip.dev/docs",
+          "version": 1,
+          "metadata": {},
+          "registeredBy": "user_1",
+          "registeredAt": "2026-07-14T17:07:13.266Z",
+          "previewMeta": {
+            "title": "Preview for paperclip.dev",
+            "fetchedAt": "2026-07-14T17:07:13.266Z",
+            "status": "200 OK"
+          }
+        }
+      },
+      "reason": "safe URL preview parsed successfully with SSRF check passed"
+    },
+    {
+      "test_case": "pr_links_format_check_passes",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:07:13.266Z",
+      "res1": {
+        "status": 200,
+        "deliverable": {
+          "id": "del_pr",
+          "companyId": "comp_1",
+          "filename": null,
+          "type": "pr",
+          "url": "https://github.com/Horizon-PVT/cong-ty-ai/pull/42",
+          "version": 1,
+          "metadata": {},
+          "registeredBy": "user_1",
+          "registeredAt": "2026-07-14T17:07:13.266Z"
+        }
+      },
+      "res2": {
+        "status": 400,
+        "error": "Invalid PR Link format"
+      },
+      "reason": "GitHub PR format validated and non-PR formats rejected"
+    },
+    {
+      "test_case": "deliverables_scrub_pii_and_secrets",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:07:13.267Z",
+      "res": {
+        "status": 200,
+        "deliverable": {
+          "id": "del_1",
+          "companyId": "comp_1",
+          "filename": "design.md",
+          "sizeBytes": 1500,
+          "type": "markdown",
+          "url": null,
+          "version": 1,
+          "metadata": {
+            "email": "[REDACTED_EMAIL]",
+            "apiKey": "[REDACTED_API_KEY]"
+          },
+          "registeredBy": "user_1",
+          "registeredAt": "2026-07-14T17:07:13.267Z"
+        }
+      },
+      "reason": "secrets and PII email values redacted in deliverables metadata"
+    },
+    {
+      "test_case": "regression_chain_integrity_verified",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:07:13.267Z",
+      "resLocal": {
+        "status": 400,
+        "error": "SSRF vulnerability detected: private ranges and invalid protocols are blocked"
+      },
+      "resPrivate": {
+        "status": 400,
+        "error": "SSRF vulnerability detected: private ranges and invalid protocols are blocked"
+      },
+      "reason": "SSRF URL checks block local/private IP ranges and live token blocks unauthorized runs"
+    }
+  ]
+}

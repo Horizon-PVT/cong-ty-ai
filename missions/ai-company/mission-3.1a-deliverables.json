@@ -1,0 +1,17 @@
+{
+  "milestone": "3.1A",
+  "name": "Work Product Schema, API & Issue Deliverables Panel",
+  "status": "IN_PROGRESS",
+  "objectives": [
+    "Verify deliverable registration saves all fields successfully",
+    "Verify deliverable rejects unsupported formats like exe or zip",
+    "Verify deliverable rejects files exceeding size limits",
+    "Verify cross-company read attempts on deliverables return 403 Forbidden",
+    "Verify cross-company write attempts on deliverables return 403 Forbidden",
+    "Verify updating a deliverable correctly increments its version number",
+    "Verify URL deliverables extract and parse preview metadata",
+    "Verify PR link formats are validated correctly",
+    "Verify metadata fields are scrubbed of secrets and email PII",
+    "Ensure verifier regression chain rolls back to 2.1B"
+  ]
+}

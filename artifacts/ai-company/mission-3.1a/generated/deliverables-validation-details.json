@@ -1,0 +1,19 @@
+{
+  "milestone": "3.1A",
+  "verdict": "DELIVERABLES_VERIFIED",
+  "generated_at": "2026-07-14T17:07:13.263Z",
+  "passed_cases": 10,
+  "failed_cases": 0,
+  "test_coverage": {
+    "deliverable_registration_saves_metadata": true,
+    "deliverable_validation_rejects_unsupported_formats": true,
+    "deliverable_validation_rejects_oversized_files": true,
+    "deliverables_enforce_company_boundaries_on_read": true,
+    "deliverables_enforce_company_boundaries_on_write": true,
+    "deliverables_support_versioning": true,
+    "url_deliverables_parse_preview_meta": true,
+    "pr_links_format_check_passes": true,
+    "deliverables_scrub_pii_and_secrets": true,
+    "regression_chain_integrity_verified": true
+  }
+}
