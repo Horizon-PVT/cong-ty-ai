@@ -166,6 +166,12 @@ const MILESTONES = [
     verifier: "node packages/db/src/_verify-2.1a.mjs",
     scorecard: "artifacts/ai-company/mission-2.1a/generated",
   },
+  {
+    id: "2.1b", name: "Onboarding CLI (paperclipai run) & Doctor Repair",
+    runner: "node scripts/ai-company-cli-run.mjs",
+    verifier: "node packages/db/src/_verify-2.1b.mjs",
+    scorecard: "artifacts/ai-company/mission-2.1b/generated",
+  },
 ];
 
 // ── Argument parsing ────────────────────────────────────────────────────

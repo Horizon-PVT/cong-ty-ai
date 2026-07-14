@@ -1,0 +1,23 @@
+{
+  "milestone": "2.1B",
+  "default_mode": "dry_run",
+  "cli_run": {
+    "doctor_checks": ["port_availability", "db_connectivity", "credential_keys", "tailscale_status"],
+    "auto_repair_enabled": true,
+    "max_port_retries": 10
+  },
+  "assertions": {
+    "cli_run_redirects_to_onboarding_if_no_config": true,
+    "doctor_check_detects_port_conflict": true,
+    "doctor_check_resolves_port_conflict_via_repair": true,
+    "doctor_check_flags_critical_db_errors": true,
+    "doctor_check_resolves_db_errors_via_fallback": true,
+    "tailscale_detection_returns_proper_host": true,
+    "bootstrap_invite_generates_ceo_link": true,
+    "cli_run_blocks_on_unrepairable_errors": true,
+    "cli_run_completes_successfully_in_clean_env": true,
+    "regression_chain_integrity_verified": true
+  },
+  "allowed_modes": ["dry_run", "live"],
+  "required_live_token_prefix": "OWNER_APPROVED_CLI_RUN_TOKEN="
+}

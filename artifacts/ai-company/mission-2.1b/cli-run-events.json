@@ -1,0 +1,186 @@
+{
+  "milestone": "2.1B",
+  "generated_at": "2026-07-14T16:56:56.296Z",
+  "total_tests": 10,
+  "passed": 10,
+  "failed": 0,
+  "events": [
+    {
+      "test_case": "cli_run_redirects_to_onboarding_if_no_config",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:56:56.298Z",
+      "res": {
+        "exists": false,
+        "action": "redirect_to_onboarding"
+      },
+      "reason": "redirected to onboarding when config is missing"
+    },
+    {
+      "test_case": "doctor_check_detects_port_conflict",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:56:56.299Z",
+      "res": {
+        "status": "FAILED",
+        "checks": {
+          "port_availability": "FAIL",
+          "db_connectivity": "PASS",
+          "credential_keys": "PASS",
+          "tailscale_status": "PASS"
+        },
+        "resolvedPort": 3100,
+        "resolvedDbMode": "postgres",
+        "resolvedHost": "127.0.0.1",
+        "warnings": [],
+        "errors": [
+          "Port conflict on port 3100; auto-repair disabled"
+        ]
+      },
+      "reason": "port availability flagged as FAIL when conflict exists and repair is disabled"
+    },
+    {
+      "test_case": "doctor_check_resolves_port_conflict_via_repair",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:56:56.299Z",
+      "res": {
+        "status": "PASSED",
+        "checks": {
+          "port_availability": "PASS",
+          "db_connectivity": "PASS",
+          "credential_keys": "PASS",
+          "tailscale_status": "PASS"
+        },
+        "resolvedPort": 3103,
+        "resolvedDbMode": "postgres",
+        "resolvedHost": "127.0.0.1",
+        "warnings": [
+          "Port conflict detected on port 3100; auto-repaired to 3103"
+        ],
+        "errors": []
+      },
+      "reason": "port conflict resolved to next available port (3103)"
+    },
+    {
+      "test_case": "doctor_check_flags_critical_db_errors",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:56:56.299Z",
+      "res": {
+        "status": "FAILED",
+        "checks": {
+          "port_availability": "PASS",
+          "db_connectivity": "FAIL",
+          "credential_keys": "PASS",
+          "tailscale_status": "PASS"
+        },
+        "resolvedPort": 3100,
+        "resolvedDbMode": "postgres",
+        "resolvedHost": "127.0.0.1",
+        "warnings": [],
+        "errors": [
+          "Database connection failed; auto-repair disabled"
+        ]
+      },
+      "reason": "database connection failure flagged correctly"
+    },
+    {
+      "test_case": "doctor_check_resolves_db_errors_via_fallback",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:56:56.299Z",
+      "res": {
+        "status": "PASSED",
+        "checks": {
+          "port_availability": "PASS",
+          "db_connectivity": "PASS",
+          "credential_keys": "PASS",
+          "tailscale_status": "PASS"
+        },
+        "resolvedPort": 3100,
+        "resolvedDbMode": "embedded-postgres",
+        "resolvedHost": "127.0.0.1",
+        "warnings": [
+          "Database connection failed; auto-repaired by falling back to embedded-postgres mode"
+        ],
+        "errors": []
+      },
+      "reason": "database connectivity issue resolved by falling back to embedded-postgres"
+    },
+    {
+      "test_case": "tailscale_detection_returns_proper_host",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:56:56.299Z",
+      "res": {
+        "status": "PASSED",
+        "checks": {
+          "port_availability": "PASS",
+          "db_connectivity": "PASS",
+          "credential_keys": "PASS",
+          "tailscale_status": "PASS"
+        },
+        "resolvedPort": 3100,
+        "resolvedDbMode": "postgres",
+        "resolvedHost": "100.115.92.5",
+        "warnings": [],
+        "errors": []
+      },
+      "reason": "resolved tailnet IP successfully"
+    },
+    {
+      "test_case": "bootstrap_invite_generates_ceo_link",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:56:56.299Z",
+      "invite": {
+        "token": "boot_o4b80fbn",
+        "url": "http://127.0.0.1:3100/invite/ceo?email=ceo%40example.com&token=boot_o4b80fbn"
+      },
+      "reason": "bootstrap CEO invite URL and token successfully constructed"
+    },
+    {
+      "test_case": "cli_run_blocks_on_unrepairable_errors",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:56:56.299Z",
+      "res": {
+        "status": "FAILED",
+        "checks": {
+          "port_availability": "FAIL",
+          "db_connectivity": "PASS",
+          "credential_keys": "PASS",
+          "tailscale_status": "PASS"
+        },
+        "resolvedPort": 3100,
+        "resolvedDbMode": "postgres",
+        "resolvedHost": "127.0.0.1",
+        "warnings": [],
+        "errors": [
+          "Port conflict on port 3100 and all 10 retry attempts failed"
+        ]
+      },
+      "reason": "cli execution blocked when all port candidate retries are exhausted"
+    },
+    {
+      "test_case": "cli_run_completes_successfully_in_clean_env",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:56:56.300Z",
+      "res": {
+        "status": "PASSED",
+        "checks": {
+          "port_availability": "PASS",
+          "db_connectivity": "PASS",
+          "credential_keys": "PASS",
+          "tailscale_status": "PASS"
+        },
+        "resolvedPort": 3100,
+        "resolvedDbMode": "postgres",
+        "resolvedHost": "127.0.0.1",
+        "warnings": [],
+        "errors": []
+      },
+      "reason": "cli execution successfully completes in healthy environment"
+    },
+    {
+      "test_case": "regression_chain_integrity_verified",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:56:56.300Z",
+      "sanitized": "Email is [REDACTED_EMAIL] and key is [REDACTED_API_KEY]",
+      "reason": "live token checks block execution and audit trail redacts raw keys and emails"
+    }
+  ]
+}

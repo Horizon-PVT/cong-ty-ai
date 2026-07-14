@@ -1,6 +1,6 @@
 {
   "milestone": "2.1A",
-  "generated_at": "2026-07-14T16:52:06.812Z",
+  "generated_at": "2026-07-14T16:56:49.628Z",
   "total_tests": 10,
   "passed": 10,
   "failed": 0,
@@ -8,7 +8,7 @@
     {
       "test_case": "onboarding_validation_rejects_invalid_inputs",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:52:06.813Z",
+      "timestamp": "2026-07-14T16:56:49.630Z",
       "res1": {
         "valid": false,
         "error": "Invalid org type \"enterprise\". Supported: startup, agency, internal_team"
@@ -22,14 +22,14 @@
     {
       "test_case": "onboarding_generates_correct_template_data",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:52:06.814Z",
+      "timestamp": "2026-07-14T16:56:49.630Z",
       "taskTitle": "Draft MVP product specification",
       "reason": "applied startup template successfully"
     },
     {
       "test_case": "doctor_checks_detect_missing_credentials",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:52:06.814Z",
+      "timestamp": "2026-07-14T16:56:49.631Z",
       "doctor": {
         "credentialsCheck": {
           "ANTHROPIC_API_KEY": "MISSING_OR_INVALID",
@@ -45,31 +45,31 @@
     {
       "test_case": "doctor_checks_recommend_correct_runtime",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:52:06.814Z",
+      "timestamp": "2026-07-14T16:56:49.631Z",
       "recommended": "Claude",
       "reason": "recommended Claude runtime because ANTHROPIC_API_KEY is present"
     },
     {
       "test_case": "doctor_checks_recommend_fallback_runtime",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:52:06.814Z",
+      "timestamp": "2026-07-14T16:56:49.631Z",
       "recommended": "Codex",
       "reason": "fallback to Codex when credentials are missing"
     },
     {
       "test_case": "starter_org_creates_ceo_and_engineer",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:52:06.815Z",
+      "timestamp": "2026-07-14T16:56:49.631Z",
       "agents": [
         {
-          "id": "agent_ceo_3ytb",
-          "companyId": "comp_1784047926815_jpph",
+          "id": "agent_ceo_4gn4",
+          "companyId": "comp_1784048209631_mha4",
           "role": "CEO",
           "status": "idle"
         },
         {
-          "id": "agent_founding_engineer_98pl",
-          "companyId": "comp_1784047926815_jpph",
+          "id": "agent_founding_engineer_mmdh",
+          "companyId": "comp_1784048209631_mha4",
           "role": "Founding_Engineer",
           "status": "idle"
         }
@@ -79,7 +79,7 @@
     {
       "test_case": "initial_task_successfully_queued",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:52:06.815Z",
+      "timestamp": "2026-07-14T16:56:49.631Z",
       "queueLength": 1,
       "taskStatus": "open",
       "reason": "initial task created in open status and pushed to active queue"
@@ -87,17 +87,17 @@
     {
       "test_case": "onboarding_prevented_in_live_without_token",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:52:06.815Z",
+      "timestamp": "2026-07-14T16:56:49.631Z",
       "blockCheck": true,
       "reason": "onboarding is blocked in live mode without owner approval token"
     },
     {
       "test_case": "onboarding_flow_completes_cleanly",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:52:06.815Z",
+      "timestamp": "2026-07-14T16:56:49.631Z",
       "out": {
         "company": {
-          "id": "comp_1784047926815_4omd",
+          "id": "comp_1784048209631_a4ac",
           "name": "StartupCo",
           "owner": "Boss",
           "orgType": "startup",
@@ -105,30 +105,30 @@
           "runtime": "Claude"
         },
         "goal": {
-          "id": "goal_1784047926815",
-          "companyId": "comp_1784047926815_4omd",
+          "id": "goal_1784048209631",
+          "companyId": "comp_1784048209631_a4ac",
           "description": "Establish successful startup operations"
         },
         "agents": [
           {
-            "id": "agent_ceo_z8do",
-            "companyId": "comp_1784047926815_4omd",
+            "id": "agent_ceo_zm50",
+            "companyId": "comp_1784048209631_a4ac",
             "role": "CEO",
             "status": "idle"
           },
           {
-            "id": "agent_founding_engineer_2owq",
-            "companyId": "comp_1784047926815_4omd",
+            "id": "agent_founding_engineer_3ywi",
+            "companyId": "comp_1784048209631_a4ac",
             "role": "Founding_Engineer",
             "status": "idle"
           }
         ],
         "task": {
-          "id": "task_1784047926815",
-          "companyId": "comp_1784047926815_4omd",
+          "id": "task_1784048209631",
+          "companyId": "comp_1784048209631_a4ac",
           "title": "Draft MVP product specification",
           "status": "open",
-          "assigneeAgentId": "agent_ceo_z8do"
+          "assigneeAgentId": "agent_ceo_zm50"
         },
         "queueLength": 1
       },
@@ -137,7 +137,7 @@
     {
       "test_case": "onboarding_scrubs_secrets_and_pii",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:52:06.815Z",
+      "timestamp": "2026-07-14T16:56:49.632Z",
       "clean": "Welcome [REDACTED_EMAIL] with key [REDACTED_API_KEY]",
       "reason": "onboarding inputs securely stripped of secrets and email PII"
     }

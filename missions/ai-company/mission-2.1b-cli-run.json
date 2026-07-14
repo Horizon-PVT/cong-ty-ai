@@ -1,0 +1,17 @@
+{
+  "milestone": "2.1B",
+  "name": "Onboarding CLI (paperclipai run) & Doctor Repair",
+  "status": "IN_PROGRESS",
+  "objectives": [
+    "Verify cli run redirects to onboarding when config is missing",
+    "Verify doctor detects port conflict correctly",
+    "Verify doctor auto-repairs port conflicts by finding next free port",
+    "Verify doctor flags database connection failures",
+    "Verify doctor resolves database failures via fallback to embedded mode",
+    "Verify tailscale host detection logic runs successfully",
+    "Verify bootstrap invite CEO URL is constructed correctly",
+    "Verify cli run blocks and exits when unrepairable errors persist",
+    "Verify cli run completes cleanly when environment is healthy",
+    "Ensure verifier regression chain rolls back to 2.1A"
+  ]
+}

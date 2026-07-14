@@ -1,0 +1,13 @@
+{
+  "milestone": "2.1B",
+  "generated_at": "2026-07-14T16:56:56.296Z",
+  "artifacts": [
+    "cli-run-active-config.json",
+    "cli-run-events.json",
+    "cli-run-validation-details.json",
+    "cli-run-scorecard.json",
+    "qa-acceptance-report.md",
+    "artifact-manifest.json",
+    "final-package-index.md"
+  ]
+}
