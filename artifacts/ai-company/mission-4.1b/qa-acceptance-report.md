@@ -1,6 +1,6 @@
 # QA Acceptance Report — Milestone 4.1B
 
-**Generated:** 2026-07-14T17:43:51.978Z
+**Generated:** 2026-07-14T17:52:21.080Z
 **Milestone:** 4.1B — Auto Mode Semantics & Cloud Sandbox Runtime
 **Verdict:** AUTO_RUNTIME_VERIFIED
 

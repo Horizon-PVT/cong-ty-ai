@@ -1,0 +1,169 @@
+{
+  "milestone": "6.1A",
+  "generated_at": "2026-07-14T17:52:44.807Z",
+  "total_tests": 10,
+  "passed": 10,
+  "failed": 0,
+  "events": [
+    {
+      "test_case": "local_trusted_mode_allows_no_auth",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:52:44.808Z",
+      "res": {
+        "status": 200,
+        "user": {
+          "userId": "local_user",
+          "role": "Owner",
+          "companyId": "comp_1"
+        }
+      },
+      "reason": "local trusted mode correctly bypassed credentials authentication"
+    },
+    {
+      "test_case": "private_mode_enforces_authentication",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:52:44.808Z",
+      "resEmpty": {
+        "status": 401,
+        "error": "Authentication required: Missing session token"
+      },
+      "resInvalid": {
+        "status": 401,
+        "error": "Authentication failed: Invalid session token"
+      },
+      "reason": "authenticated private mode strictly blocked unauthenticated requests"
+    },
+    {
+      "test_case": "non_member_access_is_blocked",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:52:44.809Z",
+      "authRes": {
+        "status": 200,
+        "user": {
+          "userId": "user_stranger",
+          "role": "Operator",
+          "companyId": "comp_2"
+        }
+      },
+      "reason": "authenticated non-member from comp_2 blocked from comp_1 context"
+    },
+    {
+      "test_case": "invite_flow_issues_membership",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:52:44.810Z",
+      "inviteRes": {
+        "status": 200,
+        "inviteToken": "invite_j39daj1y"
+      },
+      "acceptRes": {
+        "status": 200,
+        "message": "Invite accepted successfully, membership activated"
+      },
+      "listRes": {
+        "status": 200,
+        "members": [
+          {
+            "userId": "user_owner",
+            "email": "owner@example.com",
+            "role": "Owner"
+          },
+          {
+            "userId": "user_new",
+            "email": "new_member@example.com",
+            "role": "Operator"
+          }
+        ]
+      },
+      "reason": "invite token successfully generated and user registered inside roster"
+    },
+    {
+      "test_case": "command_attribution_logged_successfully",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:52:44.810Z",
+      "audit": {
+        "action": "[REDACTED_INVITE_TOKEN]",
+        "actor": "user_owner",
+        "companyId": "comp_1",
+        "email": "another@example.com",
+        "role": "Operator",
+        "inviteToken": "[REDACTED_INVITE_TOKEN]",
+        "timestamp": "2026-07-14T17:52:44.810Z"
+      },
+      "reason": "audit logs captured complete attribution details of the executing user"
+    },
+    {
+      "test_case": "owner_only_actions_restricted",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:52:44.810Z",
+      "resOwner": {
+        "status": 200,
+        "allowed": true
+      },
+      "resOp": {
+        "status": 403,
+        "error": "Access denied: Role \"Operator\" is not authorized for action \"change_budget\""
+      },
+      "reason": "owner-only actions successfully restricted to Owner role"
+    },
+    {
+      "test_case": "board_only_actions_restricted",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:52:44.810Z",
+      "resBoard": {
+        "status": 200,
+        "allowed": true
+      },
+      "resOp": {
+        "status": 403,
+        "error": "Access denied: Role \"Operator\" is not authorized for action \"approve_issue\""
+      },
+      "resView": {
+        "status": 403,
+        "error": "Access denied: Role \"Viewer\" is not authorized for action \"approve_issue\""
+      },
+      "reason": "board/owner approval actions successfully restricted from operators and viewers"
+    },
+    {
+      "test_case": "teamwork_enforces_company_isolation",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:52:44.810Z",
+      "rosterRes": {
+        "status": 200,
+        "members": [
+          {
+            "userId": "user_owner",
+            "email": "owner@example.com",
+            "role": "Owner"
+          }
+        ]
+      },
+      "reason": "company roster query successfully isolated company boundaries"
+    },
+    {
+      "test_case": "session_expiration_blocks_actions",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:52:44.810Z",
+      "validRes": {
+        "status": 200,
+        "user": {
+          "userId": "user_op",
+          "role": "Operator",
+          "companyId": "comp_1"
+        }
+      },
+      "expiredRes": {
+        "status": 401,
+        "error": "Authentication failed: Session expired"
+      },
+      "reason": "expired session tokens correctly rejected subsequent user operations"
+    },
+    {
+      "test_case": "regression_chain_integrity_verified",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:52:44.810Z",
+      "cleanKey": true,
+      "cleanEmail": true,
+      "reason": "PII emails and secrets successfully redacted in attribution logs and live token gate blocks runs"
+    }
+  ]
+}

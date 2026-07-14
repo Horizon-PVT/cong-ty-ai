@@ -1,0 +1,17 @@
+{
+  "milestone": "6.1A",
+  "name": "Team Invite, Membership & Deployment Auth",
+  "status": "IN_PROGRESS",
+  "objectives": [
+    "Verify local trusted deployment mode allows access without credentials",
+    "Verify authenticated private mode blocks requests without a valid session token",
+    "Verify requests from authenticated non-members are blocked from accessing company resources",
+    "Verify inviting a user issues an invite code and updates company membership successfully",
+    "Verify all executed commands and API calls log correct user attribution details",
+    "Verify owner-only actions like changing budget or roles are rejected for non-owners",
+    "Verify board-only actions like approving issues are blocked for viewers or operators",
+    "Verify team membership and user listings enforce strict company isolation boundaries",
+    "Verify expired user sessions block subsequent user operations with 401",
+    "Ensure verifier regression chain rolls back to 5.1B"
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "milestone": "3.1B",
-  "generated_at": "2026-07-14T17:43:37.084Z",
+  "generated_at": "2026-07-14T17:52:06.261Z",
   "total_tests": 10,
   "passed": 10,
   "failed": 0,
@@ -8,7 +8,7 @@
     {
       "test_case": "task_transition_to_done_blocked_without_outcome",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:43:37.086Z",
+      "timestamp": "2026-07-14T17:52:06.262Z",
       "res": {
         "status": 400,
         "error": "Cannot set task status to done: No valid outcome is attached"
@@ -18,7 +18,7 @@
     {
       "test_case": "task_transition_to_done_allowed_with_valid_outcome",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:43:37.087Z",
+      "timestamp": "2026-07-14T17:52:06.263Z",
       "outAttach": {
         "status": 200,
         "outcome": {
@@ -27,7 +27,7 @@
           "url": "https://github.com/Horizon-PVT/cong-ty-ai/pull/123",
           "metadata": {},
           "attachedBy": "user_1",
-          "attachedAt": "2026-07-14T17:43:37.087Z"
+          "attachedAt": "2026-07-14T17:52:06.263Z"
         }
       },
       "res": {
@@ -44,7 +44,7 @@
     {
       "test_case": "plan_draft_creation_saves_details",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:43:37.087Z",
+      "timestamp": "2026-07-14T17:52:06.264Z",
       "res": {
         "status": 200,
         "plan": {
@@ -61,7 +61,7 @@
           "state": "draft",
           "childTaskIds": [],
           "createdBy": "user_1",
-          "createdAt": "2026-07-14T17:43:37.087Z"
+          "createdAt": "2026-07-14T17:52:06.264Z"
         }
       },
       "reason": "plan registered in draft mode and preserved properties"
@@ -69,7 +69,7 @@
     {
       "test_case": "plan_transitions_respect_lifecycle_rules",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:43:37.088Z",
+      "timestamp": "2026-07-14T17:52:06.264Z",
       "r1": {
         "status": 200,
         "plan": {
@@ -81,7 +81,7 @@
           "state": "approved",
           "childTaskIds": [],
           "createdBy": "user_1",
-          "createdAt": "2026-07-14T17:43:37.087Z"
+          "createdAt": "2026-07-14T17:52:06.264Z"
         }
       },
       "r2": {
@@ -95,7 +95,7 @@
           "state": "approved",
           "childTaskIds": [],
           "createdBy": "user_1",
-          "createdAt": "2026-07-14T17:43:37.087Z"
+          "createdAt": "2026-07-14T17:52:06.264Z"
         }
       },
       "r3": {
@@ -107,7 +107,7 @@
     {
       "test_case": "plan_decomposition_creates_child_tasks",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:43:37.088Z",
+      "timestamp": "2026-07-14T17:52:06.264Z",
       "res": {
         "status": 200,
         "plan": {
@@ -131,7 +131,7 @@
             "task_plan_1_child_1"
           ],
           "createdBy": "user_1",
-          "createdAt": "2026-07-14T17:43:37.088Z"
+          "createdAt": "2026-07-14T17:52:06.264Z"
         }
       },
       "reason": "approving plan automatically creates all defined child tasks"
@@ -139,14 +139,14 @@
     {
       "test_case": "traceability_links_plan_to_tasks",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:43:37.088Z",
+      "timestamp": "2026-07-14T17:52:06.264Z",
       "childTaskId": "task_plan_1_child_0",
       "reason": "bidirectional link tracing is intact between plan and child tasks"
     },
     {
       "test_case": "outcomes_enforce_company_boundaries",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:43:37.088Z",
+      "timestamp": "2026-07-14T17:52:06.264Z",
       "r1": {
         "status": 403,
         "error": "Access denied: Tenant boundary violation"
@@ -160,7 +160,7 @@
     {
       "test_case": "invalid_outcome_types_are_rejected",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:43:37.088Z",
+      "timestamp": "2026-07-14T17:52:06.264Z",
       "r1": {
         "status": 400,
         "error": "Invalid outcome type \"executable\""
@@ -174,7 +174,7 @@
     {
       "test_case": "outcomes_scrub_pii_and_secrets",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:43:37.088Z",
+      "timestamp": "2026-07-14T17:52:06.265Z",
       "planRes": {
         "status": 200,
         "plan": {
@@ -186,7 +186,7 @@
           "state": "draft",
           "childTaskIds": [],
           "createdBy": "user_1",
-          "createdAt": "2026-07-14T17:43:37.088Z"
+          "createdAt": "2026-07-14T17:52:06.265Z"
         }
       },
       "reason": "secrets and PII email values redacted in planning details and description"
@@ -194,7 +194,7 @@
     {
       "test_case": "regression_chain_integrity_verified",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:43:37.088Z",
+      "timestamp": "2026-07-14T17:52:06.265Z",
       "localPR": {
         "status": 400,
         "error": "Invalid or unsafe URL format for merged_pr outcome"

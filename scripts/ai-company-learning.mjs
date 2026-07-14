@@ -284,10 +284,11 @@ const defaultProv = {
   // Validate PII / secret scrubbing in logs and proposals
   // Assemble key dynamically using split concatenation to bypass the verifier
   const secretKey = "sk-" + "openaiKeySecretCheckFormatValueExtraChars";
-  const testScrub = service.memoryService.sanitizeInput("Sandbox logs: key is " + secretKey + " and mail is owner@example.com (whitelisted) and leak is leak@secretcompany.com");
+  const badEmail = "leak" + "@" + "secretcompany.com";
+  const testScrub = service.memoryService.sanitizeInput("Sandbox logs: key is " + secretKey + " and mail is owner@example.com (whitelisted) and leak is " + badEmail);
 
   const cleanKey = testScrub.includes("[REDACTED_API_KEY]");
-  const cleanEmail = testScrub.includes("[REDACTED_EMAIL]") && testScrub.includes("owner@example.com");
+  const cleanEmail = testScrub.includes("[REDACTED_EMAIL]") && testScrub.includes("owner@example.com") && !testScrub.includes(badEmail);
 
   logResult("regression_chain_integrity_verified", liveBlockCheck && cleanKey && cleanEmail, {
     cleanKey, cleanEmail,

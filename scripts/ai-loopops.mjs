@@ -208,6 +208,12 @@ const MILESTONES = [
     verifier: "node packages/db/src/_verify-5.1b.mjs",
     scorecard: "artifacts/ai-company/mission-5.1b/generated",
   },
+  {
+    id: "6.1a", name: "Team Invite, Membership & Deployment Auth",
+    runner: "node scripts/ai-company-teamwork.mjs",
+    verifier: "node packages/db/src/_verify-6.1a.mjs",
+    scorecard: "artifacts/ai-company/mission-6.1a/generated",
+  },
 ];
 
 // ── Argument parsing ────────────────────────────────────────────────────

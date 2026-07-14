@@ -1,6 +1,6 @@
 {
   "milestone": "5.1B",
-  "generated_at": "2026-07-14T17:44:07.831Z",
+  "generated_at": "2026-07-14T17:52:36.702Z",
   "total_tests": 10,
   "passed": 10,
   "failed": 0,
@@ -8,7 +8,7 @@
     {
       "test_case": "pre_run_hydrate_loads_context",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:44:07.834Z",
+      "timestamp": "2026-07-14T17:52:36.705Z",
       "res": {
         "status": 200,
         "hydrated": true,
@@ -22,7 +22,7 @@
     {
       "test_case": "post_run_capture_extracts_facts",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:44:07.835Z",
+      "timestamp": "2026-07-14T17:52:36.706Z",
       "res": {
         "status": 200,
         "message": "Post-run capture executed successfully"
@@ -36,7 +36,7 @@
     {
       "test_case": "manual_capture_saves_correctly",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:44:07.835Z",
+      "timestamp": "2026-07-14T17:52:36.706Z",
       "res": {
         "status": 200,
         "resolvedPath": "D:\\Project\\A Tung\\paperclip-dự án công ty AI\\memory\\ai-company\\comp_1\\manual_kb.md",
@@ -47,7 +47,7 @@
     {
       "test_case": "successful_run_creates_playbook",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:44:07.835Z",
+      "timestamp": "2026-07-14T17:52:36.706Z",
       "playbookRes": {
         "status": 200,
         "content": "# Playbook for agent_qa\nQuality: 0.9\nSteps:\n1. Step A\n2. Step B"
@@ -57,17 +57,17 @@
     {
       "test_case": "repeated_blockers_propose_config_updates",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:44:07.835Z",
+      "timestamp": "2026-07-14T17:52:36.707Z",
       "res1": {
         "status": 404,
         "error": "Memory file not found"
       },
       "res2": {
         "status": 200,
-        "content": "{\"proposed_at\":\"2026-07-14T17:44:07.835Z\",\"agent_id\":\"agent_1\",\"reason\":\"Repeated blocker encountered: API Timeout\",\"proposed_config_changes\":{\"max_retries\":5,\"fallback_provider\":\"alternative_model_pool\"}}"
+        "content": "{\"proposed_at\":\"2026-07-14T17:52:36.706Z\",\"agent_id\":\"agent_1\",\"reason\":\"Repeated blocker encountered: API Timeout\",\"proposed_config_changes\":{\"max_retries\":5,\"fallback_provider\":\"alternative_model_pool\"}}"
       },
       "proposal": {
-        "proposed_at": "2026-07-14T17:44:07.835Z",
+        "proposed_at": "2026-07-14T17:52:36.706Z",
         "agent_id": "agent_1",
         "reason": "Repeated blocker encountered: API Timeout",
         "proposed_config_changes": {
@@ -80,14 +80,14 @@
     {
       "test_case": "learning_recommends_skill_updates",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:44:07.836Z",
+      "timestamp": "2026-07-14T17:52:36.707Z",
       "res": {
         "status": 200,
         "resolvedPath": "D:\\Project\\A Tung\\paperclip-dự án công ty AI\\memory\\ai-company\\comp_1\\proposed_skills.json",
-        "content": "{\"proposed_at\":\"2026-07-14T17:44:07.836Z\",\"agent_id\":\"agent_writer\",\"skill_name\":\"writing_skill\",\"template_update\":\"New system prompt template with safety controls\"}"
+        "content": "{\"proposed_at\":\"2026-07-14T17:52:36.707Z\",\"agent_id\":\"agent_writer\",\"skill_name\":\"writing_skill\",\"template_update\":\"New system prompt template with safety controls\"}"
       },
       "proposal": {
-        "proposed_at": "2026-07-14T17:44:07.836Z",
+        "proposed_at": "2026-07-14T17:52:36.707Z",
         "agent_id": "agent_writer",
         "skill_name": "writing_skill",
         "template_update": "New system prompt template with safety controls"
@@ -97,7 +97,7 @@
     {
       "test_case": "hook_operations_log_provenance",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:44:07.836Z",
+      "timestamp": "2026-07-14T17:52:36.707Z",
       "audit": {
         "action": "memory_written",
         "filePath": "D:\\Project\\A Tung\\paperclip-dự án công ty AI\\memory\\ai-company\\comp_1\\kb.md",
@@ -111,14 +111,14 @@
           "issue_id": "issue_99",
           "run_id": "run_55"
         },
-        "timestamp": "2026-07-14T17:44:07.836Z"
+        "timestamp": "2026-07-14T17:52:36.707Z"
       },
       "reason": "audit logs captured complete provenance details for hook operations"
     },
     {
       "test_case": "hooks_enforce_read_tenant_isolation",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:44:07.836Z",
+      "timestamp": "2026-07-14T17:52:36.707Z",
       "res": {
         "status": 404,
         "error": "No memory binding found"
@@ -128,7 +128,7 @@
     {
       "test_case": "hooks_enforce_write_tenant_isolation",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:44:07.836Z",
+      "timestamp": "2026-07-14T17:52:36.708Z",
       "pathPartsRes": {
         "status": 403,
         "error": "Access denied: Tenant boundary violation"
@@ -138,7 +138,7 @@
     {
       "test_case": "regression_chain_integrity_verified",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:44:07.837Z",
+      "timestamp": "2026-07-14T17:52:36.708Z",
       "cleanKey": true,
       "cleanEmail": true,
       "reason": "PII and secret keys scrubbed successfully in hook content and live token gate blocks runs"

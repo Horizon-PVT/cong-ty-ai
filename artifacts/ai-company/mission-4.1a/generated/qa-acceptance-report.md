@@ -1,6 +1,6 @@
 # QA Acceptance Report — Milestone 4.1A
 
-**Generated:** 2026-07-14T17:43:44.457Z
+**Generated:** 2026-07-14T17:52:13.557Z
 **Milestone:** 4.1A — Deterministic Wake Gating & Circuit Breakers
 **Verdict:** SAFETY_VERIFIED
 

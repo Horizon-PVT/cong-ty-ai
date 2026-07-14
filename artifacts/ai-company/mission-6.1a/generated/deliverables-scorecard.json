@@ -1,0 +1,17 @@
+{
+  "milestone": "6.1A",
+  "generated_at": "2026-07-14T17:52:44.807Z",
+  "verdict": "TEAMWORK_VERIFIED",
+  "deliverables_checks": {
+    "local_trusted_mode_allows_no_auth": true,
+    "private_mode_enforces_authentication": true,
+    "non_member_access_is_blocked": true,
+    "invite_flow_issues_membership": true,
+    "command_attribution_logged_successfully": true,
+    "owner_only_actions_restricted": true,
+    "board_only_actions_restricted": true,
+    "teamwork_enforces_company_isolation": true,
+    "session_expiration_blocks_actions": true,
+    "regression_chain_integrity_verified": true
+  }
+}
