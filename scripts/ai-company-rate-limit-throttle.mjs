@@ -244,7 +244,8 @@ function logResult(name, success, details) {
   const unblocked = service.tryAutoUnblock("agent_unblock");
 
   // New request after unblock should succeed
-  service.resetAll();
+  // Clear only request windows (not throttle state) to test unblock genuinely
+  service._windows.clear();
   const result = service.evaluateRequest(actor, "agent_unblock", "per_agent");
 
   logResult("auto_unblock_after_cooldown", throttledBefore && unblocked && result.status === 200, {

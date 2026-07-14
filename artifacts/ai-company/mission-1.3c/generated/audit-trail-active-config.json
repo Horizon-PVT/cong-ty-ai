@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.3",
+  "milestone": "1.3C",
+  "generated_at": "2026-07-14T15:59:37.597Z",
+  "audit_trail_policy": {
+    "milestone": "1.3C",
+    "default_mode": "dry_run",
+    "audit_scope": {
+      "activity_log": true,
+      "secret_access_events": true,
+      "cost_events": true,
+      "finance_events": true,
+      "budget_incidents": true,
+      "heartbeat_run_events": true
+    },
+    "redaction_requirements": {
+      "strip_api_keys": true,
+      "strip_jwt_tokens": true,
+      "strip_passwords": true,
+      "strip_os_username": true,
+      "strip_home_directory": true,
+      "allowed_placeholder": "[REDACTED]"
+    },
+    "retention_policy": {
+      "activity_log_days": 90,
+      "plugin_log_days": 7,
+      "cost_event_days": 365,
+      "secret_access_event_days": 365
+    },
+    "immutability_rules": {
+      "non_admin_cannot_delete_audit": true,
+      "non_admin_cannot_modify_audit": true,
+      "viewer_can_read_own_company_audit": true,
+      "cross_company_audit_isolation": true
+    },
+    "assertions": {
+      "security_action_produces_audit_entry": true,
+      "secret_access_logged_with_outcome": true,
+      "redacted_fields_contain_no_secrets": true,
+      "cross_company_audit_returns": 403,
+      "non_admin_delete_returns": 403,
+      "viewer_read_own_company_returns": 200
+    },
+    "allowed_modes": [
+      "dry_run",
+      "live"
+    ],
+    "required_live_token_prefix": "OWNER_APPROVED_AUDIT_TRAIL_TOKEN="
+  }
+}

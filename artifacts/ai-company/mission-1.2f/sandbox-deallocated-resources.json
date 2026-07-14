@@ -1,7 +1,7 @@
 {
   "milestone": "1.2F",
   "verdict": "CLEANUP_VERIFIED",
-  "generated_at": "2026-07-14T09:21:58.579Z",
+  "generated_at": "2026-07-14T15:49:57.961Z",
   "swept_workspaces_count": 2,
   "reclaimed_metrics": {
     "cpu_cores": 4,

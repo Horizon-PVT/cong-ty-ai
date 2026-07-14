@@ -130,6 +130,12 @@ const MILESTONES = [
     verifier: "node packages/db/src/_verify-1.3b.mjs",
     scorecard: "artifacts/ai-company/mission-1.3b/generated",
   },
+  {
+    id: "1.3c", name: "Audit Trail & Event Logging Validation",
+    runner: "node scripts/ai-company-audit-trail-validation.mjs",
+    verifier: "node packages/db/src/_verify-1.3c.mjs",
+    scorecard: "artifacts/ai-company/mission-1.3c/generated",
+  },
 ];
 
 // ── Argument parsing ────────────────────────────────────────────────────

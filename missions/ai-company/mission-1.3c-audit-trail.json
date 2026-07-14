@@ -1,0 +1,17 @@
+{
+  "milestone": "1.3C",
+  "name": "Audit Trail & Event Logging Validation",
+  "status": "IN_PROGRESS",
+  "objectives": [
+    "Verify that all security-critical actions produce audit trail entries with correct actor/action/entity attribution",
+    "Validate secret access events are logged with access outcome (granted/denied/redacted)",
+    "Ensure audit log immutability: non-admin actors cannot delete or modify audit entries",
+    "Verify redaction pipeline strips API keys, JWT tokens, passwords, OS usernames, and home directory paths",
+    "Validate cross-company audit isolation: company A cannot read company B's audit trail",
+    "Verify cost event attribution links correctly to agent/company/run context",
+    "Validate log retention policies enforce correct expiry windows (7d plugin, 90d activity, 365d cost/secret)",
+    "Ensure real-time SSE audit event publishing includes correct event type mapping",
+    "Validate regression tests for Milestones 1.3A and 1.3B remain intact",
+    "Output validation scorecard and pass autonomous self-test gate checks"
+  ]
+}

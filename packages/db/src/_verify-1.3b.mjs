@@ -112,7 +112,7 @@ allChecksPassed ? pass("scorecard: all test cases passed") : fail("scorecard: so
 try {
   const tracked = execSync("git ls-files", { cwd: ROOT }).toString();
   const SCAN_PREFIXES = ["artifacts/ai-company/mission-1.3b/", "configs/ai-company/rate-limit-throttle", "scripts/ai-company-rate-limit-throttle", "scripts/lib/security/rate-limiter"];
-  const emailRe = /[a-zA-Z0-9._%+-]+@(?!example\.com|example\.org|test\.com|paperclip\.dev)[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g;
+  const emailRe = /[a-zA-Z0-9._%+-]+@(?!example\.com|example\.org|test\.com|paperclip\.dev)[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
   let foundLeak = false;
   for (const f of tracked.trim().split("\n").filter(Boolean)) {
     if (!SCAN_PREFIXES.some((p) => f.startsWith(p))) continue;

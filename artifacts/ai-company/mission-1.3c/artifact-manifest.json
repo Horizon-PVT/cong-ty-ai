@@ -1,0 +1,13 @@
+{
+  "milestone": "1.3C",
+  "generated_at": "2026-07-14T15:59:37.597Z",
+  "artifacts": [
+    "audit-trail-active-config.json",
+    "audit-trail-events.json",
+    "audit-trail-validation-details.json",
+    "audit-trail-scorecard.json",
+    "qa-acceptance-report.md",
+    "artifact-manifest.json",
+    "final-package-index.md"
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "milestone": "1.3C",
+  "generated_at": "2026-07-14T15:59:37.597Z",
+  "total_tests": 10,
+  "passed": 10,
+  "failed": 0,
+  "events": [
+    {
+      "test_case": "security_action_audit_entry",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T15:59:37.599Z",
+      "has_id": true,
+      "has_timestamp": true,
+      "correct_attribution": true,
+      "correct_entity": true,
+      "is_immutable": true,
+      "reason": "audit entry created with full attribution"
+    },
+    {
+      "test_case": "secret_access_events_logged",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T15:59:37.599Z",
+      "events_logged": 3,
+      "no_secret_values_stored": true,
+      "correct_outcomes": true,
+      "reason": "secret access events logged with outcomes, no secret values stored"
+    },
+    {
+      "test_case": "non_admin_cannot_delete_audit",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T15:59:37.600Z",
+      "delete_status": 403,
+      "entries_remaining": 1,
+      "reason": "non-admin delete blocked with 403"
+    },
+    {
+      "test_case": "audit_entry_immutability",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T15:59:37.600Z",
+      "modify_status": 403,
+      "immutability_warning": true,
+      "reason": "audit entries are immutable — even admin modification blocked"
+    },
+    {
+      "test_case": "redaction_strips_secrets",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T15:59:37.600Z",
+      "leaks_found": [],
+      "details_after_redaction": {
+        "_redacted": true,
+        "_original_keys": [
+          "api_key",
+          "jwt",
+          "user_path",
+          "message"
+        ]
+      },
+      "reason": "all secrets redacted successfully"
+    },
+    {
+      "test_case": "cross_company_audit_isolation",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T15:59:37.601Z",
+      "cross_company_agent_status": 403,
+      "cross_company_user_status": 403,
+      "own_company_status": 200,
+      "own_company_count": 1,
+      "reason": "cross-company access blocked, own company access allowed"
+    },
+    {
+      "test_case": "cost_event_attribution",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T15:59:37.601Z",
+      "complete_valid": true,
+      "incomplete_valid": false,
+      "incomplete_missing": [
+        "agentId"
+      ],
+      "full_attribution": true,
+      "reason": "cost event attribution validation correct"
+    },
+    {
+      "test_case": "log_retention_policy",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T15:59:37.601Z",
+      "retain_recent_plugin": true,
+      "prune_old_plugin_10d": true,
+      "prune_old_activity_100d": true,
+      "retain_medium_cost_200d": true,
+      "sweep_pruned": 1,
+      "sweep_retained": 1,
+      "reason": "retention policy enforced correctly"
+    },
+    {
+      "test_case": "sse_event_type_mapping",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T15:59:37.602Z",
+      "activity_logged": 1,
+      "budget_warning": 1,
+      "budget_critical": 1,
+      "security_audit": 1,
+      "total_sse_events": 4,
+      "reason": "SSE event types mapped correctly"
+    },
+    {
+      "test_case": "viewer_read_own_company_audit",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T15:59:37.602Z",
+      "viewer_status": 200,
+      "viewer_count": 2,
+      "admin_status": 200,
+      "admin_count": 2,
+      "reason": "viewer and admin can read own company audit trail"
+    }
+  ]
+}
