@@ -1,0 +1,12 @@
+{
+  "milestone": "1.3A",
+  "name": "Company-Scoped Data Boundaries Validation",
+  "status": "IN_PROGRESS",
+  "objectives": [
+    "Verify company-scoped data boundaries across key API routes and middlewares",
+    "Ensure agent keys and JWT tokens cannot access other companies' tasks or data",
+    "Verify user session memberships and viewer read-only constraints on mutating methods",
+    "Implement regression validation to ensure no features of 1.1 or 1.2 are broken",
+    "Output validation scorecard and pass autonomous self-test gate checks"
+  ]
+}

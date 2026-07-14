@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.3",
+  "milestone": "1.3A",
+  "generated_at": "2026-07-14T09:35:10.285Z",
+  "boundaries_policy": {
+    "milestone": "1.3A",
+    "default_mode": "dry_run",
+    "verification_scope": {
+      "agent_keys": true,
+      "agent_jwts": true,
+      "user_sessions": true,
+      "viewer_roles": true
+    },
+    "assertions": {
+      "agent_cross_company_access_returns": 403,
+      "unauthorized_user_access_returns": 403,
+      "viewer_mutating_access_returns": 403,
+      "admin_access_returns": 200
+    },
+    "allowed_modes": [
+      "dry_run",
+      "live"
+    ],
+    "required_live_token_prefix": "OWNER_APPROVED_BOUNDARIES_VALIDATION_TOKEN="
+  }
+}
