@@ -1,0 +1,14 @@
+{
+  "milestone": "1.2F",
+  "default_mode": "dry_run",
+  "max_workspace_idle_lifetime_seconds": 300,
+  "circuit_breaker_threshold_ratio": 0.9,
+  "max_allowed_consecutive_oom_crashes": 3,
+  "force_wipe_cache_and_credentials": true,
+  "reclaim_unassigned_pool_resources": true,
+  "enforce_sandbox_company_isolation": true,
+  "enforce_sandbox_budget_limits": true,
+  "enforce_circuit_breakers": true,
+  "allowed_modes": ["dry_run", "sandbox", "live"],
+  "required_live_token_prefix": "OWNER_APPROVED_DEPROVISIONING_TOKEN="
+}

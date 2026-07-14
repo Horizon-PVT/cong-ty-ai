@@ -1,0 +1,11 @@
+{
+  "milestone": "1.2F",
+  "verdict": "CLEANUP_VERIFIED",
+  "generated_at": "2026-07-14T09:21:58.579Z",
+  "swept_workspaces_count": 2,
+  "reclaimed_metrics": {
+    "cpu_cores": 4,
+    "memory_mb": 7168,
+    "disk_gb": 35
+  }
+}

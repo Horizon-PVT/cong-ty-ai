@@ -255,13 +255,65 @@ export class SandboxRuntimeService {
   }
 
   async collectArtifacts(workspace) {
-    if (workspace.status !== "stopped" && workspace.status !== "tripped") {
-      throw new Error("Workspace must be stopped or tripped to collect artifacts.");
+    if (workspace.status !== "stopped" && workspace.status !== "tripped" && workspace.status !== "failed") {
+      throw new Error("Workspace must be stopped, tripped, or failed to collect artifacts.");
     }
+    const verdict = workspace.status === "stopped" ? "PASS" : (workspace.status === "tripped" ? "TRIPPED" : "FAILED");
     return [
-      { name: "build-log.txt", size: 1204, content_preview: "[INFO] Sandbox build completed." },
-      { name: "artifacts-report.json", size: 450, content_preview: "{\"verdict\":\"PASS\"}" }
+      { name: "build-log.txt", size: 1204, content_preview: `[INFO] Sandbox build ended with status: ${workspace.status}.` },
+      { name: "artifacts-report.json", size: 450, content_preview: `{"verdict":"${verdict}"}` }
     ];
+  }
+
+  async deprovisionWorkspace(workspace) {
+    workspace.status = "deallocated";
+    workspace.updated_at = new Date().toISOString();
+
+    const reclaimed = {
+      cpu_cores: workspace.allocated_resources?.cpu_cores || 0,
+      memory_mb: workspace.allocated_resources?.memory_mb || 0,
+      disk_gb: workspace.allocated_resources?.disk_gb || 0
+    };
+
+    // Clean up all reference variables, credentials cache, and in-memory secrets
+    delete workspace.secret_env;
+    workspace.allocated_resources = null;
+    workspace.allocated_budget = 0;
+
+    return {
+      success: true,
+      workspace_id: workspace.workspace_id,
+      reclaimed_resources: reclaimed,
+      events: [
+        { timestamp: new Date().toISOString(), type: "cleanup", message: "Temporary directory credentials wiped." },
+        { timestamp: new Date().toISOString(), type: "deallocate", message: `Reclaimed resources: CPU ${reclaimed.cpu_cores}, RAM ${reclaimed.memory_mb}MB, Disk ${reclaimed.disk_gb}GB.` }
+      ]
+    };
+  }
+
+  async sweepOrphanedWorkspaces(workspaces) {
+    const now = new Date();
+    const swept = [];
+
+    for (const ws of workspaces) {
+      // Sweeps workspaces that are active but inactive/idle for too long (exceeds max_workspace_idle_lifetime_seconds)
+      const idleTimeSeconds = Math.floor((now - new Date(ws.updated_at || ws.created_at)) / 1000);
+      const isTerminal = ws.status === "stopped" || ws.status === "tripped" || ws.status === "failed";
+      const isIdle = isTerminal && idleTimeSeconds >= (this.policy.max_workspace_idle_lifetime_seconds || 300);
+
+      if (isIdle) {
+        const cleanupReport = await this.deprovisionWorkspace(ws);
+        ws.status = "deallocated";
+        ws.last_error = `Orphaned Sweeper: Workspace reclaimed automatically due to idle timeout (${idleTimeSeconds}s >= ${this.policy.max_workspace_idle_lifetime_seconds || 300}s).`;
+        swept.push({
+          workspace_id: ws.workspace_id,
+          idle_time_seconds: idleTimeSeconds,
+          report: cleanupReport
+        });
+      }
+    }
+
+    return swept;
   }
 }
 

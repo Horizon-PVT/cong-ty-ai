@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.2",
+  "milestone": "1.2F",
+  "generated_at": "2026-07-14T09:21:58.579Z",
+  "workspaces": [
+    {
+      "workspace_id": "ws_happy_path_001",
+      "company_id": "comp_tech_alpha",
+      "agent_id": "agent_dev_1",
+      "allocated_resources": null,
+      "allocated_budget": 0,
+      "status": "deallocated",
+      "created_at": "2026-07-14T09:21:58.580Z",
+      "updated_at": "2026-07-14T09:21:58.581Z"
+    },
+    {
+      "workspace_id": "ws_failed_idle_leaked_002",
+      "company_id": "comp_tech_alpha",
+      "agent_id": "agent_dev_2",
+      "allocated_resources": null,
+      "allocated_budget": 0,
+      "status": "deallocated",
+      "created_at": "2026-07-14T09:15:58.581Z",
+      "updated_at": "2026-07-14T09:21:58.581Z",
+      "last_error": "Orphaned Sweeper: Workspace reclaimed automatically due to idle timeout (360s >= 300s)."
+    },
+    {
+      "workspace_id": "ws_stopped_idle_leaked_003",
+      "company_id": "comp_tech_alpha",
+      "agent_id": "agent_dev_3",
+      "allocated_resources": null,
+      "allocated_budget": 0,
+      "status": "deallocated",
+      "created_at": "2026-07-14T09:15:58.581Z",
+      "updated_at": "2026-07-14T09:21:58.581Z",
+      "last_error": "Orphaned Sweeper: Workspace reclaimed automatically due to idle timeout (360s >= 300s)."
+    },
+    {
+      "workspace_id": "ws_active_idle_ignored_004",
+      "company_id": "comp_tech_alpha",
+      "agent_id": "agent_dev_4",
+      "allocated_resources": {
+        "cpu_cores": 1,
+        "memory_mb": 1024,
+        "disk_gb": 5
+      },
+      "allocated_budget": 80,
+      "secret_env": {
+        "LIVE_SESSION": "active_secret"
+      },
+      "status": "ready",
+      "created_at": "2026-07-14T09:15:58.581Z",
+      "updated_at": "2026-07-14T09:15:58.581Z"
+    }
+  ]
+}

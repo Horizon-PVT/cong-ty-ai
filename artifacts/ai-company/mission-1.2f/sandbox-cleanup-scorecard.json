@@ -1,0 +1,12 @@
+{
+  "milestone": "1.2F",
+  "generated_at": "2026-07-14T09:21:58.579Z",
+  "verdict": "CLEANUP_VERIFIED",
+  "cleanup_checks": {
+    "happy_path_deprovisioned": true,
+    "failed_idle_reclaimed": true,
+    "stopped_idle_reclaimed": true,
+    "active_idle_ignored": true,
+    "secrets_wiped_successfully": true
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "milestone": "1.2F",
+  "name": "Post-Execution Cleanup & Resource De-provisioning Lifecycle",
+  "status": "IN_PROGRESS",
+  "objectives": [
+    "Extend SandboxRuntimeService with deprovisioning, resource de-allocation, and wiping",
+    "Transition stopped or tripped workspaces into 'deallocated' or 'deprovisioned' states",
+    "Implement resource pool reclamation returning RAM/CPU/Disk metrics to the pool",
+    "Implement an automated idle lifetime sweeper to clean up orphaned/leaked sandbox instances",
+    "Verify regression tests to ensure all circuit breaker and resource caps remain intact"
+  ]
+}
