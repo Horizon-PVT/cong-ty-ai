@@ -1,6 +1,6 @@
 {
   "milestone": "1.3C",
-  "generated_at": "2026-07-14T16:35:32.153Z",
+  "generated_at": "2026-07-14T16:43:35.688Z",
   "total_tests": 10,
   "passed": 10,
   "failed": 0,
@@ -8,7 +8,7 @@
     {
       "test_case": "security_action_audit_entry",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:35:32.156Z",
+      "timestamp": "2026-07-14T16:43:35.691Z",
       "has_id": true,
       "has_timestamp": true,
       "correct_attribution": true,
@@ -19,7 +19,7 @@
     {
       "test_case": "secret_access_events_logged",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:35:32.156Z",
+      "timestamp": "2026-07-14T16:43:35.691Z",
       "events_logged": 3,
       "no_secret_values_stored": true,
       "correct_outcomes": true,
@@ -28,7 +28,7 @@
     {
       "test_case": "non_admin_cannot_delete_audit",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:35:32.156Z",
+      "timestamp": "2026-07-14T16:43:35.691Z",
       "delete_status": 403,
       "entries_remaining": 1,
       "reason": "non-admin delete blocked with 403"
@@ -36,7 +36,7 @@
     {
       "test_case": "audit_entry_immutability",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:35:32.156Z",
+      "timestamp": "2026-07-14T16:43:35.692Z",
       "modify_status": 403,
       "immutability_warning": true,
       "reason": "audit entries are immutable — even admin modification blocked"
@@ -44,7 +44,7 @@
     {
       "test_case": "redaction_strips_secrets",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:35:32.157Z",
+      "timestamp": "2026-07-14T16:43:35.692Z",
       "leaks_found": [],
       "details_after_redaction": {
         "_redacted": true,
@@ -60,7 +60,7 @@
     {
       "test_case": "cross_company_audit_isolation",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:35:32.157Z",
+      "timestamp": "2026-07-14T16:43:35.692Z",
       "cross_company_agent_status": 403,
       "cross_company_user_status": 403,
       "own_company_status": 200,
@@ -70,7 +70,7 @@
     {
       "test_case": "cost_event_attribution",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:35:32.157Z",
+      "timestamp": "2026-07-14T16:43:35.693Z",
       "complete_valid": true,
       "incomplete_valid": false,
       "incomplete_missing": [
@@ -82,7 +82,7 @@
     {
       "test_case": "log_retention_policy",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:35:32.158Z",
+      "timestamp": "2026-07-14T16:43:35.693Z",
       "retain_recent_plugin": true,
       "prune_old_plugin_10d": true,
       "prune_old_activity_100d": true,
@@ -94,7 +94,7 @@
     {
       "test_case": "sse_event_type_mapping",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:35:32.158Z",
+      "timestamp": "2026-07-14T16:43:35.693Z",
       "activity_logged": 1,
       "budget_warning": 1,
       "budget_critical": 1,
@@ -105,7 +105,7 @@
     {
       "test_case": "viewer_read_own_company_audit",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T16:35:32.158Z",
+      "timestamp": "2026-07-14T16:43:35.694Z",
       "viewer_status": 200,
       "viewer_count": 2,
       "admin_status": 200,

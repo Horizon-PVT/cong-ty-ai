@@ -1,0 +1,13 @@
+{
+  "milestone": "1.4A",
+  "generated_at": "2026-07-14T16:43:59.669Z",
+  "artifacts": [
+    "dashboard-db-active-config.json",
+    "dashboard-db-events.json",
+    "dashboard-db-validation-details.json",
+    "dashboard-db-scorecard.json",
+    "qa-acceptance-report.md",
+    "artifact-manifest.json",
+    "final-package-index.md"
+  ]
+}

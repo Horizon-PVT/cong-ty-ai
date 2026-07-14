@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.3",
+  "milestone": "1.4A",
+  "generated_at": "2026-07-14T16:43:59.669Z",
+  "policy": {
+    "milestone": "1.4A",
+    "default_mode": "dry_run",
+    "dashboard": {
+      "metrics": [
+        "active_agents",
+        "running_agents",
+        "spend_cents",
+        "pending_approvals",
+        "completed_tasks"
+      ],
+      "retention_days": 14
+    },
+    "database": {
+      "supported_modes": [
+        "embedded-postgres",
+        "postgres"
+      ],
+      "connection_timeout_ms": 5000
+    },
+    "assertions": {
+      "dashboard_spend_matches_live_events": true,
+      "dashboard_agent_counts_accurate": true,
+      "dashboard_tasks_by_status_accurate": true,
+      "dashboard_pending_approvals_matches_db": true,
+      "postgres_connection_success": true,
+      "embedded_postgres_fallback_success": true,
+      "migration_status_up_to_date": true,
+      "health_check_endpoint_returns_db_status": true
+    },
+    "allowed_modes": [
+      "dry_run",
+      "live"
+    ],
+    "required_live_token_prefix": "OWNER_APPROVED_DASHBOARD_DB_TOKEN="
+  }
+}

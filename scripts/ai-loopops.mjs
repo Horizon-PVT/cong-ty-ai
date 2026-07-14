@@ -154,6 +154,12 @@ const MILESTONES = [
     verifier: "node packages/db/src/_verify-1.3f.mjs",
     scorecard: "artifacts/ai-company/mission-1.3f/generated",
   },
+  {
+    id: "1.4a", name: "Live Dashboard Aggregations & DB Adaptability (PostgreSQL)",
+    runner: "node scripts/ai-company-dashboard-db.mjs",
+    verifier: "node packages/db/src/_verify-1.4a.mjs",
+    scorecard: "artifacts/ai-company/mission-1.4a/generated",
+  },
 ];
 
 // ── Argument parsing ────────────────────────────────────────────────────

@@ -71,6 +71,12 @@ export class BoardApprovalService {
   resolveApproval(actor, approvalId, action) {
     const approval = this._approvals.get(approvalId);
     if (!approval) return { status: 404, error: "Approval not found" };
+
+    // Eagerly check and process expiration before allowing resolution
+    if (approval.status === "pending" && approval.expiresAt && new Date(approval.expiresAt) <= new Date()) {
+      this.checkExpiration(approvalId);
+    }
+
     if (approval.status !== "pending") return { status: 400, error: `Approval already ${approval.status}` };
 
     // Company check

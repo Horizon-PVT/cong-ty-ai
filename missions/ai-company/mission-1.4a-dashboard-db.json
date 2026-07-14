@@ -1,0 +1,17 @@
+{
+  "milestone": "1.4A",
+  "name": "Live Dashboard Aggregations & DB Adaptability (PostgreSQL)",
+  "status": "IN_PROGRESS",
+  "objectives": [
+    "Verify dashboard spend computation aggregates cost_events dynamically",
+    "Verify dashboard task counts segment correctly by status (open, inProgress, blocked, done)",
+    "Verify dashboard pending approval count matches live database state",
+    "Verify active agent status counts match current agent statuses",
+    "Verify database connection check succeeds for external PostgreSQL",
+    "Verify fallback to embedded PostgreSQL when DATABASE_URL is not set",
+    "Verify health check endpoints return accurate database connectivity and migration states",
+    "Verify auto-migrations check database schema status correctly",
+    "Ensure all dashboard metrics check company boundaries",
+    "Ensure regression verifier chain loops backward to 1.3F"
+  ]
+}

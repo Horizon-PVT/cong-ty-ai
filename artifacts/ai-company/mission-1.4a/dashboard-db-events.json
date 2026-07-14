@@ -1,0 +1,128 @@
+{
+  "milestone": "1.4A",
+  "generated_at": "2026-07-14T16:43:59.669Z",
+  "total_tests": 10,
+  "passed": 10,
+  "failed": 0,
+  "events": [
+    {
+      "test_case": "dashboard_spend_matches_live_events",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:43:59.671Z",
+      "spend": 20500,
+      "utilization": 41,
+      "reason": "spend dynamically aggregated for the current month only"
+    },
+    {
+      "test_case": "dashboard_agent_counts_accurate",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:43:59.671Z",
+      "counts": {
+        "active": 1,
+        "running": 1,
+        "paused": 1,
+        "error": 1
+      },
+      "reason": "agent counts segmented by status for own company only"
+    },
+    {
+      "test_case": "dashboard_tasks_by_status_accurate",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:43:59.671Z",
+      "counts": {
+        "open": 3,
+        "inProgress": 1,
+        "blocked": 1,
+        "done": 1
+      },
+      "reason": "tasks segmented by status correctly"
+    },
+    {
+      "test_case": "dashboard_pending_approvals_matches_db",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:43:59.671Z",
+      "pending_approvals": 2,
+      "reason": "pending approvals count matches own company database entries"
+    },
+    {
+      "test_case": "dashboard_enforces_company_boundary",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:43:59.671Z",
+      "response_status": 403,
+      "error": "Access denied: company boundary violation",
+      "reason": "cross-company access blocked with 403 Forbidden"
+    },
+    {
+      "test_case": "postgres_connection_success",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:43:59.671Z",
+      "probe": {
+        "connected": true,
+        "mode": "external-postgres",
+        "host": "10.0.0.5",
+        "port": 5432,
+        "database": "paperclip_prod",
+        "reason": "DATABASE_URL connects successfully to PostgreSQL instance"
+      },
+      "reason": "external postgres connection details verified"
+    },
+    {
+      "test_case": "postgres_connection_invalid_format",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:43:59.672Z",
+      "probe": {
+        "connected": false,
+        "mode": "postgres",
+        "error": "Invalid database connection string format"
+      },
+      "reason": "invalid connection string returns connected=false"
+    },
+    {
+      "test_case": "embedded_postgres_fallback_success",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:43:59.672Z",
+      "probe": {
+        "connected": true,
+        "mode": "embedded-postgres",
+        "dataDir": "./.postgres-data",
+        "port": 54329,
+        "reason": "Successful local fallback to Embedded PostgreSQL instance"
+      },
+      "reason": "fallback to local embedded-postgres verified when url is missing"
+    },
+    {
+      "test_case": "health_check_endpoint_returns_db_status",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:43:59.672Z",
+      "health": {
+        "status": "healthy",
+        "timestamp": "2026-07-14T16:43:59.672Z",
+        "database": {
+          "connected": true,
+          "mode": "external-postgres",
+          "migrationStatus": "upToDate",
+          "pendingMigrationsCount": 0,
+          "error": null
+        }
+      },
+      "reason": "health check endpoint payload structure verified"
+    },
+    {
+      "test_case": "health_check_detects_pending_migrations",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T16:43:59.672Z",
+      "health": {
+        "status": "healthy",
+        "timestamp": "2026-07-14T16:43:59.672Z",
+        "database": {
+          "connected": true,
+          "mode": "external-postgres",
+          "migrationStatus": "needsMigrations",
+          "pendingMigrationsCount": 3,
+          "error": null
+        }
+      },
+      "reason": "health check correctly flags pending database migrations"
+    }
+  ]
+}
