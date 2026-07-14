@@ -1,0 +1,86 @@
+{
+  "milestone": "1.3A",
+  "generated_at": "2026-07-14T09:35:10.285Z",
+  "events": [
+    {
+      "test_case": "agent_cross_company_access",
+      "company_target": "comp_b",
+      "actor_type": "agent",
+      "actor_source": "none",
+      "expected_status": 403,
+      "actual_status": 403,
+      "verdict": "PASS",
+      "error_message": "Agent key cannot access another company"
+    },
+    {
+      "test_case": "agent_same_company_access",
+      "company_target": "comp_a",
+      "actor_type": "agent",
+      "actor_source": "none",
+      "expected_status": 200,
+      "actual_status": 200,
+      "verdict": "PASS",
+      "error_message": null
+    },
+    {
+      "test_case": "unauthenticated_access",
+      "company_target": "comp_a",
+      "actor_type": "none",
+      "actor_source": "none",
+      "expected_status": 401,
+      "actual_status": 401,
+      "verdict": "PASS",
+      "error_message": "Unauthorized"
+    },
+    {
+      "test_case": "board_no_membership_access",
+      "company_target": "comp_b",
+      "actor_type": "board",
+      "actor_source": "session",
+      "expected_status": 403,
+      "actual_status": 403,
+      "verdict": "PASS",
+      "error_message": "User does not have access to this company"
+    },
+    {
+      "test_case": "board_manager_mutation_access",
+      "company_target": "comp_b",
+      "actor_type": "board",
+      "actor_source": "session",
+      "expected_status": 200,
+      "actual_status": 200,
+      "verdict": "PASS",
+      "error_message": null
+    },
+    {
+      "test_case": "board_viewer_mutation_denied",
+      "company_target": "comp_b",
+      "actor_type": "board",
+      "actor_source": "session",
+      "expected_status": 403,
+      "actual_status": 403,
+      "verdict": "PASS",
+      "error_message": "Viewer access is read-only"
+    },
+    {
+      "test_case": "board_viewer_read_allowed",
+      "company_target": "comp_b",
+      "actor_type": "board",
+      "actor_source": "session",
+      "expected_status": 200,
+      "actual_status": 200,
+      "verdict": "PASS",
+      "error_message": null
+    },
+    {
+      "test_case": "implicit_board_any_company_access",
+      "company_target": "comp_b",
+      "actor_type": "board",
+      "actor_source": "local_implicit",
+      "expected_status": 200,
+      "actual_status": 200,
+      "verdict": "PASS",
+      "error_message": null
+    }
+  ]
+}

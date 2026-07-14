@@ -95,7 +95,10 @@
     "ai-company:1.2e:auto-loop": "node scripts/ai-company-remote-sandbox-circuit-breaker-auto-loop.mjs",
     "ai-company:1.2f": "node scripts/ai-company-remote-sandbox-cleanup.mjs",
     "ai-company:1.2f:verify": "node packages/db/src/_verify-1.2f.mjs",
-    "ai-company:1.2f:auto-loop": "node scripts/ai-company-remote-sandbox-cleanup-auto-loop.mjs"
+    "ai-company:1.2f:auto-loop": "node scripts/ai-company-remote-sandbox-cleanup-auto-loop.mjs",
+    "ai-company:1.3a": "node cli/node_modules/tsx/dist/cli.mjs scripts/ai-company-boundaries-validation.mjs",
+    "ai-company:1.3a:verify": "node packages/db/src/_verify-1.3a.mjs",
+    "ai-company:1.3a:auto-loop": "node scripts/ai-company-boundaries-validation-auto-loop.mjs"
   },
   "devDependencies": {
     "@playwright/test": "^1.58.2",

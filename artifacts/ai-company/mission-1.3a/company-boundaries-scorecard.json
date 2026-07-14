@@ -1,0 +1,15 @@
+{
+  "milestone": "1.3A",
+  "generated_at": "2026-07-14T09:35:10.285Z",
+  "verdict": "BOUNDARIES_VERIFIED",
+  "boundary_checks": {
+    "agent_cross_company_access": true,
+    "agent_same_company_access": true,
+    "unauthenticated_access": true,
+    "board_no_membership_access": true,
+    "board_manager_mutation_access": true,
+    "board_viewer_mutation_denied": true,
+    "board_viewer_read_allowed": true,
+    "implicit_board_any_company_access": true
+  }
+}
