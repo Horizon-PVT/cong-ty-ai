@@ -1,6 +1,6 @@
 {
   "milestone": "1.3F",
-  "generated_at": "2026-07-14T17:04:36.850Z",
+  "generated_at": "2026-07-14T17:11:12.517Z",
   "total_tests": 10,
   "passed": 10,
   "failed": 0,
@@ -8,7 +8,7 @@
     {
       "test_case": "owner_approves_hire",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:04:36.852Z",
+      "timestamp": "2026-07-14T17:11:12.520Z",
       "status": "approved",
       "unblocked": true,
       "reason": "owner approved hire, execution unblocked"
@@ -16,7 +16,7 @@
     {
       "test_case": "owner_rejects_hire",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:04:36.852Z",
+      "timestamp": "2026-07-14T17:11:12.520Z",
       "status": "rejected",
       "still_blocked": true,
       "reason": "owner rejected hire, scope remains blocked"
@@ -24,7 +24,7 @@
     {
       "test_case": "admin_cannot_approve_hire",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:04:36.853Z",
+      "timestamp": "2026-07-14T17:11:12.520Z",
       "response_status": 403,
       "required_roles": [
         "owner"
@@ -34,7 +34,7 @@
     {
       "test_case": "pending_blocks_execution",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:04:36.853Z",
+      "timestamp": "2026-07-14T17:11:12.521Z",
       "is_blocked": true,
       "approval_status": "pending",
       "reason": "pending approval blocks execution scope"
@@ -42,7 +42,7 @@
     {
       "test_case": "approved_unblocks_execution",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:04:36.853Z",
+      "timestamp": "2026-07-14T17:11:12.521Z",
       "blocked_before": true,
       "blocked_after": false,
       "reason": "approval unblocked execution"
@@ -50,14 +50,14 @@
     {
       "test_case": "rejected_keeps_blocked",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:04:36.853Z",
+      "timestamp": "2026-07-14T17:11:12.521Z",
       "still_blocked": true,
       "reason": "rejection keeps scope blocked"
     },
     {
       "test_case": "strategy_requires_owner",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:04:36.853Z",
+      "timestamp": "2026-07-14T17:11:12.521Z",
       "admin_status": 403,
       "member_status": 403,
       "owner_status": 200,
@@ -66,7 +66,7 @@
     {
       "test_case": "review_gate_admin_approves",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:04:36.853Z",
+      "timestamp": "2026-07-14T17:11:12.521Z",
       "status": "approved",
       "resolved_by": "admin_qa",
       "reason": "admin can approve review gates"
@@ -74,7 +74,7 @@
     {
       "test_case": "expired_auto_rejects",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:04:36.854Z",
+      "timestamp": "2026-07-14T17:11:12.522Z",
       "expired": true,
       "status": "expired",
       "still_blocked": true,
@@ -83,7 +83,7 @@
     {
       "test_case": "audit_trail_recorded",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:04:36.854Z",
+      "timestamp": "2026-07-14T17:11:12.522Z",
       "trail_entries": 2,
       "has_create": true,
       "has_approve": true,

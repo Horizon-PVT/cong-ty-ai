@@ -1,0 +1,17 @@
+{
+  "milestone": "3.1B",
+  "name": "Enforced Outcomes & Planning Lifecycle",
+  "status": "IN_PROGRESS",
+  "objectives": [
+    "Verify updating task status to done is blocked if no outcome is attached",
+    "Verify task transitions to done when a valid outcome is provided",
+    "Verify draft plans are saved with correct state and owner",
+    "Verify plan transition rules are enforced strictly",
+    "Verify approved plans decompose into child tasks successfully",
+    "Verify plan-to-execution traceability links are readable",
+    "Verify cross-company outcome modifications are rejected with 403",
+    "Verify registering unsupported outcome types is rejected",
+    "Verify plan text and outcome metadata are scrubbed of secrets",
+    "Ensure verifier regression chain rolls back to 3.1A"
+  ]
+}

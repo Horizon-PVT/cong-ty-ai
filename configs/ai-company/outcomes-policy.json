@@ -1,0 +1,22 @@
+{
+  "milestone": "3.1B",
+  "default_mode": "dry_run",
+  "outcomes": {
+    "required_outcome_types": ["merged_pr", "registered_artifact", "approved_decision", "no_op_disposition"],
+    "plan_states": ["draft", "under_review", "approved", "rejected"]
+  },
+  "assertions": {
+    "task_transition_to_done_blocked_without_outcome": true,
+    "task_transition_to_done_allowed_with_valid_outcome": true,
+    "plan_draft_creation_saves_details": true,
+    "plan_transitions_respect_lifecycle_rules": true,
+    "plan_decomposition_creates_child_tasks": true,
+    "traceability_links_plan_to_tasks": true,
+    "outcomes_enforce_company_boundaries": true,
+    "invalid_outcome_types_are_rejected": true,
+    "outcomes_scrub_pii_and_secrets": true,
+    "regression_chain_integrity_verified": true
+  },
+  "allowed_modes": ["dry_run", "live"],
+  "required_live_token_prefix": "OWNER_APPROVED_OUTCOMES_TOKEN="
+}

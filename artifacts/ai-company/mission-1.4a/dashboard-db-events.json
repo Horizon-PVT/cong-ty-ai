@@ -1,6 +1,6 @@
 {
   "milestone": "1.4A",
-  "generated_at": "2026-07-14T17:04:43.277Z",
+  "generated_at": "2026-07-14T17:11:18.991Z",
   "total_tests": 10,
   "passed": 10,
   "failed": 0,
@@ -8,7 +8,7 @@
     {
       "test_case": "dashboard_spend_matches_live_events",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:04:43.279Z",
+      "timestamp": "2026-07-14T17:11:18.994Z",
       "spend": 20500,
       "utilization": 41,
       "reason": "spend dynamically aggregated for the current month only"
@@ -16,7 +16,7 @@
     {
       "test_case": "dashboard_agent_counts_accurate",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:04:43.279Z",
+      "timestamp": "2026-07-14T17:11:18.994Z",
       "counts": {
         "active": 1,
         "running": 1,
@@ -28,7 +28,7 @@
     {
       "test_case": "dashboard_tasks_by_status_accurate",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:04:43.279Z",
+      "timestamp": "2026-07-14T17:11:18.994Z",
       "counts": {
         "open": 3,
         "inProgress": 1,
@@ -40,14 +40,14 @@
     {
       "test_case": "dashboard_pending_approvals_matches_db",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:04:43.279Z",
+      "timestamp": "2026-07-14T17:11:18.994Z",
       "pending_approvals": 2,
       "reason": "pending approvals count matches own company database entries"
     },
     {
       "test_case": "dashboard_enforces_company_boundary",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:04:43.279Z",
+      "timestamp": "2026-07-14T17:11:18.994Z",
       "response_status": 403,
       "error": "Access denied: company boundary violation",
       "reason": "cross-company access blocked with 403 Forbidden"
@@ -55,7 +55,7 @@
     {
       "test_case": "postgres_connection_success",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:04:43.279Z",
+      "timestamp": "2026-07-14T17:11:18.994Z",
       "probe": {
         "connected": true,
         "mode": "external-postgres",
@@ -69,7 +69,7 @@
     {
       "test_case": "postgres_connection_invalid_format",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:04:43.279Z",
+      "timestamp": "2026-07-14T17:11:18.995Z",
       "probe": {
         "connected": false,
         "mode": "postgres",
@@ -80,7 +80,7 @@
     {
       "test_case": "embedded_postgres_fallback_success",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:04:43.280Z",
+      "timestamp": "2026-07-14T17:11:18.995Z",
       "probe": {
         "connected": true,
         "mode": "embedded-postgres",
@@ -93,10 +93,10 @@
     {
       "test_case": "health_check_endpoint_returns_db_status",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:04:43.280Z",
+      "timestamp": "2026-07-14T17:11:18.995Z",
       "health": {
         "status": "healthy",
-        "timestamp": "2026-07-14T17:04:43.280Z",
+        "timestamp": "2026-07-14T17:11:18.995Z",
         "database": {
           "connected": true,
           "mode": "external-postgres",
@@ -110,10 +110,10 @@
     {
       "test_case": "health_check_detects_pending_migrations",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:04:43.280Z",
+      "timestamp": "2026-07-14T17:11:18.995Z",
       "health": {
         "status": "healthy",
-        "timestamp": "2026-07-14T17:04:43.280Z",
+        "timestamp": "2026-07-14T17:11:18.995Z",
         "database": {
           "connected": true,
           "mode": "external-postgres",

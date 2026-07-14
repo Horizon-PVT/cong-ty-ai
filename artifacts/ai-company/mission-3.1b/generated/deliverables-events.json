@@ -1,0 +1,205 @@
+{
+  "milestone": "3.1B",
+  "generated_at": "2026-07-14T17:11:47.017Z",
+  "total_tests": 10,
+  "passed": 10,
+  "failed": 0,
+  "events": [
+    {
+      "test_case": "task_transition_to_done_blocked_without_outcome",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:11:47.019Z",
+      "res": {
+        "status": 400,
+        "error": "Cannot set task status to done: No valid outcome is attached"
+      },
+      "reason": "updating status to done blocked because no outcome is attached"
+    },
+    {
+      "test_case": "task_transition_to_done_allowed_with_valid_outcome",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:11:47.020Z",
+      "outAttach": {
+        "status": 200,
+        "outcome": {
+          "taskId": "task_1",
+          "type": "merged_pr",
+          "url": "https://github.com/Horizon-PVT/cong-ty-ai/pull/123",
+          "metadata": {},
+          "attachedBy": "user_1",
+          "attachedAt": "2026-07-14T17:11:47.020Z"
+        }
+      },
+      "res": {
+        "status": 200,
+        "task": {
+          "id": "task_1",
+          "companyId": "comp_1",
+          "title": "Build feature",
+          "status": "done"
+        }
+      },
+      "reason": "task transition to done succeeded after attaching valid merged_pr link"
+    },
+    {
+      "test_case": "plan_draft_creation_saves_details",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:11:47.020Z",
+      "res": {
+        "status": 200,
+        "plan": {
+          "id": "plan_1",
+          "companyId": "comp_1",
+          "title": "V1 Launch Plan",
+          "description": "Launch activities",
+          "subtasks": [
+            {
+              "title": "Write tests",
+              "assignee": "agent_1"
+            }
+          ],
+          "state": "draft",
+          "childTaskIds": [],
+          "createdBy": "user_1",
+          "createdAt": "2026-07-14T17:11:47.020Z"
+        }
+      },
+      "reason": "plan registered in draft mode and preserved properties"
+    },
+    {
+      "test_case": "plan_transitions_respect_lifecycle_rules",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:11:47.020Z",
+      "r1": {
+        "status": 200,
+        "plan": {
+          "id": "plan_1",
+          "companyId": "comp_1",
+          "title": "V1 Plan",
+          "description": "Desc",
+          "subtasks": [],
+          "state": "approved",
+          "childTaskIds": [],
+          "createdBy": "user_1",
+          "createdAt": "2026-07-14T17:11:47.020Z"
+        }
+      },
+      "r2": {
+        "status": 200,
+        "plan": {
+          "id": "plan_1",
+          "companyId": "comp_1",
+          "title": "V1 Plan",
+          "description": "Desc",
+          "subtasks": [],
+          "state": "approved",
+          "childTaskIds": [],
+          "createdBy": "user_1",
+          "createdAt": "2026-07-14T17:11:47.020Z"
+        }
+      },
+      "r3": {
+        "status": 400,
+        "error": "Invalid plan state transition from \"approved\" to \"draft\""
+      },
+      "reason": "plan lifecycle state machine enforces valid state sequences strictly"
+    },
+    {
+      "test_case": "plan_decomposition_creates_child_tasks",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:11:47.020Z",
+      "res": {
+        "status": 200,
+        "plan": {
+          "id": "plan_1",
+          "companyId": "comp_1",
+          "title": "V1 Plan",
+          "description": "Desc",
+          "subtasks": [
+            {
+              "title": "Task A",
+              "assignee": "agent_a"
+            },
+            {
+              "title": "Task B",
+              "assignee": "agent_b"
+            }
+          ],
+          "state": "approved",
+          "childTaskIds": [
+            "task_plan_1_child_0",
+            "task_plan_1_child_1"
+          ],
+          "createdBy": "user_1",
+          "createdAt": "2026-07-14T17:11:47.020Z"
+        }
+      },
+      "reason": "approving plan automatically creates all defined child tasks"
+    },
+    {
+      "test_case": "traceability_links_plan_to_tasks",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:11:47.021Z",
+      "childTaskId": "task_plan_1_child_0",
+      "reason": "bidirectional link tracing is intact between plan and child tasks"
+    },
+    {
+      "test_case": "outcomes_enforce_company_boundaries",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:11:47.021Z",
+      "r1": {
+        "status": 403,
+        "error": "Access denied: Tenant boundary violation"
+      },
+      "r2": {
+        "status": 403,
+        "error": "Access denied: Tenant boundary violation"
+      },
+      "reason": "cross-company read and write access blocked with 403 Forbidden"
+    },
+    {
+      "test_case": "invalid_outcome_types_are_rejected",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:11:47.021Z",
+      "r1": {
+        "status": 400,
+        "error": "Invalid outcome type \"executable\""
+      },
+      "r2": {
+        "status": 400,
+        "error": "no_op_disposition requires a justification of at least 15 characters"
+      },
+      "reason": "unsupported outcome types and insufficient justifications rejected"
+    },
+    {
+      "test_case": "outcomes_scrub_pii_and_secrets",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:11:47.021Z",
+      "planRes": {
+        "status": 200,
+        "plan": {
+          "id": "plan_1",
+          "companyId": "comp_1",
+          "title": "V1 Plan",
+          "description": "Launch with key [REDACTED_API_KEY] and [REDACTED_EMAIL] contact",
+          "subtasks": [],
+          "state": "draft",
+          "childTaskIds": [],
+          "createdBy": "user_1",
+          "createdAt": "2026-07-14T17:11:47.021Z"
+        }
+      },
+      "reason": "secrets and PII email values redacted in planning details and description"
+    },
+    {
+      "test_case": "regression_chain_integrity_verified",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T17:11:47.021Z",
+      "localPR": {
+        "status": 400,
+        "error": "Invalid or unsafe URL format for merged_pr outcome"
+      },
+      "reason": "SSRF URL verification blocks local/private IP ranges and live token blocks unauthorized runs"
+    }
+  ]
+}

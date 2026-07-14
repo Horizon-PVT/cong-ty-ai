@@ -178,6 +178,12 @@ const MILESTONES = [
     verifier: "node packages/db/src/_verify-3.1a.mjs",
     scorecard: "artifacts/ai-company/mission-3.1a/generated",
   },
+  {
+    id: "3.1b", name: "Enforced Outcomes & Planning Lifecycle",
+    runner: "node scripts/ai-company-outcomes.mjs",
+    verifier: "node packages/db/src/_verify-3.1b.mjs",
+    scorecard: "artifacts/ai-company/mission-3.1b/generated",
+  },
 ];
 
 // ── Argument parsing ────────────────────────────────────────────────────
