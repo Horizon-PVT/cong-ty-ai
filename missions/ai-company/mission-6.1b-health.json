@@ -1,0 +1,17 @@
+{
+  "milestone": "6.1B",
+  "name": "Health Diagnostics, Settings & Backup/Restore",
+  "status": "IN_PROGRESS",
+  "objectives": [
+    "Verify health dashboard returns full diagnostics report on storage, db, and keys",
+    "Verify postgres database connection and reachability diagnostic works",
+    "Verify object storage connection and write diagnostic checks out cleanly",
+    "Verify api vault key presence and decryption check operates safely",
+    "Verify creating a secure database and memory backup file succeeds",
+    "Verify restoring system state from a backup passes initial integrity smoke checks",
+    "Verify updating deployment settings rejects requests from non-owners",
+    "Verify system health score correctly drops when component checks fail",
+    "Verify system health checks and settings enforce strict company isolation boundaries",
+    "Ensure verifier regression chain rolls back to 6.1A"
+  ]
+}

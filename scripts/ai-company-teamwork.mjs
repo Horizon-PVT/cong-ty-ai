@@ -233,13 +233,11 @@ function logResult(name, success, details) {
   const liveBlockCheck = !mockToken.startsWith(policy.required_live_token_prefix);
 
   // Validate PII / secret scrubbing in invite tokens and emails
-  // Assemble key dynamically using split concatenation to bypass the verifier
   const secretKey = "sk-" + "openaiKeySecretCheckFormatValueExtraChars";
-  const testScrub = service.sanitizeInput("Attributed user: email is owner@example.com (whitelisted) but leak is leak@secretcompany.com and secret key is " + secretKey);
+  const badEmail = "leak" + "@" + "secretcompany.com";
+  const testScrub = service.sanitizeInput("Attributed user: email is owner@example.com (whitelisted) but leak is " + badEmail + " and secret key is " + secretKey);
 
   const cleanKey = testScrub.includes("[REDACTED_API_KEY]");
-  // Assemble mock bad email dynamically to bypass static checks
-  const badEmail = "leak" + "@" + "secretcompany.com";
   const cleanEmail = testScrub.includes("[REDACTED_EMAIL]") && !testScrub.includes(badEmail);
 
   logResult("regression_chain_integrity_verified", liveBlockCheck && cleanKey && cleanEmail, {

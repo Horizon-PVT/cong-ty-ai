@@ -1,0 +1,189 @@
+{
+  "milestone": "6.1B",
+  "generated_at": "2026-07-14T18:01:56.352Z",
+  "total_tests": 10,
+  "passed": 10,
+  "failed": 0,
+  "events": [
+    {
+      "test_case": "diagnostic_checks_succeed",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T18:01:56.354Z",
+      "res": {
+        "status": 200,
+        "health_score": 100,
+        "healthy": true,
+        "diagnostics": {
+          "postgres_db": {
+            "status": "OK",
+            "latency_ms": 12,
+            "url": "postgresql://db_user:[REDACTED_PASSWORD]@127.0.0.1:5432/paperclip"
+          },
+          "object_storage": {
+            "status": "OK",
+            "write_verified": true
+          },
+          "api_vault": {
+            "status": "OK",
+            "keys_loaded": 3
+          },
+          "storage_permissions": {
+            "status": "OK",
+            "permissions": "0755"
+          }
+        }
+      },
+      "reason": "health dashboard returned full diagnostics report on storage, db, and keys successfully"
+    },
+    {
+      "test_case": "postgres_reachability_verified",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T18:01:56.354Z",
+      "res": {
+        "status": 200,
+        "health_score": 100,
+        "healthy": true,
+        "diagnostics": {
+          "postgres_db": {
+            "status": "OK",
+            "latency_ms": 12,
+            "url": "postgresql://db_user:[REDACTED_PASSWORD]@127.0.0.1:5432/paperclip"
+          }
+        }
+      },
+      "reason": "postgres database connection and reachability diagnostic resolved cleanly"
+    },
+    {
+      "test_case": "object_storage_verified",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T18:01:56.354Z",
+      "res": {
+        "status": 200,
+        "health_score": 100,
+        "healthy": true,
+        "diagnostics": {
+          "object_storage": {
+            "status": "OK",
+            "write_verified": true
+          }
+        }
+      },
+      "reason": "object storage connection and write diagnostic checks passed cleanly"
+    },
+    {
+      "test_case": "vault_keys_verified",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T18:01:56.355Z",
+      "res": {
+        "status": 200,
+        "health_score": 100,
+        "healthy": true,
+        "diagnostics": {
+          "api_vault": {
+            "status": "OK",
+            "keys_loaded": 3
+          }
+        }
+      },
+      "reason": "api vault key presence and decryption check operated safely"
+    },
+    {
+      "test_case": "backup_creation_succeeds",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T18:01:56.355Z",
+      "res": {
+        "status": 200,
+        "filePath": "D:\\Project\\A Tung\\paperclip-dự án công ty AI\\backups\\comp_1\\db_backup_2026.json",
+        "manifest": {
+          "companyId": "comp_1",
+          "milestone": "6.1B",
+          "generatedAt": "2026-07-14T18:01:56.355Z",
+          "integrityHash": "sha256_p9vc3d6uf2"
+        }
+      },
+      "reason": "creating secure database and memory backup file succeeded with manifest"
+    },
+    {
+      "test_case": "restore_smoke_test_succeeds",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T18:01:56.355Z",
+      "res": {
+        "status": 200,
+        "content": "RAW_DATABASE_DUMP_DATA",
+        "manifest": {
+          "companyId": "comp_1",
+          "milestone": "6.1B",
+          "generatedAt": "2026-07-14T18:01:56.355Z",
+          "integrityHash": "sha256_ttvygp2luz"
+        }
+      },
+      "reason": "restoring system state from backup passed all integrity manifest checks"
+    },
+    {
+      "test_case": "settings_change_requires_owner",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T18:01:56.356Z",
+      "resOwner": {
+        "status": 200,
+        "mode": "authenticated_private"
+      },
+      "resBoard": {
+        "status": 403,
+        "error": "Access denied: Only Owner can modify settings"
+      },
+      "reason": "updating deployment settings correctly rejected requests from non-owners"
+    },
+    {
+      "test_case": "health_score_reflects_status",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T18:01:56.356Z",
+      "res": {
+        "status": 200,
+        "health_score": 50,
+        "healthy": false,
+        "diagnostics": {
+          "postgres_db": {
+            "status": "ERROR",
+            "error": "Connection timed out",
+            "url": "postgresql://db_user:[REDACTED_PASSWORD]@127.0.0.1:5432/paperclip"
+          },
+          "object_storage": {
+            "status": "ERROR",
+            "error": "Bucket writing authorization failed"
+          },
+          "api_vault": {
+            "status": "OK",
+            "keys_loaded": 3
+          },
+          "storage_permissions": {
+            "status": "OK",
+            "permissions": "0755"
+          }
+        }
+      },
+      "reason": "system health score correctly dropped and flagged unhealthy when checks failed"
+    },
+    {
+      "test_case": "health_enforces_company_isolation",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T18:01:56.356Z",
+      "res": {
+        "status": 404,
+        "error": "Backup file not found"
+      },
+      "traversalRes": {
+        "status": 403,
+        "error": "Security Error: Directory traversal escape blocked"
+      },
+      "reason": "system backup/restore and directories strictly isolated by companyId and path checks"
+    },
+    {
+      "test_case": "regression_chain_integrity_verified",
+      "verdict": "PASS",
+      "timestamp": "2026-07-14T18:01:56.356Z",
+      "cleanPassword": true,
+      "cleanEmail": true,
+      "reason": "postgres passwords and PII emails successfully redacted in diagnostic reports and live token blocks runs"
+    }
+  ]
+}

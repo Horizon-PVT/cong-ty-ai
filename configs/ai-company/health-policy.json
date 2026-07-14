@@ -1,0 +1,22 @@
+{
+  "milestone": "6.1B",
+  "default_mode": "dry_run",
+  "health": {
+    "min_acceptable_health_score": 80,
+    "required_checks": ["postgres_db", "object_storage", "api_vault", "storage_permissions"]
+  },
+  "assertions": {
+    "diagnostic_checks_succeed": true,
+    "postgres_reachability_verified": true,
+    "object_storage_verified": true,
+    "vault_keys_verified": true,
+    "backup_creation_succeeds": true,
+    "restore_smoke_test_succeeds": true,
+    "settings_change_requires_owner": true,
+    "health_score_reflects_status": true,
+    "health_enforces_company_isolation": true,
+    "regression_chain_integrity_verified": true
+  },
+  "allowed_modes": ["dry_run", "live"],
+  "required_live_token_prefix": "OWNER_APPROVED_HEALTH_TOKEN="
+}

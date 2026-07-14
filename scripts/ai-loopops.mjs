@@ -214,6 +214,12 @@ const MILESTONES = [
     verifier: "node packages/db/src/_verify-6.1a.mjs",
     scorecard: "artifacts/ai-company/mission-6.1a/generated",
   },
+  {
+    id: "6.1b", name: "Health Diagnostics, Settings & Backup/Restore",
+    runner: "node scripts/ai-company-health.mjs",
+    verifier: "node packages/db/src/_verify-6.1b.mjs",
+    scorecard: "artifacts/ai-company/mission-6.1b/generated",
+  },
 ];
 
 // ── Argument parsing ────────────────────────────────────────────────────

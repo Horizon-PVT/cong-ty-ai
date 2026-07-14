@@ -1,6 +1,6 @@
 {
   "milestone": "4.1A",
-  "generated_at": "2026-07-14T17:52:13.557Z",
+  "generated_at": "2026-07-14T18:01:16.201Z",
   "verdict": "SAFETY_VERIFIED",
   "deliverables_checks": {
     "wake_blocked_when_idle_without_inputs": true,

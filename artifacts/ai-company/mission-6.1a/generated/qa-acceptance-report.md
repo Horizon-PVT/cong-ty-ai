@@ -1,6 +1,6 @@
 # QA Acceptance Report — Milestone 6.1A
 
-**Generated:** 2026-07-14T17:52:44.807Z
+**Generated:** 2026-07-14T18:01:47.783Z
 **Milestone:** 6.1A — Team Invite, Membership & Deployment Auth
 **Verdict:** TEAMWORK_VERIFIED
 

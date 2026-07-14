@@ -1,0 +1,13 @@
+{
+  "milestone": "6.1B",
+  "generated_at": "2026-07-14T18:01:56.352Z",
+  "artifacts": [
+    "deliverables-active-config.json",
+    "deliverables-events.json",
+    "deliverables-validation-details.json",
+    "deliverables-scorecard.json",
+    "qa-acceptance-report.md",
+    "artifact-manifest.json",
+    "final-package-index.md"
+  ]
+}

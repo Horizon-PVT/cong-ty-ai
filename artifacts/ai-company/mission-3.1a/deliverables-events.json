@@ -1,6 +1,6 @@
 {
   "milestone": "3.1A",
-  "generated_at": "2026-07-14T17:51:59.180Z",
+  "generated_at": "2026-07-14T18:01:01.655Z",
   "total_tests": 10,
   "passed": 10,
   "failed": 0,
@@ -8,7 +8,7 @@
     {
       "test_case": "deliverable_registration_saves_metadata",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:51:59.182Z",
+      "timestamp": "2026-07-14T18:01:01.657Z",
       "res": {
         "status": 200,
         "deliverable": {
@@ -23,7 +23,7 @@
             "description": "System design specs"
           },
           "registeredBy": "user_1",
-          "registeredAt": "2026-07-14T17:51:59.182Z"
+          "registeredAt": "2026-07-14T18:01:01.657Z"
         }
       },
       "reason": "deliverable registered successfully and metadata preserved"
@@ -31,7 +31,7 @@
     {
       "test_case": "deliverable_validation_rejects_unsupported_formats",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:51:59.182Z",
+      "timestamp": "2026-07-14T18:01:01.657Z",
       "res1": {
         "status": 400,
         "error": "Unsupported deliverable file format or directory traversal detected"
@@ -45,7 +45,7 @@
     {
       "test_case": "deliverable_validation_rejects_oversized_files",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:51:59.182Z",
+      "timestamp": "2026-07-14T18:01:01.657Z",
       "res": {
         "status": 400,
         "error": "Deliverable size exceeds policy limit"
@@ -55,7 +55,7 @@
     {
       "test_case": "deliverables_enforce_company_boundaries_on_read",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:51:59.183Z",
+      "timestamp": "2026-07-14T18:01:01.657Z",
       "res": {
         "status": 403,
         "error": "Access denied: Tenant boundary violation"
@@ -65,7 +65,7 @@
     {
       "test_case": "deliverables_enforce_company_boundaries_on_write",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:51:59.183Z",
+      "timestamp": "2026-07-14T18:01:01.657Z",
       "res": {
         "status": 403,
         "error": "403 Forbidden: Tenant mismatch on deliverable update"
@@ -75,7 +75,7 @@
     {
       "test_case": "deliverables_support_versioning",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:51:59.183Z",
+      "timestamp": "2026-07-14T18:01:01.658Z",
       "res": {
         "status": 200,
         "deliverable": {
@@ -90,7 +90,7 @@
             "note": "updated spec"
           },
           "registeredBy": "user_1",
-          "registeredAt": "2026-07-14T17:51:59.183Z"
+          "registeredAt": "2026-07-14T18:01:01.658Z"
         }
       },
       "reason": "version correctly incremented to 2 on re-registration"
@@ -98,7 +98,7 @@
     {
       "test_case": "url_deliverables_parse_preview_meta",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:51:59.183Z",
+      "timestamp": "2026-07-14T18:01:01.658Z",
       "res": {
         "status": 200,
         "deliverable": {
@@ -110,10 +110,10 @@
           "version": 1,
           "metadata": {},
           "registeredBy": "user_1",
-          "registeredAt": "2026-07-14T17:51:59.183Z",
+          "registeredAt": "2026-07-14T18:01:01.658Z",
           "previewMeta": {
             "title": "Preview for paperclip.dev",
-            "fetchedAt": "2026-07-14T17:51:59.183Z",
+            "fetchedAt": "2026-07-14T18:01:01.658Z",
             "status": "200 OK"
           }
         }
@@ -123,7 +123,7 @@
     {
       "test_case": "pr_links_format_check_passes",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:51:59.184Z",
+      "timestamp": "2026-07-14T18:01:01.659Z",
       "res1": {
         "status": 200,
         "deliverable": {
@@ -135,7 +135,7 @@
           "version": 1,
           "metadata": {},
           "registeredBy": "user_1",
-          "registeredAt": "2026-07-14T17:51:59.184Z"
+          "registeredAt": "2026-07-14T18:01:01.658Z"
         }
       },
       "res2": {
@@ -147,7 +147,7 @@
     {
       "test_case": "deliverables_scrub_pii_and_secrets",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:51:59.184Z",
+      "timestamp": "2026-07-14T18:01:01.659Z",
       "res": {
         "status": 200,
         "deliverable": {
@@ -163,7 +163,7 @@
             "apiKey": "[REDACTED_API_KEY]"
           },
           "registeredBy": "user_1",
-          "registeredAt": "2026-07-14T17:51:59.184Z"
+          "registeredAt": "2026-07-14T18:01:01.659Z"
         }
       },
       "reason": "secrets and PII email values redacted in deliverables metadata"
@@ -171,7 +171,7 @@
     {
       "test_case": "regression_chain_integrity_verified",
       "verdict": "PASS",
-      "timestamp": "2026-07-14T17:51:59.184Z",
+      "timestamp": "2026-07-14T18:01:01.659Z",
       "resLocal": {
         "status": 400,
         "error": "SSRF vulnerability detected: private ranges and invalid protocols are blocked"
