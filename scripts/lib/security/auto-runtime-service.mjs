@@ -117,7 +117,7 @@ export class AutoRuntimeService {
       const { filePath } = params;
       // 1. Directory Traversal Defense
       const resolvedPath = path.resolve(this.sandboxRoot, filePath);
-      if (!resolvedPath.startsWith(this.sandboxRoot)) {
+      if (!resolvedPath.toLowerCase().startsWith(this.sandboxRoot.toLowerCase())) {
         return { status: 400, error: "Security Error: Sandbox directory traversal detected" };
       }
 
@@ -129,7 +129,7 @@ export class AutoRuntimeService {
       const { filePath, content } = params;
       // 1. Directory Traversal Defense
       const resolvedPath = path.resolve(this.sandboxRoot, filePath);
-      if (!resolvedPath.startsWith(this.sandboxRoot)) {
+      if (!resolvedPath.toLowerCase().startsWith(this.sandboxRoot.toLowerCase())) {
         return { status: 400, error: "Security Error: Sandbox directory traversal detected" };
       }
 
